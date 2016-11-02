@@ -1,0 +1,59 @@
+Title "LightPulser";
+-- This file contains function for LED one-shot flash
+-- Edge sensing, non-continue type.
+
+INCLUDE "lpm_counter.inc" ;
+
+PARAMETERS
+(
+  Duration=20,    -- ms,  default =20
+  RefClock=100000 -- kHz, default =100000
+);
+
+CONSTANT PrescalerValue=1000;
+CONSTANT Durtn=Duration * RefClock DIV PrescalerValue;
+
+Subdesign LightPulser
+(
+    clock    : input;
+    event    : input;
+    LightOut : bidir;
+    DirOut   : output;
+)
+
+VARIABLE
+
+Prescaler       : lpm_counter WITH ( LPM_WIDTH = 10);
+Carry_pulse     : node ;
+
+Timer           : lpm_counter WITH ( LPM_WIDTH = 20);
+    trg1        : node ;    -- trg1,trg2 is edge sensitive  
+    trg2        : node ;    -- one clock pulse shaper
+SR              : SRFF;     -- Count Enable
+
+BEGIN
+
+Prescaler.clock =clock;
+Prescaler.aclr  =!SR.q;
+Prescaler.sclr  = Carry_pulse;
+IF (Prescaler.q[] == PrescalerValue) then Carry_pulse=VCC; 
+    else Carry_pulse=GND;
+end IF; 
+	
+Timer.clock = clock;
+Timer.sclr  = !SR.q;
+Timer.cnt_en= Carry_pulse;
+
+    trg1    = DFF(.D=event, .clk=clock);
+    trg2    = DFF(.D=trg1,  .clk=clock);
+    
+SR.S    = trg1 AND !trg2 ; 
+SR.clk  = clock;
+if ( Timer.q[] == Durtn ) then SR.R=VCC;
+    else SR.R=GND;
+end if;
+
+LightOut=OPNDRN(!SR.q); -- =LOW  when LED is ON
+DirOut=SR.q;            -- =HIGH when LED is ON
+
+END;

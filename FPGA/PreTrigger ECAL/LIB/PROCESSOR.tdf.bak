@@ -1,0 +1,364 @@
+TITLE  "Processor" ;    -- Multifunctional Processor Unit
+-- ver.2e   : first fully functional version
+-- ver.2g   : (almost) all registers and triggers are made to flip by _/ ;
+--            Circuitry which handles units involved in Operations is improved.   
+
+INCLUDE "RAMprog.inc" ;
+
+INCLUDE "lpm_counter.inc" ;
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_mux.inc" ;
+
+--  Constant Statement (optional)
+--  Define Statement (optional)
+--  Parameters Statement (optional)
+--  Function Prototype Statement (optional)
+--  Options Statement (optional)
+--  Assert Statement (optional)
+
+SUBDESIGN  PROCESSOR
+(
+Clock               : input;    -- Clock
+Sync                : input;    -- signal-"Tag" of 25MHz rising edge 
+ProgInit            : input;    -- initiates Program execution, InitAddr loading
+Int[4..1]           : input = GND;  -- interrupt signals
+BaseAddr[7..0]      : input = GND;  -- address of the Program_Beginning
+DataIn[15..0]       : input;    -- Data Bus - input
+AccessGranted       : input;
+DataStrobe          : input;    -- signal to latch input data by
+Reset               : input;    -- Main RESET
+    ProgRAM_addr[ 7..0] : input;  -- \  Signals for 
+    ProgRAM_data[15..0] : input;  --  > accessing the Program_Memory
+    ProgRAM_we          : input;  -- /  from outside of Processor Unit
+
+--AddrOut[15..0]      : output;
+--DataOut[15..0]      : output;
+AccessReq           : output;
+RdWr                : output;   -- =0 => READ from external destination /
+                                -- =1 => WRITE to external destination 
+Working             : output;
+Error               : output;   -- Error detected during Program execution
+    ProgRAM_q[15..0]    : output; -- for accessing the ProgRAM from outside of Processor Unit
+test[12..1]          : OUTPUT;   -- test outs
+)
+
+-- VARIABLE Section ____________________________________________________
+VARIABLE
+	--  If Generate Statement (optional)
+-- Instance Decl.
+	--  State Machine Declaration (optional)
+	--  Machine Alias Declaration (optional)
+	--  Assert Statement (optional)
+
+ClkTrig8, ClkTrig7,
+ClkTrig6, ClkTrig5,
+ClkTrig4, ClkTrig3,
+ClkTrig2, ClkTrig1  : node; --"Delay Line" by 1/2 clock each stage 
+ProgCt_Cen          : node; -- "clk_en" for Program_Counter
+--    ProgCt_Clk      : node; -- delayed Clock, instead of Global 100MHz-clock
+MUXaddr_Cen         : node; -- "enable" for triggers which hold MUXes' address signals
+Reg_Cen             : node; -- "clk_en" for Registers
+
+ProgStart, 
+ProgInit1,ProgInit2 : node; 
+--Working             : node; -- Flag of RUN, declared as Output
+ProgEnd             : node;
+
+SelectedAddr[7..0]  : node; -- current address of microprogram
+ProgRAM             : RAMprog   -- RAM 256words * 16bits, 2-port
+            with ( RAM_init_file="RAMprog.mif" );
+Prog_we             : node; -- Write_Enable for WRITE by "Processor"unit itself
+
+-- ProgCt - contains current address of microprogram
+ProgCt_load         : node; -- makes ProgCt to load Base_Addr 
+ProgCt_count        : node; -- sets ProgCt into count mode
+ProgCt              : LPM_COUNTER with ( lpm_width=9, lpm_direction="up" ) ;
+-- PassCt - counts number of passes of a program loop
+--PassCt_ld,
+--PassCt_load         : node; -- makes PassCt to load Initial_number_of_passes 
+PassCt_count        : node; -- makes PassCt to count down 1 unity
+--PassCt              : LPM_COUNTER with ( lpm_width=6, lpm_direction="down" ) ;
+
+Condition           : node; -- flag: if selected Condition = True => =1
+Coincid,CoincidTrig : node; -- flag of coincidence | registered flag
+LastStg             : node; -- flag of the Last Stage of current Operation
+LastStage           : node; -- strobe of the Last Stage of current Operation
+--LastStage1, LastStage2  : node; -- delayed "Last Stage"
+
+-- Reg1, Reg2, Reg3, Reg4 - General purpose Registers (made of Counters)
+Rg1_ld, %Rg1_LdEn,% 
+Reg1_load           : node;
+Reg1_count, Rg1_cnt : node;
+Reg1                : LPM_COUNTER with ( lpm_width=16, lpm_direction="up" ) ;
+Rg2_ld, %Rg2_LdEn,%
+Reg2_load           : node;
+Reg2_count, Rg2_cnt : node;
+Reg2                : LPM_COUNTER with ( lpm_width=16, lpm_direction="up" ) ;
+Rg3_ld, %Rg3_LdEn,% 
+Reg3_load           : node;
+Reg3_count, Rg3_cnt : node;
+Reg3                : LPM_COUNTER with ( lpm_width=16, lpm_direction="up" ) ;
+Rg4_ld, %Rg4_LdEn,% 
+Reg4_load           : node;
+Reg4_count, Rg4_cnt : node;
+Reg4                : LPM_COUNTER with ( lpm_width=16, lpm_direction="up" ) ;
+
+DataMUX             : LPM_MUX with (lpm_width=16, lpm_size=8, lpm_widthS=3);
+--Data_Src[3..1]      : node; -- selected Source of Data ("00" = DataIn selected)
+DataMUX_addr[3..1]  : node; -- registered address signals for DataMUX
+DataMUXaddr_en      : node; -- strobe for registering DataMUX_addr
+
+AddrMUX             : LPM_MUX with (lpm_width=16, lpm_size=8, lpm_widthS=3);
+--Addr_Src[3..1]      : node; -- selected Source of Address ("00" = AddrIn selected - when Processor works as Arbiter)
+AddrMUX_addr[3..1]  : node; -- registered address signals for AddrMUX
+AddrMUXaddr_en      : node; -- strobe for registering AddrMUX_addr
+
+AcsReq, 
+AcsReq1, AcsReq2    : node; -- initiate   "AccessReq"
+RW                  : node; -- initiates  "RdWr"
+LdEn, LoadEn        : node; -- initiates  "LoadEn" | in "Read" Oper-n enables Reg-s to latch data when "DataStrobe" comes
+DTransfDone         : node; -- flag: Data transfer done (holds =1 until "LastStage" flips to =1)
+
+-- LOGIC Section _______________________________________________________
+BEGIN
+DEFAULTS
+--Condition       = GND;
+%Delay = GND;%    ProgEnd = GND;
+
+ProgCt_count    = GND;  ProgCt_load     = GND;
+PassCt_count    = GND; -- PassCt_load     = GND;
+Rg1_ld  = GND;  
+Rg2_ld  = GND;  
+Rg3_ld  = GND;  
+Rg4_ld  = GND;  
+Rg1_cnt = GND;
+Rg2_cnt = GND;
+Rg3_cnt = GND;
+Rg4_cnt = GND;
+LastStg = GND;  Coincid = GND;
+
+--DataMUXaddr_en  = GND;  AddrMUXaddr_en  = GND; 
+
+Prog_we         = GND;
+AcsReq  = GND;  RW      = GND;  LdEn    = GND;
+
+Error = GND; 
+
+END DEFAULTS ;
+
+--============================================================================
+--************ Clock Sequence Generation *************************************
+-- 25MHz Clock  __________/^^^^^^^^^^^^^^^\_______________/^^^^^^
+--100MHz Clock  __/^^^\___/^^^\___/^^^\___/^^^\___/^^^\___/^^^\__
+--    Sync      ______/^^^^^^^\_______________________/^^^^^^^\__
+--    ClkTrig1  __________/^^^^^^^\_______________________/^^^^^^
+--    ClkTrig2  ______________/^^^^^^^\_______________________/^^
+--    ClkTrig3  __________________/^^^^^^^\______________________
+--    ClkTrig4  ______________________/^^^^^^^\__________________
+--      . . . . . . . . . . . . . . . . . . . . . . . . . . . .  
+--    ClkTrig7  __/^^^^^^^\_______________________/^^^^^^^\______
+--    ClkTrig8  ______/^^^^^^^\_______________________/^^^^^^^\__same as Sync
+ClkTrig1    = DFF(.d=Sync,     .clk=Clock);
+ClkTrig2    = DFF(.d=ClkTrig1, .clk=!Clock);
+ClkTrig3    = DFF(.d=ClkTrig2, .clk=Clock);
+ClkTrig4    = DFF(.d=ClkTrig3, .clk=!Clock);
+ClkTrig5    = DFF(.d=ClkTrig4, .clk=Clock);
+ClkTrig6    = DFF(.d=ClkTrig5, .clk=!Clock);
+ClkTrig7    = DFF(.d=ClkTrig6, .clk=Clock);
+ClkTrig8    = DFF(.d=ClkTrig7, .clk=!Clock);
+
+--(Short Operation)' Period occupies 2 clocks => 2 Oper.Periods in one 25MHz clock
+--ProgCt_Cen  = DFF(.d=(ClkTrig3 # ClkTrig7), .clk=!Clock);  
+ProgCt_Cen  = DFF(.D=(ClkTrig2 # ClkTrig6), .clk=Clock);  
+--MUXaddr_Cen = DFF(.d=(ClkTrig1 # ClkTrig5), .clk=!Clock);
+MUXaddr_Cen = DFF(.D=(ClkTrig8 # ClkTrig4), .clk=Clock);
+Reg_Cen     = DFF(.D=(ProgCt_Cen        -- enables Registers in usual Oper-ns 
+                    OR LoadEn), .clk=!Clock); -- in "Read" Oper-n Reg-s lath data by _/ inside "DataStrobe" pulse
+
+--============================================================================
+--************ Program Memory ************************************************
+ProgRAM.(address_b[7..0],   data_b[],       wren_b    ) =   --\ for access
+        (ProgRAM_addr[7..0],ProgRAM_data[], ProgRAM_we);    -- > from outside
+ProgRAM_q[] = ProgRAM.q_b[];                                --/ of "Processor" unit 
+
+ProgRAM.(address_a[7..0],   data_a[],       wren_a ) =      --\ for access from
+        (ProgCt.q[7..0],    DataOut[],      Prog_we);       --/ inside this unit
+
+ProgRAM.(clock_a, enable_a) = (Clock, VCC); 
+ProgRAM.(clock_b, enable_b) = (Clock, ProgCt_Cen);
+
+--============================================================================
+--************ Program proceeding units **************************************
+-- Program Initializing Circuitry 
+
+ProgStart   = SRFF(.s=((ProgInit & !ProgInit1) & !Working), 
+                   .clk=Clock, .r=ProgInit1);
+ProgInit1   = SRFF(.s=(ProgStart & ClkTrig6),
+                   .clk=Clock, .r=ClkTrig2);             -- 2-clock _/^^\_
+ProgInit2   = DFF(.d=ProgInit1, .clk=Clock, .clrn=!ClkTrig2);--0.5-clock _/^\_
+
+Working     = SRFF(.s=ProgInit1,.clk=Clock, .r=ProgEnd,
+                   .clrn=!Reset);
+
+IF (ProgInit1 == VCC)   then  SelectedAddr[] = BaseAddr[] ;
+    ELSE  SelectedAddr[7..0] = ProgRAM.q_a[7..0];
+END IF;
+
+-- Program_Counter contains address for main microprogram 
+ProgCt.(clock, clk_en)      = (Clock, ProgCt_Cen);
+ProgCt.cnt_en               = ProgCt_count; -- counts by Count
+ProgCt.(sclr, sset, sload)  =               -- loads address when ProgCt_load=1,
+            (GND, ProgEnd, ProgCt_load);    -- Sets #255 when OpCode = "ProgEnd"
+ProgCt.(aclr, aset, aload)  = (GND, Reset, ProgInit2);-- Loads Base_Addr in the beginning
+ProgCt.data[7..0]           = SelectedAddr[7..0];     -- BaseAddr / (8 bits of ProgramWord) is loaded
+%
+-- Pass_Counter counts number of passes of a program Loop; 
+--   Counts down: (Initial_#_Passes) -> 0 
+PassCt.(clock, clk_en)      = (Clock, Reg_Cen); 
+PassCt.cnt_en               = PassCt_count; -- clk by _/, counts by Count,
+PassCt.(sclr, sset, sload)      =           -- loads Initial_#_of_Passes   
+            (ProgEnd, GND, PassCt_load);    --   when ProgWord =("Load" Dst=111, Initial_#_of_Passes) 
+PassCt.(aclr, aset, aload)      = (Reset, GND, GND); 
+PassCt.data[5..0]               = DataOut[5..0];-- Initial_#_of_Passes is in the same word
+%
+--============================================================================
+--************ Control Sequence Generation ***********************************
+-- 25MHz Clock  __________/^^^^^^^^^^^^^^^\_______________/^^^^^^^^^^^^^^^\__
+--100MHz Clock  __/^^^\___/^^^\___/^^^\___/^^^\___/^^^\___/^^^\___/^^^\___/^^
+-- OpCode_lock  _____________////^^^^^^^^^^^\\\\______________///^^^^^^^^^^^^
+--   OpCode_en  ^^^^^^^^^^^^^^^^^^^\_______________________/^^^^^^^\_________
+--  LastStage   ___________________________/^^^^^^^^^^^^^^^\_________________
+
+-- These Triggers get and hold the OpCode (16..7 bits of ProgramWord)
+
+-- At "EndLoop" Operation  the PassCt.eq1 is checked in fastest way - directly; 
+-- To perform other conditional Oper-ns inside the last pass of a Loop (when 
+--   PassCt.eq1=1), at these Oper-ns the PassCt.eq1 signal is masked by 
+--   LastStage, so that the resulting "Condition" flag is defined by the state
+--   of the "CoincidTrig" signal
+--Condition   = (PassCt.eq1 & !LastStage) -- PassCt.eq1 is checked at "EndLoop" Operation
+--              # CoincidTrig;            -- this flag is checked at other conditional Operations
+CoincidTrig = DFFE(.d=Coincid, .clk=Clock,  -- registered "Coincid"
+                   .ena=ProgCt_Cen);        -- flips between adjacent Oper.Periods
+
+LastStage   = DFFE(.d=LastStg, .clk=Clock,  -- _/ in the beginning of "last" Oper.Period,
+                   .ena=ProgCt_Cen,         --    \_ in the end of "last" Oper.Period
+                   .clrn=!Reset );          -- compulsive reset
+
+--============================================================================
+
+--PassCt_load = DFF(.D=(PassCt_ld &(ClkTrig2 # ClkTrig6)), .clk=Clock);
+%
+-- These Triggers get and hold the Control Signals' states
+DataMUX_addr[1] = DFFE(.d=Data_Src[1], .clk=Clock, .ena=MUXaddr_Cen, .clrn=!Reset);
+DataMUX_addr[2] = DFFE(.d=Data_Src[2], .clk=Clock, .ena=MUXaddr_Cen, .clrn=!Reset);
+DataMUX_addr[3] = DFFE(.d=Data_Src[3], .clk=Clock, .ena=MUXaddr_Cen, .clrn=!Reset);
+
+AddrMUX_addr[1] = DFFE(.d=Addr_Src[1], .clk=Clock, .ena=MUXaddr_Cen, .clrn=!Reset);
+AddrMUX_addr[2] = DFFE(.d=Addr_Src[2], .clk=Clock, .ena=MUXaddr_Cen, .clrn=!Reset);
+AddrMUX_addr[3] = DFFE(.d=Addr_Src[3], .clk=Clock, .ena=MUXaddr_Cen, .clrn=!Reset);
+
+Reg1_load   = DFF(.D=(Rg1_ld &(ClkTrig2 # ClkTrig6)), .clk=Clock) 
+            OR( DFF(.D=Rg1_LdEn, .clk=Clock)&(DataStrobe & AccessGranted) ); --set by 0.5clock before Regs' clk_/
+Reg1_count  = DFF(.d=(Rg1_cnt&(ClkTrig2 # ClkTrig6)), .clk=Clock);  --set by 0.5clock before Regs' clk_/
+
+Reg2_load   = DFF(.D=(Rg2_ld &(ClkTrig2 # ClkTrig6)), .clk=Clock) 
+            OR( DFF(.D=Rg2_LdEn, .clk=Clock)&(DataStrobe & AccessGranted) ); --set by 0.5clock before Regs' clk_/
+Reg2_count  = DFF(.d=(Rg2_cnt&(ClkTrig2 # ClkTrig6)), .clk=Clock);  --set by 0.5clock before Regs' clk_/
+
+Reg3_load   = DFF(.D=(Rg3_ld &(ClkTrig2 # ClkTrig6)), .clk=Clock) 
+            OR( DFF(.D=Rg3_LdEn, .clk=Clock)&(DataStrobe & AccessGranted) ); --set by 0.5clock before Regs' clk_/
+Reg3_count  = DFF(.d=(Rg3_cnt&(ClkTrig2 # ClkTrig6)), .clk=Clock);  --set by 0.5clock before Regs' clk_/
+
+Reg4_load   = DFF(.D=(Rg4_ld &(ClkTrig2 # ClkTrig6)), .clk=Clock) 
+            OR( DFF(.D=Rg4_LdEn, .clk=Clock)&(DataStrobe & AccessGranted) ); --set by 0.5clock before Regs' clk_/
+Reg4_count  = DFF(.d=(Rg4_cnt&(ClkTrig2 # ClkTrig6)), .clk=Clock);  --set by 0.5clock before Regs' clk_/
+
+-- Reg1, Reg2, Reg3, Reg4 - General purpose Registers (made of counters)
+--    Reminder: Reg_Cen = Trig2 # Trig6
+Reg1.(clock,clk_en) = (Clock, Reg_Cen); 
+Reg1.cnt_en         = Reg1_count;       -- clk by _/, counts by Count,
+Reg1.(sclr, sset, sload)=               -- loads selected Data when    
+            (ProgEnd, GND, Reg1_load);  --   OpCode is "Load", Dstn=Reg1
+Reg1.(aclr, aset, aload)= (Reset, GND, GND); 
+Reg1.data[15..0]        = DataOut[15..0];-- connected to Data Bus
+
+Reg2.(clock,clk_en) = (Clock, Reg_Cen); 
+Reg2.cnt_en         = Reg2_count;       -- clk by _/, counts by Count,
+Reg2.(sclr, sset, sload)=               -- loads selected Data when    
+            (ProgEnd, GND, Reg2_load);  --   OpCode is "Load", Dstn=Reg2
+Reg2.(aclr, aset, aload)= (Reset, GND, GND); 
+Reg2.data[15..0]        = DataOut[15..0];-- connected to Data Bus
+
+Reg3.(clock,clk_en) = (Clock, Reg_Cen); 
+Reg3.cnt_en         = Reg3_count;       -- clk by _/, counts by Count,
+Reg3.(sclr, sset, sload)=               -- loads selected Data when    
+            (ProgEnd, GND, Reg3_load);  --   OpCode is "Load", Dstn=Reg3
+Reg3.(aclr, aset, aload)= (Reset, GND, GND); 
+Reg3.data[15..0]        = DataOut[15..0];-- connected to Data Bus
+
+Reg4.(clock,clk_en) = (Clock, Reg_Cen); 
+Reg4.cnt_en         = Reg4_count;       -- clk by _/, counts by Count,
+Reg4.(sclr, sset, sload)=               -- loads selected Data when    
+            (ProgEnd, GND, Reg4_load);  --   OpCode is "Load", Dstn=Reg4
+Reg4.(aclr, aset, aload)= (Reset, GND, GND); 
+Reg4.data[15..0]        = DataOut[15..0];-- connected to Data Bus
+
+-- DataMUX
+FOR i IN 1 TO 16 GENERATE
+    DataMUX.data[0][i-1]= DataIn[i-1];  -- data is taken from DataIn bus
+    DataMUX.data[1][i-1]= Reg1.q[i-1];  -- data is taken from Reg1
+    DataMUX.data[2][i-1]= Reg2.q[i-1];  -- data is taken from Reg2
+    DataMUX.data[3][i-1]= Reg3.q[i-1];  -- data is taken from Reg3
+    DataMUX.data[4][i-1]= Reg4.q[i-1];  -- data is taken from Reg4
+    DataMUX.data[5][i-1]= ProgRAM.q_a[i-1]; -- data is taken from ProgRAM
+
+    DataOut[i-1]        = DataMUX.result[i-1];  -- MUX's outs connected to bus
+	END GENERATE;
+    DataMUX.data[6][15..8]  = GND;              --[6]-branch of MUX is used
+    DataMUX.data[6][ 7..0] = ProgRAM.q_a[7..0]; --  when OpCode="Load" (8 least bits are being loaded)
+    DataMUX.data[7][15..6]  = GND;              --\ data is taken 
+    DataMUX.data[7][ 5..0] = PassCt.q[5..0];    --/   from PassCt: 6 bits
+
+DataMUX.sel[2..0] = DataMUX_addr[3..1]; -- Address comes from Control Register
+
+-- AddrMUX
+FOR i IN 1 TO 16 GENERATE
+--    AddrMUX.data[0][i-1]= AddrIn[i-1];  -- when Processor works as Arbiter
+    AddrMUX.data[1][i-1]= Reg1.q[i-1];  -- address is taken from Reg1
+    AddrMUX.data[2][i-1]= Reg2.q[i-1];  -- address is taken from Reg2
+    AddrMUX.data[3][i-1]= Reg3.q[i-1];  -- address is taken from Reg3
+    AddrMUX.data[4][i-1]= Reg4.q[i-1];  -- address is taken from Reg4
+    AddrMUX.data[5][i-1]= ProgRAM.q_a[i-1]; -- adress is taken from ProgRAM
+
+    AddrOut[i-1]        = AddrMUX.result[i-1];  -- MUX's outs connected to AddrOut bus
+	END GENERATE;
+AddrMUX.sel[2..0] = AddrMUX_addr[3..1]; -- Address comes from Control Register
+%
+--============================================================================
+-- Access to Main_Project's Data_Bus
+AcsReq1     = DFFE(.d=AcsReq,                             --\ flips to =1 at 
+                   .clk=Clock, .ena=(ClkTrig4 # ClkTrig8),--/the end of 1st Oper.Period of Rd/Wr Oper-n
+                   .clrn=!Reset); 
+AcsReq2     = SRFF(.s=(AcsReq & !AcsReq1 & (ClkTrig3 # ClkTrig7)),--\ flips to =1 when
+                   .clk=!Clock,                                   --/new "AcsReq" appears
+                   .r=(DataStrobe & AccessGranted), .clrn=!Reset);
+AccessReq   = DFF (.d=AcsReq2, .clk=Clock           -- sets together with DataMUX and AddrMUX
+                   %.clrn=AcsReq2%);                  -- resets just after data transfer 
+
+RdWr    = SRFF(.S=(RW & AcsReq2), .clk=Clock,       -- when Write => RdWr=1
+    .R=(DataStrobe & AccessGranted),.clrn=!Reset);  -- resets just after data transfer 
+
+-- Data Receiving chronogram
+LoadEn  = DFF(.D=LdEn, .clk=Clock, .clrn=!Reset)    -- at "Read" Oper-n enables Reg-s ..
+        AND (DataStrobe & AccessGranted);           -- ..to operate by _/ when "DataStrobe" comes
+
+DTransfDone = (DataStrobe & AccessGranted)          -- flag: data transfer done
+        # SRFF(.s=(DataStrobe & AccessGranted & !LastStage),-- flips to =1 by any _/,
+               .clk=Clock, .r=LastStage, .clrn=!Reset);     -- and holds until "LastStage" flips to =1
+
+--============================================================================
+--**************** Testing circuitry *****************************************
+test[] = GND; 
+
+END;

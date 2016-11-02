@@ -1,0 +1,36 @@
+TITLE "LevelSensing";
+-- This file contains function for "HIGH" level Sensing
+-- The function produces positive pulse of 1clock duration when input signal 
+-- is detected to be "HIGH" during at least 3 clocks 
+
+-- Unificated NAMES of inputs and outputs (with EdgeSensing, DelayLine)
+
+Subdesign LevelSensing
+(
+  d     : input;    -- External signal to synchronize
+  clk   : input;    -- Clock
+  Reset : input = GND;  -- Reset
+  q     : output;   -- Synchronized out
+)
+
+Variable
+
+    Sensing1,
+    Sensing2,
+    Sensing3,
+    Sensing4    : node; 
+    PulseEnd    : node; -- when flips to =1, output pulse ends
+
+Begin
+-- "Level sensing" chain : 
+    Sensing1    = DFF(.D=d,        .clk=clk, .clrn=!Reset) ; 
+    Sensing2    = DFF(.D=Sensing1, .clk=clk, .clrn=!Reset) ; 
+    Sensing3    = DFF(.D=Sensing2, .clk=clk, .clrn=!Reset) ; 
+    Sensing4    = DFF(.D=Sensing3, .clk=clk, .clrn=!Reset) ; 
+
+    PulseEnd    = DFF(.D=Sensing4, .clk=clk, .clrn=!Reset) ; 
+
+-- One-clock long pulse sync output
+q= (Sensing1 AND Sensing2 AND Sensing3 AND Sensing4 AND !PulseEnd );
+
+end;

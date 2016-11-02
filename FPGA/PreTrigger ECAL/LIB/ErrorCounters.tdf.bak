@@ -1,0 +1,66 @@
+TITLE "ErrorCounters";
+INCLUDE "lpm_counter.inc";
+INCLUDE "EdgeSensing.inc" ;
+
+Constant Width=10;
+Constant Word_Width =16;
+Subdesign ErrorCounters
+(
+-- Standard Interface Signaling
+-- »нтерфейс на шину проекта пользовател€
+	Clock						: input;  -- частота работы модул€ (100ћ√ц).
+
+    AddrBusIn[3..0]				: input ; -- шина адреса дл€ доступа в пространство пам€ти
+-- 	Reset                     : input=gnd ; -- Common FPGA signal Reset (Active HIGH)
+    DataBusOut[WORD_WIDTH-1..0] : output; -- 
+	Select						: input ;
+	DataBusStrobe				: input;    -- 
+	
+----------------  Specific Signals
+
+	ErrorInputs[Width-1..0]	: input;
+)
+VARIABLE
+
+Edge_of_Error_Input[Width-1..0]	: EdgeSensing;
+Reg_of_Error[Width-1..0]		: SRFF	;
+Counter_of_Error[Width-1..0]	: lpm_counter with (lpm_width=WORD_WIDTH);
+Clear_Reg, Clear_Counters, C_R,C_C	: node;
+Data_Bus_Out_Reg[WORD_WIDTH-1..0]	: DFF;
+DataBusOut_[WORD_WIDTH-1..0]		: node;
+
+begin
+for i in 0 to Width-1 generate
+Edge_of_Error_Input[i].(clk, d)	=	(Clock, ErrorInputs[i] );
+Reg_of_Error[i].(clk, S, R )		=(Clock, Edge_of_Error_Input[i].q, Clear_Reg);
+--Counter_of_Error[i].(clock, cnt_en)=(Clock, Edge_of_Error_Input[i].q); --, Clear_Counters);
+Counter_of_Error[i].(clock, cnt_en, sclr )=(Clock, Edge_of_Error_Input[i].q, Clear_Counters);
+end generate;
+
+CASE AddrBusIn[3..0] IS
+when 0	=>	DataBusOut[WIDTH-1..0]	=	Reg_of_Error[Width-1..0].q; DataBusOut[WORD_WIDTH-1..WIDTH]	=	GND;
+when 1	=>	DataBusOut_[]	=	Counter_of_Error[0].q[];
+when 2	=>	DataBusOut_[]	=	Counter_of_Error[1].q[];
+when 3	=>	DataBusOut_[]	=	Counter_of_Error[2].q[];
+when 4	=>	DataBusOut_[]	=	Counter_of_Error[3].q[];
+when 5	=>	DataBusOut_[]	=	Counter_of_Error[4].q[];
+when 6	=>	DataBusOut_[]	=	Counter_of_Error[5].q[];
+when 7	=>	DataBusOut_[]	=	Counter_of_Error[6].q[];
+when 8	=>	DataBusOut_[]	=	Counter_of_Error[7].q[];
+when 9	=>	DataBusOut_[]	=	Counter_of_Error[8].q[];
+when 10	=>	DataBusOut_[]	=	Counter_of_Error[9].q[];
+--when 11	=>	DataBusOut_[]	=	Counter_of_Error[10].q[];
+when others	=>	DataBusOut_[]=	GND;
+END CASE;
+Data_Bus_Out_Reg[].d	=	DataBusOut_[];
+Data_Bus_Out_Reg[].clk	=	Clock;
+DataBusOut[]			=	Data_Bus_Out_Reg[].q;
+CASE AddrBusIn[3..0] IS
+  when 0  =>	C_R=VCC; C_C=GND;
+  when 11 =>	C_R=GND; C_C=VCC;
+when others	=>	C_R=GND; C_C=GND;
+END CASE;
+Clear_Reg		=	DFF(.clk=Clock, .d=( Select AND DataBusStrobe AND C_R));
+Clear_Counters	=	DFF(.clk=Clock, .d=( Select AND DataBusStrobe AND C_C));
+
+end;

@@ -1,0 +1,249 @@
+Title "Trigger Module for Prototipe of COMET Calorimeter";
+-- v.1a  : Simple trigger without VME
+
+INCLUDE "PLL_SimpleTrigger.inc";
+INCLUDE "PhaseSwitch.inc";
+INCLUDE "TriggerDecision.inc"; 
+
+INCLUDE "EdgeSensing.inc";
+INCLUDE "LevelSensing.inc" ;
+INCLUDE "PulseShaper.inc" ;
+INCLUDE "LightPulser.inc";
+
+INCLUDE "lpm_compare.inc" ;
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_counter.inc" ;
+INCLUDE	"lpm_add_sub.inc";
+INCLUDE "lpm_mux.inc" ;
+INCLUDE "lpm_ff.inc";
+
+Constant Masks_Offset = H"20";   -- MasksReg #32
+
+CONSTANT NUM_CH_Tr = 16;  -- Number of channels
+
+SUBDESIGN  PreTrigger
+(
+-- 1. Reference Clock's & Frequency Control I/O
+FQuartz         : input;    -- 25MHz clock from Quartz oscillator       <- Pin35
+VMEClk			: input;    -- 25MHz clock from Quartz oscillator       <- Pin35
+--Phase25         : output; -- Output to outside                          -> Pin97
+-- In Trigger module Link's Clock is checked inside Altera but switched outside 
+Sw_Quartz       : output;   -- connects Quartz to PLL ref.Input         -> Pin36
+Sw_SysClk		: output;   -- connects Link's Clock to PLL ref.Input   -> Pin34
+
+PLL_in			: input;    -- Ref.clock for PLL (dedicated)            <- Pin92
+--PLLExtOut		: output;   -- Output of PLL.e0 to outside              -> Pin69
+PLLlocked		: output;	-- Check of the PLL's locking status
+
+-- Outputs for Indicators on LED's
+
+LedR			: output;   -- drives the Red LED                       -> Pin
+LedG			: output;   -- drives the Green LED                     -> Pin
+LedB			: output;   -- drives the Blue(Yellow) LED              -> Pin
+
+-- 2. Channel  
+
+TrigChInData[NUM_CH_Tr-1..0]: input;    -- input of data from ADC              <- Pin131
+
+AM_OE[1..0]		:output; -- output from Pin 
+Data_OE[1..0]	:output; -- output from Pin 
+Addr_OE[5..0]	:output; -- output from Pin 
+Sys_OE[1..0]	:output; -- output from Pin 
+
+-- 3. Trig_in-out
+
+TrigIN			: input;     -- Запуск записи данных по внешнему триггеру					<- Pin
+TrigOUT			: output;    -- Триггерный сигнал, сформированный платой для других систем	<- Pin
+
+--ExtStart        : input = GND;  -- external Start                       <- Pin141
+ExtReset        : input = GND;  -- external Reset (tied to GND --VCC)   <- Pin38
+
+-- 5. Test
+Test     : OUTPUT;
+)
+
+VARIABLE
+--============================================================================
+--******** 1. Reference clock's & Frequency Control **************************
+PLL             : PLL_SimpleTrigger;  -- PLL:  Fin=25MHz, PLL.c0=(25MHz shift=0), PLL.c1=(100MHz shift=0)
+Clk25           : node; -- This is Global Node 
+Clk100          : node; -- This is Global Node
+
+-- Automatic Clock Switch: if External_Clock frequency (kHz) is in specified 
+--   range, PhaseSwitch transfers the External_Clock to PLL1's reference input, 
+--   thus all PLL's output clocks are locked to the External_Clock. 
+PhaseSw         : PhaseSwitch with (FmaxThresh=26000, FminThresh=23000, RefClock=25000);
+
+Clk25del1,
+Clk25del2		: node;
+PhaseSet,               -- _/^^\_ pulse aligned to _/ front of StartBit
+Phase12,
+Synchro12,              -- 1-clock _/^\_ pulse aligned to _/ front of PHASE
+Synchro25		: node; -- 1-clock _/^\_ pulse aligned to PHASE and half-PHASE
+
+--******** Power-up self-Reset and self-Set pulses ***************************
+PowerUp0,               --\   Circuit 
+PowerUp1, PowerUp2,     -- \  which generates 
+PowerUp3, PowerUp4,     --  \ a pulse 
+PowerUp5, PowerUp6,     --  / for power-up Reset  \  many milliseconds apart 
+PwrUpReset,             -- /  and then few pulses  > from each other
+PwrUpSet1,PwrUpSet2: node;--/ for power-up Set    /  
+
+--============================================================================
+--******** 2. Timers for Indicators on LED's (Duration in ms, RefClock in kHz)
+B_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Blue
+R_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Red
+--VMEFlash		: LightPulser with (Duration = 50, RefClock = 100000); -- Green
+
+--============================================================================
+--******** 6. Trigger Decision ******************************************************
+Trigger			: TriggerDecision;
+
+Trigg_cs	: node; -- HistRam is saved MuskResult and worked Channel in event 
+
+	Loader		: node;
+    Error       : node;
+	
+--============================================================================
+--******** 8. Test circuitry
+TestCt          : lpm_counter WITH (LPM_width=26,           --\ Test Counter,
+                                    LPM_direction="up");    --/   Blinking counter
+	TestCt_rst1 : node; --\ Cirquit for generating a _/^^\_ ,
+	TestCt_rst2 : node; --/   duration >=(1/2)Tquartz
+
+--============================================================================
+BEGIN
+--DEFAULTS
+
+--END DEFAULTS;
+
+--============================================================================
+--******** 1. Reference Clock & Frequency Control ****************************
+
+--**************** Automatic Clock Switch for PLL reference ******************
+PhaseSw.clock   = FQuartz ;         -- 25MHz from Quartz
+PhaseSw.SysClk 	= VMEClk ;         -- 25MHz from Link
+PhaseSw.Reset   = GND  ;
+--    Phase25     = PhaseSw.Phase25 ; -- selected clock output to real pin
+Sw_SysClk		= !PhaseSw.SysClk_Selected; -- connects VME's Clock to PLL ref.Input
+Sw_Quartz       = PhaseSw.SysClk_Selected; -- connects Quartz to PLL ref.Input
+
+--**************** PLL section ***********************************************
+PLL.inclk0	= PLL_In;
+--PLL1.pfdena = VCC;--!Reset;
+PLLlocked	= PLL.locked;      -- output to pad P2 for monitoring
+--PLLExtOut	= PLL.e0;
+Clk25       = PLL.c0 ;         --  25MHz clock
+Clk100      = Global(PLL.c1) ; -- 100MHz clock
+
+        --============================================================================
+--******** 1a. POWER_UP self-Reset pulse *************************************
+--PowerUp0= DFF (.d=!(VME_s1 & VME_s2) AND PLL1.locked, .clk=Clk25);
+        --               ^^^^^^^^ substituted by (VME_IFace.Reset & VME_IFace.Aout[4])..
+        --  .. to provide a possibility to emulate PowerUp situation
+PowerUp0= DFF (.d=!ExtReset AND PLL.locked, .clk=Clk25);
+
+PowerUp1= SRFF(.s=(PowerUp0 AND (TestCt.q25 & TestCt.q0)),--sets 1.0s after PLL1 has locked
+                .r=ExtReset, .clk=Clk25);  -- .r never =1
+PowerUp2= SRFF(.s=(PowerUp1 AND TestCt.q2),             -- _/^^^^\_ 3clocks
+                .r=ExtReset, .clk=Clk25);  -- .r never =1
+PwrUpReset  = PowerUp1 AND !PowerUp2;   -- ONE pulse ~1sec after powering up
+
+--******** 1b. POWER_UP self-Set pulse ***************************************
+PowerUp3= SRFF(.s=(PowerUp2 AND (!TestCt.q20 & !TestCt.q19 &  TestCt.q18)), --sets 0.015s after PwrUpReset
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PowerUp4= SRFF(.s=(PowerUp3 AND TestCt.q2),             -- _/^^^^\_ 3clocks
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PwrUpSet1   = PowerUp3 AND !PowerUp4;       -- ONE pulse ~0.06sec after PwrUpReset
+
+--******** 1c. POWER_UP self-Set pulse ***************************************
+PowerUp5= SRFF(.s=(PowerUp4 AND 
+            ( TestCt.q20 & !TestCt.q19 & !TestCt.q18)), --sets 0.060s after PwrUpReset
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PowerUp6= SRFF(.s=(PowerUp5 AND TestCt.q2),             -- _/^^^^\_ 3clocks
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PwrUpSet2   = PowerUp3 AND !PowerUp4;       -- ONE pulse ~0.06sec after PwrUpReset
+
+
+--============================================================================
+-- ******** 2. Indicators section ********************************************
+--LedG = OPNDRN ( !( PLL.locked       --always "ON" => PLL locked to LinkClock
+--    OR (!PLL.locked AND TestCt.q[25]) --blinks slowly => PLL locked to Quartz
+--   %%XOR LinkFlash.DirOut%%) );       --short blinks by Link cycles
+--LedG = OPNDRN ( !( 
+--     ( (PLL.locked AND  PhaseSw.SysClk_Selected) --always "ON" => PLL locked to LinkClock
+--    OR (PLL.locked AND !PhaseSw.SysClk_Selected AND TestCt.q[25])) --blinks slowly => PLL locked to Quartz
+    %XOR LinkFlash.DirOut)%-- ));   --short blinks by Link cycles
+--    VMEFlash.(clock, event)= (CLK100, Link_IFace.LinkMessage);
+
+LedG = OPNDRN(!(PLL.locked AND !PhaseSw.SysClk_Selected AND TestCt.q[25]));
+
+--LedB = OPNDRN(!( B_Flash.DirOut OR Trigger.Trigger));
+LedB = OPNDRN(!(B_Flash.DirOut OR Trigger.Trigger)); --!TrigOUT;
+--LedB = OPNDRN( !TestCt.q[21] ) ;    -- for TEST Only! - quick blink
+    B_Flash.(clock, event)  =(Clk100,Trigger.Trigger); -- Busy is defined in Control Unit section
+
+LedR = R_Flash.LightOut;
+--LedR = OPNDRN( TC.q[21] ) ;         -- for TEST Only! - quick blink
+R_Flash.(clock, event)  =(Clk100,Error);-- Error is defined in Control Unit section
+
+Error = PhaseSw.Error;
+
+--============================================================================
+-- 3. Loader
+Loader = SRFF(.s=PwrUpSet1,--sets 1.0s after PLL1 has locked
+                .r=ExtReset, .clk=Clk25);
+IF (Loader == VCC)
+	Then AM_OE[0] = VCC; -- output from Pin 
+		 AM_OE[1] = GND; -- output from Pin 
+		 Addr_OE[0] = VCC; -- output from Pin 
+		 Addr_OE[1] = GND; -- output from Pin 
+		 Addr_OE[2] = VCC; -- output from Pin 
+		 Addr_OE[3] = GND; -- output from Pin 
+		 Addr_OE[4] = VCC; -- output from Pin 
+		 Addr_OE[5] = GND; -- output from Pin 
+		 Sys_OE[0] = VCC; -- output from Pin 
+		 Sys_OE[1] = GND; -- output from Pin 
+		 Data_OE[1..0] = VCC; -- output from Pin 
+END IF;
+
+--============================================================================
+--******** 5. Trigger section *********************************************
+
+Trigger.Tr_channel[15..0] = TrigChInData[NUM_CH_Tr-1..0];
+Trigger.Clock = Clk100;
+Trigger.Reset = ExtReset;
+
+Trigger.ExtTrig = TrigIN;
+
+TrigOUT = Trigger.Trigger;
+
+--============================================================================
+-- 8. Testing circuitry ******************************************************
+TestCt.(clock, clk_en)  = (FQuartz, VCC); -- Test Counter, can be used to drive LED blinking
+--TestCt.(clock, clk_en)  = (LinkClk, VCC); -- Test Counter, can be used to drive LED blinking
+TestCt.cnt_en           = VCC;
+TestCt.aclr             = PowerUp0 & !TestCt_rst2;  --\Reset for making proper PwrUp timing diagram
+    TestCt_rst1 = DFF(.D=PowerUp0,   .clk= FQuartz);-- > _/^^\_ ,
+    TestCt_rst2 = DFF(.D=TestCt_rst1,.clk=!FQuartz);--/   duration >=(1/2)Tquartz
+
+TestCt.(clock, clk_en)  = (FQuartz, VCC); -- Test Counter, can be used to drive LED blinking
+TestCt.cnt_en           =  PowerUp0;
+TestCt.aclr             = !PowerUp0;    -- even if NO clock - Reset does occur
+
+%
+Test1   = Link_IFace.LinkMessage;--PhaseSw.LinkClk_selected; --DDRin.dataout_h[0];			--Link_IFace.LinkMessage;		-- pin 68
+Test2   = !Phase12;                    --Link_IFace.IORq;	-- pin 73
+Test3   = TestCt.q[24];--DDRenNequ1;                   --Start_Link.q;			-- pin 76
+Test4   = PowerUp0;--StartProc_Link;           	--StartADC_Link;		-- pin 80
+
+IF((AddrBus[12] == VCC) and (AddrBus[9] == VCC) ) Then Test5 = VCC; Else Test5 = GND; End IF;
+--Test5   = RESET;--DDRenEqu2;                    --CPU.test4;            --DDRenEqu2;            -- pin 81
+Test6   = PowerUp1;--CPU.AccessReq;                --CPU.AccessReq;        --DDRenNEqu2;           -- pin 137
+Test7   = DDRenEqu3[0];					--AddrSettled;			--Digitizer1.Test3;		-- pin 139
+Test8   = TA6Channel[0].test2;				--DevSel[6] # DevSel[7];--Digitizer1.Test2;		-- pin 146
+Test9   = TA6Channel[0].test1;				--DataStrobe;			--Digitizer1.Test1;		-- pin 147
+Test10  = TA6Channel[0].Working;			--DataBus[0];			--Digitizer1.Working;	-- pin 148
+%
+Test = TrigIN;--Trigger.test1;
+END;

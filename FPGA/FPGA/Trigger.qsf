@@ -1,0 +1,180 @@
+# -------------------------------------------------------------------------- #
+#
+# Copyright (C) 1991-2010 Altera Corporation
+# Your use of Altera Corporation's design tools, logic functions 
+# and other software and tools, and its AMPP partner logic 
+# functions, and any output files from any of the foregoing 
+# (including device programming or simulation files), and any 
+# associated documentation or information are expressly subject 
+# to the terms and conditions of the Altera Program License 
+# Subscription Agreement, Altera MegaCore Function License 
+# Agreement, or other applicable license agreement, including, 
+# without limitation, that your use is for the sole purpose of 
+# programming logic devices manufactured by Altera and sold by 
+# Altera or its authorized distributors.  Please refer to the 
+# applicable agreement for further details.
+#
+# -------------------------------------------------------------------------- #
+#
+# Quartus II
+# Version 9.1 Build 350 03/24/2010 Service Pack 2 SJ Full Version
+# Date created = 13:21:02  January 11, 2013
+#
+# -------------------------------------------------------------------------- #
+#
+# Notes:
+#
+# 1) The default values for assignments are stored in the file:
+#		Trigger_assignment_defaults.qdf
+#    If this file doesn't exist, see file:
+#		assignment_defaults.qdf
+#
+# 2) Altera recommends that you do not modify this file. This
+#    file is updated automatically by the Quartus II software
+#    and any changes you make may be lost or overwritten.
+#
+# -------------------------------------------------------------------------- #
+
+
+set_global_assignment -name FAMILY Cyclone
+set_global_assignment -name DEVICE EP1C3T144C8
+set_global_assignment -name TOP_LEVEL_ENTITY Trigger
+set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
+set_global_assignment -name PROJECT_CREATION_TIME_DATE "13:21:02  JANUARY 11, 2013"
+set_global_assignment -name LAST_QUARTUS_VERSION 9.1
+set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
+set_global_assignment -name DEVICE_FILTER_PACKAGE TQFP
+set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
+set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
+set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
+set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
+set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
+set_global_assignment -name MISC_FILE "D:/Users/Leon/Japan/Trigger/FPGA/Trigger.dpf"
+set_global_assignment -name SEARCH_PATH lib
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVTTL"
+set_location_assignment PIN_1 -to TrigOUT
+set_location_assignment PIN_3 -to TrigChInData[9]
+set_location_assignment PIN_4 -to TrigChInData[10]
+set_location_assignment PIN_5 -to TrigChInData[11]
+set_location_assignment PIN_6 -to TrigChInData[12]
+set_location_assignment PIN_7 -to TrigChInData[13]
+set_location_assignment PIN_10 -to TrigChInData[14]
+set_location_assignment PIN_11 -to TrigChInData[15]
+set_location_assignment PIN_144 -to TrigIN
+set_location_assignment PIN_2 -to TrigChInData[8]
+set_location_assignment PIN_142 -to TrigChInData[7]
+set_location_assignment PIN_140 -to TrigChInData[5]
+set_location_assignment PIN_139 -to TrigChInData[4]
+set_location_assignment PIN_134 -to TrigChInData[3]
+set_location_assignment PIN_133 -to TrigChInData[2]
+set_location_assignment PIN_132 -to TrigChInData[1]
+set_global_assignment -name MISC_FILE "G:/Work/Japan/Trigger/FPGA/Trigger.dpf"
+set_location_assignment PIN_35 -to FQuartz
+set_location_assignment PIN_55 -to Addr_OE[1]
+set_location_assignment PIN_37 -to Addr_OE[2]
+set_location_assignment PIN_60 -to Addr_OE[3]
+set_location_assignment PIN_61 -to Addr_OE[4]
+set_location_assignment PIN_91 -to Addr_OE[5]
+set_location_assignment PIN_42 -to Addr_OE[0]
+set_location_assignment PIN_70 -to AM_OE[0]
+set_location_assignment PIN_79 -to AM_OE[1]
+set_location_assignment PIN_94 -to Sys_OE[0]
+set_location_assignment PIN_106 -to Sys_OE[1]
+set_location_assignment PIN_129 -to Data_OE[0]
+set_location_assignment PIN_108 -to Data_OE[1]
+set_location_assignment PIN_130 -to Data_DIR[0]
+set_location_assignment PIN_107 -to Data_DIR[1]
+set_location_assignment PIN_128 -to VME_Data[0]
+set_location_assignment PIN_127 -to VME_Data[1]
+set_location_assignment PIN_126 -to VME_Data[2]
+set_location_assignment PIN_125 -to VME_Data[3]
+set_location_assignment PIN_124 -to VME_Data[4]
+set_location_assignment PIN_123 -to VME_Data[5]
+set_location_assignment PIN_122 -to VME_Data[6]
+set_location_assignment PIN_121 -to VME_Data[7]
+set_location_assignment PIN_120 -to VME_Data[8]
+set_location_assignment PIN_119 -to VME_Data[9]
+set_location_assignment PIN_114 -to VME_Data[10]
+set_location_assignment PIN_113 -to VME_Data[11]
+set_location_assignment PIN_112 -to VME_Data[12]
+set_location_assignment PIN_111 -to VME_Data[13]
+set_location_assignment PIN_110 -to VME_Data[14]
+set_location_assignment PIN_109 -to VME_Data[15]
+set_location_assignment PIN_53 -to VME_Addr[0]
+set_location_assignment PIN_52 -to VME_Addr[1]
+set_location_assignment PIN_51 -to VME_Addr[2]
+set_location_assignment PIN_50 -to VME_Addr[3]
+set_location_assignment PIN_49 -to VME_Addr[4]
+set_location_assignment PIN_48 -to VME_Addr[5]
+set_location_assignment PIN_47 -to VME_Addr[6]
+set_location_assignment PIN_54 -to VME_Addr[7]
+set_location_assignment PIN_59 -to VME_Addr[8]
+set_location_assignment PIN_58 -to VME_Addr[9]
+set_location_assignment PIN_57 -to VME_Addr[10]
+set_location_assignment PIN_56 -to VME_Addr[11]
+set_location_assignment PIN_38 -to VME_Addr[12]
+set_location_assignment PIN_39 -to VME_Addr[13]
+set_location_assignment PIN_41 -to VME_Addr[15]
+set_instance_assignment -name GLOBAL_SIGNAL "GLOBAL CLOCK" -to Clk100
+set_location_assignment PIN_40 -to VME_Addr[14]
+set_location_assignment PIN_85 -to VME_Addr[16]
+set_location_assignment PIN_83 -to VME_Addr[17]
+set_location_assignment PIN_82 -to VME_Addr[18]
+set_location_assignment PIN_62 -to VME_Addr[19]
+set_location_assignment PIN_67 -to VME_Addr[20]
+set_location_assignment PIN_68 -to VME_Addr[21]
+set_location_assignment PIN_69 -to VME_Addr[22]
+set_location_assignment PIN_72 -to VME_AM[0]
+set_location_assignment PIN_73 -to VME_AM[1]
+set_location_assignment PIN_74 -to VME_AM[2]
+set_location_assignment PIN_77 -to VME_AM[3]
+set_location_assignment PIN_78 -to VME_AM[4]
+set_location_assignment PIN_105 -to VME_DTACK
+set_location_assignment PIN_103 -to VME_IACK
+set_location_assignment PIN_98 -to VME_DS0
+set_location_assignment PIN_99 -to VME_DS1
+set_location_assignment PIN_97 -to VME_LWORD
+set_location_assignment PIN_100 -to VME_AS
+set_location_assignment PIN_96 -to VME_WRITE
+set_instance_assignment -name VIRTUAL_PIN ON -to ExtReset
+set_location_assignment PIN_71 -to VME_AM[5]
+set_instance_assignment -name POWER_UP_LEVEL HIGH -to Addr_OE[1]
+set_instance_assignment -name POWER_UP_LEVEL LOW -to Addr_OE[2]
+set_instance_assignment -name POWER_UP_LEVEL HIGH -to Addr_OE[3]
+set_instance_assignment -name POWER_UP_LEVEL LOW -to Addr_OE[4]
+set_instance_assignment -name POWER_UP_LEVEL HIGH -to Addr_OE[5]
+set_instance_assignment -name POWER_UP_LEVEL LOW -to Addr_OE[0]
+set_instance_assignment -name POWER_UP_LEVEL LOW -to AM_OE[0]
+set_instance_assignment -name POWER_UP_LEVEL HIGH -to AM_OE[1]
+set_instance_assignment -name POWER_UP_LEVEL LOW -to Sys_OE[0]
+set_instance_assignment -name POWER_UP_LEVEL HIGH -to Sys_OE[1]
+set_instance_assignment -name POWER_UP_LEVEL HIGH -to Data_OE[0]
+set_instance_assignment -name POWER_UP_LEVEL HIGH -to Data_OE[1]
+set_location_assignment PIN_36 -to Sw_Quartz
+set_location_assignment PIN_34 -to Sw_SysClk
+set_location_assignment PIN_131 -to TrigChInData[0]
+set_location_assignment PIN_141 -to TrigChInData[6]
+set_location_assignment PIN_143 -to VMEClk
+set_location_assignment PIN_28 -to LedB
+set_location_assignment PIN_27 -to LedG
+set_location_assignment PIN_31 -to LedR
+set_location_assignment PIN_16 -to PLL_in
+set_location_assignment PIN_26 -to PLLExtOut
+set_location_assignment PIN_33 -to PLLlocked
+set_location_assignment PIN_32 -to Test
+set_global_assignment -name AHDL_FILE Trigger.tdf
+set_global_assignment -name AHDL_FILE LIB/TriggerDecision.tdf
+set_global_assignment -name AHDL_FILE LIB/VMEbus.tdf
+set_global_assignment -name AHDL_FILE LIB/ErrorCounters.tdf
+set_global_assignment -name AHDL_FILE LIB/Phase_Switch_DD.tdf
+set_global_assignment -name AHDL_FILE LIB/PhaseSwitch.tdf
+set_global_assignment -name AHDL_FILE LIB/PLL_Trigger.tdf
+set_global_assignment -name AHDL_FILE LIB/PulseShaper.tdf
+set_global_assignment -name AHDL_FILE LIB/LightPulser.tdf
+set_global_assignment -name AHDL_FILE LIB/LevelSensing.tdf
+set_global_assignment -name AHDL_FILE LIB/EdgeSensing.tdf
+set_global_assignment -name AHDL_FILE LIB/hist_ram.tdf
+set_global_assignment -name AHDL_FILE LIB/RAMmain.tdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE Trigger.vwf
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

@@ -1,0 +1,275 @@
+TITLE "TriggerDecision"; -- v.1a
+
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_counter.inc" ;
+INCLUDE "hist_ram.inc";
+INCLUDE "test_ram.inc";
+
+CONSTANT NumberChannel = 16;	--  оличество каналов в плате
+CONSTANT Chan_Reg = 10;	-- Eie-ai ?aaeno?ia aey noiie?iaaiey
+
+SUBDESIGN TriggerDecision
+(
+	Start				: input;
+	Clock, Reset		: input;
+	Error               : output;
+	VME_Work			: input;
+	
+	AddrBus_In[9..0]	: input;
+	DataBusOut[15..0]	: output;
+	DataBusIn[15..0]	: input;
+	DirectIn			: input;  -- направление передачи данных, если =GND, то читаетс€, если =VCC, то модуль пишетс€. 
+	Select				: input;
+	DataBusStrobe		: input;    
+
+-- Trigger Result part ----------------------------------
+	
+	Tr_channel[15..0]	: input;
+	ExtTrig				: input;
+	
+	Trigger	 : output;
+	nTrigger : output;
+
+--	MaskResultOut[3..0]	: output;
+--	ChannelResultOut[15..0] : output;
+	
+------------------------
+	test[7..0]	: output;
+	
+)
+VARIABLE
+-- Data Bus ---------------------------------------------
+	
+	ChannelReg[Chan_Reg-1..0]:	lpm_shiftreg with (LPM_WIDTH = 16, LPM_DIRECTION="unused"); -- ?aaeno? aoiaiuo aaiiuo 
+	
+	Cosmic			: dff;
+	Cryst_OR		: dff;
+	Beam_Central	: dff;
+	Beam_All		: dff;
+
+	MaskResult[3..0]: dffe;
+	ResultMask		: node;
+	SelectMask		: node;
+	MasksSelect		: lpm_shiftreg with (LPM_WIDTH = 4, LPM_DIRECTION="unused"); -- регистр выбора маски 
+	
+	TriggerDec		: dffe;
+	ExternalTrig	: dffe;
+
+	EventsCt		: lpm_counter WITH (LPM_width = 16, LPM_direction="up"); -- Events counter
+	EvCt			: node;
+
+	TriggMaskHist	: hist_ram;
+	TriggChHist		: hist_ram;
+	MaskHistCt		: LPM_COUNTER with (lpm_width = 8, lpm_direction="up" ); -- iaiyou enoi?ee 
+	ChannelHistCt	: LPM_COUNTER with (lpm_width = 8, lpm_direction="up" ); -- iaiyou enoi?ee 
+
+	Test_Trigg		: test_ram;
+	Test_TriggCt	: LPM_COUNTER with (lpm_width = 8, lpm_direction="up" ); -- n?ao?ee 
+		
+	Ram_Sel[2..0]	: node; -- ioeuoeieaeni? aey auai?a ia?auaiey e iaiyoyi
+
+
+BEGIN
+
+DEFAULTS
+ResultMask = GND;
+EvCt = GND;
+Error = GND;
+END DEFAULTS;
+
+-- Trigger_Mask --------------------------------------------------------------------
+
+--  ¬ыбор работающей маски (3..0)
+MasksSelect.(data[], clock, enable) = (DataBusIn[3..0], Clock, SelectMask);
+
+IF(AddrBus_In[] == 771 ) THEN DataBusOut[15..0] = MasksSelect.q[];
+							  SelectMask = DataBusStrobe and  DirectIn AND Select;
+						 ELSE SelectMask = GND;
+END If;
+
+ChannelReg[0].(data[NumberChannel-1..0],clock,load,enable) = (Tr_channel[NumberChannel-1..0], Clock, VCC, !ResultMask);
+
+for i in 0 to Chan_Reg-2 generate
+	ChannelReg[i+1].(data[],clock,load,enable) = (ChannelReg[i].q[], Clock, VCC, !ResultMask );
+end generate;
+
+Cosmic.d = ((ChannelReg[6].q[0] AND ChannelReg[6].q[4] AND ChannelReg[6].q[11]) OR
+		  (ChannelReg[6].q[0] AND ChannelReg[6].q[5] AND ChannelReg[6].q[11]) OR
+		  (ChannelReg[6].q[0] AND ChannelReg[6].q[5] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[0] AND ChannelReg[6].q[6] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[5] AND ChannelReg[6].q[11]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[6] AND ChannelReg[6].q[11]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[6] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[7] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[7] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[8] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[7] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[8] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[8] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[9] AND ChannelReg[6].q[14]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[8] AND ChannelReg[6].q[14]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[8] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[9] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[9] AND ChannelReg[6].q[14]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[10] AND ChannelReg[6].q[14]) );
+Cosmic.clk = Clock;
+
+Cryst_OR.d = ( ChannelReg[6].q[0] OR ChannelReg[6].q[1] OR ChannelReg[6].q[2] OR ChannelReg[6].q[3] OR 
+			   ChannelReg[6].q[4] OR ChannelReg[6].q[5] OR ChannelReg[6].q[6] OR ChannelReg[6].q[7] OR 
+			   ChannelReg[6].q[8] OR ChannelReg[6].q[9] OR ChannelReg[6].q[10] OR ChannelReg[6].q[11] OR 
+			   ChannelReg[6].q[12] OR ChannelReg[6].q[13] OR ChannelReg[6].q[14] OR ChannelReg[6].q[15] ); 
+Cryst_OR.clk = Clock;
+
+Beam_Central.d = (ChannelReg[6].q[6] OR ChannelReg[6].q[7] OR ChannelReg[6].q[8]);
+Beam_Central.clk = Clock;
+
+Beam_All.d = ((ChannelReg[6].q[6] OR ChannelReg[6].q[7] OR ChannelReg[6].q[8]) AND 
+			  (ChannelReg[6].q[0] OR ChannelReg[6].q[1] OR ChannelReg[6].q[2] OR ChannelReg[6].q[3] OR 
+			   ChannelReg[6].q[4] OR ChannelReg[6].q[5] OR ChannelReg[6].q[9] OR ChannelReg[6].q[10] OR
+			   ChannelReg[6].q[11] OR ChannelReg[6].q[12] OR ChannelReg[6].q[13] OR ChannelReg[6].q[14] OR ChannelReg[6].q[15] ));
+Beam_All.clk = Clock;
+
+-- Trigger_MaskResult ---------------------------------------------------------------
+
+IF ( Cryst_OR.q == VCC ) 
+    Then MaskResult[0].d = VCC ;         
+    Else MaskResult[0].d = GND ;
+End IF ;
+IF ( Cosmic.q == VCC ) 
+    Then MaskResult[1].d = VCC ;         
+    Else MaskResult[1].d = GND ;
+End IF ;
+IF ( Beam_Central.q == VCC ) 
+    Then MaskResult[2].d = VCC ;         
+    Else MaskResult[2].d = GND ;
+End IF ;
+IF ( Beam_All.q == VCC ) 
+    Then MaskResult[3].d = VCC ;         
+    Else MaskResult[3].d = GND ;
+End IF ;
+
+IF (MasksSelect.q[0] == VCC)
+	Then ResultMask = Cryst_OR.q;
+	Else ResultMask = GND;
+END IF;
+IF (MasksSelect.q[1] == VCC)
+	Then ResultMask = Cosmic.q;
+	Else ResultMask = GND;
+END IF;
+IF (MasksSelect.q[2] == VCC)
+	Then ResultMask = Beam_Central.q;
+	Else ResultMask = GND;
+END IF;
+IF (MasksSelect.q[3] == VCC)
+	Then ResultMask = Beam_All.q;
+	Else ResultMask = GND;
+END IF;
+%IF ( ResultMask == VCC ) 
+    Then ChannelResultOut[15..0] = ChannelReg[6].q[15..0] ;         
+    Else ChannelResultOut[15..0] = GND ;
+End IF ;
+%
+
+-- final decision -------------------------------------------------------------
+
+	TriggerDec.d = ResultMask;
+	TriggerDec.clk = Clock;
+	TriggerDec.ena = !VME_Work;  
+	TriggerDec.clrn = !Reset;
+	
+	ExternalTrig.d = ExtTrig;
+	ExternalTrig.clk = Clock;
+	ExternalTrig.ena = !VME_Work; 
+	ExternalTrig.clrn = !Reset;
+
+--	MaskResultOut[3..0] = MaskResult[3..0].q;
+
+	Trigger = TriggerDec.q OR ExternalTrig.q;
+	nTrigger = !TriggerDec.q;
+
+	EventsCt.(clock, cnt_en, sclr) = (Clock, Trigger, Start); 
+
+	TriggMaskHist.data_a[3..0] = MaskResult[3..0].q;
+	TriggMaskHist.data_a[15..4] = GND;
+	TriggMaskHist.(address_a[7..0], clock, wren_a) = (MaskHistCt.q[7..0], Clock, VCC);
+	MaskHistCt.clock = Clock;
+
+	TriggMaskHist.(data_b[],address_b[])= (DataBusIn[],AddrBus_In[7..0]);
+	TriggMaskHist.wren_b = DataBusStrobe and  DirectIn AND Select AND Ram_Sel[0];
+
+--	TriggHistCt.sclr = !ResultMask;
+
+	TriggChHist.data_a[15..0] = ChannelReg[6].q[15..0];
+	TriggChHist.(address_a[], clock, wren_a) = (ChannelHistCt.q[7..0], Clock, VCC);
+	ChannelHistCt.clock = Clock;
+
+	TriggChHist.(data_b[],address_b[])= (DataBusIn[],AddrBus_In[7..0]);
+	TriggChHist.wren_b = DataBusStrobe and  DirectIn AND Select AND Ram_Sel[1];
+
+--	TriggHistCt.sclr = !ResultMask;
+
+	Test_Trigg.data_a[15..0] = ChannelReg[6].q[15..0];
+	Test_Trigg.(address_a[], clock_a, wren_a) = (Test_TriggCt.q[7..0], Clock, VCC);
+	Test_TriggCt.clock = Clock;
+	Test_TriggCt.sclr = !ResultMask;
+
+	Test_Trigg.(data_b[],address_b[], clock_b)= (DataBusIn[15..0],AddrBus_In[7..0],Clock);
+	Test_Trigg.wren_b = DirectIn AND Ram_SeL[1];
+
+--  -  ѕам€ть истории сработавших каналов и масок 
+IF(AddrBus_In[] >= 0 AND AddrBus_In[] < 255) THEN DataBusOut[15..0] = TriggMaskHist.q_b[]; RAM_Sel[0] = VCC;
+                                             ELSE RAM_Sel[0] = GND;
+END If;
+IF(AddrBus_In[] >= 256 AND AddrBus_In[] < 511) THEN DataBusOut[15..0] = TriggChHist.q_b[]; RAM_Sel[1] = VCC;
+											   ELSE RAM_Sel[1] = GND;
+END If;
+--  -  “естова€ пам€ть
+IF(AddrBus_In[] >= 512 AND AddrBus_In[] < 768) THEN DataBusOut[15..0] = Test_Trigg.q_b[]; RAM_Sel[2] = VCC;
+                                               ELSE RAM_Sel[2] = GND;
+END If;
+--  -  Events counter 
+IF(AddrBus_In[] == 770 ) THEN EvCt = DirectIn & Select & DataBusStrobe;
+							  DataBusOut[15..0] = EventsCt.q[]; 
+						 ELSE EvCt = GND;
+END If;
+
+%-- Delay of Trigger ----------------------------------------------------
+    if Address[] == OutputDelayRegAddress
+	then
+	  CS_OutputDelayReg = vcc;
+	else
+	  CS_OutputDelayReg = gnd;
+	end if;
+	CS_OutputDelayReg.clk = Clock;
+	CS_OutputDelayReg.clrn = !Reset;
+
+	OutputDelayReg[].d = DataBus[3..0];
+	OutputDelayReg[].ena = CS_OutputDelayReg and Write;
+	OutputDelayReg[].clk = Clock;
+	OutputDelayReg[].clrn = !Reset;
+
+    for j in 0 to 3 generate
+	  DBus[j] = tri(OutputDelayReg[j], CS_OutputDelayReg and Read);
+  	end generate;
+    for j in 4 to 15 generate
+	  DBus[j] = tri(GND, CS_OutputDelayReg and Read);
+  	end generate;
+  		
+	OutDl_TrgSel[] = Decoder4to16(OutputDelayReg[]);
+	
+	OutDl_Trg[].clk = Clock;
+	OutDl_Trg[].clrn = !Reset;
+	OutDl_Trg[].ena = EnableData[9] or LockEnd or Idle;
+    for i in 1 to 14 generate
+      OutDl_Trg[i].d = ((OutDl_Trg[i+1] and (!OutDl_TrgSel[i])) or (TriggerTrg.q and OutDl_TrgSel[i])) and !LockEnd and !Idle;
+    end generate;
+    OutDl_Trg[15].d = (TriggerTrg.q and OutDl_TrgSel[15]) and !LockEnd and !Idle;
+	
+	CharTrgDl = (OutDl_Trg[1] and (!OutDl_TrgSel[0])) or (TriggerTrg.q and OutDl_TrgSel[0]);
+	
+	TriggerDL = CharTrgDl;
+	nTriggerDL = !CharTrgDl;
+%	
+-- test --------------------------------
+
+END;

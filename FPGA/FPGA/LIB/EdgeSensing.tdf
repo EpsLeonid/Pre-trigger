@@ -1,0 +1,29 @@
+TITLE "EdgeSensing";
+-- Файл содержит описание функции формирователя одного импульса
+-- Функция принимает нарастающий фронт входного сигнала (.D = _/^ ) по фронту 
+-- входной частоты (.clk = _/^ ), и формирует один импульс длительностью 
+-- два такта входной частоты
+Subdesign EdgeSensing
+(
+  d     : input;   -- входной сигнал
+  clk   : input;   -- входная частота
+  Reset : input = GND; -- внешний сброс (по высокому уровню)
+  q     : output;  -- выходной импульс
+)
+
+Variable
+
+     StartSensing_trg1  : DFF;  -- trg1,trg2 принимают внешний сигнал  
+     StartSensing_trg2  : DFF;  -- формируют один импульс длительностью два такта входной частоты
+
+Begin
+    StartSensing_trg1.d=d;
+         StartSensing_trg1.clk=clk;
+         StartSensing_trg1.clrn=!Reset; 
+    StartSensing_trg2.d=StartSensing_trg1.q;
+         StartSensing_trg2.clk=clk;
+         StartSensing_trg2.prn=!Reset;
+ 
+-- One pulse sync output
+    q=(StartSensing_trg1.q AND !StartSensing_trg2.q);
+end;

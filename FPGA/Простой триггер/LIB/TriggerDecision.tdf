@@ -1,0 +1,164 @@
+TITLE "TriggerDecision"; -- v.1a
+
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_counter.inc" ;
+INCLUDE "hist_ram.inc";
+INCLUDE "test_ram.inc";
+
+CONSTANT NumberChannel = 16;	-- Количество каналов в плате
+CONSTANT Chan_Reg = 10;	-- Eie-ai ?aaeno?ia aey noiie?iaaiey
+
+SUBDESIGN TriggerDecision
+(
+	Clock, Reset		: input;
+	Error               : output;
+
+-- Trigger Result part ----------------------------------
+	
+	Tr_channel[15..0]	: input;
+	ExtTrig				: input;
+	
+	Trigger	 : output;
+	nTrigger : output;
+
+--	MaskResultOut[3..0]	: output;
+--	ChannelResultOut[15..0] : output;
+	
+------------------------
+	test[7..0]	: output;
+	
+)
+VARIABLE
+-- Data Bus ---------------------------------------------
+	
+	ChannelReg[Chan_Reg-1..0]:	lpm_shiftreg with (LPM_WIDTH = 16, LPM_DIRECTION="unused"); -- ?aaeno? aoiaiuo aaiiuo 
+	TrCh_Reg		:	lpm_shiftreg with (LPM_WIDTH = 16, LPM_DIRECTION="unused"); -- ?aaeno? aoiaiuo aaiiuo 
+	
+	Cosmic			: dff;
+	Cryst_OR		: dff;
+	Beam_Central	: dff;
+	Beam_All		: dff;
+	ResultMask		: node;
+
+	TriggerDec		: SRFF;
+	TriggerDelay[14..0]	: dff;
+	ExternalTrig	: dffe;
+
+BEGIN
+DEFAULTS
+ResultMask = GND;
+Error = GND;
+END DEFAULTS;
+
+-- Trigger_Mask --------------------------------------------------------------------
+
+ChannelReg[0].(data[NumberChannel-1..0],clock,load,enable) = (Tr_channel[NumberChannel-1..0], Clock, VCC, VCC);
+
+for i in 0 to Chan_Reg-2 generate
+	ChannelReg[i+1].(data[],clock,load,enable) = (ChannelReg[i].q[], Clock, VCC, VCC);
+end generate;
+
+Cosmic.d = ((ChannelReg[6].q[0] AND ChannelReg[6].q[1] AND ChannelReg[6].q[3]) OR
+			(ChannelReg[6].q[0] AND ChannelReg[6].q[2] AND ChannelReg[6].q[3]) OR
+			(ChannelReg[6].q[0] AND ChannelReg[6].q[2] AND ChannelReg[6].q[7]) OR
+			(ChannelReg[6].q[0] AND ChannelReg[6].q[5] AND ChannelReg[6].q[7]) OR
+			(ChannelReg[6].q[4] AND ChannelReg[6].q[2] AND ChannelReg[6].q[3]) OR
+			(ChannelReg[6].q[4] AND ChannelReg[6].q[5] AND ChannelReg[6].q[3]) OR
+			(ChannelReg[6].q[4] AND ChannelReg[6].q[5] AND ChannelReg[6].q[7]) OR
+			(ChannelReg[6].q[4] AND ChannelReg[6].q[6] AND ChannelReg[6].q[7]) OR
+			(ChannelReg[6].q[4] AND ChannelReg[6].q[6] AND ChannelReg[6].q[10]) OR
+			(ChannelReg[6].q[4] AND ChannelReg[6].q[9] AND ChannelReg[6].q[10]) OR
+			(ChannelReg[6].q[8] AND ChannelReg[6].q[6] AND ChannelReg[6].q[7]) OR
+			(ChannelReg[6].q[8] AND ChannelReg[6].q[9] AND ChannelReg[6].q[7]) OR
+			(ChannelReg[6].q[8] AND ChannelReg[6].q[9] AND ChannelReg[6].q[10]) OR
+			(ChannelReg[6].q[8] AND ChannelReg[6].q[9] AND ChannelReg[6].q[14]) OR
+			(ChannelReg[6].q[8] AND ChannelReg[6].q[12] AND ChannelReg[6].q[14]) OR
+			(ChannelReg[6].q[11] AND ChannelReg[6].q[9] AND ChannelReg[6].q[10]) OR
+			(ChannelReg[6].q[11] AND ChannelReg[6].q[12] AND ChannelReg[6].q[10]) OR
+			(ChannelReg[6].q[11] AND ChannelReg[6].q[12] AND ChannelReg[6].q[14]) OR
+			(ChannelReg[6].q[11] AND ChannelReg[6].q[13] AND ChannelReg[6].q[14]) );
+%
+Cosmic.d = ((ChannelReg[6].q[0] AND ChannelReg[6].q[1] AND ChannelReg[6].q[3]) OR
+		  (ChannelReg[6].q[0] AND ChannelReg[6].q[5] AND ChannelReg[6].q[11]) OR
+		  (ChannelReg[6].q[0] AND ChannelReg[6].q[5] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[0] AND ChannelReg[6].q[6] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[5] AND ChannelReg[6].q[11]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[6] AND ChannelReg[6].q[11]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[6] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[7] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[7] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[1] AND ChannelReg[6].q[8] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[7] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[8] AND ChannelReg[6].q[12]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[8] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[9] AND ChannelReg[6].q[14]) OR
+		  (ChannelReg[6].q[2] AND ChannelReg[6].q[8] AND ChannelReg[6].q[14]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[8] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[9] AND ChannelReg[6].q[13]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[9] AND ChannelReg[6].q[14]) OR
+		  (ChannelReg[6].q[3] AND ChannelReg[6].q[10] AND ChannelReg[6].q[14]) );
+Cosmic.clk = Clock;
+%
+Cryst_OR.d = ( ChannelReg[6].q[0] OR ChannelReg[6].q[1] OR ChannelReg[6].q[2] OR ChannelReg[6].q[3] OR 
+			   ChannelReg[6].q[4] OR ChannelReg[6].q[5] OR ChannelReg[6].q[6] OR ChannelReg[6].q[7] OR 
+			   ChannelReg[6].q[8] OR ChannelReg[6].q[9] OR ChannelReg[6].q[10] OR ChannelReg[6].q[11] OR 
+			   ChannelReg[6].q[12] OR ChannelReg[6].q[13] OR ChannelReg[6].q[14] OR ChannelReg[6].q[15] ); 
+Cryst_OR.clk = Clock;
+
+Beam_Central.d = (ChannelReg[6].q[6] AND ChannelReg[6].q[7] AND ChannelReg[6].q[8]);
+Beam_Central.clk = Clock;
+
+Beam_All.d = ((ChannelReg[6].q[6] AND ChannelReg[6].q[7] AND ChannelReg[6].q[8]) AND 
+			  (ChannelReg[6].q[0] OR ChannelReg[6].q[1] OR ChannelReg[6].q[2] OR ChannelReg[6].q[3] OR 
+			   ChannelReg[6].q[4] OR ChannelReg[6].q[5] OR ChannelReg[6].q[9] OR ChannelReg[6].q[10] OR
+			   ChannelReg[6].q[11] OR ChannelReg[6].q[12] OR ChannelReg[6].q[13] OR ChannelReg[6].q[14] OR ChannelReg[6].q[15] ));
+Beam_All.clk = Clock;
+
+--ResultMask = Cryst_OR.q OR Cosmic.q OR Beam_Central.q OR Beam_All.q;
+ResultMask = Cosmic.q;
+
+TrCh_Reg.(data[],clock,load,enable) = (ChannelReg[7].q[], Clock, ResultMask, VCC);
+-- Trigger_MaskResult ---------------------------------------------------------------
+
+-- final decision -------------------------------------------------------------
+
+--	TriggerDec.(S,clk,R) = (Cryst_OR.q OR Cosmic.q, Clock, TriggerDelay14.q); -- tag, trigger worked
+	TriggerDec.(S,clk,R) = (ResultMask, Clock, TriggerDelay14.q); -- tag, trigger worked
+
+--TriggerDelay0.(d, clk, clrn) = (Cryst_OR.q, Clock, !Reset);	-- 1-clock   _/^^^\_
+TriggerDelay0.(d, clk, clrn) = (Cosmic.q, Clock, !Reset);	-- 1-clock   _/^^^\_
+TriggerDelay1.(d, clk, clrn) = (TriggerDelay0.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay2.(d, clk, clrn) = (TriggerDelay1.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay3.(d, clk, clrn) = (TriggerDelay2.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay4.(d, clk, clrn) = (TriggerDelay3.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay5.(d, clk, clrn) = (TriggerDelay4.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay6.(d, clk, clrn) = (TriggerDelay5.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay7.(d, clk, clrn) = (TriggerDelay6.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay8.(d, clk, clrn) = (TriggerDelay7.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay9.(d, clk, clrn) = (TriggerDelay8.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay10.(d, clk, clrn) = (TriggerDelay9.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay11.(d, clk, clrn) = (TriggerDelay10.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay12.(d, clk, clrn) = (TriggerDelay11.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay13.(d, clk, clrn) = (TriggerDelay12.q, Clock, !Reset); -- 1-clock   _/^^^\_
+TriggerDelay14.(d, clk, clrn) = (TriggerDelay13.q, Clock, !Reset); -- 1-clock   _/^^^\_
+	
+	ExternalTrig.d = ExtTrig;
+	ExternalTrig.clk = Clock;
+	ExternalTrig.ena = VCC; 
+	ExternalTrig.clrn = !Reset;
+
+--	MaskResultOut[3..0] = MaskResult[3..0].q;
+
+	Trigger = TriggerDec.q;-- OR ExtTrig; --OR ExternalTrig.q;--(TriggerDelay0.q OR TriggerDelay1.q OR TriggerDelay2.q OR TriggerDelay3.q OR TriggerDelay4.q OR
+--			   TriggerDelay5.q OR TriggerDelay6.q OR TriggerDelay7 OR TriggerDelay8 OR TriggerDelay9);
+	nTrigger = !TriggerDec.q;
+
+-- test --------------------------------
+
+test[0] = Trigger;
+test[1] = Cryst_OR.q;
+test[2] = Cosmic.q;
+test[3] = TriggerDec.q;
+test[4] = ExternalTrig.q;
+
+END;

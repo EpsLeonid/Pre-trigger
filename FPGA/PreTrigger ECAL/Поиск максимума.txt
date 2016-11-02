@@ -1,0 +1,818 @@
+%
+IF Amp_Reg[0].q[]> Amp_Reg[1].q[] Then
+	IF Amp_Reg[0].q[]> Amp_Reg[2].q[] Then
+		IF Amp_Reg[0].q[]> Amp_Reg[3].q[] Then
+			IF Amp_Reg[0].q[]> Amp_Reg[4].q[] Then
+				IF Amp_Reg[0].q[]> Amp_Reg[5].q[] Then
+					IF Amp_Reg[0].q[]> Amp_Reg[6].q[] Then
+						IF Amp_Reg[0].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[0].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[0].q[];
+								MaxCellNumber[] = b"0000";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+								MaxCellNumber[] = b"0110";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+								MaxCellNumber[] = b"0101";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+								MaxCellNumber[] = b"0110";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+								MaxCellNumber[] = b"0100";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+								MaxCellNumber[] = b"0110";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+								MaxCellNumber[] = b"0101";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+								MaxCellNumber[] = b"0110";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		ELSE IF Amp_Reg[3].q[] > Amp_Reg[4].q[] Then
+				IF Amp_Reg[3].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[3].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[3].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[3].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[3].q[];
+								MaxCellNumber[] = b"0011";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+								MaxCellNumber[] = b"0110";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+								MaxCellNumber[] = b"0101";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+								MaxCellNumber[] = b"0110";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+								MaxCellNumber[] = b"0111";
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+								  MaxCellNumber[] = b"1000";
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+								MaxCellNumber[] = b"0100";
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+								 MaxCellNumber[] = b"1000";
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		END IF;
+	ELSE IF Amp_Reg[2].q[] > Amp_Reg[3].q[] Then
+			IF Amp_Reg[2].q[] > Amp_Reg[4].q[] Then
+				IF Amp_Reg[2].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[2].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[2].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[2].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[2].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		ELSE IF Amp_Reg[3].q[] > Amp_Reg[4].q[] Then
+				IF Amp_Reg[3].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[3].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[3].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[3].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[3].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		END IF;
+	END IF;
+ELSE IF Amp_Reg[1].q[] > Amp_Reg[2].q[] Then
+		IF Amp_Reg[1].q[] > Amp_Reg[3].q[] Then
+			IF Amp_Reg[1].q[] > Amp_Reg[4].q[] Then
+				IF Amp_Reg[1].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[1].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[1].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[1].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[1].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		ELSE IF Amp_Reg[3].q[] > Amp_Reg[4].q[] Then
+				IF Amp_Reg[3].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[3].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[3].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[3].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[3].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		END IF;
+	ELSE IF Amp_Reg[2].q[] > Amp_Reg[3].q[] Then
+			IF Amp_Reg[2].q[] > Amp_Reg[4].q[] Then
+				IF Amp_Reg[2].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[2].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[2].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[2].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[2].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		ELSE IF Amp_Reg[3].q[] > Amp_Reg[4].q[] Then
+				IF Amp_Reg[3].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[3].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[3].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[3].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[3].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			ELSE IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then
+					IF Amp_Reg[4].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[4].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[4].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[4].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF; 
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				ELSE IF Amp_Reg[5].q[] > Amp_Reg[6].q[] Then
+						IF Amp_Reg[5].q[] > Amp_Reg[7].q[] Then
+							IF Amp_Reg[5].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[5].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					ELSE IF Amp_Reg[6].q[]> Amp_Reg[7].q[] Then
+							IF Amp_Reg[6].q[]> Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[6].q[];
+							ELSE MaxAmp[] = Amp_Reg[8].q[];
+							END IF;
+						ELSE IF Amp_Reg[7].q[] > Amp_Reg[8].q[] Then
+								MaxAmp[] = Amp_Reg[7].q[];
+							 ELSE MaxAmp[] = Amp_Reg[8].q[];
+							 END IF;
+						END IF;
+					END IF;
+				END IF;
+			END IF;
+		END IF;
+	END IF;
+END IF;
+%

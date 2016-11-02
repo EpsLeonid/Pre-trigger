@@ -1,0 +1,104 @@
+TITLE "TriggerDecision"; -- v.1a
+
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_counter.inc" ;
+INCLUDE	"lpm_add_sub.inc";
+INCLUDE	"SUM_4.inc";
+INCLUDE "hist_ram.inc";
+INCLUDE "test_ram.inc";
+
+CONSTANT NumberChannel = 8;	-- Количество каналов подключенных к плате в плате
+--CONSTANT Chan_Reg = 10;	-- Eie-ai ?aaeno?ia aey noiie?iaaiey
+
+Constant	Piedistal_def = 100;
+Constant	Threshold_def = 200;
+
+SUBDESIGN TriggerDecision
+(
+	Clk, Reset			: input;
+	Error				: output;
+
+-- Trigger Result part ----------------------------------
+	
+	Tr_channel[9..0]	: input;
+	ExtTrig				: input;
+	
+	Trigger				: output;
+	TrigChAmp			: output;
+
+--	MaskResultOut[3..0]	: output;
+--	ChannelResultOut[15..0] : output;
+	
+------------------------
+	test[7..0]	: output;
+	
+)
+VARIABLE
+
+	Threshold_Reg		:	lpm_shiftreg with (LPM_WIDTH = 12, LPM_DIRECTION="unused",LPM_SVALUE = Threshold_def); -- регистр уровня порога
+	Piedistal_Reg		:	lpm_shiftreg with (LPM_WIDTH = 10, LPM_DIRECTION="unused",LPM_SVALUE = Piedistal_def); -- регистр уровня порога
+	RegInit				: node;
+
+	Sub_Ped				:	lpm_add_sub with (lpm_width = 10, lpm_direction="sub", 
+												  Lpm_pipeline = 1 );
+
+	RegSum[3..0]		:	lpm_shiftreg with (LPM_WIDTH = 10, LPM_DIRECTION="unused"); -- регистр входных данных 
+	SUMMATOR			:	SUM_4;	 -- Сумматор на 4 слагаемых
+
+	Value_Th			:	node; -- сигнал о превышении порога (стоит пока порог превышен)
+	Thr_Trig			:	SRFF; -- флаг определения порога
+
+	DelayAver_Reg		:	lpm_shiftreg with (LPM_WIDTH = 12, LPM_DIRECTION="unused"); -- регистр данных с усредненными задержанными на 1 такт сэмплами  
+	Max_Reg				:	lpm_shiftreg with (LPM_WIDTH = 12, LPM_DIRECTION="unused"); -- регистр данных (амплитуда)
+	Max_Trig			:	SRFF; -- флаг определения максимума
+	Value_Max_Done		:	node; -- сигнал об обнаружении изменения знака разницы между предыдущими и текущими сэмплами
+%
+	Hist_ADC			:	hist_ram;
+	Hist_ADCCt			:	LPM_COUNTER with (lpm_width = 10, lpm_direction="up" ); -- счетчик 
+	Hist_RAMAddrBus		:	lpm_shiftreg with (LPM_WIDTH = 10, LPM_DIRECTION="unused");
+	Hist_RAMAddr[9..0]	:	node;
+%
+BEGIN
+DEFAULTS
+
+Error = GND;
+
+END DEFAULTS;
+
+	Piedistal_Reg.(clock, enable, sset) = (Clk, VCC, VCC);
+	Threshold_Reg.(clock, enable, sset) = (Clk, VCC, VCC);
+
+	SUB_Ped.(dataa[9..0], datab[9..0]) = (Tr_channel[9..0], Piedistal_Reg.q[9..0]);
+	SUB_Ped.aclr = Reset;
+	SUB_ped.(clock, clken) = (Clk, VCC);
+
+	RegSum[0].(data[9..0],clock,load,enable) = (SUB_Ped.result[9..0], Clk, VCC, VCC);
+
+for i in 0 to 2 generate
+	RegSum[i+1].(data[9..0],clock,load,enable) = (RegSum[i].q[], Clk, VCC, VCC );
+end generate;
+
+	SUMMATOR.clock = Clk;
+	SUMMATOR.aclr = Reset;
+--	Summator.clken = Sum_clken;
+	SUMMATOR.(data0x[], data1x[], data2x[], data3x[]) = 
+			 (RegSum[ 0].q[],RegSum[ 1].q[],RegSum[ 2].q[],RegSum[ 3].q[]);
+
+IF((SUMMATOR.result[11..0] > Threshold_Reg.q[11..0]) AND (SUMMATOR.result[11] == GND) AND (Thr_Trig.q == GND)) THEN Value_Th = VCC; -- сигнал о превышении порога
+																						 ELSE Value_Th = GND;
+END IF; 
+
+	Thr_Trig.(S,clk,R,clrn) = (Value_Th, Clk, Reset, Reset); -- флаг превышения порога
+	Trigger = Thr_Trig.q;
+
+	DelayAver_Reg.data[] = SUMMATOR.result[11..0];
+	DelayAver_Reg.(clock,enable,load,sclr)= (Clk, Thr_Trig.q, VCC, Reset);
+
+IF((SUMMATOR.result[11..0] < DelayAver_Reg.q[]) AND (Thr_Trig.q == VCC) AND (Max_Trig.q == GND)) THEN Value_Max_Done = VCC;
+																								 ELSE Value_Max_Done = GND;
+END IF;
+	
+	Max_Trig.(S,clk,R,clrn) = (Value_Max_Done, Clk, Reset,Reset); -- флаг определения максимума
+	Max_Reg.(data[],clock,enable,load,sclr) = (DelayAver_Reg.q[],Clk,!Max_Trig.q AND Thr_Trig.q,VCC,Reset);
+	
+END;

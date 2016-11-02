@@ -1,0 +1,527 @@
+Title "Trigger Module for Prototipe of COMET Calorimeter";
+-- v.1a  : Built on the basis of modernized Skeleton project
+
+INCLUDE "Pll_Trigger.inc";
+INCLUDE "PhaseSwitch.inc";
+--INCLUDE "PROCESSOR.inc" ;
+INCLUDE "RAMmain.inc" ;     -- general purpose RAM
+--INCLUDE "Loader.inc";
+INCLUDE "TriggerDecision.inc"; 
+INCLUDE "ErrorCounters.inc";
+INCLUDE "VMEbus.inc"; 
+
+INCLUDE "EdgeSensing.inc";
+INCLUDE "LevelSensing.inc" ;
+INCLUDE "DelayLine.inc" ;
+INCLUDE "PulseShaper.inc" ;
+INCLUDE "LightPulser.inc";
+
+INCLUDE "lpm_compare.inc" ;
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_counter.inc" ;
+INCLUDE	"lpm_add_sub.inc";
+INCLUDE "lpm_mux.inc" ;
+INCLUDE "lpm_ff.inc";
+
+Constant MainRAM_Offset = H"200";   -- main RAM block, 256words * 16bits
+Constant MainRAM_Size   =   1024 ;   -- #1024..#1279
+Constant ProgRAM_Offset = H"600";   -- Program RAM block, 256words * 16bits
+Constant ProgRAM_Size   =   256 ;   -- #1536..#1791
+Constant Trigg_Offset	= H"700";   -- main RAM block, 256words * 16bits
+Constant Trigg_Size		=   1024 ;   -- #2048..#2559
+Constant TestRAM_Offset = H"1100";   -- main RAM block, 256words * 16bits
+Constant TestRAM_Size   =   256 ;   -- #4096..#4351
+
+Constant BaseAddr_Offset = H"A";  -- #10  Base Address of module
+Constant BaseAddr = h"007";  -- Base Address of module
+
+Constant TrCh_Offset = H"10";   -- MasksReg #16
+Constant Masks_Offset = H"11";   -- MasksReg #17
+Constant NEvent_Offset = H"12";   -- MasksReg #18
+Constant Error_Offset = H"20";   -- main RAM block, 256wor ds * 16bits
+Constant Error_Size   =   10 ;   -- #32..#47
+Constant ResetAll_Offset = H"30";   -- ResetAll #48
+
+CONSTANT NUM_CH_Tr = 16;  -- Number of channels
+
+SUBDESIGN  Trigger
+(
+-- 1. Reference Clock's & Frequency Control I/O
+FQuartz         : input;    -- 25MHz clock from Quartz oscillator       <- Pin35
+VMEClk			: input;    -- 25MHz clock from Quartz oscillator       <- Pin35
+--Phase25         : output; -- Output to outside                          -> Pin97
+-- In Trigger module Link's Clock is checked inside Altera but switched outside 
+Sw_Quartz       : output;   -- connects Quartz to PLL ref.Input         -> Pin36
+Sw_SysClk		: output;   -- connects Link's Clock to PLL ref.Input   -> Pin34
+
+PLL_in			: input;    -- Ref.clock for PLL (dedicated)            <- Pin92
+PLLExtOut		: output;   -- Output of PLL.e0 to outside              -> Pin69
+PLLlocked		: output;	-- Check of the PLL's locking status
+
+-- Outputs for Indicators on LED's
+LedR			: output;   -- drives the Red LED                       -> Pin
+LedG			: output;   -- drives the Green LED                     -> Pin
+LedB			: output;   -- drives the Blue(Yellow) LED              -> Pin
+
+-- 2. Channel  
+
+TrigChInData[NUM_CH_Tr-1..0]: input;    -- input of data from ADC              <- Pin131
+
+-- 3. Trig_in-out
+
+TrigIN			: input;     -- Запуск записи данных по внешнему триггеру					<- Pin
+TrigOUT			: output;    -- Триггерный сигнал, сформированный платой для других систем	<- Pin
+
+-- 4. VME Interface I/O
+VME_Addr[22..0]	:input; -- Input from Pin 
+VME_Data[15..0]	:bidir; -- Input from Pin 
+VME_AM[5..0]	:input; -- Input from Pin 
+	
+VME_DTACK		:output; -- Input from Pin
+VME_IACK		:input; -- Input from Pin 
+VME_DS0			:input; -- Input from Pin
+VME_DS1			:input; -- Input from Pin
+VME_LWORD		:input; -- Width of data						-> Pin5
+VME_AS			:input; -- Active-LOW input!!				-> Pin6
+VME_WRITE		:input; -- Read/Write input - 1/0!!				-> Pin27
+
+AM_OE[1..0]		:output; -- output from Pin 
+Data_OE[1..0]	:output; -- output from Pin 
+Data_DIR[1..0]	:output; -- output from Pin 
+Addr_OE[5..0]	:output; -- output from Pin 
+Sys_OE[1..0]	:output; -- output from Pin 
+
+--ExtStart        : input = GND;  -- external Start                       <- Pin141
+ExtReset        : input = GND;  -- external Reset (tied to GND --VCC)   <- Pin38
+
+-- 5. Test
+Test			: OUTPUT;
+)
+
+VARIABLE
+--============================================================================
+--******** 1. Reference clock's & Frequency Control **************************
+PLL             : Pll_Trigger;  -- PLL:  Fin=25MHz, PLL.c0=(25MHz shift=0), PLL.c1=(100MHz shift=0)
+Clk25           : node; -- This is Global Node 
+Clk100          : node; -- This is Global Node
+
+-- Automatic Clock Switch: if External_Clock frequency (kHz) is in specified 
+--   range, PhaseSwitch transfers the External_Clock to PLL1's reference input, 
+--   thus all PLL's output clocks are locked to the External_Clock. 
+PhaseSw         : PhaseSwitch with (FmaxThresh=26000, FminThresh=23000, RefClock=25000);
+
+Clk25del1,
+Clk25del2		: node;
+PhaseSet,               -- _/^^\_ pulse aligned to _/ front of StartBit
+Phase12,
+Synchro12,              -- 1-clock _/^\_ pulse aligned to _/ front of PHASE
+Synchro25		: node; -- 1-clock _/^\_ pulse aligned to PHASE and half-PHASE
+
+--******** Power-up self-Reset and self-Set pulses ***************************
+PowerUp0,               --\   Circuit 
+PowerUp1, PowerUp2,     -- \  which generates 
+PowerUp3, PowerUp4,     --  \ a pulse 
+PowerUp5, PowerUp6,     --  / for power-up Reset  \  many milliseconds apart 
+PwrUpReset,             -- /  and then few pulses  > from each other
+PwrUpSet1,PwrUpSet2: node;--/ for power-up Set    /  
+
+Loader			:node;
+--============================================================================
+--******** 2. Timers for Indicators on LED's (Duration in ms, RefClock in kHz)
+B_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Blue
+R_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Red
+--VMEFlash		: LightPulser with (Duration = 50, RefClock = 100000); -- Green
+
+--============================================================================
+--******** 4. VME ******************************************************
+    
+VME_IFace		: VMEbus;
+-- Register contains Base Address of VME crate
+Reg_BaseAddr	: LPM_SHIFTREG with (lpm_width=12, lpm_direction="UNUSED");
+
+--============================================================================
+--******** 5. Processor, RAM blocks and registers ****************************
+--CPU             : Processor ;
+--BaseAddr[7..0]  : node; -- address of the beginning of selected Program
+
+--ADC_RAM belongs to "Digitizer_TA6" unit, and is defined there
+MainRAM         : RAMmain;  -- RAM  256words * 16bits, 1-port
+--ProgRAM belongs to "Processor" unit, and is defined there
+--CommandRAM      : RAMcommd_TA6; -- RAM 1024words * 16bits, 1-port
+
+--Reg_OpCode      : LPM_SHIFTREG with (lpm_width=(CommandSize+Pause), -- contains Command
+--                                     lpm_direction="unused"); -- not important
+
+%--============================================================================
+-- 7. Control Unit  
+St_Proc         : node;      -- Start Processor
+
+Delay_StProc    : DelayLine with (DelayCode = 110,  -- to delay the real start of Processor 
+                                  DurationCode= 4); --  after VME-cycle
+
+StartProc_VME	: node;
+StartProc		: node;         -- all sources of Start_Processor combined
+%
+--============================================================================
+--******** 6. Trigger Decision ******************************************************
+Trigger			: TriggerDecision;
+
+Trigg_cs	: node; -- HistRam is saved MuskResult and worked Channel in event 
+
+--============================================================================
+--******** 7. Error Counter ******************************************************
+Error_Cnt		: ErrorCounters;
+
+--============================================================================
+--******** 7. Internal Bus of Project; "Bus Handler";
+--    Address recognition and devise selection
+--RW              : node; -- RW=1 - a (master)unit will output data 
+AddrBus[15..0]  : NODE; -- 16 bit address
+DataBus[15..0]	: NODE; -- 16 bit bidir Data Line
+
+--Bus_Arbiter     : Arbiter with (DeviceMaxNumber=2,TimeOut=6);
+--  ^^^^ zdes' nafig ne nuzhen, "Bus Handler" circuit is used instead :
+AcsRqDetect     : node; -- =new= "AccessReq" detected
+AccessGrtd      : node; -- by 1clk after AccessReq, =1 during whole Operation
+AddrSettled     : node; -- Flag: Address is (reliably) settled at AddrBus
+--Target_Ready    : node; -- "OR" of all Addr.Comparators' registered outputs
+BusOper1,
+BusOper2,
+BusOper3        : node; -- delay by 3 clocks
+DataStrobe      : node; --Strobe: latch data into the destination object, and finish the Bus Oper-n
+
+--  signals of Address Comparators
+DevSel[6..1]	: DFF ; -- Registered Addr_Comparator outputs for Selection
+
+MainRAM_cs      : node; -- select for Rd/Wr from/to MainRAM
+ErrorCnt_cs		: node; 
+ResetAll_cs		: node; -- reset all system in mobule by VME
+
+--EvtNum_cs       : node;
+--TrigCh_cs		: node;
+BaseAddr_cs     : node;
+
+ZERO_cs         : node; 
+
+    Busy        : node; -- flag: Action in progress (Digitizing, Link cycle, ...)
+    Error       : node;
+    ResetAll	: node;	-- Reset_all by VME command
+    RESET		: node;	-- Reset_all by VME command
+
+	
+--============================================================================
+--******** 8. Test circuitry
+TestCt          : lpm_counter WITH (LPM_width=26,           --\ Test Counter,
+                                    LPM_direction="up");    --/   Blinking counter
+	TestCt_rst1 : node; --\ Cirquit for generating a _/^^\_ ,
+	TestCt_rst2 : node; --/   duration >=(1/2)Tquartz
+
+--============================================================================
+BEGIN
+DEFAULTS
+
+Error = GND;
+
+END DEFAULTS;
+
+--============================================================================
+--******** 1. Reference Clock & Frequency Control ****************************
+
+--**************** Automatic Clock Switch for PLL reference ******************
+PhaseSw.clock   = FQuartz ;         -- 25MHz from Quartz
+PhaseSw.SysClk 	= VMEClk ;         -- 25MHz from Link
+PhaseSw.Reset   = GND  ;
+--    Phase25     = PhaseSw.Phase25 ; -- selected clock output to real pin
+Sw_SysClk		= !PhaseSw.SysClk_Selected; -- connects VME's Clock to PLL ref.Input
+Sw_Quartz       = PhaseSw.SysClk_Selected; -- connects Quartz to PLL ref.Input
+
+--**************** PLL section ***********************************************
+PLL.inclk0	= PLL_In;
+--PLL1.pfdena = VCC;--!Reset;
+PLLlocked	= PLL.locked;      -- output to pad P2 for monitoring
+PLLExtOut	= PLL.e0;
+Clk25       = PLL.c0 ;         --  25MHz clock
+Clk100      = Global(PLL.c1) ; -- 100MHz clock
+
+--**************** Synchro-signals generation ********************************
+--  25MHz Clock ^\_______________/^^^^^^^^^^^^^^^\_______________/^^^^^^
+-- 100MHz Clock _/^^^\___/^^^\___/^^^\___/^^^\___/^^^\___/^^^\___/^^^\__
+--                           ^-this falling edge is selected
+--    Clk25Del1 ^^^^^^\_______________/^^^^^^^^^^^^^^^\_______________/^
+--    Clk25Del2 ^^^^^^^^^^^^^^\_______________/^^^^^^^^^^^^^^^\_________
+--    Phase12   __________________/^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\_____synchronized with actual _/ of StartBit
+--    Synchro12 _____________/^^^^^^^\__________________________________aligned to actual _/ of StartBit
+--    Synchro25 _____________/^^^^^^^\_______________________/^^^^^^^\__aligned to actual _/ of StartBit and to half-PHASE
+
+Clk25Del1   = DFF(.d=Clk25,    .clk=!Clk100); 
+Clk25Del2   = DFF(.d=Clk25Del1,.clk=!Clk100); 
+
+PhaseSet    = EdgeSensing(.d=VME_IFace.VMEMessage, -- must be aligned: 
+                .clk=Clk100, .reset=RESET); -- 8 or 16 "Clk100"clocks after actual _/ of StartBit
+Phase12     = DFFE(.d=!Phase12,.clk=Clk100, .ena=(!Clk25Del1 & !Clk25Del2),
+                .prn=!PhaseSet);            -- F = (2*Fphase)/2 , _/ aligned to Phase
+                    -- ^^^^ excluded temporary !!
+
+Synchro12   = DFF(.d=(!Clk25Del1 & Clk25Del2 & !Phase12), .clk=!Clk100 );
+Synchro25   = DFF(.d=(!Clk25Del1 & Clk25Del2), .clk=!Clk100 );
+
+--============================================================================
+--******** 1a. POWER_UP self-Reset pulse *************************************
+--PowerUp0= DFF (.d=!(VME_s1 & VME_s2) AND PLL1.locked, .clk=Clk25);
+        --               ^^^^^^^^ substituted by (VME_IFace.Reset & VME_IFace.Aout[4])..
+        --  .. to provide a possibility to emulate PowerUp situation
+PowerUp0= DFF (.d=!ExtReset AND PLL.locked, .clk=Clk25);
+
+PowerUp1= SRFF(.s=(PowerUp0 AND (TestCt.q25 & TestCt.q0)),--sets 1.0s after PLL1 has locked
+                .r=ExtReset, .clk=Clk25);  -- .r never =1
+PowerUp2= SRFF(.s=(PowerUp1 AND TestCt.q2),             -- _/^^^^\_ 3clocks
+                .r=ExtReset, .clk=Clk25);  -- .r never =1
+PwrUpReset  = PowerUp1 AND !PowerUp2;   -- ONE pulse ~1sec after powering up
+
+--******** 1b. POWER_UP self-Set pulse ***************************************
+PowerUp3= SRFF(.s=(PowerUp2 AND (!TestCt.q20 & !TestCt.q19 &  TestCt.q18)), --sets 0.015s after PwrUpReset
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PowerUp4= SRFF(.s=(PowerUp3 AND TestCt.q2),             -- _/^^^^\_ 3clocks
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PwrUpSet1   = PowerUp3 AND !PowerUp4;       -- ONE pulse ~0.06sec after PwrUpReset
+
+--******** 1c. POWER_UP self-Set pulse ***************************************
+PowerUp5= SRFF(.s=(PowerUp4 AND 
+            ( TestCt.q20 & !TestCt.q19 & !TestCt.q18)), --sets 0.060s after PwrUpReset
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PowerUp6= SRFF(.s=(PowerUp5 AND TestCt.q2),             -- _/^^^^\_ 3clocks
+            .r=ExtReset, .clk=Clk25);      -- .r never =1
+PwrUpSet2   = PowerUp3 AND !PowerUp4;       -- ONE pulse ~0.06sec after PwrUpReset
+
+
+--============================================================================
+-- ******** 2. Indicators section ********************************************
+--LedG = OPNDRN ( !( PLL.locked       --always "ON" => PLL locked to LinkClock
+--    OR (!PLL.locked AND TestCt.q[25]) --blinks slowly => PLL locked to Quartz
+--   %%XOR LinkFlash.DirOut%%) );       --short blinks by Link cycles
+LedG = !(PLL.locked AND !PhaseSw.SysClk_Selected AND TestCt.q[25]);
+
+LedB = OPNDRN( B_Flash.DirOut OR Trigger.Trigger);
+--LedB = OPNDRN( !TestCt.q[21] ) ;    -- for TEST Only! - quick blink
+    B_Flash.(clock, event) = (Clk100,Trigger.Trigger); -- Busy is defined in Control Unit section
+
+LedR = R_Flash.LightOut;
+--LedR = OPNDRN( TC.q[21] ) ;         -- for TEST Only! - quick blink
+R_Flash.(clock, event) = (Clk100,Error);-- Error is defined in Control Unit section
+
+--============================================================================
+-- 3. Loader
+Loader = SRFF(.s=PwrUpSet1,--sets 1.0s after PLL1 has locked
+                .r=ExtReset, .clk=Clk25);
+IF (Loader == VCC)
+	Then AM_OE[0] = GND; -- output from Pin 
+		 AM_OE[1] = VCC; -- output from Pin 
+		 Addr_OE[0] = GND; -- output from Pin 
+		 Addr_OE[1] = VCC; -- output from Pin 
+		 Addr_OE[2] = GND; -- output from Pin 
+		 Addr_OE[3] = VCC; -- output from Pin 
+		 Addr_OE[4] = GND; -- output from Pin 
+		 Addr_OE[5] = VCC; -- output from Pin 
+		 Sys_OE[0] = GND; -- output from Pin 
+		 Sys_OE[1] = VCC; -- output from Pin 
+		 Data_OE[1..0] = VCC; -- output from Pin 
+END IF;
+--============================================================================
+-- 4. VME Interface I/O connection
+
+VME_IFace.Clock = Clk100;
+--VME_IFace.Set = PwrUpSet1;
+VME_IFace.DataBusIn[] = VME_Data[];
+VME_IFace.AddressBus[] = VME_Addr[];
+VME_IFace.BaseAddr[] = Reg_BaseAddr.q[];
+
+VME_IFace.AM[]  = VME_AM[5..0];
+VME_IFace.IACK  = VME_IACK;
+VME_IFace.LWORD	= VME_LWORD;
+VME_IFace.AS    = VME_AS;
+
+-- Connections to Addr/Data bus of user project
+VME_IFace.WRITE = VME_WRITE;
+VME_IFace.DS0   = VME_DS0;
+VME_IFace.DS1   = VME_DS1;
+
+Reg_BaseAddr.(clock,load,aclr) = (Clk100, VCC, RESET);
+Reg_BaseAddr.(data[],enable) = (BaseAddr, PwrUpSet1);
+%IF PwrUpSet1 == VCC Then Reg_BaseAddr.enable = PwrUpSet1;
+						 Reg_BaseAddr.data[] = BaseAddr;
+					Else Reg_BaseAddr.enable = (DevSel[4] & !VME_WRITE);
+						 Reg_BaseAddr.data[] = DataBus[11..0];
+END IF;
+%
+Data_DIR[1..0] = !VME_WRITE;
+VME_DTACK = VME_IFace.DTACK;
+Data_OE[1..0] = VME_IFace.DC;
+--============================================================================
+--******** 5. Trigger section *********************************************
+
+Trigger.Tr_channel[15..0] = TrigChInData[NUM_CH_Tr-1..0];
+Trigger.AddrBus_In[9..0] = AddrBus[9..0];
+Trigger.VME_Work = VME_IFace.VME_Active;
+Trigger.DataBusIn[] = DataBus[];
+Trigger.DirectIn = !VME_WRITE;
+Trigger.DataBusStrobe = DataStrobe;
+Trigger.Select = DevSel[3];
+Trigger.Clock = Clk100;
+Trigger.Reset = Reset;
+
+Trigger.ExtTrig = TrigIN;
+
+TrigOUT = Trigger.Trigger;
+
+--============================================================================
+--******** 6. Error Counter *********************************************
+
+Error   = VME_IFace.Error OR Trigger.Error OR PhaseSw.Error;--OR CPU.Error 
+
+Error_Cnt.Clock = Clk100;
+Error_Cnt.AddrBusIn[3..0]= AddrBus[3..0];
+Error_Cnt.DataBusStrobe  = DataStrobe;
+Error_Cnt.Select		 = DevSel[5];
+Error_Cnt.ErrorInputs[0] = VME_IFace.Error;
+Error_Cnt.ErrorInputs[1] = Trigger.Error;
+Error_Cnt.ErrorInputs[2] = PhaseSw.Error;
+Error_Cnt.ErrorInputs[3] = Error;
+Error_Cnt.ErrorInputs[4] = GND;
+Error_Cnt.ErrorInputs[5] = GND;
+Error_Cnt.ErrorInputs[6] = GND;
+Error_Cnt.ErrorInputs[7] = GND;
+Error_Cnt.ErrorInputs[8] = GND;
+Error_Cnt.ErrorInputs[9] = GND;
+
+--============================================================================
+-- RAM blocks, Registers
+
+MainRAM.(address[7..0], data[],    clock,    wren                     ) =
+        (AddrBus[7..0], DataBus[], Clk100,(DataStrobe & DevSel[1] & !VME_WRITE)); 
+--        (AddrBus[7..0], DataBus[], Clk100,(DevSel[1] & !VME_WRITE)); 
+
+------------------- Busy Flag, Error Flag ------------------------------------
+--Busy    = (CPU.Working OR Digitizer.Working OR Loader.Working);-- OR Link_IFace.LinkMessage); 
+Busy    = VME_IFace.VME_Active;-- OR CPU.Working;      -- for TEST only !
+
+ResetAll = dffe(.d=DataBus[0],.clk=Clk100,.ena=(DataStrobe & DevSel[6] & !VME_WRITE));
+
+RESET   = (ResetAll OR PwrUpReset); -- Reset by PowerUp or by VME command (F30A0)
+
+--============================================================================
+-- 8. Internal Bus of Project & Data transfer control ************************
+
+AddrBus[15..0]  = VME_IFace.AddrBusOut[15..0];   -- CPU is the only Master, rules forever
+--RW              = !VME_WRITE; -- iai?aaeaiea ia?aaa?e
+VME_IFace.AccessGranted   = AccessGrtd;       -- 
+VME_IFace.DataBusStrobe      = DataStrobe;       -- connected in "Control Unit" section
+
+-- Bus Handler : 
+AcsRqDetect = EdgeSensing(.D=VME_IFace.AccessRequest, .clk=Clk100, .reset=RESET);
+AccessGrtd  = SRFF(.S=AcsRqDetect,.clk=Clk100, .r=DataStrobe, .clrn=!RESET); --=1 during whole Operation
+AddrSettled = SRFF(.S=(AccessGrtd & !AddrSettled),                           --flag; enables "DevSel[]" triggers
+                                 .clk=Clk100, .r=DataStrobe, .clrn=!RESET); 
+BusOper1    = DFF(.D=AddrSettled,.clk=Clk100,.clrn=!(RESET OR DataStrobe)); -- delay by 1 clock
+BusOper2    = DFF(.D=BusOper1,   .clk=Clk100,.clrn=!(RESET OR DataStrobe)); -- delay by 1 clock
+BusOper3    = DFF(.D=BusOper2,   .clk=Clk100,.clrn=!(RESET OR DataStrobe)); -- delay by 1 clock
+DataStrobe  = DFF(.D=BusOper3,   .clk=Clk100,.clrn=!RESET); -- 1-clk pulse
+
+-- When Address from Master is set on the Address Bus, ...
+-- DEVICE SELECTION - the Slave-device is identified by its Address 
+
+-- 1) Main RAM
+IF ((AddrBus[15..0] >=  MainRAM_Offset ) AND 
+    (AddrBus[15..0] <= (MainRAM_Offset + MainRAM_Size - 1))) 
+    Then  MainRAM_cs    = VCC;          -- Address belongs to MainRAM
+    Else  MainRAM_cs    = GND;
+End IF;
+
+-- 2) Trigger Unit
+IF ((AddrBus[15..0] >= (Trigg_Offset + Trigg_Size)) AND
+   (AddrBus[15..0] <= (Trigg_Offset + Trigg_Size - 1))) 
+    Then  Trigg_cs	= VCC;
+    Else  Trigg_cs	 = GND;
+End IF;
+
+-- 3) Error Unit
+IF ((AddrBus[15..0] >= Error_Offset) AND
+    (AddrBus[15..0] <= (Error_Offset + Error_Size - 1))) 
+   Then ErrorCnt_cs    = VCC;
+   Else ErrorCnt_cs    = GND ;
+End IF ;
+
+-- 4) AddrBase Unit
+IF (AddrBus[15..0] == BaseAddr_Offset) 
+    Then BaseAddr_cs    = VCC;
+    Else BaseAddr_cs    = GND ;
+End IF ;
+
+-- 5) Reset Unit
+IF (AddrBus[15..0] == ResetAll_Offset) 
+    Then ResetAll_cs    = VCC;
+    Else ResetAll_cs    = GND ;
+End IF ;
+
+-- 6) ZERO: fictive object, always replies B"0000000000000000" word
+IF ( AddrBus[15..0] == B"1111111111111111" ) 
+    Then ZERO_cs = VCC ;         -- Address of ZERO word
+    Else ZERO_cs = GND ;
+End IF ;
+
+DevSel[ 1].d    = MainRAM_cs ;
+DevSel[ 2].d    = Trigg_cs ;
+DevSel[ 3].d    = BaseAddr_cs;         -- Reg_BaseAddr
+DevSel[ 4].d    = ErrorCnt_cs;
+DevSel[ 5].d	= ResetAll_cs;
+DevSel[ 6].d    = ZERO_cs ;             -- ZERO word
+--DevSel[ 7].d    = GND ;                 -- Something??
+
+FOR i in 1 to 6 GENERATE
+--    DevSel[i].clrn = AddrSettled;-- DevSel[] are enabled while Addr. is settled
+    DevSel[i].clk  = Clk100;
+END GENERATE; 
+
+-- Multiplexer of Data Bus sources (Enables Data drivers )
+IF (VME_WRITE == GND)  Then    -- Master will write to
+       DataBus[] = VME_IFace.DataBusOut[];
+Else                -- Master will read from
+        CASE DevSel[].q IS     -- Data_Line MUX for Target drivers
+			WHEN  b"000001" => DataBus[]		= MainRAM.q[];
+			WHEN  b"000010" => DataBus[]		= Trigger.DataBusOut[];
+            WHEN  b"000100" => DataBus[11..0]	= Reg_BaseAddr.q[11..0];
+            WHEN  b"001000" => DataBus[]		= Error_Cnt.DataBusOut[];
+            WHEN  b"010000" => DataBus[]		= GND;			
+            WHEN  b"100000" => DataBus[]		= GND;			
+            WHEN OTHERS => DataBus[] = 0;
+        End CASE;
+End IF;
+
+--============================================================================
+-- 8. Testing circuitry ******************************************************
+TestCt.(clock, clk_en)  = (FQuartz, VCC); -- Test Counter, can be used to drive LED blinking
+--TestCt.(clock, clk_en)  = (LinkClk, VCC); -- Test Counter, can be used to drive LED blinking
+TestCt.cnt_en           = VCC;
+TestCt.aclr             = PowerUp0 & !TestCt_rst2;  --\Reset for making proper PwrUp timing diagram
+    TestCt_rst1 = DFF(.D=PowerUp0,   .clk= FQuartz);-- > _/^^\_ ,
+    TestCt_rst2 = DFF(.D=TestCt_rst1,.clk=!FQuartz);--/   duration >=(1/2)Tquartz
+
+TestCt.(clock, clk_en)  = (FQuartz, VCC); -- Test Counter, can be used to drive LED blinking
+TestCt.cnt_en           =  PowerUp0;
+TestCt.aclr             = !PowerUp0;    -- even if NO clock - Reset does occur
+
+Test = (PLL.locked AND !PhaseSw.SysClk_Selected AND TestCt.q[25]);
+%
+Test1   = Link_IFace.LinkMessage;--PhaseSw.LinkClk_selected; --DDRin.dataout_h[0];			--Link_IFace.LinkMessage;		-- pin 68
+Test2   = !Phase12;                    --Link_IFace.IORq;	-- pin 73
+Test3   = TestCt.q[24];--DDRenNequ1;                   --Start_Link.q;			-- pin 76
+Test4   = PowerUp0;--StartProc_Link;           	--StartADC_Link;		-- pin 80
+
+IF((AddrBus[12] == VCC) and (AddrBus[9] == VCC) ) Then Test5 = VCC; Else Test5 = GND; End IF;
+--Test5   = RESET;--DDRenEqu2;                    --CPU.test4;            --DDRenEqu2;            -- pin 81
+Test6   = PowerUp1;--CPU.AccessReq;                --CPU.AccessReq;        --DDRenNEqu2;           -- pin 137
+Test7   = DDRenEqu3[0];					--AddrSettled;			--Digitizer1.Test3;		-- pin 139
+Test8   = TA6Channel[0].test2;				--DevSel[6] # DevSel[7];--Digitizer1.Test2;		-- pin 146
+Test9   = TA6Channel[0].test1;				--DataStrobe;			--Digitizer1.Test1;		-- pin 147
+Test10  = TA6Channel[0].Working;			--DataBus[0];			--Digitizer1.Working;	-- pin 148
+%
+END;

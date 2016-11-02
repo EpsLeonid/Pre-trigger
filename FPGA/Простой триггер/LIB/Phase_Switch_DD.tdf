@@ -1,0 +1,137 @@
+TITLE "Phase_Switch_DD";
+
+-- This file includes functions for automatic switching of refrence clock
+-- sourses - internal quartz 25MHz or external Phase0 signal. 
+
+INCLUDE "lpm_counter.inc" ;
+INCLUDE "lpm_shiftreg.inc";
+include "EdgeSensing.inc";
+--Include "COMET_DAQ.inc";
+
+PARAMETERS
+(
+FmaxThresh = 26000 ,  -- Upper limit in kHz
+FminThresh = 24000 ,  -- Lower limit in kHz
+RefClock   = 25000   -- PLL'd  or Local Quartz Freq.
+);
+--Assert ( !(RefClock == 25000 OR RefClock == 50000 OR RefClock == 75000 OR RefClock == 100000 OR RefClock == 125000 OR RefClock == 150000))
+--Report "Current Phase_Switch for CMD-3 DAQ design RefClock must be harmonic of 25000kHz!!!"; 
+
+
+--	constant Quartz_speed	=	25000;
+	CONSTANT Sys_Clock_Oversampling	=	4;
+--	Constant Parameter_Scaler	=	(RefClock div 25000 )
+	CONSTANT Prescaler_Module	=	((Sys_Clock_Oversampling * RefClock) DIV Sys_Clock) div 1000;
+	Constant Prescaler_Module_2	=	Prescaler_Module div 2 ;
+	Constant Prescaler_Width	=	CEIL(log2(Prescaler_Module+1)); 
+	Constant Comparing_Counters_width	=	16;--CEIL(log2((Sys_Clock *1000)+1));
+
+Assert ( !(FmaxThresh > 30000) AND !(FmaxThresh < (Sys_Clock *1000)))
+Report "In TriggerModul design FmaxThresh must be some greater then 25000kHz"; 
+Assert ( !(FminThresh < 20000) AND !(FminThresh > (Sys_Clock *1000)))
+Report "In TriggerModul design FminThresh must be some smaller then 25000kHz"; 
+
+SUBDESIGN Phase_Switch_DD
+(
+	 --------------- General Bus Signaling  
+	Clock					    : input ; -- частота работы модул€ (25..125ћ√ц). Main clock, assumed F_Sys x 4 = 100MHz
+ 	Reset						: input=gnd ; -- Common FPGA signal Reset (Active HIGH)
+--	DataBusOut[WORD_WIDTH-1..0]	: output ; -- 
+
+	----------------  Module Specific Signals
+	SysClk						: input;
+	Phase25						: output; -- Output to Pin144  
+	SysClk_Selected	    		: output; -- Signal to ensure what sourse is active
+	Error						: output ;
+)
+
+VARIABLE 
+	Sys_Clock_Spectrum_Shifter		: lpm_counter WITH ( LPM_WIDTH = 2 );--	CONSTANT Sys_Clock_Oversampling	=	4;
+	Sys_Clock_Edge					: EdgeSensing ;
+	Sys_Clock_Pulse				: node ;
+	
+	Prescaler	            : LPM_COUNTER with (lpm_width = Prescaler_Width);
+	Prescaler_Output        : node;	--Cyclic reset, 50% shaper
+	--Prescaler_50pct_out, Prescaler_50set
+	
+	Timing_Window_Cnt		: lpm_counter WITH ( LPM_WIDTH = Comparing_Counters_width );
+	Cycle_End				: node;
+	Sys_Clock_Cnt			: lpm_counter WITH ( LPM_WIDTH = Comparing_Counters_width );
+	Actual_Phase0_Freq_Reg	: lpm_shiftreg with (LPM_WIDTH = Comparing_Counters_width );
+	Comparator_Decision 	: node;
+	Freq_OK, Phase_OK		: node;
+	PhaseTrig				: DFF;
+	PhaseEdge 				: EdgeSensing; 
+	PhaseSwich				: SRFF;
+	MUX_Control             : node;
+	Freq_Losted		        : EdgeSensing; -- Error, if Sys clock losted
+
+
+BEGIN
+
+-- Sys_Clock presampling section begin
+   Sys_Clock_Spectrum_Shifter.clock		=	SysClk ;--Divider for	Niquist oversampling capability
+   Sys_Clock_Edge.(clk, d)	=	(Clock, Sys_Clock_Spectrum_Shifter.q[1]); -- Resynchronized pulse, suitable for counting
+   Sys_Clock_Pulse			=	Sys_Clock_Edge.q;
+-- Sys_Clock presampling section end
+
+-- Divider RefClock to (Sys_Clock div Sys_Clock_Oversampling) !!! Prescaler_Module always is greater than 4 !!!
+   Prescaler.(clock,sclr)	=	(Clock, Prescaler_Output or Reset);
+   IF(Prescaler.q[] == (Prescaler_Module-1))   THEN Prescaler_Output = VCC; ELSE Prescaler_Output =	GND; END IF;
+  -- IF(Prescaler.q[] == (Prescaler_Module_2-1)) THEN Prescaler_50set	 = VCC; ELSE Prescaler_50set  =	GND; END IF;
+  -- Prescaler_50pct_out = SRFF(Prescaler_50set, Prescaler_Output, Clock, !Reset, );-- output freq=25/4=6.25MHz
+
+
+   Timing_Window_Cnt.(Clock, sclr, clk_en) = (Clock, Cycle_End OR Reset, Prescaler_Output) ;
+
+
+-- Base time interval  -- Base time interval counter 25000 == 4ms at freq=25/4=6.25MHz
+   IF (Timing_Window_Cnt.q[] == (Sys_Clock *1000 -1 )) 
+       THEN Cycle_End = VCC; 
+       ELSE	Cycle_End = GND;
+   END IF;
+
+-- Frequency diskriminator section begin 
+   Sys_Clock_Cnt.(clock, cnt_en)	=	(Clock, Sys_Clock_Pulse);
+   Sys_Clock_Cnt.sclr = (Cycle_End and Prescaler_Output) OR Reset ;
+   Actual_Phase0_Freq_Reg.data[]	=	Sys_Clock_Cnt.q[];
+   Actual_Phase0_Freq_Reg.(clock, enable, load)	=	(Clock, (Cycle_End and Prescaler_Output), VCC );
+--  CMP
+   IF ((Actual_Phase0_Freq_Reg.q[] > FmaxThresh) OR (Actual_Phase0_Freq_Reg.q[] < FminThresh)) 
+       THEN Comparator_Decision=GND;
+       ELSE	Comparator_Decision=VCC; 
+   END IF;
+   Freq_OK = DFF(Comparator_Decision, Clock, !Reset, ); -- Deglitching
+-- Frequency diskriminator section end 
+
+
+--Phase discriminator section begin
+   PhaseTrig.(d, clk) =	(SysClk, Clock) ;-- Sampling Sys Clock at Reference_Clock 
+   PhaseEdge.(d, clk) =	(PhaseTrig.q, Clock); -- Finding metastables
+   PhaseSwich.S=PhaseEdge.q AND Freq_OK;-- Phase detector is resetted if Freq.Detector fails
+   PhaseSwich.(R, clk)= (!Freq_OK, Clock);
+
+   Phase_OK	=	PhaseSwich.q;
+--Phase discriminator section end
+
+
+-- Mux section begin 
+   MUX_Control	=	Freq_OK AND Phase_OK ;
+   Phase25 = ((SysClk and MUX_Control) OR (Clock and !MUX_Control));
+-- Mux section end 
+
+   SysClk_Selected = MUX_Control;
+   Error             = Freq_Losted.q ;
+   Freq_Losted.(d, clk, Reset) = (!MUX_Control, Clock, Reset);
+%
+   IF (WORD_WIDTH == Comparing_Counters_width) GENERATE
+      DataBusOut[]	=	Actual_Phase0_Freq_Reg.q[];
+      ELSE GENERATE
+		for i in 0 to Comparing_Counters_width-1 GENERATE
+		DataBusOut[i]	=	Actual_Phase0_Freq_Reg.q[i]; END GENERATE;
+		DataBusOut[WORD_WIDTH-1..Comparing_Counters_width-1] = GND;
+   END GENERATE;
+%
+
+
+END;

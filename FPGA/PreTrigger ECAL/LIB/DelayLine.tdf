@@ -1,0 +1,66 @@
+TITLE "Delay Line";
+-- Файл содержит фукцию формирователь задержки импульса и формирователь длительности импульса. 
+-- Формирователь имеет минимальную задержку 3 такт входной частоты и 2 такта минимальную длительность
+
+INCLUDE "EdgeSensing.inc";
+INCLUDE "lpm_counter.inc" ;
+
+PARAMETERS
+(
+--  RefClock      = 100,  -- clock frequency in MHz, default = 100(MHz)
+  DelayCode     =  10,  -- delay in Clock periods, default = 10
+  DurationCode  =   2,  -- duration of out_Pulse in Clock periods, default =2
+  MAX_DELAY     =1000   -- максимальная задержка в тактах
+);
+
+CONSTANT CounterSize= FLOOR(LOG2(MAX_DELAY))+1; -- определение размера счетчика
+--CONSTANT CounterSize    =  16; -- определение размера счетчика
+ 
+SUBDESIGN  DelayLine
+(
+d               : input;   
+Clk             : input;   -- Clock
+Reset           : input;   
+--DelayCode[CounterSize-1..0]    : input;
+--DurationCode[CounterSize-1..0] : input; 
+
+q               : output;  
+test1           : output;
+)
+
+Variable
+
+StartCycle      : EdgeSensing;
+Cycle           : node ;
+
+Counter         : LPM_COUNTER with ( lpm_width=CounterSize, lpm_direction="up" );   
+EndDelay        : node ;
+EndCycle        : node ;
+	
+-- ========================================================================
+BEGIN
+
+StartCycle.(d,clk,reset)= (d, Clk, Cycle);
+
+Cycle   = SRFF(.s=StartCycle.q,.clk=Clk,  -- _/~ by "StartCycle" pulse
+               .r=(EndCycle OR Reset)) ;    -- =1 during whole cycle of operation
+
+Counter.(clock, clk_en, cnt_en) = (Clk, VCC, Cycle);
+Counter.sclr    =  EndCycle OR Reset ;
+
+IF (Counter.q[] == (DelayCode-1) ) THEN 
+    EndDelay = VCC;
+    ELSE  EndDelay = GND;
+END IF;
+
+test1 = EndDelay;
+
+IF (Counter.q[] == (DelayCode + DurationCode-1) ) THEN 
+    EndCycle = VCC;
+    ELSE  EndCycle = GND;
+END IF;
+
+q   = SRFF(.s=EndDelay, .clk=Clk, .r=(EndCycle OR Reset)); -- _/~ by "EndDelay",
+                                                           -- ~\_ by "EndCycle"
+
+END;

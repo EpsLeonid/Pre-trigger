@@ -1,0 +1,103 @@
+TITLE "CRC_Gen";
+-- This file is hardware descrition for CRC code Generator. 
+-- This is implementation of LFSR serial bitstream input. 
+-- Parameters are for CRC-16 CCITT H"1021" generating polinom.
+-- Table of Residues for algorithm check
+%         ASCII  <1>	<12>	<123>	<12..9>	H"0"	H"1"	H"F"	H"1000"	H"8000"	H"FFFF"
+SEED=H"0000"	2672	20b5	9752	31c3	0000	1021	f1ef	0373	1b98	1ef0
+SEED=H"FFFF"	c782	3dba	5bce	29b1	e1f0	f1d1	101f	1e7c	0697	ff00
+SEED=H"1D0F"	eaee	a475	865e	e5cc	cc9c	dcbd	3d73	87b3	9f58	d26c
+%
+%It's also possible to use Reverse version B"0000100000010001"=H"0811" and Mirrored versions.
+CRC-16 ARC polinom is B"1000000000000101"
+%
+
+include "EdgeSensing.inc";
+
+PARAMETERS
+(
+	PolinomPower	= 16,
+	PolinomValue	=	B"0001000000100001", 		-- H"1021"  CCITT X25 Standard
+	Seed	=	H"FFFF",	--Residue	=	H"29b1"
+	--Seed	=	H"0000",	--Residue	=	H"31C3"
+	--Seed	=	H"1D0F",	--Residue	=	H"e5cc"		-- Init value for calc start
+	
+	Residue	=	H"29b1"
+	--Residue	=	H"31C3"
+	--Residue	=	H"e5cc"							-- When ASCII "123456789" =H"31323334..39" string is entered
+	-- RefIN = "False",							-- Order of bites in each byte of input stream = MSB first
+	-- RefOut= "False",							-- Order of bites in each byte of output stream = MSB first
+	-- XorOut= H"0000"							-- 
+);
+
+SUBDESIGN CRC_Gen
+(
+    Clock           : input ; -- Global FPGA clock
+Bit_Sample_Enable   : input ; -- Clock enable for CRC calc
+
+Serial_In           : input ; -- Input bitstream
+
+Start_Seed_Load     : input ; -- 
+Message_Begin       : input ;
+--Message_End         : input=gnd ; -- Optional signal to strobe last bit
+Reset               : input=gnd ;
+
+CRC_Parallel_Out[PolinomPower-1..0]	: OUTPUT;
+CRC_Serial_Out      : OUTPUT;
+Residue_OK          : OUTPUT;
+    Test1, Test2    : OUTPUT;
+)
+
+Variable 
+Polinom_Value[PolinomPower-1..0]     : node ;
+Reg_Inputs[PolinomPower-1..0]        : node ;
+Reg_Outputs[PolinomPower-1..0]       : node ;
+Feedback                             : node ;
+	
+RegDFF[PolinomPower-1..0]            : DFFE ;
+Seed_Load                            : EdgeSensing;
+
+Delayed_Sample_Enable   : DFF; -- It enforce CRC calc at BEGIN of bit transmitting
+Header_Canceller        : SRFF ;
+
+BEGIN
+
+Polinom_Value[PolinomPower-1..0]	= PolinomValue ;
+Reg_Outputs[PolinomPower-1..0]		= RegDFF[PolinomPower-1..0].q ;
+RegDFF[PolinomPower-1..0].d             = Reg_Inputs[PolinomPower-1..0] ;
+RegDFF[PolinomPower-1..0].clk		= Clock ;
+RegDFF[PolinomPower-1..0].ena		= (Delayed_Sample_Enable.q AND Header_Canceller.q)or( Seed_Load.q ) ;
+RegDFF[PolinomPower-1..0].clrn		= ! Reset;
+CRC_Parallel_Out[PolinomPower-1..0]	= RegDFF[PolinomPower-1..0].q ; -- XOR H"FFFF";
+
+Feedback    = Serial_In XOR Reg_Outputs[PolinomPower-1] ;
+Test1       = Seed_Load.q;
+Test2       = (Delayed_Sample_Enable.q AND Header_Canceller.q)or( Seed_Load.q ) ;
+IF  ( Seed_Load.q == VCC )
+then	Reg_Inputs[]	=	Seed ;
+else    Reg_Inputs[0]	=	Feedback;
+FOR i IN 0 to (PolinomPower-2) Generate
+		Reg_Inputs[i+1] = Reg_Outputs[i] XOR (Feedback AND Polinom_Value[i+1]);
+END Generate;
+END IF;
+
+Delayed_Sample_Enable.clk	=	Clock;
+Delayed_Sample_Enable.d		=	Bit_Sample_Enable;
+
+Seed_Load.d             = Start_Seed_Load ; -- AND Bit_Sample_Enable ;
+Seed_Load.(clk,Reset)   = (Clock, Reset);
+
+CRC_Serial_Out	=	Reg_Outputs[PolinomPower-1];
+
+IF (CRC_Parallel_Out[PolinomPower-1..0] == Residue )
+Then Residue_OK = VCC ;
+Else Residue_OK = GND ;
+End If;
+
+-- Supress calculation on First Word(Event Number)
+Header_Canceller.clk	=	Clock;
+Header_Canceller.R		=	Seed_Load.q;	-- Start_Seed_Load AND Bit_Sample_Enable ;
+Header_Canceller.S		=	Message_Begin  AND Bit_Sample_Enable ;
+Header_Canceller.clrn	=	! Reset ;
+
+END;

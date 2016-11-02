@@ -1,0 +1,303 @@
+TITLE "ChargedTriggerDecision";
+
+INCLUDE "Univibrator_10ms";
+INCLUDE "RisingEdgeSync";
+INCLUDE "ReadRegister16";
+INCLUDE "ReadRegister";
+INCLUDE "Decoder4to16";
+
+CONSTANT OutputDelayRegAddress = 9;
+CONSTANT ArgumentRegAddress = h"500";
+CONSTANT MaskRegAddress = h"502";
+CONSTANT MaskResultRegAddress = h"503";
+CONSTANT ResultRegAddress = h"501";
+
+--constant LockChargedTriggerTime = 150; -- 150 * Clock_150MHz = 1 us
+--constant LockChargedTriggerTimeCamac = 1500000; -- 1500000 * Clock_150MHz = 10 ms
+constant IdleTime = 150; -- 150 * Clock_150MHz = 1 us
+
+SUBDESIGN ChargedTriggerDecision
+(
+	Clock, Reset, EnableData[11..0]	: input;
+
+-- Data Bus ---------------------------------------------
+	Address[15..0]	: input;
+	DataBus[15..0]	: bidir;
+	Read, Write: input;
+
+-- Trigger Result part ----------------------------------
+	OrZC, OrBGO, OrBGO_Or_OrZC	: input;					
+	Track1, Track2andMore	: input;
+	ZC_Track1, BGO_Track1, DifferentPhi	: input;
+	CentralTrack	: input;							
+	CentralCollinearity3, CentralCollinearity4	: input;
+	AllTrack                             : input;			
+	DC_Simple	: input;
+
+
+	ChargedTrigger	: output;
+	nChargedTrigger	: output;
+
+	ChargedTriggerDL	: output;
+	nChargedTriggerDL	: output;
+	
+	nPtLed	: bidir;
+	
+	nSlowLinkDataIn	: input;
+	SlowLinkMessage	: input;
+	ForcedBlock	: input;
+
+	Block	: output;
+	Idle	: output;
+
+	MaskResultOut[3..0]	: output;
+------------------------
+	tmp[7..0]	: output;
+	
+)
+VARIABLE
+-- Data Bus ---------------------------------------------
+	DBus[15..0]	: tri_state_node;
+	CS_MaskReg[3..0]	: dffe;
+
+	ArgumentReg[15..0], MaskReg[3..0][15..0], MaskResultReg[3..0][15..0]	: dffe;
+	MaskResult[3..0]	: dffe;
+	ResultMask	: node;
+	MaskNotZero[3..0]	: node;
+	OutputDelayReg[3..0], CS_OutputDelayReg	: dffe;
+	OutDl_Trg[15..1]	: dffe;
+	OutDl_TrgSel[15..0], CharTrgDl	: node;
+	
+	ChargedTriggerTrg	: dffe;
+
+--	LockChargedTrigger_begin	: node;
+--	LockChargedTrigger_end,	LockChargedTrigger, LCT_Cnt[20..0]	: dffe;
+
+	Idle_begin	: node;
+	IdleTrg, Idle_Cnt[7..0], Idle_end	: dffe;
+
+--	IdleTime_begin	: node;
+	SLDI_begin, SLM_End	: node;
+	SLDI_ShReg[1..0], SLM_ShReg[1..0], SL_Lock	: dffe;
+	
+	LockEnd	: node;
+	
+	BlockShReg[7..0]	: dffe;
+	
+BEGIN
+-- Data Bus ---------------------------------------------
+	DataBus[] = DBus[];
+
+-- TF_Mask --------------------------------------------------------------------
+    for i in 0 to 3 generate
+      if Address[] == MaskRegAddress + i * 2
+	  then
+	    CS_MaskReg[i] = vcc;
+	  else
+	    CS_MaskReg[i] = gnd;
+	  end if;
+	  CS_MaskReg[i].clk = Clock;
+	  CS_MaskReg[i].clrn = !Reset;
+
+	  MaskReg[i][].d = DataBus[];
+	  MaskReg[i][].ena = CS_MaskReg[i] and Write;
+	  MaskReg[i][].clk = Clock;
+	  MaskReg[i][].clrn = !Reset;
+
+      for j in 0 to 15 generate
+	    DBus[j] = tri(MaskReg[i][j], CS_MaskReg[i] and Read);
+  	  end generate;
+	end generate;
+
+ -- TF_Argument ----------------------------------------------------------------
+	ArgumentReg[0] = Track1 and !LockEnd;
+	ArgumentReg[1] = Track2andMore and !LockEnd;
+	ArgumentReg[2] = CentralTrack and !LockEnd;
+	ArgumentReg[3] = CentralCollinearity3 and !LockEnd;
+	ArgumentReg[4] = CentralCollinearity4 and !LockEnd;
+	ArgumentReg[5] = OrZC and !LockEnd;
+	ArgumentReg[6] = OrBGO and !LockEnd;
+	ArgumentReg[7] = OrBGO_Or_OrZC and !LockEnd;
+	ArgumentReg[8] = AllTrack and !LockEnd;
+	ArgumentReg[9] = ZC_Track1 and !LockEnd;
+	ArgumentReg[10] = BGO_Track1 and !LockEnd;
+	ArgumentReg[11] = DifferentPhi and !LockEnd;
+	ArgumentReg[12] = DC_Simple and !LockEnd;
+	ArgumentReg[15..13] = gnd;
+
+	ArgumentReg[].clk = Clock;
+	ArgumentReg[].clrn = !Reset;
+	ArgumentReg[].ena = (EnableData[5] and !(Block or Idle)) or LockEnd;
+
+	DBus[] = ReadRegister16(ArgumentReg[], Address[], Read) WITH(RegAddress = ArgumentRegAddress);
+
+-- TF_MaskResult ---------------------------------------------------------------
+	for i in 0 to 3 generate
+  	  MaskResultReg[i][] = (ArgumentReg[] or (!MaskReg[i][])) and !LockEnd;
+	  MaskResultReg[i][].clk = Clock;
+	  MaskResultReg[i][].ena = (EnableData[6] and !(Block or Idle)) or LockEnd;
+	  MaskResultReg[i][].clrn = !Reset;
+
+	  DBus[] = ReadRegister16(MaskResultReg[i][], Address[], Read) WITH(RegAddress = MaskResultRegAddress + i * 2);
+
+	  MaskNotZero[i] = MaskReg[i][0] or MaskReg[i][1] or MaskReg[i][2] or MaskReg[i][3] or 
+	                   MaskReg[i][4] or MaskReg[i][5] or MaskReg[i][6] or MaskReg[i][7] or 
+	                   MaskReg[i][8] or MaskReg[i][9] or MaskReg[i][10] or MaskReg[i][11] or 
+	                   MaskReg[i][12] or MaskReg[i][13] or MaskReg[i][14] or MaskReg[i][15];
+
+	  MaskResult[i].d = MaskResultReg[i][0] and MaskResultReg[i][1] and MaskResultReg[i][2] and MaskResultReg[i][3] and 
+	                    MaskResultReg[i][4] and MaskResultReg[i][5] and MaskResultReg[i][6] and MaskResultReg[i][7] and 
+	                    MaskResultReg[i][8] and MaskResultReg[i][9] and MaskResultReg[i][10] and MaskResultReg[i][11] and 
+	                    MaskResultReg[i][12] and MaskResultReg[i][13] and MaskResultReg[i][14] and MaskResultReg[i][15] and
+	                    MaskNotZero[i];
+	end generate;
+	
+	MaskResult[].clk = Clock;
+	MaskResult[].ena = (EnableData[8] and !(Block or Idle)) or LockEnd;
+
+	MaskResultOut[] = MaskResult[];
+	
+    DBus[] = ReadRegister(MaskResult[], Address[], Read) WITH(RegWidth = 4, RegAddress = ResultRegAddress);
+
+	ResultMask = MaskResult[0] or MaskResult[1] or MaskResult[2] or MaskResult[3];
+
+-- final decision -------------------------------------------------------------
+
+	ChargedTriggerTrg.d = (ResultMask) and !LockEnd and !Idle;
+	ChargedTriggerTrg.clk = Clock;
+	ChargedTriggerTrg.ena = EnableData[9] or LockEnd or Idle;	-- 
+	ChargedTriggerTrg.clrn = !Reset;
+	
+	ChargedTrigger = ChargedTriggerTrg.q;
+	nChargedTrigger = !ChargedTriggerTrg.q;
+
+	nPtLed = opndrn(!(Univibrator_10ms(Clock, Reset, ChargedTrigger) or ChargedTrigger)); -- 10 ms (14 ms) flash or CF in case of permanent 1
+	
+-- Delay of ChargedTrigger ----------------------------------------------------
+    if Address[] == OutputDelayRegAddress
+	then
+	  CS_OutputDelayReg = vcc;
+	else
+	  CS_OutputDelayReg = gnd;
+	end if;
+	CS_OutputDelayReg.clk = Clock;
+	CS_OutputDelayReg.clrn = !Reset;
+
+	OutputDelayReg[].d = DataBus[3..0];
+	OutputDelayReg[].ena = CS_OutputDelayReg and Write;
+	OutputDelayReg[].clk = Clock;
+	OutputDelayReg[].clrn = !Reset;
+
+    for j in 0 to 3 generate
+	  DBus[j] = tri(OutputDelayReg[j], CS_OutputDelayReg and Read);
+  	end generate;
+    for j in 4 to 15 generate
+	  DBus[j] = tri(GND, CS_OutputDelayReg and Read);
+  	end generate;
+  		
+	OutDl_TrgSel[] = Decoder4to16(OutputDelayReg[]);
+	
+	OutDl_Trg[].clk = Clock;
+	OutDl_Trg[].clrn = !Reset;
+	OutDl_Trg[].ena = EnableData[9] or LockEnd or Idle;
+    for i in 1 to 14 generate
+      OutDl_Trg[i].d = ((OutDl_Trg[i+1] and (!OutDl_TrgSel[i])) or (ChargedTriggerTrg.q and OutDl_TrgSel[i])) and !LockEnd and !Idle;
+    end generate;
+    OutDl_Trg[15].d = (ChargedTriggerTrg.q and OutDl_TrgSel[15]) and !LockEnd and !Idle;
+	
+	CharTrgDl = (OutDl_Trg[1] and (!OutDl_TrgSel[0])) or (ChargedTriggerTrg.q and OutDl_TrgSel[0]);
+	
+	ChargedTriggerDL = CharTrgDl;
+	nChargedTriggerDL = !CharTrgDl;
+	
+-- Lock ChargedTrigger decision 1 mcs -----------------------------------------
+%
+	LockChargedTrigger_begin = RisingEdgeSync(Clock, ChargedTrigger);
+
+	LockChargedTrigger.d = !(LockChargedTrigger_end); 
+	LockChargedTrigger.clk = Clock;
+	LockChargedTrigger.clrn = !(Reset or SL_Lock);
+	LockChargedTrigger.ena = LockChargedTrigger_begin or LockChargedTrigger_end;  
+
+	LCT_Cnt[].d = LCT_Cnt[].q + 1; 
+	LCT_Cnt[].clk = Clock;
+	LCT_Cnt[].clrn = !(Reset or !LockChargedTrigger);
+	
+	if ((LCT_Cnt[] == LockChargedTriggerTime) and !CamacMode) or
+	   ((LCT_Cnt[] == LockChargedTriggerTimeCamac) and CamacMode)   
+	then
+	  LockChargedTrigger_end.d = vcc;
+	else
+	  LockChargedTrigger_end.d = gnd;
+	end if;
+	LockChargedTrigger_end.clk = Clock;  %
+	
+-- Idle time generator --------------------------------------------------------
+
+	Idle_begin = LockEnd;
+
+	IdleTrg.d = !(Idle_end); 
+	IdleTrg.clk = Clock;
+	IdleTrg.clrn = !Reset;
+	IdleTrg.ena = Idle_begin or Idle_end;  
+
+	Idle_Cnt[].d = Idle_Cnt[].q + 1; 
+	Idle_Cnt[].clk = Clock;
+	Idle_Cnt[].clrn = !(Reset or !IdleTrg);
+	
+	if Idle_Cnt[] == IdleTime  
+	then
+	  Idle_end.d = vcc;
+	else
+	  Idle_end.d = gnd;
+	end if;
+	Idle_end.clk = Clock;
+	
+	Idle = IdleTrg;
+
+-- Slow Link Lock -------------------------------------------------------------	
+
+	SLDI_ShReg[].clk = Clock; 
+	SLDI_ShReg[].d = (SLDI_ShReg[0], !nSlowLinkDataIn);
+	SLDI_ShReg[].ena = !SL_Lock;
+	SLDI_ShReg[].clrn = !Reset;
+	
+	SLDI_begin = SLDI_ShReg[0] and !SLDI_ShReg[1];
+
+	SLM_ShReg[].clk = Clock; 
+	SLM_ShReg[].d = (SLM_ShReg[0], SlowLinkMessage);
+--	SLM_ShReg[].ena = !SL_Lock;
+	SLM_ShReg[].clrn = !Reset;
+	
+	SLM_End = !SLM_ShReg[0] and SLM_ShReg[1];
+
+	SL_Lock.d = !SLM_End;
+	SL_Lock.ena = SLDI_begin or SLM_End;
+	SL_Lock.clk = Clock;
+	SL_Lock.clrn = !Reset;
+
+-- Block ----------------------------------------------------------------------
+--	LockEnd = (SLM_End and SL_Lock) or (LockChargedTrigger_end and LockChargedTrigger);
+--	Block = LockChargedTrigger or SL_Lock;
+
+	LockEnd = SLM_End and SL_Lock;
+--	Block = SL_Lock;
+	
+	BlockShReg[7..0].d = (BlockShReg[6..0].q, SL_Lock);
+	BlockShReg[].clk = Clock;
+	BlockShReg[].ena = EnableData[0];
+	BlockShReg[].clrn = !(Reset or SLM_End);
+	
+	Block = BlockShReg[7].q or ForcedBlock;
+
+-- tmp --------------------------------
+tmp[0] = gnd;
+tmp[1] = gnd;
+tmp[2] = gnd;
+tmp[3] = Idle_begin;
+tmp[4] = IdleTrg;
+tmp[5] = Idle_end;
+tmp[6] = SLDI_begin;
+tmp[7] = LockEnd;
+
+END;

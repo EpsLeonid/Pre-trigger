@@ -1,0 +1,49 @@
+TITLE "Pulse Shaper";
+-- Function:  generator of ONE PULSE of defined duration 
+--     Duration of start pulse MUST be  1 clock or more
+--     Фронт вых. импульса задержан отн-но фронта вх. импульса на 1 клок
+
+
+--INCLUDE "EdgeSensing.inc";
+INCLUDE "lpm_counter.inc" ;
+
+PARAMETERS
+(
+  DurationCode  = 4 -- duration of out_Pulse in Clock periods, default =4
+);
+
+ 
+CONSTANT CounterSize= FLOOR(LOG2(DurationCode))+1; -- определение размера счетчика
+
+
+SUBDESIGN  PulseShaper
+(
+   clk  : input;   -- Clock
+   d    : input;   -- External signal to synchronize
+   Reset: input;   -- Common FPGA Reset
+   q    : output;  -- Synchronized out
+)
+
+VARIABLE
+
+StartDetect1,
+StartDetect2    : node;
+Cycle           : node;
+Counter         : LPM_COUNTER with (lpm_width=CounterSize, lpm_direction="down");   
+
+
+BEGIN
+
+StartDetect1= DFF (.D=d,            .clk=clk, .clrn=!Reset);
+StartDetect2= DFF (.D=StartDetect1, .clk=clk, .clrn=!Reset);
+
+Cycle       = SRFF(.S=(StartDetect1 AND !StartDetect2), .clk=clk,
+                   .R=(Counter.eq0 OR Reset));
+
+Counter.(clock, clk_en, cnt_en) = (clk, VCC, Cycle);
+Counter.data[]  = (DurationCode-1);
+Counter.sload   = Counter.eq0 OR Reset ;
+
+  q = Cycle ;
+
+END;

@@ -1,0 +1,273 @@
+TITLE " Digitizer channel " ;
+
+INCLUDE "lpm_counter.inc" ;
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "EdgeSensing.inc"; 
+
+PARAMETERS
+(
+	ADC_Bits = 10, -- разрядность АЦП
+	NumInReg = 4   -- число входных регистров (число слов)
+	%
+	ThresholdData_0 = 50;
+	ThresholdData_1 = 200;
+	ThresholdData_2 = 500;%
+);
+
+SUBDESIGN Digitizer
+(
+Clock							: input; -- внешняя частота
+
+In_Data[ADC_Bits-1..0]			: input; -- входные данные
+Reset							: input = GND; -- внешний сброс модуля
+Event							: input; -- такт конвейера /Sample Enable/
+
+Start							: output; -- сигнал превышения нижнего порога с задержкой
+Trig							: output;
+Amp[ADC_Bits-1..0]				: output; -- величина амплитуды сигнала
+
+--FIR_Control[1..0]				: input; -- вкл/выкл усреднения по 4 отсчетам
+%
+-- 
+DataBus_In[15..0]				: input;  -- отправляемые с Внутренней Шины в Модуль данные
+DataBusOut[15..0]				: output; -- выдаваемые на Внутреннюю Шину из Модуля данные (младшие 16бит шины R)
+
+DataBusStrobe					: input;  -- строб приема/передачи данных наружу (высокий уровень, защелкиваем по заднему фронту)
+Select							: input;  -- Выбор Модуля для работы с памятью Командного Листа в режиме Slave (с КАМАК-ом)
+DirectIn						: input;  -- направление передачи данных, Если =GND, то данный Модуль читается, если =VCC, то пишется.
+AddrBus_In[8..0]				: input;  -- адрес при операциях доступа чтения/записи Командного Листа с КАМАК-а
+SyncPulse						: input; 
+
+test1,test2,test3				: output;
+corr_out[12..0]					: output;
+TimeStampDelay_VP[12..0]		: output;
+LT_Time_VP[12..0]				: output;
+HT_Time_VP[12..0]				: output;
+%
+Error							: output;
+)
+
+VARIABLE
+-- управление КИХ фильтром
+ In_Data_Buff[11..0]				: node;
+
+ MaxSpeed						: node;
+-- Конвеер КИХ фильтра
+ InData_Reg[NumInReg-1..0]		: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- регистр оцифрованных значений (сэмплов)
+ Average_Reg					: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- регистр усредненных значений
+ Summator						: Sum4; -- сумматор на 4
+ Divide_x_4[ADC_Bits-1..0]		: node; 
+ Delay_Aver_Reg					: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- регистр данных
+ 
+ --Integrator_Reg                   : lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); -- 
+ 
+  
+ LT_Trig						: SRFF; -- флаг определения нижнего порога
+ Comp_of_LT						: node;
+ HT_Trig						: SRFF; -- флаг определения верхнего порога
+ Max_Trig						: SRFF; -- флаг определения максимума
+ Value_Up_LT					: node; -- сигнал о превышении нижнего порога (стоит пока нижний порог превышен)
+ Value_Down_LT					: node; -- нижний порог подлежит сбросу
+ Value_Up_HT					: node; -- сигнал о превышении верхнего порога (стоит пока верхний порог превышен)
+ Value_Max_Done					: node; -- сигнал об обнаружении изменения знака разницы между предыдущими и текущими сэмплами
+
+ NWord_Cnt						: LPM_COUNTER with ( lpm_width=13, lpm_direction="up" ); -- счетчик 
+ Max_Reg						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- амплитуда сигнала
+
+ AllReset						: node;
+ Int_Rst						: node;
+ Internal_Reset, External_Reset : node;
+ End_of_LinkMsg					: Edge_Sensing;
+ NoHT							: node;
+ NoHT_Trig						: SRFF;
+ Timeout						: node;
+ Timeout_SRFF					: SRFF;
+ --MaxTimeWaitHT_Reg                : lpm_shiftreg with (LPM_WIDTH = 13, LPM_DIRECTION="unused"); 
+ --MaxTimeWaitHT_CS                 : node;
+ DinamicTime_Reg				: lpm_shiftreg with (LPM_WIDTH = 13, LPM_DIRECTION="unused"); 
+ DinamicTime_CS					: node;
+
+ TimeStamp						: node;
+ TimeStampPulse					: SRFF;
+ --StartPulse                       : DFF;
+
+ Sample_Enable					: node; 
+
+ -- Память истории
+
+ S_Enable						: node; 
+ --Piedistal_Reg                    : lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused"); -- пъедистал
+ --SavePReg                         : node; 
+ LThresholdReg					: lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused"); -- нижний порог
+ SaveLTReg						: node; 
+ HThresholdReg					: lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused"); -- верхний порог
+ SaveHTReg                        : node; 
+ TimeStampDelayReg                : lpm_shiftreg with (LPM_WIDTH=13,LPM_DIRECTION="unused"); -- задержка временной отметки
+ SaveTSDReg                       : node; 
+
+-- Формирование данных для медленного линка
+ Time_Counter                     : LPM_COUNTER  with (LPM_WIDTH=13, LPM_DIRECTION="up" ); -- счетчик времени
+ LT_Time_Reg                      : lpm_shiftreg with (LPM_WIDTH=13, LPM_DIRECTION="unused");
+ LT_Done                          : Edge_Sensing;
+ HT_Time_Reg                      : lpm_shiftreg with (LPM_WIDTH=13, LPM_DIRECTION="unused");
+ HT_Done 						  : Edge_Sensing;
+ Ampl_Reg                         : lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- амплитуда сигнала
+
+ Correction                       : lpm_shiftreg with (LPM_WIDTH = 13, LPM_DIRECTION="unused"); -- динамическая поправка на амплитуду сигнала
+ HT_LT_Time[12..0]                : node;
+ 
+  
+
+-- Выдача данных наружу из модуля
+ --DataBusMux                       : BUS_Mux;
+ --AddrMux[3..0]                    : node;
+
+-- LOGIC section _______________________________________________________
+BEGIN
+
+DEFAULTS
+
+    Value_Up_LT        = GND;
+    Value_Down_LT      = GND;
+    Value_Up_HT        = GND;
+    Value_Max_Done     = GND;
+    NoHT               = GND;
+    TimeStamp          = GND;
+
+    SaveRAM            = GND;
+    --SavePReg           = GND;
+    SaveLTReg          = GND;
+    SaveHTReg          = GND;
+
+END DEFAULTS;
+
+
+-- Такт конвеера
+ --EvtPulse.(d,clk) = (Event, Clock);  
+ Sample_Enable    = Event;--EvtPulse.q;
+
+-- *************** Конвеер КИХ фильтра бегущее среднее *********************
+-- соединяем все регистры последовательно
+InData_Reg[0].(data[],clock,enable,load) = (In_Data[9..0],Clock, Sample_Enable OR MaxSpeed,VCC);
+FOR i IN 0 TO (NumInReg-2) GENERATE
+	InData_Reg[i+1].data[] = InData_Reg[i].q[];
+	InData_Reg[i+1].(clock,enable,load) = (Clock,Sample_Enable,VCC);
+END GENERATE;
+
+-- Находим среднее по 4 отсчетам
+Summator.clock = Clock;
+Summator.(data0x[],data1x[],data2x[],data3x[]) = (InData_Reg[0].q[],InData_Reg[1].q[],InData_Reg[2].q[],InData_Reg[3].q[]);
+Divide_x_4[ADC_Bits-1..0] = Summator.result[ADC_Bits+1..2]; -- делим на 4 (сдвигаем на 2 разряда)
+
+Average_Reg.data[] = Divide_x_4[ADC_Bits-1..0];
+Average_Reg.(clock,enable,load)  = (Clock, VCC,VCC);
+
+-- *************** Двухпороговый дискриминатор ********************
+-- проверяем на превышение порогов
+-- нижний порог
+IF((Average_Reg.q[] > LThresholdReg.q[]) AND (LT_Trig.q == GND) ) THEN  Value_Up_LT = VCC; -- превышен нижний порог
+																  ELSE  Value_Up_LT = GND;
+END IF; 
+
+Trig = Value_Up_LT;
+
+IF((Average_Reg.q[] < LThresholdReg.q[]) AND (LT_Trig.q == VCC) )
+					THEN Value_Down_LT = VCC; -- нижний порог подлежит сбросу
+					ELSE Value_Down_LT = GND; -- если сигнал упал ниже нижнего порога
+END IF;  
+
+LT_Trig.(S,clk,R) = (Value_Up_LT, Clock, AllReset);
+IF((Average_Reg.q[] > HThresholdReg.q[]) AND (LT_Trig.q == VCC) AND (HT_Trig.q == GND) AND (NoHT_Trig.q == GND)) THEN  Value_Up_HT = VCC; -- превышен верхний порог
+                                                                                                                 ELSE  Value_Up_HT = GND;
+END IF;
+
+Comp_of_LT = DFF(.d=(Average_Reg.q[] > LThresholdReg.q[]), .clk=Clock);
+
+-- верхний порог
+HT_Trig.(S,clk,R) = (Value_Up_HT, Clock, AllReset); -- флаг превышения верхнего порога
+-- определяем максимум
+Delay_Aver_Reg.(data[],clock,enable,load) = (Average_Reg.q[],Clock,Sample_Enable,VCC);
+IF((Average_Reg.q[] < Delay_Aver_Reg.q[]) AND (HT_Trig.q == VCC) AND (Max_Trig.q == GND)) THEN  Value_Max_Done = VCC;
+                                                                                          ELSE  Value_Max_Done = GND;
+END IF; 
+Max_Trig.(S,clk,R) = (Value_Max_Done, Clock, AllReset); -- флаг определения максимума
+--Max_Reg.(data[],clock,enable,load,aclr) = (Delay_Aver_Reg.q[],Clock,Value_Max_Done,VCC,AllReset);
+Max_Reg.(data[],clock,enable,load,aclr) = (Delay_Aver_Reg.q[],Clock,!Max_Trig.q AND LT_Trig.q,VCC,AllReset);
+
+%
+-- счетчик слов (запускается от нижнего порога)
+NWord_Cnt.(clock,clk_en,sclr,cnt_en) = (Clock,VCC, AllReset, LT_Trig.q AND (Sample_Enable OR MaxSpeed) AND !TimeOut_SRFF.q);-- AND !NoHT_Trig.q);
+--NWord_Cnt.(clock,clk_en,sclr,cnt_en) = (Clock, VCC, AllReset, LT_Trig.q);-- AND !NoHT_Trig.q);
+-- Общий сброс
+
+-- если за время формирования временной отметки (задержки нижнего порога) после пересечения нижнего порога нет срабатывания верхнего сбрасываем модуль
+ IF( (NWord_Cnt.q[] == TimeStampDelayReg.q[]) AND (HT_Trig.q == GND) ) THEN NoHT = VCC; 
+                                                                         ELSE NoHT = GND; 
+ END IF;
+ -- Вычисляем динамическую поправку
+ IF(HT_Trig.q == GND) THEN  HT_LT_Time[] = GND;--Correction.data[] = GND; --Half_Signal_Time_10ns
+                      ELSE IF(HT_Time_Reg.q[] >= LT_Time_Reg.q[]) 
+                                   THEN  HT_LT_Time[]  = HT_Time_Reg.q[] - LT_Time_Reg.q[];
+                                   ELSE  HT_LT_Time[]  = HT_Time_Reg.q[] + (8191-LT_Time_Reg.q[]);
+                                   --THEN  Correction.data[]  = DinamicTime_Reg.q[] - (HT_Time_Reg.q[] - LT_Time_Reg.q[]);
+                                   --ELSE  Correction.data[]  = DinamicTime_Reg.q[] - (HT_Time_Reg.q[] + (8191-LT_Time_Reg.q[]));
+                           END IF;
+ END IF;
+ --Correction.data[]  = DinamicTime_Reg.q[] - HT_LT_Time[]; 
+ IF( (DinamicTime_Reg.q[] <= HT_LT_Time[]) OR (HT_Trig.q == GND) ) THEN Correction.data[] = GND;
+                                                                   ELSE Correction.data[] = DinamicTime_Reg.q[] - HT_LT_Time[]; 
+ END IF;
+
+-- Устанавливаем время ожидания решения
+-- IF( (NWord_Cnt.q[] == MaxTimeWaitHT_40ns) AND (HT_Trig.q == GND) ) THEN NoHT = VCC; 
+--                                                                    ELSE NoHT = GND; 
+-- END IF;
+
+IF(NWord_Cnt.q[] == TrigTimeOut_25ns) THEN TimeOut = VCC;
+									  ELSE TimeOut = GND;
+END IF;
+-- IF(HT_Trig.q == GND) THEN  Correction.data[] = GND;
+--						ELSE IF(HT_Time_Reg.q[] >= LT_Time_Reg.q[]) 
+--								THEN  Correction.data[]  = Half_Signal_Time_40ns - (HT_Time_Reg.q[] - LT_Time_Reg.q[]);
+--								ELSE  Correction.data[]  = Half_Signal_Time_40ns - (HT_Time_Reg.q[] + (8191-LT_Time_Reg.q[]));
+--							END IF;
+-- END IF;  
+
+ --StartPulse.(d,clk) = (TimeStamp,Clock);
+ TimeStampPulse.(S,clk,R) = (TimeStamp,Clock,AllReset);
+ Correction.(clock,enable,load,sclr) = (Clock,VCC,VCC,AllReset);     
+ NoHT_Trig.(S,clk,R) = (NoHT,Clock,AllReset);
+-----------------
+
+--Формируем сигнал временной отметки
+ IF((LT_Trig.q == VCC) AND (HT_Trig.q == VCC) AND (NWord_Cnt.q[] == TimeStampDelayReg.q[]+Correction.q[12..0])) THEN TimeStamp = VCC;
+                                                                                                                ELSE TimeStamp = GND;
+ END IF;
+ --IF((LT_Trig.q == VCC) AND (HT_Trig.q == VCC) AND (NWord_Cnt.q[] == TimeStampDelayReg.q[])) THEN TimeStamp = VCC;
+ --                                                                                                               ELSE TimeStamp = GND;
+-- END IF;
+-- Формируем сигнал окончания цикла измерений
+ TimeOut_SRFF.(S,clk,R) = (TimeOut,Clock,AllReset); 
+ Int_Rst    = Internal_Reset;
+ AllReset	= DFF(.d=Int_Rst OR External_Reset, .clk=Clock);
+ 
+ IF((LT_Trig.q == VCC) AND (HT_Trig.q == VCC)) 
+		THEN Internal_Reset = TimeOut_SRFF.q AND Value_Down_LT;--TimeOut;
+		ELSE Internal_Reset = Value_Down_LT;
+ END IF;
+-- Internal_Reset = Value_Down_LT;
+%
+Start = TimeStampPulse.q;--StartPulse.q; -- сигнал
+Amp[] = Max_Reg.q[];
+
+-- For tests
+%
+test1 = LT_Trig.q;
+test2 = HT_Trig.q;
+test3 = NoHT_Trig;
+corr_out[] = Correction.q[12..0];
+TimeStampDelay_VP[] = TimeStampDelayReg.q[];
+LT_Time_VP[] = LT_Time_Reg.q[];
+HT_Time_VP[] = HT_Time_Reg.q[];
+%
+END; -- End design

@@ -1,0 +1,431 @@
+TITLE "VMEbus interface for DAQ modules, v.1" ;
+
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_counter.inc"  ;
+INCLUDE "EdgeSensing.inc" ;
+INCLUDE "LevelSensing.inc";
+
+PARAMETERS
+(
+  RefClock  = 100  -- frequency (MHz) of the Clock applied at "Clock" input, default = 100(MHz)
+-- Descriptor of Module:  default text = "Ver0"               Word2[MSByte]  V
+--                                                                 [LSByte]  e
+--  For UFO32 actual text = UFO8:  Word2=H"5546"              Word1[MSbyte]  r
+--                                     Word1=H"4F38"               [LSByte]  0
+--                   r 0   -- ASCII codes:
+--DescriptorWord1 = H"7230", --   A=41, B=42, .., X=58, Y=59, Z=5A,  
+--                   V e   --   a=61, b=62, .., x=78, y=79, z=7A,
+--DescriptorWord2 = H"5665"  --   0=30, 1=31, 2=32, .., 9=39
+);
+ASSERT (RefClock>24 AND RefClock<126)
+REPORT "You enter RefClock (%) which is not suitable for CAMAC function" RefClock
+SEVERITY ERROR;
+CONSTANT HALFCYCLE = FLOOR(RefClock div 2);
+-------------------------------------------------------------------------------------------
+-- Constant and parameters, which setuping by user
+-------------------------------------------------------------------------------------------
+CONSTANT AM_1 = H"39";
+CONSTANT AM_2 = H"3A";
+CONSTANT AM_3 = H"3B";
+
+--CONSTANT BiteSize = 8; -- words width
+--CONSTANT WordSize = 4; -- words width
+
+SUBDESIGN  VMEbus
+(
+--******** Interface to user project ********
+Clock				: input ;   -- частота работы модуля (25..125МГц)
+VME_Active			: output;   -- indicates that VME-cycle is being performed
+Start				: output;   -- flag: "Start" command received (F25Axx)
+Confirm				: input = GND;  -- Confirmation of Operation starting 
+--Set					: input;
+Reset				: output;   -- Main RESET - here and in user project 
+Error				: output;
+
+-- Connections to Addr/Data bus of user project
+	WRITE			: input;	-- Сигнал чтения/записи = 1/0 -> Pin
+	DS0				: input;	-- Input from Pin \
+	DS1				: input;	-- Input from Pin  > -- DataStrob, to indicate the width of the transfer data
+	LWORD			: input;	-- Input from Pin /
+	AS				: input;	-- AddressStrob, Active-LOW input!!	-> Pin
+	AccessRequest	: output;   -- запрос на доступ к шине для чтения/записи данных Пользователя 
+	AccessGranted	: input;    -- Разрешение Арбитра выставить Адрес, направление 
+	DataBusStrobe	: input;    -- строб приема/передачи данных наружу (высокий уровень, защелкиваем по заднему фронту)
+	DTACK			: output;   -- сигнал разрешения передача данных 
+	AM[5..0]		: input;	-- 1 = High, Type of data transfear
+	IACK			: input; 	-- Input from Pin 
+	IACKIN			: input; 	-- Input from Pin 
+	IACKOUT			: output; 	-- Input from Pin 
+	IRQ[1..0]		: output; 	-- Input from Pin 
+
+	AddressBus[22..0] 	: input;  -- шина адреса для доступа в пространство модуля через VME интерфейс
+	AddrBusOut[15..0]	: output; -- шина адреса для доступа в пространства памяти/регистров
+	DataBusIn [15..0]	: input;  -- Data: UserProject => VME
+	DataBusOut[15..0]	: output; -- Data: UserProject <= VME
+	DC					: output; --
+	BaseAddr[11..0]		: input;
+
+
+Busy_on_Copy		: input;
+DeadTime			: input;
+  --  Additional flags of user project  
+
+VMEMessage			: output;
+
+test[4..0]          : output;
+)
+VARIABLE
+	
+--BaseAddr_Reg	: LPM_SHIFTREG with (lpm_width=12, lpm_direction="UNUSED"); -- регистр базового адресса
+
+AM_Reg			: LPM_SHIFTREG with (lpm_width=6, lpm_direction="UNUSED");  -- регистр типа данных
+
+ModulSelect, ValidAddrSelect,
+DataTypeSelect, AddrModeSelect,
+BLT				: node;
+DataCapture		: dffe;
+
+DataCt			: lpm_counter with ( lpm_width=10, lpm_direction="up" ); 
+
+-- регистр промежуточного хранения данных, принятых от VME-шины данных и предназначенных
+-- для передачи на шину пользователя 
+
+WData_Reg		: LPM_SHIFTREG with (lpm_width=16, lpm_direction="UNUSED"); 
+WReg_we			: node; 
+-- регистр промежуточного хранения данных, принятых от шины пользователя и предназначенных
+-- для передачи на VME-шину данных
+RData_Reg			: LPM_SHIFTREG with (lpm_width=16, lpm_direction="UNUSED");
+-- счетчик-указатель адреса 
+Addr_Reg		: LPM_COUNTER with ( lpm_width=10, lpm_direction="up" ); 
+AddrReg_we		: node; 
+--Address_Increment_Request  : EdgeSensing; -- сигнал запроса инкрементации Addr_Reg  по F2, F18
+--Address_Increment_Wait   : SRFF ;  -- Разрешает инкрементацию ПОСЛЕ DataStrobe.
+MemOrReg            : node;
+
+W_WE				: node; -- строб записи с VME, демультиплексором раздается по регистрам
+
+-- Флаги команд
+VMERead				: node;     -- Combinatorial node, Use Carefully !!!!!
+VMEWrite			: node;
+VME_Read_Edge		: EdgeSensing;  -- Signal - "tag" of Read
+VME_Write_Edge		: EdgeSensing;  -- Signal - "tag" of Write
+
+Nactive[6..1]       : node; -- Circuit to detect RELIABLY the beginning of VME-cycle
+VMECycle			: SRFF;
+VMECycleBegin		: EdgeSensing;  -- Signal - "tag" of VME-cycle beginning
+VMECycleEnd			: EdgeSensing;  -- Signal - "tag" of VME-cycle end
+VMEactive[2..1]		: node;         -- Флаг отработки VME-цикла
+%TimeOutCt           : LPM_COUNTER with (lpm_width=(FLOOR(LOG2(RefClock)))+1, 
+                                        lpm_direction="up" ); 
+TimeOut				: node;     -- Сигнал аварийного завершения VME-цикла
+DS1Flag				: SRFF;
+DS2Flag				: SRFF;
+%
+  Strt				: node; -- Start of any Operation in the MainProject, unreg.
+  Rst				: node; -- RESET signal for the MainProject, unreg.
+
+  AccessRequest		: SRFF; 
+
+--**********************************************************************************************
+BEGIN
+
+DEFAULTS
+ModulSelect = GND; ValidAddrSelect = GND; 
+DataTypeSelect = GND; AddrModeSelect = GND;
+BLT = GND;
+VMERead		= GND;  VMEWrite	= GND; -- internally used
+MemOrReg	= GND;
+Error		= GND;
+test[4..0]	= GND; 
+END DEFAULTS;
+
+----------------------------------------------------------------------------
+-- ******** Section "Начало и конец VME-цикла" ***************************
+
+IF (AddressBus[22..11] == BaseAddr[])
+	Then ModulSelect = VCC;
+	Else ModulSelect = GND;
+END IF;
+
+Nactive1    = DFF(.d=!(ModulSelect), .clk=clock);   --\ 
+Nactive2    = DFF(.d=Nactive1, .clk=clock);     -- \  Modul select [15..8] 
+Nactive3    = DFF(.d=Nactive2, .clk=clock);     --  | signals to settle,
+Nactive4    = DFF(.d=Nactive3, .clk=clock);     -- /  to begin VME-cycle
+Nactive5    = DFF(.d=Nactive4, .clk=clock);     --/ 
+
+IF ( AM[] == (AM_1 OR AM_2 OR AM_3))
+	Then AddrModeSelect = VCC;
+	Else AddrModeSelect = GND;
+END IF;
+
+IF ( AM[] == AM_3)
+	Then BLT = VCC;
+	Else BLT = GND;
+END IF;
+
+IF ( AS == GND)
+	Then ValidAddrSelect = VCC;
+	Else ValidAddrSelect = GND;
+END IF;
+
+IF ( (( AddressBus[0] & AddressBus[2] & DS0 & DS1) == GND ) & ( LWORD == VCC ))
+	Then DataTypeSelect = VCC;
+	Else DataTypeSelect = GND;
+END IF;
+
+DataCapture.d = (ValidAddrSelect & AddrModeSelect & ModulSelect);
+DataCapture.(clk, clrn) = (Clock, GND);
+DC = DataCapture;
+
+VMECycleBegin.d = Nactive4 & ValidAddrSelect & AddrModeSelect & DataTypeSelect; -- > tag, that VME data cycle beginning
+VMECycleBegin.(clk,reset) =(Clock, GND);
+
+VMECycle.S = VMECycleBegin.q;
+VMECycle.(clk,R) =(Clock, VMECycleEnd.q);
+
+VMECycleEnd.(d,clk,reset) = (!(ValidAddrSelect & AddrModeSelect & DataTypeSelect),Clock, GND); -- tag, that VME data cycle end
+
+DTACK = VMECycle.q; -- > signal, that data can be read/write from/to module registers
+
+VMERead = (!(DS0 & DS1) & WRITE);
+VMEWrite = (!(DS0 & DS1 & WRITE));
+
+WData_Reg.(data[],clock,enable,load) = ( DataBusIn[], Clock, VCC, W_WE);
+RData_Reg.(data[],clock,enable,load) = ( DataBusIn[], Clock, VCC, VMERead);
+
+AddrReg_we = ModulSelect;
+Addr_Reg.(data[],clock,clk_en,sload) = ( AddressBus[9..0], Clock, VCC, AddrReg_we);
+DataCt.(data[], clock, cnt_en, sload, sclr) = (Addr_reg.q[], (Clock), (BLT & !DTACK), VMECycleBegin.q, VMECycleEnd.q); 
+
+AddrBusOut[9..0] = DataCt.q[];
+AddrBusOut[15..10] = GND;
+--AddrBusOut[]= Addr_Reg.q[];
+
+IF ( VMECycleBegin.q == VCC)  then -- If "Start" (F25Axx) command received, 
+	CASE WRITE IS     -- recognizing the particular Operation :
+		WHEN 0 => DataBusOut[] = WData_Reg.q[];     -- Write from VME
+
+		WHEN 1 => DataBusOut[] = RData_Reg.q[];     -- Read to VME
+END CASE;
+--
+
+VMEactive1= SRFF(.S=VMECycleBegin.q, .clk=Clock,    -- Flag: =1 during ..
+                .R=VMECycleEnd.q);                    -- .. all VME-cycle
+VMEactive2= DFF (.D=VMEactive1,  .clk=clock,  
+                .Clrn=!VMECycleEnd.q);-- RELIABLE: _/ by 1clk after VMEactive1, \_ by 1clk before VMEactive1
+
+VME_Active = VMEactive1 ; 
+
+W_WE = VMEactive2 & DTACK & VMEWrite; -- neaiae cauaeeeaaiey aaiiuo a ?aaeno?u aa?ana, noaoona eee aaiiuo ???????????
+
+-- Start and RESET for MainProject
+Start   = DFF(.D=(Strt & VMEactive2), .clk=Clock);
+Reset   = DFF(.D=(Rst  & VMEactive2), .clk=Clock);
+----------------------------------------------------------------------
+--******** Section "User Interface Control" ********
+-- aaia?aoey cai?ina ia i?aainoaaeaiea/iieo?aiea aaiiuo io/e ?ca? eioa?oaeno
+-- Ii ?oaie? ainooi cai?aoeaaaony AI no?iaa S1, au?oaea ei?ioeiai eiioeuna
+
+VME_Read_Edge.(d, clk, reset) = (VMERead, Clock , GND ) ;
+
+-- Ii caiene ainooi cai?aoeaaaony IINEA ia?aea S1 , au?oaea ei?ioeiai eiioeuna
+VME_Write_Edge.(d,clk, reset) = (!(VMEWrite AND W_WE), Clock , GND ) ;
+
+AccessRequest.S  =  VME_Read_Edge.q  OR VME_Write_Edge.q  ;
+AccessRequest.clk = Clock ;
+--AccessRequest.clrn= !(DataBusStrobe AND AccessGranted) ;
+AccessRequest.R  = (DataBusStrobe AND AccessGranted) ;
+-- ( AR_ShW1.q AND !AR_ShW2.q ) 
+
+%-- Контроль работы VME
+TimeOutCt.(clock, clk_en, cnt_en, sclr) =       -- счетчик времени VME-цикла 
+        (Clock,VCC,VMEactive1,VMECycleEnd.q); -- reset by End_of_VME-Cycle
+
+-- Проверка: пришел ли стороб S2 до окончания CAMAC-цикла ?
+if(TimeOutCt.q[] == (RefClock-2)) 
+    Then  TimeOut = VCC;-- если за 1мкс S2 не инициировал "CAMACCycleEnd.q", 
+    Else  TimeOut = GND;-- .. то сбрасываем флаг CAMACactive1 и сообщаем об ошибке
+End IF;
+
+Error   = TimeOut; -- Вывод аварийного завершения цикла на лампочку и синхронизацию осциллографа
+-- Section "Начало и конец КАМАК-цикла" end 
+
+test[1] = VMEactive1 ;
+test[2] = W_WE ;
+test[3] = F_reg.q3 ;
+test[4] = F_reg.q4 ;
+%%
+--============================================================================
+--************ Execution of VME-command ************************************
+-- Защелкиваем функцию и субадрес после установления с-лов : 
+F_Reg.(data[],clock,enable,load) = (WRITE,Clock,VMECycleBegin.q,VCC);
+
+W_WE = VMEactive2 & DTACK & VMEWrite; -- сигнал защелкивания данных в регистры адреса, статуса или данных ???????????
+
+--************ Section "Таблица команд" **************************************
+CASE WRITE IS
+	WHEN 0  => CASE A_Reg.q[] IS   -- чтение из регистров КАМАК-интерфейса
+		WHEN 0 => R[] = DescriptorWord1;-- 
+		WHEN 1 => R[] = DescriptorWord2;-- 
+		WHEN 4 => R[] = Addr_Reg.q[];   -- Data: Reg_Addr -> CAMAC_bus 
+		WHEN 8 => R[] = R_Reg.q[];      --Данные, переданные MainProj -> R_Reg -> CAMAC_bus в предыдущем цикле
+		WHEN 9 => R[] = W_Reg.q[];      --Данные, переданные MainProj <- W_Reg <- CAMAC_bus в предыдущем цикле
+	END CASE;
+	R_OE = CAMACactive2;  -- enable external buffers on CAMAC's "R"-bus
+	IntQ = CAMACactive2;  -- F(1)A(0..15) - command is valid
+	WHEN F1  => CASE A_Reg.q[] IS   -- чт-е из адр.простр-ва User Project
+		WHEN 0 => IntQ      =CAMACactive2;-- command is valid
+				  CAMACRead =CAMACactive2;-- Request for reading data: MainProj -> R_Reg
+				  R[]       = R_Reg.q[];  -- Data:  R_reg -> CAMAC_bus
+		WHEN 1 => IntQ      =CAMACactive2;-- command is valid
+				  CAMACRead =CAMACactive2;-- Request for reading data: MainProj -> R_Reg
+				--MemOrReg  =CAMACactive2;-- Read from MEMORY 
+				  R[]       = R_Reg.q[];  -- Data:  R_reg -> CAMAC_bus
+		WHEN OTHERS =>  IntQ = GND; -- command INvalid
+                      --MemOrReg   = GND; -- по умолчанию попадаем в пространство регистров проекта пользователя
+		END CASE;
+		R_OE = CAMACactive2;  -- enable external buffers on CAMAC's "R"-bus
+	WHEN F2  => CASE A_Reg.q[] IS   --READ from ADDR_space of MainProj, with auto-incr. of Addr
+		WHEN 0 => IntQ      =CAMACactive2;-- command is valid
+				  CAMACRead =CAMACactive2;-- Request for reading data: MainProj -> R_Reg
+				  R[]       = R_Reg.q[];  -- Data:  R_reg -> CAMAC_bus
+				  Address_Increment_Request.d = CAMACactive2; 
+		WHEN 1 => IntQ      =CAMACactive2;-- command is valid
+				  CAMACRead =CAMACactive2;-- Request for reading data: MainProj -> R_Reg
+				--MemOrReg  =CAMACactive2;-- Read from MEMORY 
+				  R[]       = R_Reg.q[];        -- Data:  R_reg -> CAMAC_bus
+				  Address_Increment_Request.d = CAMACactive2;
+		WHEN OTHERS =>  IntQ = GND; -- command INvalid
+                      --MemOrReg   = GND;   -- по умолчанию попадаем в пространство регистров проекта пользователя
+	END CASE;                
+	R_OE = CAMACactive2;  -- enable external buffers on CAMAC's "R"-bus
+--Attention!
+	WHEN F16 => CASE A_Reg.q[] IS   -- запись в регистры КАМАК-интерфейса
+		WHEN 4 => AddrReg_we  = W_WE;   -- write to Addr_Reg
+		WHEN 9 => WReg_we     = W_WE;   -- write to WriteRegister
+		WHEN OTHERS =>  AddrReg_we  = GND;
+						WReg_we     = GND;
+	END CASE;
+	W_OE = CAMACactive2;  -- enable external buffers of CAMAC's "W"-bus
+	IntQ = CAMACactive2;  -- F(16)A(0..15) - command is valid
+	WHEN F17 => CASE A_Reg.q[] IS   -- WRITE to ADDR_space of MainProj
+		WHEN 0 => IntQ      =CAMACactive2;-- command is valid
+				  CAMACWrite=CAMACactive2;-- Request for writing data: W_Reg -> MainProject
+				  WReg_we   = W_WE;       -- LATCH data: CAMAC_bus -> W_Reg
+		WHEN 1 => IntQ      =CAMACactive2;-- command is valid
+				  CAMACWrite=CAMACactive2;-- Request for writing data: W_Reg -> MainProject
+				--MemOrReg  =CAMACactive2;-- Write to MEMORY 
+				  WReg_we   = W_WE;       -- LATCH data: CAMAC_bus -> W_Reg
+		WHEN OTHERS =>  IntQ = GND; -- command INvalid
+					  --MemOrReg = GND; -- по умолчанию попадаем в пространство регистров проекта пользователя
+						WReg_we = GND; 
+					  --CAMACWrite = GND;
+	END CASE;
+	W_OE  = CAMACactive2; -- enable external buffers of CAMAC's "W"-bus
+	WHEN F18 => CASE A_Reg.q[] IS   --WRITE to ADDR_space of MainProj, with auto-incr. of Addr
+		WHEN 0 => IntQ      =CAMACactive2;-- command is valid
+				  CAMACWrite=CAMACactive2;-- Request for writing data: W_Reg -> MainProject
+                      WReg_we   = W_WE;       -- LATCH data: CAMAC_bus -> W_Reg
+                      Address_Increment_Request.d  = CAMACactive2;
+		WHEN 1 => IntQ      =CAMACactive2;-- command is valid
+                      CAMACWrite=CAMACactive2;-- Request for writing data: W_Reg -> MainProject
+                      --MemOrReg  =CAMACactive2;-- Write to MEMORY 
+                      WReg_we   = W_WE;       -- LATCH data: CAMAC_bus -> W_Reg
+                      Address_Increment_Request.d  = CAMACactive2;
+		WHEN OTHERS =>  IntQ = GND; -- command INvalid
+                            --MemOrReg = GND; -- по умолчанию попадаем в пространство регистров проекта пользователя
+                            WReg_we = GND; 
+                            --CAMACWrite = GND;
+                            --Address_Increment_Request.d  = GND;
+	END CASE;
+            W_OE  = CAMACactive2; -- enable external buffers of CAMAC's "W"-bus
+
+	WHEN F8  => IntQ = LAM_Trig.q & CAMACactive2; -- F8Axx- проверка запроса LAM по Q
+                --WHEN 0 => IntQ = data_ready.q ;
+
+	WHEN F25 => Strt    = CAMACactive2; -- Start of any Action
+                    IntQ    = Confirm;      -- Confirmation of command Accepted
+
+	WHEN F26 => EnableLAM_Trig.S = S1;  -- LAM enabling
+                    IntQ    = CAMACactive2; -- command is valid
+	WHEN F24 => EnableLAM_Trig.R = S1;  -- LAM disabling
+                    IntQ    = CAMACactive2; -- command is valid
+
+	WHEN F30 => Rst     = CAMACactive2; -- RESET ALL
+                    IntQ    = Confirm;      -- command is valid
+
+	WHEN OTHERS =>  IntQ         = GND;
+--                        CAMACRead    = GND; CAMACWrite   = GND;
+                        WReg_we      = GND;
+                        Strt         = GND; 
+                        Rst          = GND;
+END CASE;
+-- КАМАК-операции, разрешенные во время LOADING и DIGITIZING :
+--  разрешено только чтение статусных регистров и регистров КАМАК-интерфейса 
+    CASE F_Reg.q[] IS
+        WHEN F0  => CASE A_Reg.q[] IS   -- чтение из регистров КАМАК-интерфейса
+            WHEN 0 => R[] = DescriptorWord1;-- 
+            WHEN 1 => R[] = DescriptorWord2;-- 
+            WHEN 4 => R[] = Addr_Reg.q[];   -- Data: Reg_Addr -> CAMAC_bus 
+            WHEN 8 => R[] = R_Reg.q[];      --Данные, переданные MainProj -> R_Reg -> CAMAC_bus в предыдущем цикле
+            WHEN 9 => R[] = W_Reg.q[];      --Данные, переданные MainProj <- W_Reg <- CAMAC_bus в предыдущем цикле
+            END CASE;
+            R_OE = CAMACactive2;  -- enable external buffers on CAMAC's "R"-bus
+            IntQ = CAMACactive2;  -- F(1)A(0..15) - command is valid
+
+        WHEN F8  => IntQ = LAM_Trig.q & CAMACactive2; -- F8Axx - проверка запроса LAM по Q
+                --WHEN 0 => IntQ = data_ready.q ;
+
+        WHEN F26 => EnableLAM_Trig.S = S1;  -- LAM enabling
+                    IntQ    = CAMACactive2; -- command is valid
+        WHEN F24 => EnableLAM_Trig.R = S1;  -- LAM disabling
+                    IntQ    = CAMACactive2; -- command is valid
+
+        WHEN F30 => Rst     = CAMACactive2; -- RESET ALL
+                    IntQ    = Confirm;      -- command is valid
+
+        WHEN OTHERS =>  IntQ         = GND;
+--                        CAMACRead    = GND; CAMACWrite   = GND;
+                        WReg_we      = GND;
+                        Strt         = GND; 
+                        Rst          = GND;
+        END CASE;
+
+--============================================================================
+--************ Section "Bus Connections" *************************************
+-- Здесь описана структура соединений шин данных, не вошедших в описание мультиплексоров 
+-- по "Таблица команд",  IF, CASE и пр.
+
+-- данные для "Users Interface"
+
+W_Reg.(data[],clock,enable,load)= (W[],Clock,WReg_we,VCC);
+DataBusOut[]= W_Reg.q[];
+
+R_Reg.(data[],clock,enable,load)= (DataBusIn[],Clock,
+        (CAMACRead & DataBusStrobe & AccessGranted), VCC);
+
+Addr_Reg.(data[],clock,clk_en,sload) = ( W[], Clock, VCC, AddrReg_we);
+AddrBusOut[]= Addr_Reg.q[];
+
+Aout[] = A_Reg.q[];             -- Registered subaddress -> MainProject
+
+--============================================================================
+-- Autoincrement at END of bus access
+Addr_Reg.cnt_en				=	Address_Increment_Wait.q AND DataBusStrobe ; -- Enable increment at end of bus access
+Address_Increment_Request.(clk, reset)  = (Clock,GND);
+Address_Increment_Wait.clk	=	Clock;
+Address_Increment_Wait.S	=	Address_Increment_Request.q ; -- Set waiting for end of bus access
+Address_Increment_Wait.R	=	(DataBusStrobe AND AccessGranted); -- Reset at exactly end of access
+--------------------------------------------------------------------------------------------
+%
+--**** SubSection "Direction control" ****
+--RdWr= SRFF(.S=( VME_Write_Edge.q), .clk=Clock,.R=(DataBusStrobe AND AccessGranted)); -- Выдача данных высоким уровнем в регистры или в память
+  -- SubSection "Direction control" End
+
+  -- Section "User Interface Control" End
+-- Warning!!! Assertion of these signals on Bus's wires is performed
+-- by external MUX.  This is because of the restrictions
+-- on Tri-state interchange between modules in Quartus software.
+----------------------------------------------------------------------
+
+END;
