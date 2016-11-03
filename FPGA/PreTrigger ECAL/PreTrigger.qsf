@@ -37,7 +37,7 @@
 
 
 set_global_assignment -name FAMILY "Cyclone IV E"
-set_global_assignment -name DEVICE EP4CE55F23C7
+set_global_assignment -name DEVICE EP4CE40F29C7
 set_global_assignment -name TOP_LEVEL_ENTITY PreTrigger
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "9.1 SP2"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "15:09:48  NOVEMBER 20, 2014"
@@ -48,7 +48,6 @@ set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "VERILOG HDL" -section_id eda
 set_global_assignment -name EDA_TEST_BENCH_ENABLE_STATUS NOT_USED -section_id eda_simulation
 set_global_assignment -name EDA_NATIVELINK_SIMULATION_TEST_BENCH tb_top -section_id eda_simulation
 set_global_assignment -name USE_GENERATED_PHYSICAL_CONSTRAINTS OFF -section_id eda_blast_fpga
-set_global_assignment -name DEVICE_FILTER_SPEED_GRADE ANY
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name NOMINAL_CORE_SUPPLY_VOLTAGE 1.2V
@@ -58,264 +57,487 @@ set_global_assignment -name LL_ROOT_REGION ON -section_id "Root Region"
 set_global_assignment -name LL_MEMBER_STATE LOCKED -section_id "Root Region"
 set_global_assignment -name MISC_FILE "D:/Users/Leon/Work/Japan/COMET/Trigger/PreTrigger ECAL/PreTrigger.dpf"
 set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "2.5 V"
-set_global_assignment -name DEVICE_FILTER_PACKAGE ANY
-set_global_assignment -name DEVICE_FILTER_PIN_COUNT ANY
-set_location_assignment PIN_B13 -to Sw_Quartz
-set_location_assignment PIN_A14 -to Sw_FCTClk
-set_location_assignment PIN_A13 -to FQuartz
-set_location_assignment PIN_G1 -to PLL_in
 
 set_global_assignment -name RESERVE_FLASH_NCE_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
 set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "AS INPUT TRI-STATED"
 set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-STATED WITH WEAK PULL-UP"
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name CYCLONEIII_CONFIGURATION_DEVICE EPCS16
+set_global_assignment -name MISC_FILE "E:/Work/Japan/COMET/Electronics/FPGA/PreTrigger ECAL/PreTrigger.dpf"
+set_global_assignment -name SEED 2
+set_global_assignment -name AHDL_FILE PreTrigger.tdf
+set_global_assignment -name VECTOR_WAVEFORM_FILE PreTrigger.vwf
+set_global_assignment -name SEARCH_PATH "D:\\Users\\Leon\\Work\\Japan\\COMET\\Trigger\\PreTrigger ECAL\\LIB"
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
 set_instance_assignment -name IO_STANDARD LVDS -to FCTClk40
+set_instance_assignment -name IO_STANDARD LVDS -to "FCTClk40(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to FCTClk160
 set_instance_assignment -name IO_STANDARD LVDS -to "FCTClk160(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to TrigIn
 set_instance_assignment -name IO_STANDARD LVDS -to "TrigIn(n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[2](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[3](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to HardReset
 set_instance_assignment -name IO_STANDARD LVDS -to "HardReset(n)"
-set_location_assignment PIN_Y4 -to Test[0]
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ExtReset
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[5](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[6](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[21](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[15](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[16](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "TriggerData[20](n)"
-set_location_assignment PIN_U21 -to TriggerData[1]
-set_location_assignment PIN_U22 -to "TriggerData[1](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[1]
-set_location_assignment PIN_R19 -to TriggerData[2]
-set_location_assignment PIN_R18 -to "TriggerData[2](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[2]
-set_location_assignment PIN_N21 -to TriggerData[0]
-set_location_assignment PIN_N22 -to "TriggerData[0](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[0]
-set_location_assignment PIN_M21 -to TriggerData[13]
-set_location_assignment PIN_M22 -to "TriggerData[13](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[13]
-set_location_assignment PIN_K18 -to TriggerData[12]
-set_location_assignment PIN_K17 -to "TriggerData[12](n)"
-set_location_assignment PIN_M19 -to TriggerData[3]
-set_location_assignment PIN_M20 -to "TriggerData[3](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[3]
-set_location_assignment PIN_R21 -to TriggerData[4]
-set_location_assignment PIN_R22 -to "TriggerData[4](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[4]
-set_location_assignment PIN_U19 -to TriggerData[5]
-set_location_assignment PIN_U20 -to "TriggerData[5](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[5]
-set_location_assignment PIN_W21 -to TriggerData[6]
-set_location_assignment PIN_W22 -to "TriggerData[6](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[6]
-set_location_assignment PIN_V21 -to TriggerData[7]
-set_location_assignment PIN_V22 -to "TriggerData[7](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[7]
-set_location_assignment PIN_C21 -to TriggerData[8]
-set_location_assignment PIN_C22 -to "TriggerData[8](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[8]
-set_location_assignment PIN_D20 -to TriggerData[9]
-set_location_assignment PIN_C20 -to "TriggerData[9](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[9]
-set_location_assignment PIN_F21 -to TriggerData[10]
-set_location_assignment PIN_F22 -to "TriggerData[10](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[10]
-set_location_assignment PIN_H21 -to TriggerData[11]
-set_location_assignment PIN_H22 -to "TriggerData[11](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[11]
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[12]
-set_location_assignment PIN_P21 -to TriggerData[14]
-set_location_assignment PIN_P22 -to "TriggerData[14](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[14]
-set_location_assignment PIN_N19 -to TriggerData[15]
-set_location_assignment PIN_N20 -to "TriggerData[15](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[15]
-set_location_assignment PIN_H19 -to TriggerData[16]
-set_location_assignment PIN_H20 -to "TriggerData[16](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[16]
-set_location_assignment PIN_G17 -to TriggerData[17]
-set_location_assignment PIN_F17 -to "TriggerData[17](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[17]
-set_location_assignment PIN_H17 -to TriggerData[18]
-set_location_assignment PIN_G18 -to "TriggerData[18](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[18]
-set_location_assignment PIN_F19 -to TriggerData[19]
-set_location_assignment PIN_F20 -to "TriggerData[19](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[19]
-set_location_assignment PIN_N18 -to TriggerData[20]
-set_location_assignment PIN_N17 -to "TriggerData[20](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[20]
-set_location_assignment PIN_J19 -to TriggerData[21]
-set_location_assignment PIN_J20 -to "TriggerData[21](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[21]
-set_location_assignment PIN_T19 -to TriggerData[22]
-set_location_assignment PIN_T20 -to "TriggerData[22](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[22]
-set_location_assignment PIN_Y21 -to TriggerData[23]
-set_location_assignment PIN_Y22 -to "TriggerData[23](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to TriggerData[23]
-set_location_assignment PIN_B15 -to FCTClk40
-set_location_assignment PIN_A15 -to "FCTClk40(n)"
-set_location_assignment PIN_E16 -to Status_In[3]
 set_instance_assignment -name IO_STANDARD LVDS -to Status_In[3]
-set_location_assignment PIN_F16 -to "Status_In[3](n)"
-set_location_assignment PIN_E15 -to Status_In[2]
+set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[3](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to Status_In[2]
-set_location_assignment PIN_D15 -to "Status_In[2](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[2](n)"
-set_location_assignment PIN_G16 -to Status_In[1]
 set_instance_assignment -name IO_STANDARD LVDS -to Status_In[1]
-set_location_assignment PIN_F15 -to "Status_In[1](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[1](n)"
-set_location_assignment PIN_B16 -to Status_In[0]
 set_instance_assignment -name IO_STANDARD LVDS -to Status_In[0]
-set_location_assignment PIN_A16 -to "Status_In[0](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[0](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to SignalWindow
 set_instance_assignment -name IO_STANDARD LVDS -to PreBeamTime
 set_instance_assignment -name IO_STANDARD LVDS -to Busy
 set_instance_assignment -name IO_STANDARD LVDS -to BeamTime
-set_location_assignment PIN_D18 -to Busy
-set_location_assignment PIN_C18 -to "Busy(n)"
-set_location_assignment PIN_B18 -to BeamTime
-set_location_assignment PIN_A18 -to "BeamTime(n)"
-set_location_assignment PIN_B17 -to TrigIn
-set_location_assignment PIN_A17 -to "TrigIn(n)"
-set_location_assignment PIN_B21 -to FCTClk160
-set_location_assignment PIN_B22 -to "FCTClk160(n)"
-set_location_assignment PIN_D21 -to PreBeamTime
-set_location_assignment PIN_D22 -to "PreBeamTime(n)"
-set_location_assignment PIN_D19 -to HardReset
-set_location_assignment PIN_C19 -to "HardReset(n)"
-set_location_assignment PIN_J21 -to SignalWindow
-set_location_assignment PIN_J22 -to "SignalWindow(n)"
-set_location_assignment PIN_AB13 -to BoardID[0]
-set_location_assignment PIN_AA13 -to BoardID[1]
-set_location_assignment PIN_AB14 -to BoardID[2]
-set_location_assignment PIN_AB15 -to BoardID[4]
-set_location_assignment PIN_AA14 -to BoardID[3]
-set_location_assignment PIN_AA15 -to BoardID[5]
-set_location_assignment PIN_AB16 -to BoardID[6]
-set_location_assignment PIN_AA16 -to BoardID[7]
-set_instance_assignment -name IO_STANDARD LVDS -to "FCTClk40(n)"
-set_location_assignment PIN_Y3 -to Test[1]
-set_location_assignment PIN_AB6 -to Test[2]
-set_location_assignment PIN_AB5 -to Test[3]
-set_location_assignment PIN_AA5 -to Test[4]
-set_location_assignment PIN_AA6 -to Test[5]
-set_location_assignment PIN_C7 -to LedB
-set_location_assignment PIN_A5 -to LedG
-set_location_assignment PIN_C8 -to LedR
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[16]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[17]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[18]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[19]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[20]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[21]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[22]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInData[23]
 set_instance_assignment -name IO_STANDARD LVDS -to ADC_CLK
-set_location_assignment PIN_J2 -to ADCInData[16]
-set_location_assignment PIN_J1 -to "ADCInData[16](n)"
-set_location_assignment PIN_L6 -to ADCInData[17]
-set_location_assignment PIN_M6 -to "ADCInData[17](n)"
-set_location_assignment PIN_M4 -to ADCInData[18]
-set_location_assignment PIN_M3 -to "ADCInData[18](n)"
-set_location_assignment PIN_N7 -to ADCInData[19]
-set_location_assignment PIN_P7 -to "ADCInData[19](n)"
-set_location_assignment PIN_P5 -to ADCInData[20]
-set_location_assignment PIN_N6 -to "ADCInData[20](n)"
-set_location_assignment PIN_P4 -to ADCInData[21]
-set_location_assignment PIN_P3 -to "ADCInData[21](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[16](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[17](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[18](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[19](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[20](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[21](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[22](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to "ADCInData[23](n)"
-set_location_assignment PIN_R4 -to ADCInData[22]
-set_location_assignment PIN_R3 -to "ADCInData[22](n)"
-set_location_assignment PIN_T5 -to ADCInData[23]
-set_location_assignment PIN_R6 -to "ADCInData[23](n)"
-set_location_assignment PIN_P6 -to ADC_CLK
-set_location_assignment PIN_R5 -to "ADC_CLK(n)"
-set_location_assignment PIN_D8 -to ADC_CSB
-set_location_assignment PIN_E8 -to ADC_SDIO
-set_location_assignment PIN_G9 -to ADC_SCLK
-set_location_assignment LCCOMB_X50_Y49_N14 -to "PhaseSwitch:PhaseSw|lpm_counter:RefTimeCt|cntr_h9i:auto_generated|counter_comb_bita7"
-set_location_assignment LCCOMB_X50_Y49_N14 -to "PhaseSwitch:PhaseSw|lpm_counter:RefTimeCt|cntr_h9i:auto_generated|counter_comb_bita7~COUT"
-set_location_assignment PIN_AA21 -to ExtReset
-set_location_assignment PIN_H2 -to ADCInDataLVDS[15]
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[0]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[15]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[11]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[10]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[9]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[8]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[7]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[6]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[5]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[4]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[3]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[2]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[0](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[1]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[14]
-set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[13]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[1](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[2]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[2](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[3]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[3](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[4]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[4](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[5]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[5](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[6]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[6](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[7]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[7](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[8]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[8](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[9]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[9](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[10]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[10](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[11]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[11](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[12]
-set_location_assignment PIN_H1 -to "ADCInDataLVDS[15](n)"
-set_location_assignment PIN_B10 -to ADCInDataLVDS[0]
-set_location_assignment PIN_A10 -to "ADCInDataLVDS[0](n)"
-set_location_assignment PIN_B9 -to ADCInDataLVDS[1]
-set_location_assignment PIN_A9 -to "ADCInDataLVDS[1](n)"
-set_location_assignment PIN_B8 -to ADCInDataLVDS[2]
-set_location_assignment PIN_A8 -to "ADCInDataLVDS[2](n)"
-set_location_assignment PIN_B7 -to ADCInDataLVDS[3]
-set_location_assignment PIN_A7 -to "ADCInDataLVDS[3](n)"
-set_location_assignment PIN_B6 -to ADCInDataLVDS[4]
-set_location_assignment PIN_A6 -to "ADCInDataLVDS[4](n)"
-set_location_assignment PIN_B4 -to ADCInDataLVDS[5]
-set_location_assignment PIN_A4 -to "ADCInDataLVDS[5](n)"
-set_location_assignment PIN_B3 -to ADCInDataLVDS[6]
-set_location_assignment PIN_A3 -to "ADCInDataLVDS[6](n)"
-set_location_assignment PIN_C4 -to ADCInDataLVDS[7]
-set_location_assignment PIN_C3 -to "ADCInDataLVDS[7](n)"
-set_location_assignment PIN_B2 -to ADCInDataLVDS[8]
-set_location_assignment PIN_B1 -to "ADCInDataLVDS[8](n)"
-set_location_assignment PIN_C2 -to ADCInDataLVDS[9]
-set_location_assignment PIN_C1 -to "ADCInDataLVDS[9](n)"
-set_location_assignment PIN_F2 -to ADCInDataLVDS[10]
-set_location_assignment PIN_F1 -to "ADCInDataLVDS[10](n)"
-set_location_assignment PIN_G4 -to ADCInDataLVDS[11]
-set_location_assignment PIN_G3 -to "ADCInDataLVDS[11](n)"
-set_location_assignment PIN_H6 -to ADCInDataLVDS[12]
-set_location_assignment PIN_J6 -to "ADCInDataLVDS[12](n)"
-set_location_assignment PIN_J7 -to ADCInDataLVDS[13]
-set_location_assignment PIN_K7 -to "ADCInDataLVDS[13](n)"
-set_location_assignment PIN_H4 -to ADCInDataLVDS[14]
-set_location_assignment PIN_H3 -to "ADCInDataLVDS[14](n)"
-set_global_assignment -name MISC_FILE "E:/Work/Japan/COMET/Electronics/FPGA/PreTrigger ECAL/PreTrigger.dpf"
-set_location_assignment PIN_AB7 -to Test[7]
-set_location_assignment PIN_AA7 -to Test[6]
-set_location_assignment PIN_AA8 -to Test[8]
-set_location_assignment PIN_AB8 -to Test[9]
-set_global_assignment -name AHDL_FILE PreTrigger.tdf
-set_global_assignment -name VECTOR_WAVEFORM_FILE PreTrigger.vwf
-set_global_assignment -name SEARCH_PATH "E:\\Work\\Japan\\COMET\\Electronics\\FPGA\\PreTrigger ECAL\\LIB"
-set_location_assignment PIN_AA9 -to Test[10]
-set_location_assignment PIN_AB9 -to Test[11]
-set_location_assignment PIN_W10 -to Test[12]
-set_location_assignment PIN_Y10 -to Test[13]
-set_location_assignment PIN_AA10 -to Test[14]
-set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
-set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
-set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
-set_global_assignment -name SEED 2
-set_location_assignment PIN_AB10 -to Test[15]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[12](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[13]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[13](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[14]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[14](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[15]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[15](n)"
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ExtReset
+set_location_assignment PIN_W26 -to TriggerData[0]
+set_location_assignment PIN_Y24 -to TriggerData[1]
+set_location_assignment PIN_V22 -to TriggerData[2]
+set_location_assignment PIN_V23 -to TriggerData[3]
+set_location_assignment PIN_W28 -to TriggerData[4]
+set_location_assignment PIN_W25 -to TriggerData[5]
+set_location_assignment PIN_Y26 -to TriggerData[6]
+set_location_assignment PIN_W20 -to TriggerData[7]
+set_location_assignment PIN_R28 -to TriggerData[8]
+set_location_assignment PIN_P21 -to TriggerData[9]
+set_location_assignment PIN_R22 -to TriggerData[10]
+set_location_assignment PIN_T26 -to TriggerData[19]
+set_location_assignment PIN_U27 -to TriggerData[17]
+set_location_assignment PIN_N25 -to TriggerData[32]
+set_location_assignment PIN_R27 -to TriggerData[35]
+set_location_assignment PIN_R26 -to TriggerData[34]
+set_location_assignment PIN_U28 -to TriggerData[33]
+set_location_assignment PIN_R25 -to TriggerData[27]
+set_location_assignment PIN_T25 -to TriggerData[26]
+set_location_assignment PIN_U26 -to TriggerData[18]
+set_location_assignment PIN_U25 -to TriggerData[16]
+set_location_assignment PIN_R23 -to TriggerData[11]
+set_location_assignment PIN_R21 -to TriggerData[30]
+set_location_assignment PIN_U22 -to TriggerData[21]
+set_location_assignment PIN_V28 -to TriggerData[28]
+set_location_assignment PIN_U20 -to TriggerData[29]
+set_location_assignment PIN_V27 -to TriggerData[20]
+set_location_assignment PIN_V26 -to TriggerData[31]
+set_location_assignment PIN_V25 -to TriggerData[12]
+set_location_assignment PIN_V24 -to TriggerData[13]
+set_location_assignment PIN_V21 -to TriggerData[15]
+set_location_assignment PIN_V20 -to TriggerData[24]
+set_location_assignment PIN_W27 -to TriggerData[14]
+set_location_assignment PIN_W22 -to TriggerData[22]
+set_location_assignment PIN_W21 -to TriggerData[46]
+set_location_assignment PIN_Y25 -to TriggerData[44]
+set_location_assignment PIN_Y23 -to TriggerData[49]
+set_location_assignment PIN_Y22 -to TriggerData[25]
+set_location_assignment PIN_AA25 -to TriggerData[23]
+set_location_assignment PIN_AA26 -to TriggerData[50]
+set_location_assignment PIN_AA23 -to TriggerData[59]
+set_location_assignment PIN_AA21 -to TriggerData[61]
+set_location_assignment PIN_AA22 -to TriggerData[39]
+set_location_assignment PIN_AB28 -to TriggerData[51]
+set_location_assignment PIN_AB27 -to TriggerData[43]
+set_location_assignment PIN_AB25 -to TriggerData[37]
+set_location_assignment PIN_AB23 -to TriggerData[56]
+set_location_assignment PIN_AB24 -to TriggerData[38]
+set_location_assignment PIN_AB22 -to TriggerData[54]
+set_location_assignment PIN_AD28 -to TriggerData[41]
+set_location_assignment PIN_AC25 -to TriggerData[45]
+set_location_assignment PIN_AC27 -to TriggerData[42]
+set_location_assignment PIN_AD24 -to TriggerData[55]
+set_location_assignment PIN_AC24 -to TriggerData[58]
+set_location_assignment PIN_AC26 -to TriggerData[60]
+set_location_assignment PIN_AC28 -to TriggerData[36]
+set_location_assignment PIN_AE28 -to TriggerData[57]
+set_location_assignment PIN_AD25 -to TriggerData[52]
+set_location_assignment PIN_AD26 -to TriggerData[47]
+set_location_assignment PIN_AD27 -to TriggerData[40]
+set_location_assignment PIN_AF27 -to TriggerData[53]
+set_location_assignment PIN_AE26 -to TriggerData[62]
+set_location_assignment PIN_AE27 -to TriggerData[48]
+set_location_assignment PIN_AB26 -to TriggerData[63]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[16]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[17]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[18]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[19]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[20]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[21]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[22]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[23]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[24]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[25]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[26]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[27]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[28]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[29]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[30]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[31]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[32]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[33]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[34]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[35]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[36]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[37]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[38]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[39]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[40]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[41]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[42]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[43]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[44]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[45]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[46]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[47]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[48]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[49]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[50]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[51]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[52]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[53]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[54]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[55]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[56]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[57]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[58]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[59]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[60]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[61]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[62]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[63]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[64]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[65]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[66]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[67]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[68]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[69]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[70]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[71]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[72]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[73]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[74]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[75]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[76]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[77]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[78]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[79]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[80]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[81]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[82]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[83]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[84]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[85]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[86]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[87]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[88]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[89]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[90]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[91]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[92]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[93]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[94]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[95]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[96]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[97]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[98]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[99]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[100]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[101]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[102]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[103]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[104]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[105]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[106]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[107]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[108]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[109]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[110]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[111]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[112]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[113]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[114]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[115]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[116]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[117]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[118]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[119]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[120]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[121]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[122]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[123]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[124]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[125]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[126]
+set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[127]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[16](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[17](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[18](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[19](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[20](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[21](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[22](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[23](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[24](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[25](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[26](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[27](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[28](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[29](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[30](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[31](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[32](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[33](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[34](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[35](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[36](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[37](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[38](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[39](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[40](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[41](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[42](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[43](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[44](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[45](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[46](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[47](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[48](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[49](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[50](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[51](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[52](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[53](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[54](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[55](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[56](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[57](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[58](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[59](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[60](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[61](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[62](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[63](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[64](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[65](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[66](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[67](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[68](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[69](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[70](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[71](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[72](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[73](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[74](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[75](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[76](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[77](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[78](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[79](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[80](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[81](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[82](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[83](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[84](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[85](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[86](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[87](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[88](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[89](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[90](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[91](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[92](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[93](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[94](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[95](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[96](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[97](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[98](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[99](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[100](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[101](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[102](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[103](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[104](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[105](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[106](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[107](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[108](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[109](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[110](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[111](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[112](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[113](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[114](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[115](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[116](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[117](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[118](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[119](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[120](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[121](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[122](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[123](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[124](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[125](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[126](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[127](n)"
+set_location_assignment PIN_R2 -to ADCInDataLVDS[0]
+set_location_assignment PIN_R1 -to "ADCInDataLVDS[0](n)"
+set_location_assignment PIN_R3 -to ADCInDataLVDS[1]
+set_location_assignment PIN_R6 -to "ADCInDataLVDS[1](n)"
+set_location_assignment PIN_R4 -to ADCInDataLVDS[2]
+set_location_assignment PIN_R7 -to "ADCInDataLVDS[2](n)"
+set_location_assignment PIN_T4 -to ADCInDataLVDS[3]
+set_location_assignment PIN_T3 -to "ADCInDataLVDS[3](n)"
+set_location_assignment PIN_T9 -to ADCInDataLVDS[4]
+set_location_assignment PIN_AC2 -to "ADCInDataLVDS[4](n)"
+set_location_assignment PIN_U1 -to ADCInDataLVDS[5]
+set_location_assignment PIN_V4 -to "ADCInDataLVDS[5](n)"
+set_location_assignment PIN_U3 -to ADCInDataLVDS[6]
+set_location_assignment PIN_U2 -to "ADCInDataLVDS[6](n)"
+set_location_assignment PIN_U4 -to ADCInDataLVDS[7]
+set_location_assignment PIN_R5 -to "ADCInDataLVDS[7](n)"
+set_location_assignment PIN_V3 -to ADCInDataLVDS[8]
+set_location_assignment PIN_V2 -to "ADCInDataLVDS[8](n)"
+set_location_assignment PIN_V5 -to ADCInDataLVDS[9]
+set_location_assignment PIN_U6 -to "ADCInDataLVDS[9](n)"
+set_location_assignment PIN_V6 -to ADCInDataLVDS[10]
+set_location_assignment PIN_U5 -to "ADCInDataLVDS[10](n)"
+set_location_assignment PIN_V7 -to ADCInDataLVDS[11]
+set_location_assignment PIN_AC3 -to "ADCInDataLVDS[11](n)"
+set_location_assignment PIN_W8 -to ADCInDataLVDS[12]
+set_location_assignment PIN_AC1 -to "ADCInDataLVDS[12](n)"
+set_location_assignment PIN_W3 -to ADCInDataLVDS[13]
+set_location_assignment PIN_W4 -to "ADCInDataLVDS[13](n)"
+set_location_assignment PIN_W2 -to ADCInDataLVDS[14]
+set_location_assignment PIN_W1 -to "ADCInDataLVDS[14](n)"
+set_location_assignment PIN_Y4 -to ADCInDataLVDS[15]
+set_location_assignment PIN_Y3 -to "ADCInDataLVDS[15](n)"
+set_location_assignment PIN_Y5 -to ADCInDataLVDS[16]
+set_location_assignment PIN_Y6 -to "ADCInDataLVDS[16](n)"
+set_location_assignment PIN_AA5 -to ADCInDataLVDS[17]
+set_location_assignment PIN_AF2 -to "ADCInDataLVDS[17](n)"
+set_location_assignment PIN_AA7 -to ADCInDataLVDS[18]
+set_location_assignment PIN_AA6 -to "ADCInDataLVDS[18](n)"
+set_location_assignment PIN_AA8 -to ADCInDataLVDS[19]
+set_location_assignment PIN_Y7 -to "ADCInDataLVDS[19](n)"
+set_location_assignment PIN_AB2 -to ADCInDataLVDS[20]
+set_location_assignment PIN_AB1 -to "ADCInDataLVDS[20](n)"
+set_location_assignment PIN_AB3 -to ADCInDataLVDS[21]
+set_location_assignment PIN_AA4 -to "ADCInDataLVDS[21](n)"
+set_location_assignment PIN_AC4 -to ADCInDataLVDS[22]
+set_location_assignment PIN_AD3 -to "ADCInDataLVDS[22](n)"
+set_location_assignment PIN_AB6 -to ADCInDataLVDS[23]
+set_location_assignment PIN_AB5 -to "ADCInDataLVDS[23](n)"
+set_location_assignment PIN_AB7 -to ADCInDataLVDS[24]
+set_location_assignment PIN_AC7 -to "ADCInDataLVDS[24](n)"
+set_location_assignment PIN_AC5 -to ADCInDataLVDS[25]
+set_location_assignment PIN_AD5 -to "ADCInDataLVDS[25](n)"
+set_location_assignment PIN_AD2 -to ADCInDataLVDS[26]
+set_location_assignment PIN_AD1 -to "ADCInDataLVDS[26](n)"
+set_location_assignment PIN_AE1 -to ADCInDataLVDS[27]
+set_location_assignment PIN_AE2 -to "ADCInDataLVDS[27](n)"
+set_location_assignment PIN_AE4 -to ADCInDataLVDS[28]
+set_location_assignment PIN_AF3 -to "ADCInDataLVDS[28](n)"
+set_location_assignment PIN_AH3 -to ADCInDataLVDS[29]
+set_location_assignment PIN_W10 -to "ADCInDataLVDS[29](n)"
+set_location_assignment PIN_AG4 -to ADCInDataLVDS[30]
+set_location_assignment PIN_AG3 -to "ADCInDataLVDS[30](n)"
+set_location_assignment PIN_AF4 -to ADCInDataLVDS[31]
+set_location_assignment PIN_AB12 -to "ADCInDataLVDS[31](n)"
+set_location_assignment PIN_AH6 -to ADCInDataLVDS[32]
+set_location_assignment PIN_AA13 -to "ADCInDataLVDS[32](n)"
+set_location_assignment PIN_AG6 -to ADCInDataLVDS[33]
+set_location_assignment PIN_AB13 -to "ADCInDataLVDS[33](n)"
+set_location_assignment PIN_AD12 -to ADCInDataLVDS[34]
+set_location_assignment PIN_AE6 -to "ADCInDataLVDS[34](n)"
+set_location_assignment PIN_AE7 -to ADCInDataLVDS[35]
+set_location_assignment PIN_AE8 -to "ADCInDataLVDS[35](n)"
+set_location_assignment PIN_AD7 -to ADCInDataLVDS[36]
+set_location_assignment PIN_Y12 -to "ADCInDataLVDS[36](n)"
+set_location_assignment PIN_AF7 -to ADCInDataLVDS[37]
+set_location_assignment PIN_AH10 -to "ADCInDataLVDS[37](n)"
+set_location_assignment PIN_AG7 -to ADCInDataLVDS[38]
+set_location_assignment PIN_Y13 -to "ADCInDataLVDS[38](n)"
+set_location_assignment PIN_AG8 -to ADCInDataLVDS[39]
+set_location_assignment PIN_Y15 -to "ADCInDataLVDS[39](n)"
+set_location_assignment PIN_AF8 -to ADCInDataLVDS[40]
+set_location_assignment PIN_AF12 -to "ADCInDataLVDS[40](n)"
+set_location_assignment PIN_AC8 -to ADCInDataLVDS[41]
+set_location_assignment PIN_AA10 -to "ADCInDataLVDS[41](n)"
+set_location_assignment PIN_AB9 -to ADCInDataLVDS[42]
+set_location_assignment PIN_AD10 -to "ADCInDataLVDS[42](n)"
+set_location_assignment PIN_AE9 -to ADCInDataLVDS[43]
+set_location_assignment PIN_AF13 -to "ADCInDataLVDS[43](n)"
+set_location_assignment PIN_AF9 -to ADCInDataLVDS[44]
+set_location_assignment PIN_AH12 -to "ADCInDataLVDS[44](n)"
+set_location_assignment PIN_AF10 -to ADCInDataLVDS[45]
+set_location_assignment PIN_AF11 -to "ADCInDataLVDS[45](n)"
+set_location_assignment PIN_AE10 -to ADCInDataLVDS[46]
+set_location_assignment PIN_AH8 -to "ADCInDataLVDS[46](n)"
+set_location_assignment PIN_AG10 -to ADCInDataLVDS[47]
+set_location_assignment PIN_AE12 -to "ADCInDataLVDS[47](n)"
+set_location_assignment PIN_AC10 -to ADCInDataLVDS[48]
+set_location_assignment PIN_AD8 -to "ADCInDataLVDS[48](n)"
+set_location_assignment PIN_AC11 -to ADCInDataLVDS[49]
+set_location_assignment PIN_AD11 -to "ADCInDataLVDS[49](n)"
+set_location_assignment PIN_AE11 -to ADCInDataLVDS[50]
+set_location_assignment PIN_AG11 -to "ADCInDataLVDS[50](n)"
+set_location_assignment PIN_AH11 -to ADCInDataLVDS[51]
+set_location_assignment PIN_AB14 -to "ADCInDataLVDS[51](n)"
+set_location_assignment PIN_AG12 -to ADCInDataLVDS[52]
+set_location_assignment PIN_AD14 -to "ADCInDataLVDS[52](n)"
+set_location_assignment PIN_AC12 -to ADCInDataLVDS[53]
+set_location_assignment PIN_AH4 -to "ADCInDataLVDS[53](n)"
+set_location_assignment PIN_AE13 -to ADCInDataLVDS[54]
+set_location_assignment PIN_AC14 -to "ADCInDataLVDS[54](n)"
+set_location_assignment PIN_AE14 -to ADCInDataLVDS[55]
+set_location_assignment PIN_AF14 -to "ADCInDataLVDS[55](n)"
+set_location_assignment PIN_AB15 -to ADCInDataLVDS[56]
+set_location_assignment PIN_AC15 -to "ADCInDataLVDS[56](n)"
+set_location_assignment PIN_AD15 -to ADCInDataLVDS[57]
+set_location_assignment PIN_AE15 -to "ADCInDataLVDS[57](n)"
+set_location_assignment PIN_AF15 -to ADCInDataLVDS[58]
+set_location_assignment PIN_AG17 -to "ADCInDataLVDS[58](n)"
+set_location_assignment PIN_AF16 -to ADCInDataLVDS[59]
+set_location_assignment PIN_AF17 -to "ADCInDataLVDS[59](n)"
+set_location_assignment PIN_AB16 -to ADCInDataLVDS[60]
+set_location_assignment PIN_AE16 -to "ADCInDataLVDS[60](n)"
+set_location_assignment PIN_AD17 -to ADCInDataLVDS[61]
+set_location_assignment PIN_AF18 -to "ADCInDataLVDS[61](n)"
+set_location_assignment PIN_AE17 -to ADCInDataLVDS[62]
+set_location_assignment PIN_AG18 -to "ADCInDataLVDS[62](n)"
+set_location_assignment PIN_AH17 -to ADCInDataLVDS[63]
+set_location_assignment PIN_W16 -to "ADCInDataLVDS[63](n)"
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
