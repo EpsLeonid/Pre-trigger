@@ -87,11 +87,11 @@ RxClk			: input; --					-> Pin
 Crs				: input;-- Carrier Sense
 RxDv			: input;-- Data Valid
 RxD[3..0]		: input; 
---RxEr			: input; -- RxEr not in use!!!! pin109-corner
+--RxEr			: input; -- RxEr not in use!!!! pin...-corner
 
 TxClk			: input; --					-> Pin
---TxEn			: output; --					-> Pin
---TxD[3..0]		: output; --					-> Pin
+TxEn			: output; --					-> Pin
+TxD[3..0]		: output; --					-> Pin
 Col 			: input; -- Collision_Detect not used	-> Pin
 
 -- 5. 
@@ -402,6 +402,12 @@ Trig = TrigDis;--InData_Reg[1].q[6] AND InData_Reg[1].q[7] AND InData_Reg[1].q[8
 --============================================================================
 --******** 6. Data transfer *********************************************
 
+
+--============================================================================
+--******** 5. Ethernet Interface *******************************************
+
+TxD[] = TestTrigCt.q[3..0];
+TxEn = TrigIn;
 
 --============================================================================
 --******** 7. Control Unit section *******************************************
