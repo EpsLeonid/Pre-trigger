@@ -49,7 +49,23 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [Document2]
-DocumentPath=PCB Constraint.Constraint
+DocumentPath=Constraint_FPGA.Constraint
+AnnotationEnabled=1
+AnnotateStartValue=1
+AnnotationIndexControlEnabled=0
+AnnotateSuffix=
+AnnotateScope=All
+AnnotateOrder=-1
+DoLibraryUpdate=1
+DoDatabaseUpdate=1
+ClassGenCCAutoEnabled=1
+ClassGenCCAutoRoomEnabled=1
+ClassGenNCAutoScope=None
+DItemRevisionGUID=
+GenerateClassCluster=0
+
+[Document3]
+DocumentPath=PreTriggerECAL.qsf
 AnnotationEnabled=1
 AnnotateStartValue=1
 AnnotationIndexControlEnabled=0
@@ -65,24 +81,22 @@ DItemRevisionGUID=
 GenerateClassCluster=0
 
 [GeneratedDocument1]
-DocumentPath=ProjectOutputs\NewConfiguration\FPGA.VHD
+DocumentPath=ProjectOutputs\Configuration\PreTriggerECAL.MAP.RPT
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=ProjectOutputs\NewConfiguration\PreTriggerECAL.synthlog
+DocumentPath=ProjectOutputs\Configuration\PreTriggerECAL.synthlog
+DItemRevisionGUID=
+
+[GeneratedDocument3]
+DocumentPath=ProjectOutputs\Configuration\PreTriggerECAL.VHD
 DItemRevisionGUID=
 
 [Configuration1]
-Name=NewConfiguration
+Name=Configuration
 ParameterCount=0
 ConstraintFileCount=1
-ConstraintFilePath1=PCB Constraint.Constraint
-
-[Configuration2]
-Name=PCB Configuration
-ParameterCount=0
-ConstraintFileCount=1
-ConstraintFilePath1=PCB Constraint.Constraint
+ConstraintFilePath1=Constraint_FPGA.Constraint
 
 [PCBConfiguration1]
 ReleaseItemId=
@@ -91,9 +105,6 @@ Name=Default Configuration
 Variant=[No Variations]
 GenerateBOM=0
 
-[Generic_Translate DesignQuartus_sh]
-AdvancedOptionsEnabled=False
-
 [Generic_VHDLSynthesis]
 Tool=Altera Quartus II
 SettingsModified=False
@@ -101,6 +112,8 @@ Entity=
 Architecture=
 PromptedNewSynthesizer=True
 SchematicNetlister=0
+Configuration Device=EPC8
+Configuration Scheme=ACTIVE_SERIAL
 AdvancedOptionsEnabled=False
 
 [Generic_VHDLSimulation]
@@ -117,6 +130,13 @@ TimeStep=100000000
 TimeUnits=ns
 RunToUnits=ns
 TestbenchConfigurations=
+
+[Generic_Timing AnalysisQuartus_Tan]
+AdvancedOptionsEnabled=False
+
+[Generic_Translate DesignQuartus_sh]
+Configuration Scheme=ACTIVE_SERIAL
+AdvancedOptionsEnabled=False
 
 [OutputGroup1]
 Name=Netlist Outputs
