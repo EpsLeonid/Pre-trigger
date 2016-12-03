@@ -64,36 +64,32 @@ ClassGenNCAutoScope=None
 DItemRevisionGUID=
 GenerateClassCluster=0
 
-[Document3]
-DocumentPath=PreTriggerECAL.qsf
-AnnotationEnabled=1
-AnnotateStartValue=1
-AnnotationIndexControlEnabled=0
-AnnotateSuffix=
-AnnotateScope=All
-AnnotateOrder=-1
-DoLibraryUpdate=1
-DoDatabaseUpdate=1
-ClassGenCCAutoEnabled=1
-ClassGenCCAutoRoomEnabled=1
-ClassGenNCAutoScope=None
-DItemRevisionGUID=
-GenerateClassCluster=0
-
 [GeneratedDocument1]
 DocumentPath=ProjectOutputs\Configuration\PreTriggerECAL.MAP.RPT
 DItemRevisionGUID=
 
 [GeneratedDocument2]
-DocumentPath=ProjectOutputs\Configuration\PreTriggerECAL.synthlog
+DocumentPath=ProjectOutputs\Configuration_FPGA\PreTriggerECAL.MAP.RPT
 DItemRevisionGUID=
 
 [GeneratedDocument3]
+DocumentPath=ProjectOutputs\Configuration\PreTriggerECAL.synthlog
+DItemRevisionGUID=
+
+[GeneratedDocument4]
+DocumentPath=ProjectOutputs\Configuration_FPGA\PreTriggerECAL.synthlog
+DItemRevisionGUID=
+
+[GeneratedDocument5]
 DocumentPath=ProjectOutputs\Configuration\PreTriggerECAL.VHD
 DItemRevisionGUID=
 
+[GeneratedDocument6]
+DocumentPath=ProjectOutputs\Configuration_FPGA\PreTriggerECAL.VHD
+DItemRevisionGUID=
+
 [Configuration1]
-Name=Configuration
+Name=Configuration_FPGA
 ParameterCount=0
 ConstraintFileCount=1
 ConstraintFilePath1=Constraint_FPGA.Constraint
@@ -136,6 +132,7 @@ AdvancedOptionsEnabled=False
 
 [Generic_Translate DesignQuartus_sh]
 Configuration Scheme=ACTIVE_SERIAL
+Configuration Device=EPCS16
 AdvancedOptionsEnabled=False
 
 [OutputGroup1]
