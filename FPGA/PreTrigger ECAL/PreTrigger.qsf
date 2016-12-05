@@ -69,14 +69,11 @@ set_global_assignment -name AHDL_FILE PreTrigger.tdf
 set_global_assignment -name VECTOR_WAVEFORM_FILE PreTrigger.vwf
 set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
 set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
-set_instance_assignment -name IO_STANDARD LVDS -to FCTClk40
-set_instance_assignment -name IO_STANDARD LVDS -to "FCTClk40(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to FCTClk160
 set_instance_assignment -name IO_STANDARD LVDS -to "FCTClk160(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to TrigIn
 set_instance_assignment -name IO_STANDARD LVDS -to "TrigIn(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to HardReset
-set_instance_assignment -name IO_STANDARD LVDS -to "HardReset(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to Status_In[3]
 set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[3](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to Status_In[2]
@@ -89,7 +86,6 @@ set_instance_assignment -name IO_STANDARD LVDS -to SignalWindow
 set_instance_assignment -name IO_STANDARD LVDS -to PreBeamTime
 set_instance_assignment -name IO_STANDARD LVDS -to Busy
 set_instance_assignment -name IO_STANDARD LVDS -to BeamTime
-set_instance_assignment -name IO_STANDARD LVDS -to ADC_CLK
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[0]
 set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[0](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[1]
@@ -541,20 +537,20 @@ set_location_assignment PIN_AF10 -to ADCInDataLVDS[63]
 set_location_assignment PIN_AF11 -to "ADCInDataLVDS[63](n)"
 set_global_assignment -name MISC_FILE "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger ECAL/PreTrigger.dpf"
 set_global_assignment -name SEARCH_PATH lib
-set_location_assignment PIN_C2 -to Col
-set_location_assignment PIN_D1 -to Crs
-set_location_assignment PIN_D2 -to RxClk
-set_location_assignment PIN_E5 -to RxD[0]
-set_location_assignment PIN_E4 -to RxD[1]
-set_location_assignment PIN_E3 -to RxD[2]
-set_location_assignment PIN_E1 -to RxD[3]
-set_location_assignment PIN_G7 -to RxDv
-set_location_assignment PIN_F5 -to TxClk
-set_location_assignment PIN_F3 -to TxD[0]
-set_location_assignment PIN_F2 -to TxD[1]
-set_location_assignment PIN_F1 -to TxD[2]
-set_location_assignment PIN_G4 -to TxD[3]
-set_location_assignment PIN_G5 -to TxEn
+set_location_assignment PIN_E5 -to Col
+set_location_assignment PIN_C2 -to Crs
+set_location_assignment PIN_D1 -to RxClk
+set_location_assignment PIN_F2 -to RxD[0]
+set_location_assignment PIN_F1 -to RxD[1]
+set_location_assignment PIN_G2 -to RxD[2]
+set_location_assignment PIN_G1 -to RxD[3]
+set_location_assignment PIN_E1 -to RxDv
+set_location_assignment PIN_D2 -to TxClk
+set_location_assignment PIN_G3 -to TxD[0]
+set_location_assignment PIN_F3 -to TxD[1]
+set_location_assignment PIN_E3 -to TxD[2]
+set_location_assignment PIN_E4 -to TxD[3]
+set_location_assignment PIN_H3 -to TxEn
 set_location_assignment PIN_M26 -to ADCInDataLVDS[64]
 set_location_assignment PIN_L20 -to "ADCInDataLVDS[64](n)"
 set_location_assignment PIN_M24 -to ADCInDataLVDS[65]
@@ -684,24 +680,62 @@ set_location_assignment PIN_D10 -to "ADCInDataLVDS[126](n)"
 set_location_assignment PIN_D9 -to ADCInDataLVDS[127]
 set_location_assignment PIN_C9 -to "ADCInDataLVDS[127](n)"
 set_location_assignment PIN_J1 -to PLL_in
-set_location_assignment PIN_C3 -to FQuartz
+set_location_assignment PIN_A3 -to FQuartz
 set_location_assignment PIN_C8 -to TrigIn
 set_location_assignment PIN_A8 -to "TrigIn(n)"
-set_location_assignment PIN_F7 -to BeamTime
-set_location_assignment PIN_F8 -to "BeamTime(n)"
+set_location_assignment PIN_H10 -to BeamTime
+set_location_assignment PIN_C11 -to "BeamTime(n)"
 set_location_assignment PIN_E8 -to Busy
 set_location_assignment PIN_E11 -to "Busy(n)"
 set_global_assignment -name CRC_ERROR_CHECKING ON
-set_location_assignment PIN_T21 -to ADC_CLK
-set_location_assignment PIN_T22 -to "ADC_CLK(n)"
-set_location_assignment PIN_AF2 -to ADC_CSB
-set_location_assignment PIN_AF3 -to ADC_SCLK
-set_location_assignment PIN_AE4 -to ADC_SDIO
+set_location_assignment PIN_AH3 -to ADC_CLK
+set_location_assignment PIN_AG4 -to ADC_CSB
+set_location_assignment PIN_AF5 -to ADC_SCLK
+set_location_assignment PIN_AG3 -to ADC_SDIO
 set_location_assignment PIN_AF8 -to FCTClk160
 set_location_assignment PIN_AF12 -to "FCTClk160(n)"
-set_location_assignment PIN_A4 -to LedB
-set_location_assignment PIN_B4 -to LedG
-set_location_assignment PIN_D4 -to LedR
-set_location_assignment PIN_C5 -to Sw_FCTClk
-set_location_assignment PIN_D5 -to Sw_Quartz
+set_location_assignment PIN_C4 -to LedB
+set_location_assignment PIN_D4 -to LedG
+set_location_assignment PIN_C3 -to LedR
+set_location_assignment PIN_A4 -to Sw_FCTClk
+set_location_assignment PIN_B3 -to Sw_Quartz
+set_location_assignment PIN_AF2 -to ExtReset
+set_location_assignment PIN_B4 -to FCTClk40
+set_location_assignment PIN_K1 -to Test[0]
+set_location_assignment PIN_K2 -to Test[1]
+set_location_assignment PIN_K3 -to Test[2]
+set_location_assignment PIN_L1 -to Test[3]
+set_location_assignment PIN_L2 -to Test[4]
+set_location_assignment PIN_L3 -to Test[5]
+set_location_assignment PIN_M1 -to Test[6]
+set_location_assignment PIN_M2 -to Test[7]
+set_location_assignment PIN_M3 -to Test[8]
+set_location_assignment PIN_N3 -to Test[9]
+set_global_assignment -name AUTO_RESTART_CONFIGURATION ON
+set_global_assignment -name CYCLONEII_CONFIGURATION_SCHEME "ACTIVE SERIAL"
+set_global_assignment -name DEVICE_FILTER_PACKAGE ANY
+set_global_assignment -name DEVICE_FILTER_PIN_COUNT ANY
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE ANY
+set_global_assignment -name DO_MIN_ANALYSIS OFF
+set_global_assignment -name EDA_DESIGN_ENTRY_SYNTHESIS_TOOL "<None>"
+set_global_assignment -name ENABLE_DRC_SETTINGS OFF
+set_global_assignment -name GENERATE_CONFIG_HEXOUT_FILE OFF
+set_global_assignment -name GENERATE_CONFIG_ISC_FILE OFF
+set_global_assignment -name GENERATE_CONFIG_JAM_FILE OFF
+set_global_assignment -name GENERATE_CONFIG_JBC_FILE OFF
+set_global_assignment -name GENERATE_CONFIG_JBC_FILE_COMPRESSED ON
+set_global_assignment -name GENERATE_CONFIG_SVF_FILE OFF
+set_global_assignment -name GENERATE_HEX_FILE OFF
+set_global_assignment -name GENERATE_ISC_FILE OFF
+set_global_assignment -name GENERATE_JAM_FILE OFF
+set_global_assignment -name GENERATE_JBC_FILE OFF
+set_global_assignment -name GENERATE_JBC_FILE_COMPRESSED ON
+set_global_assignment -name GENERATE_RBF_FILE OFF
+set_global_assignment -name GENERATE_SVF_FILE OFF
+set_global_assignment -name GENERATE_TTF_FILE OFF
+set_global_assignment -name ON_CHIP_BITSTREAM_DECOMPRESSION ON
+set_global_assignment -name RESERVE_ALL_UNUSED_PINS "AS OUTPUT DRIVING GROUND"
+set_global_assignment -name VERILOG_INPUT_VERSION VERILOG_2001
+set_global_assignment -name VHDL_INPUT_VERSION VHDL_1993
+set_global_assignment -name CRC_ERROR_OPEN_DRAIN ON
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
