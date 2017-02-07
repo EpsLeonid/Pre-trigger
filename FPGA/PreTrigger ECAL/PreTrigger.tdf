@@ -38,7 +38,7 @@ CONSTANT TrigBits = 64;		-- Number of triggerg bits to FCT
 SUBDESIGN PreTrigger
 (
 -- 1. Reference Clock's & Frequency Control I/O
-FQuartz			: input;	-- 20MHz clock from Quartz oscillator		<- Pin A8
+FQuartz			: input;	-- 40MHz clock from Quartz oscillator		<- Pin A8
 FCTClk40		: input;	-- 40MHz clock from FCT board				<- Pin T14/T15
 FCTClk160		: input;	-- 160MHz clock from FCT board				<- Pin W13/Y13
 
@@ -456,7 +456,10 @@ FOR i in 16 to 23 GENERATE
 END GENERATE;%
 --TriggerData[TrigBits-1..0] = GND;
 %
-
+Test[0] = PwrUpSet1;
+Test[1] = PLL.locked;
+Test[15..2] = TestCt.q[13..0];
+%
 Test[7..0] = TrigMaxAmp_Reg.q[7..0];--InData_Reg[9].q[8..0];
 Test[8] = SignalProc.MaxCellNumber[0];--PwrUpSet1;--Trigger.test1;
 Test[9] = SignalProc.MaxCellNumber[1];--PLL.locked;
@@ -467,5 +470,5 @@ Test[14..11] = SignalProc.test[14..11];--SignalProc.MaxAmp[4];
 --Test[7..0] = SignalProc.test[7..0];--InData_Reg[0].q[9..2];--SignalProc.test[7..0];
 --Test[14..0] = SignalProc.test[14..0];--InData_Reg[1].q[9..3];--SignalProc.test[14..8];
 Test[15] = TestCt.q[15];--SignalProc.Trig[5];--
-
+%
 END;
