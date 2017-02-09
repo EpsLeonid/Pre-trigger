@@ -169,7 +169,7 @@ InData[NUM_CH_Tr-1..0][ADC_Bits-1..0]			: node;
 Threshold_Reg[2..0]								: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 InData_Reg[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 %
-ADCInData[NUM_CH_Tr-1..0]		: LVDS_In;
+ADCInData[NUM_CH_Tr-1..0]		: LVDS_In with (INCLOCK_PHASE_SHIFT = 9000);
 ADCdata_align					: DFFE;
 DDR_InLVDS[NUM_CH_Tr-1..0]		: DDR_In;
 DDR_Reg_pos[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
@@ -287,6 +287,9 @@ ADC_CLK = Clk40;
 -- ******** 2. Loader ********************************************
 --Loader = SRFF(.s=PwrUpSet1,--sets 1.0s after PLL1 has locked
 --				.r=PwrUpSet2, .clk=Clk40);
+
+-- ******** 2.1 ADC setup********************************************
+--Настройка фазы данных АЦП
 %ADCtest_bit_count.sclr = PwrUpReset;
 ADCtest_bit_count.(clock, cnt_en, clk_en) = (Clk20, ADCtest_Bit_write, VCC);
 
@@ -311,6 +314,8 @@ ADCtest_SDIO_trig.d = ADCtest_reg.shiftout;
 ADC_CSB = ADCtest_CSB_trig;
 ADC_SCLK = Clk20;
 %
+-- ***************************************
+
 Threshold_Reg[0].(data[], clock, enable, load) = (ThresholdData_0, Clk40, PwrUpSet1, VCC);
 Threshold_Reg[1].(data[], clock, enable, load) = (ThresholdData_1, Clk40, PwrUpSet1, VCC);
 Threshold_Reg[2].(data[], clock, enable, load) = (ThresholdData_2, Clk40, PwrUpSet1, VCC);
@@ -456,9 +461,10 @@ FOR i in 16 to 23 GENERATE
 END GENERATE;%
 --TriggerData[TrigBits-1..0] = GND;
 %
-Test[0] = PwrUpSet1;
-Test[1] = PLL.locked;
-Test[15..2] = TestCt.q[13..0];
+Test[9..2] = InData_Reg[8].q[7..0];
+Test[0] = ADCtest_Bit_write;
+Test[1] = PwrUpSet1;
+Test[15..10] = GND;
 %
 Test[7..0] = TrigMaxAmp_Reg.q[7..0];--InData_Reg[9].q[8..0];
 Test[8] = SignalProc.MaxCellNumber[0];--PwrUpSet1;--Trigger.test1;
