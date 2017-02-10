@@ -30,9 +30,9 @@ CONSTANT NUM_ADCboard = 16;	-- Number of ADC boards in the trigger
 CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
 --CONSTANT NUM_CH_Tr = 8;	-- Number of channels in the trigger
 CONSTANT ADC_Bits = 10;		-- Number of ADC bits in one channel
-CONSTANT ThresholdData_0 = 50;
-CONSTANT ThresholdData_1 = 200;
-CONSTANT ThresholdData_2 = 500;
+CONSTANT ThresholdData_0 = 500;
+CONSTANT ThresholdData_1 = 700;
+CONSTANT ThresholdData_2 = 900;
 CONSTANT TrigBits = 64;		-- Number of triggerg bits to FCT
 
 SUBDESIGN PreTrigger
@@ -169,11 +169,11 @@ InData[NUM_CH_Tr-1..0][ADC_Bits-1..0]			: node;
 Threshold_Reg[2..0]								: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 InData_Reg[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 %
-ADCInData[NUM_CH_Tr-1..0]		: LVDS_In with (INCLOCK_PHASE_SHIFT = 9000);
-ADCdata_align					: DFFE;
-DDR_InLVDS[NUM_CH_Tr-1..0]		: DDR_In;
-DDR_Reg_pos[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
-DDR_Reg_neg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
+ADCInData[NUM_CH_Tr-1..0]		: LVDS_In;
+--ADCdata_align					: DFFE;
+--DDR_InLVDS[NUM_CH_Tr-1..0]		: DDR_In;
+--DDR_Reg_pos[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
+--DDR_Reg_neg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
 InData[NUM_CH_Tr-1..0]			: node;
 Threshold_Reg[2..0]				: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 InData_Reg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
@@ -290,7 +290,8 @@ ADC_CLK = Clk40;
 
 -- ******** 2.1 ADC setup********************************************
 --Настройка фазы данных АЦП
-%ADCtest_bit_count.sclr = PwrUpReset;
+%
+ADCtest_bit_count.sclr = PwrUpReset;
 ADCtest_bit_count.(clock, cnt_en, clk_en) = (Clk20, ADCtest_Bit_write, VCC);
 
 IF ADCtest_bit_count.q[] < b"110100" Then ADCtest_Bit_write = VCC;
@@ -392,8 +393,8 @@ Trigger_reg.data[19..16] = ThreshCount_2Reg.q[];
 Trigger_reg.data[23..20] = ThreshCount_3Reg.q[];
 Trigger_reg.(clock,load,enable,sclr) = (Clk40, VCC, VCC, SignalProc.ResetAll);
 
-TriggerData[15..0] = Trigger_reg.q[15..0];
-TriggerData[TrigBits-1..16] = GND;
+--TriggerData[15..0] = Trigger_reg.q[15..0];
+TriggerData[TrigBits-1..24] = GND;
 
 TrigDis = SignalProc.Trig;
 %
@@ -402,7 +403,7 @@ TrigDis = SignalProc[1].Trig OR SignalProc[2].Trig OR SignalProc[3].Trig OR Sign
 		OR SignalProc[9].Trig OR SignalProc[10].Trig OR SignalProc[11].Trig OR SignalProc[12].Trig
 		OR SignalProc[13].Trig OR SignalProc[14].Trig OR SignalProc[15].Trig OR SignalProc[16].Trig;
 %
-Trig = TrigDis;--InData_Reg[1].q[6] AND InData_Reg[1].q[7] AND InData_Reg[1].q[8]; 
+Trig = InData_Reg[10].q[6];--TrigDis;--InData_Reg[1].q[6] AND InData_Reg[1].q[7] AND InData_Reg[1].q[8]; 
 
 --============================================================================
 --******** 6. Data transfer *********************************************
@@ -456,12 +457,12 @@ TestTrigCt.cnt_en			= VCC;
 FOR i in 14 to 23 GENERATE
 	TriggerData[i] = InData_Reg[1].q[i-14];
 END GENERATE;%
-FOR i in 16 to 23 GENERATE
-	TriggerData[i] = TestTrigCt.q[i+12];
+FOR i in 0 to 23 GENERATE
+	TriggerData[i] = TestTrigCt.q[i];
 END GENERATE;%
 --TriggerData[TrigBits-1..0] = GND;
 %
-Test[9..2] = InData_Reg[8].q[7..0];
+Test[9..2] = InData_Reg[10].q[7..0];
 Test[0] = ADCtest_Bit_write;
 Test[1] = PwrUpSet1;
 Test[15..10] = GND;

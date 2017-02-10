@@ -132,7 +132,7 @@ FOR i in 0 to (NumTrigCh-1) GENERATE
 	Summator[i].clock = Clock;
 	Summator[i].(dataa[],datab[]) = (InData_Reg[i][0].q[],InData_Reg[i][1].q[]);
 --	Summator[i].(data0x[],data1x[],data2x[],data3x[]) = (InData_Reg[i][0].q[],InData_Reg[i][1].q[],InData_Reg[i][2].q[],InData_Reg[i][3].q[]);
-	Divide_x_4[i][ADC_Bits-1..0] = Summator[i].result[ADC_Bits-1..0]; -- делим на 4 (сдвигаем на 2 разряда)
+	Divide_x_4[i][ADC_Bits-1..0] = Summator[i].result[ADC_Bits-1..0]; -- делим на 2 (сдвигаем на 1 разряда)
 
 	Average_Reg[i].data[] = Divide_x_4[i][ADC_Bits-1..0];
 	Average_Reg[i].(clock,enable,load)  = (Clock, VCC,VCC);

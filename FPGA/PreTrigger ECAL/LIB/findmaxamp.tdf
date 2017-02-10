@@ -207,8 +207,8 @@ ThrNum3[] = TrigThreshCount_Reg3.q[];
 FOR i in 0 to 8 GENERATE
 	Delay_Group_Reg[i].data[] = Group_Reg[i].q[ADC_Bits-1..0];
 	Delay_Group_Reg[i].(clock,enable,load, sclr)  = (Clock, VCC, VCC, AllReset.q);
-	IF((Group_Reg[i].q[] < Delay_Group_Reg[i].q[]) AND (GroupLT_Trig[i].q == VCC) AND (GroupAmp_Trig[i].q == GND)) THEN GroupValue_Amp_Done = VCC;
-																												   ELSE GroupValue_Amp_Done = GND;
+	IF((Group_Reg[i].q[] < Delay_Group_Reg[i].q[]) AND (GroupLT_Trig[i].q == VCC) AND (GroupAmp_Trig[i].q == GND)) THEN GroupValue_Amp_Done[i] = VCC;
+																												   ELSE GroupValue_Amp_Done[i] = GND;
 	END IF; 
 	GroupAmp_Trig[i].(S,clk,R) = (GroupValue_Amp_Done[i], Clock, AllReset.q); -- 
 
