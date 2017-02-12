@@ -32,7 +32,7 @@ CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
 CONSTANT ADC_Bits = 10;		-- Number of ADC bits in one channel
 CONSTANT ThresholdData_0 = 500;
 CONSTANT ThresholdData_1 = 700;
-CONSTANT ThresholdData_2 = 900;
+CONSTANT ThresholdData_2 = 1020;
 CONSTANT TrigBits = 64;		-- Number of triggerg bits to FCT
 
 SUBDESIGN PreTrigger
@@ -337,7 +337,11 @@ LedR = R_Flash.LightOut;
 R_Flash.(clock, event) =(Clk40,Error);-- Error is defined in Control Unit section
 
 Error = PhaseSw.Error;
-
+--******** 
+IF InData_Reg[9].q[] > Threshold_Reg[2].q[] then Error = VCC;
+											else Error = GND;
+END IF;
+--******** 
 --============================================================================
 --******** 4. ADC data *********************************************
 
