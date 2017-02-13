@@ -11,9 +11,9 @@ CONSTANT ADC_Bits = 10; -- разрядность АЦП
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
-CONSTANT ThresholdData_0 = 560;
-CONSTANT ThresholdData_1 = 650;
-CONSTANT ThresholdData_2 = 850;
+CONSTANT ThresholdData_0 = 700;
+CONSTANT ThresholdData_1 = 850;
+CONSTANT ThresholdData_2 = 950;
 CONSTANT MaxTime = 30;  -- Maximal Valid time (2,5mks)
 CONSTANT ResetTime = 50;
 
@@ -130,9 +130,9 @@ END GENERATE;
 -- Находим среднее по 4 отсчетам
 FOR i in 0 to (NumTrigCh-1) GENERATE
 	Summator[i].clock = Clock;
-	Summator[i].(dataa[],datab[]) = (InData_Reg[i][0].q[],InData_Reg[i][1].q[]);
+	Summator[i].(data0x[],data1x[]) = (InData_Reg[i][0].q[],InData_Reg[i][1].q[]);
 --	Summator[i].(data0x[],data1x[],data2x[],data3x[]) = (InData_Reg[i][0].q[],InData_Reg[i][1].q[],InData_Reg[i][2].q[],InData_Reg[i][3].q[]);
-	Divide_x_4[i][ADC_Bits-1..0] = Summator[i].result[ADC_Bits-1..0]; -- делим на 2 (сдвигаем на 1 разряда)
+	Divide_x_4[i][ADC_Bits-1..0] = Summator[i].result[10..1]; -- делим на 2 (сдвигаем на 1 разряда)
 
 	Average_Reg[i].data[] = Divide_x_4[i][ADC_Bits-1..0];
 	Average_Reg[i].(clock,enable,load)  = (Clock, VCC,VCC);
@@ -207,8 +207,8 @@ ThrNum3[] = TrigThreshCount_Reg3.q[];
 FOR i in 0 to 8 GENERATE
 	Delay_Group_Reg[i].data[] = Group_Reg[i].q[ADC_Bits-1..0];
 	Delay_Group_Reg[i].(clock,enable,load, sclr)  = (Clock, VCC, VCC, AllReset.q);
-	IF((Group_Reg[i].q[] < Delay_Group_Reg[i].q[]) AND (GroupLT_Trig[i].q == VCC) AND (GroupAmp_Trig[i].q == GND)) THEN GroupValue_Amp_Done = VCC;
-																												   ELSE GroupValue_Amp_Done = GND;
+	IF((Group_Reg[i].q[] < Delay_Group_Reg[i].q[]) AND (GroupLT_Trig[i].q == VCC) AND (GroupAmp_Trig[i].q == GND)) THEN GroupValue_Amp_Done[i] = VCC;
+																												   ELSE GroupValue_Amp_Done[i] = GND;
 	END IF; 
 	GroupAmp_Trig[i].(S,clk,R) = (GroupValue_Amp_Done[i], Clock, AllReset.q); -- 
 

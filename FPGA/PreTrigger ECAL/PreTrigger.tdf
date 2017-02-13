@@ -176,6 +176,7 @@ ADCInData[NUM_CH_Tr-1..0]		: LVDS_In;
 --DDR_Reg_neg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
 InData[NUM_CH_Tr-1..0]			: node;
 Threshold_Reg[2..0]				: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
+Overflow						: node;
 InData_Reg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 
 --SignalProc[NUM_CH_Tr..1]				: Digitizer;
@@ -336,10 +337,10 @@ LedR = R_Flash.LightOut;
 --LedR = OPNDRN( TC.q[21] ) ;         -- for TEST Only! - quick blink
 R_Flash.(clock, event) =(Clk40,Error);-- Error is defined in Control Unit section
 
-Error = PhaseSw.Error;
+Error = PhaseSw.Error OR Overflow;
 --******** 
-IF InData_Reg[9].q[] > Threshold_Reg[2].q[] then Error = VCC;
-											else Error = GND;
+IF InData_Reg[9].q[] > Threshold_Reg[2].q[] then Overflow = VCC;
+											else Overflow = GND;
 END IF;
 --******** 
 --============================================================================
@@ -407,7 +408,7 @@ TrigDis = SignalProc[1].Trig OR SignalProc[2].Trig OR SignalProc[3].Trig OR Sign
 		OR SignalProc[9].Trig OR SignalProc[10].Trig OR SignalProc[11].Trig OR SignalProc[12].Trig
 		OR SignalProc[13].Trig OR SignalProc[14].Trig OR SignalProc[15].Trig OR SignalProc[16].Trig;
 %
-Trig = InData_Reg[10].q[6];--TrigDis;--InData_Reg[1].q[6] AND InData_Reg[1].q[7] AND InData_Reg[1].q[8]; 
+Trig = TrigDis;--InData_Reg[1].q[6] AND InData_Reg[1].q[7] AND InData_Reg[1].q[8];--InData_Reg[10].q[6];--
 
 --============================================================================
 --******** 6. Data transfer *********************************************
@@ -468,7 +469,7 @@ END GENERATE;%
 %
 Test[9..2] = InData_Reg[10].q[7..0];
 Test[0] = ADCtest_Bit_write;
-Test[1] = PwrUpSet1;
+Test[1] = TrigDis;
 Test[15..10] = GND;
 %
 Test[7..0] = TrigMaxAmp_Reg.q[7..0];--InData_Reg[9].q[8..0];
