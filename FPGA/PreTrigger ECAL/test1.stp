@@ -1,55 +1,196 @@
-<session jtag_chain="USB-Blaster [USB-0]" jtag_device="@1: EP3C40/EP4CE30/EP4CE40 (0x020F40DD)" sof_file="PreTrigger.sof" top_level_entity="PreTrigger">
+<session jtag_chain="" jtag_device="" sof_file="PreTrigger.sof" top_level_entity="PreTrigger">
   <display_tree gui_logging_enabled="0">
     <display_branch instance="auto_signaltap_0" signal_set="USE_GLOBAL_TEMP" trigger="USE_GLOBAL_TEMP"/>
   </display_tree>
   <instance entity_name="sld_signaltap" is_auto_node="yes" is_expanded="true" name="auto_signaltap_0" source_file="sld_signaltap.vhd">
     <node_ip_info instance_id="0" mfg_id="110" node_id="0" version="6"/>
-    <position_info>
-      <single attribute="active tab" value="1"/>
-      <single attribute="data horizontal scroll position" value="0"/>
-      <single attribute="data vertical scroll position" value="0"/>
-      <single attribute="setup hierarchy root" value="1"/>
-      <single attribute="setup horizontal scroll position" value="0"/>
-      <single attribute="setup vertical scroll position" value="0"/>
-      <single attribute="zoom level denominator" value="1"/>
-      <single attribute="zoom level numerator" value="8192"/>
-      <single attribute="zoom offset denominator" value="1"/>
-      <single attribute="zoom offset numerator" value="3"/>
-      <multi attribute="timebars" size="1" value="98"/>
-    </position_info>
-    <signal_set global_temp="1" name="signal_set: 2017/02/12 17:59:33  #0">
+    <signal_set global_temp="1" is_expanded="true" name="signal_set: 2017/02/15 12:10:09  #0">
       <clock name="Clk40" polarity="posedge" tap_mode="classic"/>
       <config ram_type="M4K" reserved_data_nodes="0" reserved_storage_qualifier_nodes="0" reserved_trigger_nodes="0" sample_depth="2048" trigger_in_enable="no" trigger_out_enable="no"/>
       <top_entity/>
       <signal_vec>
         <trigger_input_vec>
+          <wire name="ADCInDataLVDS[0]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[10]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[11]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[12]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[13]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[14]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[15]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[1]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[2]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[3]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[4]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[5]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[6]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[7]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[8]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[9]" tap_mode="classic" type="input pin"/>
           <wire name="ADC_CLK" tap_mode="classic" type="output pin"/>
+          <wire name="FCTClk40" tap_mode="classic" type="input pin"/>
+          <wire name="FQuartz" tap_mode="classic" type="input pin"/>
           <wire name="Sw_FCTClk" tap_mode="classic" type="output pin"/>
           <wire name="Sw_Quartz" tap_mode="classic" type="output pin"/>
+          <wire name="Test[0]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[1]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[2]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[3]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[4]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[5]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[6]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[7]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[8]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[9]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[0]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[10]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[11]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[12]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[13]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[14]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[15]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[16]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[17]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[18]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[19]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[1]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[20]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[21]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[22]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[23]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[2]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[3]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[4]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[5]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[6]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[7]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[8]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[9]" tap_mode="classic" type="output pin"/>
           <wire name="LedB" tap_mode="probeonly" type="output pin"/>
           <wire name="LedG" tap_mode="probeonly" type="output pin"/>
           <wire name="LedR" tap_mode="probeonly" type="output pin"/>
           <wire name="PowerUp0" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp1" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp2" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp3" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp4" tap_mode="probeonly" type="register"/>
         </trigger_input_vec>
         <data_input_vec>
+          <wire name="ADCInDataLVDS[0]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[10]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[11]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[12]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[13]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[14]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[15]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[1]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[2]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[3]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[4]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[5]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[6]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[7]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[8]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[9]" tap_mode="classic" type="input pin"/>
           <wire name="ADC_CLK" tap_mode="classic" type="output pin"/>
+          <wire name="FCTClk40" tap_mode="classic" type="input pin"/>
+          <wire name="FQuartz" tap_mode="classic" type="input pin"/>
           <wire name="Sw_FCTClk" tap_mode="classic" type="output pin"/>
           <wire name="Sw_Quartz" tap_mode="classic" type="output pin"/>
+          <wire name="Test[0]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[1]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[2]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[3]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[4]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[5]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[6]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[7]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[8]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[9]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[0]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[10]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[11]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[12]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[13]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[14]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[15]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[16]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[17]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[18]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[19]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[1]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[20]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[21]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[22]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[23]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[2]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[3]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[4]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[5]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[6]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[7]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[8]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[9]" tap_mode="classic" type="output pin"/>
           <wire name="LedB" tap_mode="probeonly" type="output pin"/>
           <wire name="LedG" tap_mode="probeonly" type="output pin"/>
           <wire name="LedR" tap_mode="probeonly" type="output pin"/>
           <wire name="PowerUp0" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp1" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp2" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp3" tap_mode="probeonly" type="register"/>
-          <wire name="PowerUp4" tap_mode="probeonly" type="register"/>
         </data_input_vec>
         <storage_qualifier_input_vec>
+          <wire name="ADCInDataLVDS[0]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[10]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[11]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[12]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[13]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[14]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[15]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[1]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[2]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[3]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[4]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[5]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[6]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[7]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[8]" tap_mode="classic" type="input pin"/>
+          <wire name="ADCInDataLVDS[9]" tap_mode="classic" type="input pin"/>
           <wire name="ADC_CLK" tap_mode="classic" type="output pin"/>
+          <wire name="FCTClk40" tap_mode="classic" type="input pin"/>
+          <wire name="FQuartz" tap_mode="classic" type="input pin"/>
+          <wire name="Sw_FCTClk" tap_mode="classic" type="output pin"/>
+          <wire name="Sw_Quartz" tap_mode="classic" type="output pin"/>
+          <wire name="Test[0]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[1]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[2]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[3]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[4]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[5]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[6]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[7]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[8]" tap_mode="classic" type="output pin"/>
+          <wire name="Test[9]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[0]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[10]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[11]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[12]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[13]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[14]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[15]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[16]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[17]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[18]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[19]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[1]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[20]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[21]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[22]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[23]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[2]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[3]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[4]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[5]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[6]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[7]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[8]" tap_mode="classic" type="output pin"/>
+          <wire name="TriggerData[9]" tap_mode="classic" type="output pin"/>
+          <wire name="LedB" tap_mode="probeonly" type="output pin"/>
+          <wire name="LedG" tap_mode="probeonly" type="output pin"/>
+          <wire name="LedR" tap_mode="probeonly" type="output pin"/>
+          <wire name="PowerUp0" tap_mode="probeonly" type="register"/>
         </storage_qualifier_input_vec>
       </signal_vec>
       <presentation>
@@ -61,26 +202,122 @@
           <net is_signal_inverted="no" name="LedG"/>
           <net is_signal_inverted="no" name="LedR"/>
           <net is_signal_inverted="no" name="PowerUp0"/>
-          <net is_signal_inverted="no" name="PowerUp1"/>
-          <net is_signal_inverted="no" name="PowerUp2"/>
-          <net is_signal_inverted="no" name="PowerUp3"/>
-          <net is_signal_inverted="no" name="PowerUp4"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[0]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[1]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[2]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[3]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[4]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[5]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[6]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[7]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[8]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[9]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[10]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[11]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[12]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[13]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[14]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[15]"/>
+          <net is_signal_inverted="no" name="FCTClk40"/>
+          <net is_signal_inverted="no" name="FQuartz"/>
+          <net is_signal_inverted="no" name="Test[0]"/>
+          <net is_signal_inverted="no" name="Test[1]"/>
+          <net is_signal_inverted="no" name="Test[2]"/>
+          <net is_signal_inverted="no" name="Test[3]"/>
+          <net is_signal_inverted="no" name="Test[4]"/>
+          <net is_signal_inverted="no" name="Test[5]"/>
+          <net is_signal_inverted="no" name="Test[6]"/>
+          <net is_signal_inverted="no" name="Test[7]"/>
+          <net is_signal_inverted="no" name="Test[8]"/>
+          <net is_signal_inverted="no" name="Test[9]"/>
+          <net is_signal_inverted="no" name="TriggerData[0]"/>
+          <net is_signal_inverted="no" name="TriggerData[1]"/>
+          <net is_signal_inverted="no" name="TriggerData[2]"/>
+          <net is_signal_inverted="no" name="TriggerData[3]"/>
+          <net is_signal_inverted="no" name="TriggerData[4]"/>
+          <net is_signal_inverted="no" name="TriggerData[5]"/>
+          <net is_signal_inverted="no" name="TriggerData[6]"/>
+          <net is_signal_inverted="no" name="TriggerData[7]"/>
+          <net is_signal_inverted="no" name="TriggerData[8]"/>
+          <net is_signal_inverted="no" name="TriggerData[9]"/>
+          <net is_signal_inverted="no" name="TriggerData[10]"/>
+          <net is_signal_inverted="no" name="TriggerData[11]"/>
+          <net is_signal_inverted="no" name="TriggerData[12]"/>
+          <net is_signal_inverted="no" name="TriggerData[13]"/>
+          <net is_signal_inverted="no" name="TriggerData[14]"/>
+          <net is_signal_inverted="no" name="TriggerData[15]"/>
+          <net is_signal_inverted="no" name="TriggerData[16]"/>
+          <net is_signal_inverted="no" name="TriggerData[17]"/>
+          <net is_signal_inverted="no" name="TriggerData[18]"/>
+          <net is_signal_inverted="no" name="TriggerData[19]"/>
+          <net is_signal_inverted="no" name="TriggerData[20]"/>
+          <net is_signal_inverted="no" name="TriggerData[21]"/>
+          <net is_signal_inverted="no" name="TriggerData[22]"/>
+          <net is_signal_inverted="no" name="TriggerData[23]"/>
         </data_view>
         <setup_view>
           <net is_signal_inverted="no" name="PowerUp0"/>
-          <net is_signal_inverted="no" name="PowerUp1"/>
-          <net is_signal_inverted="no" name="PowerUp2"/>
-          <net is_signal_inverted="no" name="PowerUp3"/>
-          <net is_signal_inverted="no" name="PowerUp4"/>
           <net is_signal_inverted="no" name="ADC_CLK"/>
-          <net is_signal_inverted="no" name="Sw_FCTClk"/>
+          <net is_signal_inverted="no" name="FQuartz"/>
           <net is_signal_inverted="no" name="Sw_Quartz"/>
+          <net is_signal_inverted="no" name="FCTClk40"/>
+          <net is_signal_inverted="no" name="Sw_FCTClk"/>
           <net is_signal_inverted="no" name="LedB"/>
           <net is_signal_inverted="no" name="LedG"/>
           <net is_signal_inverted="no" name="LedR"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[0]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[1]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[2]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[3]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[4]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[5]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[6]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[7]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[8]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[9]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[10]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[11]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[12]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[13]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[14]"/>
+          <net is_signal_inverted="no" name="ADCInDataLVDS[15]"/>
+          <net is_signal_inverted="no" name="TriggerData[0]"/>
+          <net is_signal_inverted="no" name="TriggerData[1]"/>
+          <net is_signal_inverted="no" name="TriggerData[2]"/>
+          <net is_signal_inverted="no" name="TriggerData[3]"/>
+          <net is_signal_inverted="no" name="TriggerData[4]"/>
+          <net is_signal_inverted="no" name="TriggerData[5]"/>
+          <net is_signal_inverted="no" name="TriggerData[6]"/>
+          <net is_signal_inverted="no" name="TriggerData[7]"/>
+          <net is_signal_inverted="no" name="TriggerData[8]"/>
+          <net is_signal_inverted="no" name="TriggerData[9]"/>
+          <net is_signal_inverted="no" name="TriggerData[10]"/>
+          <net is_signal_inverted="no" name="TriggerData[11]"/>
+          <net is_signal_inverted="no" name="TriggerData[12]"/>
+          <net is_signal_inverted="no" name="TriggerData[13]"/>
+          <net is_signal_inverted="no" name="TriggerData[14]"/>
+          <net is_signal_inverted="no" name="TriggerData[15]"/>
+          <net is_signal_inverted="no" name="TriggerData[16]"/>
+          <net is_signal_inverted="no" name="TriggerData[17]"/>
+          <net is_signal_inverted="no" name="TriggerData[18]"/>
+          <net is_signal_inverted="no" name="TriggerData[19]"/>
+          <net is_signal_inverted="no" name="TriggerData[20]"/>
+          <net is_signal_inverted="no" name="TriggerData[21]"/>
+          <net is_signal_inverted="no" name="TriggerData[22]"/>
+          <net is_signal_inverted="no" name="TriggerData[23]"/>
+          <net is_signal_inverted="no" name="Test[0]"/>
+          <net is_signal_inverted="no" name="Test[1]"/>
+          <net is_signal_inverted="no" name="Test[2]"/>
+          <net is_signal_inverted="no" name="Test[3]"/>
+          <net is_signal_inverted="no" name="Test[4]"/>
+          <net is_signal_inverted="no" name="Test[5]"/>
+          <net is_signal_inverted="no" name="Test[6]"/>
+          <net is_signal_inverted="no" name="Test[7]"/>
+          <net is_signal_inverted="no" name="Test[8]"/>
+          <net is_signal_inverted="no" name="Test[9]"/>
         </setup_view>
       </presentation>
-      <trigger attribute_mem_mode="false" gap_record="true" global_temp="1" name="trigger: 2017/02/12 17:59:33  #1" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="1" storage_mode="conditional" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="false" storage_qualifier_port_name="PLL_Trigger:PLL|c0" storage_qualifier_port_tap_mode="classic" trigger_in="dont_care" trigger_out="active high" trigger_type="circular">
+      <trigger attribute_mem_mode="false" gap_record="true" global_temp="1" name="trigger: 2017/02/15 18:08:43  #0" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="1" storage_mode="conditional" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="false" storage_qualifier_port_name="PLL_Trigger:PLL|c0" storage_qualifier_port_tap_mode="classic" trigger_in="dont_care" trigger_out="active high" trigger_type="circular">
         <power_up_trigger position="pre" storage_qualifier_disabled="no" trigger_in="dont_care" trigger_out="active high"/>
         <events use_custom_flow_control="no">
           <level enabled="yes" name="condition1" type="basic">
@@ -88,10 +325,30 @@
             </power_up>
             <op_node/>
           </level>
+          <level enabled="yes" name="condition2" type="basic">
+            <power_up enabled="yes">
+            </power_up>
+            <op_node/>
+          </level>
+          <level enabled="yes" name="condition3" type="basic">
+            <power_up enabled="yes">
+            </power_up>
+            <op_node/>
+          </level>
+          <level enabled="yes" name="condition4" type="basic">
+            <power_up enabled="yes">
+            </power_up>
+            <op_node/>
+          </level>
+          <level enabled="yes" name="condition5" type="basic">
+            <power_up enabled="yes">
+            </power_up>
+            <op_node/>
+          </level>
         </events>
         <storage_qualifier_events>
-          <transitional>0
-            <pwr_up_transitional>0
+          <transitional>00000000000000000000000000000000000000000000000000000000000
+            <pwr_up_transitional>00000000000000000000000000000000000000000000000000000000000
             </pwr_up_transitional>
           </transitional>
           <storage_qualifier_level type="basic">
@@ -114,6 +371,19 @@
         </storage_qualifier_events>
       </trigger>
     </signal_set>
+    <position_info>
+      <single attribute="active tab" value="1"/>
+      <single attribute="data horizontal scroll position" value="0"/>
+      <single attribute="data vertical scroll position" value="0"/>
+      <single attribute="setup hierarchy root" value="1"/>
+      <single attribute="setup horizontal scroll position" value="0"/>
+      <single attribute="setup vertical scroll position" value="0"/>
+      <single attribute="zoom level denominator" value="1"/>
+      <single attribute="zoom level numerator" value="8192"/>
+      <single attribute="zoom offset denominator" value="1"/>
+      <single attribute="zoom offset numerator" value="3"/>
+      <multi attribute="timebars" size="1" value="98"/>
+    </position_info>
   </instance>
   <mnemonics/>
   <static_plugin_mnemonics/>
@@ -121,7 +391,7 @@
     <single attribute="active instance" value="0"/>
     <single attribute="lock mode" value="36110"/>
     <single attribute="sof manager hidden" value="0"/>
-    <multi attribute="column width" size="23" value="34,34,113,74,68,70,88,88,98,98,88,88,110,101,101,101,101,101,101,101,101,107,96"/>
-    <multi attribute="window position" size="9" value="1424,779,398,212,356,50,77,0,1"/>
+    <multi attribute="column width" size="23" value="34,34,177,74,68,70,88,88,98,98,88,88,110,101,101,101,101,101,101,101,101,107,96"/>
+    <multi attribute="window position" size="9" value="1525,897,398,212,356,50,91,0,0"/>
   </global_info>
 </session>
