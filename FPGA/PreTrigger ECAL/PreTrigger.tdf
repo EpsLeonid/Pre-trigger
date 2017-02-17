@@ -30,8 +30,8 @@ CONSTANT NUM_ADCboard = 16;	-- Number of ADC boards in the trigger
 CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
 --CONSTANT NUM_CH_Tr = 8;	-- Number of channels in the trigger
 CONSTANT ADC_Bits = 10;		-- Number of ADC bits in one channel
-CONSTANT ThresholdData_0 = 500;
-CONSTANT ThresholdData_1 = 700;
+CONSTANT ThresholdData_0 = 300;
+CONSTANT ThresholdData_1 = 450;
 CONSTANT ThresholdData_2 = 1020;
 CONSTANT TrigBits = 64;		-- Number of triggerg bits to FCT
 
@@ -185,6 +185,7 @@ InData_Reg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTIO
 --******** 6. Trigger Decision ******************************************************
 Trigger		: TriggerDecision;
 Trig		: node;
+FastTrigDis	: node;
 TrigDis		: node;
 Trigg_cs	: node; -- HistRam is saved MuskResult and worked Channel in event 
 
@@ -401,7 +402,29 @@ Trigger_reg.(clock,load,enable,sclr) = (Clk40, VCC, VCC, SignalProc.ResetAll);
 --TriggerData[15..0] = Trigger_reg.q[15..0];
 TriggerData[TrigBits-1..24] = GND;
 
-TrigDis = SignalProc.Trig;
+--FastTrigDis = SignalProc.FastTrig;
+--TrigDis = SignalProc.Trig;
+
+IF (%(InData_Reg[8].q[] > Threshold_Reg[0].q[]) 
+	OR% (InData_Reg[9].q[] > Threshold_Reg[0].q[])
+--	OR (InData_Reg[10].q[] > Threshold_Reg[0].q[])
+	OR (InData_Reg[11].q[] > Threshold_Reg[0].q[])
+	OR (InData_Reg[12].q[] > Threshold_Reg[0].q[])
+	OR (InData_Reg[13].q[] > Threshold_Reg[0].q[])
+	OR (InData_Reg[14].q[] > Threshold_Reg[0].q[])
+	OR (InData_Reg[15].q[] > Threshold_Reg[0].q[])) then FastTrigDis = VCC;
+													else FastTrigDis = GND;
+END IF;
+IF (%(InData_Reg[8].q[] > Threshold_Reg[1].q[])
+	OR% (InData_Reg[9].q[] > Threshold_Reg[1].q[])
+	OR (InData_Reg[10].q[] > Threshold_Reg[1].q[])
+	OR (InData_Reg[11].q[] > Threshold_Reg[1].q[]) 
+	OR (InData_Reg[12].q[] > Threshold_Reg[1].q[]) 
+	OR (InData_Reg[13].q[] > Threshold_Reg[1].q[])
+	OR (InData_Reg[14].q[] > Threshold_Reg[1].q[])
+	OR (InData_Reg[15].q[] > Threshold_Reg[1].q[])) then TrigDis = VCC;
+													else TrigDis = GND;
+END IF;
 %
 TrigDis = SignalProc[1].Trig OR SignalProc[2].Trig OR SignalProc[3].Trig OR SignalProc[4].Trig
 		OR SignalProc[5].Trig OR SignalProc[6].Trig OR SignalProc[7].Trig OR SignalProc[8].Trig
@@ -467,8 +490,8 @@ FOR i in 0 to 23 GENERATE
 END GENERATE;%
 --TriggerData[TrigBits-1..0] = GND;
 %
-Test[9..2] = InData_Reg[10].q[7..0];
-Test[0] = ADCtest_Bit_write;
+Test[9..2] = InData_Reg[15].q[7..0];
+Test[0] = FastTrigDis;
 Test[1] = TrigDis;
 Test[15..10] = GND;
 %

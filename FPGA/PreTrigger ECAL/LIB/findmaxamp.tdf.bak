@@ -26,6 +26,7 @@ MaxCellNumber[3..0]						: output;
 ThrNum1[3..0]							: output;
 ThrNum2[3..0]							: output;
 ThrNum3[3..0]							: output;
+FastTrig								: output;
 Trig									: output;
 
 Clock									: input;
@@ -214,6 +215,11 @@ FOR i in 0 to 8 GENERATE
 
 	Amp_Reg[i].(data[],clock,enable,load,aclr) = (Delay_Group_Reg[i].q[],Clock,(!GroupAmp_Trig[i].q AND GroupLT_Trig[i].q),VCC, AllReset.q);
 END GENERATE;
+FastTrig = GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR GroupLT_Trig[8].q;
+		--(GroupLT_Trig[0].q OR %(GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR )%GroupLT_Trig[3].q OR 
+		--GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
+		--GroupLT_Trig[8].q);
+
 Trig = (GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
 		GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR
 		GroupAmp_Trig[8].q);

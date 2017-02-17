@@ -11,7 +11,7 @@ CONSTANT ADC_Bits = 10; -- разрядность АЦП
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
-CONSTANT ThresholdData_0 = 700;
+CONSTANT ThresholdData_0 = 500;
 CONSTANT ThresholdData_1 = 850;
 CONSTANT ThresholdData_2 = 950;
 CONSTANT MaxTime = 30;  -- Maximal Valid time (2,5mks)
@@ -26,6 +26,7 @@ MaxCellNumber[3..0]						: output;
 ThrNum1[3..0]							: output;
 ThrNum2[3..0]							: output;
 ThrNum3[3..0]							: output;
+FastTrig								: output;
 Trig									: output;
 
 Clock									: input;
@@ -214,13 +215,14 @@ FOR i in 0 to 8 GENERATE
 
 	Amp_Reg[i].(data[],clock,enable,load,aclr) = (Delay_Group_Reg[i].q[],Clock,(!GroupAmp_Trig[i].q AND GroupLT_Trig[i].q),VCC, AllReset.q);
 END GENERATE;
-Trig = (GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
-		GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
-		GroupLT_Trig[8].q);
-%
+FastTrig = GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR GroupLT_Trig[8].q;
+		--(GroupLT_Trig[0].q OR %(GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR )%GroupLT_Trig[3].q OR 
+		--GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
+		--GroupLT_Trig[8].q);
+
 Trig = (GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
 		GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR
-		GroupAmp_Trig[8].q);%
+		GroupAmp_Trig[8].q);
 --MaxAmp[] = GND;
 --MaxAmp[] = Amp_Reg[0].q[9..2];
 --MaxCellNumber[] = b"0001";
