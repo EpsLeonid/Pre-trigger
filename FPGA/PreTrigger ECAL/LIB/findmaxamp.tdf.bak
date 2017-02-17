@@ -11,10 +11,10 @@ CONSTANT ADC_Bits = 10; -- разрядность АЦП
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
-CONSTANT ThresholdData_0 = 700;
-CONSTANT ThresholdData_1 = 850;
-CONSTANT ThresholdData_2 = 950;
-CONSTANT MaxTime = 30;  -- Maximal Valid time (2,5mks)
+CONSTANT ThresholdData_0 = 300;
+CONSTANT ThresholdData_1 = 450;
+CONSTANT ThresholdData_2 = 700;
+CONSTANT MaxTime = 30;  -- Maximal Valid time (750ns)
 CONSTANT ResetTime = 50;
 
 SUBDESIGN FindMaxAmp
@@ -128,16 +128,18 @@ FOR i in 0 to (NumTrigCh-1) GENERATE
 	END GENERATE;
 END GENERATE;
 
--- Находим среднее по 4 отсчетам
+-- Находим среднее по 2 отсчетам
 FOR i in 0 to (NumTrigCh-1) GENERATE
 	Summator[i].clock = Clock;
 	Summator[i].(data0x[],data1x[]) = (InData_Reg[i][0].q[],InData_Reg[i][1].q[]);
 --	Summator[i].(data0x[],data1x[],data2x[],data3x[]) = (InData_Reg[i][0].q[],InData_Reg[i][1].q[],InData_Reg[i][2].q[],InData_Reg[i][3].q[]);
-	Divide_x_4[i][ADC_Bits-1..0] = Summator[i].result[10..1]; -- делим на 2 (сдвигаем на 1 разряда)
+--	Divide_x_4[i][ADC_Bits-1..0] = Summator[i].result[10..1]; -- делим на 2 (сдвигаем на 1 разряда)
 
-	Average_Reg[i].data[] = Divide_x_4[i][ADC_Bits-1..0];
+--	Average_Reg[i].data[] = Divide_x_4[i][ADC_Bits-1..0];
+	Average_Reg[i].data[] = Summator[i].result[10..1]; -- делим на 2 (сдвигаем на 1 разряда)
 	Average_Reg[i].(clock,enable,load)  = (Clock, VCC,VCC);
 END GENERATE;
+
 -- *************** Поиск амплитуды в группах по 4-е триггерных ячееки ********************
 FOR i in 0 to 8 GENERATE
 	GroupSum[i].clock = Clock;
@@ -178,8 +180,20 @@ FOR i in 0 to 8 GENERATE
 	GroupMT_Trig[i].(S,clk,R) = (GroupValue_Up_MT[i], Clock, AllReset.q);
 	GroupHT_Trig[i].(S,clk,R) = (GroupValue_Up_HT[i], Clock, AllReset.q);
 
---- исправить счетчики!!!
 END GENERATE;
+
+IF (%(InData_Reg[8][0].q[] > LThresholdReg.q[]) 
+	OR% (InData_Reg[9][0].q[] > LThresholdReg.q[])
+--	OR (InData_Reg[10][0].q[] > LThresholdReg.q[])
+	OR (InData_Reg[11][0].q[] > LThresholdReg.q[])
+	OR (InData_Reg[12][0].q[] > LThresholdReg.q[])
+	OR (InData_Reg[13][0].q[] > LThresholdReg.q[])
+	OR (InData_Reg[14][0].q[] > LThresholdReg.q[])
+	OR (InData_Reg[15][0].q[] > LThresholdReg.q[])) then FastTrig = VCC;
+													else FastTrig = GND;
+END IF;
+
+--- исправить счетчики!!!
 
 TrigThreshCount_1.(clock) = (Clock);
 TrigThreshCount_2.(clock) = (Clock);
@@ -197,9 +211,9 @@ TrigThreshCount_3.(data0x[],data1x[],data2x[],data3x[],data4x[],data5x[],data6x[
 				   GroupHT_Trig[3].q,GroupHT_Trig[4].q,GroupHT_Trig[5].q,
 				   GroupHT_Trig[6].q,GroupHT_Trig[7].q,GroupHT_Trig[8].q);
 
-TrigThreshCount_Reg1.(data[], clock, enable, sclr) = (TrigThreshCount_1.result[], Clock, VCC, Inhibit.q);
-TrigThreshCount_Reg2.(data[], clock, enable, sclr) = (TrigThreshCount_2.result[], Clock, VCC, Inhibit.q);
-TrigThreshCount_Reg3.(data[], clock, enable, sclr) = (TrigThreshCount_3.result[], Clock, VCC, Inhibit.q);
+TrigThreshCount_Reg1.(data[], clock, enable, sclr) = (TrigThreshCount_1.result[], Clock, Trig, Inhibit.q);
+TrigThreshCount_Reg2.(data[], clock, enable, sclr) = (TrigThreshCount_2.result[], Clock, Trig, Inhibit.q);
+TrigThreshCount_Reg3.(data[], clock, enable, sclr) = (TrigThreshCount_3.result[], Clock, Trig, Inhibit.q);
 
 ThrNum1[] = TrigThreshCount_Reg1.q[];
 ThrNum2[] = TrigThreshCount_Reg2.q[];
@@ -215,11 +229,11 @@ FOR i in 0 to 8 GENERATE
 
 	Amp_Reg[i].(data[],clock,enable,load,aclr) = (Delay_Group_Reg[i].q[],Clock,(!GroupAmp_Trig[i].q AND GroupLT_Trig[i].q),VCC, AllReset.q);
 END GENERATE;
-FastTrig = GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR GroupLT_Trig[8].q;
-		--(GroupLT_Trig[0].q OR %(GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR )%GroupLT_Trig[3].q OR 
+%FastTrig = GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR GroupLT_Trig[8].q;
+		--(GroupLT_Trig[0].q OR (GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR )GroupLT_Trig[3].q OR 
 		--GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
 		--GroupLT_Trig[8].q);
-
+%
 Trig = (GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
 		GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR
 		GroupAmp_Trig[8].q);

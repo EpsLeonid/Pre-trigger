@@ -402,19 +402,9 @@ Trigger_reg.(clock,load,enable,sclr) = (Clk40, VCC, VCC, SignalProc.ResetAll);
 --TriggerData[15..0] = Trigger_reg.q[15..0];
 TriggerData[TrigBits-1..24] = GND;
 
---FastTrigDis = SignalProc.FastTrig;
+FastTrigDis = SignalProc.FastTrig;
 --TrigDis = SignalProc.Trig;
 
-IF (%(InData_Reg[8].q[] > Threshold_Reg[0].q[]) 
-	OR% (InData_Reg[9].q[] > Threshold_Reg[0].q[])
---	OR (InData_Reg[10].q[] > Threshold_Reg[0].q[])
-	OR (InData_Reg[11].q[] > Threshold_Reg[0].q[])
-	OR (InData_Reg[12].q[] > Threshold_Reg[0].q[])
-	OR (InData_Reg[13].q[] > Threshold_Reg[0].q[])
-	OR (InData_Reg[14].q[] > Threshold_Reg[0].q[])
-	OR (InData_Reg[15].q[] > Threshold_Reg[0].q[])) then FastTrigDis = VCC;
-													else FastTrigDis = GND;
-END IF;
 IF (%(InData_Reg[8].q[] > Threshold_Reg[1].q[])
 	OR% (InData_Reg[9].q[] > Threshold_Reg[1].q[])
 	OR (InData_Reg[10].q[] > Threshold_Reg[1].q[])
