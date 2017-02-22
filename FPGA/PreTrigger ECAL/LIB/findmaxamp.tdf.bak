@@ -21,7 +21,7 @@ SUBDESIGN FindMaxAmp
 (
 
 In_Data[NumTrigCh-1..0][ADC_Bits-1..0]	: input; -- входные данные
-MaxAmp[ADC_Bits-3..0]					: output;
+MaxAmp[ADC_Bits-1..0]					: output;
 MaxCellNumber[3..0]						: output;
 ThrNum1[3..0]							: output;
 ThrNum2[3..0]							: output;
@@ -82,15 +82,15 @@ CentrValue_Amp_Done				: node;
 CentrAmp_Trig					: SRFF;
 CentrAmp_Reg					: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- амплитуда центральной сборки 4х4 кристалла
 %
-Amp_Reg[NumTrigCh-1..0]			: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- амплитуда сигнала
-Amp_Reg_1						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); 
-Amp_Reg_2						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); 
-Amp_Reg_3						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); 
-Amp_Reg_4						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); 
-Amp_Reg_5						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); 
-Amp_Reg_6						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); 
-Amp_Reg_7						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); 
-Max_Reg							: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); -- максимальная амплитуда сигнала
+Amp_Reg[NumGroup-1..0]			: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- амплитуда сигнала
+Amp_Reg_1						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_2						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_3						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_4						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_5						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_6						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_7						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
+Max_Reg							: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); -- максимальная амплитуда сигнала
 
 NSampleCt						: LPM_COUNTER with (lpm_width=11, lpm_direction="up" ); -- n?ao?ee 
 
@@ -141,7 +141,7 @@ FOR i in 0 to (NumTrigCh-1) GENERATE
 END GENERATE;
 
 -- *************** Поиск амплитуды в группах по 4-е триггерных ячееки ********************
-FOR i in 0 to 8 GENERATE
+FOR i in 0 to (NumGroup-1) GENERATE
 	GroupSum[i].clock = Clock;
 END GENERATE;
 GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[0].q[],Average_Reg[1].q[],Average_Reg[4].q[],Average_Reg[5].q[]);
@@ -154,7 +154,7 @@ GroupSum[6].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[2].q[],Average_
 GroupSum[7].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[6].q[],Average_Reg[7].q[],Average_Reg[10].q[],Average_Reg[11].q[]);
 GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[10].q[],Average_Reg[11].q[],Average_Reg[14].q[],Average_Reg[15].q[]);
 
-FOR i in 0 to 8 GENERATE
+FOR i in 0 to (NumGroup-1) GENERATE
 	Group_Reg[i].data[] = GroupSum[i].result[11..2];
 	Group_Reg[i].(clock,enable,load) = (Clock, VCC,VCC);
 END GENERATE;
@@ -166,7 +166,7 @@ LThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 MThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 HThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 
-FOR i in 0 to 8 GENERATE
+FOR i in 0 to (NumGroup-1) GENERATE
 	IF((Group_Reg[i].q[] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- превышен нижний порог
 																			  ELSE GroupValue_Up_LT[i] = GND;
 	END IF; 
@@ -184,7 +184,7 @@ END GENERATE;
 
 IF (%(InData_Reg[8][0].q[] > LThresholdReg.q[]) 
 	OR% (InData_Reg[9][0].q[] > LThresholdReg.q[])
---	OR (InData_Reg[10][0].q[] > LThresholdReg.q[])
+	--OR (InData_Reg[10][0].q[] > LThresholdReg.q[])
 	OR (InData_Reg[11][0].q[] > LThresholdReg.q[])
 	OR (InData_Reg[12][0].q[] > LThresholdReg.q[])
 	OR (InData_Reg[13][0].q[] > LThresholdReg.q[])
@@ -193,6 +193,11 @@ IF (%(InData_Reg[8][0].q[] > LThresholdReg.q[])
 													else FastTrig = GND;
 END IF;
 
+%FastTrig = GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR GroupLT_Trig[8].q;
+		--(GroupLT_Trig[0].q OR (GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR )GroupLT_Trig[3].q OR 
+		--GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
+		--GroupLT_Trig[8].q);
+%
 --- исправить счетчики!!!
 
 TrigThreshCount_1.(clock) = (Clock);
@@ -219,7 +224,7 @@ ThrNum1[] = TrigThreshCount_Reg1.q[];
 ThrNum2[] = TrigThreshCount_Reg2.q[];
 ThrNum3[] = TrigThreshCount_Reg3.q[];
 
-FOR i in 0 to 8 GENERATE
+FOR i in 0 to (NumGroup-1) GENERATE
 	Delay_Group_Reg[i].data[] = Group_Reg[i].q[ADC_Bits-1..0];
 	Delay_Group_Reg[i].(clock,enable,load, sclr)  = (Clock, VCC, VCC, AllReset.q);
 	IF((Group_Reg[i].q[] < Delay_Group_Reg[i].q[]) AND (GroupLT_Trig[i].q == VCC) AND (GroupAmp_Trig[i].q == GND)) THEN GroupValue_Amp_Done[i] = VCC;
@@ -229,13 +234,9 @@ FOR i in 0 to 8 GENERATE
 
 	Amp_Reg[i].(data[],clock,enable,load,aclr) = (Delay_Group_Reg[i].q[],Clock,(!GroupAmp_Trig[i].q AND GroupLT_Trig[i].q),VCC, AllReset.q);
 END GENERATE;
-%FastTrig = GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR GroupLT_Trig[8].q;
-		--(GroupLT_Trig[0].q OR (GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR )GroupLT_Trig[3].q OR 
-		--GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
-		--GroupLT_Trig[8].q);
-%
-Trig = (GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
-		GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR
+
+Trig = (%GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
+		GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR%
 		GroupAmp_Trig[8].q);
 --MaxAmp[] = GND;
 --MaxAmp[] = Amp_Reg[0].q[9..2];
@@ -252,56 +253,56 @@ Amp_Reg_7.(clock, enable, load, sclr) = (Clock, VCC, VCC, Inhibit.q);
 Max_Reg.(clock, enable, load, sclr) = (Clock, VCC, VCC, Inhibit.q);
 
 IF Amp_Reg[0].q[] > Amp_Reg[1].q[] Then 
-	Amp_Reg_1.data[7..0] = Amp_Reg[0].q[8..1];
-	Amp_Reg_1.data[11..8] = b"0000";
-ELSE Amp_Reg_1.data[7..0] = Amp_Reg[1].q[8..1];
-	 Amp_Reg_1.data[11..8] = b"0001";
+	Amp_Reg_1.data[9..0] = Amp_Reg[0].q[];
+	Amp_Reg_1.data[13..10] = b"0000";
+ELSE Amp_Reg_1.data[9..0] = Amp_Reg[1].q[];
+	 Amp_Reg_1.data[13..10] = b"0001";
 END IF;
 
 IF Amp_Reg[2].q[] > Amp_Reg[3].q[] Then 
-	Amp_Reg_2.data[7..0] = Amp_Reg[2].q[8..1];
-	Amp_Reg_2.data[11..8] = b"0010";
-ELSE Amp_Reg_2.data[7..0] = Amp_Reg[3].q[8..1];
-	 Amp_Reg_2.data[11..8] = b"0011";
+	Amp_Reg_2.data[9..0] = Amp_Reg[2].q[];
+	Amp_Reg_2.data[13..10] = b"0010";
+ELSE Amp_Reg_2.data[9..0] = Amp_Reg[3].q[];
+	 Amp_Reg_2.data[13..10] = b"0011";
 END IF;
 
 IF Amp_Reg[4].q[] > Amp_Reg[5].q[] Then 
-	Amp_Reg_3.data[7..0] = Amp_Reg[4].q[8..1];
-	Amp_Reg_3.data[11..8] = b"0100";
-ELSE Amp_Reg_3.data[7..0] = Amp_Reg[5].q[8..1];
-	 Amp_Reg_3.data[11..8] = b"0101";
+	Amp_Reg_3.data[9..0] = Amp_Reg[4].q[];
+	Amp_Reg_3.data[13..10] = b"0100";
+ELSE Amp_Reg_3.data[9..0] = Amp_Reg[5].q[];
+	 Amp_Reg_3.data[13..10] = b"0101";
 END IF;
 
 IF Amp_Reg[6].q[] > Amp_Reg[7].q[] Then 
-	Amp_Reg_4.data[7..0] = Amp_Reg[6].q[8..1];
-	Amp_Reg_4.data[11..8] = b"0110";
-ELSE Amp_Reg_4.data[7..0] = Amp_Reg[7].q[8..1];
-	 Amp_Reg_4.data[11..8] = b"0111";
+	Amp_Reg_4.data[9..0] = Amp_Reg[6].q[];
+	Amp_Reg_4.data[13..10] = b"0110";
+ELSE Amp_Reg_4.data[9..0] = Amp_Reg[7].q[];
+	 Amp_Reg_4.data[13..10] = b"0111";
 END IF;
 
-IF Amp_Reg_1.q[7..0] > Amp_Reg_2.q[7..0] Then 
+IF Amp_Reg_1.q[9..0] > Amp_Reg_2.q[9..0] Then 
 	Amp_Reg_5.data[] = Amp_Reg_1.q[];
 ELSE Amp_Reg_5.data[] = Amp_Reg_2.q[];
 END IF;
 
-IF Amp_Reg_3.q[7..0] > Amp_Reg_4.q[7..0] Then 
+IF Amp_Reg_3.q[9..0] > Amp_Reg_4.q[9..0] Then 
 	Amp_Reg_6.data[] = Amp_Reg_3.q[];
 ELSE Amp_Reg_6.data[] = Amp_Reg_4.q[];
 END IF;
 
-IF Amp_Reg_5.q[7..0] > Amp_Reg_6.q[7..0] Then 
+IF Amp_Reg_5.q[9..0] > Amp_Reg_6.q[9..0] Then 
 	Amp_Reg_7.data[] = Amp_Reg_5.q[];
 ELSE Amp_Reg_7.data[] = Amp_Reg_6.q[];
 END IF;
-%
-IF Amp_Reg_7.q[7..0] > Amp_Reg[8].q[8..1] Then 
+
+IF Amp_Reg_7.q[9..0] > Amp_Reg[8].q[] Then 
 	Max_Reg.data[] = Amp_Reg_7.q[];
-ELSE Max_Reg.data[7..0] = Amp_Reg[8].q[8..1];
-	 Max_Reg.data[11..8] = b"1000";
+ELSE Max_Reg.data[9..0] = Amp_Reg[8].q[];
+	 Max_Reg.data[13..10] = b"1000";
 END IF;
-%
-MaxAmp[] = Amp_Reg_7.q[7..0];--Max_Reg.q[7..0];
-MaxCellNumber[] = Amp_Reg_7.q[11..8];--Max_Reg.q[11..8];
+
+MaxAmp[] = Max_Reg.q[9..0];--Amp_Reg_7.q[7..0];--
+MaxCellNumber[] = Max_Reg.q[13..10];--Amp_Reg_7.q[11..8];--
 
 -- *************** Cycle proceeding control ********************
 -- Общий сброс

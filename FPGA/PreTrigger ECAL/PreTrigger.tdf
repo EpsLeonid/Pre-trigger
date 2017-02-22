@@ -26,9 +26,7 @@ INCLUDE "lpm_ff.inc";
 CONSTANT Masks_Offset = H"20";   -- MasksReg #32
 
 CONSTANT NUM_ADCboard = 16;	-- Number of ADC boards in the trigger
---CONSTANT NUM_ADCboard = 5;	-- Number of ADC boards in the trigger
 CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
---CONSTANT NUM_CH_Tr = 8;	-- Number of channels in the trigger
 CONSTANT ADC_Bits = 10;		-- Number of ADC bits in one channel
 CONSTANT ThresholdData_0 = 300;
 CONSTANT ThresholdData_1 = 450;
@@ -195,10 +193,10 @@ ThreshCount_1Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 ThreshCount_2Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 ThreshCount_3Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 
-TrigMaxAmp_Reg		: lpm_shiftreg with (lpm_width = 8, lpm_DIRECTION="unused");
+TrigMaxAmp_Reg		: lpm_shiftreg with (lpm_width = ADC_Bits, lpm_DIRECTION="unused");
 MaxCellNumber_Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 
-Trigger_reg			: lpm_shiftreg with (lpm_width = 24, lpm_DIRECTION="unused");
+Trigger_reg			: lpm_shiftreg with (lpm_width = 25, lpm_DIRECTION="unused");
 TrigOUT[31..0]		: node;
 
 Reset		: node;
@@ -347,7 +345,7 @@ END IF;
 --============================================================================
 --******** 4. ADC data *********************************************
 
-FOR i in 0 to 127 GENERATE
+FOR i in 0 to (NUM_CH_Tr-1) GENERATE
 	ADCInData[i].(rx_in[], rx_inclock) = (ADCInDataLVDS[i], Clk40);
 	InData_Reg[i].(data[], clock, enable, load) = (ADCInData[i].rx_out[], Clk40, VCC, VCC);
 END GENERATE;
@@ -391,16 +389,22 @@ ThreshCount_1Reg.(data[], clock, enable, load) = (SignalProc.ThrNum1[], clk40, V
 ThreshCount_2Reg.(data[], clock, enable, load) = (SignalProc.ThrNum2[], clk40, VCC, VCC);
 ThreshCount_3Reg.(data[], clock, enable, load) = (SignalProc.ThrNum3[], clk40, VCC, VCC);
 
-Trigger_reg.data[7..0] = TrigMaxAmp_Reg.q[];
-Trigger_reg.data[10..8] = MaxCellNumber_Reg.q[2..0];
-Trigger_reg.data[11] = SignalProc.Trig;
-Trigger_reg.data[15..12] = ThreshCount_1Reg.q[];
-Trigger_reg.data[19..16] = ThreshCount_2Reg.q[];
-Trigger_reg.data[23..20] = ThreshCount_3Reg.q[];
+Trigger_reg.data[9..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
+Trigger_reg.data[13..10] = SignalProc.MaxCellNumber[];--MaxCellNumber_Reg.q[2..0];
+--Trigger_reg.data[11] = SignalProc.Trig;
+Trigger_reg.data[15..13] = GND;--ThreshCount_1Reg.q[];
+Trigger_reg.data[19..16] = VCC;--ThreshCount_2Reg.q[];
+Trigger_reg.data[23..20] = GND;--ThreshCount_3Reg.q[];
+Trigger_reg.data[24] = FastTrigDis;
 Trigger_reg.(clock,load,enable,sclr) = (Clk40, VCC, VCC, SignalProc.ResetAll);
+--Trigger_reg.(data[23..0],clock,load,enable) = (TestTrigCt.q[23..0], Clk40, VCC, VCC);
 
---TriggerData[15..0] = Trigger_reg.q[15..0];
-TriggerData[TrigBits-1..24] = GND;
+--TriggerData[23..0] = Trigger_reg.q[23..0];
+FOR i in 0 to 23 GENERATE
+	TriggerData[i] = GND;--TestTrigCt.q[i];
+END GENERATE;
+TriggerData[24] = Trigger_reg.q[24];
+TriggerData[TrigBits-1..25] = GND;
 
 FastTrigDis = SignalProc.FastTrig;
 --TrigDis = SignalProc.Trig;
@@ -415,20 +419,11 @@ IF (%(InData_Reg[8].q[] > Threshold_Reg[1].q[])
 	OR (InData_Reg[15].q[] > Threshold_Reg[1].q[])) then TrigDis = VCC;
 													else TrigDis = GND;
 END IF;
-%
-TrigDis = SignalProc[1].Trig OR SignalProc[2].Trig OR SignalProc[3].Trig OR SignalProc[4].Trig
-		OR SignalProc[5].Trig OR SignalProc[6].Trig OR SignalProc[7].Trig OR SignalProc[8].Trig
-		OR SignalProc[9].Trig OR SignalProc[10].Trig OR SignalProc[11].Trig OR SignalProc[12].Trig
-		OR SignalProc[13].Trig OR SignalProc[14].Trig OR SignalProc[15].Trig OR SignalProc[16].Trig;
-%
-Trig = TrigDis;--InData_Reg[1].q[6] AND InData_Reg[1].q[7] AND InData_Reg[1].q[8];--InData_Reg[10].q[6];--
+
+Trig = TrigDis;
 
 --============================================================================
---******** 6. Data transfer *********************************************
-
-
---============================================================================
---******** 5. Ethernet Interface *******************************************
+--******** 6. Ethernet Interface *******************************************
 
 TxD[] = TestTrigCt.q[3..0];
 TxEn = TrigIn;
@@ -440,12 +435,12 @@ Reset = HardReset OR ExtReset;
 
 --============================================================================
 -- 8. Testing circuitry ******************************************************
-%TestCt.(clock, clk_en)  = (FQuartz, VCC); -- Test Counter, can be used to drive LED blinking
---TestCt.(clock, clk_en)  = (LinkClk, VCC); -- Test Counter, can be used to drive LED blinking
-TestCt.cnt_en           = VCC;
-TestCt.aclr             = PowerUp0 & !TestCt_rst2;  --\Reset for making proper PwrUp timing diagram
-    TestCt_rst1 = DFF(.D=PowerUp0,   .clk= FQuartz);-- > _/^^\_ ,
-    TestCt_rst2 = DFF(.D=TestCt_rst1,.clk=!FQuartz);--/   duration >=(1/2)Tquartz
+%TestCt.(clock, clk_en)	= (FQuartz, VCC); -- Test Counter, can be used to drive LED blinking
+--TestCt.(clock, clk_en)= (LinkClk, VCC); -- Test Counter, can be used to drive LED blinking
+TestCt.cnt_en			= VCC;
+TestCt.aclr				= PowerUp0 & !TestCt_rst2;  --\Reset for making proper PwrUp timing diagram
+	TestCt_rst1 = DFF(.D=PowerUp0,   .clk= FQuartz);-- > _/^^\_ ,
+	TestCt_rst2 = DFF(.D=TestCt_rst1,.clk=!FQuartz);--/   duration >=(1/2)Tquartz
 %
 TestCt.(clock, clk_en)	= (FQuartz, VCC); -- Test Counter, can be used to drive LED blinking
 TestCt.cnt_en			=  PowerUp0;
@@ -470,17 +465,7 @@ TestTrigCt.cnt_en			= VCC;
 --	Im_ADCCt.cnt_en = GND;
 --	Im_RAMAddrBus[7..0] = AddrBus_In[7..0] + Im_ADCCt.q[7..0]; -- aunoaaeaiea aa?ana a 0 aey oaeouaai iaai?a FOR-ia
 %
---Trigger_reg.(data[23..0],clock,load,enable) = (TestTrigCt.q[23..0], Clk40, VCC, VCC);
-%
-FOR i in 14 to 23 GENERATE
-	TriggerData[i] = InData_Reg[1].q[i-14];
-END GENERATE;%
-FOR i in 0 to 23 GENERATE
-	TriggerData[i] = TestTrigCt.q[i];
-END GENERATE;%
---TriggerData[TrigBits-1..0] = GND;
-%
-Test[9..2] = InData_Reg[15].q[7..0];
+Test[9..2] = InData_Reg[11].q[7..0];
 Test[0] = FastTrigDis;
 Test[1] = TrigDis;
 Test[15..10] = GND;
