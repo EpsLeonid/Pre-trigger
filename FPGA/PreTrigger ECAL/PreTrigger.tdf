@@ -465,13 +465,15 @@ TestTrigCt.cnt_en			= VCC;
 --	Im_ADCCt.cnt_en = GND;
 --	Im_RAMAddrBus[7..0] = AddrBus_In[7..0] + Im_ADCCt.q[7..0]; -- aunoaaeaiea aa?ana a 0 aey oaeouaai iaai?a FOR-ia
 %
-Test[9..2] = InData_Reg[11].q[7..0];
 Test[0] = FastTrigDis;
 Test[1] = TrigDis;
+Test[2] = GND;
+Test[6..3] = SignalProc.test[14..11];--InData_Reg[11].q[7..0];
+Test[9..7] = SignalProc.test[10..8];--InData_Reg[11].q[7..0];
 Test[15..10] = GND;
 %
 Test[7..0] = TrigMaxAmp_Reg.q[7..0];--InData_Reg[9].q[8..0];
-Test[8] = SignalProc.MaxCellNumber[0];--PwrUpSet1;--Trigger.test1;
+Test[8] = SignalProc.MaxCellNumber[0];--PwrUpSet1;
 Test[9] = SignalProc.MaxCellNumber[1];--PLL.locked;
 Test[10] = SignalProc.Trig;--SignalProc.MaxCellNumber[2];--Clk40;
 --Test[11] = SignalProc.MaxCellNumber[3];--PwrUpReset;--SignalProc.MaxAmp[3];--FCTClk40;

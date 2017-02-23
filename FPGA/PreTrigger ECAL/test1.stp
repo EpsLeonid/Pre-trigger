@@ -1,4 +1,4 @@
-<session jtag_chain="USB-Blaster [USB-0]" jtag_device="@1: EP3C40/EP4CE30/EP4CE40 (0x020F40DD)" sof_file="PreTrigger.sof" top_level_entity="PreTrigger">
+<session jtag_chain="USB-Blaster [USB-0]" jtag_device="" sof_file="PreTrigger.sof" top_level_entity="PreTrigger">
   <display_tree gui_logging_enabled="0">
     <display_branch instance="auto_signaltap_0" log="USE_GLOBAL_TEMP" signal_set="USE_GLOBAL_TEMP" trigger="USE_GLOBAL_TEMP"/>
   </display_tree>
@@ -2558,7 +2558,7 @@
           <net is_signal_inverted="no" name="TriggerData[24]"/>
         </setup_view>
       </presentation>
-      <trigger CRC="1DD8DEE" attribute_mem_mode="false" gap_record="true" global_temp="1" is_expanded="true" name="trigger: 2017/02/22 18:25:31  #1" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="1" storage_mode="conditional" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="false" storage_qualifier_port_name="PLL_Trigger:PLL|c0" storage_qualifier_port_tap_mode="classic" trigger_in="rising edge" trigger_out="active high" trigger_type="circular">
+      <trigger CRC="1DD8DEE" attribute_mem_mode="false" gap_record="true" global_temp="1" is_expanded="true" name="trigger: 2017/02/22 18:25:31  #1" position="pre" power_up_trigger_mode="false" record_data_gap="true" segment_size="1" storage_mode="conditional" storage_qualifier_disabled="no" storage_qualifier_port_is_pin="true" storage_qualifier_port_name="PLL_Trigger:PLL|c0" storage_qualifier_port_tap_mode="classic" trigger_in="rising edge" trigger_out="active high" trigger_type="circular">
         <power_up_trigger position="pre" storage_qualifier_disabled="no" trigger_in="dont_care" trigger_out="active high"/>
         <events use_custom_flow_control="no">
           <level enabled="yes" name="condition1" type="basic">
@@ -2590,7 +2590,9 @@
         <storage_qualifier_events>
           <transitional>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
             
+            
             <pwr_up_transitional>0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+            
             
             </pwr_up_transitional>
           </transitional>
@@ -2623,7 +2625,7 @@
       <single attribute="data hierarchy PLL_Trigger:PLL" value="1"/>
       <single attribute="data hierarchy root" value="3"/>
       <single attribute="data horizontal scroll position" value="0"/>
-      <single attribute="data vertical scroll position" value="39"/>
+      <single attribute="data vertical scroll position" value="38"/>
       <single attribute="setup hierarchy FindMaxAmp:SignalProc" value="1"/>
       <single attribute="setup hierarchy PLL_Trigger:PLL" value="1"/>
       <single attribute="setup hierarchy lpm_shiftreg:Group_Reg[0]" value="1"/>
@@ -2655,9 +2657,9 @@
       <single attribute="setup horizontal scroll position" value="0"/>
       <single attribute="setup vertical scroll position" value="61"/>
       <single attribute="zoom level denominator" value="1"/>
-      <single attribute="zoom level numerator" value="1"/>
+      <single attribute="zoom level numerator" value="2"/>
       <single attribute="zoom offset denominator" value="1"/>
-      <single attribute="zoom offset numerator" value="129274"/>
+      <single attribute="zoom offset numerator" value="64637"/>
       <multi attribute="timebars" size="2" value="82,290"/>
     </position_info>
   </instance>
