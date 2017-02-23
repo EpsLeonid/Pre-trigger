@@ -13,9 +13,9 @@ CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
 CONSTANT ThresholdData_0 = 350;
 CONSTANT ThresholdData_1 = 500;
-CONSTANT ThresholdData_2 = 900;
-CONSTANT MaxTime = 30;  -- Maximal Valid time (750ns)
-CONSTANT ResetTime = 50;
+CONSTANT ThresholdData_2 = 650;
+CONSTANT MaxTime = 160;  -- Maximal Valid time (750ns)
+CONSTANT ResetTime = 240;
 
 SUBDESIGN FindMaxAmp
 (
@@ -101,8 +101,8 @@ Inhibit							: SRFF;
 TimeOutSch						: node;
 TimeOut							: node;
 ENDCycle						: node; -- флаг окончание работы цикла
-DelayENDCycle[5..0]				: DFF;
-DelayReset[5..0]				: DFF;
+DelayENDCycle[9..0]				: DFF;
+DelayReset[9..0]				: DFF;
 
 BEGIN
 
@@ -311,8 +311,14 @@ ELSE Max_Reg.data[9..0] = Amp_Reg[8].q[];
 	 Max_Reg.data[13..10] = b"1000";
 END IF;
 
-MaxAmp[] = Max_Reg.q[9..0];--Amp_Reg_7.q[7..0];--
-MaxCellNumber[] = Max_Reg.q[13..10];--Amp_Reg_7.q[11..8];--
+IF ((%GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR% 
+	  GroupLT_Trig[8].q)== VCC)
+		Then MaxAmp[] = Max_Reg.q[9..0];--Amp_Reg_7.q[7..0];--
+			 MaxCellNumber[] = Max_Reg.q[13..10];--Amp_Reg_7.q[11..8];--
+		Else MaxAmp[] = b"0000000000";--Amp_Reg_7.q[7..0];--
+			 MaxCellNumber[] = b"0000";--Amp_Reg_7.q[11..8];--
+END IF;
 
 -- *************** Cycle proceeding control ********************
 -- Общий сброс
@@ -363,8 +369,12 @@ DelayENDCycle[2].(d,clk) = (DelayENDCycle[1], Clock);
 DelayENDCycle[3].(d,clk) = (DelayENDCycle[2], Clock);
 DelayENDCycle[4].(d,clk) = (DelayENDCycle[3], Clock);
 DelayENDCycle[5].(d,clk) = (DelayENDCycle[4], Clock);
+DelayENDCycle[6].(d,clk) = (DelayENDCycle[5], Clock);
+DelayENDCycle[7].(d,clk) = (DelayENDCycle[6], Clock);
+DelayENDCycle[8].(d,clk) = (DelayENDCycle[7], Clock);
+DelayENDCycle[9].(d,clk) = (DelayENDCycle[8], Clock);
 
-Inhibit.S = DelayENDCycle[4].q;
+Inhibit.S = DelayENDCycle[9].q;
 Inhibit.clk = Clock;
 Inhibit.R = DelayReset[5].q;
 
@@ -378,18 +388,22 @@ DelayReset[2].(d, clk) = (DelayReset[1].q, Clock);
 DelayReset[3].(d, clk) = (DelayReset[2].q, Clock);
 DelayReset[4].(d, clk) = (DelayReset[3].q, Clock);
 DelayReset[5].(d, clk) = (DelayReset[4].q, Clock);
+DelayReset[6].(d, clk) = (DelayReset[5].q, Clock);
+DelayReset[7].(d, clk) = (DelayReset[6].q, Clock);
+DelayReset[8].(d, clk) = (DelayReset[7].q, Clock);
+DelayReset[9].(d, clk) = (DelayReset[8].q, Clock);
 
 ResetAll = AllReset.q;
 
 test[7..0] = MaxAmp[7..0];--Group_Reg[0].q[9..2];--GroupSum[1].result[11..2];
-test[8] = MaxCellNumber[0];
-test[9] = MaxCellNumber[1];
-test[10] = MaxCellNumber[2];
-test[11] = (GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
-	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR 
+test[8] = MaxCellNumber[0];--TimeOutSch;--
+test[9] = MaxCellNumber[1];--TimeOut;--
+test[10] = MaxCellNumber[2];--ENDthrFound;--
+test[11] = (%GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR %
 	  GroupLT_Trig[8].q);
-test[12] = (GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
-	  GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR 
+test[12] = (%GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
+	  GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR% 
 	  GroupAmp_Trig[8].q);
 test[13] = Inhibit.q;
 test[14] = AllReset.q;--Group_Reg[2].q[9..2];--GroupSum[0].result[11..4];

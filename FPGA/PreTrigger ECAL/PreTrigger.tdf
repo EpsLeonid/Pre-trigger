@@ -337,11 +337,15 @@ LedR = R_Flash.LightOut;
 R_Flash.(clock, event) =(Clk40,Error);-- Error is defined in Control Unit section
 
 Error = PhaseSw.Error OR Overflow;
+
 --******** 
-IF InData_Reg[9].q[] > Threshold_Reg[2].q[] then Overflow = VCC;
-											else Overflow = GND;
-END IF;
+FOR i in 0 to (15) GENERATE
+	IF (InData_Reg[i].q[] > Threshold_Reg[2].q[]) then Overflow = VCC;
+												  else Overflow = GND;
+	END IF;
+END GENERATE;
 --******** 
+
 --============================================================================
 --******** 4. ADC data *********************************************
 
@@ -364,7 +368,7 @@ END GENERATE;
 --============================================================================
 --******** 5. Trigger section *********************************************
 
-SignalProc.Clock = Clk40;
+SignalProc.Clock = Clk160;
 SignalProc.Clock160 = Clk160;
 SignalProc.Reset = ExtReset OR HardReset;
 %
@@ -392,15 +396,15 @@ ThreshCount_3Reg.(data[], clock, enable, load) = (SignalProc.ThrNum3[], clk40, V
 Trigger_reg.data[9..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
 Trigger_reg.data[13..10] = SignalProc.MaxCellNumber[];--MaxCellNumber_Reg.q[2..0];
 --Trigger_reg.data[11] = SignalProc.Trig;
-Trigger_reg.data[15..13] = GND;--ThreshCount_1Reg.q[];
+Trigger_reg.data[15..14] = GND;--ThreshCount_1Reg.q[];
 Trigger_reg.data[19..16] = VCC;--ThreshCount_2Reg.q[];
 Trigger_reg.data[23..20] = GND;--ThreshCount_3Reg.q[];
 Trigger_reg.data[24] = FastTrigDis;
 Trigger_reg.(clock,load,enable,sclr) = (Clk40, VCC, VCC, SignalProc.ResetAll);
 --Trigger_reg.(data[23..0],clock,load,enable) = (TestTrigCt.q[23..0], Clk40, VCC, VCC);
 
---TriggerData[23..0] = Trigger_reg.q[23..0];
-FOR i in 0 to 23 GENERATE
+TriggerData[13..0] = Trigger_reg.q[13..0];
+FOR i in 14 to 23 GENERATE
 	TriggerData[i] = GND;--TestTrigCt.q[i];
 END GENERATE;
 TriggerData[24] = Trigger_reg.q[24];
