@@ -144,7 +144,7 @@ END GENERATE;
 FOR i in 0 to (NumGroup-1) GENERATE
 	GroupSum[i].clock = Clock;
 END GENERATE;
-GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[0].q[],Average_Reg[1].q[],Average_Reg[4].q[],Average_Reg[5].q[]);
+%GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[0].q[],Average_Reg[1].q[],Average_Reg[4].q[],Average_Reg[5].q[]);
 GroupSum[1].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[4].q[],Average_Reg[5].q[],Average_Reg[8].q[],Average_Reg[9].q[]);
 GroupSum[2].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[8].q[],Average_Reg[9].q[],Average_Reg[12].q[],Average_Reg[13].q[]);
 GroupSum[3].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[1].q[],Average_Reg[2].q[],Average_Reg[5].q[],Average_Reg[6].q[]);
@@ -152,7 +152,16 @@ GroupSum[4].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[5].q[],Average_
 GroupSum[5].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[9].q[],Average_Reg[10].q[],Average_Reg[13].q[],Average_Reg[14].q[]);
 GroupSum[6].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[2].q[],Average_Reg[3].q[],Average_Reg[6].q[],Average_Reg[7].q[]);
 GroupSum[7].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[6].q[],Average_Reg[7].q[],Average_Reg[10].q[],Average_Reg[11].q[]);
-GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (b"0100000000"%Average_Reg[10].q[]%,Average_Reg[11].q[],Average_Reg[14].q[],Average_Reg[15].q[]);
+GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (b"0100000000"Average_Reg[10].q[],Average_Reg[11].q[],Average_Reg[14].q[],Average_Reg[15].q[]);
+%GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Summator[0].result[10..1],Summator[1].result[10..1],Summator[4].result[10..1],Summator[5].result[10..1]);
+GroupSum[1].(data0x[],data1x[],data2x[],data3x[]) = (Summator[4].result[10..1],Summator[5].result[10..1],Summator[8].result[10..1],Summator[9].result[10..1]);
+GroupSum[2].(data0x[],data1x[],data2x[],data3x[]) = (Summator[8].result[10..1],Summator[9].result[10..1],Summator[12].result[10..1],Summator[13].result[10..1]);
+GroupSum[3].(data0x[],data1x[],data2x[],data3x[]) = (Summator[1].result[10..1],Summator[2].result[10..1],Summator[5].result[10..1],Summator[6].result[10..1]);
+GroupSum[4].(data0x[],data1x[],data2x[],data3x[]) = (Summator[5].result[10..1],Summator[6].result[10..1],Summator[9].result[10..1],Summator[10].result[10..1]);
+GroupSum[5].(data0x[],data1x[],data2x[],data3x[]) = (Summator[9].result[10..1],Summator[10].result[10..1],Summator[13].result[10..1],Summator[14].result[10..1]);
+GroupSum[6].(data0x[],data1x[],data2x[],data3x[]) = (Summator[2].result[10..1],Summator[3].result[10..1],Summator[6].result[10..1],Summator[7].result[10..1]);
+GroupSum[7].(data0x[],data1x[],data2x[],data3x[]) = (Summator[6].result[10..1],Summator[7].result[10..1],Summator[10].result[10..1],Summator[11].result[10..1]);
+GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (b"0100000000"%Summator[10].result[]%,Summator[11].result[10..1],Summator[14].result[10..1],Summator[15].result[10..1]);
 
 FOR i in 0 to (NumGroup-1) GENERATE
 	Group_Reg[i].data[] = GroupSum[i].result[11..2];
@@ -167,7 +176,7 @@ MThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 HThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 
 FOR i in 0 to (NumGroup-1) GENERATE
-	IF((Group_Reg[i].q[] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- превышен нижний порог
+	IF((GroupSum[i].result[11..2] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- превышен нижний порог
 																			  ELSE GroupValue_Up_LT[i] = GND;
 	END IF; 
 	IF((Group_Reg[i].q[] > MThresholdReg.q[]) AND (GroupMT_Trig[i].q == VCC)) THEN GroupValue_Up_MT[i] = VCC; -- превышен средний порог
@@ -374,7 +383,7 @@ DelayENDCycle[7].(d,clk) = (DelayENDCycle[6], Clock);
 DelayENDCycle[8].(d,clk) = (DelayENDCycle[7], Clock);
 DelayENDCycle[9].(d,clk) = (DelayENDCycle[8], Clock);
 
-Inhibit.S = DelayENDCycle[7].q;
+Inhibit.S = DelayENDCycle[9].q;
 Inhibit.clk = Clock;
 Inhibit.R = DelayReset[5].q;
 
@@ -396,9 +405,9 @@ DelayReset[9].(d, clk) = (DelayReset[8].q, Clock);
 ResetAll = AllReset.q;
 
 test[7..0] = MaxAmp[7..0];--Group_Reg[0].q[9..2];--GroupSum[1].result[11..2];
-test[8] = TimeOutSch;--MaxCellNumber[0];
-test[9] = TimeOut;--MaxCellNumber[1];
-test[10] = ENDthrFound;--MaxCellNumber[2];
+test[8] = MaxCellNumber[0];--TimeOutSch;--
+test[9] = MaxCellNumber[1];--TimeOut;--
+test[10] = MaxCellNumber[2];--ENDthrFound;--
 test[11] = (%GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
 	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR %
 	  GroupLT_Trig[8].q);

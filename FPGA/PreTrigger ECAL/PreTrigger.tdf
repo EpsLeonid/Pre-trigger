@@ -399,7 +399,7 @@ Trigger_reg.data[13..10] = SignalProc.MaxCellNumber[];--MaxCellNumber_Reg.q[2..0
 Trigger_reg.data[15..14] = GND;--ThreshCount_1Reg.q[];
 Trigger_reg.data[19..16] = VCC;--ThreshCount_2Reg.q[];
 Trigger_reg.data[23..20] = GND;--ThreshCount_3Reg.q[];
-Trigger_reg.data[24] = FastTrigDis;
+Trigger_reg.data[24] = SignalProc.FastTrig;
 Trigger_reg.(clock,load,enable,sclr) = (Clk40, VCC, VCC, SignalProc.ResetAll);
 --Trigger_reg.(data[23..0],clock,load,enable) = (TestTrigCt.q[23..0], Clk40, VCC, VCC);
 
