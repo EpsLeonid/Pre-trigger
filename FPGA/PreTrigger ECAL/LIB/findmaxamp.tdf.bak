@@ -144,7 +144,7 @@ END GENERATE;
 FOR i in 0 to (NumGroup-1) GENERATE
 	GroupSum[i].clock = Clock;
 END GENERATE;
-%GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[0].q[],Average_Reg[1].q[],Average_Reg[4].q[],Average_Reg[5].q[]);
+GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[0].q[],Average_Reg[1].q[],Average_Reg[4].q[],Average_Reg[5].q[]);
 GroupSum[1].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[4].q[],Average_Reg[5].q[],Average_Reg[8].q[],Average_Reg[9].q[]);
 GroupSum[2].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[8].q[],Average_Reg[9].q[],Average_Reg[12].q[],Average_Reg[13].q[]);
 GroupSum[3].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[1].q[],Average_Reg[2].q[],Average_Reg[5].q[],Average_Reg[6].q[]);
@@ -152,16 +152,7 @@ GroupSum[4].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[5].q[],Average_
 GroupSum[5].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[9].q[],Average_Reg[10].q[],Average_Reg[13].q[],Average_Reg[14].q[]);
 GroupSum[6].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[2].q[],Average_Reg[3].q[],Average_Reg[6].q[],Average_Reg[7].q[]);
 GroupSum[7].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[6].q[],Average_Reg[7].q[],Average_Reg[10].q[],Average_Reg[11].q[]);
-GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (b"0100000000"Average_Reg[10].q[],Average_Reg[11].q[],Average_Reg[14].q[],Average_Reg[15].q[]);
-%GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Summator[0].result[10..1],Summator[1].result[10..1],Summator[4].result[10..1],Summator[5].result[10..1]);
-GroupSum[1].(data0x[],data1x[],data2x[],data3x[]) = (Summator[4].result[10..1],Summator[5].result[10..1],Summator[8].result[10..1],Summator[9].result[10..1]);
-GroupSum[2].(data0x[],data1x[],data2x[],data3x[]) = (Summator[8].result[10..1],Summator[9].result[10..1],Summator[12].result[10..1],Summator[13].result[10..1]);
-GroupSum[3].(data0x[],data1x[],data2x[],data3x[]) = (Summator[1].result[10..1],Summator[2].result[10..1],Summator[5].result[10..1],Summator[6].result[10..1]);
-GroupSum[4].(data0x[],data1x[],data2x[],data3x[]) = (Summator[5].result[10..1],Summator[6].result[10..1],Summator[9].result[10..1],Summator[10].result[10..1]);
-GroupSum[5].(data0x[],data1x[],data2x[],data3x[]) = (Summator[9].result[10..1],Summator[10].result[10..1],Summator[13].result[10..1],Summator[14].result[10..1]);
-GroupSum[6].(data0x[],data1x[],data2x[],data3x[]) = (Summator[2].result[10..1],Summator[3].result[10..1],Summator[6].result[10..1],Summator[7].result[10..1]);
-GroupSum[7].(data0x[],data1x[],data2x[],data3x[]) = (Summator[6].result[10..1],Summator[7].result[10..1],Summator[10].result[10..1],Summator[11].result[10..1]);
-GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (b"0100000000"%Summator[10].result[]%,Summator[11].result[10..1],Summator[14].result[10..1],Summator[15].result[10..1]);
+GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (b"0100000000"%Average_Reg[10].q[]%,Average_Reg[11].q[],Average_Reg[14].q[],Average_Reg[15].q[]);
 
 FOR i in 0 to (NumGroup-1) GENERATE
 	Group_Reg[i].data[] = GroupSum[i].result[11..2];
@@ -176,7 +167,7 @@ MThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 HThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 
 FOR i in 0 to (NumGroup-1) GENERATE
-	IF((GroupSum[i].result[11..2] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- превышен нижний порог
+	IF((Group_Reg[i].q[] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- превышен нижний порог
 																			  ELSE GroupValue_Up_LT[i] = GND;
 	END IF; 
 	IF((Group_Reg[i].q[] > MThresholdReg.q[]) AND (GroupMT_Trig[i].q == VCC)) THEN GroupValue_Up_MT[i] = VCC; -- превышен средний порог
