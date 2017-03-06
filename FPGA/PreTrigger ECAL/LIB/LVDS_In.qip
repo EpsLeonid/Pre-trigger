@@ -1,5 +1,6 @@
 set_global_assignment -name IP_TOOL_NAME "ALTLVDS"
 set_global_assignment -name IP_TOOL_VERSION "9.1"
 set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "LVDS_In.tdf"]
+set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "LVDS_In.bsf"]
 set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "LVDS_In.inc"]
 set_global_assignment -name MISC_FILE [file join $::quartus(qip_path) "LVDS_In.ppf"]

@@ -2,6 +2,7 @@ TITLE "FindMaxAmp";
 
 INCLUDE "lpm_counter.inc" ;
 INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_add_sub.inc" ;
 INCLUDE "EdgeSensing.inc"; 
 INCLUDE "Sum4.inc";
 INCLUDE "Sum2.inc";
@@ -11,8 +12,9 @@ CONSTANT ADC_Bits = 10; -- разрядность АЦП
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
-CONSTANT ThresholdData_0 = 350;
-CONSTANT ThresholdData_1 = 500;
+Constant Piedistal_def = 250; -- Пьедестал для вычитания (знаение реального пьедестала около 270)
+CONSTANT ThresholdData_0 = 300;
+CONSTANT ThresholdData_1 = 450;
 CONSTANT ThresholdData_2 = 650;
 CONSTANT MaxTime = 160;  -- Maximal Valid time (750ns)
 CONSTANT ResetTime = 240;
@@ -21,6 +23,7 @@ SUBDESIGN FindMaxAmp
 (
 
 In_Data[NumTrigCh-1..0][ADC_Bits-1..0]	: input; -- входные данные
+RegInit									: input;
 MaxAmp[ADC_Bits-1..0]					: output;
 MaxCellNumber[3..0]						: output;
 ThrNum1[3..0]							: output;
@@ -42,7 +45,12 @@ test[15..0]								: output;
 VARIABLE
 
 InData_Reg[NumTrigCh-1..0][NumInReg-1..0]		: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- регистр оцифрованных значений (сэмплов)
-Summator[NumTrigCh-1..0]						: Sum2; -- сумматор на 4
+Piedistal_Reg									: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused", LPM_SVALUE = Piedistal_def); -- регистр уровня порога
+SavePReg										: node;
+
+Sub_Ped[NumTrigCh-1..0]							: lpm_add_sub with (lpm_width = ADC_Bits, lpm_direction="sub", LPM_REPRESENTATION = "UNSIGNED",
+																	lpm_pipeline = 1);
+Summator[NumTrigCh-1..0]						: Sum2; -- сумматор на 2
 Average_Reg[NumTrigCh-1..0]						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- ?aaeno? on?aaiaiiuo cia?aiee
 Divide_x_4[NumTrigCh-1..0][ADC_Bits-1..0]		: node; 
 --Delay_Aver_Reg[NumTrigCh-1..0]					: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- регистр данных
@@ -59,8 +67,8 @@ MThresholdReg				: lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused",
 HThresholdReg				: lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused",LPM_SVALUE = ThresholdData_2); -- верхний порог
 
 GroupLT_Trig[8..0]			: SRFF; -- флаг определения нижнего порога
-GroupMT_Trig[8..0]			: SRFF; -- oeaa ii?aaaeaiey ie?iaai ii?iaa
-GroupHT_Trig[8..0]			: SRFF; -- oeaa ii?aaaeaiey ie?iaai ii?iaa
+GroupMT_Trig[8..0]			: SRFF; -- флаг определения среднего порога
+GroupHT_Trig[8..0]			: SRFF; -- флаг определения верхнего порога
 GroupAmp_Trig[8..0]			: SRFF; -- флаг определения максимума
 
 GroupValue_Up_LT[8..0]		: node; -- сигнал о превышении нижнего порога (стоит пока нижний порог превышен)
@@ -118,11 +126,21 @@ ENDthrFound = GND;
 
 END DEFAULTS;
 
--- *************** Конвеер КИХ фильтра бегущее среднее *********************
+Piedistal_Reg.sset = RegInit;
+Piedistal_Reg.(clock, enable, sset) = (Clock, RegInit, VCC);
+
+FOR i in 0 to (NumTrigCh-1) GENERATE
+	SUB_Ped[i].(dataa[], datab[]) = (In_Data[i][ADC_Bits-1..0], Piedistal_Reg.q[9..0]);
+--	SUB_Ped.aclr = AllReset.q;
+	SUB_ped[i].(clock, clken) = (Clock, VCC);
+END GENERATE;
+
+-- *************** Конвеер фильтра бегущее среднее *********************
 -- соединяем все регистры последовательно
 FOR i in 0 to (NumTrigCh-1) GENERATE
-	InData_Reg[i][0].(data[],clock,enable,load) = (In_Data[i][ADC_Bits-1..0],Clock, VCC,VCC);
-	FOR j IN 0 TO (NumInReg-2) GENERATE
+--	InData_Reg[i][0].(data[],clock,enable,load) = (In_Data[i][ADC_Bits-1..0],Clock, VCC,VCC);
+	InData_Reg[i][0].(data[],clock,enable,load) = (SUB_Ped[i].result[ADC_Bits-1..0],Clock, VCC,VCC);
+		FOR j IN 0 TO (NumInReg-2) GENERATE
 		InData_Reg[i][j+1].data[] = InData_Reg[i][j].q[];
 		InData_Reg[i][j+1].(clock,enable,load) = (Clock,VCC,VCC);
 	END GENERATE;
