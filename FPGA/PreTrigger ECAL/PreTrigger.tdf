@@ -23,8 +23,6 @@ INCLUDE	"lpm_add_sub.inc";
 INCLUDE "lpm_mux.inc" ;
 INCLUDE "lpm_ff.inc";
 
---INCLUDE "Serial_test.inc";
-
 CONSTANT Masks_Offset = H"20";   -- MasksReg #32
 
 CONSTANT NUM_ADCboard = 16;	-- Number of ADC boards in the trigger
@@ -371,6 +369,29 @@ FOR i in 0 to 15 GENERATE
 							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
 							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0],DDR_Reg_neg[i].q[4]);
 END GENERATE;
+-- Few channels has another shift
+%	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk200_adc, Reset);
+	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk200_adc, VCC, GND);
+	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk200_adc, VCC, GND);
+	InData_Reg[i].(clock, enable, load) = (Clk40, VCC, VCC);
+	InData_Reg[i].data[] = (DDR_Reg_neg[i].q[4],DDR_Reg_pos[i].q[4],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3],
+							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
+							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0]);
+	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk200_adc, Reset);
+	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk200_adc, VCC, GND);
+	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk200_adc, VCC, GND);
+	InData_Reg[i].(clock, enable, load) = (Clk40, VCC, VCC);
+	InData_Reg[i].data[] = (DDR_Reg_neg[i].q[4],DDR_Reg_pos[i].q[4],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3],
+							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
+							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0]);
+	DDR_InLVDS[15].(datain, inclock, aclr) = (ADCInDataLVDS[15], Clk200_adc, Reset);
+	DDR_Reg_pos[15].(shiftin, clock, enable, load) = (DDR_InLVDS[15].dataout_h, Clk200_adc, VCC, GND);
+	DDR_Reg_neg[15].(shiftin, clock, enable, load) = (DDR_InLVDS[15].dataout_l, Clk200_adc, VCC, GND);
+	InData_Reg[15].(clock, enable, load) = (Clk40, VCC, VCC);
+	InData_Reg[15].data[] = (DDR_Reg_pos[15].q[4],DDR_Reg_neg[15].q[3],DDR_Reg_pos[15].q[3],
+							DDR_Reg_neg[15].q[2],DDR_Reg_pos[15].q[2],DDR_Reg_neg[15].q[1],DDR_Reg_pos[15].q[1],
+							DDR_Reg_neg[15].q[0],DDR_Reg_pos[15].q[0],DDR_Reg_neg[15].q[4]);
+%
 
 --============================================================================
 --******** 5. Trigger section *********************************************
@@ -379,7 +400,16 @@ SignalProc.Clock = Clk160;
 SignalProc.Clock160 = Clk160;
 SignalProc.Reset = ExtReset OR HardReset OR PwrUpReset;
 SignalProc.RegInit = PwrUpSet1;
-
+%
+FOR i in 0 to 15 GENERATE
+	IF (ADCInData[i].rx_out[9] == GND) Then
+		SignalProc.In_Data[i][8..0] = !ADCInData[i].rx_out[8..0];--InData_Reg[i].q[];
+	ELSE
+		SignalProc.In_Data[i][8..0] = ADCInData[i].rx_out[8..0];--InData_Reg[i].q[];
+		SignalProc.In_Data[i][9] = GND;
+	END IF;
+END GENERATE;
+%
 FOR i in 0 to 15 GENERATE
 	SignalProc.In_Data[i][] = InData_Reg[i].q[];--ADCInData[i].rx_out[];--
 END GENERATE;
