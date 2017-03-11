@@ -369,29 +369,6 @@ FOR i in 0 to 15 GENERATE
 							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
 							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0],DDR_Reg_neg[i].q[4]);
 END GENERATE;
--- Few channels has another shift
-%	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk200_adc, Reset);
-	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk200_adc, VCC, GND);
-	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk200_adc, VCC, GND);
-	InData_Reg[i].(clock, enable, load) = (Clk40, VCC, VCC);
-	InData_Reg[i].data[] = (DDR_Reg_neg[i].q[4],DDR_Reg_pos[i].q[4],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3],
-							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
-							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0]);
-	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk200_adc, Reset);
-	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk200_adc, VCC, GND);
-	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk200_adc, VCC, GND);
-	InData_Reg[i].(clock, enable, load) = (Clk40, VCC, VCC);
-	InData_Reg[i].data[] = (DDR_Reg_neg[i].q[4],DDR_Reg_pos[i].q[4],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3],
-							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
-							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0]);
-	DDR_InLVDS[15].(datain, inclock, aclr) = (ADCInDataLVDS[15], Clk200_adc, Reset);
-	DDR_Reg_pos[15].(shiftin, clock, enable, load) = (DDR_InLVDS[15].dataout_h, Clk200_adc, VCC, GND);
-	DDR_Reg_neg[15].(shiftin, clock, enable, load) = (DDR_InLVDS[15].dataout_l, Clk200_adc, VCC, GND);
-	InData_Reg[15].(clock, enable, load) = (Clk40, VCC, VCC);
-	InData_Reg[15].data[] = (DDR_Reg_pos[15].q[4],DDR_Reg_neg[15].q[3],DDR_Reg_pos[15].q[3],
-							DDR_Reg_neg[15].q[2],DDR_Reg_pos[15].q[2],DDR_Reg_neg[15].q[1],DDR_Reg_pos[15].q[1],
-							DDR_Reg_neg[15].q[0],DDR_Reg_pos[15].q[0],DDR_Reg_neg[15].q[4]);
-%
 
 --============================================================================
 --******** 5. Trigger section *********************************************
@@ -436,7 +413,8 @@ TriggerData[24..0] = Trigger_reg.q[24..0];
 	TriggerData[i] = GND;--TestTrigCt.q[i];
 END GENERATE;%
 --TriggerData[23] = Trigger_reg.q[23];
-TriggerData[TrigBits-1..25] = GND;
+TriggerData[53..25] = GND;
+TriggerData[TrigBits-1..54] = TestTrigCt.q[9..0];
 
 FastTrigDis = SignalProc.FastTrig;
 TrigDis = SignalProc.Trig;

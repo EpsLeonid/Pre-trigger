@@ -199,10 +199,10 @@ FOR i in 0 to (NumGroup-1) GENERATE
 	IF((Group_Reg[i].q[] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- превышен нижний порог
 																			  ELSE GroupValue_Up_LT[i] = GND;
 	END IF; 
-	IF((Group_Reg[i].q[] > MThresholdReg.q[]) AND (GroupMT_Trig[i].q == GND)) THEN GroupValue_Up_MT[i] = VCC; -- превышен средний порог
+	IF((Group_Reg[i].q[] > MThresholdReg.q[]) AND (GroupMT_Trig[i].q == GND) AND (GroupLT_Trig[i].q == VCC)) THEN GroupValue_Up_MT[i] = VCC; -- превышен средний порог
 																			  ELSE GroupValue_Up_MT[i] = GND;
 	END IF; 
-	IF((Group_Reg[i].q[] > HThresholdReg.q[]) AND (GroupHT_Trig[i].q == GND)) THEN GroupValue_Up_HT[i] = VCC; -- превышен верхний порог
+	IF((Group_Reg[i].q[] > HThresholdReg.q[]) AND (GroupHT_Trig[i].q == GND) AND (GroupLT_Trig[i].q == VCC)) THEN GroupValue_Up_HT[i] = VCC; -- превышен верхний порог
 																			  ELSE GroupValue_Up_HT[i] = GND;
 	END IF; 
 	GroupLT_Trig[i].(S,clk,R) = (GroupValue_Up_LT[i], Clock, AllReset.q);
