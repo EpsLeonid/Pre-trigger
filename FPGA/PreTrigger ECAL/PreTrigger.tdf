@@ -196,7 +196,7 @@ ThreshCount_3Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 TrigMaxAmp_Reg		: lpm_shiftreg with (lpm_width = ADC_Bits, lpm_DIRECTION="unused");
 MaxCellNumber_Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 
-Trigger_reg			: lpm_shiftreg with (lpm_width = 25, lpm_DIRECTION="unused");
+Trigger_reg			: lpm_shiftreg with (lpm_width = 64, lpm_DIRECTION="unused");
 TrigOUT[31..0]		: node;
 
 Reset		: node;
@@ -210,6 +210,8 @@ TestCt		: lpm_counter WITH (lpm_width=26,           --\ Test Counter,
 TestTrigCt	: lpm_counter WITH (lpm_width=36, lpm_direction="up");
 TestCt_rst1 : node; --\ Cirquit for generating a _/^^\_ ,
 TestCt_rst2 : node; --/   duration >=(1/2)Tquartz
+FastTrigDis_: node;
+
 %
 	Im_ADC				:	im_ram;
 	Im_ADCCt			:	LPM_COUNTER with (lpm_width = 8, lpm_direction="up" ); -- n?ao?ee 
@@ -405,7 +407,9 @@ Trigger_reg.data[19..16] = VCC;--ThreshCount_2Reg.q[];
 Trigger_reg.data[22..20] = GND;--ThreshCount_3Reg.q[];
 Trigger_reg.data[23] = SignalProc.FastTrig;
 Trigger_reg.data[24] = SignalProc.Trig;
-Trigger_reg.(clock,load,enable,sclr) = (Clk40, VCC, VCC, SignalProc.ResetAll);
+Trigger_reg.data[51..25] = GND;
+Trigger_reg.data[63..52] = TestTrigCt.q[11..0];
+Trigger_reg.(clock,load,enable,aclr) = (Clk40, VCC, SignalProc.test[15], TestTrigCt.q[7]); -- SignalProc.test[13] - Inhibit from FindMaxAmp!!!
 --Trigger_reg.(data[23..0],clock,load,enable) = (TestTrigCt.q[23..0], Clk40, VCC, VCC);
 
 TriggerData[24..0] = Trigger_reg.q[24..0];
@@ -413,8 +417,8 @@ TriggerData[24..0] = Trigger_reg.q[24..0];
 	TriggerData[i] = GND;--TestTrigCt.q[i];
 END GENERATE;%
 --TriggerData[23] = Trigger_reg.q[23];
-TriggerData[53..25] = GND;
-TriggerData[TrigBits-1..54] = TestTrigCt.q[9..0];
+TriggerData[51..25] = Trigger_reg.q[51..25];
+TriggerData[TrigBits-1..52] = Trigger_reg.q[63..52];
 
 FastTrigDis = SignalProc.FastTrig;
 TrigDis = SignalProc.Trig;
@@ -445,8 +449,10 @@ TestCt.(clock, clk_en)	= (FQuartz, VCC); -- Test Counter, can be used to drive L
 TestCt.cnt_en			=  PowerUp0;
 TestCt.aclr				= !PowerUp0;    -- even if NO clock - Reset does occur
 
-TestTrigCt.(clock, clk_en)	= (Clk40, VCC);
-TestTrigCt.cnt_en			= VCC;
+TestTrigCt.(clock, clk_en, sclr)	= (Clk40, VCC, (FastTrigDis AND !FastTrigDis_));
+TestTrigCt.cnt_en = !(TestTrigCt.q[1] AND TestTrigCt.q[2] AND TestTrigCt.q[3] AND TestTrigCt.q[4] AND TestTrigCt.q[5] AND
+					   TestTrigCt.q[6] AND TestTrigCt.q[7] AND TestTrigCt.q[8] AND TestTrigCt.q[9] AND TestTrigCt.q[10] AND TestTrigCt.q[11]);
+FastTrigDis_ = DFF (.d=FastTrigDis, .clk=Clk40);
 Test[0] = FastTrigDis;
 Test[1] = TrigDis;
 Test[15..10] = GND;

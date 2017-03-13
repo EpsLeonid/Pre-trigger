@@ -13,7 +13,7 @@ CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
 Constant Piedistal_def = 250; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
-Constant Piedistal_def_2 = 263; -- Пьедестал для вычитания (знаение реального пьедестала около 280)
+Constant Piedistal_def_2 = 253; -- Пьедестал для вычитания (знаение реального пьедестала около 280)
 CONSTANT ThresholdData_0 = 50;
 CONSTANT ThresholdData_1 = 150;
 CONSTANT ThresholdData_2 = 250;
@@ -436,6 +436,6 @@ test[12] = (%GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR G
 	  GroupAmp_Trig[8].q);
 test[13] = Inhibit.q;
 test[14] = AllReset.q;--Group_Reg[2].q[9..2];--GroupSum[0].result[11..4];
-test[15] = GND;
+test[15] = (FastTrig AND !DelayENDCycle[7].q);
 
 END;
