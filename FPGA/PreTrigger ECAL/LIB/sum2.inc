@@ -16,10 +16,10 @@
 FUNCTION sum2 
 (
 	clock,
-	data0x[9..0],
-	data1x[9..0]
+	data0x[7..0],
+	data1x[7..0]
 )
 
 RETURNS (
-	result[10..0]
+	result[8..0]
 );

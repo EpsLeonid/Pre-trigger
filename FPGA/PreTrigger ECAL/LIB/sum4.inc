@@ -18,12 +18,12 @@ FUNCTION sum4
 	aclr,
 	clken,
 	clock,
-	data0x[9..0],
-	data1x[9..0],
-	data2x[9..0],
-	data3x[9..0]
+	data0x[7..0],
+	data1x[7..0],
+	data2x[7..0],
+	data3x[7..0]
 )
 
 RETURNS (
-	result[11..0]
+	result[9..0]
 );

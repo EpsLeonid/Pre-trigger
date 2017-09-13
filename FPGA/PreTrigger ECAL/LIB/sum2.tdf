@@ -39,9 +39,9 @@ INCLUDE "parallel_add.inc";
 SUBDESIGN sum2
 (
 	clock	 : INPUT = GND;
-	data0x[9..0]	 : INPUT;
-	data1x[9..0]	 : INPUT;
-	result[10..0]	 : OUTPUT;
+	data0x[7..0]	 : INPUT;
+	data1x[7..0]	 : INPUT;
+	result[8..0]	 : OUTPUT;
 )
 
 VARIABLE
@@ -53,16 +53,16 @@ VARIABLE
 			RESULT_ALIGNMENT = "LSB",
 			SHIFT = 0,
 			SIZE = 2,
-			WIDTH = 10,
-			WIDTHR = 11
+			WIDTH = 8,
+			WIDTHR = 9
 			);
 
 BEGIN
 
-	result[10..0] = parallel_add_component.result[10..0];
+	result[8..0] = parallel_add_component.result[8..0];
 	parallel_add_component.clock = clock;
-	parallel_add_component.data[1..1][9..0] = data1x[9..0];
-	parallel_add_component.data[0..0][9..0] = data0x[9..0];
+	parallel_add_component.data[1..1][7..0] = data1x[7..0];
+	parallel_add_component.data[0..0][7..0] = data0x[7..0];
 END;
 
 
@@ -79,15 +79,15 @@ END;
 -- Retrieval info: CONSTANT: RESULT_ALIGNMENT STRING "LSB"
 -- Retrieval info: CONSTANT: SHIFT NUMERIC "0"
 -- Retrieval info: CONSTANT: SIZE NUMERIC "2"
--- Retrieval info: CONSTANT: WIDTH NUMERIC "10"
--- Retrieval info: CONSTANT: WIDTHR NUMERIC "11"
+-- Retrieval info: CONSTANT: WIDTH NUMERIC "8"
+-- Retrieval info: CONSTANT: WIDTHR NUMERIC "9"
 -- Retrieval info: USED_PORT: clock 0 0 0 0 INPUT GND "clock"
--- Retrieval info: USED_PORT: data0x 0 0 10 0 INPUT NODEFVAL "data0x[9..0]"
--- Retrieval info: USED_PORT: data1x 0 0 10 0 INPUT NODEFVAL "data1x[9..0]"
--- Retrieval info: USED_PORT: result 0 0 11 0 OUTPUT NODEFVAL "result[10..0]"
--- Retrieval info: CONNECT: @data 1 1 10 0 data1x 0 0 10 0
--- Retrieval info: CONNECT: @data 1 0 10 0 data0x 0 0 10 0
--- Retrieval info: CONNECT: result 0 0 11 0 @result 0 0 11 0
+-- Retrieval info: USED_PORT: data0x 0 0 8 0 INPUT NODEFVAL "data0x[7..0]"
+-- Retrieval info: USED_PORT: data1x 0 0 8 0 INPUT NODEFVAL "data1x[7..0]"
+-- Retrieval info: USED_PORT: result 0 0 9 0 OUTPUT NODEFVAL "result[8..0]"
+-- Retrieval info: CONNECT: @data 1 1 8 0 data1x 0 0 8 0
+-- Retrieval info: CONNECT: @data 1 0 8 0 data0x 0 0 8 0
+-- Retrieval info: CONNECT: result 0 0 9 0 @result 0 0 9 0
 -- Retrieval info: CONNECT: @clock 0 0 0 0 clock 0 0 0 0
 -- Retrieval info: GEN_FILE: TYPE_NORMAL sum2.tdf TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL sum2.inc TRUE

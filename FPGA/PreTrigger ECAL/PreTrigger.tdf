@@ -27,10 +27,10 @@ CONSTANT Masks_Offset = H"20";   -- MasksReg #32
 
 CONSTANT NUM_ADCboard = 16;	-- Number of ADC boards in the trigger
 CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
-CONSTANT ADC_Bits = 10;		-- Number of ADC bits in one channel
-CONSTANT ThresholdData_0 = 300;
-CONSTANT ThresholdData_1 = 450;
-CONSTANT ThresholdData_2 = 1020;
+CONSTANT ADC_Bits = 8;		-- Number of ADC bits in one channel
+CONSTANT ThresholdData_0 = 100;
+CONSTANT ThresholdData_1 = 150;
+CONSTANT ThresholdData_2 = 220;
 CONSTANT TrigBits = 64;		-- Number of triggerg bits to FCT
 
 SUBDESIGN PreTrigger
@@ -107,7 +107,8 @@ VARIABLE
 PLL				: PLL_Trigger; 
 Clk20			: node;
 Clk40			: node; -- This is Global Node
-Clk200_adc		: node;
+Clk100			: node; -- This is Global Node
+Clk400_adc		: node;
 Clk160			: node; -- This is Global Node
 
 -- Automatic Clock Switch: if External_Clock frequency (kHz) is in specified 
@@ -170,8 +171,8 @@ InData_Reg[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=ADC
 ADCInData[NUM_CH_Tr-1..0]		: LVDS_In;
 --ADCdata_align					: DFFE;
 DDR_InLVDS[NUM_CH_Tr-1..0]		: DDR_In;
-DDR_Reg_pos[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
-DDR_Reg_neg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
+DDR_Reg_pos[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=4,lpm_DIRECTION="left");
+DDR_Reg_neg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=4,lpm_DIRECTION="left");
 InData[NUM_CH_Tr-1..0]			: node;
 Threshold_Reg[2..0]				: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 Overflow						: node;
@@ -280,10 +281,11 @@ PLL.inclk0	= PLL_In;
 --PLLExtOut	= PLL.e0;
 Clk40		= Global(PLL.c0); --  40MHz clock
 Clk160		= Global(PLL.c1); -- 160MHz clock
-Clk200_adc	= Global(PLL.c2);
-Clk20		= Global(PLL.c3);
+Clk400_adc	= Global(PLL.c2); -- частота бит по фронту
+Clk20		= Global(PLL.c3); -- for program ADC
+Clk100		= Global(PLL.c4); --
 
-ADC_CLK = Clk40;
+ADC_CLK = Clk100;
 
 --============================================================================
 -- ******** 2. Loader ********************************************
@@ -362,14 +364,14 @@ FOR i in 0 to (NUM_CH_Tr-1) GENERATE
 END GENERATE;
 %
 FOR i in 0 to 15 GENERATE
-	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk200_adc, Reset);
-	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk200_adc, VCC, GND);
-	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk200_adc, VCC, GND);
-	InData_Reg[i].(clock, enable, load) = (Clk40, VCC, VCC);
+	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk400_adc, Reset);
+	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk400_adc, VCC, GND);
+	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk400_adc, VCC, GND);
+	InData_Reg[i].(clock, enable, load) = (Clk100, VCC, VCC);
 -- «ащелкивание битов в определенной последовательности.
-	InData_Reg[i].data[] = (DDR_Reg_pos[i].q[4],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3],
+	InData_Reg[i].data[] = (%DDR_Reg_pos[i].q[4],%DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3],
 							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
-							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0],DDR_Reg_neg[i].q[4]);
+							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0]%,DDR_Reg_neg[i].q[4]%);
 END GENERATE;
 
 --============================================================================
@@ -400,7 +402,8 @@ ThreshCount_1Reg.(data[], clock, enable, load) = (SignalProc.ThrNum1[], clk40, V
 ThreshCount_2Reg.(data[], clock, enable, load) = (SignalProc.ThrNum2[], clk40, VCC, VCC);
 ThreshCount_3Reg.(data[], clock, enable, load) = (SignalProc.ThrNum3[], clk40, VCC, VCC);
 
-Trigger_reg.data[9..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
+Trigger_reg.data[7..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
+Trigger_reg.data[9..8] = GND;
 Trigger_reg.data[13..10] = SignalProc.MaxCellNumber[];--MaxCellNumber_Reg.q[2..0];
 Trigger_reg.data[15..14] = GND;--ThreshCount_1Reg.q[];
 Trigger_reg.data[19..16] = VCC;--ThreshCount_2Reg.q[];
