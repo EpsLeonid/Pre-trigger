@@ -41,7 +41,7 @@ SUBDESIGN LVDS_In
 	rx_in[0..0]	 : INPUT;
 	rx_inclock	 : INPUT = GND;
 	rx_locked	 : OUTPUT;
-	rx_out[9..0]	 : OUTPUT;
+	rx_out[7..0]	 : OUTPUT;
 	rx_outclock	 : OUTPUT;
 )
 
@@ -49,12 +49,12 @@ VARIABLE
 
 	altlvds_rx_component : altlvds_rx WITH (
 			COMMON_RX_TX_PLL = "ON",
-			DESERIALIZATION_FACTOR = 10,
+			DESERIALIZATION_FACTOR = 8,
 			IMPLEMENT_IN_LES = "ON",
 			INCLOCK_DATA_ALIGNMENT = "UNUSED",
-			INCLOCK_PERIOD = 25000,
-			INCLOCK_PHASE_SHIFT = 15000,
-			INPUT_DATA_RATE = 400,
+			INCLOCK_PERIOD = 10000,
+			INCLOCK_PHASE_SHIFT = 0,
+			INPUT_DATA_RATE = 800,
 			INTENDED_DEVICE_FAMILY = "Cyclone IV E",
 			LPM_HINT = "CBX_MODULE_PREFIX=LVDS_In",
 			LPM_TYPE = "altlvds_rx",
@@ -70,7 +70,7 @@ VARIABLE
 BEGIN
 
 	rx_locked = altlvds_rx_component.rx_locked;
-	rx_out[9..0] = altlvds_rx_component.rx_out[9..0];
+	rx_out[7..0] = altlvds_rx_component.rx_out[7..0];
 	rx_outclock = altlvds_rx_component.rx_outclock;
 	altlvds_rx_component.rx_inclock = rx_inclock;
 	altlvds_rx_component.rx_in[0..0] = rx_in[0..0];
@@ -82,19 +82,19 @@ END;
 -- CNX file retrieval info
 -- ============================================================
 -- Retrieval info: PRIVATE: Clock_Mode NUMERIC "0"
--- Retrieval info: PRIVATE: Data_rate STRING "400"
--- Retrieval info: PRIVATE: Deser_Factor NUMERIC "10"
+-- Retrieval info: PRIVATE: Data_rate STRING "800"
+-- Retrieval info: PRIVATE: Deser_Factor NUMERIC "8"
 -- Retrieval info: PRIVATE: Enable_DPA_Mode STRING "OFF"
 -- Retrieval info: PRIVATE: Ext_PLL STRING "OFF"
--- Retrieval info: PRIVATE: INCLOCK_PHASE_SHIFT STRING "195.00"
+-- Retrieval info: PRIVATE: INCLOCK_PHASE_SHIFT STRING "0.00"
 -- Retrieval info: PRIVATE: INTENDED_DEVICE_FAMILY STRING "Cyclone IV E"
 -- Retrieval info: PRIVATE: Int_Device STRING "Cyclone IV E"
 -- Retrieval info: PRIVATE: LVDS_Mode NUMERIC "1"
 -- Retrieval info: PRIVATE: Le_Serdes STRING "ON"
 -- Retrieval info: PRIVATE: Num_Channel NUMERIC "1"
 -- Retrieval info: PRIVATE: PLL_Enable NUMERIC "0"
--- Retrieval info: PRIVATE: PLL_Freq STRING "40.00"
--- Retrieval info: PRIVATE: PLL_Period STRING "25.000"
+-- Retrieval info: PRIVATE: PLL_Freq STRING "100.00"
+-- Retrieval info: PRIVATE: PLL_Period STRING "10.000"
 -- Retrieval info: PRIVATE: Reg_InOut NUMERIC "1"
 -- Retrieval info: PRIVATE: SYNTH_WRAPPER_GEN_POSTFIX STRING "0"
 -- Retrieval info: PRIVATE: Use_Clock_Resc STRING "AUTO"
@@ -104,12 +104,12 @@ END;
 -- Retrieval info: PRIVATE: Use_Lock NUMERIC "1"
 -- Retrieval info: PRIVATE: Use_Pll_Areset NUMERIC "0"
 -- Retrieval info: CONSTANT: COMMON_RX_TX_PLL STRING "ON"
--- Retrieval info: CONSTANT: DESERIALIZATION_FACTOR NUMERIC "10"
+-- Retrieval info: CONSTANT: DESERIALIZATION_FACTOR NUMERIC "8"
 -- Retrieval info: CONSTANT: IMPLEMENT_IN_LES STRING "ON"
 -- Retrieval info: CONSTANT: INCLOCK_DATA_ALIGNMENT STRING "UNUSED"
--- Retrieval info: CONSTANT: INCLOCK_PERIOD NUMERIC "25000"
--- Retrieval info: CONSTANT: INCLOCK_PHASE_SHIFT NUMERIC "2709"
--- Retrieval info: CONSTANT: INPUT_DATA_RATE NUMERIC "400"
+-- Retrieval info: CONSTANT: INCLOCK_PERIOD NUMERIC "10000"
+-- Retrieval info: CONSTANT: INCLOCK_PHASE_SHIFT NUMERIC "0"
+-- Retrieval info: CONSTANT: INPUT_DATA_RATE NUMERIC "800"
 -- Retrieval info: CONSTANT: INTENDED_DEVICE_FAMILY STRING "Cyclone IV E"
 -- Retrieval info: CONSTANT: LPM_TYPE STRING "altlvds_rx"
 -- Retrieval info: CONSTANT: NUMBER_OF_CHANNELS NUMERIC "1"
@@ -122,10 +122,10 @@ END;
 -- Retrieval info: USED_PORT: rx_in 0 0 1 0 INPUT NODEFVAL rx_in[0..0]
 -- Retrieval info: USED_PORT: rx_inclock 0 0 0 0 INPUT_CLK_EXT GND rx_inclock
 -- Retrieval info: USED_PORT: rx_locked 0 0 0 0 OUTPUT NODEFVAL rx_locked
--- Retrieval info: USED_PORT: rx_out 0 0 10 0 OUTPUT NODEFVAL rx_out[9..0]
+-- Retrieval info: USED_PORT: rx_out 0 0 8 0 OUTPUT NODEFVAL rx_out[7..0]
 -- Retrieval info: USED_PORT: rx_outclock 0 0 0 0 OUTPUT NODEFVAL rx_outclock
 -- Retrieval info: CONNECT: @rx_in 0 0 1 0 rx_in 0 0 1 0
--- Retrieval info: CONNECT: rx_out 0 0 10 0 @rx_out 0 0 10 0
+-- Retrieval info: CONNECT: rx_out 0 0 8 0 @rx_out 0 0 8 0
 -- Retrieval info: CONNECT: @rx_inclock 0 0 0 0 rx_inclock 0 0 0 0
 -- Retrieval info: CONNECT: rx_locked 0 0 0 0 @rx_locked 0 0 0 0
 -- Retrieval info: CONNECT: rx_outclock 0 0 0 0 @rx_outclock 0 0 0 0
@@ -134,7 +134,7 @@ END;
 -- Retrieval info: GEN_FILE: TYPE_NORMAL LVDS_In.ppf TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL LVDS_In.inc TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL LVDS_In.cmp FALSE
--- Retrieval info: GEN_FILE: TYPE_NORMAL LVDS_In.bsf TRUE FALSE
+-- Retrieval info: GEN_FILE: TYPE_NORMAL LVDS_In.bsf TRUE
 -- Retrieval info: GEN_FILE: TYPE_NORMAL LVDS_In_inst.tdf FALSE
 -- Retrieval info: LIB_FILE: altera_mf
 -- Retrieval info: CBX_MODULE_PREFIX: ON
