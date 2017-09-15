@@ -30,7 +30,7 @@ CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
 CONSTANT ADC_Bits = 8;		-- Number of ADC bits in one channel
 CONSTANT ThresholdData_0 = 100;
 CONSTANT ThresholdData_1 = 150;
-CONSTANT ThresholdData_2 = 220;
+CONSTANT ThresholdData_2 = 250;
 CONSTANT TrigBits = 64;		-- Number of triggerg bits to FCT
 
 SUBDESIGN PreTrigger
@@ -321,9 +321,11 @@ ADCtest_SDIO_trig.d = ADCtest_reg.shiftout;
 ADC_CSB = ADCtest_CSB_trig;
 ADC_SCLK = Clk20;
 %
-Test[9..2] = InData_Reg[0].q[7..0];--ADCInData[2].rx_out[7..0];
+Test[9..3] = InData_Reg[0].q[7..1];--ADCInData[2].rx_out[7..0];
 
-
+IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[2] = VCC;
+											Else Test[2] = GND;
+END IF;
 -- ***************************************
 
 Threshold_Reg[0].(data[], clock, enable, load) = (ThresholdData_0, Clk40, PwrUpSet1, VCC);
@@ -348,7 +350,7 @@ R_Flash.(clock, event) =(Clk40,Error);-- Error is defined in Control Unit sectio
 Error = PhaseSw.Error OR Overflow;
 
 --******** 
-FOR i in 12 to 15 GENERATE
+FOR i in 0 to 3 GENERATE
 	IF (InData_Reg[i].q[] > Threshold_Reg[2].q[]) then Overflow = VCC;
 												  else Overflow = GND;
 	END IF;

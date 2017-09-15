@@ -12,10 +12,10 @@ CONSTANT ADC_Bits = 8; -- разрядность АЦП
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
-Constant Piedistal_def = 120; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
+Constant Piedistal_def = 1; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
 Constant Piedistal_def_2 = 125; -- Пьедестал для вычитания (знаение реального пьедестала около 280)
 CONSTANT ThresholdData_0 = 160;
-CONSTANT ThresholdData_1 = 150;
+CONSTANT ThresholdData_1 = 200;
 CONSTANT ThresholdData_2 = 250;
 CONSTANT MaxTime = 160;  -- Maximal Valid time (750ns)
 CONSTANT ResetTime = 240;
@@ -132,15 +132,15 @@ Piedistal_Reg.sset = RegInit;
 Piedistal_Reg.(clock, enable, sset) = (Clock, RegInit, VCC);
 Piedistal_Reg_2.sset = RegInit;
 Piedistal_Reg_2.(clock, enable, sset) = (Clock, RegInit, VCC);
-
+%
 	SUB_Ped[0].(dataa[], datab[]) = (In_Data[0][ADC_Bits-1..0], Piedistal_Reg.q[ADC_Bits-1..0]);
 --	SUB_Ped.aclr = AllReset.q;
 	SUB_ped[0].(clock, clken) = (Clock, VCC);
 	SUB_Ped[1].(dataa[], datab[]) = (In_Data[1][ADC_Bits-1..0], Piedistal_Reg_2.q[ADC_Bits-1..0]);
 --	SUB_Ped.aclr = AllReset.q;
 	SUB_ped[1].(clock, clken) = (Clock, VCC);
-
-FOR i in 2 to (NumTrigCh-1) GENERATE
+%
+FOR i in 0 to (NumTrigCh-1) GENERATE
 	SUB_Ped[i].(dataa[], datab[]) = (In_Data[i][ADC_Bits-1..0], Piedistal_Reg.q[ADC_Bits-1..0]);
 --	SUB_Ped.aclr = AllReset.q;
 	SUB_ped[i].(clock, clken) = (Clock, VCC);
@@ -233,9 +233,9 @@ IF (--(InData_Reg[8].q[] > Threshold_Reg[1].q[]) OR
 													else TrigDis = GND;
 END IF;
 %
-FastTrig = (GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+FastTrig = (GroupLT_Trig[0].q %OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
 		GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
-		GroupLT_Trig[8].q);
+		GroupLT_Trig[8].q%);
 
 --- исправить счетчики!!!
 
