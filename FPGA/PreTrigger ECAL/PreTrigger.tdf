@@ -107,8 +107,8 @@ VARIABLE
 PLL				: PLL_Trigger; 
 Clk20			: node;
 Clk40			: node; -- This is Global Node
-Clk100			: node; -- This is Global Node
-Clk400_adc		: node;
+Clk80			: node; -- This is Global Node
+Clk360_adc		: node;
 Clk160			: node; -- This is Global Node
 
 -- Automatic Clock Switch: if External_Clock frequency (kHz) is in specified 
@@ -281,11 +281,11 @@ PLL.inclk0	= PLL_In;
 --PLLExtOut	= PLL.e0;
 Clk40		= Global(PLL.c0); --  40MHz clock
 Clk160		= Global(PLL.c1); -- 160MHz clock
-Clk400_adc	= Global(PLL.c2); -- частота бит по фронту
+Clk360_adc	= Global(PLL.c2); -- частота бит по фронту
 Clk20		= Global(PLL.c3); -- for program ADC
-Clk100		= Global(PLL.c4); --
+Clk80		= Global(PLL.c4); --
 
-ADC_CLK = Clk100;
+ADC_CLK = Clk80;
 
 --============================================================================
 -- ******** 2. Loader ********************************************
@@ -366,10 +366,10 @@ FOR i in 0 to (NUM_CH_Tr-1) GENERATE
 END GENERATE;
 %
 FOR i in 0 to 15 GENERATE
-	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk400_adc, Reset);
+	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk360_adc, Reset);
 	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk400_adc, VCC, GND);
 	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk400_adc, VCC, GND);
-	InData_Reg[i].(clock, enable, load) = (Clk100, VCC, VCC);
+	InData_Reg[i].(clock, enable, load) = (Clk80, VCC, VCC);
 -- «ащелкивание битов в определенной последовательности.
 	InData_Reg[i].data[] = (DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[1],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[2],
 							DDR_Reg_pos[i].q[3],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[0]);
