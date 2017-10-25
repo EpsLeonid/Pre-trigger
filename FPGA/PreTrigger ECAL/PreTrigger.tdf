@@ -108,7 +108,7 @@ PLL				: PLL_Trigger;
 Clk20			: node;
 Clk40			: node; -- This is Global Node
 Clk80			: node; -- This is Global Node
-Clk360_adc		: node;
+Clk320_adc		: node;
 Clk160			: node; -- This is Global Node
 
 -- Automatic Clock Switch: if External_Clock frequency (kHz) is in specified 
@@ -144,7 +144,7 @@ ADCtest_Bit_write	: node;
 ADCtest_CSB_trig	: DFFE;
 ADCtest_SDIO_trig	: DFFE;
 ADCtest_reg			: lpm_shiftreg with (lpm_width=50,
-						lpm_svalue = b"00000000000011010000110000000000001111111100000001",lpm_DIRECTION="left"); -- 
+						lpm_svalue = b"00000000000011010000101000000000001111111100000001",lpm_DIRECTION="left"); -- 
 --								      "set	addr	 	data   set	addr		  data "
 --									   3bit 13bit	 	8bit   3bit	13bit		  8bit
 ADCreset_bit_count	: LPM_COUNTER with (lpm_width=6, lpm_direction="up" );
@@ -176,6 +176,7 @@ DDR_Reg_neg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=4,lpm_DIRECTION="lef
 InData[NUM_CH_Tr-1..0]			: node;
 Threshold_Reg[2..0]				: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 Overflow						: node;
+InData_RegMix[NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 InData_Reg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 
 --SignalProc[NUM_CH_Tr..1]				: Digitizer;
@@ -281,7 +282,7 @@ PLL.inclk0	= PLL_In;
 --PLLExtOut	= PLL.e0;
 Clk40		= Global(PLL.c0); --  40MHz clock
 Clk160		= Global(PLL.c1); -- 160MHz clock
-Clk360_adc	= Global(PLL.c2); -- частота бит по фронту
+Clk320_adc	= Global(PLL.c2); -- частота бит по фронту
 Clk20		= Global(PLL.c3); -- for program ADC
 Clk80		= Global(PLL.c4); --
 
@@ -294,7 +295,7 @@ ADC_CLK = Clk80;
 
 -- ******** 2.1 ADC setup********************************************
 --Настройка фазы данных АЦП
-%
+
 ADCtest_bit_count.sclr = PwrUpReset;
 ADCtest_bit_count.(clock, cnt_en, clk_en) = (Clk20, ADCtest_Bit_write, VCC);
 
@@ -320,17 +321,18 @@ ADCtest_SDIO_trig.d = ADCtest_reg.shiftout;
 --ADCtest_SDIO_trig.d = ADCreset_reg.shiftout;
 ADC_CSB = ADCtest_CSB_trig;
 ADC_SCLK = Clk20;
-%
-Test[9..3] = InData_Reg[0].q[7..1];--ADCInData[2].rx_out[7..0];
 
+Test[9..2] = InData_Reg[0].q[7..0];--ADCInData[2].rx_out[7..0];
+%
 IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[2] = VCC;
 											Else Test[2] = GND;
 END IF;
+%
 -- ***************************************
 
-Threshold_Reg[0].(data[], clock, enable, load) = (ThresholdData_0, Clk40, PwrUpSet1, VCC);
-Threshold_Reg[1].(data[], clock, enable, load) = (ThresholdData_1, Clk40, PwrUpSet1, VCC);
-Threshold_Reg[2].(data[], clock, enable, load) = (ThresholdData_2, Clk40, PwrUpSet1, VCC);
+Threshold_Reg[0].(data[], clock, enable, load) = (ThresholdData_0, Clk80, PwrUpSet1, VCC);
+Threshold_Reg[1].(data[], clock, enable, load) = (ThresholdData_1, Clk80, PwrUpSet1, VCC);
+Threshold_Reg[2].(data[], clock, enable, load) = (ThresholdData_2, Clk80, PwrUpSet1, VCC);
 
 --============================================================================
 -- ******** 3. Indicators section ********************************************
@@ -341,11 +343,11 @@ LedG = OPNDRN ( !(((PLL.locked AND  PhaseSw.SysClk_Selected) --always "ON" => PL
 --LedB = OPNDRN(!( B_Flash.DirOut OR Trigger.Trigger));
 LedB = OPNDRN(!(B_Flash.DirOut OR Trig)); --!TrigOUT;
 --LedB = OPNDRN( !TestCt.q[21] ) ;    -- for TEST Only! - quick blink
-	B_Flash.(clock, event) =(Clk40,Trig); -- Busy is defined in Control Unit section
+	B_Flash.(clock, event) =(Clk80,Trig); -- Busy is defined in Control Unit section
 
 LedR = R_Flash.LightOut;
 --LedR = OPNDRN( TC.q[21] ) ;         -- for TEST Only! - quick blink
-R_Flash.(clock, event) =(Clk40,Error);-- Error is defined in Control Unit section
+R_Flash.(clock, event) =(Clk80,Error);-- Error is defined in Control Unit section
 
 Error = PhaseSw.Error OR Overflow;
 
@@ -361,18 +363,23 @@ END GENERATE;
 --******** 4. ADC data *********************************************
 %
 FOR i in 0 to (NUM_CH_Tr-1) GENERATE
-	ADCInData[i].(rx_in[], rx_inclock) = (ADCInDataLVDS[i], Clk40);
-	InData_Reg[i].(data[], clock, enable, load) = (ADCInData[i].rx_out[], Clk40, VCC, VCC);
+	ADCInData[i].(rx_in[], rx_inclock) = (ADCInDataLVDS[i], Clk80);
+	InData_Reg[i].(data[], clock, enable, load) = (ADCInData[i].rx_out[], Clk80, VCC, VCC);
 END GENERATE;
 %
 FOR i in 0 to 15 GENERATE
-	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk360_adc, Reset);
-	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk400_adc, VCC, GND);
-	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk400_adc, VCC, GND);
+	DDR_InLVDS[i].(datain, inclock, aclr) = (ADCInDataLVDS[i], Clk320_adc, Reset);
+	DDR_Reg_pos[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_h, Clk320_adc, VCC, GND);
+	DDR_Reg_neg[i].(shiftin, clock, enable, load) = (DDR_InLVDS[i].dataout_l, Clk320_adc, VCC, GND);
+	InData_RegMix[i].(clock, enable, load) = (Clk80, VCC, VCC);
+-- Защелкивание битов в определенной последовательности.
+	InData_RegMix[i].data[7..0] = (DDR_Reg_pos[i].q[3],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[2],
+								DDR_Reg_pos[i].q[1],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[0],DDR_Reg_neg[i].q[0]);
 	InData_Reg[i].(clock, enable, load) = (Clk80, VCC, VCC);
 -- Защелкивание битов в определенной последовательности.
-	InData_Reg[i].data[] = (DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[1],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[2],
-							DDR_Reg_pos[i].q[3],DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[0]);
+	InData_Reg[i].data[7..0] = (InData_RegMix[i].q[7],InData_RegMix[i].q[6],InData_RegMix[i].q[5],InData_RegMix[i].q[4],
+								InData_RegMix[i].q[3],InData_RegMix[i].q[2],InData_RegMix[i].q[1],InData_RegMix[i].q[0]);
+--Test[9..2] = InData_Reg[0].q[7..0];
 
 --	InData_Reg[i].data[] = (%DDR_Reg_pos[i].q[4],%DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3]
 --							DDR_Reg_neg[i].q[2],DDR_Reg_pos[i].q[2],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[1],
@@ -383,7 +390,6 @@ END GENERATE;
 --******** 5. Trigger section *********************************************
 
 SignalProc.Clock = Clk160;
-SignalProc.Clock160 = Clk160;
 SignalProc.Reset = ExtReset OR HardReset OR PwrUpReset;
 SignalProc.RegInit = PwrUpSet1;
 %
@@ -400,12 +406,12 @@ FOR i in 0 to 15 GENERATE
 	SignalProc.In_Data[i][] = InData_Reg[i].q[];--ADCInData[i].rx_out[];--
 END GENERATE;
 
-TrigMaxAmp_Reg.(data[], clock, enable, load) = (SignalProc.MaxAmp[], clk40, VCC, VCC);
-MaxCellNumber_Reg.(data[], clock, enable, load) = (SignalProc.MaxCellNumber[], clk40, VCC, VCC);
+TrigMaxAmp_Reg.(data[], clock, enable, load) = (SignalProc.MaxAmp[], Clk80, VCC, VCC);
+MaxCellNumber_Reg.(data[], clock, enable, load) = (SignalProc.MaxCellNumber[], Clk80, VCC, VCC);
 
-ThreshCount_1Reg.(data[], clock, enable, load) = (SignalProc.ThrNum1[], clk40, VCC, VCC);
-ThreshCount_2Reg.(data[], clock, enable, load) = (SignalProc.ThrNum2[], clk40, VCC, VCC);
-ThreshCount_3Reg.(data[], clock, enable, load) = (SignalProc.ThrNum3[], clk40, VCC, VCC);
+ThreshCount_1Reg.(data[], clock, enable, load) = (SignalProc.ThrNum1[], Clk80, VCC, VCC);
+ThreshCount_2Reg.(data[], clock, enable, load) = (SignalProc.ThrNum2[], Clk80, VCC, VCC);
+ThreshCount_3Reg.(data[], clock, enable, load) = (SignalProc.ThrNum3[], Clk80, VCC, VCC);
 
 Trigger_reg.data[7..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
 Trigger_reg.data[9..8] = GND;
@@ -457,10 +463,10 @@ TestCt.(clock, clk_en)	= (FQuartz, VCC); -- Test Counter, can be used to drive L
 TestCt.cnt_en			=  PowerUp0;
 TestCt.aclr				= !PowerUp0;    -- even if NO clock - Reset does occur
 
-TestTrigCt.(clock, clk_en, sclr)	= (Clk40, VCC, (FastTrigDis AND !FastTrigDis_));
+TestTrigCt.(clock, clk_en, sclr)	= (Clk80, VCC, (FastTrigDis AND !FastTrigDis_));
 TestTrigCt.cnt_en = !(TestTrigCt.q[1] AND TestTrigCt.q[2] AND TestTrigCt.q[3] AND TestTrigCt.q[4] AND TestTrigCt.q[5] AND
 					   TestTrigCt.q[6] AND TestTrigCt.q[7] AND TestTrigCt.q[8] AND TestTrigCt.q[9] AND TestTrigCt.q[10] AND TestTrigCt.q[11]);
-FastTrigDis_ = DFF (.d=FastTrigDis, .clk=Clk40);
+FastTrigDis_ = DFF (.d=FastTrigDis, .clk=Clk80);
 Test[0] = FastTrigDis;
 Test[1] = TrigDis;
 Test[15..10] = GND;
@@ -490,7 +496,7 @@ Test[15..10] = GND;
 Test[7..0] = TrigMaxAmp_Reg.q[7..0];--InData_Reg[9].q[8..0];
 Test[8] = SignalProc.MaxCellNumber[0];--PwrUpSet1;
 Test[9] = SignalProc.MaxCellNumber[1];--PLL.locked;
-Test[10] = SignalProc.Trig;--SignalProc.MaxCellNumber[2];--Clk40;
+Test[10] = SignalProc.Trig;--SignalProc.MaxCellNumber[2];--Clk80;
 --Test[11] = SignalProc.MaxCellNumber[3];--PwrUpReset;--SignalProc.MaxAmp[3];--FCTClk40;
 Test[14..11] = SignalProc.test[14..11];--SignalProc.MaxAmp[4];
 
