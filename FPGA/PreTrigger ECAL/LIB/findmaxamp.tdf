@@ -12,9 +12,9 @@ CONSTANT ADC_Bits = 8; -- разрядность АЦП
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
-Constant Piedistal_def = 130; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
+Constant Piedistal_def = 100; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
 Constant Piedistal_def_2 = 125; -- Пьедестал для вычитания (знаение реального пьедестала около 280)
-CONSTANT ThresholdData_0 = 160;
+CONSTANT ThresholdData_0 = 20;
 CONSTANT ThresholdData_1 = 200;
 CONSTANT ThresholdData_2 = 250;
 CONSTANT MaxTime = 160;  -- Maximal Valid time (750ns)
@@ -173,7 +173,7 @@ END GENERATE;
 FOR i in 0 to (NumGroup-1) GENERATE
 	GroupSum[i].clock = Clock;
 END GENERATE;
-GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[0].q[],Average_Reg[1].q[],Average_Reg[4].q[],Average_Reg[5].q[]);
+GroupSum[0].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[0].q[],b"00000000",b"00000000",b"00000000");--Average_Reg[1].q[],Average_Reg[4].q[],Average_Reg[5].q[]);
 GroupSum[1].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[4].q[],Average_Reg[5].q[],Average_Reg[8].q[],Average_Reg[9].q[]);
 GroupSum[2].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[8].q[],Average_Reg[9].q[],Average_Reg[12].q[],Average_Reg[13].q[]);
 GroupSum[3].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[1].q[],Average_Reg[2].q[],Average_Reg[5].q[],Average_Reg[6].q[]);
@@ -233,7 +233,7 @@ IF (--(InData_Reg[8].q[] > Threshold_Reg[1].q[]) OR
 													else TrigDis = GND;
 END IF;
 %
-FastTrig = (GroupLT_Trig[1].q %OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+FastTrig = (GroupLT_Trig[0].q %OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
 		GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
 		GroupLT_Trig[8].q%);
 

@@ -144,7 +144,7 @@ ADCtest_Bit_write	: node;
 ADCtest_CSB_trig	: DFFE;
 ADCtest_SDIO_trig	: DFFE;
 ADCtest_reg			: lpm_shiftreg with (lpm_width=50,
-						lpm_svalue = b"00000000000011010000101000000000001111111100000001",lpm_DIRECTION="left"); -- 
+						lpm_svalue = b"00000000000011010000110000000000001111111100000001",lpm_DIRECTION="left"); -- 
 --								      "set	addr	 	data   set	addr		  data "
 --									   3bit 13bit	 	8bit   3bit	13bit		  8bit
 ADCreset_bit_count	: LPM_COUNTER with (lpm_width=6, lpm_direction="up" );
@@ -295,7 +295,7 @@ ADC_CLK = Clk80;
 
 -- ******** 2.1 ADC setup********************************************
 --Настройка фазы данных АЦП
-
+%
 ADCtest_bit_count.sclr = PwrUpReset;
 ADCtest_bit_count.(clock, cnt_en, clk_en) = (Clk20, ADCtest_Bit_write, VCC);
 
@@ -321,7 +321,7 @@ ADCtest_SDIO_trig.d = ADCtest_reg.shiftout;
 --ADCtest_SDIO_trig.d = ADCreset_reg.shiftout;
 ADC_CSB = ADCtest_CSB_trig;
 ADC_SCLK = Clk20;
-
+%
 Test[9..2] = InData_Reg[0].q[7..0];--ADCInData[2].rx_out[7..0];
 %
 IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[2] = VCC;
@@ -352,11 +352,12 @@ R_Flash.(clock, event) =(Clk80,Error);-- Error is defined in Control Unit sectio
 Error = PhaseSw.Error OR Overflow;
 
 --******** 
-FOR i in 0 to 3 GENERATE
-	IF (InData_Reg[i].q[] > Threshold_Reg[2].q[]) then Overflow = VCC;
+
+--FOR i in 0 to 3 GENERATE
+	IF (InData_Reg[0].q[] > Threshold_Reg[2].q[]) then Overflow = VCC;
 												  else Overflow = GND;
 	END IF;
-END GENERATE;
+--END GENERATE;
 --******** 
 
 --============================================================================
@@ -377,8 +378,8 @@ FOR i in 0 to 15 GENERATE
 								DDR_Reg_pos[i].q[1],DDR_Reg_neg[i].q[1],DDR_Reg_pos[i].q[0],DDR_Reg_neg[i].q[0]);
 	InData_Reg[i].(clock, enable, load) = (Clk80, VCC, VCC);
 -- Защелкивание битов в определенной последовательности.
-	InData_Reg[i].data[7..0] = (InData_RegMix[i].q[7],InData_RegMix[i].q[6],InData_RegMix[i].q[5],InData_RegMix[i].q[4],
-								InData_RegMix[i].q[3],InData_RegMix[i].q[2],InData_RegMix[i].q[1],InData_RegMix[i].q[0]);
+	InData_Reg[i].data[7..0] = (InData_RegMix[i].q[5],InData_RegMix[i].q[2],InData_RegMix[i].q[3],InData_RegMix[i].q[0],
+								InData_RegMix[i].q[1],InData_RegMix[i].q[6],InData_RegMix[i].q[7],InData_RegMix[i].q[4]);
 --Test[9..2] = InData_Reg[0].q[7..0];
 
 --	InData_Reg[i].data[] = (%DDR_Reg_pos[i].q[4],%DDR_Reg_neg[i].q[3],DDR_Reg_pos[i].q[3]
