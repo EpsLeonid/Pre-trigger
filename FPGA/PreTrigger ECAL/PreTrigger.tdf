@@ -322,12 +322,6 @@ ADCtest_SDIO_trig.d = ADCtest_reg.shiftout;
 ADC_CSB = ADCtest_CSB_trig;
 ADC_SCLK = Clk20;
 %
-Test[9..2] = InData_Reg[0].q[7..0];--ADCInData[2].rx_out[7..0];
-%
-IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[2] = VCC;
-											Else Test[2] = GND;
-END IF;
-%
 -- ***************************************
 
 Threshold_Reg[0].(data[], clock, enable, load) = (ThresholdData_0, Clk80, PwrUpSet1, VCC);
@@ -349,16 +343,7 @@ LedR = R_Flash.LightOut;
 --LedR = OPNDRN( TC.q[21] ) ;         -- for TEST Only! - quick blink
 R_Flash.(clock, event) =(Clk80,Error);-- Error is defined in Control Unit section
 
-Error = PhaseSw.Error OR Overflow;
-
---******** 
-
---FOR i in 0 to 3 GENERATE
-	IF (InData_Reg[0].q[] > Threshold_Reg[2].q[]) then Overflow = VCC;
-												  else Overflow = GND;
-	END IF;
---END GENERATE;
---******** 
+Error = PhaseSw.Error %OR Overflow%;
 
 --============================================================================
 --******** 4. ADC data *********************************************
@@ -387,10 +372,20 @@ FOR i in 0 to 15 GENERATE
 --							DDR_Reg_neg[i].q[0],DDR_Reg_pos[i].q[0],%,DDR_Reg_neg[i].q[4]%);
 END GENERATE;
 
+--******** 
+
+--FOR i in 0 to 3 GENERATE
+	IF (InData_Reg[0].q[] > Threshold_Reg[2].q[]) then Overflow = VCC;
+												  else Overflow = GND;
+	END IF;
+--END GENERATE;
+--******** 
+
 --============================================================================
 --******** 5. Trigger section *********************************************
 
 SignalProc.Clock = Clk160;
+SignalProc.Clock160 = Clk160;
 SignalProc.Reset = ExtReset OR HardReset OR PwrUpReset;
 SignalProc.RegInit = PwrUpSet1;
 %
@@ -469,8 +464,15 @@ TestTrigCt.cnt_en = !(TestTrigCt.q[1] AND TestTrigCt.q[2] AND TestTrigCt.q[3] AN
 					   TestTrigCt.q[6] AND TestTrigCt.q[7] AND TestTrigCt.q[8] AND TestTrigCt.q[9] AND TestTrigCt.q[10] AND TestTrigCt.q[11]);
 FastTrigDis_ = DFF (.d=FastTrigDis, .clk=Clk80);
 Test[0] = FastTrigDis;
-Test[1] = TrigDis;
+Test[1] = TrigDis;--SignalProc.test[11];--
+Test[5..2] = SignalProc.test[15..12];--InData_Reg[11].q[7..0];
+Test[9..7] = InData_Reg[0].q[7..5];
 Test[15..10] = GND;
+
+IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[6] = VCC;
+											Else Test[6] = GND;
+END IF;
+
 %	Im_ADC.data_a[9..0] = ADCdata[];
 	Im_ADC.data_a[15..10] = GND;
 	Im_ADC.(address_a[], clock_a, wren_a) = (Im_ADCCt.q[7..0], ADC_Clock, Working);

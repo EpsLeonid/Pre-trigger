@@ -12,9 +12,9 @@ CONSTANT ADC_Bits = 8; -- разрядность АЦП
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
-Constant Piedistal_def = 100; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
+Constant Piedistal_def = 110; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
 Constant Piedistal_def_2 = 125; -- Пьедестал для вычитания (знаение реального пьедестала около 280)
-CONSTANT ThresholdData_0 = 20;
+CONSTANT ThresholdData_0 = 60;
 CONSTANT ThresholdData_1 = 200;
 CONSTANT ThresholdData_2 = 250;
 CONSTANT MaxTime = 160;  -- Maximal Valid time (750ns)
@@ -34,6 +34,7 @@ FastTrig								: output;
 Trig									: output;
 
 Clock									: input;
+Clock160								: input;
 
 Reset									: input;
 ResetAll								: output;
@@ -196,7 +197,8 @@ MThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 HThresholdReg.(clock, enable, sset) = (Clock, VCC, VCC);
 
 FOR i in 0 to (NumGroup-1) GENERATE
-	IF((Group_Reg[i].q[] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- превышен нижний порог
+	IF((Group_Reg[i].q[] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- i?aauoai ie?iee ii?ia
+--	IF((Average_Reg[i].q[] > LThresholdReg.q[]) AND (GroupLT_Trig[i].q == GND)) THEN GroupValue_Up_LT[i] = VCC; -- i?aauoai ie?iee ii?ia
 																			  ELSE GroupValue_Up_LT[i] = GND;
 	END IF; 
 	IF((Group_Reg[i].q[] > MThresholdReg.q[]) AND (GroupMT_Trig[i].q == GND) AND (GroupLT_Trig[i].q == VCC)) THEN GroupValue_Up_MT[i] = VCC; -- превышен средний порог
@@ -274,9 +276,9 @@ FOR i in 0 to (NumGroup-1) GENERATE
 	Amp_Reg[i].(data[],clock,enable,load,aclr) = (Delay_Group_Reg[i].q[],Clock,(!GroupAmp_Trig[i].q AND GroupLT_Trig[i].q),VCC, AllReset.q);
 END GENERATE;
 
-Trig = (GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
+Trig = (GroupAmp_Trig[0].q %OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
 		GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR
-		GroupAmp_Trig[8].q);
+		GroupAmp_Trig[8].q%);
 --MaxAmp[] = GND;
 --MaxAmp[] = Amp_Reg[0].q[9..2];
 --MaxCellNumber[] = b"0001";
@@ -354,17 +356,17 @@ END IF;
 -- максимальное время в течении которого ищем пороги и затем стоят флаги найденных порогов
 
 NSampleCt.(clock,cnt_en,sclr,clk_en) = (Clock, 
-	 (GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+	 (GroupLT_Trig[0].q %OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
 	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR 
-	  GroupLT_Trig[8].q), AllReset.q, VCC); --счетчик тактов от момента пересечения порога
+	  GroupLT_Trig[8].q%), AllReset.q, VCC); --счетчик тактов от момента пересечения порога
 
 IF(( NSampleCt.q[] >= MaxTime) AND 
-	(((GroupHT_Trig[0].q AND GroupHT_Trig[1].q AND GroupHT_Trig[2].q AND GroupHT_Trig[3].q AND 
+	(((GroupHT_Trig[0].q %AND GroupHT_Trig[1].q AND GroupHT_Trig[2].q AND GroupHT_Trig[3].q AND 
 	  GroupHT_Trig[4].q AND GroupHT_Trig[5].q AND GroupHT_Trig[6].q AND GroupHT_Trig[7].q AND 
-	  GroupHT_Trig[8].q) == GND) AND 
-	((GroupAmp_Trig[0].q AND GroupAmp_Trig[1].q AND GroupAmp_Trig[2].q AND GroupAmp_Trig[3].q AND 
+	  GroupHT_Trig[8].q%) == GND) AND 
+	((GroupAmp_Trig[0].q %AND GroupAmp_Trig[1].q AND GroupAmp_Trig[2].q AND GroupAmp_Trig[3].q AND 
 	  GroupAmp_Trig[4].q AND GroupAmp_Trig[5].q AND GroupAmp_Trig[6].q AND GroupAmp_Trig[7].q AND 
-	  GroupAmp_Trig[8].q) == GND))) THEN TimeOutSch = VCC; 
+	  GroupAmp_Trig[8].q%) == GND))) THEN TimeOutSch = VCC; 
 									ELSE TimeOutSch = GND; 
 END IF;
 
@@ -372,23 +374,23 @@ IF( NSampleCt.q[] >= ResetTime) THEN TimeOut = VCC;
 								ELSE TimeOut = GND; 
 END IF;
 
-IF (((GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+IF (((GroupLT_Trig[0].q %OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
 	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR
-	  GroupLT_Trig[8].q)== VCC) AND 
-	((GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
+	  GroupLT_Trig[8].q%)== VCC) AND 
+	((GroupAmp_Trig[0].q %OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
 	  GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR
-	  GroupAmp_Trig[8].q)== VCC)) THEN ENDCycle = VCC; -- флаг окончание работы цикла
+	  GroupAmp_Trig[8].q%)== VCC)) THEN ENDCycle = VCC; -- флаг окончание работы цикла
 								  ELSE ENDCycle = GND;
 END IF;
 
-IF (((Group_Reg[0].q[] < LThresholdReg.q[]) AND (Group_Reg[1].q[] < LThresholdReg.q[]) AND 
+IF (((Group_Reg[0].q[] < LThresholdReg.q[]) %AND (Group_Reg[1].q[] < LThresholdReg.q[]) AND 
 	 (Group_Reg[2].q[] < LThresholdReg.q[]) AND (Group_Reg[3].q[] < LThresholdReg.q[]) AND
 	 (Group_Reg[4].q[] < LThresholdReg.q[]) AND (Group_Reg[5].q[] < LThresholdReg.q[]) AND 
 	 (Group_Reg[6].q[] < LThresholdReg.q[]) AND (Group_Reg[7].q[] < LThresholdReg.q[]) AND
-	 (Group_Reg[8].q[] < LThresholdReg.q[])) AND 
-	(((GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+	 (Group_Reg[8].q[] < LThresholdReg.q[])%) AND 
+	(((GroupLT_Trig[0].q %OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
 	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR 
-	  GroupLT_Trig[8].q)== VCC))) THEN ENDthrFound = VCC; -- iiene iaeiai ii?iaa ia ?ac?aoaiea ?aaiou oeeea caiiai
+	  GroupLT_Trig[8].q%)== VCC))) THEN ENDthrFound = VCC; -- iiene iaeiai ii?iaa ia ?ac?aoaiea ?aaiou oeeea caiiai
 								  ELSE ENDthrFound = GND;
 END IF;
 
@@ -428,14 +430,14 @@ test[7..0] = MaxAmp[7..0];--Group_Reg[0].q[9..2];--GroupSum[1].result[11..2];
 test[8] = MaxCellNumber[0];--TimeOutSch;--
 test[9] = MaxCellNumber[1];--TimeOut;--
 test[10] = MaxCellNumber[2];--ENDthrFound;--
-test[11] = (%GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
-	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR %
-	  GroupLT_Trig[8].q);
-test[12] = (%GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
-	  GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR% 
-	  GroupAmp_Trig[8].q);
+test[11] = TimeOutSch;%(GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig[3].q OR 
+	  GroupLT_Trig[4].q OR GroupLT_Trig[5].q OR GroupLT_Trig[6].q OR GroupLT_Trig[7].q OR 
+	  GroupLT_Trig[8].q);%
+test[12] = TimeOut;%(GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2].q OR GroupAmp_Trig[3].q OR 
+	  GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR 
+	  GroupAmp_Trig[8].q);%
 test[13] = Inhibit.q;
-test[14] = AllReset.q;--Group_Reg[2].q[9..2];--GroupSum[0].result[11..4];
-test[15] = (FastTrig AND !DelayENDCycle[8].q);
+test[14] = ENDthrFound;--Group_Reg[2].q[9..2];--GroupSum[0].result[11..4];
+test[15] = AllReset.q;--(FastTrig AND !DelayENDCycle[8].q);
 
 END;
