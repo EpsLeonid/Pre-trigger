@@ -9,6 +9,7 @@ INCLUDE "Sum2.inc";
 INCLUDE "ThrCellNumber.inc";
 
 CONSTANT ADC_Bits = 8; -- разрядность АЦП
+CONSTANT Sum_Bits = 10; -- разрядность Суммы
 CONSTANT NumTrigCh = 16;   -- количество триггерных каналов
 CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
@@ -60,14 +61,14 @@ Divide_x_4[NumTrigCh-1..0][ADC_Bits-1..0]		: node;
 --DividecentrAmp_x_4[ADC_Bits-1..0]				: node; 
 
 GroupSum[8..0]									: Sum4;
-Group_Reg[8..0]									: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- регистр данных
-Delay_Group_Reg[8..0]							: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- регистр данных
+Group_Reg[8..0]									: lpm_shiftreg with (LPM_WIDTH = Sum_Bits, LPM_DIRECTION="unused"); -- регистр данных
+Delay_Group_Reg[8..0]							: lpm_shiftreg with (LPM_WIDTH = Sum_Bits, LPM_DIRECTION="unused"); -- регистр данных
 
 --Integrator_Reg                   : lpm_shiftreg with (LPM_WIDTH = ADC_Bits+2, LPM_DIRECTION="unused"); -- 
 
-LThresholdReg				: lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused",LPM_SVALUE = ThresholdData_0); -- нижний порог
-MThresholdReg				: lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused",LPM_SVALUE = ThresholdData_1); -- средний порог
-HThresholdReg				: lpm_shiftreg with (LPM_WIDTH=ADC_Bits,LPM_DIRECTION="unused",LPM_SVALUE = ThresholdData_2); -- верхний порог
+LThresholdReg				: lpm_shiftreg with (LPM_WIDTH=Sum_Bits,LPM_DIRECTION="unused",LPM_SVALUE = ThresholdData_0); -- нижний порог
+MThresholdReg				: lpm_shiftreg with (LPM_WIDTH=Sum_Bits,LPM_DIRECTION="unused",LPM_SVALUE = ThresholdData_1); -- средний порог
+HThresholdReg				: lpm_shiftreg with (LPM_WIDTH=Sum_Bits,LPM_DIRECTION="unused",LPM_SVALUE = ThresholdData_2); -- верхний порог
 
 GroupLT_Trig[8..0]			: SRFF; -- флаг определения нижнего порога
 GroupMT_Trig[8..0]			: SRFF; -- флаг определения среднего порога
@@ -93,15 +94,15 @@ CentrValue_Amp_Done				: node;
 CentrAmp_Trig					: SRFF;
 CentrAmp_Reg					: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- амплитуда центральной сборки 4х4 кристалла
 %
-Amp_Reg[NumGroup-1..0]			: lpm_shiftreg with (LPM_WIDTH = ADC_Bits, LPM_DIRECTION="unused"); -- амплитуда сигнала
-Amp_Reg_1						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
-Amp_Reg_2						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
-Amp_Reg_3						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
-Amp_Reg_4						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
-Amp_Reg_5						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
-Amp_Reg_6						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
-Amp_Reg_7						: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); 
-Max_Reg							: lpm_shiftreg with (LPM_WIDTH = ADC_Bits+4, LPM_DIRECTION="unused"); -- максимальная амплитуда сигнала
+Amp_Reg[NumGroup-1..0]			: lpm_shiftreg with (LPM_WIDTH = Sum_Bits, LPM_DIRECTION="unused"); -- амплитуда сигнала
+Amp_Reg_1						: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_2						: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_3						: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_4						: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_5						: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_6						: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); 
+Amp_Reg_7						: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); 
+Max_Reg							: lpm_shiftreg with (LPM_WIDTH = Sum_Bits+4, LPM_DIRECTION="unused"); -- максимальная амплитуда сигнала
 
 NSampleCt						: LPM_COUNTER with (lpm_width=11, lpm_direction="up" ); -- n?ao?ee 
 
@@ -185,7 +186,7 @@ GroupSum[7].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[6].q[],Average_
 GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[10].q[],Average_Reg[11].q[],Average_Reg[14].q[],Average_Reg[15].q[]);
 
 FOR i in 0 to (NumGroup-1) GENERATE
-	Group_Reg[i].data[] = GroupSum[i].result[9..2];
+	Group_Reg[i].data[] = GroupSum[i].result[9..0];
 	Group_Reg[i].(clock,enable,load) = (Clock, VCC,VCC);
 END GENERATE;
 --GroupThrReg.(data[], clock, enable, sset) = (ThresholdData_2, Clock, VCC, VCC);
