@@ -195,7 +195,7 @@ ThreshCount_1Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 ThreshCount_2Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 ThreshCount_3Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 
-TrigMaxAmp_Reg		: lpm_shiftreg with (lpm_width = ADC_Bits, lpm_DIRECTION="unused");
+TrigMaxAmp_Reg		: lpm_shiftreg with (lpm_width = ADC_Bits+2, lpm_DIRECTION="unused");
 MaxCellNumber_Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 
 Trigger_reg			: lpm_shiftreg with (lpm_width = 64, lpm_DIRECTION="unused");
@@ -409,8 +409,8 @@ ThreshCount_1Reg.(data[], clock, enable, load) = (SignalProc.ThrNum1[], Clk80, V
 ThreshCount_2Reg.(data[], clock, enable, load) = (SignalProc.ThrNum2[], Clk80, VCC, VCC);
 ThreshCount_3Reg.(data[], clock, enable, load) = (SignalProc.ThrNum3[], Clk80, VCC, VCC);
 
-Trigger_reg.data[7..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
-Trigger_reg.data[9..8] = GND;
+Trigger_reg.data[9..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
+--Trigger_reg.data[9..8] = GND;
 Trigger_reg.data[13..10] = SignalProc.MaxCellNumber[];--MaxCellNumber_Reg.q[2..0];
 Trigger_reg.data[15..14] = GND;--ThreshCount_1Reg.q[];
 Trigger_reg.data[19..16] = VCC;--ThreshCount_2Reg.q[];
