@@ -11,10 +11,12 @@ INCLUDE "FindMaxAmp.inc";
 
 INCLUDE "LVDS_In.inc";
 INCLUDE "DDR_in.inc";
+INCLUDE "Ethernet.inc";
 INCLUDE "EdgeSensing.inc";
 INCLUDE "LevelSensing.inc" ;
 INCLUDE "PulseShaper.inc" ;
 INCLUDE "LightPulser.inc";
+INCLUDE "DelayLine.inc";
 
 INCLUDE "lpm_compare.inc" ;
 INCLUDE "lpm_shiftreg.inc" ;
@@ -24,6 +26,7 @@ INCLUDE "lpm_mux.inc" ;
 INCLUDE "lpm_ff.inc";
 
 CONSTANT Masks_Offset = H"20";   -- MasksReg #32
+Constant ThisDeviceAddr		= H"055555555520"; 
 
 CONSTANT NUM_ADCboard = 16;	-- Number of ADC boards in the trigger
 CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
@@ -137,7 +140,7 @@ B_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Blue
 R_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Red
 
 --============================================================================
---******** 2. Input TriggerData
+--******** 3. Input TriggerData
 
 ADCtest_bit_count	: LPM_COUNTER with (lpm_width=6, lpm_direction="up" );
 ADCtest_Bit_write	: node;
@@ -182,7 +185,7 @@ InData_Reg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTIO
 --SignalProc[NUM_CH_Tr..1]				: Digitizer;
 
 --============================================================================
---******** 6. Trigger Decision ******************************************************
+--******** 4. Trigger Decision ******************************************************
 Trigger		: TriggerDecision;
 Trig		: node;
 FastTrigDis	: node;
@@ -206,7 +209,37 @@ Loader		: node;
 Error		: node;
 
 --============================================================================
---******** 8. Test circuitry
+--******** 5. Ethernet
+Ether			: Ethernet;
+EthData[9..0]	: node;
+
+EthWord_Rd		: node; -- strobe at "Read"  operation, read 1 DWord from ETHERNET
+EthWord_Wr		: node; -- strobe at "Write" operation, write 1 DWord to ETHERNET
+
+-- Circuitry which latches the 1st Byte received, as it is a COMMAND
+RxDBlkDel[4..1]	: node; --delay of the "RxDataBlck" by 2 RxClocks and a little more
+EthOpCode_save	: node; -- strobe for latching the =1st= Ethernet' DataWord (OpCode)
+EthOpCode_saved	: node; -- =1 when Ethernet' OpCode is saved, till the End of Frame
+Reg_EthOpCode	: LPM_SHIFTREG with (lpm_width=8,  -- contains Command received from Ethernet
+							lpm_direction="unused"); -- not important
+
+-- Counter which contains address for exchange between ETHERNET and TestRAM
+EthAddrCt			: lpm_counter with (lpm_width = 8, lpm_direction="up");
+Eth_InitAddr[7..0]	: node; -- initial address of data to be Transmitted
+
+DataTrans		: node;
+
+St_EthTx_Ether	: node;
+Delay_StEthTx	: DelayLine with (DelayCode = 200,  -- to delay the real start of Processor 
+									DurationCode= 4); --  after CAMAC-cycle
+--StartEthTx_Ether: PulseShaper with (DurationCode=4);--Start Ethernet' Transmit by Ethernet command
+StartEthTx		: node; -- all sources of Start_EthernetTx combined
+Eth_WRITE,				-- flag: Ethernet' "Write" command is received 
+EtherWRITE		: node; -- flag: Ethernet' "Write" command is received, registered 
+--EtherWR_we	: node; -- Upon Ether' "WRITE" command, enables ETHERNET -> TestRAM
+
+--============================================================================
+--******** 6. Test circuitry
 TestCt		: lpm_counter WITH (lpm_width=26,           --\ Test Counter,
 								lpm_direction="up");    --/   Blinking counter
 TestTrigCt	: lpm_counter WITH (lpm_width=36, lpm_direction="up");

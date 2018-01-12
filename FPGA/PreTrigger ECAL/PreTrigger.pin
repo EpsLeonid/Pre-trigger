@@ -212,10 +212,10 @@ ADCInDataLVDS[17](n)         : AD28      : input  : LVDS              :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE1       :        :                   :         : 2         :                
 Test[14]                     : AE2       : output : 2.5 V             :         : 2         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE3       :        :                   :         : 2         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : AE4       :        :                   :         : 2         :                
+BoardID[2]                   : AE4       : input  : 2.5 V             :         : 2         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE5       :        :                   :         : 3         :                
 PreBeamTime(n)               : AE6       : input  : LVDS              :         : 3         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : AE7       :        :                   :         : 3         :                
+Test[13]                     : AE7       : output : 2.5 V             :         : 3         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE8       :        :                   :         : 3         :                
 ADCInDataLVDS[59]            : AE9       : input  : LVDS              :         : 3         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : AE10      :        :                   :         : 3         :                
@@ -348,10 +348,10 @@ ADCInDataLVDS[93](n)         : B26       : input  : LVDS              :         
 GND                          : B27       : gnd    :                   :         :           :                
 VCCIO6                       : B28       : power  :                   : 2.5V    : 6         :                
 GND                          : C1        : gnd    :                   :         :           :                
-Crs                          : C2        : input  : 2.5 V             :         : 1         : Y              
+CRS                          : C2        : input  : 2.5 V             :         : 1         : Y              
 LedR                         : C3        : output : 2.5 V             :         : 8         : Y              
 LedB                         : C4        : output : 2.5 V             :         : 8         : Y              
-BoardID[2]                   : C5        : input  : 2.5 V             :         : 8         : N              
+BoardID[5]                   : C5        : input  : 2.5 V             :         : 8         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : C6        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : C7        :        :                   :         : 8         :                
 TrigIn                       : C8        : input  : LVDS              :         : 8         : Y              
@@ -381,7 +381,7 @@ GND                          : D3        : gnd    :                   :         
 LedG                         : D4        : output : 2.5 V             :         : 8         : Y              
 Test[10]                     : D5        : output : 2.5 V             :         : 8         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : D6        :        :                   :         : 8         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : D7        :        :                   :         : 8         :                
+ADC_DCO                      : D7        : input  : 2.5 V             :         : 8         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : D8        :        :                   :         : 8         :                
 ADCInDataLVDS[127]           : D9        : input  : LVDS              :         : 8         : Y              
 ADCInDataLVDS[126](n)        : D10       : input  : LVDS              :         : 8         : Y              
@@ -405,9 +405,9 @@ ADCInDataLVDS[87]            : D27       : input  : LVDS              :         
 ADCInDataLVDS[87](n)         : D28       : input  : LVDS              :         : 6         : Y              
 RxDv                         : E1        : input  : 2.5 V             :         : 1         : Y              
 ~ALTERA_FLASH_nCE_nCSO~ / RESERVED_INPUT_WITH_WEAK_PULLUP : E2        : input  : 2.5 V             :         : 1         : N              
-TxD[2]                       : E3        : output : 2.5 V             :         : 1         : Y              
-TxD[3]                       : E4        : output : 2.5 V             :         : 1         : Y              
-Col                          : E5        : input  : 2.5 V             :         : 1         : Y              
+TXD[2]                       : E3        : output : 2.5 V             :         : 1         : Y              
+TXD[3]                       : E4        : output : 2.5 V             :         : 1         : Y              
+COL                          : E5        : input  : 2.5 V             :         : 1         : Y              
 VCCIO8                       : E6        : power  :                   : 2.5V    : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : E7        :        :                   :         : 8         :                
 Busy                         : E8        : input  : LVDS              :         : 8         : Y              
@@ -431,9 +431,9 @@ ADCInDataLVDS[73](n)         : E25       : input  : LVDS              :         
 ADCInDataLVDS[86](n)         : E26       : input  : LVDS              :         : 6         : Y              
 ADCInDataLVDS[79](n)         : E27       : input  : LVDS              :         : 6         : Y              
 ADCInDataLVDS[82](n)         : E28       : input  : LVDS              :         : 6         : Y              
-RxD[1]                       : F1        : input  : 2.5 V             :         : 1         : Y              
-RxD[0]                       : F2        : input  : 2.5 V             :         : 1         : Y              
-TxD[1]                       : F3        : output : 2.5 V             :         : 1         : Y              
+RXD[1]                       : F1        : input  : 2.5 V             :         : 1         : Y              
+RXD[0]                       : F2        : input  : 2.5 V             :         : 1         : Y              
+TXD[1]                       : F3        : output : 2.5 V             :         : 1         : Y              
 ~ALTERA_ASDO_DATA1~ / RESERVED_INPUT_WITH_WEAK_PULLUP : F4        : input  : 2.5 V             :         : 1         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : F5        :        :                   :         : 1         :                
 GND                          : F6        : gnd    :                   :         :           :                
@@ -459,9 +459,9 @@ ADCInDataLVDS[85]            : F25       : input  : LVDS              :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : F26       :        :                   :         : 6         :                
 ADCInDataLVDS[84]            : F27       : input  : LVDS              :         : 6         : Y              
 ADCInDataLVDS[84](n)         : F28       : input  : LVDS              :         : 6         : Y              
-RxD[3]                       : G1        : input  : 2.5 V             :         : 1         : Y              
-RxD[2]                       : G2        : input  : 2.5 V             :         : 1         : Y              
-TxD[0]                       : G3        : output : 2.5 V             :         : 1         : Y              
+RXD[3]                       : G1        : input  : 2.5 V             :         : 1         : Y              
+RXD[2]                       : G2        : input  : 2.5 V             :         : 1         : Y              
+TXD[0]                       : G3        : output : 2.5 V             :         : 1         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G4        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G5        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G6        :        :                   :         : 1         :                
@@ -469,7 +469,7 @@ RESERVED_INPUT_WITH_WEAK_PULLUP : G7        :        :                   :      
 RESERVED_INPUT_WITH_WEAK_PULLUP : G8        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G9        :        :                   :         : 8         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : G10       :        :                   :         : 8         :                
-ADC_DCO                      : G11       : input  : 2.5 V             :         : 8         : N              
+BoardID[1]                   : G11       : input  : 2.5 V             :         : 8         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G12       :        :                   :         : 8         :                
 ADCInDataLVDS[119](n)        : G13       : input  : LVDS              :         : 8         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : G14       :        :                   :         : 8         :                
@@ -491,10 +491,10 @@ VCCIO1                       : H1        : power  :                   : 2.5V    
 GND                          : H2        : gnd    :                   :         :           :                
 TxEn                         : H3        : output : 2.5 V             :         : 1         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : H4        :        :                   :         : 1         :                
-RESERVED_INPUT_WITH_WEAK_PULLUP : H5        :        :                   :         : 1         :                
+Test[12]                     : H5        : output : 2.5 V             :         : 1         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : H6        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : H7        :        :                   :         : 1         :                
-BoardID[0]                   : H8        : input  : 2.5 V             :         : 8         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : H8        :        :                   :         : 8         :                
 GNDA3                        : H9        : gnd    :                   :         :           :                
 BeamTime                     : H10       : input  : LVDS              :         : 8         : Y              
 VCCIO8                       : H11       : power  :                   : 2.5V    : 8         :                
@@ -549,7 +549,7 @@ Test[2]                      : K3        : output : 2.5 V             :         
 RESERVED_INPUT_WITH_WEAK_PULLUP : K4        :        :                   :         : 1         :                
 VCCIO1                       : K5        : power  :                   : 2.5V    : 1         :                
 GND                          : K6        : gnd    :                   :         :           :                
-BoardID[4]                   : K7        : input  : 2.5 V             :         : 1         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : K7        :        :                   :         : 1         :                
 VCCIO1                       : K8        : power  :                   : 2.5V    : 1         :                
 VCCINT                       : K9        : power  :                   : 1.2V    :           :                
 GND                          : K10       : gnd    :                   :         :           :                
@@ -575,9 +575,9 @@ Test[3]                      : L1        : output : 2.5 V             :         
 Test[4]                      : L2        : output : 2.5 V             :         : 1         : Y              
 Test[5]                      : L3        : output : 2.5 V             :         : 1         : Y              
 RESERVED_INPUT_WITH_WEAK_PULLUP : L4        :        :                   :         : 1         :                
-BoardID[7]                   : L5        : input  : 2.5 V             :         : 1         : N              
+BoardID[4]                   : L5        : input  : 2.5 V             :         : 1         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : L6        :        :                   :         : 1         :                
-Test[13]                     : L7        : output : 2.5 V             :         : 1         : N              
+BoardID[7]                   : L7        : input  : 2.5 V             :         : 1         : N              
 RESERVED_INPUT_WITH_WEAK_PULLUP : L8        :        :                   :         : 1         :                
 GND                          : L9        : gnd    :                   :         :           :                
 VCCINT                       : L10       : power  :                   : 1.2V    :           :                
@@ -602,8 +602,8 @@ ADCInDataLVDS[67]            : L28       : input  : LVDS              :         
 Test[6]                      : M1        : output : 2.5 V             :         : 1         : Y              
 Test[7]                      : M2        : output : 2.5 V             :         : 1         : Y              
 Test[8]                      : M3        : output : 2.5 V             :         : 1         : Y              
-Test[12]                     : M4        : output : 2.5 V             :         : 1         : N              
-RESERVED_INPUT_WITH_WEAK_PULLUP : M5        :        :                   :         : 1         :                
+RESERVED_INPUT_WITH_WEAK_PULLUP : M4        :        :                   :         : 1         :                
+BoardID[0]                   : M5        : input  : 2.5 V             :         : 1         : N              
 nSTATUS                      : M6        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M7        :        :                   :         : 1         :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : M8        :        :                   :         : 1         :                
@@ -656,7 +656,7 @@ ADCInDataLVDS[72](n)         : N26       : input  : LVDS              :         
 GND                          : N27       : gnd    :                   :         :           :                
 VCCIO6                       : N28       : power  :                   : 2.5V    : 6         :                
 Test[11]                     : P1        : output : 2.5 V             :         : 1         : N              
-BoardID[1]                   : P2        : input  : 2.5 V             :         : 1         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : P2        :        :                   :         : 1         :                
 ~ALTERA_DCLK~                : P3        : output : 2.5 V             :         : 1         : N              
 nCONFIG                      : P4        :        :                   :         : 1         :                
 altera_reserved_tck          : P5        : input  : 2.5 V             :         : 1         : N              
@@ -832,7 +832,7 @@ TriggerData[49]              : Y6        : output : 2.5 V             :         
 TriggerData[1]               : Y7        : output : 2.5 V             :         : 2         : Y              
 VCCA1                        : Y8        : power  :                   : 2.5V    :           :                
 VCCD_PLL1                    : Y9        : power  :                   : 1.2V    :           :                
-BoardID[5]                   : Y10       : input  : 2.5 V             :         : 3         : N              
+RESERVED_INPUT_WITH_WEAK_PULLUP : Y10       :        :                   :         : 3         :                
 GND                          : Y11       : gnd    :                   :         :           :                
 RESERVED_INPUT_WITH_WEAK_PULLUP : Y12       :        :                   :         : 3         :                
 Status_In[3](n)              : Y13       : input  : LVDS              :         : 3         : N              
