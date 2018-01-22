@@ -34,6 +34,7 @@ ThrNum2[3..0]							: output;
 ThrNum3[3..0]							: output;
 FastTrig								: output;
 Trig									: output;
+SaveTrigData							: output;
 
 Clock									: input;
 Clock160								: input;
@@ -349,7 +350,7 @@ IF ((GroupLT_Trig[0].q OR GroupLT_Trig[1].q OR GroupLT_Trig[2].q OR GroupLT_Trig
 	  GroupLT_Trig[8].q)== VCC)
 		Then MaxAmp[] = Max_Reg.q[9..0];--Amp_Reg_7.q[7..0];--
 			 MaxCellNumber[] = Max_Reg.q[13..10];--Amp_Reg_7.q[11..8];--
-		Else MaxAmp[] = b"00000000";--Amp_Reg_7.q[7..0];--
+		Else MaxAmp[] = b"0000000000";--Amp_Reg_7.q[7..0];--
 			 MaxCellNumber[] = b"1111";--Amp_Reg_7.q[11..8];--
 END IF;
 
@@ -439,7 +440,7 @@ test[12] = TimeOut;%(GroupAmp_Trig[0].q OR GroupAmp_Trig[1].q OR GroupAmp_Trig[2
 	  GroupAmp_Trig[4].q OR GroupAmp_Trig[5].q OR GroupAmp_Trig[6].q OR GroupAmp_Trig[7].q OR 
 	  GroupAmp_Trig[8].q);%
 test[13] = Inhibit.q;
-test[14] = ENDthrFound;--Group_Reg[2].q[9..2];--GroupSum[0].result[11..4];
-test[15] = AllReset.q;--(FastTrig AND !DelayENDCycle[8].q);
+test[14] = AllReset.q;--ENDthrFound;--Group_Reg[2].q[9..2];--GroupSum[0].result[11..4];
+test[15] = (FastTrig AND !DelayENDCycle[8].q);
 
 END;

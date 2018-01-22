@@ -419,7 +419,7 @@ Trigger_reg.data[23] = SignalProc.FastTrig;
 Trigger_reg.data[24] = SignalProc.Trig;
 Trigger_reg.data[51..25] = GND;
 Trigger_reg.data[63..52] = TestTrigCt.q[11..0];
-Trigger_reg.(clock,load,enable,aclr) = (Clk40, VCC, SignalProc.test[15], TestTrigCt.q[7]); -- SignalProc.test[13] - Inhibit from FindMaxAmp!!!
+Trigger_reg.(clock,load,enable,aclr) = (Clk40, VCC, SignalProc.SaveTrigData, TestTrigCt.q[7]); -- SignalProc.test[13] - Inhibit from FindMaxAmp!!!
 --Trigger_reg.(data[23..0],clock,load,enable) = (TestTrigCt.q[23..0], Clk40, VCC, VCC);
 
 TriggerData[24..0] = Trigger_reg.q[24..0];
@@ -463,8 +463,8 @@ TestTrigCt.(clock, clk_en, sclr)	= (Clk80, VCC, (FastTrigDis AND !FastTrigDis_))
 TestTrigCt.cnt_en = !(TestTrigCt.q[1] AND TestTrigCt.q[2] AND TestTrigCt.q[3] AND TestTrigCt.q[4] AND TestTrigCt.q[5] AND
 					   TestTrigCt.q[6] AND TestTrigCt.q[7] AND TestTrigCt.q[8] AND TestTrigCt.q[9] AND TestTrigCt.q[10] AND TestTrigCt.q[11]);
 FastTrigDis_ = DFF (.d=FastTrigDis, .clk=Clk80);
-Test[0] = FastTrigDis;
-Test[1] = TrigDis;--SignalProc.test[11];--
+Test[0] = Trigger_reg.q[23];--FastTrigDis;
+Test[1] = Trigger_reg.q[24];--TrigDis;--SignalProc.test[11];--
 Test[5..2] = SignalProc.test[15..12];--InData_Reg[11].q[7..0];
 Test[9..7] = InData_Reg[0].q[7..5];
 Test[15..10] = GND;
