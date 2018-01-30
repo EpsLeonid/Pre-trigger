@@ -214,6 +214,8 @@ TestCt_rst1 : node; --\ Cirquit for generating a _/^^\_ ,
 TestCt_rst2 : node; --/   duration >=(1/2)Tquartz
 FastTrigDis_: node;
 
+DelayReg[9..0]	: DFF;
+
 %
 	Im_ADC				:	im_ram;
 	Im_ADCCt			:	LPM_COUNTER with (lpm_width = 8, lpm_direction="up" ); -- n?ao?ee 
@@ -413,16 +415,29 @@ Trigger_reg.data[9..0] = SignalProc.MaxAmp[];--TrigMaxAmp_Reg.q[];
 --Trigger_reg.data[9..8] = GND;
 Trigger_reg.data[13..10] = SignalProc.MaxCellNumber[];--MaxCellNumber_Reg.q[2..0];
 Trigger_reg.data[15..14] = GND;--ThreshCount_1Reg.q[];
-Trigger_reg.data[19..16] = VCC;--ThreshCount_2Reg.q[];
+Trigger_reg.data[19..16] = GND;--ThreshCount_2Reg.q[];
 Trigger_reg.data[22..20] = GND;--ThreshCount_3Reg.q[];
-Trigger_reg.data[23] = SignalProc.FastTrig;
-Trigger_reg.data[24] = SignalProc.Trig;
+Trigger_reg.data[23] = SignalProc.FastTrig;--DelayReg[9].q;--
+Trigger_reg.data[24] = SignalProc.Trig;--DelayReg[9].q;--
 Trigger_reg.data[51..25] = GND;
 Trigger_reg.data[63..52] = TestTrigCt.q[11..0];
 Trigger_reg.(clock,load,enable,aclr) = (Clk40, VCC, SignalProc.SaveTrigData, TestTrigCt.q[7]); -- SignalProc.test[13] - Inhibit from FindMaxAmp!!!
 --Trigger_reg.(data[23..0],clock,load,enable) = (TestTrigCt.q[23..0], Clk40, VCC, VCC);
-
-TriggerData[24..0] = Trigger_reg.q[24..0];
+%
+DelayReg[0].(d, clk) = (SignalProc.FastTrig, Clk40);
+DelayReg[1].(d, clk) = (DelayReg[0].q, Clk40);
+DelayReg[2].(d, clk) = (DelayReg[1].q, Clk40);
+DelayReg[3].(d, clk) = (DelayReg[2].q, Clk40);
+DelayReg[4].(d, clk) = (DelayReg[3].q, Clk40);
+DelayReg[5].(d, clk) = (DelayReg[4].q, Clk40);
+DelayReg[6].(d, clk) = (DelayReg[5].q, Clk40);
+DelayReg[7].(d, clk) = (DelayReg[6].q, Clk40);
+DelayReg[8].(d, clk) = (DelayReg[7].q, Clk40);
+DelayReg[9].(d, clk) = (DelayReg[8].q, Clk40);
+%
+TriggerData[22..0] = Trigger_reg.q[22..0];
+TriggerData[23] = SignalProc.FastTrig;--DelayReg[9].q;--
+TriggerData[24] = SignalProc.Trig;--DelayReg[9].q;--
 %FOR i in 14 to 22 GENERATE
 	TriggerData[i] = GND;--TestTrigCt.q[i];
 END GENERATE;%
@@ -463,8 +478,8 @@ TestTrigCt.(clock, clk_en, sclr)	= (Clk80, VCC, (FastTrigDis AND !FastTrigDis_))
 TestTrigCt.cnt_en = !(TestTrigCt.q[1] AND TestTrigCt.q[2] AND TestTrigCt.q[3] AND TestTrigCt.q[4] AND TestTrigCt.q[5] AND
 					   TestTrigCt.q[6] AND TestTrigCt.q[7] AND TestTrigCt.q[8] AND TestTrigCt.q[9] AND TestTrigCt.q[10] AND TestTrigCt.q[11]);
 FastTrigDis_ = DFF (.d=FastTrigDis, .clk=Clk80);
-Test[0] = Trigger_reg.q[23];--FastTrigDis;
-Test[1] = Trigger_reg.q[24];--TrigDis;--SignalProc.test[11];--
+Test[0] = FastTrigDis;--Trigger_reg.q[23];--
+Test[1] = TrigDis;--Trigger_reg.q[24];--SignalProc.test[11];--
 Test[5..2] = SignalProc.test[15..12];--InData_Reg[11].q[7..0];
 Test[9..7] = InData_Reg[0].q[7..5];
 Test[15..10] = GND;

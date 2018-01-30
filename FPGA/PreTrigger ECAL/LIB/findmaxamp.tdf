@@ -15,7 +15,7 @@ CONSTANT NumInReg = 4;   -- число входных регистров (число слов)
 CONSTANT NumGroup = 9;
 Constant Piedistal_def = 100; -- Пьедестал для вычитания (знаение реального пьедестала около 265)
 Constant Piedistal_def_2 = 125; -- Пьедестал для вычитания (знаение реального пьедестала около 280)
-CONSTANT ThresholdData_0 = 130;
+CONSTANT ThresholdData_0 = 110;
 CONSTANT ThresholdData_1 = 220;
 CONSTANT ThresholdData_2 = 250;
 CONSTANT MaxTime = 160;  -- Maximal Valid time (750ns)
@@ -187,10 +187,14 @@ GroupSum[6].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[2].q[],Average_
 GroupSum[7].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[6].q[],Average_Reg[7].q[],Average_Reg[10].q[],Average_Reg[11].q[]);
 GroupSum[8].(data0x[],data1x[],data2x[],data3x[]) = (Average_Reg[10].q[],Average_Reg[11].q[],Average_Reg[14].q[],Average_Reg[15].q[]);
 
-FOR i in 0 to (NumGroup-1) GENERATE
-	Group_Reg[i].data[] = GroupSum[i].result[9..0];
+FOR i in 1 to (NumGroup-1) GENERATE
+--	Group_Reg[i].data[] = GroupSum[i].result[9..0];
+	Group_Reg[i].data[] = b"0001110000";
 	Group_Reg[i].(clock,enable,load) = (Clock, VCC,VCC);
 END GENERATE;
+	Group_Reg[0].(clock,enable,load) = (Clock, VCC,VCC);
+	Group_Reg[0].data[] = GroupSum[0].result[9..0];
+
 --GroupThrReg.(data[], clock, enable, sset) = (ThresholdData_2, Clock, VCC, VCC);
 
 -- *************** Трехпороговый дискриминатор ********************
