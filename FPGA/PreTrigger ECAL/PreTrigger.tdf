@@ -25,13 +25,14 @@ INCLUDE "lpm_ff.inc";
 
 CONSTANT Masks_Offset = H"20";   -- MasksReg #32
 
-CONSTANT NUM_ADCboard = 16;	-- Number of ADC boards in the trigger
-CONSTANT NUM_CH_Tr = 128;	-- Number of channels in the trigger
-CONSTANT ADC_Bits = 8;		-- Number of ADC bits in one channel
-CONSTANT ThresholdData_0 = 100;
-CONSTANT ThresholdData_1 = 150;
-CONSTANT ThresholdData_2 = 243;
-CONSTANT TrigBits = 64;		-- Number of triggerg bits to FCT
+CONSTANT NUM_ADCboard		= 16;	-- Number of ADC boards in the trigger
+CONSTANT NUM_CH_Tr			= 128;	-- Number of channels in the trigger
+CONSTANT NUM_Trig_get_ch	= 12;	-- Number of channels in the trigger
+CONSTANT ADC_Bits			= 8;		-- Number of ADC bits in one channel
+CONSTANT ThresholdData_0	= 100;
+CONSTANT ThresholdData_1	= 150;
+CONSTANT ThresholdData_2	= 243;
+CONSTANT TrigBits			= 64;		-- Number of triggerg bits to FCT
 
 SUBDESIGN PreTrigger
 (
@@ -67,10 +68,13 @@ ADC_CLK			: output;	-- Pin AA3/AB3
 ADC_DCO			: input;
 --ADC_channel_shift_clk : input;	-- Pin AB10
 
+ADCInDataLVDS[NUM_CH_Tr-1..0]: input;	-- input of data from ADC	<- Pin 
+PreviousInDataLVDS[NUM_Trig_get_ch-1..0]: input;	-- input of data from ADC	<- Pin 
+
 -- 3. Trig_in-out_FCT
 
 TrigIn			: input;	-- Внешний триггер					<- Pin W10/Y10
---TrigOUT			: output;	-- O?eaaa?iue neaiae, noi?ie?iaaiiue ieaoie aey a?oaeo nenoai	<- Pin
+--FastTrigDes		: output;	-- Fast trigger desition to EROS/ROESTI	<- Pin
 TriggerData[TrigBits-1..0]: output;	-- Trigger data to FCT
 
 Busy			: input;	--Pin AA13/AB13
@@ -137,9 +141,9 @@ B_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Blue
 R_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Red
 
 --============================================================================
---******** 2. Input TriggerData
+--******** 3. Input TriggerData
 
-ADCtest_bit_count	: LPM_COUNTER with (lpm_width=6, lpm_direction="up" );
+ADCtest_bit_count	: lpm_counter with (lpm_width=6, lpm_direction="up" );
 ADCtest_Bit_write	: node;
 ADCtest_CSB_trig	: DFFE;
 ADCtest_SDIO_trig	: DFFE;
@@ -147,7 +151,7 @@ ADCtest_reg			: lpm_shiftreg with (lpm_width=50,
 						lpm_svalue = b"00000000000011010000110000000000001111111100000001",lpm_DIRECTION="left"); -- 
 --								      "set	addr	 	data   set	addr		  data "
 --									   3bit 13bit	 	8bit   3bit	13bit		  8bit
-ADCreset_bit_count	: LPM_COUNTER with (lpm_width=6, lpm_direction="up" );
+ADCreset_bit_count	: lpm_counter with (lpm_width=6, lpm_direction="up" );
 ADCreset_Bit_write	: node;
 ADCreset_CSB_trig	: DFFE;
 ADCreset_SDIO_trig	: DFFE;
@@ -182,6 +186,12 @@ InData_Reg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTIO
 --SignalProc[NUM_CH_Tr..1]				: Digitizer;
 
 --============================================================================
+--******** 5. System ******************************************************
+Reset		: node;
+Loader		: node;
+Error		: node;
+
+--============================================================================
 --******** 6. Trigger Decision ******************************************************
 Trigger		: TriggerDecision;
 Trig		: node;
@@ -201,9 +211,13 @@ MaxCellNumber_Reg	: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
 Trigger_reg			: lpm_shiftreg with (lpm_width = 64, lpm_DIRECTION="unused");
 TrigOUT[31..0]		: node;
 
-Reset		: node;
-Loader		: node;
-Error		: node;
+--============================================================================
+--******** 7. Fast Trigger Decision for EROS/ROESTI**********************************
+--Four bit header + 32 bit trigger number + 8 bit CRC
+FastTrigHeader		: lpm_shiftreg with (lpm_width = 4, lpm_DIRECTION="unused");
+FastTrigNumber		: lpm_counter with (lpm_width=32, lpm_direction="up" );
+FastTrigCRC			: lpm_shiftreg with (lpm_width = 8, lpm_DIRECTION="unused");
+FastTrigDes_Reg		: lpm_shiftreg with (lpm_width = 44, lpm_DIRECTION="left");
 
 --============================================================================
 --******** 8. Test circuitry
