@@ -26,8 +26,8 @@ INCLUDE "lpm_ff.inc";
 CONSTANT Masks_Offset = H"20";   -- MasksReg #32
 
 CONSTANT NUM_ADCboard		= 16;	-- Number of ADC boards in the trigger
-CONSTANT NUM_CH_Tr			= 128;	-- Number of channels in the trigger
-CONSTANT NUM_Trig_get_ch	= 12;	-- Number of channels in the trigger
+CONSTANT NUM_TrigCell		= 128;	-- Number of channels in the trigger
+CONSTANT NUM_Trig_get_ch	= 12;	-- Number of channels in the trigger from prev.board
 CONSTANT ADC_Bits			= 8;		-- Number of ADC bits in one channel
 CONSTANT ThresholdData_0	= 100;
 CONSTANT ThresholdData_1	= 150;
@@ -57,8 +57,8 @@ LedB			: output;	-- drives the Blue(Yellow) LED				-> Pin
 
 -- 2. Channel  
 
-ADCInDataLVDS[NUM_CH_Tr-1..0]: input;	-- input of data from ADC	<- Pin 
---ADCInDataLVDS[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: input;	-- input of data from ADC	<- Pin 
+ADCInDataLVDS[NUM_TrigCell-1..0]: input;	-- input of data from ADC	<- Pin 
+--ADCInDataLVDS[NUM_ADCboard-1..0][NUM_TrigCell-1..0]	: input;	-- input of data from ADC	<- Pin 
 
 ADC_CSB			: output;	-- Pin AA4
 ADC_SDIO		: output;	-- Pin AA1
@@ -68,7 +68,7 @@ ADC_CLK			: output;	-- Pin AA3/AB3
 ADC_DCO			: input;
 --ADC_channel_shift_clk : input;	-- Pin AB10
 
-ADCInDataLVDS[NUM_CH_Tr-1..0]: input;	-- input of data from ADC	<- Pin 
+ADCInDataLVDS[NUM_TrigCell-1..0]: input;	-- input of data from ADC	<- Pin 
 PreviousInDataLVDS[NUM_Trig_get_ch-1..0]: input;	-- input of data from ADC	<- Pin 
 
 -- 3. Trig_in-out_FCT
@@ -161,29 +161,29 @@ ADCreset_reg		: lpm_shiftreg with (lpm_width=50,
 -- Data from ADC must be 10 0110 0011 for 10-bits ADC
 -- Data from ADC must be	1010 0011 for 8-bits ADC
 
-ShiftClk[NUM_CH_Tr-1..0]				: node;
+ShiftClk[NUM_TrigCell-1..0]				: node;
 %
-ADCInData[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: LVDS_In;
+ADCInData[NUM_ADCboard-1..0][NUM_TrigCell-1..0]	: LVDS_In;
 ADCdata_align									: DFFE;
-DDR_InLVDS[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: DDR_In;
-DDR_Reg_pos[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
-DDR_Reg_neg[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
-InData[NUM_CH_Tr-1..0][ADC_Bits-1..0]			: node;
+DDR_InLVDS[NUM_ADCboard-1..0][NUM_TrigCell-1..0]	: DDR_In;
+DDR_Reg_pos[NUM_ADCboard-1..0][NUM_TrigCell-1..0]	: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
+DDR_Reg_neg[NUM_ADCboard-1..0][NUM_TrigCell-1..0]	: lpm_shiftreg with (lpm_width=5,lpm_DIRECTION="left");
+InData[NUM_TrigCell-1..0][ADC_Bits-1..0]			: node;
 Threshold_Reg[2..0]								: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
-InData_Reg[NUM_ADCboard-1..0][NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
+InData_Reg[NUM_ADCboard-1..0][NUM_TrigCell-1..0]	: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 %
-ADCInData[NUM_CH_Tr-1..0]		: LVDS_In;
+ADCInData[NUM_TrigCell-1..0]		: LVDS_In;
 --ADCdata_align					: DFFE;
-DDR_InLVDS[NUM_CH_Tr-1..0]		: DDR_In;
-DDR_Reg_pos[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=4,lpm_DIRECTION="left");
-DDR_Reg_neg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=4,lpm_DIRECTION="left");
-InData[NUM_CH_Tr-1..0]			: node;
+DDR_InLVDS[NUM_TrigCell-1..0]		: DDR_In;
+DDR_Reg_pos[NUM_TrigCell-1..0]		: lpm_shiftreg with (lpm_width=4,lpm_DIRECTION="left");
+DDR_Reg_neg[NUM_TrigCell-1..0]		: lpm_shiftreg with (lpm_width=4,lpm_DIRECTION="left");
+InData[NUM_TrigCell-1..0]			: node;
 Threshold_Reg[2..0]				: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 Overflow						: node;
-InData_RegMix[NUM_CH_Tr-1..0]	: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
-InData_Reg[NUM_CH_Tr-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
+InData_RegMix[NUM_TrigCell-1..0]	: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
+InData_Reg[NUM_TrigCell-1..0]		: lpm_shiftreg with (lpm_width=ADC_Bits,lpm_DIRECTION="unused"); -- 
 
---SignalProc[NUM_CH_Tr..1]				: Digitizer;
+--SignalProc[NUM_TrigCell..1]				: Digitizer;
 
 --============================================================================
 --******** 5. System ******************************************************
@@ -364,7 +364,7 @@ Error = PhaseSw.Error OR Overflow;
 --============================================================================
 --******** 4. ADC data *********************************************
 %
-FOR i in 0 to (NUM_CH_Tr-1) GENERATE
+FOR i in 0 to (NUM_TrigCell-1) GENERATE
 	ADCInData[i].(rx_in[], rx_inclock) = (ADCInDataLVDS[i], Clk80);
 	InData_Reg[i].(data[], clock, enable, load) = (ADCInData[i].rx_out[], Clk80, VCC, VCC);
 END GENERATE;
