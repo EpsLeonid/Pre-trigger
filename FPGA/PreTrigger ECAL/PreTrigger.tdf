@@ -2,12 +2,12 @@ Title "Trigger Module for Prototype of COMET Calorimeter";
 -- v.2a  : ECAL Pretrigger for test
 -- v.2b  : ECAL Pretrigger for test in test beam, fixed a few bugs; ver. for beam-test 2016
 
-INCLUDE "PLL_Trigger.inc";
-INCLUDE "PhaseSwitch.inc";
-INCLUDE "TriggerDecision.inc";
---INCLUDE "Digitizer.inc";
-INCLUDE "FindMaxAmp.inc";
---INCLUDE	"im_ram.inc";
+INCLUDE "lpm_compare.inc" ;
+INCLUDE "lpm_shiftreg.inc" ;
+INCLUDE "lpm_counter.inc" ;
+INCLUDE	"lpm_add_sub.inc";
+INCLUDE "lpm_mux.inc" ;
+INCLUDE "lpm_ff.inc";
 
 INCLUDE "LVDS_In.inc";
 INCLUDE "DDR_in.inc";
@@ -16,17 +16,21 @@ INCLUDE "LevelSensing.inc" ;
 INCLUDE "PulseShaper.inc" ;
 INCLUDE "LightPulser.inc";
 
-INCLUDE "lpm_compare.inc" ;
-INCLUDE "lpm_shiftreg.inc" ;
-INCLUDE "lpm_counter.inc" ;
-INCLUDE	"lpm_add_sub.inc";
-INCLUDE "lpm_mux.inc" ;
-INCLUDE "lpm_ff.inc";
+INCLUDE "PLL_Trigger.inc";
+INCLUDE "PhaseSwitch.inc";
+INCLUDE "TriggerDecision.inc";
+--INCLUDE "Digitizer.inc";
+INCLUDE "FindMaxAmp.inc";
+--INCLUDE	"im_ram.inc";
+
+INCLUDE "pdo.inc";
+INCLUDE "seio.inc";
+INCLUDE "diffin.inc";
 
 CONSTANT Masks_Offset = H"20";   -- MasksReg #32
 
 CONSTANT NUM_ADCboard		= 16;	-- Number of ADC boards in the trigger
-CONSTANT NUM_TrigCell		= 128;	-- Number of channels in the trigger
+CONSTANT NUM_TrigCell		= 126;	-- Number of channels in the trigger
 CONSTANT NUM_Trig_get_ch	= 12;	-- Number of channels in the trigger from prev.board
 CONSTANT ADC_Bits			= 8;		-- Number of ADC bits in one channel
 CONSTANT ThresholdData_0	= 100;
@@ -103,6 +107,8 @@ HardReset		: input;	--Hard reset from FCT						<- Pin Y14/Y15
 
 -- 6. Test
 Test[15..0]			: OUTPUT;
+ADCInDataLVDS_p[126,127]: bidir;
+ADCInDataLVDS_n[126,127]: bidir;
 )
 
 VARIABLE
@@ -230,6 +236,12 @@ FastTrigDis_: node;
 
 DelayReg[9..0]	: DFF;
 
+b2v_inst2			: pdo;
+b2v_inst3			: seio;
+b2v_inst4			: seio;
+b2v_inst5			: diffin;
+Reg_DataTest1		: lpm_shiftreg with (lpm_width = 4, lpm_svalue = b"0111", lpm_DIRECTION="right");
+Reg_DataTest2		: lpm_shiftreg with (lpm_width = 4, lpm_svalue = b"0001", lpm_DIRECTION="right");
 %
 	Im_ADC				:	im_ram;
 	Im_ADCCt			:	LPM_COUNTER with (lpm_width = 8, lpm_direction="up" ); -- n?ao?ee 
@@ -501,6 +513,16 @@ Test[15..10] = GND;
 IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[6] = VCC;
 											Else Test[6] = GND;
 END IF;
+
+Reg_DataTest()
+b2v_inst2.i = Reg_DataTest[].q;
+b2v_inst3.(datain, oe) = (b2v_inst2.o, TestTrigCt.q[12]);
+b2v_inst4.(datain, oe) = (b2v_inst2.obar, TestTrigCt.q[12]);
+b2v_inst5.(datain, datain_b) = (ADCInDataLVDS_p[126], ADCInDataLVDS_n[126]);
+
+ADCInDataLVDS_p[126] = b2v_inst3.dataout;
+ADCInDataLVDS_n[126] = b2v_inst4.dataout;
+
 
 %	Im_ADC.data_a[9..0] = ADCdata[];
 	Im_ADC.data_a[15..10] = GND;
