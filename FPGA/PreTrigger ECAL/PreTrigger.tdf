@@ -514,8 +514,13 @@ IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[6] = VCC;
 											Else Test[6] = GND;
 END IF;
 
-Reg_DataTest()
-b2v_inst2.i = Reg_DataTest[].q;
+IF TestTrigCt.q[12]==VCC THEN 
+Reg_DataTest1.(clock,enable) = (Clk80, VCC);
+Reg_DataTest2.(clock,enable) = (Clk80, VCC);
+
+Link_IFace.LinkData_in = (b2v_inst5.dataout AND !Link_IFace.TxRx);
+
+b2v_inst2.i = Reg_DataTest1.shiftout;
 b2v_inst3.(datain, oe) = (b2v_inst2.o, TestTrigCt.q[12]);
 b2v_inst4.(datain, oe) = (b2v_inst2.obar, TestTrigCt.q[12]);
 b2v_inst5.(datain, datain_b) = (ADCInDataLVDS_p[126], ADCInDataLVDS_n[126]);
