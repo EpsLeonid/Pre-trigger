@@ -64,24 +64,11 @@ set_global_assignment -name RESERVE_ALL_UNUSED_PINS_WEAK_PULLUP "AS INPUT TRI-ST
 set_global_assignment -name USE_CONFIGURATION_DEVICE ON
 set_global_assignment -name CYCLONEIII_CONFIGURATION_DEVICE EPCS16
 set_global_assignment -name MISC_FILE "E:/Work/Japan/COMET/Electronics/FPGA/PreTrigger ECAL/PreTrigger.dpf"
-set_global_assignment -name SEED 5
+set_global_assignment -name SEED 10
 set_instance_assignment -name IO_STANDARD LVDS -to FCTClk160
 set_instance_assignment -name IO_STANDARD LVDS -to "FCTClk160(n)"
 set_instance_assignment -name IO_STANDARD LVDS -to TrigIn
 set_instance_assignment -name IO_STANDARD LVDS -to "TrigIn(n)"
-set_instance_assignment -name IO_STANDARD LVDS -to HardReset
-set_instance_assignment -name IO_STANDARD LVDS -to Status_In[3]
-set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[3](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to Status_In[2]
-set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[2](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to Status_In[1]
-set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[1](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to Status_In[0]
-set_instance_assignment -name IO_STANDARD LVDS -to "Status_In[0](n)"
-set_instance_assignment -name IO_STANDARD LVDS -to SignalWindow
-set_instance_assignment -name IO_STANDARD LVDS -to PreBeamTime
-set_instance_assignment -name IO_STANDARD LVDS -to Busy
-set_instance_assignment -name IO_STANDARD LVDS -to BeamTime
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[0]
 set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[0](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[1]
@@ -114,71 +101,6 @@ set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[14]
 set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[14](n)"
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[15]
 set_instance_assignment -name IO_STANDARD LVDS -to "ADCInDataLVDS[15](n)"
-set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ExtReset
-set_location_assignment PIN_V1 -to TriggerData[0]
-set_location_assignment PIN_Y7 -to TriggerData[1]
-set_location_assignment PIN_V6 -to TriggerData[2]
-set_location_assignment PIN_V7 -to TriggerData[3]
-set_location_assignment PIN_V3 -to TriggerData[4]
-set_location_assignment PIN_W9 -to TriggerData[5]
-set_location_assignment PIN_W2 -to TriggerData[6]
-set_location_assignment PIN_W3 -to TriggerData[7]
-set_location_assignment PIN_R5 -to TriggerData[8]
-set_location_assignment PIN_R6 -to TriggerData[9]
-set_location_assignment PIN_T4 -to TriggerData[10]
-set_location_assignment PIN_T8 -to TriggerData[19]
-set_location_assignment PIN_R1 -to TriggerData[17]
-set_location_assignment PIN_R7 -to TriggerData[32]
-set_location_assignment PIN_R4 -to TriggerData[35]
-set_location_assignment PIN_R3 -to TriggerData[34]
-set_location_assignment PIN_R2 -to TriggerData[33]
-set_location_assignment PIN_T9 -to TriggerData[27]
-set_location_assignment PIN_T3 -to TriggerData[26]
-set_location_assignment PIN_U8 -to TriggerData[18]
-set_location_assignment PIN_U7 -to TriggerData[16]
-set_location_assignment PIN_T7 -to TriggerData[11]
-set_location_assignment PIN_U6 -to TriggerData[30]
-set_location_assignment PIN_U5 -to TriggerData[21]
-set_location_assignment PIN_U3 -to TriggerData[28]
-set_location_assignment PIN_U4 -to TriggerData[29]
-set_location_assignment PIN_U2 -to TriggerData[20]
-set_location_assignment PIN_U1 -to TriggerData[31]
-set_location_assignment PIN_V9 -to TriggerData[12]
-set_location_assignment PIN_V8 -to TriggerData[13]
-set_location_assignment PIN_V5 -to TriggerData[15]
-set_location_assignment PIN_V4 -to TriggerData[24]
-set_location_assignment PIN_V2 -to TriggerData[14]
-set_location_assignment PIN_W8 -to TriggerData[22]
-set_location_assignment PIN_W4 -to TriggerData[46]
-set_location_assignment PIN_W1 -to TriggerData[44]
-set_location_assignment PIN_Y6 -to TriggerData[49]
-set_location_assignment PIN_Y5 -to TriggerData[25]
-set_location_assignment PIN_Y3 -to TriggerData[23]
-set_location_assignment PIN_Y4 -to TriggerData[50]
-set_location_assignment PIN_AA8 -to TriggerData[59]
-set_location_assignment PIN_AA6 -to TriggerData[61]
-set_location_assignment PIN_AA7 -to TriggerData[39]
-set_location_assignment PIN_AA5 -to TriggerData[51]
-set_location_assignment PIN_AA4 -to TriggerData[43]
-set_location_assignment PIN_AB8 -to TriggerData[37]
-set_location_assignment PIN_AB6 -to TriggerData[56]
-set_location_assignment PIN_AB7 -to TriggerData[38]
-set_location_assignment PIN_AB5 -to TriggerData[54]
-set_location_assignment PIN_AC5 -to TriggerData[41]
-set_location_assignment PIN_AB1 -to TriggerData[45]
-set_location_assignment PIN_AB4 -to TriggerData[42]
-set_location_assignment PIN_AC1 -to TriggerData[55]
-set_location_assignment PIN_AC7 -to TriggerData[58]
-set_location_assignment PIN_AB2 -to TriggerData[60]
-set_location_assignment PIN_AB3 -to TriggerData[36]
-set_location_assignment PIN_AD5 -to TriggerData[57]
-set_location_assignment PIN_AC2 -to TriggerData[52]
-set_location_assignment PIN_AC3 -to TriggerData[47]
-set_location_assignment PIN_AC4 -to TriggerData[40]
-set_location_assignment PIN_AD2 -to TriggerData[53]
-set_location_assignment PIN_AD3 -to TriggerData[62]
-set_location_assignment PIN_AD4 -to TriggerData[48]
-set_location_assignment PIN_AA3 -to TriggerData[63]
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[16]
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[17]
 set_instance_assignment -name IO_STANDARD LVDS -to ADCInDataLVDS[18]
@@ -531,21 +453,6 @@ set_location_assignment PIN_AE11 -to ADCInDataLVDS[62]
 set_location_assignment PIN_AG11 -to "ADCInDataLVDS[62](n)"
 set_location_assignment PIN_AF10 -to ADCInDataLVDS[63]
 set_location_assignment PIN_AF11 -to "ADCInDataLVDS[63](n)"
-set_global_assignment -name MISC_FILE "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger ECAL/PreTrigger.dpf"
-set_location_assignment PIN_E5 -to Col
-set_location_assignment PIN_C2 -to Crs
-set_location_assignment PIN_D1 -to RxClk
-set_location_assignment PIN_F2 -to RxD[0]
-set_location_assignment PIN_F1 -to RxD[1]
-set_location_assignment PIN_G2 -to RxD[2]
-set_location_assignment PIN_G1 -to RxD[3]
-set_location_assignment PIN_E1 -to RxDv
-set_location_assignment PIN_D2 -to TxClk
-set_location_assignment PIN_G3 -to TxD[0]
-set_location_assignment PIN_F3 -to TxD[1]
-set_location_assignment PIN_E3 -to TxD[2]
-set_location_assignment PIN_E4 -to TxD[3]
-set_location_assignment PIN_H3 -to TxEn
 set_location_assignment PIN_M26 -to ADCInDataLVDS[64]
 set_location_assignment PIN_L20 -to "ADCInDataLVDS[64](n)"
 set_location_assignment PIN_M24 -to ADCInDataLVDS[65]
@@ -674,14 +581,174 @@ set_location_assignment PIN_F10 -to ADCInDataLVDS[126]
 set_location_assignment PIN_D10 -to "ADCInDataLVDS[126](n)"
 set_location_assignment PIN_D9 -to ADCInDataLVDS[127]
 set_location_assignment PIN_C9 -to "ADCInDataLVDS[127](n)"
+
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[0]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[0](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[1]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[1](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[2]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[2](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[3]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[3](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[4]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[4](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[5]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[5](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[6]
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[7]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[7](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[8]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[8](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[9]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[9](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[10]
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[11]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[11](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[12]
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[13]
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[14]
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[15]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[15](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[16]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[16](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[17]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[17](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[18]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[18](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[19]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[19](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[20]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[20](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[21]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[21](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[22]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[22](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[23]
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[24]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[24](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[25]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[25](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[26]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[26](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[27]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[27](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[28]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[28](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[29]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[29](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[30]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[30](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCO[31]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCO[31](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[0]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[0](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[1]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[1](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[2]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[2](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[3]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[3](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[4]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[4](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[5]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[5](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[6]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[6](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[7]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[7](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[8]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[8](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[9]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[9](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[10]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[10](n)"
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOPrev[11]
+set_instance_assignment -name IO_STANDARD LVDS -to "ADC_DCOPrev[11](n)"
+
+set_location_assignment PIN_V1 -to TriggerData[0]
+set_location_assignment PIN_Y7 -to TriggerData[1]
+set_location_assignment PIN_V6 -to TriggerData[2]
+set_location_assignment PIN_V7 -to TriggerData[3]
+set_location_assignment PIN_V3 -to TriggerData[4]
+set_location_assignment PIN_W9 -to TriggerData[5]
+set_location_assignment PIN_W2 -to TriggerData[6]
+set_location_assignment PIN_W3 -to TriggerData[7]
+set_location_assignment PIN_R5 -to TriggerData[8]
+set_location_assignment PIN_R6 -to TriggerData[9]
+set_location_assignment PIN_T4 -to TriggerData[10]
+set_location_assignment PIN_T8 -to TriggerData[19]
+set_location_assignment PIN_R1 -to TriggerData[17]
+set_location_assignment PIN_R7 -to TriggerData[32]
+set_location_assignment PIN_R4 -to TriggerData[35]
+set_location_assignment PIN_R3 -to TriggerData[34]
+set_location_assignment PIN_R2 -to TriggerData[33]
+set_location_assignment PIN_T9 -to TriggerData[27]
+set_location_assignment PIN_T3 -to TriggerData[26]
+set_location_assignment PIN_U8 -to TriggerData[18]
+set_location_assignment PIN_U7 -to TriggerData[16]
+set_location_assignment PIN_T7 -to TriggerData[11]
+set_location_assignment PIN_U6 -to TriggerData[30]
+set_location_assignment PIN_U5 -to TriggerData[21]
+set_location_assignment PIN_U3 -to TriggerData[28]
+set_location_assignment PIN_U4 -to TriggerData[29]
+set_location_assignment PIN_U2 -to TriggerData[20]
+set_location_assignment PIN_U1 -to TriggerData[31]
+set_location_assignment PIN_V9 -to TriggerData[12]
+set_location_assignment PIN_V8 -to TriggerData[13]
+set_location_assignment PIN_V5 -to TriggerData[15]
+set_location_assignment PIN_V4 -to TriggerData[24]
+set_location_assignment PIN_V2 -to TriggerData[14]
+set_location_assignment PIN_W8 -to TriggerData[22]
+set_location_assignment PIN_W4 -to TriggerData[46]
+set_location_assignment PIN_W1 -to TriggerData[44]
+set_location_assignment PIN_Y6 -to TriggerData[49]
+set_location_assignment PIN_Y5 -to TriggerData[25]
+set_location_assignment PIN_Y3 -to TriggerData[23]
+set_location_assignment PIN_Y4 -to TriggerData[50]
+set_location_assignment PIN_AA8 -to TriggerData[59]
+set_location_assignment PIN_AA6 -to TriggerData[61]
+set_location_assignment PIN_AA7 -to TriggerData[39]
+set_location_assignment PIN_AA5 -to TriggerData[51]
+set_location_assignment PIN_AA4 -to TriggerData[43]
+set_location_assignment PIN_AB8 -to TriggerData[37]
+set_location_assignment PIN_AB6 -to TriggerData[56]
+set_location_assignment PIN_AB7 -to TriggerData[38]
+set_location_assignment PIN_AB5 -to TriggerData[54]
+set_location_assignment PIN_AC5 -to TriggerData[41]
+set_location_assignment PIN_AB1 -to TriggerData[45]
+set_location_assignment PIN_AB4 -to TriggerData[42]
+set_location_assignment PIN_AC1 -to TriggerData[55]
+set_location_assignment PIN_AC7 -to TriggerData[58]
+set_location_assignment PIN_AB2 -to TriggerData[60]
+set_location_assignment PIN_AB3 -to TriggerData[36]
+set_location_assignment PIN_AD5 -to TriggerData[57]
+set_location_assignment PIN_AC2 -to TriggerData[52]
+set_location_assignment PIN_AC3 -to TriggerData[47]
+set_location_assignment PIN_AC4 -to TriggerData[40]
+set_location_assignment PIN_AD2 -to TriggerData[53]
+set_location_assignment PIN_AD3 -to TriggerData[62]
+set_location_assignment PIN_AD4 -to TriggerData[48]
+set_location_assignment PIN_AA3 -to TriggerData[63]
+set_instance_assignment -name WEAK_PULL_UP_RESISTOR ON -to ExtReset
+set_global_assignment -name MISC_FILE "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger ECAL/PreTrigger.dpf"
+set_location_assignment PIN_E5 -to Col
+set_location_assignment PIN_C2 -to Crs
+set_location_assignment PIN_D1 -to RxClk
+set_location_assignment PIN_F2 -to RxD[0]
+set_location_assignment PIN_F1 -to RxD[1]
+set_location_assignment PIN_G2 -to RxD[2]
+set_location_assignment PIN_G1 -to RxD[3]
+set_location_assignment PIN_E1 -to RxDv
+set_location_assignment PIN_D2 -to TxClk
+set_location_assignment PIN_G3 -to TxD[0]
+set_location_assignment PIN_F3 -to TxD[1]
+set_location_assignment PIN_E3 -to TxD[2]
+set_location_assignment PIN_E4 -to TxD[3]
+set_location_assignment PIN_H3 -to TxEn
 set_location_assignment PIN_J1 -to PLL_in
 set_location_assignment PIN_A3 -to FQuartz
 set_location_assignment PIN_C8 -to TrigIn
 set_location_assignment PIN_A8 -to "TrigIn(n)"
-set_location_assignment PIN_H10 -to BeamTime
-set_location_assignment PIN_C11 -to "BeamTime(n)"
-set_location_assignment PIN_E8 -to Busy
-set_location_assignment PIN_E11 -to "Busy(n)"
 set_global_assignment -name CRC_ERROR_CHECKING ON
 set_location_assignment PIN_AH3 -to ADC_CLK
 set_location_assignment PIN_AG4 -to ADC_CSB
@@ -1544,11 +1611,8 @@ set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT trigger_in -to Fas
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_TRIGGER_IN_ENABLED=1" -section_id auto_signaltap_0
 set_global_assignment -name VECTOR_COMPARE_TRIGGER_MODE INPUT_EDGE
 set_location_assignment LCCOMB_X28_Y14_N10 -to "FindMaxAmp:SignalProc|GroupHT_Trig~1"
-set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
-set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
 set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "23 MM HEAT SINK WITH 200 LFPM AIRFLOW"
 set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
-set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[15] -to "FindMaxAmp:SignalProc|lpm_shiftreg:Amp_Reg[0]|dffs[8]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[16] -to "FindMaxAmp:SignalProc|lpm_shiftreg:Amp_Reg[0]|dffs[9]" -section_id auto_signaltap_0
 set_instance_assignment -name CONNECT_TO_SLD_NODE_ENTITY_PORT acq_trigger_in[17] -to "FindMaxAmp:SignalProc|lpm_shiftreg:Amp_Reg[1]|dffs[0]" -section_id auto_signaltap_0
@@ -2307,7 +2371,12 @@ set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_INVERSION_MASK_LE
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_STORAGE_QUALIFIER_INVERSION_MASK_LENGTH=796" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_LOWORD=44716" -section_id auto_signaltap_0
 set_global_assignment -name SLD_NODE_PARAMETER_ASSIGNMENT "SLD_NODE_CRC_HIWORD=47247" -section_id auto_signaltap_0
-set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
 set_global_assignment -name MISC_FILE "D:/Leon/Japan/Electronics/trunk/FPGA/PreTrigger ECAL/PreTrigger.dpf"
 set_global_assignment -name SEARCH_PATH lib
 set_global_assignment -name SEARCH_PATH "d:\\users\\leon\\work\\cmd-3\\el_lxe\\electronics\\trunk\\altera\\cycloneiii_blvds_restored"
+set_instance_assignment -name IO_STANDARD LVDS -to PreviousInDataLVDS
+set_instance_assignment -name IO_STANDARD LVDS -to ADC_DCOprev
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+set_global_assignment -name TIMEQUEST_DO_CCPP_REMOVAL ON
+set_global_assignment -name OPTIMIZE_HOLD_TIMING "ALL PATHS"
+set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

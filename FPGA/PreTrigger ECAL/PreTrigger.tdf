@@ -31,7 +31,7 @@ CONSTANT Masks_Offset = H"20";   -- MasksReg #32
 
 CONSTANT ADC_Bits			= 8;	-- Number of ADC bits in one channel
 CONSTANT NUM_ADCboard		= 16;	-- Number of ADC boards in the trigger
-CONSTANT NUM_TrigCell		= 126;	-- Number of channels in the trigger
+CONSTANT NUM_TrigCell		= 128;	-- Number of channels in the trigger
 CONSTANT NUM_Trig_get_ch	= 12;	-- Number of channels in the trigger from prev.board
 CONSTANT ThresholdData_0	= 100;
 CONSTANT ThresholdData_1	= 150;
@@ -62,32 +62,30 @@ LedB			: output;	-- drives the Blue(Yellow) LED				-> Pin
 -- 2. Channel  
 
 ADCInDataLVDS[NUM_TrigCell-1..0]: input;	-- input of data from ADC	<- Pin 
---ADCInDataLVDS[NUM_ADCboard-1..0][NUM_TrigCell-1..0]	: input;	-- input of data from ADC	<- Pin 
+PreviousInDataLVDS[NUM_Trig_get_ch-1..0]: input;	-- input of data from ADC	<- Pin 
 
 ADC_CSB			: output;	-- Pin AA4
 ADC_SDIO		: output;	-- Pin AA1
 ADC_SCLK		: output;	-- Pin AB4
 
 ADC_CLK			: output;	-- Pin AA3/AB3
-ADC_DCO			: input;
+ADC_DCO[31..0]	: input;	-- 
+ADC_DCOprev[11..0]	: input;	-- 
 --ADC_channel_shift_clk : input;	-- Pin AB10
-
-ADCInDataLVDS[NUM_TrigCell-1..0]: input;	-- input of data from ADC	<- Pin 
-PreviousInDataLVDS[NUM_Trig_get_ch-1..0]: input;	-- input of data from ADC	<- Pin 
 
 -- 3. Trig_in-out_FCT
 
 TrigIn			: input;	-- Внешний триггер					<- Pin W10/Y10
 --FastTrigDes		: output;	-- Fast trigger desition to EROS/ROESTI	<- Pin
 TriggerData[TrigBits-1..0]: output;	-- Trigger data to FCT
-
+%
 Busy			: input;	--Pin AA13/AB13
 BeamTime		: input;	--Pin U11/V11
 PreBeamTime		: input;	--Pin AA16/AB16
 Status_In[3..0]	: input;	--Pin 
 SignalWindow	: input;	--Pin V13/W14
 BoardID[7..0]	: input;	--Pin
-
+%
 -- 4. Ethernet Phy device ports     LXT972
 RxClk			: input; --					-> Pin
 Crs				: input;-- Carrier Sense
@@ -103,12 +101,11 @@ Col 			: input; -- Collision_Detect not used	-> Pin
 -- 5. 
 --ExtStart		: input = GND;  -- external Start						<- Pin
 ExtReset		: input = GND;  -- external Reset (tied to GND --VCC)	<- Pin
-HardReset		: input;	--Hard reset from FCT						<- Pin Y14/Y15
 
 -- 6. Test
-Test[15..0]			: OUTPUT;
-ADCInDataLVDS_p[126,127]: bidir;
-ADCInDataLVDS_n[126,127]: bidir;
+Test[9..0]			: OUTPUT;
+--ADCInDataLVDS_p[126,127]: bidir;
+--ADCInDataLVDS_n[126,127]: bidir;
 )
 
 VARIABLE
@@ -414,7 +411,7 @@ END GENERATE;
 
 SignalProc.Clock = Clk160;
 SignalProc.Clock160 = Clk160;
-SignalProc.Reset = ExtReset OR HardReset OR PwrUpReset;
+SignalProc.Reset = ExtReset OR PwrUpReset;
 SignalProc.RegInit = PwrUpSet1;
 %
 FOR i in 0 to 15 GENERATE
@@ -485,7 +482,7 @@ TxEn = TrigIn;
 --============================================================================
 --******** 7. Control Unit section *******************************************
 
-Reset = HardReset OR ExtReset;
+Reset = ExtReset;
 
 --============================================================================
 -- 8. Testing circuitry ******************************************************
@@ -508,16 +505,16 @@ Test[0] = FastTrigDis;--Trigger_reg.q[23];--
 Test[1] = TrigDis;--Trigger_reg.q[24];--SignalProc.test[11];--
 Test[5..2] = SignalProc.test[15..12];--InData_Reg[11].q[7..0];
 Test[9..7] = InData_Reg[0].q[7..5];
-Test[15..10] = GND;
+--Test[15..10] = GND;
 
 IF InData_Reg[0].q[7..0]>Threshold_Reg[2].q Then Test[6] = VCC;
 											Else Test[6] = GND;
 END IF;
-
+%
 IF TestTrigCt.q[12]==VCC THEN 
 Reg_DataTest1.(clock,enable) = (Clk80, VCC);
 Reg_DataTest2.(clock,enable) = (Clk80, VCC);
-
+END IF;
 Link_IFace.LinkData_in = (b2v_inst5.dataout AND !Link_IFace.TxRx);
 
 b2v_inst2.i = Reg_DataTest1.shiftout;
@@ -527,7 +524,7 @@ b2v_inst5.(datain, datain_b) = (ADCInDataLVDS_p[126], ADCInDataLVDS_n[126]);
 
 ADCInDataLVDS_p[126] = b2v_inst3.dataout;
 ADCInDataLVDS_n[126] = b2v_inst4.dataout;
-
+%
 
 %	Im_ADC.data_a[9..0] = ADCdata[];
 	Im_ADC.data_a[15..10] = GND;
