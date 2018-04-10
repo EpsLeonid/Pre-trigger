@@ -29,17 +29,6 @@ use ieee.std_logic_unsigned.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-CONSTANT Masks_Offset 		:= H"20";   -- MasksReg #32
-
-CONSTANT ADC_Bits				:= 8;	-- Number of ADC bits in one channel
-CONSTANT NUM_ADCboard		:= 16;	-- Number of ADC boards in the trigger
-CONSTANT NUM_TrigCell		:= 128;	-- Number of channels in the trigger
-CONSTANT NUM_Trig_get_ch	:= 12;	-- Number of channels in the trigger from prev.board
-CONSTANT ThresholdData_0	:= 100;
-CONSTANT ThresholdData_1	:= 150;
-CONSTANT ThresholdData_2	:= 243;
-CONSTANT TrigBits				:= 64;		-- Number of triggerg bits to FCT
-
 entity Main is
 port(
 -- 1. Clocks
@@ -60,8 +49,10 @@ port(
 
 -- 2. Channel  
 
-	ADCInDataLVDS		: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
-	PreviousInDataLVDS: in std_logic_vector(NUM_Trig_get_ch-1 downto 0);	-- input of data from ADC	<- Pin 
+--	ADCInDataLVDS		: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
+--	PreviousInDataLVDS: in std_logic_vector(NUM_Trig_get_ch-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDS		: in std_logic_vector(128-1 downto 0);	-- input of data from ADC	<- Pin 
+	PreviousInDataLVDS: in std_logic_vector(12-1 downto 0);	-- input of data from ADC	<- Pin 
 
 	ADC_CSB		: out std_logic;	-- Pin AA4
 	ADC_SDIO		: out std_logic;	-- Pin AA1
