@@ -1,0 +1,65 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Tue Apr 10 12:13:08 2018
+# Process ID: 2524
+# Log file: D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/planAhead_run_1/planAhead.log
+# Journal file: D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/pa.fromHdl.tcl
+# create_project -name Pre-trigger -dir "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/planAhead_run_1" -part xc4vlx60ff1148-10
+# set_param project.pinAheadLayout yes
+# set srcset [get_property srcset [current_run -impl]]
+# set_property target_constrs_file "Pre.ucf" [current_fileset -constrset]
+Adding file 'D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf' to fileset 'constrs_1'
+# set hdlfile [add_files [list {Main.vhd}]]
+# set_property file_type VHDL $hdlfile
+# set_property library work $hdlfile
+# set_property top Pre $srcset
+# add_files [list {Pre.ucf}] -fileset [get_property constrset [current_run]]
+# open_rtl_design -part xc4vlx60ff1148-10
+CRITICAL WARNING: [Designutils 20-742] The top module "Pre" specified for this project can not be validated. The current project is using automatic hierarchy update mode, and hence a new suitable replacement top will be automatically selected. If this is not desired, please change the hierarchy update mode to one of the manual compile order modes first, and then set top to any desired value.
+Using Verific elaboration
+Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" into library work
+WARNING: [HDL 9-806] Syntax error near "CONSTANT". [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd:32]
+INFO: [Designutils 20-910] Reading macro library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn
+Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
+Finished Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
+INFO: [Device 21-21] Reading bus macro file C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/pr_bus_macros.xml
+Loading clock regions from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ClockRegion.xml
+Loading clock buffers from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ClockBuffers.xml
+Loading package from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ff1148/Package.xml
+Loading io standards from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ff1148/SSORules.xml
+Loading list of drcs for the architecture : C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/drc.xml
+INFO: [Timing 38-77] Reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+INFO: [Timing 38-34] Done reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+Finished Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: 97365fd2
+open_rtl_design: Time (s): elapsed = 00:00:11 . Memory (MB): peak = 678.266 ; gain = 213.797
+update_compile_order -fileset sim_1
+set_property iostandard LVCMOS25 [get_ports [list {ADC_DCO[31]} {ADC_DCO[30]} {ADC_DCO[29]} {ADC_DCO[28]} {ADC_DCO[27]} {ADC_DCO[26]} {ADC_DCO[25]} {ADC_DCO[24]} {ADC_DCO[23]} {ADC_DCO[22]} {ADC_DCO[21]} {ADC_DCO[20]} {ADC_DCO[19]} {ADC_DCO[18]} {ADC_DCO[17]} {ADC_DCO[16]} {ADC_DCO[15]} {ADC_DCO[14]} {ADC_DCO[13]} {ADC_DCO[12]} {ADC_DCO[11]} {ADC_DCO[10]} {ADC_DCO[9]} {ADC_DCO[8]} {ADC_DCO[7]} {ADC_DCO[6]} {ADC_DCO[5]} {ADC_DCO[4]} {ADC_DCO[3]} {ADC_DCO[2]} {ADC_DCO[1]} {ADC_DCO[0]}]]
+set_property iostandard LVTTL [get_ports [list {ADC_DCOprev[11]} {ADC_DCOprev[10]} {ADC_DCOprev[9]} {ADC_DCOprev[8]} {ADC_DCOprev[7]} {ADC_DCOprev[6]} {ADC_DCOprev[5]} {ADC_DCOprev[4]} {ADC_DCOprev[3]} {ADC_DCOprev[2]} {ADC_DCOprev[1]} {ADC_DCOprev[0]}]]
+set_property iostandard LVCMOS25 [get_ports [list {ADC_DCOprev[11]} {ADC_DCOprev[10]} {ADC_DCOprev[9]} {ADC_DCOprev[8]} {ADC_DCOprev[7]} {ADC_DCOprev[6]} {ADC_DCOprev[5]} {ADC_DCOprev[4]} {ADC_DCOprev[3]} {ADC_DCOprev[2]} {ADC_DCOprev[1]} {ADC_DCOprev[0]}]]
+exit
+ERROR: [PlanAhead 12-106] *** Exception: ui.h.b: Found deleted key in HTclEventBroker. Verify if the classes listed here call cleanup()
+HTclEvent: SIGNAL_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_CORE_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: SIGNAL_BUS_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_PORT_CONFIG_CHANGE   Classes: ui.views.aR 
+ (See D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx\planAhead_pid2524.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Tue Apr 10 14:51:51 2018...
+INFO: [Common 17-83] Releasing license: PlanAhead

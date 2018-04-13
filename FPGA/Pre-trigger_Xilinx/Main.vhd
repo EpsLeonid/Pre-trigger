@@ -20,14 +20,17 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
+
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
---library UNISIM;
---use UNISIM.VComponents.all;
+library UNISIM;
+use UNISIM.VComponents.all;
+
+use work.parameters.all;
 
 entity Main is
 port(
@@ -49,10 +52,10 @@ port(
 
 -- 2. Channel  
 
---	ADCInDataLVDS		: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
---	PreviousInDataLVDS: in std_logic_vector(NUM_Trig_get_ch-1 downto 0);	-- input of data from ADC	<- Pin 
-	ADCInDataLVDS		: in std_logic_vector(128-1 downto 0);	-- input of data from ADC	<- Pin 
-	PreviousInDataLVDS: in std_logic_vector(12-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDS		: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
+	PreviousInDataLVDS: in std_logic_vector(NUM_Trig_get_ch-1 downto 0);	-- input of data from ADC	<- Pin 
+--	ADCInDataLVDS		: in std_logic_vector(128-1 downto 0);	-- input of data from ADC	<- Pin 
+--	PreviousInDataLVDS: in std_logic_vector(12-1 downto 0);	-- input of data from ADC	<- Pin 
 
 	ADC_CSB		: out std_logic;	-- Pin AA4
 	ADC_SDIO		: out std_logic;	-- Pin AA1
