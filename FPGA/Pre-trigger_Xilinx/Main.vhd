@@ -64,8 +64,8 @@ port(
 
 -- 2. Channel  
 
-	ADCInDataLVDS		: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
-	PreviousInDataLVDS: in std_logic_vector(NUM_Trig_get_ch-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDS		: in std_logic_vector(127 downto 0);	-- input of data from ADC	<- Pin 
+	PreviousInDataLVDS: in std_logic_vector(11 downto 0);	-- input of data from ADC	<- Pin 
 --	ADCInDataLVDS		: in std_logic_vector(128-1 downto 0);	-- input of data from ADC	<- Pin 
 --	PreviousInDataLVDS: in std_logic_vector(12-1 downto 0);	-- input of data from ADC	<- Pin 
 
@@ -102,8 +102,6 @@ port(
 
 -- 6. Test
 	Test			: out std_logic_vector(9 downto 0));
---ADCInDataLVDS_p[126,127]: bidir;
---ADCInDataLVDS_n[126,127]: bidir;
 
 end Main;
 
