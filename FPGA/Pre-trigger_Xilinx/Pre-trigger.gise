@@ -55,6 +55,7 @@
   <transforms xmlns="http://www.xilinx.com/XMLSchema">
     <transform xil_pn:end_ts="1523009891" xil_pn:name="TRAN_copyInitialToXSTAbstractSynthesis" xil_pn:start_ts="1523009891">
       <status xil_pn:value="SuccessfullyRun"/>
+      <status xil_pn:value="ReadyToRun"/>
     </transform>
     <transform xil_pn:end_ts="1523346721" xil_pn:name="TRAN_schematicsToHdl" xil_pn:prop_ck="-6100209137960694754" xil_pn:start_ts="1523346721">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -85,7 +86,11 @@
       <status xil_pn:value="WarningsGenerated"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
+      <status xil_pn:value="OutOfDateForProperties"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
+      <status xil_pn:value="InputAdded"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name=".lso"/>
       <outfile xil_pn:name="Main.lso"/>
       <outfile xil_pn:name="Main.ngc"/>
@@ -96,9 +101,7 @@
       <outfile xil_pn:name="Main.xst"/>
       <outfile xil_pn:name="Main_vhdl.prj"/>
       <outfile xil_pn:name="Main_xst.xrpt"/>
-      <outfile xil_pn:name="_xmsgs/xst.xmsgs"/>
       <outfile xil_pn:name="webtalk_pn.xml"/>
-      <outfile xil_pn:name="xst"/>
     </transform>
     <transform xil_pn:end_ts="1523346757" xil_pn:in_ck="107900434227" xil_pn:name="TRAN_compileBCD2" xil_pn:prop_ck="8446734869133159229" xil_pn:start_ts="1523346757">
       <status xil_pn:value="SuccessfullyRun"/>
@@ -112,22 +115,23 @@
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="Main.bld"/>
       <outfile xil_pn:name="Main.ngd"/>
       <outfile xil_pn:name="Main_ngdbuild.xrpt"/>
-      <outfile xil_pn:name="_ngo"/>
-      <outfile xil_pn:name="_xmsgs/ngdbuild.xmsgs"/>
     </transform>
     <transform xil_pn:end_ts="1523355554" xil_pn:in_ck="-1572472274811329793" xil_pn:name="TRANEXT_map_virtex4" xil_pn:prop_ck="8432954844584946751" xil_pn:start_ts="1523355547">
       <status xil_pn:value="FailedRun"/>
       <status xil_pn:value="ReadyToRun"/>
       <status xil_pn:value="OutOfDateForInputs"/>
       <status xil_pn:value="OutOfDateForPredecessor"/>
+      <status xil_pn:value="OutOfDateForOutputs"/>
       <status xil_pn:value="InputChanged"/>
+      <status xil_pn:value="OutputRemoved"/>
       <outfile xil_pn:name="Main_map.map"/>
       <outfile xil_pn:name="Main_map.mrp"/>
-      <outfile xil_pn:name="_xmsgs/map.xmsgs"/>
     </transform>
   </transforms>
 
