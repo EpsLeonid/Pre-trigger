@@ -49,6 +49,8 @@ port(
 -- 1. Clocks
 	Qclock      : in std_logic; -- system clock
 	FCT_40		: in std_logic; -- system clock
+	FCT_40		: in std_logic; -- system clock
+	FCT_160		: in std_logic; -- clock
 	FCT_160		: in std_logic; -- clock
 -- In Trigger module Link's Clock is checked inside Altera but switched outside 
 	Sw_Quartz	: in std_logic;	-- connects Quartz to PLL ref.Input			-> Pin 
@@ -65,7 +67,9 @@ port(
 -- 2. Channel  
 
 	ADCInDataLVDS		: in std_logic_vector(127 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDS_n	: in std_logic_vector(127 downto 0);	-- input of data from ADC	<- Pin 
 	PreviousInDataLVDS: in std_logic_vector(11 downto 0);	-- input of data from ADC	<- Pin 
+	PreviousInDataLVDS_n: in std_logic_vector(11 downto 0);	-- input of data from ADC	<- Pin 
 --	ADCInDataLVDS		: in std_logic_vector(128-1 downto 0);	-- input of data from ADC	<- Pin 
 --	PreviousInDataLVDS: in std_logic_vector(12-1 downto 0);	-- input of data from ADC	<- Pin 
 
@@ -107,10 +111,32 @@ end Main;
 
 architecture Behavioral of Main is
 
+	signal 			Clk40	: std_logic;
+	signal 			Clk80 : std_logic;
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+	signal 		ADCInData: std_logic_vector(ADC_Bits-1 downto 0);
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+--	signal 
+
 component FindMaxAmp is
 port(
 
-	In_Data					: in std_logic_vector(NumTrigCh-1 downto 0)(ADC_Bits-1 downto 0); -- ??????? ??????
+	In_Data					: in std_logic_vector(NumTrigCh-1 downto 0)(ADC_Bits-1 downto 0); -- ADC data
 	RegInit					: in std_logic;
 	MaxAmp					: out std_logic_vector(Sum_Bits-1 downto 0);
 	MaxCellNumber			: out std_logic_vector(3 downto 0);
@@ -134,7 +160,16 @@ end component;
 
 begin
 
-
+LVDS_signal : IBUFDS
+   generic map (
+      CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+      DIFF_TERM => TRUE, -- Differential Termination 
+      IOSTANDARD => "DEFAULT")
+   port map (
+      O => ADCInData,  -- Buffer output
+      I => ADCInDataLVDS,  -- Diff_p buffer input (connect directly to top-level port)
+      IB => ADCInDataLVDS_n -- Diff_n buffer input (connect directly to top-level port)
+   );
 
 
 end Behavioral;
