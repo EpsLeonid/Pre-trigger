@@ -150,17 +150,17 @@ port(
 end component;
 
 begin
-
-LVDS_signal : IBUFDS
-   generic map (
-      CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-      DIFF_TERM => TRUE, -- Differential Termination 
-      IOSTANDARD => "DEFAULT")
-   port map (
-      O => ADCInData,  -- Buffer output
-      I => ADCInDataLVDS,  -- Diff_p buffer input (connect directly to top-level port)
-      IB => ADCInDataLVDS_n -- Diff_n buffer input (connect directly to top-level port)
-   );
+--
+--LVDS_signal : IBUFDS
+--   generic map (
+--      CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+--      DIFF_TERM => TRUE, -- Differential Termination 
+--      IOSTANDARD => "DEFAULT")
+--   port map (
+--      O => ADCInData,  -- Buffer output
+--      I => ADCInDataLVDS,  -- Diff_p buffer input (connect directly to top-level port)
+--      IB => ADCInDataLVDS_n -- Diff_n buffer input (connect directly to top-level port)
+--   );
 
 
 end Behavioral;
