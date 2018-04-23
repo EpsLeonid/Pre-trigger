@@ -1,10 +1,10 @@
 #-----------------------------------------------------------
 # PlanAhead v14.7 (64-bit)
 # Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
-# Start of session at: Tue Apr 10 14:55:12 2018
-# Process ID: 7884
+# Start of session at: Mon Apr 23 14:52:02 2018
+# Process ID: 3892
 # Log file: D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/planAhead_run_1/planAhead.log
-# Journal file: D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/planAhead_run_1\planAhead.jou
+# Journal file: D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/planAhead_run_1/planAhead.jou
 #-----------------------------------------------------------
 INFO: [Common 17-78] Attempting to get a license: PlanAhead
 INFO: [Common 17-290] Got license for PlanAhead
@@ -12,6 +12,49 @@ INFO: [Device 21-36] Loading parts and site information from C:/Xilinx/14.7/ISE_
 Parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
 Finished parsing RTL primitives file [C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
 start_gui
-open_project {D:\Users\Leon\Work\Japan\COMET\Electronics\trunk\FPGA\Pre-trigger_Xilinx\planAhead_run_1\Pre-trigger.ppr}
-Scanning sources...
-Finished scanning sources
+source D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/pa.fromHdl.tcl
+# create_project -name Pre-trigger -dir "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/planAhead_run_1" -part xc4vlx60ff1148-10
+# set_param project.pinAheadLayout yes
+# set srcset [get_property srcset [current_run -impl]]
+# set_property target_constrs_file "Pre.ucf" [current_fileset -constrset]
+Adding file 'D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf' to fileset 'constrs_1'
+# set hdlfile [add_files [list {Parameters.vhd}]]
+# set_property file_type VHDL $hdlfile
+# set_property library work $hdlfile
+# set hdlfile [add_files [list {Main.vhd}]]
+# set_property file_type VHDL $hdlfile
+# set_property library work $hdlfile
+# set_property top Main $srcset
+# add_files [list {Pre.ucf}] -fileset [get_property constrset [current_run]]
+# open_rtl_design -part xc4vlx60ff1148-10
+Using Verific elaboration
+Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" into library work
+INFO: [Designutils 20-910] Reading macro library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn
+Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
+Finished Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
+INFO: [Device 21-21] Reading bus macro file C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/pr_bus_macros.xml
+Loading clock regions from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ClockRegion.xml
+Loading clock buffers from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ClockBuffers.xml
+Loading package from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ff1148/Package.xml
+Loading io standards from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/IOStandards.xml
+INFO: [Device 21-19] Loading pkg sso from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/xc4vlx60/ff1148/SSORules.xml
+Loading list of drcs for the architecture : C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/drc.xml
+INFO: [Timing 38-77] Reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+INFO: [Timing 38-34] Done reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+WARNING: [Constraints 18-505] Could not create 'DIFF_TERM' constraint because cell 'LVDS_signal' is not directly connected to top level port. 'DIFF_TERM' is ignored by planAhead but preserved for implementation tool [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd:154]
+WARNING: [Constraints 18-505] Could not create 'IBUF_LOW_PWR' constraint because cell 'LVDS_signal' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored by planAhead but preserved for implementation tool [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd:154]
+Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+CRITICAL WARNING: [Designutils 20-7] Could not create 'IOSTANDARD' constraint on 'ADCInDataLVDS[0]' because invalid IOSTANDARD value 'LVDS' specified. The default IOSTANDARD will be used instead [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:1]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol <p_ADCInDataLVDS[0]> [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:2]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol <n_ADCInDataLVDS[0]> [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:3]
+Finished Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Phase 0 | Netlist Checksum: c1a917da
+open_rtl_design: Time (s): elapsed = 00:00:11 . Memory (MB): peak = 674.133 ; gain = 204.332
+update_compile_order -fileset sim_1

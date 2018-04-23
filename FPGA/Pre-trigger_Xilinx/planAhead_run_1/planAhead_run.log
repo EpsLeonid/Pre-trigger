@@ -15,18 +15,20 @@ source D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/
 # set srcset [get_property srcset [current_run -impl]]
 # set_property target_constrs_file "Pre.ucf" [current_fileset -constrset]
 Adding file 'D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf' to fileset 'constrs_1'
+# set hdlfile [add_files [list {Parameters.vhd}]]
+# set_property file_type VHDL $hdlfile
+# set_property library work $hdlfile
 # set hdlfile [add_files [list {Main.vhd}]]
 # set_property file_type VHDL $hdlfile
 # set_property library work $hdlfile
-# set_property top Pre $srcset
+# set_property top Main $srcset
 # add_files [list {Pre.ucf}] -fileset [get_property constrset [current_run]]
 # open_rtl_design -part xc4vlx60ff1148-10
-CRITICAL WARNING: [Designutils 20-742] The top module "Pre" specified for this project can not be validated. The current project is using automatic hierarchy update mode, and hence a new suitable replacement top will be automatically selected. If this is not desired, please change the hierarchy update mode to one of the manual compile order modes first, and then set top to any desired value.
 Using Verific elaboration
 Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
 Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" into library work
 Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" into library work
-WARNING: [HDL 9-806] Syntax error near "CONSTANT". [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd:32]
 INFO: [Designutils 20-910] Reading macro library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn
 Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
 Finished Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
@@ -39,18 +41,17 @@ INFO: [Device 21-19] Loading pkg sso from C:/Xilinx/14.7/ISE_DS/PlanAhead/data\p
 Loading list of drcs for the architecture : C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/drc.xml
 INFO: [Timing 38-77] Reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
 INFO: [Timing 38-34] Done reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+WARNING: [Constraints 18-505] Could not create 'DIFF_TERM' constraint because cell 'LVDS_signal' is not directly connected to top level port. 'DIFF_TERM' is ignored by planAhead but preserved for implementation tool [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd:154]
+WARNING: [Constraints 18-505] Could not create 'IBUF_LOW_PWR' constraint because cell 'LVDS_signal' is not directly connected to top level port. 'IBUF_LOW_PWR' is ignored by planAhead but preserved for implementation tool [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd:154]
 Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+CRITICAL WARNING: [Designutils 20-7] Could not create 'IOSTANDARD' constraint on 'ADCInDataLVDS[0]' because invalid IOSTANDARD value 'LVDS' specified. The default IOSTANDARD will be used instead [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:1]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol <p_ADCInDataLVDS[0]> [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:2]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol <n_ADCInDataLVDS[0]> [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:3]
 Finished Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Phase 0 | Netlist Checksum: 97365fd2
-open_rtl_design: Time (s): elapsed = 00:00:11 . Memory (MB): peak = 678.266 ; gain = 213.797
+Phase 0 | Netlist Checksum: c1a917da
+open_rtl_design: Time (s): elapsed = 00:00:11 . Memory (MB): peak = 674.133 ; gain = 204.332
 update_compile_order -fileset sim_1
-set_property iostandard LVCMOS25 [get_ports [list {ADC_DCO[31]} {ADC_DCO[30]} {ADC_DCO[29]} {ADC_DCO[28]} {ADC_DCO[27]} {ADC_DCO[26]} {ADC_DCO[25]} {ADC_DCO[24]} {ADC_DCO[23]} {ADC_DCO[22]} {ADC_DCO[21]} {ADC_DCO[20]} {ADC_DCO[19]} {ADC_DCO[18]} {ADC_DCO[17]} {ADC_DCO[16]} {ADC_DCO[15]} {ADC_DCO[14]} {ADC_DCO[13]} {ADC_DCO[12]} {ADC_DCO[11]} {ADC_DCO[10]} {ADC_DCO[9]} {ADC_DCO[8]} {ADC_DCO[7]} {ADC_DCO[6]} {ADC_DCO[5]} {ADC_DCO[4]} {ADC_DCO[3]} {ADC_DCO[2]} {ADC_DCO[1]} {ADC_DCO[0]}]]
-set_property iostandard LVTTL [get_ports [list {ADC_DCOprev[11]} {ADC_DCOprev[10]} {ADC_DCOprev[9]} {ADC_DCOprev[8]} {ADC_DCOprev[7]} {ADC_DCOprev[6]} {ADC_DCOprev[5]} {ADC_DCOprev[4]} {ADC_DCOprev[3]} {ADC_DCOprev[2]} {ADC_DCOprev[1]} {ADC_DCOprev[0]}]]
-set_property iostandard LVCMOS25 [get_ports [list {ADC_DCOprev[11]} {ADC_DCOprev[10]} {ADC_DCOprev[9]} {ADC_DCOprev[8]} {ADC_DCOprev[7]} {ADC_DCOprev[6]} {ADC_DCOprev[5]} {ADC_DCOprev[4]} {ADC_DCOprev[3]} {ADC_DCOprev[2]} {ADC_DCOprev[1]} {ADC_DCOprev[0]}]]
-exit
-ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
-INFO: [Common 17-206] Exiting PlanAhead at Tue Apr 10 14:51:51 2018...
-INFO: [Common 17-83] Releasing license: PlanAhead

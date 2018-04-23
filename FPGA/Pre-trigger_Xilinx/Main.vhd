@@ -29,29 +29,18 @@ use IEEE.NUMERIC_STD.ALL;
 -- any Xilinx primitives in this code.
 library UNISIM;
 use UNISIM.VComponents.all;
-library work;
+
 use work.parameters.all;
 
 entity Main is
-
-generic (Masks_Offset 		: integer := X"20";   -- MasksReg #32
-			ADC_Bits				: integer := 8;	-- Number of ADC bits in one channel
-			NUM_ADCboard		: integer := 16;	-- Number of ADC boards in the trigger
-			NUM_TrigCell		: integer := 128;	-- Number of channels in the trigger
-			NUM_Trig_get_ch	: integer := 12;	-- Number of channels in the trigger from prev.board
-			ThresholdData_0	: integer := 100;
-			ThresholdData_1	: integer := 150;
-			ThresholdData_2	: integer := 243;
-			TrigBits				: integer := 64		-- Number of triggerg bits to FCT
-);
 
 port(
 -- 1. Clocks
 	Qclock      : in std_logic; -- system clock
 	FCT_40		: in std_logic; -- system clock
-	FCT_40		: in std_logic; -- system clock
+	FCT_40_n		: in std_logic; -- system clock
 	FCT_160		: in std_logic; -- clock
-	FCT_160		: in std_logic; -- clock
+	FCT_160_n	: in std_logic; -- clock
 -- In Trigger module Link's Clock is checked inside Altera but switched outside 
 	Sw_Quartz	: in std_logic;	-- connects Quartz to PLL ref.Input			-> Pin 
 	Sw_FCTClk	: in std_logic;	-- connects Link's Clock to PLL ref.Input	-> Pin 
@@ -79,12 +68,15 @@ port(
 
 	ADC_CLK		: out std_logic;	-- Pin 
 	ADC_DCO		: in std_logic_vector(31 downto 0);	-- 
+	ADC_DCO_n	: in std_logic_vector(31 downto 0);	-- 
 	ADC_DCOprev	: in std_logic_vector(11 downto 0);	-- 
+	ADC_DCOprev_n: in std_logic_vector(11 downto 0);	-- 
 --ADC_channel_shift_clk : input;	-- Pin AB10
 
 -- 3. Trig_in-out_FCT
 
 	TrigIn			: in std_logic;	-- Внешний триггер					<- Pin 
+	TrigIn_n			: in std_logic;	-- Внешний триггер					<- Pin 
 --FastTrigDes		: output;	-- Fast trigger desition to EROS/ROESTI	<- Pin
 	TriggerData		: out std_logic_vector(63 downto 0);	-- Trigger data to FCT
 
@@ -136,7 +128,7 @@ architecture Behavioral of Main is
 component FindMaxAmp is
 port(
 
-	In_Data					: in std_logic_vector(NumTrigCh-1 downto 0)(ADC_Bits-1 downto 0); -- ADC data
+	In_Data        		: in array_t (0 to NumTrigCh-1)(ADC_Bits-1 downto 0);
 	RegInit					: in std_logic;
 	MaxAmp					: out std_logic_vector(Sum_Bits-1 downto 0);
 	MaxCellNumber			: out std_logic_vector(3 downto 0);
@@ -154,8 +146,7 @@ port(
 	ResetAll					: out std_logic;
 	Error						: out std_logic;
 
-	test						: out std_logic_vector(15 downto 0);
-
+	test						: out std_logic_vector(15 downto 0));
 end component;
 
 begin

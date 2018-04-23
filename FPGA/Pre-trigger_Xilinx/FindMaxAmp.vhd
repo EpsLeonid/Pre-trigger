@@ -27,13 +27,12 @@ use IEEE.NUMERIC_STD.ALL;
 library UNISIM;
 use UNISIM.VComponents.all;
 
-library work;
 use work.parameters.all;
 
 entity FindMaxAmp is
-    Port ( In_Data 			: in  STD_LOGIC_VECTOR (127 downto 0);
+    Port ( In_Data        		: in array_t (0 to NumTrigCh-1)(ADC_Bits-1 downto 0);
            RegInit 			: in 	STD_LOGIC;
-           MaxAmp 			: out	STD_LOGIC_VECTOR (9 downto 0);
+           MaxAmp 			: out	STD_LOGIC_VECTOR (ADC_Bits+2 downto 0);
            MaxCellNumbere 	: out STD_LOGIC_VECTOR (7 downto 0);
            ThrNum1 			: out STD_LOGIC_VECTOR (3 downto 0);
            ThrNum2 			: out STD_LOGIC_VECTOR (3 downto 0);
