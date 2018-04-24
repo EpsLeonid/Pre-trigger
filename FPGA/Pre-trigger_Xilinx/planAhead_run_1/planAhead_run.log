@@ -55,3 +55,56 @@ No Unisim elements were transformed.
 Phase 0 | Netlist Checksum: c1a917da
 open_rtl_design: Time (s): elapsed = 00:00:11 . Memory (MB): peak = 674.133 ; gain = 204.332
 update_compile_order -fileset sim_1
+refresh_design
+Using Verific elaboration
+Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Parsing VHDL file "C:/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/lib/synplify/synattr.vhd" into library synplify
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" into library work
+INFO: [Designutils 20-910] Reading macro library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn
+Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
+Finished Parsing EDIF File [C:/Xilinx/14.7/ISE_DS/PlanAhead/data\./parts/xilinx/virtex4/hd_int_macros.edn]
+INFO: [Timing 38-77] Reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+INFO: [Timing 38-34] Done reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+CRITICAL WARNING: [Designutils 20-7] Could not create 'IOSTANDARD' constraint on 'ADCInDataLVDS[0]' because invalid IOSTANDARD value 'LVDS' specified. The default IOSTANDARD will be used instead [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:1]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol <p_ADCInDataLVDS[0]> [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:2]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol <n_ADCInDataLVDS[0]> [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf:3]
+Finished Parsing UCF File [D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Pre.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+startgroup
+set_property package_pin AA26 [get_ports {ADC_DCO_n[0]}]
+endgroup
+startgroup
+set_property package_pin AC34 [get_ports {ADC_DCO_n[1]}]
+endgroup
+save_constraints
+startgroup
+set_property package_pin AF30 [get_ports {ADC_DCO_n[2]}]
+endgroup
+startgroup
+set_property package_pin AG28 [get_ports {ADC_DCO_n[3]}]
+endgroup
+set_property package_pin "" [get_ports [list  {ADC_DCO[5]}]]
+startgroup
+set_property package_pin AK31 [get_ports {ADC_DCO[4]}]
+endgroup
+startgroup
+set_property package_pin AL24 [get_ports {ADC_DCO[5]}]
+endgroup
+startgroup
+set_property package_pin AK32 [get_ports {ADC_DCO_n[4]}]
+endgroup
+startgroup
+set_property package_pin AL25 [get_ports {ADC_DCO_n[5]}]
+endgroup
+startgroup
+set_property package_pin AM28 [get_ports {ADC_DCO_n[6]}]
+endgroup
+startgroup
+set_property package_pin AM22 [get_ports {ADC_DCO_n[6]}]
+endgroup
+startgroup
+set_property package_pin AM28 [get_ports {ADC_DCO_n[7]}]
+endgroup
+save_constraints
