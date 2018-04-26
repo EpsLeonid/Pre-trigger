@@ -27,28 +27,29 @@ use IEEE.NUMERIC_STD.ALL;
 library UNISIM;
 use UNISIM.VComponents.all;
 
+library work;
 use work.parameters.all;
 
 entity FindMaxAmp is
-    Port ( In_Data        		: in array_t (0 to NumTrigCh-1)(ADC_Bits-1 downto 0);
-           RegInit 			: in 	STD_LOGIC;
+    Port ( In_Data        	: in	array_t;
+           RegInit 			: in	STD_LOGIC;
            MaxAmp 			: out	STD_LOGIC_VECTOR (ADC_Bits+2 downto 0);
            MaxCellNumbere 	: out STD_LOGIC_VECTOR (7 downto 0);
            ThrNum1 			: out STD_LOGIC_VECTOR (3 downto 0);
            ThrNum2 			: out STD_LOGIC_VECTOR (3 downto 0);
-           ThrNum3 			: out  STD_LOGIC_VECTOR (3 downto 0);
-           FastTrig 			: out  STD_LOGIC;
-           Trig 				: out  STD_LOGIC;
-           SaveTrigData 	: out  STD_LOGIC;
+           ThrNum3 			: out	STD_LOGIC_VECTOR (3 downto 0);
+           FastTrig 			: out	STD_LOGIC;
+           Trig 				: out	STD_LOGIC;
+           SaveTrigData 	: out	STD_LOGIC;
            
 			  Clock 				: in  STD_LOGIC;
            Clock160 			: in  STD_LOGIC;
 			  
            Reset 				: in  STD_LOGIC;
-           ResetAll 			: out  STD_LOGIC;
-           Error 				: out  STD_LOGIC;
+           ResetAll 			: out	STD_LOGIC;
+           Error 				: out	STD_LOGIC;
 			  
-           test 				: out  STD_LOGIC_VECTOR (15 downto 0));
+           test 				: out	STD_LOGIC_VECTOR (15 downto 0));
 end FindMaxAmp;
 
 architecture Behavioral of FindMaxAmp is

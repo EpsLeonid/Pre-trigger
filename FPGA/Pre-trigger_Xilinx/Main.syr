@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: Main.prj
 
@@ -108,14 +108,1496 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" in Library work.
-ERROR:HDLParsers:205 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" Line 19. The array element std_logic_vector is not a constrained array.
-ERROR:HDLParsers:3009 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" Line 34. Package parameters does not exist.
-WARNING:HDLParsers:3481 - Library work has no units. Did not save reference file "xst/work/hdllib.ref" for it.
+Architecture parameters of Entity parameters is up to date.
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" in Library work.
+Entity <main> compiled.
+Entity <main> (Architecture <behavioral>) compiled.
+
+=========================================================================
+*                     Design Hierarchy Analysis                         *
+=========================================================================
+Analyzing hierarchy for entity <Main> in library <work> (architecture <behavioral>).
+
+
+=========================================================================
+*                            HDL Analysis                               *
+=========================================================================
+Analyzing Entity <Main> in library <work> (Architecture <behavioral>).
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_Clk40> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_Clk40> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_Clk40> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_Clk40> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_Clk40> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_Clk40> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_Clk40> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_FCT_160> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_FCT_160> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_FCT_160> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_FCT_160> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_FCT_160> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_FCT_160> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_FCT_160> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[32].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[32].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[32].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[32].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[32].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[32].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[32].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[33].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[33].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[33].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[33].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[33].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[33].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[33].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[34].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[34].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[34].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[34].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[34].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[34].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[34].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[35].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[35].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[35].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[35].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[35].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[35].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[35].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[36].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[36].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[36].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[36].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[36].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[36].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[36].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[37].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[37].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[37].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[37].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[37].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[37].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[37].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[38].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[38].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[38].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[38].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[38].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[38].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[38].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[39].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[39].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[39].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[39].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[39].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[39].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[39].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[40].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[40].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[40].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[40].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[40].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[40].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[40].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[41].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[41].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[41].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[41].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[41].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[41].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[41].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[42].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[42].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[42].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[42].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[42].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[42].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[42].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[43].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[43].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[43].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[43].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[43].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[43].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[43].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[44].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[44].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[44].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[44].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[44].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[44].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[44].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[45].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[45].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[45].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[45].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[45].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[45].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[45].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[46].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[46].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[46].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[46].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[46].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[46].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[46].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[47].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[47].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[47].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[47].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[47].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[47].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[47].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[48].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[48].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[48].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[48].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[48].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[48].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[48].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[49].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[49].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[49].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[49].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[49].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[49].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[49].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[50].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[50].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[50].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[50].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[50].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[50].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[50].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[51].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[51].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[51].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[51].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[51].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[51].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[51].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[52].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[52].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[52].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[52].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[52].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[52].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[52].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[53].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[53].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[53].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[53].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[53].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[53].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[53].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[54].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[54].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[54].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[54].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[54].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[54].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[54].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[55].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[55].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[55].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[55].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[55].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[55].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[55].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[56].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[56].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[56].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[56].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[56].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[56].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[56].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[57].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[57].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[57].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[57].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[57].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[57].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[57].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[58].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[58].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[58].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[58].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[58].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[58].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[58].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[59].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[59].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[59].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[59].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[59].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[59].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[59].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[60].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[60].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[60].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[60].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[60].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[60].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[60].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[61].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[61].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[61].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[61].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[61].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[61].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[61].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[62].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[62].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[62].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[62].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[62].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[62].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[62].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[63].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[63].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[63].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[63].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[63].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[63].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[63].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[64].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[64].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[64].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[64].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[64].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[64].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[64].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[65].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[65].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[65].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[65].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[65].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[65].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[65].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[66].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[66].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[66].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[66].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[66].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[66].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[66].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[67].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[67].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[67].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[67].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[67].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[67].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[67].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[68].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[68].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[68].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[68].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[68].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[68].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[68].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[69].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[69].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[69].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[69].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[69].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[69].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[69].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[70].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[70].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[70].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[70].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[70].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[70].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[70].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[71].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[71].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[71].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[71].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[71].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[71].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[71].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[72].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[72].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[72].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[72].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[72].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[72].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[72].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[73].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[73].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[73].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[73].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[73].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[73].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[73].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[74].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[74].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[74].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[74].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[74].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[74].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[74].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[75].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[75].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[75].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[75].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[75].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[75].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[75].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[76].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[76].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[76].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[76].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[76].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[76].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[76].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[77].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[77].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[77].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[77].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[77].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[77].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[77].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[78].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[78].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[78].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[78].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[78].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[78].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[78].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[79].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[79].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[79].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[79].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[79].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[79].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[79].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[80].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[80].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[80].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[80].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[80].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[80].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[80].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[81].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[81].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[81].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[81].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[81].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[81].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[81].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[82].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[82].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[82].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[82].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[82].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[82].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[82].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[83].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[83].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[83].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[83].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[83].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[83].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[83].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[84].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[84].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[84].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[84].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[84].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[84].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[84].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[85].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[85].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[85].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[85].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[85].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[85].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[85].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[86].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[86].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[86].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[86].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[86].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[86].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[86].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[87].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[87].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[87].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[87].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[87].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[87].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[87].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[88].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[88].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[88].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[88].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[88].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[88].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[88].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[89].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[89].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[89].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[89].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[89].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[89].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[89].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[90].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[90].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[90].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[90].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[90].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[90].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[90].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[91].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[91].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[91].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[91].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[91].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[91].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[91].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[92].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[92].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[92].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[92].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[92].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[92].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[92].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[93].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[93].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[93].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[93].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[93].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[93].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[93].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[94].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[94].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[94].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[94].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[94].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[94].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[94].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[95].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[95].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[95].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[95].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[95].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[95].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[95].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[96].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[96].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[96].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[96].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[96].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[96].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[96].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[97].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[97].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[97].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[97].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[97].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[97].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[97].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[98].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[98].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[98].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[98].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[98].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[98].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[98].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[99].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[99].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[99].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[99].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[99].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[99].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[99].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[100].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[100].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[100].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[100].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[100].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[100].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[100].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[101].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[101].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[101].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[101].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[101].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[101].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[101].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[102].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[102].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[102].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[102].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[102].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[102].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[102].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[103].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[103].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[103].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[103].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[103].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[103].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[103].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[104].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[104].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[104].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[104].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[104].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[104].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[104].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[105].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[105].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[105].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[105].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[105].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[105].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[105].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[106].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[106].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[106].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[106].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[106].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[106].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[106].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[107].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[107].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[107].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[107].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[107].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[107].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[107].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[108].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[108].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[108].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[108].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[108].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[108].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[108].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[109].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[109].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[109].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[109].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[109].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[109].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[109].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[110].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[110].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[110].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[110].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[110].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[110].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[110].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[111].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[111].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[111].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[111].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[111].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[111].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[111].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[112].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[112].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[112].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[112].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[112].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[112].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[112].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[113].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[113].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[113].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[113].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[113].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[113].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[113].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[114].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[114].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[114].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[114].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[114].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[114].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[114].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[115].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[115].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[115].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[115].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[115].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[115].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[115].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[116].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[116].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[116].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[116].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[116].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[116].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[116].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[117].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[117].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[117].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[117].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[117].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[117].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[117].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[118].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[118].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[118].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[118].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[118].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[118].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[118].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[119].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[119].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[119].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[119].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[119].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[119].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[119].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[120].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[120].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[120].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[120].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[120].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[120].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[120].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[121].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[121].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[121].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[121].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[121].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[121].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[121].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[122].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[122].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[122].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[122].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[122].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[122].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[122].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[123].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[123].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[123].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[123].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[123].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[123].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[123].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[124].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[124].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[124].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[124].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[124].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[124].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[124].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[125].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[125].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[125].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[125].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[125].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[125].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[125].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[126].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[126].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[126].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[126].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[126].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[126].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[126].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADC[127].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADC[127].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADC[127].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADC[127].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADC[127].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADC[127].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADC[127].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_buf_ADCPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_buf_ADCPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_buf_ADCPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_buf_ADCPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_buf_ADCPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_buf_ADCPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_buf_ADCPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[12].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[13].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[14].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[15].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[16].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[17].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[18].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[19].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[20].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[21].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[22].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[23].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[24].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[25].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[26].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[27].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[28].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[29].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[30].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCO[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCO[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCO[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCO[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCO[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCO[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCO[31].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[0].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[1].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[2].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[3].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[4].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[5].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[6].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[7].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[8].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[9].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[10].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_ADC_DCOPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_ADC_DCOPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_ADC_DCOPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_ADC_DCOPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_ADC_DCOPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_ADC_DCOPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_ADC_DCOPrev[11].LVDS_signal> in unit <Main>.
+    Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_signal> in unit <Main>.
+    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_signal> in unit <Main>.
+    Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_signal> in unit <Main>.
+    Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_signal> in unit <Main>.
+    Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_signal> in unit <Main>.
+    Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_signal> in unit <Main>.
+Entity <Main> analyzed. Unit <Main> generated.
+
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Performing bidirectional port resolution...
+
+Synthesizing Unit <Main>.
+    Related source file is "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd".
+WARNING:Xst:1306 - Output <ADC_CSB> is never assigned.
+WARNING:Xst:647 - Input <TxClk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <ADC_SDIO> is never assigned.
+WARNING:Xst:647 - Input <Qclock> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Col> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Sw_Quartz> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Crs> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RxD> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <LedB> is never assigned.
+WARNING:Xst:647 - Input <PLL_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <LedG> is never assigned.
+WARNING:Xst:1306 - Output <LedR> is never assigned.
+WARNING:Xst:647 - Input <ExtReset> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <TriggerData> is never assigned.
+WARNING:Xst:1306 - Output <TxD> is never assigned.
+WARNING:Xst:647 - Input <RxClk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <RxDv> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <Sw_FCTClk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:1306 - Output <ADC_CLK> is never assigned.
+WARNING:Xst:1306 - Output <Test> is never assigned.
+WARNING:Xst:1306 - Output <FastTrigDes> is never assigned.
+WARNING:Xst:1306 - Output <ADC_SCLK> is never assigned.
+WARNING:Xst:1306 - Output <TxEn> is never assigned.
+WARNING:Xst:646 - Signal <TrigIn> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <Clk40> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <Clk160> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ADC_DCOPrev> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <ADC_DCO<127:32>> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ADC_DCO<31:0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ADCInDataPrev> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <ADCInData> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+Unit <Main> synthesized.
+
+
+=========================================================================
+HDL Synthesis Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <Main> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 5) on block Main, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Final Report                               *
+=========================================================================
+Final Results
+RTL Top Level Output File Name     : Main.ngr
+Top Level Output File Name         : Main
+Output Format                      : NGC
+Optimization Goal                  : Speed
+Keep Hierarchy                     : No
+
+Design Statistics
+# IOs                              : 475
+
+Cell Usage :
+# IO Buffers                       : 187
+#      IBUFDS                      : 187
+=========================================================================
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 4vlx60ff1148-10 
+
+ Number of Slices:                        0  out of  26624     0%  
+ Number of IOs:                         475
+ Number of bonded IOBs:                 374  out of    640    58%  
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+TIMING REPORT
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+No clock signals found in this design
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -10
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: No path found
+   Maximum output required time after clock: No path found
+   Maximum combinational path delay: No path found
+
+Timing Detail:
+--------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.45 secs
+ 
 --> 
 
-Total memory usage is 277304 kilobytes
+Total memory usage is 329628 kilobytes
 
-Number of errors   :    2 (   0 filtered)
-Number of warnings :    1 (   0 filtered)
+Number of errors   :    0 (   0 filtered)
+Number of warnings :   31 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

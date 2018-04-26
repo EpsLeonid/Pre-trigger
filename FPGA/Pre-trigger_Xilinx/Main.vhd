@@ -30,6 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 library UNISIM;
 use UNISIM.VComponents.all;
 
+library work;
 use work.parameters.all;
 
 entity Main is
@@ -55,30 +56,27 @@ port(
 
 -- 2. Channel  
 
-	ADCInDataLVDS		: in std_logic_vector(127 downto 0);	-- input of data from ADC	<- Pin 
-	ADCInDataLVDS_n	: in std_logic_vector(127 downto 0);	-- input of data from ADC	<- Pin 
-	PreviousInDataLVDS: in std_logic_vector(11 downto 0);	-- input of data from ADC	<- Pin 
-	PreviousInDataLVDS_n: in std_logic_vector(11 downto 0);	-- input of data from ADC	<- Pin 
---	ADCInDataLVDS		: in std_logic_vector(128-1 downto 0);	-- input of data from ADC	<- Pin 
---	PreviousInDataLVDS: in std_logic_vector(12-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDS		: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDS_n	: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCInDataLVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 
 	ADC_CSB		: out std_logic;	-- Pin 
 	ADC_SDIO		: out std_logic;	-- Pin 
 	ADC_SCLK		: out std_logic;	-- Pin 
 
 	ADC_CLK		: out std_logic;	-- Pin 
-	ADC_DCO		: in std_logic_vector(31 downto 0);	-- 
-	ADC_DCO_n	: in std_logic_vector(31 downto 0);	-- 
-	ADC_DCOprev	: in std_logic_vector(11 downto 0);	-- 
-	ADC_DCOprev_n: in std_logic_vector(11 downto 0);	-- 
---ADC_channel_shift_clk : input;	-- Pin AB10
+	ADC_DCO_LVDS	: in std_logic_vector(31 downto 0);	-- 
+	ADC_DCO_LVDS_n	: in std_logic_vector(31 downto 0);	-- 
+	ADC_DCO_LVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+	ADC_DCO_LVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 
 -- 3. Trig_in-out_FCT
 
-	TrigIn			: in std_logic;	-- Внешний триггер					<- Pin 
-	TrigIn_n			: in std_logic;	-- Внешний триггер					<- Pin 
---FastTrigDes		: output;	-- Fast trigger desition to EROS/ROESTI	<- Pin
-	TriggerData		: out std_logic_vector(63 downto 0);	-- Trigger data to FCT
+	TrigInLVDS		: in std_logic;	-- Внешний триггер					<- Pin 
+	TrigInLVDS_n	: in std_logic;	-- Внешний триггер					<- Pin 
+	FastTrigDes		: out std_logic;	-- Fast trigger desition to EROS/ROESTI	<- Pin
+	TriggerData		: out std_logic_vector(TrigBits-1 downto 0);	-- Trigger data to FCT
 
 -- 4. Ethernet Phy device ports     LXT972
 	RxClk			: in std_logic; --					-> Pin
@@ -103,23 +101,13 @@ end Main;
 
 architecture Behavioral of Main is
 
-	signal 			Clk40	: std_logic;
-	signal 			Clk80 : std_logic;
---	signal 
---	signal 
---	signal 
---	signal 
---	signal 
---	signal 
---	signal 
---	signal 
---	signal 
---	signal 
---	signal 
-	signal 		ADCInData: std_logic_vector(ADC_Bits-1 downto 0);
---	signal 
---	signal 
---	signal 
+	signal 		Clk40		: std_logic;
+	signal 		Clk160	: std_logic;
+	signal 		ADCInData	: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal 		ADCInDataPrev: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal		ADC_DCO		: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal		ADC_DCOPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal 		TrigIn	: std_logic;
 --	signal 
 --	signal 
 --	signal 
@@ -128,7 +116,7 @@ architecture Behavioral of Main is
 component FindMaxAmp is
 port(
 
-	In_Data        		: in array_t (0 to NumTrigCh-1)(ADC_Bits-1 downto 0);
+	In_Data        		: in array_t;
 	RegInit					: in std_logic;
 	MaxAmp					: out std_logic_vector(Sum_Bits-1 downto 0);
 	MaxCellNumber			: out std_logic_vector(3 downto 0);
@@ -150,17 +138,99 @@ port(
 end component;
 
 begin
---
---LVDS_signal : IBUFDS
---   generic map (
---      CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
---      DIFF_TERM => TRUE, -- Differential Termination 
---      IOSTANDARD => "DEFAULT")
---   port map (
---      O => ADCInData,  -- Buffer output
---      I => ADCInDataLVDS,  -- Diff_p buffer input (connect directly to top-level port)
---      IB => ADCInDataLVDS_n -- Diff_n buffer input (connect directly to top-level port)
---   );
+
+--=================Inicialization of LVDS signals=================--
+--******** 1. Reference clock's & Frequency Control ********--
+LVDS_Clk40 : IBUFDS
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+		DIFF_TERM => TRUE, -- Differential Termination 
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => Clk40,		-- Buffer output
+		I => FCT_40,	-- Diff_p buffer input (connect directly to top-level port)
+		IB => FCT_40_n	-- Diff_n buffer input (connect directly to top-level port)
+	);
+
+LVDS_FCT_160 : IBUFDS
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+		DIFF_TERM => TRUE, -- Differential Termination 
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => Clk160,		-- Buffer output
+		I => FCT_160,	-- Diff_p buffer input (connect directly to top-level port)
+		IB => FCT_160_n	-- Diff_n buffer input (connect directly to top-level port)
+	);
+
+--******** 2. Input LVDS ADC buffer ********--
+-- Input LVDS ADC buffer
+LVDS_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
+	LVDS_signal : IBUFDS
+		generic map (
+			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+			DIFF_TERM => TRUE, -- Differential Termination 
+			IOSTANDARD => "DEFAULT")
+		port map (
+			O => ADCInData(i),  -- Buffer output
+			I => ADCInDataLVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
+			IB => ADCInDataLVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
+		);
+end generate LVDS_buf_ADC;
+
+-- Input LVDS ADC buffer from prev.board
+LVDS_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
+	LVDS_signal : IBUFDS
+		generic map (
+			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+			DIFF_TERM => TRUE, -- Differential Termination 
+			IOSTANDARD => "DEFAULT")
+		port map (
+			O => ADCInDataPrev(i),  -- Buffer output
+			I => ADCInDataLVDSPrev(i),  -- Diff_p buffer input (connect directly to top-level port)
+			IB => ADCInDataLVDSPrev_n(i) -- Diff_n buffer input (connect directly to top-level port)
+		);
+end generate LVDS_buf_ADCPrev;
+
+-- Input LVDS ADC DCO buffer
+LVDS_ADC_DCO: for i in 0 to NUM_TrigCell/4-1 generate 
+	LVDS_signal : IBUFDS
+		generic map (
+			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+			DIFF_TERM => TRUE, -- Differential Termination 
+			IOSTANDARD => "DEFAULT")
+		port map (
+			O => ADC_DCO(i),  -- Buffer output
+			I => ADC_DCO_LVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
+			IB => ADC_DCO_LVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
+		);
+end generate LVDS_ADC_DCO;
+
+-- Input LVDS ADC DCO buffer from prev.board
+LVDS_ADC_DCOPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
+	LVDS_signal : IBUFDS
+		generic map (
+			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+			DIFF_TERM => TRUE, -- Differential Termination 
+			IOSTANDARD => "DEFAULT")
+		port map (
+			O => ADC_DCOPrev(i),  -- Buffer output
+			I => ADC_DCO_LVDSPrev(i),  -- Diff_p buffer input (connect directly to top-level port)
+			IB => ADC_DCO_LVDSPrev_n(i) -- Diff_n buffer input (connect directly to top-level port)
+		);
+end generate LVDS_ADC_DCOPrev;
+
+LVDS_signal : IBUFDS
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+		DIFF_TERM => TRUE, -- Differential Termination 
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => TrigIn,		-- Buffer output
+		I => TrigInLVDS,	-- Diff_p buffer input (connect directly to top-level port)
+		IB => TrigInLVDS_n	-- Diff_n buffer input (connect directly to top-level port)
+	);
+
 
 
 end Behavioral;

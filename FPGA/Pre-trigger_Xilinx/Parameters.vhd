@@ -10,13 +10,13 @@ package parameters is
 	constant ADC_Bits				: integer := 8;	-- Number of ADC bits in one channel
 	constant NUM_ADCboard		: integer := 16;	-- Number of ADC boards in the trigger
 	constant NUM_TrigCell		: integer := 128;	-- Number of channels in the trigger
-	constant NUM_Trig_get_ch	: integer := 12;	-- Number of channels in the trigger from prev.board
+	constant NUM_TrigCellPrev	: integer := 12;	-- Number of channels in the trigger from prev.board
 	constant ThresholdData_0	: integer := 100;
 	constant ThresholdData_1	: integer := 150;
 	constant ThresholdData_2	: integer := 243;
 	constant TrigBits				: integer := 64;		-- Number of triggerg bits to FCT
 	
-	type array_t is array(integer range 0 to NUM_TrigCell) of std_logic_vector;
+	type array_t is array (0 to NUM_TrigCell) of std_logic_vector (ADC_Bits-1 downto 0);
 	
 --FindAmp
 
