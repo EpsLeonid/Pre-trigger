@@ -66,8 +66,8 @@ port(
 	ADC_SCLK		: out std_logic;	-- Pin 
 
 	ADC_CLK		: out std_logic;	-- Pin 
-	ADC_DCO_LVDS	: in std_logic_vector(31 downto 0);	-- 
-	ADC_DCO_LVDS_n	: in std_logic_vector(31 downto 0);	-- 
+	ADC_DCO_LVDS	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_DCO_LVDS_n	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	ADC_DCO_LVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 
@@ -139,7 +139,7 @@ end component;
 
 begin
 
---=================Inicialization of LVDS signals=================--
+--=================Inicialization of input LVDS signals=================--
 --******** 1. Reference clock's & Frequency Control ********--
 LVDS_Clk40 : IBUFDS
 	generic map (
@@ -231,7 +231,45 @@ LVDS_signal : IBUFDS
 		IB => TrigInLVDS_n	-- Diff_n buffer input (connect directly to top-level port)
 	);
 
+--=================Deserialization of input LVDS signals=================--
+--******** 1. Input LVDS ADC buffer ********--
+DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
+	IDDR_inst : IDDR 
+		generic map (
+			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
+														-- or "SAME_EDGE_PIPELINED" 
+			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
+			INIT_Q2 => '0', -- Initial value of Q2: '0' or '1'
+			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
+		port map (
+			Q1 => Q1, -- 1-bit output for positive edge of clock 
+			Q2 => Q2, -- 1-bit output for negative edge of clock
+			C => C,   -- 1-bit clock input
+			CE => CE, -- 1-bit clock enable input
+			ADCInData => D,   -- 1-bit DDR data input
+			R => R,   -- 1-bit reset
+			S => S    -- 1-bit set
+			);
+end generate DDR_buf_ADC;
 
+DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
+	IDDR_inst : IDDR 
+		generic map (
+			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
+														-- or "SAME_EDGE_PIPELINED" 
+			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
+			INIT_Q2 => '0', -- Initial value of Q2: '0' or '1'
+			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
+		port map (
+			Q1 => Q1, -- 1-bit output for positive edge of clock 
+			Q2 => Q2, -- 1-bit output for negative edge of clock
+			C => C,   -- 1-bit clock input
+			CE => CE, -- 1-bit clock enable input
+			ADCInData => D,   -- 1-bit DDR data input
+			R => R,   -- 1-bit reset
+			S => S    -- 1-bit set
+			);
+end generate DDR_buf_ADCPrev;
 
 end Behavioral;
 
