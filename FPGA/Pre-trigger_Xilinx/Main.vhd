@@ -111,7 +111,7 @@ architecture Behavioral of Main is
 --	signal 
 --	signal 
 --	signal 
---	signal 
+	signal 		Reset		: std_logic;
 
 component FindMaxAmp is
 port(
@@ -239,7 +239,7 @@ DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate
 			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
 														-- or "SAME_EDGE_PIPELINED" 
 			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
-			INIT_Q2 => '0', -- Initial value of Q2: '0' or '1'
+			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
 			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
 		port map (
 			Q1 => Q1, -- 1-bit output for positive edge of clock 
@@ -247,7 +247,7 @@ DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate
 			C => C,   -- 1-bit clock input
 			CE => CE, -- 1-bit clock enable input
 			ADCInData => D,   -- 1-bit DDR data input
-			R => R,   -- 1-bit reset
+			Reset => R,   -- 1-bit reset
 			S => S    -- 1-bit set
 			);
 end generate DDR_buf_ADC;
@@ -266,7 +266,7 @@ DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate
 			C => C,   -- 1-bit clock input
 			CE => CE, -- 1-bit clock enable input
 			ADCInData => D,   -- 1-bit DDR data input
-			R => R,   -- 1-bit reset
+			Reset => R,   -- 1-bit reset
 			S => S    -- 1-bit set
 			);
 end generate DDR_buf_ADCPrev;
