@@ -194,7 +194,7 @@ end generate LVDS_buf_ADCPrev;
 
 -- Input LVDS ADC DCO buffer
 LVDS_ADC_DCO: for i in 0 to NUM_TrigCell/4-1 generate 
-	LVDS_signal : IBUFDS
+	LVDS_signal : IBUFGDS
 		generic map (
 			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
 			DIFF_TERM => TRUE, -- Differential Termination 
@@ -208,7 +208,7 @@ end generate LVDS_ADC_DCO;
 
 -- Input LVDS ADC DCO buffer from prev.board
 LVDS_ADC_DCOPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
-	LVDS_signal : IBUFDS
+	LVDS_signal : IBUFGDS
 		generic map (
 			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
 			DIFF_TERM => TRUE, -- Differential Termination 
@@ -242,8 +242,8 @@ DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate
 			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
 			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
 		port map (
-			Q1 => Q1, -- 1-bit output for positive edge of clock 
-			Q2 => Q2, -- 1-bit output for negative edge of clock
+			Q1 => InDataReg_p.D, -- 1-bit output for positive edge of clock 
+			Q2 => InDataReg_n.D, -- 1-bit output for negative edge of clock
 			C => C,   -- 1-bit clock input
 			CE => CE, -- 1-bit clock enable input
 			ADCInData => D,   -- 1-bit DDR data input
@@ -271,5 +271,18 @@ DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate
 			);
 end generate DDR_buf_ADCPrev;
 
-end Behavioral;
+InDataReg_p : SRL16E
+generic map (INIT => X"1111")
+port map (
+   Q => Q,			-- SRL data output
+   D => A0,			-- Select[0] input
+   A0 => A1,		-- Select[1] input
+   A1 => A2,		-- Select[2] input
+   A2 => A3,		-- Select[3] input
+   CE => CE,		-- Clock enable input
+   CLK => CLK,		-- Clock input
+   D => D			-- SRL data input
+);
 
+
+end Behavioral;
