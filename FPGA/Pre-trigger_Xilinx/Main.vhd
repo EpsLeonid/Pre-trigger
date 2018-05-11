@@ -242,8 +242,8 @@ DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate
 			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
 			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
 		port map (
-			Q1 => InDataReg_p.D, -- 1-bit output for positive edge of clock 
-			Q2 => InDataReg_n.D, -- 1-bit output for negative edge of clock
+			Q1 => InDataReg_p, -- 1-bit output for positive edge of clock 
+			Q2 => InDataReg_n, -- 1-bit output for negative edge of clock
 			C => C,   -- 1-bit clock input
 			CE => CE, -- 1-bit clock enable input
 			ADCInData => D,   -- 1-bit DDR data input
