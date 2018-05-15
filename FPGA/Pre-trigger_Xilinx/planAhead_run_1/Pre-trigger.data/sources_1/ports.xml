@@ -261,7 +261,7 @@
 			<Port Id="1" Dir="IN"/>
 			<Port Id="0" Dir="IN"/>
 		</Bus>
-		<Bus Id="PreviousInDataLVDS">
+		<Bus Id="ADCInDataLVDSPrev">
 			<Port Id="11" Dir="IN"/>
 			<Port Id="10" Dir="IN"/>
 			<Port Id="9" Dir="IN"/>
@@ -275,7 +275,7 @@
 			<Port Id="1" Dir="IN"/>
 			<Port Id="0" Dir="IN"/>
 		</Bus>
-		<Bus Id="PreviousInDataLVDS_n">
+		<Bus Id="ADCInDataLVDSPrev_n">
 			<Port Id="11" Dir="IN"/>
 			<Port Id="10" Dir="IN"/>
 			<Port Id="9" Dir="IN"/>
@@ -289,7 +289,7 @@
 			<Port Id="1" Dir="IN"/>
 			<Port Id="0" Dir="IN"/>
 		</Bus>
-		<Bus Id="ADC_DCO">
+		<Bus Id="ADC_DCO_LVDS">
 			<Port Id="31" Dir="IN"/>
 			<Port Id="30" Dir="IN"/>
 			<Port Id="29" Dir="IN"/>
@@ -323,7 +323,7 @@
 			<Port Id="1" Dir="IN"/>
 			<Port Id="0" Dir="IN"/>
 		</Bus>
-		<Bus Id="ADC_DCO_n">
+		<Bus Id="ADC_DCO_LVDS_n">
 			<Port Id="31" Dir="IN"/>
 			<Port Id="30" Dir="IN"/>
 			<Port Id="29" Dir="IN"/>
@@ -357,7 +357,7 @@
 			<Port Id="1" Dir="IN"/>
 			<Port Id="0" Dir="IN"/>
 		</Bus>
-		<Bus Id="ADC_DCOprev">
+		<Bus Id="ADC_DCO_LVDSPrev">
 			<Port Id="11" Dir="IN"/>
 			<Port Id="10" Dir="IN"/>
 			<Port Id="9" Dir="IN"/>
@@ -371,7 +371,7 @@
 			<Port Id="1" Dir="IN"/>
 			<Port Id="0" Dir="IN"/>
 		</Bus>
-		<Bus Id="ADC_DCOprev_n">
+		<Bus Id="ADC_DCO_LVDSPrev_n">
 			<Port Id="11" Dir="IN"/>
 			<Port Id="10" Dir="IN"/>
 			<Port Id="9" Dir="IN"/>
@@ -475,6 +475,7 @@
 			<Port Id="1" Dir="OUT"/>
 			<Port Id="0" Dir="OUT"/>
 		</Bus>
+		<Port Id="TrigInLVDS" Dir="IN"/>
 		<Port Id="FCT_40" Dir="IN"/>
 		<Port Id="TxEn" Dir="OUT"/>
 		<Port Id="Qclock" Dir="IN"/>
@@ -486,19 +487,206 @@
 		<Port Id="Sw_FCTClk" Dir="IN"/>
 		<Port Id="FCT_160" Dir="IN"/>
 		<Port Id="TxClk" Dir="IN"/>
-		<Port Id="TrigIn_n" Dir="IN"/>
+		<Port Id="TrigInLVDS_n" Dir="IN"/>
 		<Port Id="ExtReset" Dir="IN"/>
+		<Port Id="FastTrigDes" Dir="OUT"/>
 		<Port Id="ADC_CLK" Dir="OUT"/>
 		<Port Id="RxClk" Dir="IN"/>
 		<Port Id="ADC_CSB" Dir="OUT"/>
 		<Port Id="RxDv" Dir="IN"/>
-		<Port Id="TrigIn" Dir="IN"/>
 		<Port Id="Col" Dir="IN"/>
 		<Port Id="Crs" Dir="IN"/>
 		<Port Id="PLL_in" Dir="IN"/>
 		<Port Id="ADC_SCLK" Dir="OUT"/>
 		<Port Id="ADC_SDIO" Dir="OUT"/>
 		<Port Id="FCT_160_n" Dir="IN"/>
+		<DiffPair Pos="ADCInDataLVDS[127]" Neg="ADCInDataLVDS_n[127]"/>
+		<DiffPair Pos="ADCInDataLVDS[126]" Neg="ADCInDataLVDS_n[126]"/>
+		<DiffPair Pos="ADCInDataLVDS[125]" Neg="ADCInDataLVDS_n[125]"/>
+		<DiffPair Pos="ADCInDataLVDS[124]" Neg="ADCInDataLVDS_n[124]"/>
+		<DiffPair Pos="ADCInDataLVDS[123]" Neg="ADCInDataLVDS_n[123]"/>
+		<DiffPair Pos="ADCInDataLVDS[122]" Neg="ADCInDataLVDS_n[122]"/>
+		<DiffPair Pos="ADCInDataLVDS[121]" Neg="ADCInDataLVDS_n[121]"/>
+		<DiffPair Pos="ADCInDataLVDS[120]" Neg="ADCInDataLVDS_n[120]"/>
+		<DiffPair Pos="ADCInDataLVDS[119]" Neg="ADCInDataLVDS_n[119]"/>
+		<DiffPair Pos="ADCInDataLVDS[118]" Neg="ADCInDataLVDS_n[118]"/>
+		<DiffPair Pos="ADCInDataLVDS[117]" Neg="ADCInDataLVDS_n[117]"/>
+		<DiffPair Pos="ADCInDataLVDS[116]" Neg="ADCInDataLVDS_n[116]"/>
+		<DiffPair Pos="ADCInDataLVDS[115]" Neg="ADCInDataLVDS_n[115]"/>
+		<DiffPair Pos="ADCInDataLVDS[114]" Neg="ADCInDataLVDS_n[114]"/>
+		<DiffPair Pos="ADCInDataLVDS[113]" Neg="ADCInDataLVDS_n[113]"/>
+		<DiffPair Pos="ADCInDataLVDS[112]" Neg="ADCInDataLVDS_n[112]"/>
+		<DiffPair Pos="ADCInDataLVDS[111]" Neg="ADCInDataLVDS_n[111]"/>
+		<DiffPair Pos="ADCInDataLVDS[110]" Neg="ADCInDataLVDS_n[110]"/>
+		<DiffPair Pos="ADCInDataLVDS[109]" Neg="ADCInDataLVDS_n[109]"/>
+		<DiffPair Pos="ADCInDataLVDS[108]" Neg="ADCInDataLVDS_n[108]"/>
+		<DiffPair Pos="ADCInDataLVDS[107]" Neg="ADCInDataLVDS_n[107]"/>
+		<DiffPair Pos="ADCInDataLVDS[106]" Neg="ADCInDataLVDS_n[106]"/>
+		<DiffPair Pos="ADCInDataLVDS[105]" Neg="ADCInDataLVDS_n[105]"/>
+		<DiffPair Pos="ADCInDataLVDS[104]" Neg="ADCInDataLVDS_n[104]"/>
+		<DiffPair Pos="ADCInDataLVDS[103]" Neg="ADCInDataLVDS_n[103]"/>
+		<DiffPair Pos="ADCInDataLVDS[102]" Neg="ADCInDataLVDS_n[102]"/>
+		<DiffPair Pos="ADCInDataLVDS[101]" Neg="ADCInDataLVDS_n[101]"/>
+		<DiffPair Pos="ADCInDataLVDS[100]" Neg="ADCInDataLVDS_n[100]"/>
+		<DiffPair Pos="ADCInDataLVDS[99]" Neg="ADCInDataLVDS_n[99]"/>
+		<DiffPair Pos="ADCInDataLVDS[98]" Neg="ADCInDataLVDS_n[98]"/>
+		<DiffPair Pos="ADCInDataLVDS[97]" Neg="ADCInDataLVDS_n[97]"/>
+		<DiffPair Pos="ADCInDataLVDS[96]" Neg="ADCInDataLVDS_n[96]"/>
+		<DiffPair Pos="ADCInDataLVDS[95]" Neg="ADCInDataLVDS_n[95]"/>
+		<DiffPair Pos="ADCInDataLVDS[94]" Neg="ADCInDataLVDS_n[94]"/>
+		<DiffPair Pos="ADCInDataLVDS[93]" Neg="ADCInDataLVDS_n[93]"/>
+		<DiffPair Pos="ADCInDataLVDS[92]" Neg="ADCInDataLVDS_n[92]"/>
+		<DiffPair Pos="ADCInDataLVDS[91]" Neg="ADCInDataLVDS_n[91]"/>
+		<DiffPair Pos="ADCInDataLVDS[90]" Neg="ADCInDataLVDS_n[90]"/>
+		<DiffPair Pos="ADCInDataLVDS[89]" Neg="ADCInDataLVDS_n[89]"/>
+		<DiffPair Pos="ADCInDataLVDS[88]" Neg="ADCInDataLVDS_n[88]"/>
+		<DiffPair Pos="ADCInDataLVDS[87]" Neg="ADCInDataLVDS_n[87]"/>
+		<DiffPair Pos="ADCInDataLVDS[86]" Neg="ADCInDataLVDS_n[86]"/>
+		<DiffPair Pos="ADCInDataLVDS[85]" Neg="ADCInDataLVDS_n[85]"/>
+		<DiffPair Pos="ADCInDataLVDS[84]" Neg="ADCInDataLVDS_n[84]"/>
+		<DiffPair Pos="ADCInDataLVDS[83]" Neg="ADCInDataLVDS_n[83]"/>
+		<DiffPair Pos="ADCInDataLVDS[82]" Neg="ADCInDataLVDS_n[82]"/>
+		<DiffPair Pos="ADCInDataLVDS[81]" Neg="ADCInDataLVDS_n[81]"/>
+		<DiffPair Pos="ADCInDataLVDS[80]" Neg="ADCInDataLVDS_n[80]"/>
+		<DiffPair Pos="ADCInDataLVDS[79]" Neg="ADCInDataLVDS_n[79]"/>
+		<DiffPair Pos="ADCInDataLVDS[78]" Neg="ADCInDataLVDS_n[78]"/>
+		<DiffPair Pos="ADCInDataLVDS[77]" Neg="ADCInDataLVDS_n[77]"/>
+		<DiffPair Pos="ADCInDataLVDS[76]" Neg="ADCInDataLVDS_n[76]"/>
+		<DiffPair Pos="ADCInDataLVDS[75]" Neg="ADCInDataLVDS_n[75]"/>
+		<DiffPair Pos="ADCInDataLVDS[74]" Neg="ADCInDataLVDS_n[74]"/>
+		<DiffPair Pos="ADCInDataLVDS[73]" Neg="ADCInDataLVDS_n[73]"/>
+		<DiffPair Pos="ADCInDataLVDS[72]" Neg="ADCInDataLVDS_n[72]"/>
+		<DiffPair Pos="ADCInDataLVDS[71]" Neg="ADCInDataLVDS_n[71]"/>
+		<DiffPair Pos="ADCInDataLVDS[70]" Neg="ADCInDataLVDS_n[70]"/>
+		<DiffPair Pos="ADCInDataLVDS[69]" Neg="ADCInDataLVDS_n[69]"/>
+		<DiffPair Pos="ADCInDataLVDS[68]" Neg="ADCInDataLVDS_n[68]"/>
+		<DiffPair Pos="ADCInDataLVDS[67]" Neg="ADCInDataLVDS_n[67]"/>
+		<DiffPair Pos="ADCInDataLVDS[66]" Neg="ADCInDataLVDS_n[66]"/>
+		<DiffPair Pos="ADCInDataLVDS[65]" Neg="ADCInDataLVDS_n[65]"/>
+		<DiffPair Pos="ADCInDataLVDS[64]" Neg="ADCInDataLVDS_n[64]"/>
+		<DiffPair Pos="ADCInDataLVDS[63]" Neg="ADCInDataLVDS_n[63]"/>
+		<DiffPair Pos="ADCInDataLVDS[62]" Neg="ADCInDataLVDS_n[62]"/>
+		<DiffPair Pos="ADCInDataLVDS[61]" Neg="ADCInDataLVDS_n[61]"/>
+		<DiffPair Pos="ADCInDataLVDS[60]" Neg="ADCInDataLVDS_n[60]"/>
+		<DiffPair Pos="ADCInDataLVDS[59]" Neg="ADCInDataLVDS_n[59]"/>
+		<DiffPair Pos="ADCInDataLVDS[58]" Neg="ADCInDataLVDS_n[58]"/>
+		<DiffPair Pos="ADCInDataLVDS[57]" Neg="ADCInDataLVDS_n[57]"/>
+		<DiffPair Pos="ADCInDataLVDS[56]" Neg="ADCInDataLVDS_n[56]"/>
+		<DiffPair Pos="ADCInDataLVDS[55]" Neg="ADCInDataLVDS_n[55]"/>
+		<DiffPair Pos="ADCInDataLVDS[54]" Neg="ADCInDataLVDS_n[54]"/>
+		<DiffPair Pos="ADCInDataLVDS[53]" Neg="ADCInDataLVDS_n[53]"/>
+		<DiffPair Pos="ADCInDataLVDS[52]" Neg="ADCInDataLVDS_n[52]"/>
+		<DiffPair Pos="ADCInDataLVDS[51]" Neg="ADCInDataLVDS_n[51]"/>
+		<DiffPair Pos="ADCInDataLVDS[50]" Neg="ADCInDataLVDS_n[50]"/>
+		<DiffPair Pos="ADCInDataLVDS[49]" Neg="ADCInDataLVDS_n[49]"/>
+		<DiffPair Pos="ADCInDataLVDS[48]" Neg="ADCInDataLVDS_n[48]"/>
+		<DiffPair Pos="ADCInDataLVDS[47]" Neg="ADCInDataLVDS_n[47]"/>
+		<DiffPair Pos="ADCInDataLVDS[46]" Neg="ADCInDataLVDS_n[46]"/>
+		<DiffPair Pos="ADCInDataLVDS[45]" Neg="ADCInDataLVDS_n[45]"/>
+		<DiffPair Pos="ADCInDataLVDS[44]" Neg="ADCInDataLVDS_n[44]"/>
+		<DiffPair Pos="ADCInDataLVDS[43]" Neg="ADCInDataLVDS_n[43]"/>
+		<DiffPair Pos="ADCInDataLVDS[42]" Neg="ADCInDataLVDS_n[42]"/>
+		<DiffPair Pos="ADCInDataLVDS[41]" Neg="ADCInDataLVDS_n[41]"/>
+		<DiffPair Pos="ADCInDataLVDS[40]" Neg="ADCInDataLVDS_n[40]"/>
+		<DiffPair Pos="ADCInDataLVDS[39]" Neg="ADCInDataLVDS_n[39]"/>
+		<DiffPair Pos="ADCInDataLVDS[38]" Neg="ADCInDataLVDS_n[38]"/>
+		<DiffPair Pos="ADCInDataLVDS[37]" Neg="ADCInDataLVDS_n[37]"/>
+		<DiffPair Pos="ADCInDataLVDS[36]" Neg="ADCInDataLVDS_n[36]"/>
+		<DiffPair Pos="ADCInDataLVDS[35]" Neg="ADCInDataLVDS_n[35]"/>
+		<DiffPair Pos="ADCInDataLVDS[34]" Neg="ADCInDataLVDS_n[34]"/>
+		<DiffPair Pos="ADCInDataLVDS[33]" Neg="ADCInDataLVDS_n[33]"/>
+		<DiffPair Pos="ADCInDataLVDS[32]" Neg="ADCInDataLVDS_n[32]"/>
+		<DiffPair Pos="ADCInDataLVDS[31]" Neg="ADCInDataLVDS_n[31]"/>
+		<DiffPair Pos="ADCInDataLVDS[30]" Neg="ADCInDataLVDS_n[30]"/>
+		<DiffPair Pos="ADCInDataLVDS[29]" Neg="ADCInDataLVDS_n[29]"/>
+		<DiffPair Pos="ADCInDataLVDS[28]" Neg="ADCInDataLVDS_n[28]"/>
+		<DiffPair Pos="ADCInDataLVDS[27]" Neg="ADCInDataLVDS_n[27]"/>
+		<DiffPair Pos="ADCInDataLVDS[26]" Neg="ADCInDataLVDS_n[26]"/>
+		<DiffPair Pos="ADCInDataLVDS[25]" Neg="ADCInDataLVDS_n[25]"/>
+		<DiffPair Pos="ADCInDataLVDS[24]" Neg="ADCInDataLVDS_n[24]"/>
+		<DiffPair Pos="ADCInDataLVDS[23]" Neg="ADCInDataLVDS_n[23]"/>
+		<DiffPair Pos="ADCInDataLVDS[22]" Neg="ADCInDataLVDS_n[22]"/>
+		<DiffPair Pos="ADCInDataLVDS[21]" Neg="ADCInDataLVDS_n[21]"/>
+		<DiffPair Pos="ADCInDataLVDS[20]" Neg="ADCInDataLVDS_n[20]"/>
+		<DiffPair Pos="ADCInDataLVDS[19]" Neg="ADCInDataLVDS_n[19]"/>
+		<DiffPair Pos="ADCInDataLVDS[18]" Neg="ADCInDataLVDS_n[18]"/>
+		<DiffPair Pos="ADCInDataLVDS[17]" Neg="ADCInDataLVDS_n[17]"/>
+		<DiffPair Pos="ADCInDataLVDS[16]" Neg="ADCInDataLVDS_n[16]"/>
+		<DiffPair Pos="ADCInDataLVDS[15]" Neg="ADCInDataLVDS_n[15]"/>
+		<DiffPair Pos="ADCInDataLVDS[14]" Neg="ADCInDataLVDS_n[14]"/>
+		<DiffPair Pos="ADCInDataLVDS[13]" Neg="ADCInDataLVDS_n[13]"/>
+		<DiffPair Pos="ADCInDataLVDS[12]" Neg="ADCInDataLVDS_n[12]"/>
+		<DiffPair Pos="ADCInDataLVDS[11]" Neg="ADCInDataLVDS_n[11]"/>
+		<DiffPair Pos="ADCInDataLVDS[10]" Neg="ADCInDataLVDS_n[10]"/>
+		<DiffPair Pos="ADCInDataLVDS[9]" Neg="ADCInDataLVDS_n[9]"/>
+		<DiffPair Pos="ADCInDataLVDS[8]" Neg="ADCInDataLVDS_n[8]"/>
+		<DiffPair Pos="ADCInDataLVDS[7]" Neg="ADCInDataLVDS_n[7]"/>
+		<DiffPair Pos="ADCInDataLVDS[6]" Neg="ADCInDataLVDS_n[6]"/>
+		<DiffPair Pos="ADCInDataLVDS[5]" Neg="ADCInDataLVDS_n[5]"/>
+		<DiffPair Pos="ADCInDataLVDS[4]" Neg="ADCInDataLVDS_n[4]"/>
+		<DiffPair Pos="ADCInDataLVDS[3]" Neg="ADCInDataLVDS_n[3]"/>
+		<DiffPair Pos="ADCInDataLVDS[2]" Neg="ADCInDataLVDS_n[2]"/>
+		<DiffPair Pos="ADCInDataLVDS[1]" Neg="ADCInDataLVDS_n[1]"/>
+		<DiffPair Pos="ADCInDataLVDS[0]" Neg="ADCInDataLVDS_n[0]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[11]" Neg="ADCInDataLVDSPrev_n[11]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[10]" Neg="ADCInDataLVDSPrev_n[10]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[9]" Neg="ADCInDataLVDSPrev_n[9]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[8]" Neg="ADCInDataLVDSPrev_n[8]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[7]" Neg="ADCInDataLVDSPrev_n[7]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[6]" Neg="ADCInDataLVDSPrev_n[6]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[5]" Neg="ADCInDataLVDSPrev_n[5]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[4]" Neg="ADCInDataLVDSPrev_n[4]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[3]" Neg="ADCInDataLVDSPrev_n[3]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[2]" Neg="ADCInDataLVDSPrev_n[2]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[1]" Neg="ADCInDataLVDSPrev_n[1]"/>
+		<DiffPair Pos="ADCInDataLVDSPrev[0]" Neg="ADCInDataLVDSPrev_n[0]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[31]" Neg="ADC_DCO_LVDS_n[31]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[30]" Neg="ADC_DCO_LVDS_n[30]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[29]" Neg="ADC_DCO_LVDS_n[29]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[28]" Neg="ADC_DCO_LVDS_n[28]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[27]" Neg="ADC_DCO_LVDS_n[27]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[26]" Neg="ADC_DCO_LVDS_n[26]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[25]" Neg="ADC_DCO_LVDS_n[25]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[24]" Neg="ADC_DCO_LVDS_n[24]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[23]" Neg="ADC_DCO_LVDS_n[23]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[22]" Neg="ADC_DCO_LVDS_n[22]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[21]" Neg="ADC_DCO_LVDS_n[21]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[20]" Neg="ADC_DCO_LVDS_n[20]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[19]" Neg="ADC_DCO_LVDS_n[19]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[18]" Neg="ADC_DCO_LVDS_n[18]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[17]" Neg="ADC_DCO_LVDS_n[17]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[16]" Neg="ADC_DCO_LVDS_n[16]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[15]" Neg="ADC_DCO_LVDS_n[15]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[14]" Neg="ADC_DCO_LVDS_n[14]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[13]" Neg="ADC_DCO_LVDS_n[13]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[12]" Neg="ADC_DCO_LVDS_n[12]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[11]" Neg="ADC_DCO_LVDS_n[11]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[10]" Neg="ADC_DCO_LVDS_n[10]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[9]" Neg="ADC_DCO_LVDS_n[9]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[8]" Neg="ADC_DCO_LVDS_n[8]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[7]" Neg="ADC_DCO_LVDS_n[7]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[6]" Neg="ADC_DCO_LVDS_n[6]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[5]" Neg="ADC_DCO_LVDS_n[5]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[4]" Neg="ADC_DCO_LVDS_n[4]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[3]" Neg="ADC_DCO_LVDS_n[3]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[2]" Neg="ADC_DCO_LVDS_n[2]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[1]" Neg="ADC_DCO_LVDS_n[1]"/>
+		<DiffPair Pos="ADC_DCO_LVDS[0]" Neg="ADC_DCO_LVDS_n[0]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[11]" Neg="ADC_DCO_LVDSPrev_n[11]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[10]" Neg="ADC_DCO_LVDSPrev_n[10]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[9]" Neg="ADC_DCO_LVDSPrev_n[9]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[8]" Neg="ADC_DCO_LVDSPrev_n[8]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[7]" Neg="ADC_DCO_LVDSPrev_n[7]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[6]" Neg="ADC_DCO_LVDSPrev_n[6]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[5]" Neg="ADC_DCO_LVDSPrev_n[5]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[4]" Neg="ADC_DCO_LVDSPrev_n[4]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[3]" Neg="ADC_DCO_LVDSPrev_n[3]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[2]" Neg="ADC_DCO_LVDSPrev_n[2]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[1]" Neg="ADC_DCO_LVDSPrev_n[1]"/>
+		<DiffPair Pos="ADC_DCO_LVDSPrev[0]" Neg="ADC_DCO_LVDSPrev_n[0]"/>
+		<DiffPair Pos="TrigInLVDS" Neg="TrigInLVDS_n"/>
+		<DiffPair Pos="FCT_40" Neg="FCT_40_n"/>
+		<DiffPair Pos="FCT_160" Neg="FCT_160_n"/>
 	</Ifc>
 </Interface>
 
