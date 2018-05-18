@@ -70,6 +70,8 @@ port(
 	ADC_CLK		: out std_logic;	-- Pin 
 	ADC_DCO_LVDS	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDS_n	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_FCO_LVDS	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_FCO_LVDS_n	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	ADC_DCO_LVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 
@@ -107,7 +109,8 @@ architecture Behavioral of Main is
 	signal 		Clk160	: std_logic;
 	signal 		ADCInData	: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal 		ADCInDataPrev: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-	signal		ADC_DCO		: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal		ADC_DCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
+	signal		ADC_FCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal		ADC_DCOPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal 		TrigIn	: std_logic;
 --	signal 
@@ -208,6 +211,20 @@ LVDS_ADC_DCO: for i in 0 to NUM_TrigCell/4-1 generate
 		);
 end generate LVDS_ADC_DCO;
 
+-- Input LVDS ADC DCO buffer
+LVDS_ADC_FCO: for i in 0 to NUM_TrigCell/4-1 generate 
+	LVDS_signal : IBUFGDS
+		generic map (
+			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+			DIFF_TERM => TRUE, -- Differential Termination 
+			IOSTANDARD => "DEFAULT")
+		port map (
+			O => ADC_FCO(i),  -- Buffer output
+			I => ADC_FCO_LVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
+			IB => ADC_FCO_LVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
+		);
+end generate LVDS_ADC_DCO;
+
 -- Input LVDS ADC DCO buffer from prev.board
 LVDS_ADC_DCOPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
 	LVDS_signal : IBUFGDS
@@ -233,58 +250,58 @@ LVDS_signal : IBUFDS
 		IB => TrigInLVDS_n	-- Diff_n buffer input (connect directly to top-level port)
 	);
 
---=================Deserialization of input LVDS signals=================--
---******** 1. Input LVDS ADC buffer ********--
-DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
-	IDDR_inst : IDDR 
-		generic map (
-			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
-														-- or "SAME_EDGE_PIPELINED" 
-			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
-			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
-			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
-		port map (
-			Q1 => InDataReg_p, -- 1-bit output for positive edge of clock 
-			Q2 => InDataReg_n, -- 1-bit output for negative edge of clock
-			C => C,   -- 1-bit clock input
-			CE => CE, -- 1-bit clock enable input
-			ADCInData => D,   -- 1-bit DDR data input
-			Reset => R,   -- 1-bit reset
-			S => S    -- 1-bit set
-			);
-end generate DDR_buf_ADC;
-
-DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
-	IDDR_inst : IDDR 
-		generic map (
-			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
-														-- or "SAME_EDGE_PIPELINED" 
-			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
-			INIT_Q2 => '0', -- Initial value of Q2: '0' or '1'
-			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
-		port map (
-			Q1 => Q1, -- 1-bit output for positive edge of clock 
-			Q2 => Q2, -- 1-bit output for negative edge of clock
-			C => C,   -- 1-bit clock input
-			CE => CE, -- 1-bit clock enable input
-			ADCInData => D,   -- 1-bit DDR data input
-			Reset => R,   -- 1-bit reset
-			S => S    -- 1-bit set
-			);
-end generate DDR_buf_ADCPrev;
-
-InDataReg_p : SRL16E
-generic map (INIT => X"1111")
-port map (
-   Q => Q,			-- SRL data output
-   D => A0,			-- Select[0] input
-   A0 => A1,		-- Select[1] input
-   A1 => A2,		-- Select[2] input
-   A2 => A3,		-- Select[3] input
-   CE => CE,		-- Clock enable input
-   CLK => CLK,		-- Clock input
-   D => D			-- SRL data input
-);
-
+----=================Deserialization of input LVDS signals=================--
+----******** 1. Input LVDS ADC buffer ********--
+--DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
+--	IDDR_inst : IDDR 
+--		generic map (
+--			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
+--														-- or "SAME_EDGE_PIPELINED" 
+--			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
+--			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
+--			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
+--		port map (
+--			Q1 => InDataReg_p, -- 1-bit output for positive edge of clock 
+--			Q2 => InDataReg_n, -- 1-bit output for negative edge of clock
+--			C => C,   -- 1-bit clock input
+--			CE => CE, -- 1-bit clock enable input
+--			ADCInData => D,   -- 1-bit DDR data input
+--			Reset => R,   -- 1-bit reset
+--			S => S    -- 1-bit set
+--			);
+--end generate DDR_buf_ADC;
+--
+--DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
+--	IDDR_inst : IDDR 
+--		generic map (
+--			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
+--														-- or "SAME_EDGE_PIPELINED" 
+--			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
+--			INIT_Q2 => '0', -- Initial value of Q2: '0' or '1'
+--			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
+--		port map (
+--			Q1 => Q1, -- 1-bit output for positive edge of clock 
+--			Q2 => Q2, -- 1-bit output for negative edge of clock
+--			C => C,   -- 1-bit clock input
+--			CE => CE, -- 1-bit clock enable input
+--			ADCInData => D,   -- 1-bit DDR data input
+--			Reset => R,   -- 1-bit reset
+--			S => S    -- 1-bit set
+--			);
+--end generate DDR_buf_ADCPrev;
+--
+--InDataReg_p : SRL16E
+--generic map (INIT => X"1111")
+--port map (
+--   Q => Q,			-- SRL data output
+--   D => A0,			-- Select[0] input
+--   A0 => A1,		-- Select[1] input
+--   A1 => A2,		-- Select[2] input
+--   A2 => A3,		-- Select[3] input
+--   CE => CE,		-- Clock enable input
+--   CLK => CLK,		-- Clock input
+--   D => D			-- SRL data input
+--);
+--
 
 end Behavioral;
