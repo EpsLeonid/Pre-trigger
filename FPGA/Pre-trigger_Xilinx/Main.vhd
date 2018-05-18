@@ -50,9 +50,11 @@ port(
 
 -- Outputs for Indicators on LED's
 
-	LedR			: out std_logic;	-- drives the Red LED						-> Pin 
-	LedG			: out std_logic;	-- drives the Green LED						-> Pin 
-	LedB			: out std_logic;	-- drives the Blue(Yellow) LED				-> Pin 
+	Led1			: out std_logic;	-- drives the Red LED						-> Pin 
+	Led2			: out std_logic;	-- drives the Green LED						-> Pin 
+	Led3			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
+	Led4			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
+	Led5			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
 
 -- 2. Channel  
 
