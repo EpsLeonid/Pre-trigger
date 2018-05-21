@@ -357,6 +357,74 @@
 			<Port Id="1" Dir="IN"/>
 			<Port Id="0" Dir="IN"/>
 		</Bus>
+		<Bus Id="ADC_FCO_LVDS">
+			<Port Id="31" Dir="IN"/>
+			<Port Id="30" Dir="IN"/>
+			<Port Id="29" Dir="IN"/>
+			<Port Id="28" Dir="IN"/>
+			<Port Id="27" Dir="IN"/>
+			<Port Id="26" Dir="IN"/>
+			<Port Id="25" Dir="IN"/>
+			<Port Id="24" Dir="IN"/>
+			<Port Id="23" Dir="IN"/>
+			<Port Id="22" Dir="IN"/>
+			<Port Id="21" Dir="IN"/>
+			<Port Id="20" Dir="IN"/>
+			<Port Id="19" Dir="IN"/>
+			<Port Id="18" Dir="IN"/>
+			<Port Id="17" Dir="IN"/>
+			<Port Id="16" Dir="IN"/>
+			<Port Id="15" Dir="IN"/>
+			<Port Id="14" Dir="IN"/>
+			<Port Id="13" Dir="IN"/>
+			<Port Id="12" Dir="IN"/>
+			<Port Id="11" Dir="IN"/>
+			<Port Id="10" Dir="IN"/>
+			<Port Id="9" Dir="IN"/>
+			<Port Id="8" Dir="IN"/>
+			<Port Id="7" Dir="IN"/>
+			<Port Id="6" Dir="IN"/>
+			<Port Id="5" Dir="IN"/>
+			<Port Id="4" Dir="IN"/>
+			<Port Id="3" Dir="IN"/>
+			<Port Id="2" Dir="IN"/>
+			<Port Id="1" Dir="IN"/>
+			<Port Id="0" Dir="IN"/>
+		</Bus>
+		<Bus Id="ADC_FCO_LVDS_n">
+			<Port Id="31" Dir="IN"/>
+			<Port Id="30" Dir="IN"/>
+			<Port Id="29" Dir="IN"/>
+			<Port Id="28" Dir="IN"/>
+			<Port Id="27" Dir="IN"/>
+			<Port Id="26" Dir="IN"/>
+			<Port Id="25" Dir="IN"/>
+			<Port Id="24" Dir="IN"/>
+			<Port Id="23" Dir="IN"/>
+			<Port Id="22" Dir="IN"/>
+			<Port Id="21" Dir="IN"/>
+			<Port Id="20" Dir="IN"/>
+			<Port Id="19" Dir="IN"/>
+			<Port Id="18" Dir="IN"/>
+			<Port Id="17" Dir="IN"/>
+			<Port Id="16" Dir="IN"/>
+			<Port Id="15" Dir="IN"/>
+			<Port Id="14" Dir="IN"/>
+			<Port Id="13" Dir="IN"/>
+			<Port Id="12" Dir="IN"/>
+			<Port Id="11" Dir="IN"/>
+			<Port Id="10" Dir="IN"/>
+			<Port Id="9" Dir="IN"/>
+			<Port Id="8" Dir="IN"/>
+			<Port Id="7" Dir="IN"/>
+			<Port Id="6" Dir="IN"/>
+			<Port Id="5" Dir="IN"/>
+			<Port Id="4" Dir="IN"/>
+			<Port Id="3" Dir="IN"/>
+			<Port Id="2" Dir="IN"/>
+			<Port Id="1" Dir="IN"/>
+			<Port Id="0" Dir="IN"/>
+		</Bus>
 		<Bus Id="ADC_DCO_LVDSPrev">
 			<Port Id="11" Dir="IN"/>
 			<Port Id="10" Dir="IN"/>
@@ -480,9 +548,11 @@
 		<Port Id="TxEn" Dir="OUT"/>
 		<Port Id="Qclock" Dir="IN"/>
 		<Port Id="Sw_Quartz" Dir="IN"/>
-		<Port Id="LedB" Dir="OUT"/>
-		<Port Id="LedG" Dir="OUT"/>
-		<Port Id="LedR" Dir="OUT"/>
+		<Port Id="Led1" Dir="OUT"/>
+		<Port Id="Led2" Dir="OUT"/>
+		<Port Id="Led3" Dir="OUT"/>
+		<Port Id="Led4" Dir="OUT"/>
+		<Port Id="Led5" Dir="OUT"/>
 		<Port Id="FCT_40_n" Dir="IN"/>
 		<Port Id="Sw_FCTClk" Dir="IN"/>
 		<Port Id="FCT_160" Dir="IN"/>
@@ -672,6 +742,38 @@
 		<DiffPair Pos="ADC_DCO_LVDS[2]" Neg="ADC_DCO_LVDS_n[2]"/>
 		<DiffPair Pos="ADC_DCO_LVDS[1]" Neg="ADC_DCO_LVDS_n[1]"/>
 		<DiffPair Pos="ADC_DCO_LVDS[0]" Neg="ADC_DCO_LVDS_n[0]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[31]" Neg="ADC_FCO_LVDS_n[31]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[30]" Neg="ADC_FCO_LVDS_n[30]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[29]" Neg="ADC_FCO_LVDS_n[29]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[28]" Neg="ADC_FCO_LVDS_n[28]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[27]" Neg="ADC_FCO_LVDS_n[27]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[26]" Neg="ADC_FCO_LVDS_n[26]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[25]" Neg="ADC_FCO_LVDS_n[25]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[24]" Neg="ADC_FCO_LVDS_n[24]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[23]" Neg="ADC_FCO_LVDS_n[23]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[22]" Neg="ADC_FCO_LVDS_n[22]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[21]" Neg="ADC_FCO_LVDS_n[21]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[20]" Neg="ADC_FCO_LVDS_n[20]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[19]" Neg="ADC_FCO_LVDS_n[19]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[18]" Neg="ADC_FCO_LVDS_n[18]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[17]" Neg="ADC_FCO_LVDS_n[17]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[16]" Neg="ADC_FCO_LVDS_n[16]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[15]" Neg="ADC_FCO_LVDS_n[15]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[14]" Neg="ADC_FCO_LVDS_n[14]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[13]" Neg="ADC_FCO_LVDS_n[13]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[12]" Neg="ADC_FCO_LVDS_n[12]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[11]" Neg="ADC_FCO_LVDS_n[11]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[10]" Neg="ADC_FCO_LVDS_n[10]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[9]" Neg="ADC_FCO_LVDS_n[9]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[8]" Neg="ADC_FCO_LVDS_n[8]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[7]" Neg="ADC_FCO_LVDS_n[7]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[6]" Neg="ADC_FCO_LVDS_n[6]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[5]" Neg="ADC_FCO_LVDS_n[5]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[4]" Neg="ADC_FCO_LVDS_n[4]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[3]" Neg="ADC_FCO_LVDS_n[3]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[2]" Neg="ADC_FCO_LVDS_n[2]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[1]" Neg="ADC_FCO_LVDS_n[1]"/>
+		<DiffPair Pos="ADC_FCO_LVDS[0]" Neg="ADC_FCO_LVDS_n[0]"/>
 		<DiffPair Pos="ADC_DCO_LVDSPrev[11]" Neg="ADC_DCO_LVDSPrev_n[11]"/>
 		<DiffPair Pos="ADC_DCO_LVDSPrev[10]" Neg="ADC_DCO_LVDSPrev_n[10]"/>
 		<DiffPair Pos="ADC_DCO_LVDSPrev[9]" Neg="ADC_DCO_LVDSPrev_n[9]"/>
