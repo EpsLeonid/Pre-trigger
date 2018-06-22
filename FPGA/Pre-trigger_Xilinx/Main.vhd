@@ -223,7 +223,7 @@ LVDS_ADC_FCO: for i in 0 to NUM_TrigCell/4-1 generate
 			I => ADC_FCO_LVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
 			IB => ADC_FCO_LVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
 		);
-end generate LVDS_ADC_DCO;
+end generate LVDS_ADC_FCO;
 
 -- Input LVDS ADC DCO buffer from prev.board
 LVDS_ADC_DCOPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
