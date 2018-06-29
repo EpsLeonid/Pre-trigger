@@ -80,6 +80,7 @@ port(
 	TrigInLVDS		: in std_logic;	-- Внешний триггер					<- Pin 
 	TrigInLVDS_n	: in std_logic;	-- Внешний триггер					<- Pin 
 	FastTrigDes		: out std_logic;	-- Fast trigger desition to EROS/ROESTI	<- Pin
+	TrigDes			: out std_logic;	-- Trigger desition to FC7			<- Pin
 	TriggerData		: out std_logic_vector(TrigBits-1 downto 0);	-- Trigger data to FCT
 
 -- 4. Ethernet Phy device ports     LXT972
@@ -109,6 +110,8 @@ architecture Behavioral of Main is
 	signal 		Clk160	: std_logic;
 	signal 		ADCInData	: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal 		ADCInDataPrev: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal		InDataReg_p	: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal		InDataReg_n	: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal		ADC_DCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal		ADC_FCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal		ADC_DCOPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
@@ -252,24 +255,21 @@ LVDS_signal : IBUFDS
 
 ----=================Deserialization of input LVDS signals=================--
 ----******** 1. Input LVDS ADC buffer ********--
---DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
---	IDDR_inst : IDDR 
---		generic map (
---			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
---														-- or "SAME_EDGE_PIPELINED" 
---			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
---			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
---			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
---		port map (
---			Q1 => InDataReg_p, -- 1-bit output for positive edge of clock 
---			Q2 => InDataReg_n, -- 1-bit output for negative edge of clock
---			C => C,   -- 1-bit clock input
---			CE => CE, -- 1-bit clock enable input
---			ADCInData => D,   -- 1-bit DDR data input
---			Reset => R,   -- 1-bit reset
---			S => S    -- 1-bit set
---			);
---end generate DDR_buf_ADC;
+DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
+	IDDR_inst : IDDR 
+		generic map (
+			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
+														-- or "SAME_EDGE_PIPELINED" 
+			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
+			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
+			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
+		port map (
+			Q1 => InDataReg_p(i), -- 1-bit output for positive edge of clock 
+			Q2 => InDataReg_n(i), -- 1-bit output for negative edge of clock
+			C => ADC_DCO(i),   -- 1-bit clock input
+			D => ADCInData(i),   -- 1-bit DDR data input
+			);
+end generate DDR_buf_ADC;
 --
 --DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
 --	IDDR_inst : IDDR 

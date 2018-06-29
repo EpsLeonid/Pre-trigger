@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-L2-EPSHT2::  Thu Apr 26 18:11:34 2018
+L2-EPSHT2::  Mon Jun 25 16:15:00 2018
 
 par -w -intstyle ise -ol high -t 1 Main_map.ncd Main.ncd Main.pcf 
 
@@ -29,6 +29,9 @@ Device speed data version:  "PRODUCTION 1.71 2013-10-13".
 
 Device Utilization Summary:
 
+   Number of External IOBs                 103 out of 640    16%
+      Number of LOCed IOBs                 103 out of 103   100%
+
 
 
 Overall effort level (-ol):   High 
@@ -36,56 +39,159 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 6 secs 
-Finished initial Timing Analysis.  REAL time: 6 secs 
+Starting initial Timing Analysis.  REAL time: 8 secs 
+Finished initial Timing Analysis.  REAL time: 8 secs 
 
+WARNING:Par:288 - The signal RxClk_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal RxD<2>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<9>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal RxD<3>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Led1_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Led2_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Led3_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Led4_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Led5_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<0>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<1>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<2>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<3>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<4>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal TxClk_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<5>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal Sw_FCTClk_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<6>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<7>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<8>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<10>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal Test<9>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<11>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal RxDv_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<12>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<20>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal ADC_CLK_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<13>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<21>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<14>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<22>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<30>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal ADC_CSB_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<15>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<23>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<31>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<16>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<24>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<32>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<40>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TxEn_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<17>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<25>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<33>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<41>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<18>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<26>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<34>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<42>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<50>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal FastTrigDes_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<19>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<27>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<35>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<43>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<51>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal Col_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<28>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<36>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<44>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<52>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<60>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal ExtReset_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TxD<0>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<29>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<37>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<45>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<53>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<61>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TxD<1>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<38>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<46>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<54>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<62>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TxD<2>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<39>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<47>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<55>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<63>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TxD<3>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<48>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<56>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<49>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<57>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<58>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal Crs_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<59>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<0>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<1>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<2>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal ADC_SCLK_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<3>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal ADC_SDIO_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<4>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<5>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal Sw_Quartz_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<6>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal RxD<0>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<7>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal Qclock_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal RxD<1>_IBUF has no load.  PAR will not attempt to route this signal.
+WARNING:Par:289 - The signal TriggerData<8>_OBUF has no driver.  PAR will not attempt to route this signal.
+WARNING:Par:288 - The signal PLL_in_IBUF has no load.  PAR will not attempt to route this signal.
 
 Starting Placer
-Total REAL time at the beginning of Placer: 6 secs 
+Total REAL time at the beginning of Placer: 8 secs 
 Total CPU  time at the beginning of Placer: 5 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:29) REAL time: 6 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:c9c8af9d) REAL time: 10 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:29) REAL time: 6 secs 
+Phase 2.7  Design Feasibility Check (Checksum:c9c8af9d) REAL time: 10 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:a4193aa9) REAL time: 6 secs 
+Phase 3.31  Local Placement Optimization (Checksum:c25b0bcd) REAL time: 10 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:e36eb872) REAL time: 6 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:b295fa41) REAL time: 10 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:e36eb872) REAL time: 6 secs 
+Phase 5.36  Local Placement Optimization (Checksum:b295fa41) REAL time: 10 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:e36eb872) REAL time: 6 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:b295fa41) REAL time: 10 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:e36eb872) REAL time: 6 secs 
+Phase 7.3  Local Placement Optimization (Checksum:b295fa41) REAL time: 11 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:e36eb872) REAL time: 6 secs 
+Phase 8.5  Local Placement Optimization (Checksum:b295fa41) REAL time: 11 secs 
 
 Phase 9.8  Global Placement
-Phase 9.8  Global Placement (Checksum:e36eb872) REAL time: 6 secs 
+Phase 9.8  Global Placement (Checksum:b295fa41) REAL time: 11 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:e36eb872) REAL time: 6 secs 
+Phase 10.5  Local Placement Optimization (Checksum:b295fa41) REAL time: 11 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:e36eb872) REAL time: 6 secs 
+Phase 11.18  Placement Optimization (Checksum:b295fa41) REAL time: 11 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:e36eb872) REAL time: 6 secs 
+Phase 12.5  Local Placement Optimization (Checksum:b295fa41) REAL time: 11 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:e36eb872) REAL time: 6 secs 
+Phase 13.34  Placement Validation (Checksum:b295fa41) REAL time: 11 secs 
 
-Total REAL time to Placer completion: 6 secs 
-Total CPU  time to Placer completion: 5 secs 
+Total REAL time to Placer completion: 11 secs 
+Total CPU  time to Placer completion: 6 secs 
 Writing design to file Main.ncd
 
 
@@ -93,28 +199,28 @@ Writing design to file Main.ncd
 Starting Router
 
 
-Phase  1  : 39 unrouted;      REAL time: 7 secs 
+Phase  1  : 39 unrouted;      REAL time: 12 secs 
 
-Phase  2  : 8 unrouted;      REAL time: 7 secs 
+Phase  2  : 8 unrouted;      REAL time: 12 secs 
 
-Phase  3  : 0 unrouted;      REAL time: 7 secs 
+Phase  3  : 0 unrouted;      REAL time: 12 secs 
 
-Phase  4  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  4  : 0 unrouted; (Par is working to improve performance)     REAL time: 14 secs 
 
 Updating file: Main.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 9 secs 
-Total REAL time to Router completion: 9 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 15 secs 
+Total REAL time to Router completion: 15 secs 
 Total CPU time to Router completion: 9 secs 
 
 Partition Implementation Status
@@ -134,8 +240,12 @@ Generating Pad Report.
 
 All signals are completely routed.
 
-Total REAL time to PAR completion: 13 secs 
-Total CPU time to PAR completion: 12 secs 
+WARNING:Par:283 - There are 14 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+WARNING:Par:284 - There are 89 sourceless signals in this design. This design will not pass the DRC check run by Bitgen.
+
+Total REAL time to PAR completion: 19 secs 
+Total CPU time to PAR completion: 13 secs 
 
 Peak Memory Usage:  507 MB
 
@@ -143,7 +253,7 @@ Placement: Completed - No errors found.
 Routing: Completed - No errors found.
 
 Number of error messages: 0
-Number of warning messages: 0
+Number of warning messages: 107
 Number of info messages: 1
 
 Writing design to file Main.ncd
