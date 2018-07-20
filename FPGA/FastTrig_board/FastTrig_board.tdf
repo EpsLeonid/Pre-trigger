@@ -15,6 +15,8 @@ INCLUDE "PhaseSwitch.inc";
 
 INCLUDE "PLL_Trigger.inc";
 
+Constant Hedder = b"0010";
+
 SUBDESIGN FastTrig_board
 (
 -- 1. Reference Clock's & Frequency Control I/O
@@ -44,8 +46,6 @@ Reset			: input = GND;  -- external Reset (tied to GND --VCC)	<- Pin
 
 -- 4. Test
 Test[9..0]			: OUTPUT;
---ADCInDataLVDS_p[126,127]: bidir;
---ADCInDataLVDS_n[126,127]: bidir;
 )
 
 VARIABLE
@@ -185,7 +185,7 @@ TrigDes.(S, Clk, R, clrn) = (Trig, Clk160, Reset, EndTransf);
 
 EventCout.(clock, clk_en, cnt_en, aclr) = (Clk160, VCC, ((FastTrig[1].q OR FastTrig[2].q OR FastTrig[3].q OR FastTrig[4].q) AND !TrigDes.q), Reset);
 
-TrigTransf.(data[], clock, enable, load) = ((EventCout.q[],EventCout.q[]), clk40, TrigDes.q, VCC);
+TrigTransf.(data[], clock, enable, load) = ((%Hedder,%EventCout.q[],EventCout.q[]%,CRC%), clk40, TrigDes.q, VCC);
 
 Trigger = TrigTransf.shiftout;
 
