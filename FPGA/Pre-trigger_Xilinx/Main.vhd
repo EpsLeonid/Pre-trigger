@@ -112,6 +112,8 @@ architecture Behavioral of Main is
 	signal 		ADCInDataPrev: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal		InDataReg_p	: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal		InDataReg_n	: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal		InDataPrevReg_p	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal		InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal		ADC_DCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal		ADC_FCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal		ADC_DCOPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
@@ -267,41 +269,24 @@ DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate
 			Q1 => InDataReg_p(i), -- 1-bit output for positive edge of clock 
 			Q2 => InDataReg_n(i), -- 1-bit output for negative edge of clock
 			C => ADC_DCO(i),   -- 1-bit clock input
-			D => ADCInData(i),   -- 1-bit DDR data input
+			D => ADCInData(i)   -- 1-bit DDR data input
 			);
 end generate DDR_buf_ADC;
---
---DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
---	IDDR_inst : IDDR 
---		generic map (
---			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
---														-- or "SAME_EDGE_PIPELINED" 
---			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
---			INIT_Q2 => '0', -- Initial value of Q2: '0' or '1'
---			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
---		port map (
---			Q1 => Q1, -- 1-bit output for positive edge of clock 
---			Q2 => Q2, -- 1-bit output for negative edge of clock
---			C => C,   -- 1-bit clock input
---			CE => CE, -- 1-bit clock enable input
---			ADCInData => D,   -- 1-bit DDR data input
---			Reset => R,   -- 1-bit reset
---			S => S    -- 1-bit set
---			);
---end generate DDR_buf_ADCPrev;
---
---InDataReg_p : SRL16E
---generic map (INIT => X"1111")
---port map (
---   Q => Q,			-- SRL data output
---   D => A0,			-- Select[0] input
---   A0 => A1,		-- Select[1] input
---   A1 => A2,		-- Select[2] input
---   A2 => A3,		-- Select[3] input
---   CE => CE,		-- Clock enable input
---   CLK => CLK,		-- Clock input
---   D => D			-- SRL data input
---);
---
+
+DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
+	IDDR_inst : IDDR 
+		generic map (
+			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
+														-- or "SAME_EDGE_PIPELINED" 
+			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
+			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
+			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
+		port map (
+			Q1 => InDataPrevReg_p(i), -- 1-bit output for positive edge of clock 
+			Q2 => InDataPrevReg_n(i), -- 1-bit output for negative edge of clock
+			C => ADC_DCOPrev(i),   -- 1-bit clock input
+			D => ADCInDataPrev(i)   -- 1-bit DDR data input
+			);
+end generate DDR_buf_ADCPrev;
 
 end Behavioral;

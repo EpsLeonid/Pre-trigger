@@ -16,6 +16,7 @@ INCLUDE "PhaseSwitch.inc";
 INCLUDE "PLL_Trigger.inc";
 
 Constant Hedder = b"0010";
+Constant CRC = b"00100010";
 
 SUBDESIGN FastTrig_board
 (
@@ -78,7 +79,7 @@ Trig			: node;
 TrigDes			: SRFF;
 EventCout		: lpm_counter WITH (lpm_width=32, lpm_direction="up");
 EndTransf		: node;
-TrigTransf		: lpm_shiftreg with (lpm_width=64, lpm_direction="left");
+TrigTransf		: lpm_shiftreg with (lpm_width=44, lpm_direction="left");
 
 --============================================================================
 --******** 5. System ******************************************************
@@ -185,7 +186,7 @@ TrigDes.(S, Clk, R, clrn) = (Trig, Clk160, Reset, EndTransf);
 
 EventCout.(clock, clk_en, cnt_en, aclr) = (Clk160, VCC, ((FastTrig[1].q OR FastTrig[2].q OR FastTrig[3].q OR FastTrig[4].q) AND !TrigDes.q), Reset);
 
-TrigTransf.(data[], clock, enable, load) = ((%Hedder,%EventCout.q[],EventCout.q[]%,CRC%), clk40, TrigDes.q, VCC);
+TrigTransf.(data[], clock, enable, load) = ((Hedder,EventCout.q[],CRC), clk40, TrigDes.q, VCC);
 
 Trigger = TrigTransf.shiftout;
 
