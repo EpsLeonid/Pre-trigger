@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.61 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.61 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: Main.prj
 
@@ -107,23 +107,18 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" in Library work.
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/Parameters.vhd" in Library work.
 Architecture parameters of Entity parameters is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" in Library work.
-ERROR:HDLParsers:3312 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 265. Undefined symbol 'InDataReg_p'.
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 265. InDataReg_p: Undefined symbol (last report in this block)
-ERROR:HDLParsers:3312 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 266. Undefined symbol 'InDataReg_n'.
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 266. InDataReg_n: Undefined symbol (last report in this block)
-ERROR:HDLParsers:3312 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 267. Undefined symbol 'C'.
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 267. C: Undefined symbol (last report in this block)
-ERROR:HDLParsers:3312 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 268. Undefined symbol 'D'.
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 268. D: Undefined symbol (last report in this block)
-ERROR:HDLParsers:164 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 269. parse error, unexpected CLOSEPAR
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd" in Library work.
+Architecture behavioral of Entity iserdes_8bit is up to date.
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" in Library work.
+Entity <findmaxamp> compiled.
+ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" Line 71. - can not have such operands in this context.
 --> 
 
-Total memory usage is 287416 kilobytes
+Total memory usage is 287480 kilobytes
 
-Number of errors   :    9 (   0 filtered)
+Number of errors   :    1 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

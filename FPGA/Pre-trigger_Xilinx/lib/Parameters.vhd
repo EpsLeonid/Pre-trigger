@@ -16,7 +16,8 @@ package parameters is
 	constant ThresholdData_2	: integer := 243;
 	constant TrigBits				: integer := 64;		-- Number of triggerg bits to FCT
 	
-	type array_t is array (0 to NUM_TrigCell) of std_logic_vector (ADC_Bits-1 downto 0);
+	type array_adc is array (0 to NUM_TrigCell) of std_logic_vector (ADC_Bits-1 downto 0);
+	type array_prev_adc is array (0 to NUM_TrigCellPrev) of std_logic_vector (ADC_Bits-1 downto 0);
 	
 --FindAmp
 

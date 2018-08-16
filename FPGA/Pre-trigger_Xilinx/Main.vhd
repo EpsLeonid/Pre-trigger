@@ -50,9 +50,9 @@ port(
 
 -- Outputs for Indicators on LED's
 
-	Led1			: out std_logic;	-- drives the Red LED						-> Pin 
-	Led2			: out std_logic;	-- drives the Green LED						-> Pin 
-	Led3			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
+	Led1			: out std_logic;	-- drives the Green LED						-> Pin 
+	Led2			: out std_logic;	-- drives the Blue LED						-> Pin 
+	Led3			: out std_logic;	-- drives the Red LED						-> Pin 
 	Led4			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
 	Led5			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
 
@@ -63,15 +63,15 @@ port(
 	ADCInDataLVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 	ADCInDataLVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 
-	ADC_CSB		: out std_logic;	-- Pin 
-	ADC_SDIO		: out std_logic;	-- Pin 
-	ADC_SCLK		: out std_logic;	-- Pin 
+	ADC_CSB				: out std_logic;	-- Pin 
+	ADC_SDIO				: out std_logic;	-- Pin 
+	ADC_SCLK				: out std_logic;	-- Pin 
 
-	ADC_CLK		: out std_logic;	-- Pin 
-	ADC_DCO_LVDS	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
-	ADC_DCO_LVDS_n	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
-	ADC_FCO_LVDS	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
-	ADC_FCO_LVDS_n	: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_CLK				: out std_logic;	-- Pin 
+	ADC_DCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_DCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_FCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_FCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	ADC_DCO_LVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 
@@ -106,63 +106,68 @@ end Main;
 
 architecture Behavioral of Main is
 
-	signal 		Clk40		: std_logic;
-	signal 		Clk160	: std_logic;
-	signal 		ADCInData	: std_logic_vector(NUM_TrigCell-1 downto 0);
-	signal 		ADCInDataPrev: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-	signal		InDataReg_p	: std_logic_vector(NUM_TrigCell-1 downto 0);
-	signal		InDataReg_n	: std_logic_vector(NUM_TrigCell-1 downto 0);
-	signal		InDataPrevReg_p	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-	signal		InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-	signal		ADC_DCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
-	signal		ADC_FCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
-	signal		ADC_DCOPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-	signal 		TrigIn	: std_logic;
+	--- system
+	signal Reset				: std_logic;
+	---
+
+	--- clocking
+	signal Clk40				: std_logic;
+	signal Clk80				: std_logic;
+	signal Clk160				: std_logic;
+	signal s_clock_locked	: std_logic := '0';
+	---
+
+	--- ADC SPI interface signals
+	signal s_fadc_sdio : std_logic := '0'; 
+	signal s_fadc_sclk : std_logic := '0';
+	signal s_fadc_csb  : std_logic_vector(3 downto 0) := (others => '1');
+	---
+	
+	--- Input ADC data
+	signal ADCInData	: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal ADCInDataPrev: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal ADC_DCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
+	signal ADC_FCO		: std_logic_vector(NUM_TrigCell/4-1 downto 0);
+	signal ADC_DCOPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+
+	signal InDataReg_p	: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal InDataReg_n	: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal InDataReg		: array_adc;
+	signal InDataPrevReg_p	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal InDataPrev		: array_prev_adc;
+
+	signal TrigIn	: std_logic;
 --	signal 
 --	signal 
---	signal 
-	signal 		Reset		: std_logic;
-
-component FindMaxAmp is
-port(
-
-	In_Data        		: in array_t;
-	RegInit					: in std_logic;
-	MaxAmp					: out std_logic_vector(Sum_Bits-1 downto 0);
-	MaxCellNumber			: out std_logic_vector(3 downto 0);
-	ThrNum1					: out std_logic_vector(3 downto 0);
-	ThrNum2					: out std_logic_vector(3 downto 0);
-	ThrNum3					: out std_logic_vector(3 downto 0);
-	FastTrig					: out std_logic;
-	Trig						: out std_logic;
-	SaveTrigData			: out std_logic;
-
-	Clock						: in std_logic;
-	Clock160					: in std_logic;
-
-	Reset						: in std_logic;
-	ResetAll					: out std_logic;
-	Error						: out std_logic;
-
-	test						: out std_logic_vector(15 downto 0));
-end component;
+	signal TestCnt	: std_logic_vector(24 downto 0);
 
 begin
 
 --=================Inicialization of input LVDS signals=================--
 --******** 1. Reference clock's & Frequency Control ********--
-LVDS_Clk40 : IBUFDS
+LVDS_Clk40 : IBUFGDS
 	generic map (
 		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
 		DIFF_TERM => TRUE, -- Differential Termination 
 		IOSTANDARD => "DEFAULT")
 	port map (
-		O => Clk40,		-- Buffer output
-		I => FCT_40,	-- Diff_p buffer input (connect directly to top-level port)
-		IB => FCT_40_n	-- Diff_n buffer input (connect directly to top-level port)
+		O => Clk40,  -- Clock buffer output
+		I => FCT_40,  -- Diff_p clock buffer input
+		IB => FCT_40_n -- Diff_n clock buffer input
+	);
+DivClk: BUFR 
+	generic map (
+		BUFR_DIVIDE => "2",   -- "BYPASS", "1", "2", "3", "4", "5", "6", "7", "8" 
+		SIM_DEVICE => "VIRTEX4")   -- Specify target device, "VIRTEX4", "VIRTEX5", "VIRTEX6" 
+	port map (
+		O => Clk80,     -- Clock buffer output
+		CE => '1',   -- Clock enable input
+		CLR => '0', -- Clock buffer reset input
+		I => Clk40      -- Clock buffer input
 	);
 
-LVDS_FCT_160 : IBUFDS
+LVDS_FCT_160 : IBUFGDS
 	generic map (
 		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
 		DIFF_TERM => TRUE, -- Differential Termination 
@@ -186,6 +191,15 @@ LVDS_buf_ADC: for i in 0 to NUM_TrigCell-1 generate
 			I => ADCInDataLVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
 			IB => ADCInDataLVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
 		);
+
+	SERDES : entity work.ISERDES_8bit 
+	port map  (
+		DataIn 	=> ADCInData(i),	-- input of data from ADC by bits
+		Clock		=> CLK80,
+		ClkDiv	=> ADC_DCO(i/4),
+		DataOut	=> InDataReg(i)
+				 );
+
 end generate LVDS_buf_ADC;
 
 -- Input LVDS ADC buffer from prev.board
@@ -200,6 +214,7 @@ LVDS_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate
 			I => ADCInDataLVDSPrev(i),  -- Diff_p buffer input (connect directly to top-level port)
 			IB => ADCInDataLVDSPrev_n(i) -- Diff_n buffer input (connect directly to top-level port)
 		);
+		
 end generate LVDS_buf_ADCPrev;
 
 -- Input LVDS ADC DCO buffer
@@ -216,7 +231,7 @@ LVDS_ADC_DCO: for i in 0 to NUM_TrigCell/4-1 generate
 		);
 end generate LVDS_ADC_DCO;
 
--- Input LVDS ADC DCO buffer
+-- Input LVDS ADC FCO buffer
 LVDS_ADC_FCO: for i in 0 to NUM_TrigCell/4-1 generate 
 	LVDS_signal : IBUFGDS
 		generic map (
@@ -255,38 +270,45 @@ LVDS_signal : IBUFDS
 		IB => TrigInLVDS_n	-- Diff_n buffer input (connect directly to top-level port)
 	);
 
-----=================Deserialization of input LVDS signals=================--
-----******** 1. Input LVDS ADC buffer ********--
-DDR_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
-	IDDR_inst : IDDR 
-		generic map (
-			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
-														-- or "SAME_EDGE_PIPELINED" 
-			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
-			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
-			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
-		port map (
-			Q1 => InDataReg_p(i), -- 1-bit output for positive edge of clock 
-			Q2 => InDataReg_n(i), -- 1-bit output for negative edge of clock
-			C => ADC_DCO(i),   -- 1-bit clock input
-			D => ADCInData(i)   -- 1-bit DDR data input
-			);
-end generate DDR_buf_ADC;
+FindMaxAmp_i: entity work.FindMaxAmp
 
-DDR_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
-	IDDR_inst : IDDR 
-		generic map (
-			DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
-														-- or "SAME_EDGE_PIPELINED" 
-			INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
-			INIT_Q2 => '1', -- Initial value of Q2: '0' or '1'
-			SRTYPE => "SYNC") -- Set/Reset type: "SYNC" or "ASYNC" 
-		port map (
-			Q1 => InDataPrevReg_p(i), -- 1-bit output for positive edge of clock 
-			Q2 => InDataPrevReg_n(i), -- 1-bit output for negative edge of clock
-			C => ADC_DCOPrev(i),   -- 1-bit clock input
-			D => ADCInDataPrev(i)   -- 1-bit DDR data input
-			);
-end generate DDR_buf_ADCPrev;
+port map(
+
+	In_Data        => InDataReg,
+	RegInit			=> '0',
+	MaxAmp			=> TriggerData(9 downto 0),
+	MaxCellNumber	=> TriggerData(18 downto 10),
+	ThrNum1			=> TriggerData(22 downto 18),
+	ThrNum2			=> TriggerData(26 downto 22),
+	ThrNum3			=> TriggerData(30 downto 26),
+	FastTrig			=> TriggerData(30),
+	Trig				=> TriggerData(31),
+	SaveTrigData	=> '0',
+
+	Clock				=> CLK40,
+	Clock160			=> CLK160,
+
+	Reset				=> Reset,
+	ResetAll			=> '0',
+	Error				=> '0',
+
+	test				=> '0'
+	);
+
+--******** Test part ********--
+
+	CntTest : entity work.V_Counter 
+	generic map(
+				DATA_WIDTH => 24
+			)
+	port map (
+				clock 	=> CLK40,
+				clk_en	=>	'1',
+				q			=> TestCnt
+				);
+
+	LED1 <= '1' when TestCnt(22)='1' else
+				'0' when TestCnt(22)='0' else
+				'0';
 
 end Behavioral;

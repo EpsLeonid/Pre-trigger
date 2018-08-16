@@ -1,18 +1,44 @@
-V3 11
+V3 26
 FL "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" 2018/05/01.22:41:14 P.20131013
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd 2018/08/16.11:19:13 P.20131013
+EN work/FindMaxAmp 0 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 LB UNISIM \
+      PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1534393862
+AR work/FindMaxAmp/Behavioral 0 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd \
+      EN work/FindMaxAmp 0
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd 2018/08/16.11:23:03 P.20131013
+EN work/ISERDES_8bit 1534393863 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 LB UNISIM \
+      PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1534393862
+AR work/ISERDES_8bit/Behavioral 1534393864 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd \
+      EN work/ISERDES_8bit 1534393863 CP ISERDES
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/Parameters.vhd 2018/08/14.11:56:11 P.20131013
+PH work/parameters 1534393861 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/Parameters.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
+PB work/parameters 1534393862 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/Parameters.vhd \
+      PH work/parameters 1534393861
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/V_Counter.vhd 2018/08/16.10:48:59 P.20131013
+EN work/V_Counter 0 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/V_Counter.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
+      PH work/constants 0
+AR work/V_Counter/Utility 0 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/V_Counter.vhd \
+      EN work/V_Counter 0
 FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd 2018/06/22.13:46:05 P.20131013
 EN work/Main 1529649976 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
-      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1530094331
+      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1534393862
 AR work/Main/Behavioral 1529649977 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd \
-      EN work/Main 1529649976 CP IBUFDS CP IBUFGDS CP IDDR
-FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd 2018/04/26.17:55:27 P.20131013
-PH work/parameters 1530094330 \
-      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd \
-      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181
-PB work/parameters 1530094331 \
-      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd \
-      PH work/parameters 1530094330
+      EN work/Main 1529649976 CP IBUFGDS CP BUFR CP IBUFDS CP work/ISERDES_8bit \
+      CP work/FindMaxAmp CP work/V_Counter
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd 2018/08/14.11:56:11 P.20131013
