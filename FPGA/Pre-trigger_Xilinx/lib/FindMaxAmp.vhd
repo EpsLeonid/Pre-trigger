@@ -34,7 +34,7 @@ entity FindMaxAmp is
 	Port ( In_Data        	: in	array_adc;
 			 In_DataPrev		: in  array_prev_adc;
 			 RegInit 			: in	STD_LOGIC;
-			 MaxAmp 			: out	STD_LOGIC_VECTOR (ADC_Bits+1 downto 0);
+			 MaxAmp 				: out	STD_LOGIC_VECTOR (ADC_Bits+1 downto 0);
 			 MaxCellNumbere 	: out STD_LOGIC_VECTOR (7 downto 0);
 			 ThrNum1 			: out STD_LOGIC_VECTOR (3 downto 0);
 			 ThrNum2 			: out STD_LOGIC_VECTOR (3 downto 0);
@@ -71,11 +71,12 @@ begin
 			if rising_edge(Clock160) then
 				Sub_ped(iCHAN) <= In_Data(iCHAN) - Ped_ch(iCHAN);
 				Sub_ped_delay(iCHAN) <= Sub_ped(iCHAN);
-				Aver2 <= Sub_ped_delay(iCHAN)+Sub_ped(iCHAN);
+				Aver2 <= Sub_ped_delay(iCHAN) + Sub_ped(iCHAN);
 			end if;
 		end process;
 	end generate Sub_ped_i;
 	
+--	Thresh_i: for 
 
 end Behavioral;
 
