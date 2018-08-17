@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/Light_Pulser_TB_isim_beh.exe" -prj "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/Light_Pulser_TB_beh.prj" "work.Light_Pulser_TB" 

@@ -1,0 +1,136 @@
+Release 14.7 par P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+alexey-X550LB::  Thu Aug 16 16:35:31 2018
+
+par -w -intstyle ise -ol high -mt off Top_map.ncd Top.ncd Top.pcf 
+
+
+Constraints file: Top.pcf.
+Loading device for application Rf_Device from file '7z010.nph' in environment /opt/Xilinx/14.7/ISE_DS/ISE/.
+   "Top" is an NCD, version 3.2, device xc7z010, package clg400, speed -3
+
+Initializing temperature to 85.000 Celsius. (default - Range: 0.000 to 85.000 Celsius)
+Initializing voltage to 0.950 Volts. (default - Range: 0.950 to 1.050 Volts)
+
+
+Device speed data version:  "PRELIMINARY 1.08 2013-10-13".
+
+
+
+Device Utilization Summary:
+
+   Number of BUFGs                           1 out of 32      3%
+   Number of External IOB33s                 5 out of 100     5%
+      Number of LOCed IOB33s                 5 out of 5     100%
+
+   Number of Slices                         19 out of 4400    1%
+   Number of Slice Registers                53 out of 35200   1%
+      Number used as Flip Flops             53
+      Number used as Latches                 0
+      Number used as LatchThrus              0
+
+   Number of Slice LUTS                     58 out of 17600   1%
+   Number of Slice LUT-Flip Flop pairs      58 out of 17600   1%
+
+
+Overall effort level (-ol):   High 
+Router effort level (-rl):    High 
+
+Starting initial Timing Analysis.  REAL time: 12 secs 
+Finished initial Timing Analysis.  REAL time: 12 secs 
+
+WARNING:Par:288 - The signal SW1_IBUF has no load.  PAR will not attempt to route this signal.
+Starting Router
+
+
+Phase  1  : 178 unrouted;      REAL time: 13 secs 
+
+Phase  2  : 112 unrouted;      REAL time: 13 secs 
+
+Phase  3  : 14 unrouted;      REAL time: 13 secs 
+
+Phase  4  : 14 unrouted; (Setup:0, Hold:226, Component Switching Limit:0)     REAL time: 14 secs 
+
+Updating file: Top.ncd with current fully routed design.
+
+Phase  5  : 0 unrouted; (Setup:0, Hold:209, Component Switching Limit:0)     REAL time: 14 secs 
+
+Phase  6  : 0 unrouted; (Setup:0, Hold:209, Component Switching Limit:0)     REAL time: 14 secs 
+
+Phase  7  : 0 unrouted; (Setup:0, Hold:209, Component Switching Limit:0)     REAL time: 14 secs 
+
+Phase  8  : 0 unrouted; (Setup:0, Hold:209, Component Switching Limit:0)     REAL time: 14 secs 
+
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
+Total REAL time to Router completion: 14 secs 
+Total CPU time to Router completion: 14 secs 
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Generating "PAR" statistics.
+
+**************************
+Generating Clock Report
+**************************
+
++---------------------+--------------+------+------+------------+-------------+
+|        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
++---------------------+--------------+------+------+------------+-------------+
+|              CLK125 |BUFGCTRL_X0Y31| No   |   17 |  0.001     |  1.322      |
++---------------------+--------------+------+------+------------+-------------+
+
+* Net Skew is the difference between the minimum and maximum routing
+only delays for the net. Note this is different from Clock Skew which
+is reported in TRCE timing report. Clock Skew is the difference between
+the minimum and maximum path delays which includes logic delays.
+
+* The fanout is the number of component pins not the individual BEL loads,
+for example SLICE loads not FF loads.
+
+Timing Score: 0 (Setup: 0, Hold: 0, Component Switching Limit: 0)
+
+Asterisk (*) preceding a constraint indicates it was not met.
+   This may be due to a setup or hold violation.
+
+----------------------------------------------------------------------------------------------------------
+  Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
+                                            |             |    Slack   | Achievable | Errors |    Score   
+----------------------------------------------------------------------------------------------------------
+  TS_clock = PERIOD TIMEGRP "clock" 8 ns HI | SETUP       |     5.900ns|     2.100ns|       0|           0
+  GH 50% INPUT_JITTER 0.2 ns                | HOLD        |     0.176ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+
+
+All constraints were met.
+
+
+Generating Pad Report.
+
+All signals are completely routed.
+
+WARNING:Par:283 - There are 1 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+
+Total REAL time to PAR completion: 14 secs 
+Total CPU time to PAR completion: 14 secs 
+
+Peak Memory Usage:  889 MB
+
+Placer: Placement generated during map.
+Routing: Completed - No errors found.
+Timing: Completed - No errors found.
+
+Number of error messages: 0
+Number of warning messages: 3
+Number of info messages: 0
+
+Writing design to file Top.ncd
+
+
+
+PAR done!

@@ -1,0 +1,35 @@
+Running: /opt/Xilinx/14.7/ISE_DS/ISE/bin/lin64/unwrapped/fuse -intstyle ise -incremental -lib secureip -o /home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/Light_Pulser_TB_isim_beh.exe -prj /home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/Light_Pulser_TB_beh.prj work.Light_Pulser_TB 
+ISim P.20131013 (signature 0xfbc00daa)
+Number of CPUs detected in this system: 4
+Turning on mult-threading, number of parallel sub-compilation jobs: 8 
+Determining compilation order of HDL files
+Parsing VHDL file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/remote_sources/_/_/Proba1/EBoard/Constants.vhd" into library work
+Parsing VHDL file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/../../LIB/Utility/V_Counter.vhd" into library work
+Parsing VHDL file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/../../LIB/Utility/SRFF.vhd" into library work
+Parsing VHDL file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/../../LIB/Utility/Edge_Sensing.vhd" into library work
+Parsing VHDL file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/../../LIB/Utility/Light_Pulser.vhd" into library work
+WARNING:HDLCompiler:946 - "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/../../LIB/Utility/Light_Pulser.vhd" Line 47: Actual for formal port clk_en is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/../../LIB/Utility/Light_Pulser.vhd" Line 48: Actual for formal port sclr is neither a static name nor a globally static expression
+Parsing VHDL file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/Light_Pulser_TB.vhd" into library work
+Starting static elaboration
+Completed static elaboration
+Fuse Memory Usage: 97828 KB
+Fuse CPU Usage: 1410 ms
+Compiling package standard
+Compiling package std_logic_1164
+Compiling package std_logic_arith
+Compiling package std_logic_unsigned
+Compiling package math_real
+Compiling package constants
+Compiling architecture utility of entity V_Counter [\V_Counter(1)\]
+Compiling architecture utility of entity V_Counter [\V_Counter(7)\]
+Compiling architecture utility of entity Edge_Sensing [edge_sensing_default]
+Compiling architecture utility of entity SRFF [srff_default]
+Compiling architecture utility of entity Light_Pulser [\Light_Pulser(2,100)\]
+Compiling architecture behavior of entity light_pulser_tb
+Time Resolution for simulation is 1ps.
+Compiled 17 VHDL Units
+Built simulation executable /home/alexey/Documents/Alexey/VHDL/ISE/Proba4/ZynqDemoBoard/Light_Pulser_TB_isim_beh.exe
+Fuse Memory Usage: 674256 KB
+Fuse CPU Usage: 1510 ms
+GCC CPU Usage: 690 ms

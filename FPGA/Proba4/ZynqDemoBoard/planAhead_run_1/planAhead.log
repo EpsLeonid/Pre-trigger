@@ -1,0 +1,100 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:24:36 MDT 2013
+# Start of session at: Tue Aug 14 16:52:26 2018
+# Process ID: 5632
+# Log file: /home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/planAhead_run_1/planAhead.log
+# Journal file: /home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/planAhead_run_1/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+source /home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/pa.fromNcd.tcl
+# create_project -name TopModule -dir "/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/planAhead_run_1" -part xc7z010clg400-3
+# set srcset [get_property srcset [current_run -impl]]
+# set_property design_mode GateLvl $srcset
+# set_property edif_top_file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ngc" [ get_property srcset [ current_run ] ]
+# add_files -norecurse { {/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule} }
+# set_property target_constrs_file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ucf" [current_fileset -constrset]
+Adding file '/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ucf' to fileset 'constrs_1'
+# add_files [list {Pin.ucf}] -fileset [get_property constrset [current_run]]
+# add_files [list {Top.ucf}] -fileset [get_property constrset [current_run]]
+# link_design
+Design is defaulting to srcset: sources_1
+Design is defaulting to constrset: constrs_1
+Design is defaulting to project part: xc7z010clg400-3
+Release 14.7 - ngc2edif P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Release 14.7 - ngc2edif P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design Top.ngc ...
+WARNING:NetListWriters:298 - No output is written to Top.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+  finished :Prep
+Writing EDIF netlist file Top.edif ...
+ngc2edif: Total memory usage is 104564 kilobytes
+
+Parsing EDIF File [./planAhead_run_1/TopModule.data/cache/Top_ngc_b8a08772.edif]
+Finished Parsing EDIF File [./planAhead_run_1/TopModule.data/cache/Top_ngc_b8a08772.edif]
+INFO: [Netlist 29-17] Analyzing 25 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Loading clock regions from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/zynq/zynq/xc7z010/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/zynq/zynq/xc7z010/ClockBuffers.xml
+Loading clock placement rules from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/zynq/ClockPlacerRules.xml
+Loading package pin functions from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/zynq/PinFunctions.xml...
+Loading package from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/zynq/zynq/xc7z010/clg400/Package.xml
+Loading io standards from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/./parts/xilinx/zynq/IOStandards.xml
+Loading list of drcs for the architecture : /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/./parts/xilinx/zynq/drc.xml
+Parsing UCF File [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ucf]
+Finished Parsing UCF File [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ucf]
+Parsing UCF File [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf]
+CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'TP[8]' [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:1]
+CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'FADC_CSB[1]' [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:2]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol SW0 [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:4]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol SW1 [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:5]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol LD0 [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:6]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol LD1 [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:7]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol clock [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:8]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol end [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:9]
+CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'TP[8]' [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:11]
+CRITICAL WARNING: [Constraints 18-11] Could not find net or pin 'FADC_CSB[1]' [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf:12]
+Finished Parsing UCF File [/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Pin.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 25 instances were transformed.
+  BUFGP => BUFGP (IBUF, BUFG): 1 instances
+  FD => FDCE: 24 instances
+
+Phase 0 | Netlist Checksum: 0376d69c
+link_design: Time (s): cpu = 00:00:29 ; elapsed = 00:00:15 . Memory (MB): peak = 2983.762 ; gain = 306.836
+# read_xdl -file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ncd"
+Release 14.7 - xdl P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+WARNING:XDL:213 - The resulting xdl output will not have LUT equation strings or RAM INIT strings.
+Loading device for application Rf_Device from file '7z010.nph' in environment /opt/Xilinx/14.7/ISE_DS/ISE/.
+   "Top" is an NCD, version 3.2, device xc7z010, package clg400, speed -3
+Successfully converted design '/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ncd' to '/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.xdl'.
+INFO: [Designutils 20-669] Parsing Placement File : /home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ncd
+INFO: [Designutils 20-658] Finished Parsing Placement File : /home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.ncd
+INFO: [Designutils 20-671] Placed 70 instances
+read_xdl: Time (s): cpu = 00:00:32 ; elapsed = 00:00:16 . Memory (MB): peak = 2983.762 ; gain = 0.000
+# if {[catch {read_twx -name results_1 -file "/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.twx"} eInfo]} {
+#    puts "WARNING: there was a problem importing \"/home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/Top.twx\": $eInfo"
+# }
+exit
+ERROR: [#UNDEF] *** Exception: ui.h.b: Found deleted key in HTclEventBroker. Verify if the classes listed here call cleanup()
+HTclEvent: SIGNAL_MODIFY   Classes: ui.views.aR 
+HTclEvent: DEBUG_PORT_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: DEBUG_CORE_CONFIG_CHANGE   Classes: ui.views.aR 
+HTclEvent: SIGNAL_BUS_MODIFY   Classes: ui.views.aR 
+ (See /home/alexey/Documents/Alexey/VHDL/ISE/Proba2/TopModule/planAhead_pid5632.debug)
+ERROR: [Common 17-39] 'stop_gui' failed due to earlier errors.
+INFO: [Common 17-206] Exiting PlanAhead at Tue Aug 14 16:54:00 2018...
+INFO: [Common 17-83] Releasing license: PlanAhead

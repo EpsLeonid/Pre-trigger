@@ -1,0 +1,35 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Thu Aug 16 16:35:28 2018
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "SW0" LOCATE = SITE "G15" LEVEL 1;
+COMP "SW1" LOCATE = SITE "P15" LEVEL 1;
+COMP "clock" LOCATE = SITE "K17" LEVEL 1;
+COMP "LD0" LOCATE = SITE "M14" LEVEL 1;
+COMP "LD1" LOCATE = SITE "M15" LEVEL 1;
+TIMEGRP clock = BEL "Cnt/count_0" BEL "Cnt/count_1" BEL "Cnt/count_2" BEL
+        "Cnt/count_3" BEL "Cnt/count_4" BEL "Cnt/count_5" BEL "Cnt/count_6"
+        BEL "Cnt/count_7" BEL "Cnt/count_8" BEL "Cnt/count_9" BEL
+        "Cnt/count_10" BEL "Cnt/count_11" BEL "Cnt/count_12" BEL
+        "Cnt/count_13" BEL "Cnt/count_14" BEL "Cnt/count_15" BEL
+        "Cnt/count_16" BEL "Cnt/count_17" BEL "Cnt/count_18" BEL
+        "Cnt/count_19" BEL "Cnt/count_20" BEL "Cnt/count_21" BEL
+        "Cnt/count_22" BEL "Cnt/count_23" BEL "Cnt/count_24" BEL
+        "Cnt/count_25" BEL "BUFG_i" BEL "LPulserLD1/Prescaler/count_9" BEL
+        "LPulserLD1/Prescaler/count_8" BEL "LPulserLD1/Prescaler/count_7" BEL
+        "LPulserLD1/Prescaler/count_6" BEL "LPulserLD1/Prescaler/count_5" BEL
+        "LPulserLD1/Prescaler/count_4" BEL "LPulserLD1/Prescaler/count_3" BEL
+        "LPulserLD1/Prescaler/count_2" BEL "LPulserLD1/Prescaler/count_1" BEL
+        "LPulserLD1/Timer/count_13" BEL "LPulserLD1/Timer/count_12" BEL
+        "LPulserLD1/Timer/count_11" BEL "LPulserLD1/Timer/count_10" BEL
+        "LPulserLD1/Timer/count_9" BEL "LPulserLD1/Timer/count_8" BEL
+        "LPulserLD1/Timer/count_7" BEL "LPulserLD1/Timer/count_6" BEL
+        "LPulserLD1/Timer/count_5" BEL "LPulserLD1/Timer/count_4" BEL
+        "LPulserLD1/Timer/count_3" BEL "LPulserLD1/Timer/count_2" BEL
+        "LPulserLD1/Timer/count_1" BEL "LPulserLD1/Timer/count_0" BEL
+        "LPulserLD1/ES1/Trig0" BEL "LPulserLD1/ES1/Trig1" BEL
+        "LPulserLD1/Flah_Freq" BEL "LPulserLD1/DurTrig_SRFF/Trig";
+TS_clock = PERIOD TIMEGRP "clock" 8 ns HIGH 50% INPUT_JITTER 0.2 ns;
+SCHEMATIC END;
+
