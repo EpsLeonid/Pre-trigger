@@ -6,7 +6,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
 use ieee.std_logic_unsigned.all;
 library work;
-use work.constants.all;
+use work.parameters.all;
 
 
 entity V_Counter is

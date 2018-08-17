@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> Reading design: Main.prj
 
@@ -107,19 +107,22 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/Parameters.vhd" in Library work.
+Compiling vhdl file "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/lib/Parameters.vhd" in Library work.
 Architecture parameters of Entity parameters is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd" in Library work.
+Compiling vhdl file "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd" in Library work.
 Architecture behavioral of Entity iserdes_8bit is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" in Library work.
-Entity <findmaxamp> compiled.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" Line 72. - can not have such operands in this context.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" Line 74. + can not have such operands in this context.
+Compiling vhdl file "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" in Library work.
+Architecture behavioral of Entity findmaxamp is up to date.
+Compiling vhdl file "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/lib/V_Counter.vhd" in Library work.
+Architecture utility of Entity v_counter is up to date.
+Compiling vhdl file "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" in Library work.
+Entity <main> compiled.
+ERROR:HDLParsers:851 - "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" Line 273. Formal In_DataPrev of entity with no default value must be associated with an actual value.
 --> 
 
-Total memory usage is 286904 kilobytes
+Total memory usage is 274016 kilobytes
 
-Number of errors   :    2 (   0 filtered)
+Number of errors   :    1 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

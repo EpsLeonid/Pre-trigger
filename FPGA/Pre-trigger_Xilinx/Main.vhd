@@ -292,7 +292,7 @@ port map(
 	ResetAll			=> '0',
 	Error				=> '0',
 
-	test				=> '0'
+	test				=> (others => '0')
 	);
 
 --******** Test part ********--

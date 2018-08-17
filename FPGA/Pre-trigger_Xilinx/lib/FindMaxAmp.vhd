@@ -24,6 +24,9 @@ use IEEE.STD_LOGIC_1164.ALL;
 use IEEE.NUMERIC_STD.ALL;
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+
 library UNISIM;
 use UNISIM.VComponents.all;
 
@@ -35,7 +38,7 @@ entity FindMaxAmp is
 			 In_DataPrev		: in  array_prev_adc;
 			 RegInit 			: in	STD_LOGIC;
 			 MaxAmp 				: out	STD_LOGIC_VECTOR (ADC_Bits+1 downto 0);
-			 MaxCellNumbere 	: out STD_LOGIC_VECTOR (7 downto 0);
+			 MaxCellNumber 	: out STD_LOGIC_VECTOR (9 downto 0);
 			 ThrNum1 			: out STD_LOGIC_VECTOR (3 downto 0);
 			 ThrNum2 			: out STD_LOGIC_VECTOR (3 downto 0);
 			 ThrNum3 			: out	STD_LOGIC_VECTOR (3 downto 0);
@@ -71,12 +74,23 @@ begin
 			if rising_edge(Clock160) then
 				Sub_ped(iCHAN) <= In_Data(iCHAN) - Ped_ch(iCHAN);
 				Sub_ped_delay(iCHAN) <= Sub_ped(iCHAN);
-				Aver2 <= Sub_ped_delay(iCHAN) + Sub_ped(iCHAN);
 			end if;
 		end process;
 	end generate Sub_ped_i;
 	
---	Thresh_i: for 
+	Aver_i: for iCHAN in 0 to NUM_TrigCell-1 generate
+		process(Clock160)
+		begin
+			if rising_edge(Clock160) then
+				Aver2(iCHAN) <= Sub_ped_delay(iCHAN) + Sub_ped(iCHAN);
+			end if;
+		end process;
+	end generate Aver_i;
+	
+-- Group sum
+	
+	
+--	Thresh_i: for iCHAN in 0 to NUM_TrigCell-1 generate
+		
 
 end Behavioral;
-
