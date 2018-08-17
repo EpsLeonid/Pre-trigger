@@ -46,13 +46,13 @@ entity FindMaxAmp is
 			 ThrNum5 			: out	STD_LOGIC_VECTOR (3 downto 0);
 			 FastTrig 			: out	STD_LOGIC;
 			 Trig 				: out	STD_LOGIC;
-			 SaveTrigData 	: out	STD_LOGIC;
+			 SaveTrigData		: out	STD_LOGIC;
 			 
 			 Clock 				: in  STD_LOGIC;
 			 Clock160 			: in  STD_LOGIC;
 			 
 			 Reset 				: in  STD_LOGIC;
-			 ResetAll 			: out	STD_LOGIC;
+--			 ResetAll 			: out	STD_LOGIC;
 			 Error 				: out	STD_LOGIC;
 			 
 			 test 				: out	STD_LOGIC_VECTOR (15 downto 0));
@@ -64,6 +64,10 @@ architecture Behavioral of FindMaxAmp is
 	signal Sub_ped			: array_adc;
 	signal Sub_ped_delay	: array_adc;
 	signal Aver2			: array_adc;
+	signal GroupSum		: STD_LOGIC_VECTOR (8 downto 0);
+	signal LThrashold		: STD_LOGIC_VECTOR (8 downto 0);
+	signal MThrashold		: STD_LOGIC_VECTOR (8 downto 0);
+	signal HThrashold		: STD_LOGIC_VECTOR (8 downto 0);
 	
 begin
 
@@ -89,7 +93,16 @@ begin
 	
 -- Group sum
 	
-	
+	GroupSum(0) <= (Aver2(0)+Aver2(1)+Aver2(4)+Aver2(5));
+	GroupSum(1) <= (Aver2(4)+Aver2(5)+Aver2(8)+Aver2(9));
+	GroupSum(2) <= (Aver2(8)+Aver2(9)+Aver2(12)+Aver2(13));
+	GroupSum(3) <= (Aver2(1)+Aver2(2)+Aver2(5)+Aver2(6));
+	GroupSum(4) <= (Aver2(5)+Aver2(6)+Aver2(9)+Aver2(10));
+	GroupSum(5) <= (Aver2(9)+Aver2(10)+Aver2(13)+Aver2(14));
+	GroupSum(6) <= (Aver2(2)+Aver2(3)+Aver2(6)+Aver2(7));
+	GroupSum(7) <= (Aver2(6)+Aver2(7)+Aver2(10)+Aver2(11));
+	GroupSum(8) <= (Aver2(10)+Aver2(11)+Aver2(14)+Aver2(15));
+
 --	Thresh_i: for iCHAN in 0 to NUM_TrigCell-1 generate
 		
 

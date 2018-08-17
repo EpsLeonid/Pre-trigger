@@ -37,7 +37,7 @@ entity Main is
 
 port(
 -- 1. Clocks
-	Qclock      : in std_logic; -- system clock
+	Qclock		: in std_logic; -- system clock
 	FCT_40		: in std_logic; -- system clock
 	FCT_40_n		: in std_logic; -- system clock
 	FCT_160		: in std_logic; -- clock
@@ -51,10 +51,10 @@ port(
 -- Outputs for Indicators on LED's
 
 	Led1			: out std_logic;	-- drives the Green LED						-> Pin 
-	Led2			: out std_logic;	-- drives the Blue LED						-> Pin 
-	Led3			: out std_logic;	-- drives the Red LED						-> Pin 
-	Led4			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
-	Led5			: out std_logic;	-- drives the Blue(Yellow) LED			-> Pin 
+	Led2			: out std_logic := '0';	-- drives the Blue LED						-> Pin 
+	Led3			: out std_logic := '0';	-- drives the Red LED						-> Pin 
+	Led4			: out std_logic := '0';	-- drives the Blue(Yellow) LED			-> Pin 
+	Led5			: out std_logic := '0';	-- drives the Blue(Yellow) LED			-> Pin 
 
 -- 2. Channel  
 
@@ -63,9 +63,9 @@ port(
 	ADCInDataLVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 	ADCInDataLVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 
-	ADC_CSB				: out std_logic;	-- Pin 
-	ADC_SDIO				: out std_logic;	-- Pin 
-	ADC_SCLK				: out std_logic;	-- Pin 
+	ADC_CSB				: out std_logic := '0';	-- Pin 
+	ADC_SDIO				: out std_logic := '0';	-- Pin 
+	ADC_SCLK				: out std_logic := '0';	-- Pin 
 
 	ADC_CLK				: out std_logic;	-- Pin 
 	ADC_DCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
@@ -77,11 +77,11 @@ port(
 
 -- 3. Trig_in-out_FCT
 
-	TrigInLVDS		: in std_logic;	-- Внешний триггер					<- Pin 
-	TrigInLVDS_n	: in std_logic;	-- Внешний триггер					<- Pin 
+	TrigInLVDS		: in std_logic;	-- Trigger from FC7					<- Pin 
+	TrigInLVDS_n	: in std_logic;	-- 										<- Pin 
 	FastTrigDes		: out std_logic;	-- Fast trigger desition to EROS/ROESTI	<- Pin
 	TrigDes			: out std_logic;	-- Trigger desition to FC7			<- Pin
-	TriggerData		: out std_logic_vector(TrigBits-1 downto 0);	-- Trigger data to FCT
+	TriggerData		: out std_logic_vector(TrigBits-1 downto 0):= (others => '0');	-- Trigger data to FCT
 
 -- 4. Ethernet Phy device ports     LXT972
 	RxClk			: in std_logic; --					-> Pin
@@ -92,7 +92,7 @@ port(
 
 	TxClk			: in std_logic; --					-> Pin
 	TxEn			: out std_logic; --					-> Pin
-	TxD			: out std_logic_vector(3 downto 0); --					-> Pin
+	TxD			: out std_logic_vector(3 downto 0):= (others => '0'); --					-> Pin
 	Col 			: in std_logic; -- Collision_Detect not used	-> Pin
 
 -- 5. 
@@ -100,7 +100,7 @@ port(
 	ExtReset		: in std_logic;  -- external Reset (tied to GND --VCC)	<- Pin
 
 -- 6. Test
-	Test			: out std_logic_vector(9 downto 0));
+	Test			: out std_logic_vector(9 downto 0):= (others => '0'));
 
 end Main;
 
@@ -135,11 +135,12 @@ architecture Behavioral of Main is
 	signal InDataReg		: array_adc;
 	signal InDataPrevReg_p	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-	signal InDataPrev		: array_prev_adc;
+	signal InDataPrevReg		: array_prev_adc;
 
 	signal TrigIn	: std_logic;
---	signal 
---	signal 
+	signal TrigDes_o	: std_logic;
+	signal FastTrigDes_o	: std_logic;
+
 	signal TestCnt	: std_logic_vector(24 downto 0);
 
 begin
@@ -214,7 +215,14 @@ LVDS_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate
 			I => ADCInDataLVDSPrev(i),  -- Diff_p buffer input (connect directly to top-level port)
 			IB => ADCInDataLVDSPrev_n(i) -- Diff_n buffer input (connect directly to top-level port)
 		);
-		
+	SERDES : entity work.ISERDES_8bit 
+	port map  (
+		DataIn 	=> ADCInDataPrev(i),	-- input of data from ADC by bits
+		Clock		=> CLK80,
+		ClkDiv	=> ADC_DCOPrev(i/4),
+		DataOut	=> InDataPrevReg(i)
+				 );
+
 end generate LVDS_buf_ADCPrev;
 
 -- Input LVDS ADC DCO buffer
@@ -274,26 +282,34 @@ FindMaxAmp_i: entity work.FindMaxAmp
 
 port map(
 
-	In_Data        => InDataReg,
+	In_Data			=> InDataReg,
+	In_DataPrev		=> InDataPrevReg,
 	RegInit			=> '0',
 	MaxAmp			=> TriggerData(9 downto 0),
-	MaxCellNumber	=> TriggerData(18 downto 10),
-	ThrNum1			=> TriggerData(22 downto 18),
-	ThrNum2			=> TriggerData(26 downto 22),
-	ThrNum3			=> TriggerData(30 downto 26),
-	FastTrig			=> TriggerData(30),
-	Trig				=> TriggerData(31),
-	SaveTrigData	=> '0',
+	MaxCellNumber	=> TriggerData(19 downto 10),
+	ThrNum1			=> TriggerData(23 downto 20),
+	ThrNum2			=> TriggerData(27 downto 24),
+	ThrNum3			=> TriggerData(31 downto 28),
+	FastTrig			=> FastTrigDes_o,
+	Trig				=> TrigDes_o,
+--	SaveTrigData	=> '0',
 
 	Clock				=> CLK40,
 	Clock160			=> CLK160,
 
-	Reset				=> Reset,
-	ResetAll			=> '0',
-	Error				=> '0',
+	Reset				=> Reset
+--	ResetAll			=> '0',
+--	Error				=> '0',
 
-	test				=> (others => '0')
+--	test				=> 
 	);
+	
+	ADC_CLK <= CLK40;
+	TriggerData(32) <= FastTrigDes_o;
+	TriggerData(33) <= TrigDes_o;
+	
+	FastTrigDes <= FastTrigDes_o;
+	TrigDes <= TrigDes_o;
 
 --******** Test part ********--
 

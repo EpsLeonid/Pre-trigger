@@ -8,8 +8,8 @@ package parameters is
 	
 --	constant Masks_Offset 		: integer := X"20";   -- MasksReg #32
 	constant ADC_Bits				: integer := 8;	-- Number of ADC bits in one channel
-	constant NUM_ADCboard		: integer := 2;	-- Number of ADC boards in the trigger -- For tests!!!
-	constant NUM_TrigCell		: integer := 16;	-- Number of channels in the trigger -- For tests!!!
+	constant NUM_ADCboard		: integer := 16;	-- Number of ADC boards in the trigger -- For tests!!!
+	constant NUM_TrigCell		: integer := 512;	-- Number of channels in the trigger -- For tests!!!
 	constant NUM_TrigCellPrev	: integer := 12;	-- Number of channels in the trigger from prev.board
 	constant ThresholdData_0	: integer := 100;
 	constant ThresholdData_1	: integer := 150;

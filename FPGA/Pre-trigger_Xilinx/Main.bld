@@ -5,9 +5,8 @@ Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
 -intstyle ise -dd _ngo -nt timestamp -uc Pre.ucf -p xc4vlx60-ff1148-10 Main.ngc
 Main.ngd
 
-Reading NGO file
-"D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.n
-gc" ...
+Reading NGO file "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/Main.ngc"
+...
 Gathering constraint information from source properties...
 Done.
 
@@ -15,11 +14,11 @@ Annotating constraints to design from ucf file "Pre.ucf" ...
 Resolving constraint associations...
 Checking Constraint Associations...
 WARNING:ConstraintSystem:137 - Constraint <NET "Qclock" TNM_NET = "Qclock";>
-   [Pre.ucf(1)]: No appropriate instances for the TNM constraint are driven by
+   [Pre.ucf(2)]: No appropriate instances for the TNM constraint are driven by
    "Qclock".
 
 WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_Qclock = PERIOD "Qclock"
-   25 ns HIGH 50 % INPUT_JITTER 375 ps;> [Pre.ucf(2)]: Unable to find an active
+   25 ns HIGH 50 % INPUT_JITTER 375 ps;> [Pre.ucf(3)]: Unable to find an active
    'TNM' or 'TimeGrp' constraint named 'Qclock'.
 
 WARNING:ConstraintSystem:191 - The TNM 'Qclock', does not directly or indirectly
@@ -30,12 +29,12 @@ WARNING:ConstraintSystem:191 - The TNM 'Qclock', does not directly or indirectly
    the clock manager drives flip-flops, latches or RAMs. This TNM is used in the
    following user PERIOD specification:
    <TIMESPEC TS_Qclock = PERIOD "Qclock" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
-   [Pre.ucf(2)]
+   [Pre.ucf(3)]
 
 WARNING:ConstraintSystem:197 - The following specification is invalid because
    the referenced TNM constraint was removed:
    <TIMESPEC TS_Qclock = PERIOD "Qclock" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
-   [Pre.ucf(2)]
+   [Pre.ucf(3)]
 
 Done...
 
@@ -52,10 +51,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   4
 
-Total memory usage is 204568 kilobytes
+Total memory usage is 207424 kilobytes
 
 Writing NGD file "Main.ngd" ...
-Total REAL time to NGDBUILD completion:  14 sec
-Total CPU time to NGDBUILD completion:   3 sec
+Total REAL time to NGDBUILD completion:  10 sec
+Total CPU time to NGDBUILD completion:   10 sec
 
 Writing NGDBUILD log file "Main.bld"...

@@ -29,18 +29,59 @@ INFO:Timing:3339 - The clock-to-out numbers in this timing report are based on
 
 Data Sheet report:
 -----------------
-No constraints were found to generate data for the Data Sheet Report section.
-Use the Advanced Analysis (-a) option or generate global constraints for each
-clock, its pad to setup and clock to pad paths, and a pad to pad constraint.
+All values displayed in nanoseconds (ns)
 
-Analysis completed Mon Jun 25 16:15:29 2018 
+Clock FCT_40 to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+Led1        |   15.541(R)|ADC_CLK_OBUF      |   0.000|
+------------+------------+------------------+--------+
+
+Clock FCT_40_n to Pad
+------------+------------+------------------+--------+
+            | clk (edge) |                  | Clock  |
+Destination |   to PAD   |Internal Clock(s) | Phase  |
+------------+------------+------------------+--------+
+Led1        |   15.543(R)|ADC_CLK_OBUF      |   0.000|
+------------+------------+------------------+--------+
+
+Clock to Setup on destination clock FCT_40
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+FCT_40         |    2.650|         |         |         |
+FCT_40_n       |    2.650|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Clock to Setup on destination clock FCT_40_n
+---------------+---------+---------+---------+---------+
+               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
+Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
+---------------+---------+---------+---------+---------+
+FCT_40         |    2.650|         |         |         |
+FCT_40_n       |    2.650|         |         |         |
+---------------+---------+---------+---------+---------+
+
+Pad to Pad
+---------------+---------------+---------+
+Source Pad     |Destination Pad|  Delay  |
+---------------+---------------+---------+
+FCT_40         |ADC_CLK        |    8.994|
+FCT_40_n       |ADC_CLK        |    8.996|
+---------------+---------------+---------+
+
+
+Analysis completed Fri Aug 17 16:35:09 2018 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 366 MB
+Peak Memory Usage: 337 MB
 
 
 
