@@ -1,0 +1,5 @@
+if ( ! $?varname ) then
+  source /opt/Xilinx/14.7/ISE_DS/settings64.csh
+endif
+
+promgen -w -p mcs -c FF -o ./mcs/lom_v2.0_mboot.mcs -u 0 ./lom/bit/lom_v2.0_mboot.bit -x xcf32p -data_width 8

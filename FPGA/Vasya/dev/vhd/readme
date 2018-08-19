@@ -1,0 +1,17 @@
+top.vhd              -- top level
+adc_ctrl.vhd         -- ADC control + ADC buffers
+adc_deser.vhd        -- "original" deserializers
+adc_serdes_xapp.vhd  -- deserializers based on xilinx example iodelay+iserdes2. Calibration of delays 
+                       using phase detector will be implemented later.
+lom.vhd              -- lom logic implemented here: filling histograms, counters, bhabha signal
+lom_utils.vhd        -- discriminator, coincidence circuit and peak detector entities
+mem_file.vhd         -- memory file
+reg_file.vhd         -- registers file
+reg_map.vhd          -- registers mapping using records with register parameters
+reg_utils.vhd        -- some functions for register mapping
+histo.vhd            -- histogram entity
+histo_manager.vhd    -- manage histograms
+counters_manager.vhd -- manage counters
+mem.vhd              -- bram entities
+selftest.vhd         -- self_tester entity which feeds samples from test buffer to the input of lom logic
+constants.vhd        -- some global constants

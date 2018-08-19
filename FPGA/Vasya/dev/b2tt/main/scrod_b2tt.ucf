@@ -1,0 +1,16 @@
+
+
+net ack_p loc=l1 | iostandard=lvds;
+net ack_n loc=k1 | iostandard=lvds;
+net trg_p loc=j1 | iostandard=lvds | diff_term=true;
+net trg_n loc=h1 | iostandard=lvds | diff_term=true;
+#net rsv_p loc=e1 | iostandard=lvttl;
+#net rsv_n loc=d1 | iostandard=lvttl;
+net clk_p loc=d9 | iostandard=lvds | diff_term=true;
+net clk_n loc=d8 | iostandard=lvds | diff_term=true;
+net clk_p clock_dedicated_route = false;
+### clkout_p clock_dedicated_route = false;
+
+net clk_127 period = 7.8 ns;
+net map_b2tt/clk_dbl    period = 3.9 ns;
+net map_b2tt/clk_dblinv period = 3.9 ns;

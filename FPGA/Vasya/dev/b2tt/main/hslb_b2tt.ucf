@@ -1,0 +1,168 @@
+
+net clk_127     PERIOD = 7.8 ns;
+net clk_s       PERIOD = 23.4 ns;
+
+# VCCO_17 is connected to 3.3V, but iostandard=lvcmos25 is used
+# to allow the use of LVDS in bank17
+
+net f_ld<0>  loc=r31  | iostandard=lvttl;    # bank15
+net f_ld<1>  loc=t30  | iostandard=lvttl;    # bank15
+net f_ld<2>  loc=t31  | iostandard=lvttl;    # bank15
+net f_ld<3>  loc=u30  | iostandard=lvttl;    # bank15
+net f_ld<4>  loc=v30  | iostandard=lvcmos25; # bank17
+net f_ld<5>  loc=w30  | iostandard=lvcmos25; # bank17
+net f_ld<6>  loc=w31  | iostandard=lvcmos25; # bank17
+net f_ld<7>  loc=y31  | iostandard=lvcmos25; # bank17
+
+net f_la<0>  loc=aa30 | iostandard=lvcmos25; # bank17
+net f_la<1>  loc=aa31 | iostandard=lvcmos25; # bank17
+net f_la<2>  loc=ab30 | iostandard=lvcmos25; # bank17
+net f_la<3>  loc=ab31 | iostandard=lvcmos25; # bank17
+net f_la<4>  loc=ac30 | iostandard=lvcmos25; # bank17
+net f_la<5>  loc=ad30 | iostandard=lvcmos25; # bank17
+net f_la<6>  loc=ad31 | iostandard=lvcmos25; # bank17
+
+net c_lwr    loc=aj32 | iostandard=lvttl;    # bank13
+net c_csb    loc=ag32 | iostandard=lvttl;    # bank13
+
+### f_ff<0>  loc=a33  | iostandard=lvttl;    # bank11
+### f_ff<1>  loc=b32  | iostandard=lvttl;    # bank11
+### f_ff<2>  loc=b33  | iostandard=lvttl;    # bank11
+### f_ff<3>  loc=c32  | iostandard=lvttl;    # bank11
+### f_ff<4>  loc=c33  | iostandard=lvttl;    # bank11
+### f_ff<5>  loc=c34  | iostandard=lvttl;    # bank11
+### f_ff<6>  loc=d32  | iostandard=lvttl;    # bank11
+### f_ff<7>  loc=d34  | iostandard=lvttl;    # bank11
+### f_ff<8>  loc=e32  | iostandard=lvttl;    # bank11
+### f_ff<9>  loc=e33  | iostandard=lvttl;    # bank11
+### f_ff<10> loc=e34  | iostandard=lvttl;    # bank11
+### f_ff<11> loc=f33  | iostandard=lvttl;    # bank11
+### f_ff<12> loc=f34  | iostandard=lvttl;    # bank11
+### f_ff<13> loc=g32  | iostandard=lvttl;    # bank11
+### f_ff<14> loc=g33  | iostandard=lvttl;    # bank11
+### f_ff<15> loc=h32  | iostandard=lvttl;    # bank11
+### f_ff<16> loc=h33  | iostandard=lvttl;    # bank11
+### f_ff<17> loc=h34  | iostandard=lvttl;    # bank11
+### f_ff<18> loc=j32  | iostandard=lvttl;    # bank11
+### f_ff<19> loc=j34  | iostandard=lvttl;    # bank11
+### f_ff<20> loc=k32  | iostandard=lvttl;    # bank11
+### f_ff<21> loc=k33  | iostandard=lvttl;    # bank11
+### f_ff<22> loc=k34  | iostandard=lvttl;    # bank11
+### f_ff<23> loc=l33  | iostandard=lvttl;    # bank11
+### f_ff<24> loc=l34  | iostandard=lvttl;    # bank11
+### f_ff<25> loc=m32  | iostandard=lvttl;    # bank11
+### f_ff<26> loc=m33  | iostandard=lvttl;    # bank11
+### f_ff<27> loc=n32  | iostandard=lvttl;    # bank11
+### f_ff<28> loc=n33  | iostandard=lvttl;    # bank11
+### f_ff<29> loc=n34  | iostandard=lvttl;    # bank11
+### f_ff<30> loc=p32  | iostandard=lvttl;    # bank11
+### f_ff<31> loc=p34  | iostandard=lvttl;    # bank11
+
+### f_frstb  loc=r32  | iostandard=lvttl;    # bank11
+### f_fwenb  loc=t34  | iostandard=lvttl;    # bank11
+### f_fwclk  loc=t33  | iostandard=lvttl;    # bank11
+net f_nwff   loc=u31  | iostandard=lvttl;    # bank11
+net f_fwful  loc=r34  | iostandard=lvttl;    # bank11
+
+net f_tag<0> loc=j31  | iostandard=lvttl;    # bank15
+net f_tag<1> loc=l30  | iostandard=lvttl;    # bank15
+net f_tag<2> loc=l31  | iostandard=lvttl;    # bank15
+net f_tag<3> loc=m30  | iostandard=lvttl;    # bank15
+net f_tag<4> loc=m31  | iostandard=lvttl;    # bank15
+net f_tag<5> loc=n30  | iostandard=lvttl;    # bank15
+net f_tag<6> loc=p30  | iostandard=lvttl;    # bank15
+net f_tag<7> loc=p31  | iostandard=lvttl;    # bank15
+
+net f_typ<0> loc=g30  | iostandard=lvttl;    # bank15
+net f_typ<1> loc=g31  | iostandard=lvttl;    # bank15
+net f_typ<2> loc=h30  | iostandard=lvttl;    # bank15
+net f_typ<3> loc=j30  | iostandard=lvttl;    # bank15
+
+net f_abrt   loc=u32  | iostandard=lvttl;    # bank11
+net f_iena   loc=f30  | iostandard=lvttl;    # bank15
+net f_irstb  loc=e31  | iostandard=lvttl;    # bank15
+net f_io     loc=f31  | iostandard=lvttl;    # bank15
+net f_gate   loc=r33  | iostandard=lvttl;    # bank11
+net f_bsy    loc=u33  | iostandard=lvttl;    # bank11
+
+net f_trg_p  loc=aj31 | iostandard=lvds_25 | diff_term=yes; # bank17
+net f_trg_n  loc=ak31 | iostandard=lvds_25 | diff_term=yes; # bank17
+net f_rev_p  loc=aj30 | iostandard=lvds_25 | diff_term=yes; # bank17
+net f_rev_n  loc=ah30 | iostandard=lvds_25 | diff_term=yes; # bank17
+net f_rck_p  loc=ah29 | iostandard=lvds_25 | diff_term=yes; # bank17
+net f_rck_n  loc=ag30 | iostandard=lvds_25 | diff_term=yes; # bank17
+### f_rck_p  clock_dedicated_route = false;
+net v_sck_p  loc=ag22 | iostandard=lvds_25;  # bank4 (no diff_term needed)
+net v_sck_n  loc=ah22 | iostandard=lvds_25;  # bank4
+### bclk_p   loc=ah20 | iostandard=lvds_25;  # bank4 (no diff_term needed)
+### bclk_n   loc=ah19 | iostandard=lvds_25;  # bank4
+
+# need to clarify which LED is where
+### led1     loc=ac4  | iostandard=lvcmos25; # bank18 (RJ-45 upper, unused)
+### led2     loc=ab6  | iostandard=lvcmos25; # bank18 (RJ-45 lower, unused)
+net ledl     loc=e8   | iostandard=lvttl;    # bank20 (L700, panel top-left)
+net ledr     loc=f8   | iostandard=lvttl;    # bank20 (L701, panel top-right)
+### led5     loc=k8   | iostandard=lvttl;    # bank20 (L702, unused)
+### led6     loc=k9   | iostandard=lvttl;    # bank20 (L703, unused)
+
+net led<0>   loc=d10  | iostandard=lvttl;    # bank20 (L704, DS705-on-board)
+net led<1>   loc=d11  | iostandard=lvttl;    # bank20 (L705, DS706-on-board)
+net led<2>   loc=b12  | iostandard=lvttl;    # bank20 (L706, DS707-on-board)
+net led<3>   loc=c12  | iostandard=lvttl;    # bank20 (L707, DS708-on-board)
+net led<4>   loc=d12  | iostandard=lvttl;    # bank20 (L708, DS709-on-board)
+net led<5>   loc=a13  | iostandard=lvttl;    # bank20 (L709, DS710-on-board)
+net led<6>   loc=b13  | iostandard=lvttl;    # bank20 (L710, DS711-on-board)
+net led<7>   loc=c13  | iostandard=lvttl;    # bank20 (L711, DS712-on-board)
+
+net test<0>  loc=am11 | iostandard=lvcmos25; # bank22 (TEST700 at P701-1)
+net test<1>  loc=ak11 | iostandard=lvcmos25; # bank22 (TEST701 at P701-3)
+net test<2>  loc=al11 | iostandard=lvcmos25; # bank22 (TEST702 at P701-5)
+net test<3>  loc=al10 | iostandard=lvcmos25; # bank22 (TEST703 at P701-7)
+net test<4>  loc=aj11 | iostandard=lvcmos25; # bank22 (TEST704 at P701-9)
+net test<5>  loc=aj10 | iostandard=lvcmos25; # bank22 (TEST705 at P701-11)
+net test<6>  loc=ah10 | iostandard=lvcmos25; # bank22 (TEST706 at P701-13)
+net test<7>  loc=ag10 | iostandard=lvcmos25; # bank22 (TEST707 at P701-15)
+
+### clk_tp   loc=an13 | iostandard=lvds_25 | diff_term=yes; # bank22
+### clk_tn   loc=am13 | iostandard=lvds_25 | diff_term=yes; # bank22
+
+net r_ackb_p loc=ad4  | iostandard=lvds_25;  # bank18 (wrong polarity)
+net r_ackb_n loc=ad5  | iostandard=lvds_25;  # bank18 (wrong polarity)
+net r_rsv_p  loc=ac7  | iostandard=lvcmos25; # bank18
+net r_rsv_n  loc=ad7  | iostandard=lvcmos25; # bank18
+net r_trg_p  loc=ak7  | iostandard=lvds_25 | diff_term=yes; # bank18
+net r_trg_n  loc=ak6  | iostandard=lvds_25 | diff_term=yes; # bank18
+net r_clkb_p loc=ad6  | iostandard=lvds_25 | diff_term=yes; # bank18 (wrong)
+net r_clkb_n loc=ae6  | iostandard=lvds_25 | diff_term=yes; # bank18 (polarity)
+net r_clkb_p clock_dedicated_route = false;
+
+net mode0    loc=f6   | iostandard=lvttl;    # bank12
+net mode1    loc=e7   | iostandard=lvttl;    # bank12
+net mode2    loc=f5   | iostandard=lvttl;    # bank12
+net los      loc=g5   | iostandard=lvttl;    # bank12
+net ratesel  loc=j5   | iostandard=lvttl;    # bank12
+net txfault  loc=j6   | iostandard=lvttl;    # bank12
+net txdis    loc=e6   | iostandard=lvttl;    # bank12
+
+### mode10   loc=m6   | iostandard=lvttl | pullup=yes; # bank12
+### mode11   loc=l5   | iostandard=lvttl | pullup=yes; # bank12
+### mode12   loc=l4   | iostandard=lvttl | pullup=yes; # bank12
+### los1     loc=n5   | iostandard=lvttl;    # bank12
+### ratesel1 loc=n7   | iostandard=lvttl;    # bank12
+### txfault1 loc=n8   | iostandard=lvttl;    # bank12
+### txdis1   loc=k6   | iostandard=lvttl;    # bank12
+
+# MGT bank 112 port 0 / RX:normal-polarity, TX:flipped-polarity
+
+### r_clkopt_p loc=p4; # MGTREFCLKP_112, UCF is not needed
+### r_clkopt_n loc=p3; # MGTREFCLKN_112, UCF is not needed
+### rx_p     loc=n1;   # MGTRXP0_112, UCF is not needed
+### rx_n     loc=p1;   # MGTRXN0_112, UCF is not needed
+### tx_n     loc=m2;   # MGTTXP0_112, UCF is not needed (flipped-polarity)
+### tx_p     loc=n2;   # MGTTXN0_112, UCF is not needed (flipped-polarity)
+### rx_p1    loc=w1;   # MGTRXP0_114 unused
+### rx_n1    loc=y1;   # MGTRXN0_114 unused
+### tx_n1    loc=v2;   # MGTTXP0_114 unused (flipped-polarity)
+### tx_p1    loc=w2;   # MGTTXN0_114 unused (flipped-polarity)
+
+

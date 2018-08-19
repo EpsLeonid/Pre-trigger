@@ -1,0 +1,15 @@
+set -tmpdir /home/shebalin/lom/fpga/dev/prj/system/synthesis/xst_temp_dir/
+run
+-opt_mode speed
+-netlist_hierarchy as_optimized
+-opt_level 1
+-p xc6slx150tfgg900-3
+-top system
+-ifmt MIXED
+-ifn system_xst.prj
+-ofn ../implementation/system.ngc
+-hierarchy_separator /
+-iobuf NO
+-max_fanout 10000
+-sd {../implementation}
+-vlgincdir {"/home/shebalin/lom/fpga/dev/prj/system/pcores/" "/home/shebalin/lom/fpga/IPRepository/MyProcessorIPLib/pcores/" "/home/shebalin/lom/IPRepository/MyProcessorIPLib/pcores/" "/opt/Xilinx/14.7/ISE_DS/EDK/hw/XilinxBFMinterface/pcores/" "/opt/Xilinx/14.7/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/" }

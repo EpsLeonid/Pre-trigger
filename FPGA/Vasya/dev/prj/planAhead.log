@@ -1,0 +1,373 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:24:36 MDT 2013
+# Start of session at: Thu Mar  8 12:39:32 2018
+# Process ID: 30714
+# Log file: /home/shebalin/lom/fpga/dev/prj/planAhead.log
+# Journal file: /home/shebalin/lom/fpga/dev/prj/planAhead.jou
+#-----------------------------------------------------------
+INFO: [Common 17-78] Attempting to get a license: PlanAhead
+INFO: [Common 17-290] Got license for PlanAhead
+INFO: [Device 21-36] Loading parts and site information from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/arch.xml
+Parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+Finished parsing RTL primitives file [/opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/rtl/prims/rtl_prims.xml]
+start_gui
+create_project project_1 /home/shebalin/lom/fpga/dev/prj/project_1 -part xc6slx150tfgg900-3
+set_property design_mode GateLvl [current_fileset]
+add_files -norecurse /home/shebalin/lom/fpga/dev/prj/top.ngc
+import_files -force -norecurse
+import_files -fileset constrs_1 -force -norecurse /home/shebalin/lom/fpga/dev/ucf/top.ucf
+import_as_run -run impl_1 -twx /home/shebalin/lom/fpga/dev/prj/top.twx /home/shebalin/lom/fpga/dev/prj/top.ncd
+Release 14.7 - xdl P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+WARNING:XDL:213 - The resulting xdl output will not have LUT equation strings or RAM INIT strings.
+Loading device for application Rf_Device from file '6slx150t.nph' in environment /opt/Xilinx/14.7/ISE_DS/ISE/.
+   "top" is an NCD, version 3.2, device xc6slx150t, package fgg900, speed -3
+Successfully converted design '/home/shebalin/lom/fpga/dev/prj/top.ncd' to './.Xil/PlanAhead-30714-dell-desktop/ncd2xdl/top.xdl'.
+Release 14.7 - ngc2edif P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Release 14.7 - ngc2edif P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+Reading design top.ngc ...
+WARNING:NetListWriters:298 - No output is written to top.xncf, ignored.
+Processing design ...
+   Preping design's networks ...
+   Preping design's macros ...
+WARNING:NetListWriters:306 - Signal bus s_cnt_overflow<15 : 0> on block
+   counters_manager is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus s_cnt_overflow<15 : 0> on block lom is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_set_values_1<15 : 0> on block
+   reg_file_m is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_set_values_12<15 : 0> on block
+   reg_file_m is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_reg_data_1<15 : 0> on block reg_file_m
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_reg_data_12<15 : 0> on block
+   reg_file_m is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_reg_rdata_0<7 : 2> on block reg_file_m
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_reg_rdata_1<15 : 0> on block
+   reg_file_m is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_reg_rdata_12<15 : 0> on block
+   reg_file_m is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   buf_payload[111]_sta_crc8[7]_xor_13_OUT[5 : 0] on block b2tt_enoctet is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus sta_ebit<5 : 3> on block b2tt_payload is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus buf_payload<111 : 0> on block
+   b2tt_payload is not reconstructed, because there are some missing bus
+   signals.
+WARNING:NetListWriters:306 - Signal bus buf_ereg<28 : 0> on block b2tt_payload
+   is not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus sta_smax[9]_sta_lenhalf[9]_add_104_OUT<9
+   : 0> on block b2tt_iscan is not reconstructed, because there are some missing
+   bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   Madd_cnt_iddr[9]_GND_272_o_add_23_OUT_cy<7 : 4> on block b2tt_iscan is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   Msub_GND_272_o_GND_272_o_sub_104_OUT<9:0>_cy<7 : 2> on block b2tt_iscan is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus
+   Msub_GND_272_o_GND_272_o_sub_104_OUT<9:0>_lut<8 : 4> on block b2tt_iscan is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_adc_data<11 : 0> on block top is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_reg_data<15 : 0> on block top is not
+   reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_cnt_overflow<15 : 0> on block top is
+   not reconstructed, because there are some missing bus signals.
+WARNING:NetListWriters:306 - Signal bus s_reg_set_values_12<15 : 0> on block top
+   is not reconstructed, because there are some missing bus signals.
+  finished :Prep
+Writing EDIF netlist file top.edif ...
+ngc2edif: Total memory usage is 251240 kilobytes
+
+Parsing EDIF File [./project_1/project_1.data/cache/top_ngc_5f007aa1.edif]
+Finished Parsing EDIF File [./project_1/project_1.data/cache/top_ngc_5f007aa1.edif]
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_soft_temac_wrapper' instantiated in module 'system_i/Soft_TEMAC'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_soft_temac_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_dip_switches_wrapper' instantiated in module 'system_i/DIP_Switches'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_dip_switches_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_mb_eth_ifc_0_wrapper' instantiated in module 'system_i/mb_eth_ifc_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mb_eth_ifc_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_generic_spi_wrapper' instantiated in module 'system_i/Generic_SPI'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_generic_spi_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_clock_generator_0_wrapper' instantiated in module 'system_i/clock_generator_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_clock_generator_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_proc_sys_reset_0_wrapper' instantiated in module 'system_i/proc_sys_reset_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_proc_sys_reset_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_mcb_ddr3_wrapper' instantiated in module 'system_i/MCB_DDR3'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mcb_ddr3_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_microblaze_0_wrapper' instantiated in module 'system_i/microblaze_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_microblaze_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_mb_plb_wrapper' instantiated in module 'system_i/mb_plb'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mb_plb_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_ilmb_wrapper' instantiated in module 'system_i/ilmb'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_ilmb_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_dlmb_wrapper' instantiated in module 'system_i/dlmb'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_dlmb_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_dlmb_cntlr_wrapper' instantiated in module 'system_i/dlmb_cntlr'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_dlmb_cntlr_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_ilmb_cntlr_wrapper' instantiated in module 'system_i/ilmb_cntlr'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_ilmb_cntlr_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_leds_wrapper' instantiated in module 'system_i/LEDS'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_leds_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_mdm_0_wrapper' instantiated in module 'system_i/mdm_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mdm_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_xps_timer_0_wrapper' instantiated in module 'system_i/xps_timer_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_xps_timer_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_xps_intc_0_wrapper' instantiated in module 'system_i/xps_intc_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_xps_intc_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_xps_iic_0_wrapper' instantiated in module 'system_i/xps_iic_0'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_xps_iic_0_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_fadc_spi_wrapper' instantiated in module 'system_i/FADC_SPI'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_fadc_spi_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [Designutils 20-1022] Could not resolve non-primitive black box cell 'system_lmb_bram_wrapper' instantiated in module 'system_i/lmb_bram'.
+Resolution: File names need to match cell names: an EDIF definition will be found in system_lmb_bram_wrapper.edf; a HDL definition may be placed in any Verilog/VHDL file.
+INFO: [Netlist 29-17] Analyzing 7 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Loading clock regions from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/spartan6/spartan6lxt/xc6slx150t/ClockRegion.xml
+Loading clock buffers from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/spartan6/spartan6lxt/xc6slx150t/ClockBuffers.xml
+Loading package pin functions from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/spartan6/PinFunctions.xml...
+Loading package from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/spartan6/spartan6lxt/xc6slx150t/fgg900/Package.xml
+Loading io standards from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/./parts/xilinx/spartan6/IOStandards.xml
+Loading device configuration modes from /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/parts/xilinx/spartan6/ConfigModes.xml
+Loading list of drcs for the architecture : /opt/Xilinx/14.7/ISE_DS/PlanAhead/data/./parts/xilinx/spartan6/drc.xml
+Parsing UCF File [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.srcs/constrs_1/imports/ucf/top.ucf]
+CRITICAL WARNING: [Constraints 18-47] TIMESPEC TS_DCO1 is redefined. The earlier version defined at (file = top.ucf, line = 7) will be discarded [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.srcs/constrs_1/imports/ucf/top.ucf:11]
+CRITICAL WARNING: [Constraints 18-47] TIMESPEC TS_DCO1 is redefined. The earlier version defined at (file = top.ucf, line = 11) will be discarded [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.srcs/constrs_1/imports/ucf/top.ucf:15]
+CRITICAL WARNING: [Constraints 18-47] TIMESPEC TS_DCO1 is redefined. The earlier version defined at (file = top.ucf, line = 15) will be discarded [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.srcs/constrs_1/imports/ucf/top.ucf:19]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol 7.83 [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.srcs/constrs_1/imports/ucf/top.ucf:385]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol 7.84 [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.srcs/constrs_1/imports/ucf/top.ucf:388]
+Finished Parsing UCF File [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.srcs/constrs_1/imports/ucf/top.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+INFO: [Runs 36-48] Run(s) initialized and can be manually started with the following script: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/.jobs/job1.sh
+import_as_run: Time (s): cpu = 00:01:20 ; elapsed = 00:01:10 . Memory (MB): peak = 2972.984 ; gain = 232.141
+open_run impl_1
+Parsing EDIF File [./project_1/project_1.runs/impl_1/top.edf]
+Finished Parsing EDIF File [./project_1/project_1.runs/impl_1/top.edf]
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_lmb_bram_wrapper' instantiated as 'lmb_bram' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_lmb_bram_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_soft_temac_wrapper' instantiated as 'Soft_TEMAC' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_soft_temac_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_dip_switches_wrapper' instantiated as 'DIP_Switches' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_dip_switches_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_mb_eth_ifc_0_wrapper' instantiated as 'mb_eth_ifc_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mb_eth_ifc_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_generic_spi_wrapper' instantiated as 'Generic_SPI' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_generic_spi_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_clock_generator_0_wrapper' instantiated as 'clock_generator_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_clock_generator_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_proc_sys_reset_0_wrapper' instantiated as 'proc_sys_reset_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_proc_sys_reset_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_mcb_ddr3_wrapper' instantiated as 'MCB_DDR3' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mcb_ddr3_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_microblaze_0_wrapper' instantiated as 'microblaze_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_microblaze_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_mb_plb_wrapper' instantiated as 'mb_plb' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mb_plb_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_ilmb_wrapper' instantiated as 'ilmb' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_ilmb_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_dlmb_wrapper' instantiated as 'dlmb' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_dlmb_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_dlmb_cntlr_wrapper' instantiated as 'dlmb_cntlr' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_dlmb_cntlr_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_ilmb_cntlr_wrapper' instantiated as 'ilmb_cntlr' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_ilmb_cntlr_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_leds_wrapper' instantiated as 'LEDS' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_leds_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_mdm_0_wrapper' instantiated as 'mdm_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_mdm_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_xps_timer_0_wrapper' instantiated as 'xps_timer_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_xps_timer_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_xps_intc_0_wrapper' instantiated as 'xps_intc_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_xps_intc_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_xps_iic_0_wrapper' instantiated as 'xps_iic_0' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_xps_iic_0_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+CRITICAL WARNING: [EDIF 20-96] Could not resolve non-primitive black box cell 'system_fadc_spi_wrapper' instantiated as 'FADC_SPI' [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.edf:524288]
+Resolution: File names need to match cell names: an EDIF definition will be found in system_fadc_spi_wrapper.edf; an HDL definition may be placed in any Verilog/VHDL file.
+INFO: [Netlist 29-17] Analyzing 7 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+Parsing UCF File [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/.constrs/top.ucf]
+CRITICAL WARNING: [Constraints 18-47] TIMESPEC TS_DCO1 is redefined. The earlier version defined at (file = top.ucf, line = 10) will be discarded [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/.constrs/top.ucf:14]
+CRITICAL WARNING: [Constraints 18-47] TIMESPEC TS_DCO1 is redefined. The earlier version defined at (file = top.ucf, line = 14) will be discarded [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/.constrs/top.ucf:18]
+CRITICAL WARNING: [Constraints 18-47] TIMESPEC TS_DCO1 is redefined. The earlier version defined at (file = top.ucf, line = 18) will be discarded [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/.constrs/top.ucf:19]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol 7.83 [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/.constrs/top.ucf:391]
+CRITICAL WARNING: [Designutils 20-31] Unrecognized symbol 7.84 [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/.constrs/top.ucf:394]
+Finished Parsing UCF File [/home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/.constrs/top.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+INFO: [Designutils 20-669] Parsing Placement File : /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl
+WARNING: [Designutils 20-665] Net Name: VETO. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+WARNING: [Designutils 20-665] Net Name: PG<1>. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+WARNING: [Designutils 20-665] Net Name: PG<2>. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+WARNING: [Designutils 20-665] Net Name: PG<3>. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+WARNING: [Designutils 20-665] Net Name: PG<4>. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+WARNING: [Designutils 20-665] Net Name: PG<5>. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+WARNING: [Designutils 20-665] Net Name: CLK_MODE. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+WARNING: [Designutils 20-665] Net Name: ETH_MDINT. Found in file: /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl. Not Recognizable in the Context
+INFO: [Designutils 20-658] Finished Parsing Placement File : /home/shebalin/lom/fpga/dev/prj/project_1/project_1.runs/impl_1/top.xdl
+INFO: [Designutils 20-671] Placed 60156 instances
+INFO: [Timing 38-75] No source with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/mpmc_mcb_raw_wrapper_0/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/uo_done_cal_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/mpmc_mcb_raw_wrapper_0/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/mpmc_mcb_raw_wrapper_0/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/uo_done_cal_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/mpmc_mcb_raw_wrapper_0/gen_term_calib.mcb_soft_calibration_top_inst/mcb_soft_calibration_inst/DONE_SOFTANDHARD_CAL found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/MCB_DDR3/MCB_DDR3/Rst_tocore_5_1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/rst_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/MCB_DDR3/MCB_DDR3/Rst_tocore_5_1 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/MCB_DDR3/MCB_DDR3/Rst_tocore_5_1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/MCB_DDR3/MCB_DDR3/mpmc_core_0/gen_spartan6_mcb.s6_phy_top_if/rst_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/MCB_DDR3/MCB_DDR3/Rst_tocore_5_1 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/SPEED_IS_10_100 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_CLOCK_INST_0/V6V5V4S6.BUFGMUX_SPEED_CLK found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TXSPEEDIS10100GEN_0/data_in found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/SPEED_IS_10_100 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_CLOCK_INST_0/V6V5V4S6.BUFGMUX_SPEED_CLK found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TXSPEEDIS10100GEN_0/data_in found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/MANIFGEN.I_MANAGEN/I_CONF/CNFG_SPEED_TRI_1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/GMII_TXD_TO_PHY_1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/MANIFGEN.I_MANAGEN/I_CONF/CNFG_SPEED_TRI<1> found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/mux117 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/MANIFGEN.I_MANAGEN/I_CONF/CNFG_SPEED_TRI_1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/GMII_TXD_TO_PHY_5 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/MANIFGEN.I_MANAGEN/I_CONF/CNFG_SPEED_TRI<1> found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/mux1141 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/MANIFGEN.I_MANAGEN/I_CONF/TX_OUT_31 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_SYNC_GMII_MII_TX_RESET_I/R3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/MANIFGEN.I_MANAGEN/I_CONF/TX_OUT_31 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/INT_TX_RST_ASYNCH1 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/INT_TX_RST_ASYNCH found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_REGISTERS/CR0_I/reset_1_i found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_SYNC_GMII_MII_TX_RESET_I/R3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_REGISTERS/CR0_I/reset_1_i found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/INT_TX_RST_ASYNCH1 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/INT_TX_RST_ASYNCH found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/mb_plb/mb_plb/GEN_SPLB_RST[0].I_SPLB_RST found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_SYNC_GMII_MII_TX_RESET_I/R3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/INT_TX_RST_ASYNCH1 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/INT_TX_RST_ASYNCH found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/TX_ER_REG1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/TX_ER_REG2 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/TX_ER_REG1 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/TX_EN_REG1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/TX_EN_REG2 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_GMII_MII_TX_GEN/TX_EN_REG1 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst/Q_reg_2 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/Q_reg_2 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/D<2> found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/D<2>_rt found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[1].rd_stg_inst/Q_reg_1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/Q_reg_1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/D<1> found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.gcx.clkx/gsync_stage[2].rd_stg_inst/D<1>_rt found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram/SDP.WIDE_PRIM9.ram found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/Mshreg_ClientEmacTxdVld_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/n0112<17> found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/Mmux_ClientEmacTxdVld11 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/cLIENTEMAC0TXDVLD_temac found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/I_TX_CLIENT_FIFO/LEGACY_COREGEN_DEPTH.V6_S6_AND_LATER.I_ASYNC_FIFO_BRAM/U0/xst_fifo_generator/gconvfifo.rf/grf.rf/gntv_or_sync_fifo.mem/gbm.gbmg.gbmga.ngecc.bmg/gnativebmg.native_blk_mem_gen/valid.cstr/ramloop[0].ram.r/s6_noinit.ram/SDP.WIDE_PRIM9.ram found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/Mshreg_ClientEmacTxdVld_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/n0112<16> found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/Mmux_ClientEmacTxdVld11 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/cLIENTEMAC0TXDVLD_temac found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/tx_in_progress found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/Mshreg_ClientEmacTxdVld_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/tx_in_progress found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/Mmux_ClientEmacTxdVld11 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/cLIENTEMAC0TXDVLD_temac found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/mux_sel found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/Mshreg_ClientEmacTxdVld_d1 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/mux_sel found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/Mmux_ClientEmacTxdVld11 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/cLIENTEMAC0TXDVLD_temac found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/fifo_empty_reg found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/fifo_empty_reg found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In3 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In3 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In4 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_LL_IF/GEN_WIRES_FOR_CSUM.LLTemac_DST_RDY_dly_n_csum found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_LL_IF/GEN_WIRES_FOR_CSUM.LLTemac_DST_RDY_dly_n_csum found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In3_SW0 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/N700 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In3 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In3 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In4 found. It will be ignored.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_LL_IF/GEN_WIRES_FOR_CSUM.LLTemac_SRC_RDY_dly_n_csum found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_LL_IF/GEN_WIRES_FOR_CSUM.LLTemac_SRC_RDY_dly_n_csum found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In3_SW0 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/N700 found. It will be ignored.
+INFO: [Timing 38-71] No path element with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3-In3 found. It will be ignored.
+INFO: [Common 17-14] Message 'Timing 38-71' appears 50 times and further instances of the messages will be disabled. Use the Tcl command set_msg_limit to change the current settings.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_LL_IF/GEN_WIRES_FOR_CSUM.LLTemac_EOP_dly_n_csum found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_TEMAC_IF_SM/tx_sm_ps_FSM_FFd3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/clientEmacPauseReq_i found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/tx2ClientPauseReq_d found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/rstTxDomain found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/I_TX0/I_TX_TEMAC_IF/I_TX_CL_IF/llTemacRstDetected found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mdm_0/mdm_0/MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/data_Exists_I found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mdm_0/mdm_0/MDM_Core_I1/JTAG_CONTROL_I/Use_UART.RX_FIFO_I/Addr_Counters[3].FDRE_I found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_ADDR_FILTER_TOP/dynamic_af_gen.I_DYNAMIC_CONFIG/hostwrdata_held_reg_19 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_ADDR_FILTER_TOP/dynamic_af_gen.I_DYNAMIC_CONFIG/has_address_filter.has_host_if.has_mac_address_table.gen_ram_host_server[19].dist_ram/SP found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_ADDR_FILTER_TOP/dynamic_af_gen.I_DYNAMIC_CONFIG/hostwrdata_held_reg_7 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_ADDR_FILTER_TOP/dynamic_af_gen.I_DYNAMIC_CONFIG/has_address_filter.has_host_if.has_mac_address_table.gen_ram_host_server[7].dist_ram/SP found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_ADDR_FILTER_TOP/dynamic_af_gen.I_DYNAMIC_CONFIG/hostwrdata_held_reg_11 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/Soft_TEMAC/Soft_TEMAC/SOFT_SYS.I_TEMAC/GMII0.I_TRIMAC_CORE_0/I_TRIMAC_INST/I_ADDR_FILTER_TOP/dynamic_af_gen.I_DYNAMIC_CONFIG/has_address_filter.has_host_if.has_mac_address_table.gen_ram_host_server[11].dist_ram/SP found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_31 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_5 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_28 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_5 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_29 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_5 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_30 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_5 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_29 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_7 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_26 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_7 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_27 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_7 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_30 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_7 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_31 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_4 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_29 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_4 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_30 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_4 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_29 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_6 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_26 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_6 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_27 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_6 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/slv_reg11_30 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name system_i/mb_eth_ifc_0/mb_eth_ifc_0/USER_LOGIC_I/mem_op_len_r_6 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name lom_i/HM/SUM_GEN[28].AMPHIST/s_is_initialized found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name lom_i/HM/SUM_GEN[28].AMPHIST/s_bin_rindex_7 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name lom_i/HM/SUM_GEN[28].AMPHIST/s_is_initialized found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name lom_i/HM/SUM_GEN[28].AMPHIST/s_bin_rindex_5 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-75] No source with name lom_i/HM/SUM_GEN[28].AMPHIST/s_is_initialized found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name lom_i/HM/SUM_GEN[28].AMPHIST/s_bin_rindex_3 found. Path will be displayed but may be missing some functionality.
+INFO: [Timing 38-67] No destination with name Mshreg_s_reg_set_values_179_4 found. Path will be displayed but may be missing some functionality.
+INFO: [Project 1-111] Unisim Transformation Summary:
+  A total of 1031 instances were transformed.
+  IBUFDS_DIFF_OUT => IBUFDS_DIFF_OUT (IBUFDS, IBUFDS): 4 instances
+  INV => LUT1: 508 instances
+  IOBUF => IOBUF (OBUFT, IBUF): 3 instances
+  SRLC16E => SRL16E: 516 instances
+
+Phase 0 | Netlist Checksum: e0aa5946
+open_run: Time (s): cpu = 00:00:42 ; elapsed = 00:00:27 . Memory (MB): peak = 3072.246 ; gain = 99.262
+exit
+INFO: [Common 17-206] Exiting PlanAhead at Thu Mar  8 16:42:47 2018...
+INFO: [Common 17-83] Releasing license: PlanAhead

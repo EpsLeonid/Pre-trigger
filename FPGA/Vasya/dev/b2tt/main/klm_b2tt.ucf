@@ -1,0 +1,22 @@
+
+net ack_p loc=ab14 | iostandard=lvds_25; # B_ACK+
+net ack_n loc=ac14 | iostandard=lvds_25; # B_ACK-
+net trg_p loc=ag7  | iostandard=lvds_25 | diff_term=true; # B_TRG+
+net trg_n loc=ag8  | iostandard=lvds_25 | diff_term=true; # B_TRG-
+
+#trg_p/n at AG24/AH24 are from pin header P5-3(trg_p) P5-1(trg_n) for test
+#test net trg_p loc=ag24 | iostandard=lvds_25 | diff_term=true; # B_TRG+
+#test net trg_n loc=ah24 | iostandard=lvds_25 | diff_term=true; # B_TRG-
+
+### rsv_p loc=ab12 | iostandard=lvds_25; # B_RSV+ (out only)
+### rsv_n loc=ac13 | iostandard=lvds_25; # B_RSV- (out only)
+net clk_p loc=af10 | iostandard=lvds_25 | diff_term=true; # TTDCLK+
+net clk_n loc=ae10 | iostandard=lvds_25 | diff_term=true; # TTDCLK-
+
+net clk_127 period = 7.8 ns;
+
+net led_b<0> loc=ab17 | iostandard=lvcmos25;
+net led_b<1> loc=aa17 | iostandard=lvcmos25;
+
+net oscen  loc=w10 | iostandard=lvcmos25;
+net cbufen loc=w11 | iostandard=lvcmos25;

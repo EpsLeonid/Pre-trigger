@@ -1,0 +1,428 @@
+Release 14.7 - xst P.20131013 (lin64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+--> 
+Parameter TMPDIR set to /home/shebalin/lom/fpga/dev/system/synthesis/xst_temp_dir/
+
+
+Total REAL time to Xst completion: 0.00 secs
+Total CPU time to Xst completion: 0.06 secs
+ 
+--> 
+
+TABLE OF CONTENTS
+  1) Synthesis Options Summary
+  2) HDL Parsing
+  3) HDL Elaboration
+  4) HDL Synthesis
+       4.1) HDL Synthesis Report
+  5) Advanced HDL Synthesis
+       5.1) Advanced HDL Synthesis Report
+  6) Low Level Synthesis
+  7) Partition Report
+  8) Design Summary
+       8.1) Primitive and Black Box Usage
+       8.2) Device utilization summary
+       8.3) Partition Resource Summary
+       8.4) Timing Report
+            8.4.1) Clock Information
+            8.4.2) Asynchronous Control Signals Information
+            8.4.3) Timing Summary
+            8.4.4) Timing Details
+            8.4.5) Cross Clock Domains Report
+
+
+=========================================================================
+*                      Synthesis Options Summary                        *
+=========================================================================
+---- Source Parameters
+Input Format                       : MIXED
+Input File Name                    : "system_lmb_bram_wrapper_xst.prj"
+Verilog Include Directory          : {"/home/shebalin/lom/fpga/dev/system/pcores/" "/home/shebalin/lom/IPRepository/MyProcessorIPLib/pcores/" "/opt/Xilinx/14.7/ISE_DS/EDK/hw/XilinxBFMinterface/pcores/" "/opt/Xilinx/14.7/ISE_DS/EDK/hw/XilinxProcessorIPLib/pcores/" }
+
+---- Target Parameters
+Target Device                      : xc6slx150tfgg900-3
+Output File Name                   : "../implementation/system_lmb_bram_wrapper.ngc"
+
+---- Source Options
+Top Module Name                    : system_lmb_bram_wrapper
+
+---- Target Options
+Add IO Buffers                     : NO
+
+---- General Options
+Optimization Goal                  : speed
+Netlist Hierarchy                  : as_optimized
+Optimization Effort                : 1
+Hierarchy Separator                : /
+
+---- Other Options
+Cores Search Directories           : {../implementation}
+
+=========================================================================
+
+
+=========================================================================
+*                          HDL Parsing                                  *
+=========================================================================
+Parsing VHDL file "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" into library lmb_bram_elaborate_v1_00_a
+Parsing entity <lmb_bram_elaborate>.
+Parsing architecture <STRUCTURE> of entity <lmb_bram_elaborate>.
+Parsing VHDL file "/home/shebalin/lom/fpga/dev/system/hdl/system_lmb_bram_wrapper.vhd" into library work
+Parsing entity <system_lmb_bram_wrapper>.
+Parsing architecture <STRUCTURE> of entity <system_lmb_bram_wrapper>.
+
+=========================================================================
+*                            HDL Elaboration                            *
+=========================================================================
+
+Elaborating entity <system_lmb_bram_wrapper> (architecture <STRUCTURE>) from library <work>.
+
+Elaborating entity <lmb_bram_elaborate> (architecture <STRUCTURE>) with generics from library <lmb_bram_elaborate_v1_00_a>.
+WARNING:HDLCompiler:89 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" Line 42: <ramb16bwer> remains a black-box since it has no binding entity.
+
+=========================================================================
+*                           HDL Synthesis                               *
+=========================================================================
+
+Synthesizing Unit <system_lmb_bram_wrapper>.
+    Related source file is "/home/shebalin/lom/fpga/dev/system/hdl/system_lmb_bram_wrapper.vhd".
+    Set property "KEEP_HIERARCHY = YES".
+    Summary:
+	no macro.
+Unit <system_lmb_bram_wrapper> synthesized.
+
+Synthesizing Unit <lmb_bram_elaborate>.
+    Related source file is "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd".
+        C_MEMSIZE = 65536
+        C_PORT_DWIDTH = 32
+        C_PORT_AWIDTH = 32
+        C_NUM_WE = 4
+        C_FAMILY = "spartan6"
+    Set property "KEEP_HIERARCHY = YES".
+    Set property "BMM_INFO =  " for instance <ramb16bwer_0>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_1>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_2>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_3>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_4>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_5>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_6>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_7>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_8>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_9>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_10>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_11>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_12>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_13>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_14>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_15>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_16>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_17>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_18>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_19>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_20>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_21>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_22>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_23>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_24>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_25>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_26>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_27>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_28>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_29>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_30>.
+    Set property "BMM_INFO =  " for instance <ramb16bwer_31>.
+WARNING:Xst:647 - Input <BRAM_Addr_A<0:15>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <BRAM_Addr_A<30:31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <BRAM_Addr_B<0:15>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <BRAM_Addr_B<30:31>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 760: Output port <DOPA> of the instance <ramb16bwer_0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 760: Output port <DOPB> of the instance <ramb16bwer_0> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 789: Output port <DOPA> of the instance <ramb16bwer_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 789: Output port <DOPB> of the instance <ramb16bwer_1> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 818: Output port <DOPA> of the instance <ramb16bwer_2> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 818: Output port <DOPB> of the instance <ramb16bwer_2> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 847: Output port <DOPA> of the instance <ramb16bwer_3> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 847: Output port <DOPB> of the instance <ramb16bwer_3> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 876: Output port <DOPA> of the instance <ramb16bwer_4> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 876: Output port <DOPB> of the instance <ramb16bwer_4> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 905: Output port <DOPA> of the instance <ramb16bwer_5> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 905: Output port <DOPB> of the instance <ramb16bwer_5> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 934: Output port <DOPA> of the instance <ramb16bwer_6> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 934: Output port <DOPB> of the instance <ramb16bwer_6> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 963: Output port <DOPA> of the instance <ramb16bwer_7> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 963: Output port <DOPB> of the instance <ramb16bwer_7> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 992: Output port <DOPA> of the instance <ramb16bwer_8> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 992: Output port <DOPB> of the instance <ramb16bwer_8> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1021: Output port <DOPA> of the instance <ramb16bwer_9> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1021: Output port <DOPB> of the instance <ramb16bwer_9> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1050: Output port <DOPA> of the instance <ramb16bwer_10> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1050: Output port <DOPB> of the instance <ramb16bwer_10> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1079: Output port <DOPA> of the instance <ramb16bwer_11> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1079: Output port <DOPB> of the instance <ramb16bwer_11> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1108: Output port <DOPA> of the instance <ramb16bwer_12> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1108: Output port <DOPB> of the instance <ramb16bwer_12> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1137: Output port <DOPA> of the instance <ramb16bwer_13> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1137: Output port <DOPB> of the instance <ramb16bwer_13> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1166: Output port <DOPA> of the instance <ramb16bwer_14> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1166: Output port <DOPB> of the instance <ramb16bwer_14> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1195: Output port <DOPA> of the instance <ramb16bwer_15> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1195: Output port <DOPB> of the instance <ramb16bwer_15> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1224: Output port <DOPA> of the instance <ramb16bwer_16> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1224: Output port <DOPB> of the instance <ramb16bwer_16> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1253: Output port <DOPA> of the instance <ramb16bwer_17> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1253: Output port <DOPB> of the instance <ramb16bwer_17> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1282: Output port <DOPA> of the instance <ramb16bwer_18> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1282: Output port <DOPB> of the instance <ramb16bwer_18> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1311: Output port <DOPA> of the instance <ramb16bwer_19> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1311: Output port <DOPB> of the instance <ramb16bwer_19> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1340: Output port <DOPA> of the instance <ramb16bwer_20> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1340: Output port <DOPB> of the instance <ramb16bwer_20> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1369: Output port <DOPA> of the instance <ramb16bwer_21> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1369: Output port <DOPB> of the instance <ramb16bwer_21> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1398: Output port <DOPA> of the instance <ramb16bwer_22> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1398: Output port <DOPB> of the instance <ramb16bwer_22> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1427: Output port <DOPA> of the instance <ramb16bwer_23> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1427: Output port <DOPB> of the instance <ramb16bwer_23> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1456: Output port <DOPA> of the instance <ramb16bwer_24> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1456: Output port <DOPB> of the instance <ramb16bwer_24> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1485: Output port <DOPA> of the instance <ramb16bwer_25> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1485: Output port <DOPB> of the instance <ramb16bwer_25> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1514: Output port <DOPA> of the instance <ramb16bwer_26> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1514: Output port <DOPB> of the instance <ramb16bwer_26> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1543: Output port <DOPA> of the instance <ramb16bwer_27> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1543: Output port <DOPB> of the instance <ramb16bwer_27> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1572: Output port <DOPA> of the instance <ramb16bwer_28> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1572: Output port <DOPB> of the instance <ramb16bwer_28> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1601: Output port <DOPA> of the instance <ramb16bwer_29> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1601: Output port <DOPB> of the instance <ramb16bwer_29> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1630: Output port <DOPA> of the instance <ramb16bwer_30> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1630: Output port <DOPB> of the instance <ramb16bwer_30> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1659: Output port <DOPA> of the instance <ramb16bwer_31> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "/home/shebalin/lom/fpga/dev/system/hdl/elaborate/lmb_bram_elaborate_v1_00_a/hdl/vhdl/lmb_bram_elaborate.vhd" line 1659: Output port <DOPB> of the instance <ramb16bwer_31> is unconnected or connected to loadless signal.
+    Summary:
+	no macro.
+Unit <lmb_bram_elaborate> synthesized.
+
+=========================================================================
+HDL Synthesis Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                       Advanced HDL Synthesis                          *
+=========================================================================
+
+
+=========================================================================
+Advanced HDL Synthesis Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                         Low Level Synthesis                           *
+=========================================================================
+
+Optimizing unit <system_lmb_bram_wrapper> ...
+
+Optimizing unit <lmb_bram_elaborate> ...
+
+Mapping all equations...
+Building and optimizing final netlist ...
+Found area constraint ratio of 100 (+ 0) on block system_lmb_bram_wrapper, actual ratio is 0.
+
+Final Macro Processing ...
+
+=========================================================================
+Final Register Report
+
+Found no macro
+=========================================================================
+
+=========================================================================
+*                           Partition Report                            *
+=========================================================================
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+=========================================================================
+*                            Design Summary                             *
+=========================================================================
+
+Top Level Output File Name         : system_lmb_bram_wrapper.ngc
+
+Primitive and Black Box Usage:
+------------------------------
+# BELS                             : 1
+#      GND                         : 1
+# RAMS                             : 32
+#      RAMB16BWER                  : 32
+
+Device utilization summary:
+---------------------------
+
+Selected Device : 6slx150tfgg900-3 
+
+
+Slice Logic Utilization: 
+
+Slice Logic Distribution: 
+ Number of LUT Flip Flop pairs used:      0
+   Number with an unused Flip Flop:       0  out of      0         
+   Number with an unused LUT:             0  out of      0         
+   Number of fully used LUT-FF pairs:     0  out of      0         
+   Number of unique control sets:         0
+
+IO Utilization: 
+ Number of IOs:                         206
+ Number of bonded IOBs:                   0  out of    540     0%  
+
+Specific Feature Utilization:
+ Number of Block RAM/FIFO:               32  out of    268    11%  
+    Number using Block RAM only:         32
+
+---------------------------
+Partition Resource Summary:
+---------------------------
+
+  No Partitions were found in this design.
+
+---------------------------
+
+
+=========================================================================
+Timing Report
+
+NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
+      FOR ACCURATE TIMING INFORMATION PLEASE REFER TO THE TRACE REPORT
+      GENERATED AFTER PLACE-and-ROUTE.
+
+Clock Information:
+------------------
+-----------------------------------+----------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)      | Load  |
+-----------------------------------+----------------------------+-------+
+BRAM_Clk_A                         | NONE(lmb_bram/ramb16bwer_0)| 32    |
+BRAM_Clk_B                         | NONE(lmb_bram/ramb16bwer_0)| 32    |
+-----------------------------------+----------------------------+-------+
+INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
+
+Asynchronous Control Signals Information:
+----------------------------------------
+No asynchronous control signals found in this design
+
+Timing Summary:
+---------------
+Speed Grade: -3
+
+   Minimum period: No path found
+   Minimum input arrival time before clock: 0.350ns
+   Maximum output required time after clock: 1.850ns
+   Maximum combinational path delay: No path found
+
+Timing Details:
+---------------
+All values displayed in nanoseconds (ns)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'BRAM_Clk_B'
+  Total number of paths / destination ports: 672 / 672
+-------------------------------------------------------------------------
+Offset:              0.350ns (Levels of Logic = 1)
+  Source:            BRAM_Addr_B<16> (PAD)
+  Destination:       lmb_bram/ramb16bwer_0 (RAM)
+  Destination Clock: BRAM_Clk_B rising
+
+  Data Path: BRAM_Addr_B<16> to lmb_bram/ramb16bwer_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     begin scope: 'lmb_bram:BRAM_Addr_B<16>'
+     RAMB16BWER:ADDRB13        0.350          ramb16bwer_0
+    ----------------------------------------
+    Total                      0.350ns (0.350ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET IN BEFORE for Clock 'BRAM_Clk_A'
+  Total number of paths / destination ports: 672 / 672
+-------------------------------------------------------------------------
+Offset:              0.350ns (Levels of Logic = 1)
+  Source:            BRAM_Addr_A<16> (PAD)
+  Destination:       lmb_bram/ramb16bwer_0 (RAM)
+  Destination Clock: BRAM_Clk_A rising
+
+  Data Path: BRAM_Addr_A<16> to lmb_bram/ramb16bwer_0
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     begin scope: 'lmb_bram:BRAM_Addr_A<16>'
+     RAMB16BWER:ADDRA13        0.350          ramb16bwer_0
+    ----------------------------------------
+    Total                      0.350ns (0.350ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'BRAM_Clk_A'
+  Total number of paths / destination ports: 32 / 32
+-------------------------------------------------------------------------
+Offset:              1.850ns (Levels of Logic = 1)
+  Source:            lmb_bram/ramb16bwer_0 (RAM)
+  Destination:       BRAM_Din_A<0> (PAD)
+  Source Clock:      BRAM_Clk_A rising
+
+  Data Path: lmb_bram/ramb16bwer_0 to BRAM_Din_A<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB16BWER:CLKA->DOA0    0   1.850   0.000  ramb16bwer_0 (BRAM_Din_A<0>)
+     end scope: 'lmb_bram:BRAM_Din_A<0>'
+    ----------------------------------------
+    Total                      1.850ns (1.850ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'BRAM_Clk_B'
+  Total number of paths / destination ports: 32 / 32
+-------------------------------------------------------------------------
+Offset:              1.850ns (Levels of Logic = 1)
+  Source:            lmb_bram/ramb16bwer_0 (RAM)
+  Destination:       BRAM_Din_B<0> (PAD)
+  Source Clock:      BRAM_Clk_B rising
+
+  Data Path: lmb_bram/ramb16bwer_0 to BRAM_Din_B<0>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     RAMB16BWER:CLKB->DOB0    0   1.850   0.000  ramb16bwer_0 (BRAM_Din_B<0>)
+     end scope: 'lmb_bram:BRAM_Din_B<0>'
+    ----------------------------------------
+    Total                      1.850ns (1.850ns logic, 0.000ns route)
+                                       (100.0% logic, 0.0% route)
+
+=========================================================================
+
+Cross Clock Domains Report:
+--------------------------
+
+=========================================================================
+
+
+Total REAL time to Xst completion: 10.00 secs
+Total CPU time to Xst completion: 10.07 secs
+ 
+--> 
+
+
+Total memory usage is 405364 kilobytes
+
+Number of errors   :    0 (   0 filtered)
+Number of warnings :    5 (   0 filtered)
+Number of infos    :   65 (   0 filtered)
+

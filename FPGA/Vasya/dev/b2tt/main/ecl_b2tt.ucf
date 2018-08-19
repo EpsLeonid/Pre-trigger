@@ -1,0 +1,19 @@
+
+# ecl_b2l.ucf
+# part: xc6slx150t-fgg900-3
+
+######
+# b2tt
+######
+net ack_p loc=e7  | iostandard=lvds_25;
+net ack_n loc=d7  | iostandard=lvds_25;
+net trg_p loc=f6  | iostandard=lvds_25 | diff_term=true;
+net trg_n loc=e6  | iostandard=lvds_25 | diff_term=true;
+### rsv_p loc=d6  | iostandard=lvds_25;
+### rsv_n loc=c6  | iostandard=lvds_25;
+net clk_p loc=c16 | iostandard=lvds_25 | diff_term=true;
+net clk_n loc=a16 | iostandard=lvds_25 | diff_term=true;
+#net clk_p clock_dedicated_route = false;
+
+net clk_127 period = 7.8 ns;
+

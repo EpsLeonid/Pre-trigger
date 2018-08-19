@@ -1,0 +1,12 @@
+#!/bin/tcsh -f
+
+if ( ! $?XILINX ) then
+  source /opt/Xilinx/14.7/ISE_DS/settings64.csh
+endif
+
+#bitgen -f ./prj/top.ut ./prj/top.ncd ./bit/lom_dev.bit -bd /home/shebalin/lom/embd/ws_boot/bootloader/Debug/bootloader_0x200000.elf
+#scp bit/lom_dev.bit b2ecl09:lom/bit/
+
+bitgen -f ./prj/top.ut ./prj/top.ncd -g Compress ./bit/lom_devc.bit -bd /home/shebalin/lom/embd/ws_boot/bootloader/Debug/bootloader_0x200000.elf
+#-g Compress 
+scp bit/lom_devc.bit b2ecl09:lom/bit/

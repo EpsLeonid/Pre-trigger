@@ -1,0 +1,76 @@
+
+# TB-FMCL-PH version
+#  ack_p:    TM21Rmod-1 CN4-11 S6-H11 # LA10_N (opposite polarity)
+#  ack_n:    TM21Rmod-2 CN4-12 S6-H10 # LA10_P
+#  trg_p:    TM21Rmod-3 CN4-8  S6-D4  # LA06_P (correct polarity)
+#  trg_n:    TM21Rmod-6 CN4-7  S6-D5  # LA06_N
+#  clk_p:    TM21Rmod-7 CN4-5  S6-A4  # LA05_N (opposite polarity)
+#  clk_n:    TM21Rmod-8 CN4-6  S6-C4  # LA05_P
+#
+#  ext0_p:   TM21R-1 CN4-25   S6-AB10 # LA27_N (opposite polarity)
+#  ext0_n:   TM21R-2 CN4-26   S6-AA10 # LA27_P
+#  ext1_p:   TM21R-3 CN4-24   S6-U14  # LA26_P (not for standard LAN cable)
+#  ext1_n:   TM21R-4 CN4-23   S6-U13  # LA26_N
+#  ext2_n:   TM21R-5 CN4-22   S6-U9   # LA23_P (not for standard LAN cable)
+#  ext2_p:   TM21R-6 CN4-21   S6-V9   # LA23_N
+#  clkout_p: TM21R-7 CN4-19   S6-U12  # LA18_N (opposite polarity)
+#  clkout_n: TM21R-8 CN4-20   S6-T12  # LA18_P
+
+#
+# SMA_GPIO_P - S6 A3
+# SMA_GPIO_N - S6 B3
+# 
+# LED0 - DS3 - S6 D17
+# LED1 - DS4 - S6 AB4
+# LED2 - DS5 - S6 D21
+# LED3 - DS6 - S6 W15
+#
+# USER_CLOCK(lclk) - S6 AB13
+
+net ack_n loc=h11 | iostandard=lvds_25;
+net ack_p loc=h10 | iostandard=lvds_25;
+net trg_p loc=d4  | iostandard=lvds_25 | diff_term=true;
+net trg_n loc=d5  | iostandard=lvds_25 | diff_term=true;
+### rsv_p loc=xx | iostandard=lvds_25;
+### rsv_n loc=xx | iostandard=lvds_25;
+net clk_p loc=c4  | iostandard=lvds_25 | diff_term=true;
+net clk_n loc=a4  | iostandard=lvds_25 | diff_term=true;
+net clk_p clock_dedicated_route = false;
+### clkout_p clock_dedicated_route = false;
+
+net clk_127 period = 7.8 ns;
+#net b2tt/clk_inv period = 7.8 ns;
+
+net ext_p<0> loc=aa10 | iostandard=lvcmos25;
+net ext_n<0> loc=ab10 | iostandard=lvcmos25;
+net ext_p<1> loc=u14  | iostandard=lvcmos25;
+net ext_n<1> loc=u13  | iostandard=lvcmos25;
+net ext_p<2> loc=u9   | iostandard=lvcmos25;
+net ext_n<2> loc=v9   | iostandard=lvcmos25;
+### clkout_p loc=t12  | iostandard=lvds_25;
+### clkout_n loc=u12  | iostandard=lvds_25;
+
+# net user_clock loc=ab13 | iostandard=lvcmos25;
+net sma_gpio_p loc=b3 | iostandard=lvcmos25;
+net sma_gpio_n loc=a3 | iostandard=lvcmos25;
+
+net led<0> loc=d17 | iostandard=lvcmos25;
+net led<1> loc=ab4 | iostandard=lvcmos25;
+net led<2> loc=d21 | iostandard=lvcmos25;
+net led<3> loc=w15 | iostandard=lvcmos25;
+
+
+### pushsw<0>  loc = F3;    ## SW4 pushbutton (active-high)
+net pushsw<1>  loc = G6;    ## SW7 pushbutton (active-high)
+net pushsw<2>  loc = F5;    ## SW5 pushbutton (active-high)
+net pushsw<3>  loc = C1;    ## SW8 pushbutton (active-high)
+
+net header<0>  loc = G7;    ## 1 on J55  (through level shifter U52)
+net header<1>  loc = H6;    ## 2 on J55  (through level shifter U52)
+net header<2>  loc = D1;    ## 3 on J55  (through level shifter U52)
+net header<3>  loc = R7;    ## 4 on J55  (through level shifter U52)
+
+net dipsw<0>  loc = C18;   ## 1 on S2 DIP switch (active-high)
+net dipsw<1>  loc = Y6;    ## 2 on S2 DIP switch (active-high)
+net dipsw<2>  loc = W6;    ## 3 on S2 DIP switch (active-high)
+### dipsw<3>  loc = E4;    ## 4 on S2 DIP switch (active-high)

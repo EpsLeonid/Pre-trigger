@@ -1,0 +1,29 @@
+orig -- basic sceleton from Zhulanov  
+v0.1  -- only one deserializer, try to read buffers
+v0.12 -- all deserializers included
+v0.15 -- move to ise 14.7 from 13.4
+v0.2  -- all desers works, buffer is filled simple trigger is implemented, new reg_file
+v0.25 -- add mem_file, amplitude histogram for one channel, LOM entity measuring amplitude and find for coincidence (chennel 1 and 2 at the moment). Add registers for ADC masks. 
+v0.27 -- change directory structure of the project. Now is is: vhd -- vhdl source files, prj -- ise project files, tb -- testbench files, ucf -- user constraints, bit -- for bitstreams. Change reg_map to use records for registers information (index, number, default value, acess type), reg_file to automaticaly generate registers mapping for all ADCs, new registers are now can be added by one string in one place. fixed mem_file amplitude histogram tested to be read out correctly. Added soft reset through acess to status register. run/stop accumulating histograms. 
+v0.271 -- add histo test mode
+v0.28  -- add self-tester entity which provides samples from test buffer to the input of LOM logic
+v0.29  -- realized writing to the test buffer, histograms changed
+v0.30  -- include special deserializer with PLL used for misconnected ADC channel, reg_file slightly changed.
+          Amplitude histogramming works. Coincedence histogramming doesn't. 
+
+v0.35      30.01.2018 Found problem with filling coincidence duration histograms. Simulation works now. 
+                      Started to implement counters_manager component. It should manage counters for ADC occupancy, 
+                      coincidence counters etc. 
+           01.02.2018 Counters_manager works properly. Filling coincidence counters and filling the coincidence duration histograms works.
+                      Added control register and lommode register, status register contains more information. 
+                      Histograms filling is stopped when events number equals given value.
+v0.36     Added overflow bit for histograms and counters. Dead time is implemented for bhabha counting.
+v0.37     All ADC buffers swiched from ipcore to parametrized vhdl code. Fixed deserializer for broken channel.
+          FADC SPI frequency increased. 
+v0.38     Added some missing DFF. Project is routed much faster now. Added TIG constraints for some slow signals.
+v0.39     b2tt included into the project
+
+v0.4      Trigger for ADC buffer is moved to lom components. Trigger types (adc hit, bhabha, random) implemented. Running sums are implemented along with the filling of corresponded buffer.
+
+dev       development version
+

@@ -1,0 +1,16 @@
+#-----------------------------------------------------------
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:24:36 MDT 2013
+# Start of session at: Thu Mar  8 12:39:32 2018
+# Process ID: 30714
+# Log file: /home/shebalin/lom/fpga/dev/prj/planAhead.log
+# Journal file: /home/shebalin/lom/fpga/dev/prj/planAhead.jou
+#-----------------------------------------------------------
+start_gui
+create_project project_1 /home/shebalin/lom/fpga/dev/prj/project_1 -part xc6slx150tfgg900-3
+set_property design_mode GateLvl [current_fileset]
+add_files -norecurse /home/shebalin/lom/fpga/dev/prj/top.ngc
+import_files -force -norecurse
+import_files -fileset constrs_1 -force -norecurse /home/shebalin/lom/fpga/dev/ucf/top.ucf
+import_as_run -run impl_1 -twx /home/shebalin/lom/fpga/dev/prj/top.twx /home/shebalin/lom/fpga/dev/prj/top.ncd
+open_run impl_1

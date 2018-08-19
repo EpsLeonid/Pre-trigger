@@ -1,0 +1,31 @@
+
+net led[4] loc = al6 | iostandard = lvcmos33;
+net led[3] loc = am6 | iostandard = lvcmos33;
+net led[2] loc = an5 | iostandard = lvcmos33;
+net led[1] loc = ap6 | iostandard = lvcmos33;
+
+net boardid[0]  loc = h30 | iostandard = lvcmos33 | pulldown = true;
+net boardid[1]  loc = h29 | iostandard = lvcmos33 | pulldown = true;
+net boardid[2]  loc = f29 | iostandard = lvcmos33 | pulldown = true;
+net boardid[3]  loc = g29 | iostandard = lvcmos33 | pulldown = true;
+net boardid[4]  loc = h28 | iostandard = lvcmos33 | pulldown = true;
+net boardid[5]  loc = g28 | iostandard = lvcmos33 | pulldown = true;
+net boardid[6]  loc = f27 | iostandard = lvcmos33 | pulldown = true;
+net boardid[7]  loc = g27 | iostandard = lvcmos33 | pulldown = true;
+net boardid[8]  loc = j27 | iostandard = lvcmos33 | pulldown = true;
+net boardid[9]  loc = j26 | iostandard = lvcmos33 | pulldown = true;
+net boardid[10] loc = h26 | iostandard = lvcmos33 | pulldown = true;
+net boardid[11] loc = j25 | iostandard = lvcmos33 | pulldown = true;
+
+########################################################################
+# B2TT
+########################################################################
+net r_ack_p loc = l16 | iostandard=lvds_25;
+net r_ack_n loc = l15 | iostandard=lvds_25;
+net r_trg_p loc = l17 | iostandard=lvds_25 | diff_term=true;
+net r_trg_n loc = m17 | iostandard=lvds_25 | diff_term=true;
+net r_rsv_p loc = j17 | iostandard=lvcmos25;
+net r_rsv_n loc = k17 | iostandard=lvcmos25;
+net r_clk_p loc = j16 | iostandard=lvds_25 | diff_term=true;
+net r_clk_n loc = j15 | iostandard=lvds_25 | diff_term=true;
+net clk_127 period = 7.8 ns;

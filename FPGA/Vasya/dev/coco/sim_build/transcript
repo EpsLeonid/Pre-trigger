@@ -1,0 +1,764 @@
+# do runsim.do 
+# ** Warning: vmap will not overwrite local modelsim.ini.
+# Modifying modelsim.ini
+# Model Technology ModelSim SE-64 vcom 10.2c Compiler 2013.07 Jul 18 2013
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Compiling package constants
+# -- Compiling package body constants
+# -- Loading package constants
+# -- Loading package std_logic_arith
+# -- Loading package constants
+# -- Compiling package types
+# -- Compiling package body types
+# -- Loading package types
+# -- Loading package NUMERIC_STD
+# -- Loading package STD_LOGIC_UNSIGNED
+# -- Loading package types
+# -- Compiling package utils
+# -- Compiling package body utils
+# -- Loading package utils
+# -- Loading package utils
+# -- Compiling package reg_map
+# -- Compiling package body reg_map
+# -- Loading package reg_map
+# -- Compiling entity coincidence
+# -- Compiling architecture coin_arch of coincidence
+# -- Compiling entity discriminator
+# -- Compiling architecture discr_arch of discriminator
+# -- Compiling entity amplitude
+# -- Compiling architecture ampl_arch of amplitude
+# -- Loading package reg_map
+# -- Compiling entity counters_manager
+# -- Compiling architecture cntman_arch of counters_manager
+# -- Compiling entity bram_sdp_cc
+# -- Compiling architecture rtl of bram_sdp_cc
+# -- Compiling entity bram_sdp
+# -- Compiling architecture rtl of bram_sdp
+# -- Compiling entity bram_12x5_sdp
+# -- Compiling architecture rtl of bram_12x5_sdp
+# -- Compiling entity histo
+# -- Compiling architecture histo_arch of histo
+# -- Loading entity bram_sdp_cc
+# -- Compiling entity histo_manager
+# -- Compiling architecture histman_arch of histo_manager
+# -- Loading entity histo
+# -- Compiling entity lom
+# -- Compiling architecture lom_arch of lom
+# -- Loading entity discriminator
+# -- Loading entity amplitude
+# -- Loading entity coincidence
+# -- Loading entity histo_manager
+# -- Loading entity counters_manager
+# vsim -L work -foreign {cocotb_init libfli.so} -onfinish exit -t 1ps lom 
+# ** Note: (vsim-3812) Design is being optimized...
+# //  ModelSim SE-64 10.2c Jul 18 2013 Linux 3.13.0-139-generic
+# //
+# //  Copyright 1991-2013 Mentor Graphics Corporation
+# //  All Rights Reserved.
+# //
+# //  THIS WORK CONTAINS TRADE SECRET AND PROPRIETARY INFORMATION
+# //  WHICH IS THE PROPERTY OF MENTOR GRAPHICS CORPORATION OR ITS
+# //  LICENSORS AND IS SUBJECT TO LICENSE TERMS.
+# //
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading ieee.std_logic_arith(body)
+# Loading ieee.std_logic_unsigned(body)
+# Loading work.constants(body)
+# Loading work.types(body)
+# Loading work.utils(body)
+# Loading work.reg_map(body)
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: VERSION       INDEX :: 0
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: STATUS        INDEX :: 1
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: LOMCTRL       INDEX :: 2
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: LOMMODE       INDEX :: 3
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: NEVT          INDEX :: 4
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: EVTCNT        INDEX :: 5
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: DEADTIME_H    INDEX :: 6
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: DEADTIME_L    INDEX :: 7
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: CLKMAX_H      INDEX :: 8
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: CLKMAX_L      INDEX :: 9
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: TEXPAND       INDEX :: 10
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: NTESTEVT      INDEX :: 11
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: DTCNT_H       INDEX :: 15
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: DTCNT_L       INDEX :: 16
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: BHACNT_H      INDEX :: 17
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: BHACNT_L      INDEX :: 18
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: CLKCNT_LOW    INDEX :: 13
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: CLKCNT_HIGH   INDEX :: 12
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADCADDR0      INDEX :: 14
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADCSEL        INDEX :: 19
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: BITSHIFT1     INDEX :: 20
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: BITSHIFT2     INDEX :: 21
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: INFO          INDEX :: 22
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADCSTOP       INDEX :: 23
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADC1_BUF_MASK INDEX :: 24
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADC2_BUF_MASK INDEX :: 25
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADC1_LOM_MASK INDEX :: 26
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADC2_LOM_MASK INDEX :: 27
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADCTHRESH_1   INDEX :: 28
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADC_Q_THR_1   INDEX :: 60
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: COITHRESH_1   INDEX :: 92
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: COICNT_1      INDEX :: 108
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: ADCCNT_1      INDEX :: 124
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: LENGTH :: 172
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# ** Note: REG NAME :: COIDUR_1      INDEX :: 156
+#    Time: 0 ps  Iteration: 0  Region: /reg_map File: /home/shebalin/lom/fpga/dev/coco/../vhd/reg_map.vhd
+# Loading work.lom(lom_arch)#1
+# Loading work.histo_manager(histman_arch)#1
+# Loading work.histo(histo_arch)#1
+# Loading work.histo(histo_arch)#2
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(1)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(2)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(3)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(4)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(5)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(6)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(7)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(8)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(9)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(10)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(11)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(12)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(13)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(14)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(15)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# ** Warning: (vsim-8683) Uninitialized out port /lom/CU_GEN(16)/CU/o_coidur_overflow has no driver.
+# This port will contribute value (U) to the signal network.
+# Loading /home/shebalin/cocotb/build/libs/x86_64/libfli.so
+#      -.--ns INFO     cocotb.gpi                                  FliImpl.cpp:1037 in cocotb_init                     cocotb_init called
+# 
+#      -.--ns INFO     cocotb.gpi                                GpiCommon.cpp:91   in gpi_print_registered_impl       FLI registered
+#     0.00ns INFO     cocotb.gpi                                  gpi_embed.c:253  in embed_sim_init                  Running on ModelSim SE-64 version 10.2c 2013.07
+#     0.00ns INFO     cocotb.gpi                                  gpi_embed.c:254  in embed_sim_init                  Python interpreter initialised and cocotb loaded!
+#     0.00ns INFO     cocotb                                      __init__.py:118  in _initialise_testbench           Running tests with Cocotb v1.0.1 from /home/shebalin/cocotb
+#     0.00ns INFO     cocotb                                      __init__.py:134  in _initialise_testbench           Seeding Python random module with 1518720359
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_001
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_002
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_003
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_004
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_005
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_006
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_007
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_008
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_009
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_010
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_011
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_012
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_013
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_014
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_015
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.run_test_016
+#     0.00ns INFO     cocotb.regression                         regression.py:176  in initialise                      Found test lom_cocotb.wavedrom_test
+#     0.00ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 1/17: run_test_001
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339b310       decorators.py:203  in send                            Starting test: "run_test_001"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: None
+#                                                                                                                     	idle_inserter: None
+#                                                                                                                     
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339b310       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(16)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(15)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(14)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(13)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(12)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(11)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(10)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(9)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(8)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(7)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(6)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(5)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(4)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(3)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(2)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/COI_GEN(1)/COIHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(32)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(31)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(30)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(29)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(28)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(27)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(26)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(25)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(24)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(23)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(22)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(21)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(20)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(19)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(18)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(17)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(16)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(15)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(14)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(13)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(12)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(11)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(10)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(9)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(8)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(7)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(6)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(5)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(4)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(3)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(2)/AMPHIST
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 0 ps  Iteration: 0  Instance: /lom/HM/ADC_GEN(1)/AMPHIST
+#     0.00ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_001 (result was TestError)
+#     0.00ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 2/17: run_test_002
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339b110       decorators.py:203  in send                            Starting test: "run_test_002"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: None
+#                                                                                                                     	idle_inserter: wave ()
+#                                                                                                                     
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339b110       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.00ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_002 (result was TestError)
+#     0.00ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 3/17: run_test_003
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab3391ed0       decorators.py:203  in send                            Starting test: "run_test_003"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: None
+#                                                                                                                     	idle_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab3391ed0       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.00ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_003 (result was TestError)
+#     0.00ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 4/17: run_test_004
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339bdd0       decorators.py:203  in send                            Starting test: "run_test_004"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: None
+#                                                                                                                     	idle_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339bdd0       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.00ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_004 (result was TestError)
+#     0.00ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 5/17: run_test_005
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339b510       decorators.py:203  in send                            Starting test: "run_test_005"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: wave ()
+#                                                                                                                     	idle_inserter: None
+#                                                                                                                     
+#     0.00ns INFO     ..coroutine._my_test.0x2aaab339b510       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_005 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 6/17: run_test_006
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab3391cd0       decorators.py:203  in send                            Starting test: "run_test_006"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: wave ()
+#                                                                                                                     	idle_inserter: wave ()
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab3391cd0       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_006 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 7/17: run_test_007
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab3391ad0       decorators.py:203  in send                            Starting test: "run_test_007"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: wave ()
+#                                                                                                                     	idle_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab3391ad0       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_007 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 8/17: run_test_008
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab339b910       decorators.py:203  in send                            Starting test: "run_test_008"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: wave ()
+#                                                                                                                     	idle_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab339b910       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_008 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 9/17: run_test_009
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33918d0       decorators.py:203  in send                            Starting test: "run_test_009"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     	idle_inserter: None
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33918d0       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_009 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 10/17: run_test_010
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1210       decorators.py:203  in send                            Starting test: "run_test_010"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     	idle_inserter: wave ()
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1210       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_010 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 11/17: run_test_011
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1410       decorators.py:203  in send                            Starting test: "run_test_011"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     	idle_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1410       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_011 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 12/17: run_test_012
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1810       decorators.py:203  in send                            Starting test: "run_test_012"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     	idle_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1810       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_012 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 13/17: run_test_013
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1610       decorators.py:203  in send                            Starting test: "run_test_013"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     	idle_inserter: None
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab33a1610       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_013 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 14/17: run_test_014
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab339b710       decorators.py:203  in send                            Starting test: "run_test_014"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     	idle_inserter: wave ()
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab339b710       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_014 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 15/17: run_test_015
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab339bfd0       decorators.py:203  in send                            Starting test: "run_test_015"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     	idle_inserter: intermittent_single_cycles (Generator to intermittently insert a single cycle pulse)
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab339bfd0       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.01ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_015 (result was TestError)
+#     0.01ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 16/17: run_test_016
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab3391490       decorators.py:203  in send                            Starting test: "run_test_016"
+#                                                                                                                     Description: Automatically generated test
+#                                                                                                                     
+#                                                                                                                     	backpressure_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     	idle_inserter: random_50_percent (50% duty cycle with random width)
+#                                                                                                                     
+#     0.01ns INFO     ..coroutine._my_test.0x2aaab3391490       decorators.py:217  in send                            run_test() got an unexpected keyword argument 'backpressure_inserter'
+#     0.02ns ERROR    cocotb.regression                         regression.py:286  in handle_result                   Test Failed: run_test_016 (result was TestError)
+#     0.02ns INFO     cocotb.regression                         regression.py:307  in execute                         Running test 17/17: wavedrom_test
+#     0.02ns INFO     ..tine.wavedrom_test.0x2aaab339bb10       decorators.py:203  in send                            Starting test: "wavedrom_test"
+#                                                                                                                     Description: 
+#                                                                                                                                 Generate a JSON wavedrom diagram of a trace
+#                                                                                                                         
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: CONV_INTEGER: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, and it has been converted to 0.
+#    Time: 5016 ps  Iteration: 2  Instance: /lom/HM
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 5016 ps  Iteration: 2  Instance: /lom
+# ** Warning: There is an 'U'|'X'|'W'|'Z'|'-' in an arithmetic operand, the result will be 'X'(es).
+#    Time: 10016 ps  Iteration: 2  Instance: /lom
+#    15.02ns INFO     cocotb.lom                                lom_cocotb.py:187  in wavedrom_test                   {
+#                                                                                                                         "signal": [
+#                                                                                                                             {
+#                                                                                                                                 "name": "clock", 
+#                                                                                                                                 "wave": "p."
+#                                                                                                                             }, 
+#                                                                                                                             {
+#                                                                                                                                 "name": "i_reset", 
+#                                                                                                                                 "wave": "u."
+#                                                                                                                             }
+#                                                                                                                         ]
+#                                                                                                                     }
+#    15.02ns INFO     cocotb.regression                         regression.py:252  in handle_result                   Test Passed: wavedrom_test
+#    15.02ns ERROR    cocotb.regression                         regression.py:196  in tear_down                       Failed 16 out of 17 tests (0 skipped)
+#    15.02ns INFO     cocotb.regression                         regression.py:361  in _log_test_summary               **********************************************************************************
+#                                                                                                                     ** TEST                      PASS/FAIL  SIM TIME(NS)  REAL TIME(S)  RATIO(NS/S) **
+#                                                                                                                     **********************************************************************************
+#                                                                                                                     ** lom_cocotb.run_test_001     FAIL            0.00          0.00         0.22  **
+#                                                                                                                     ** lom_cocotb.run_test_002     FAIL            0.00          0.00         2.31  **
+#                                                                                                                     ** lom_cocotb.run_test_003     FAIL            0.00          0.00         2.36  **
+#                                                                                                                     ** lom_cocotb.run_test_004     FAIL            0.00          0.00         1.16  **
+#                                                                                                                     ** lom_cocotb.run_test_005     FAIL            0.00          0.00         0.80  **
+#                                                                                                                     ** lom_cocotb.run_test_006     FAIL            0.00          0.00         0.78  **
+#                                                                                                                     ** lom_cocotb.run_test_007     FAIL            0.00          0.00         1.89  **
+#                                                                                                                     ** lom_cocotb.run_test_008     FAIL            0.00          0.00         2.23  **
+#                                                                                                                     ** lom_cocotb.run_test_009     FAIL            0.00          0.00         2.19  **
+#                                                                                                                     ** lom_cocotb.run_test_010     FAIL            0.00          0.00         0.82  **
+#                                                                                                                     ** lom_cocotb.run_test_011     FAIL            0.00          0.00         2.05  **
+#                                                                                                                     ** lom_cocotb.run_test_012     FAIL            0.00          0.00         2.19  **
+#                                                                                                                     ** lom_cocotb.run_test_013     FAIL            0.00          0.00         2.02  **
+#                                                                                                                     ** lom_cocotb.run_test_014     FAIL            0.00          0.00         2.15  **
+#                                                                                                                     ** lom_cocotb.run_test_015     FAIL            0.00          0.00         2.23  **
+#                                                                                                                     ** lom_cocotb.run_test_016     FAIL            0.00          0.00         2.44  **
+#                                                                                                                     ** lom_cocotb.wavedrom_test    PASS           15.00          0.01      2294.13  **
+#                                                                                                                     **********************************************************************************
+#                                                                                                                     
+#    15.02ns INFO     cocotb.regression                         regression.py:378  in _log_sim_summary                *************************************************************************************
+#                                                                                                                     **                                 ERRORS : 16                                     **
+#                                                                                                                     *************************************************************************************
+#                                                                                                                     **                               SIM TIME : 15.02 NS                               **
+#                                                                                                                     **                              REAL TIME : 0.05 S                                 **
+#                                                                                                                     **                        SIM / REAL TIME : 280.24 NS/S                            **
+#                                                                                                                     *************************************************************************************
+#                                                                                                                     
+#    15.02ns INFO     cocotb.regression                         regression.py:207  in tear_down                       Shutting down...
+# Simulation halt requested by foreign interface.
