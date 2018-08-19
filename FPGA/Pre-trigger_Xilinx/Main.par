@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-VM-LAPTOP::  Fri Aug 17 16:34:35 2018
+VM-LAPTOP::  Sun Aug 19 15:40:19 2018
 
 par -w -intstyle ise -ol high -t 1 Main_map.ncd Main.ncd Main.pcf 
 
@@ -43,8 +43,8 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 8 secs 
-Finished initial Timing Analysis.  REAL time: 8 secs 
+Starting initial Timing Analysis.  REAL time: 7 secs 
+Finished initial Timing Analysis.  REAL time: 7 secs 
 
 WARNING:Par:288 - The signal RxD<3>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:289 - The signal Led2_OBUF has no driver.  PAR will not attempt to route this signal.
@@ -115,7 +115,7 @@ WARNING:Par:288 - The signal RxD<2>_IBUF has no load.  PAR will not attempt to r
 
 Starting Placer
 Total REAL time at the beginning of Placer: 8 secs 
-Total CPU  time at the beginning of Placer: 7 secs 
+Total CPU  time at the beginning of Placer: 6 secs 
 
 Phase 1.1  Initial Placement Analysis
 Phase 1.1  Initial Placement Analysis (Checksum:c11d7311) REAL time: 8 secs 
@@ -166,7 +166,7 @@ Phase 13.34  Placement Validation
 Phase 13.34  Placement Validation (Checksum:e3810df7) REAL time: 8 secs 
 
 Total REAL time to Placer completion: 8 secs 
-Total CPU  time to Placer completion: 8 secs 
+Total CPU  time to Placer completion: 7 secs 
 Writing design to file Main.ncd
 
 
@@ -180,25 +180,25 @@ Phase  2  : 45 unrouted;      REAL time: 9 secs
 
 Phase  3  : 0 unrouted;      REAL time: 9 secs 
 
-Phase  4  : 1 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
+Phase  4  : 1 unrouted; (Par is working to improve performance)     REAL time: 12 secs 
 
 Updating file: Main.ncd with current fully routed design.
 
 Phase  5  : 0 unrouted; (Par is working to improve performance)     REAL time: 13 secs 
 
-Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 19 secs 
+Phase  6  : 0 unrouted; (Par is working to improve performance)     REAL time: 18 secs 
 
 Updating file: Main.ncd with current fully routed design.
 
-Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
+Phase  7  : 0 unrouted; (Par is working to improve performance)     REAL time: 18 secs 
 
-Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
+Phase  8  : 0 unrouted; (Par is working to improve performance)     REAL time: 18 secs 
 
-Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
+Phase  9  : 0 unrouted; (Par is working to improve performance)     REAL time: 18 secs 
 
-Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 20 secs 
-Total REAL time to Router completion: 20 secs 
-Total CPU time to Router completion: 19 secs 
+Phase 10  : 0 unrouted; (Par is working to improve performance)     REAL time: 18 secs 
+Total REAL time to Router completion: 18 secs 
+Total CPU time to Router completion: 16 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -257,10 +257,10 @@ WARNING:Par:283 - There are 14 loadless signals in this design. This design will
 
 WARNING:Par:284 - There are 52 sourceless signals in this design. This design will not pass the DRC check run by Bitgen.
 
-Total REAL time to PAR completion: 25 secs 
-Total CPU time to PAR completion: 23 secs 
+Total REAL time to PAR completion: 22 secs 
+Total CPU time to PAR completion: 19 secs 
 
-Peak Memory Usage:  484 MB
+Peak Memory Usage:  485 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.

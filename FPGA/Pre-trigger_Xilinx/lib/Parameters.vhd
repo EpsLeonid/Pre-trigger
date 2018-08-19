@@ -23,13 +23,16 @@ package parameters is
 
 	constant Sum_Bits 			: integer := 10; 
 	constant NumTrigCh 			: integer := 16;
-	constant NumInReg 			: integer := 4;  
+	constant NumInReg 			: integer := 4; 
 	constant NumGroup 			: integer := 9;
+	constant NumAmpGroup 		: integer := integer(ceil(NumGroup/2+1)); -- Number of reg for find MaxAmp
 	constant Piedistal_def 		: integer := 100; 
 	constant Piedistal_def_2 	: integer := 125;
 	constant MaxTime 				: integer := 160;  -- Maximal Valid time (750ns)
 	constant ResetTime 			: integer := 240;
 	
+	type array_group_sum is array (0 to NumGroup) of std_logic_vector (ADC_Bits+1 downto 0);
+
 end parameters;
 
 package body parameters is

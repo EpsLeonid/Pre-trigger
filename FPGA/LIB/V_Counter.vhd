@@ -10,19 +10,17 @@ use work.parameters.all;
 
 
 entity V_Counter is
-	generic (
-		DATA_WIDTH	: integer := 16
-				);
+	 GENERIC  (WIDTH  : NATURAL := 32); 
     Port ( clock 	: in  STD_LOGIC;
            clk_en : in  STD_LOGIC := '1';
            cnt_en : in  STD_LOGIC := '1';
-           sclr 	: in  STD_LOGIC := '0'; -- "1" Clear
-			  dir 	: in  STD_LOGIC := '1'; -- "1" Up, "0" Down
-           q 		: out  STD_LOGIC_VECTOR (DATA_WIDTH downto 0));
+           sclr 	: in  STD_LOGIC := '0';
+			  dir 	: in  STD_LOGIC := '1';
+           q 		: out  STD_LOGIC_VECTOR (WIDTH-1 downto 0));
 end V_Counter;
 
 architecture Utility of V_Counter is
-		signal count : STD_LOGIC_VECTOR (DATA_WIDTH downto 0) := (others => '0'); -- init data
+		signal count : STD_LOGIC_VECTOR (WIDTH-1 downto 0) := (others => '0'); -- init data
 begin
       
 		process (clock) 

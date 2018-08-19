@@ -111,6 +111,8 @@ architecture Behavioral of Main is
 	---
 
 	--- clocking
+	signal Quarts				: std_logic;
+	signal FCT40				: std_logic;
 	signal Clk40				: std_logic;
 	signal Clk80				: std_logic;
 	signal Clk160				: std_logic;
@@ -137,11 +139,16 @@ architecture Behavioral of Main is
 	signal InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal InDataPrevReg		: array_prev_adc;
 
+	--- TriggerDes
 	signal TrigIn	: std_logic;
 	signal TrigDes_o	: std_logic;
 	signal FastTrigDes_o	: std_logic;
 
-	signal TestCnt	: std_logic_vector(24 downto 0);
+	--- Read/Write to/from DAQ
+	signal RW				: std_logic := '0';
+
+	--- Test
+	signal TestCnt	: std_logic_vector(23 downto 0);
 
 begin
 
@@ -304,6 +311,24 @@ port map(
 --	test				=> 
 	);
 	
+--******** LED ********--
+	LED1 <= '1' when TestCnt(22)='1' else
+				'0' when TestCnt(22)='0' else
+				'0';
+	Led_B : entity work.Light_Pulser 
+		generic map ( DIV	=> 2,
+						  DUR	=> 100)
+		port map( 
+					 clock => CLK80,
+					 i_event => FastTrigDes,
+					 o_flash => LED2
+					);
+
+	LED3 <= '1' when TestCnt(21)='1' else
+				'0' when TestCnt(21)='0' else
+				'0';
+
+	
 	ADC_CLK <= CLK40;
 	TriggerData(32) <= FastTrigDes_o;
 	TriggerData(33) <= TrigDes_o;
@@ -315,16 +340,12 @@ port map(
 
 	CntTest : entity work.V_Counter 
 	generic map(
-				DATA_WIDTH => 24
+				WIDTH => 24
 			)
 	port map (
 				clock 	=> CLK40,
 				clk_en	=>	'1',
 				q			=> TestCnt
 				);
-
-	LED1 <= '1' when TestCnt(22)='1' else
-				'0' when TestCnt(22)='0' else
-				'0';
 
 end Behavioral;
