@@ -43,8 +43,8 @@ port(
 	FCT_160		: in std_logic; -- clock
 	FCT_160_n	: in std_logic; -- clock
 -- In Trigger module Link's Clock is checked inside Altera but switched outside 
-	Sw_Quartz	: in std_logic;	-- connects Quartz to PLL ref.Input			-> Pin 
-	Sw_FCTClk	: in std_logic;	-- connects Link's Clock to PLL ref.Input	-> Pin 
+	Sw_Quartz	: out std_logic;	-- connects Quartz to PLL ref.Input			-> Pin 
+	Sw_FCTClk	: out std_logic;	-- connects Link's Clock to PLL ref.Input	-> Pin 
 
 	PLL_in		: in std_logic;	-- Ref.clock for PLL (dedicated)			<- Pin G1
 
@@ -106,17 +106,19 @@ end Main;
 
 architecture Behavioral of Main is
 
-	--- system
-	signal Reset				: std_logic;
-	---
-
 	--- clocking
 	signal Quarts				: std_logic;
 	signal FCT40				: std_logic;
 	signal Clk40				: std_logic;
 	signal Clk80				: std_logic;
-	signal Clk160				: std_logic;
+	signal FCT160				: std_logic;
+	signal Phase				: std_logic;
+	signal Clk_Selected		: std_logic;
 	signal s_clock_locked	: std_logic := '0';
+	---
+
+	--- system
+	signal Reset				: std_logic;
 	---
 
 	--- ADC SPI interface signals
@@ -154,16 +156,63 @@ begin
 
 --=================Inicialization of input LVDS signals=================--
 --******** 1. Reference clock's & Frequency Control ********--
+BUFG_inst : IBUFG
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE"   
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => Quarts,     -- Clock buffer output
+		I => Qclock      -- Clock buffer input
+	);
+
 LVDS_Clk40 : IBUFGDS
 	generic map (
 		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
 		DIFF_TERM => TRUE, -- Differential Termination 
 		IOSTANDARD => "DEFAULT")
 	port map (
-		O => Clk40,  -- Clock buffer output
+		O => FCT40,  -- Clock buffer output
 		I => FCT_40,  -- Diff_p clock buffer input
 		IB => FCT_40_n -- Diff_n clock buffer input
 	);
+
+LVDS_FCT_160 : IBUFGDS
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+		DIFF_TERM => TRUE, -- Differential Termination 
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => FCT160,		-- Buffer output
+		I => FCT_160,	-- Diff_p buffer input (connect directly to top-level port)
+		IB => FCT_160_n	-- Diff_n buffer input (connect directly to top-level port)
+	);
+	
+PLL : IBUFG
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE"   
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => Clk40,     -- Clock buffer output
+		I => PLL_in      -- Clock buffer input
+	);
+
+--**************** Automatic Clock Switch for PLL reference ******************
+
+PhaseSwitch: entity work.PhaseSW 
+	generic map(
+				Fmax				=> 42000, -- Upper limit in kHz
+				Fmin				=> 38000, -- Lower limit in kHz
+				RefClock			=> 40000  -- Local Quartz Freq(kHz) used as the reference
+				)
+	port map ( Clock				=> Quarts,
+				  SysClk				=> FCT40,
+				  Reset				=> Reset,
+				  Phase				=> Phase,
+				  SysClk_Selected	=> Clk_Selected
+				);
+Sw_FCTClk <= Clk_Selected;
+Sw_Quartz <= not Clk_Selected;
+
 DivClk: BUFR 
 	generic map (
 		BUFR_DIVIDE => "2",   -- "BYPASS", "1", "2", "3", "4", "5", "6", "7", "8" 
@@ -173,17 +222,6 @@ DivClk: BUFR
 		CE => '1',   -- Clock enable input
 		CLR => '0', -- Clock buffer reset input
 		I => Clk40      -- Clock buffer input
-	);
-
-LVDS_FCT_160 : IBUFGDS
-	generic map (
-		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-		DIFF_TERM => TRUE, -- Differential Termination 
-		IOSTANDARD => "DEFAULT")
-	port map (
-		O => Clk160,		-- Buffer output
-		I => FCT_160,	-- Diff_p buffer input (connect directly to top-level port)
-		IB => FCT_160_n	-- Diff_n buffer input (connect directly to top-level port)
 	);
 
 --******** 2. Input LVDS ADC buffer ********--

@@ -76,8 +76,10 @@ architecture Behavioral of FindMaxAmp is
 	signal GroupHT_Trig		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ???? ??????????? ???????? ??????
 	signal GroupAmp_Trig		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ???? ??????????? ?????????
 
-	signal GroupAmp		: array_group_sum;
-	signal DelayGroupAmp	: array_group_sum;
+	signal GroupAmp			: array_group_sum;
+	signal DelayGroupAmp		: array_group_sum;
+
+	signal GroupChAmps		: array_group_amp;
 
 begin
 
@@ -133,9 +135,9 @@ begin
 		FastTrig <= '1' when (LThreshold(iGroup) = '1' or MThreshold(iGroup) = '1' or HThreshold(iGroup) = '1') else
 						'0';
 	end generate FastTrig_i;
-	
+
 -- Group Amplitudes
-	
+
 	Amp_i: for iGroup in 0 to NumGroup-1 generate
 		DelayGroupAmp(iGroup) <= GroupAmp(iGroup);
 		GroupValue_Amp_Done(iGroup) <= '1' when ((DelayGroupAmp(iGroup) > GroupAmp(iGroup)) and GroupValue_Up_LT(iGroup) = '1') else
@@ -148,7 +150,27 @@ begin
 				q		=> GroupAmp_Trig(iGroup)
 			);
 	end generate Amp_i;
-	
+
+	Trig_i: for iGroup in 0 to NumGroup-1 generate
+		Trig <= '1' when GroupAmp_Trig(iGroup) = '1' else
+						'0';
+	end generate Trig_i;
+
+-- *************** Max Amp Search ********************
+
+	MaxAmp_S1: for iGroup in 1 to NumAmpGroup-1 generate
+		GroupChAmps(iGroup/2-1) <= DelayGroupAmp(iGroup-1) when (DelayGroupAmp(iGroup-1) > DelayGroupAmp(iGroup) else 
+		GroupChAmps(iGroup/2-1) <= DelayGroupAmp(iGroup);
+	end generate;
+	MaxAmp_S2: for iGroup in 1 to NumAmpGroup/2 generate
+		GroupChAmps(iGroup*4-1) <= GroupChAmps(iGroup*2-1) when (GroupChAmps(iGroup*2-1) > GroupChAmps(iGroup*2) else 
+		GroupChAmps(iGroup*4-1) <= GroupChAmps(iGroup*2);
+	end generate;
+	MaxAmp_S3: for iGroup in 1 to NumAmpGroup/4-1 generate
+		GroupChAmps(iGroup*8-1) <= GroupChAmps(iGroup*4-1) when (GroupChAmps(iGroup*4-1) > GroupChAmps(iGroup*4) else 
+		GroupChAmps(iGroup*8-1) <= GroupChAmps(iGroup*4);
+	end generate;
+
 	
 
-end Behavioral;	
+end Behavioral;

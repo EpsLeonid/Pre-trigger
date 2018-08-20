@@ -25,13 +25,14 @@ package parameters is
 	constant NumTrigCh 			: integer := 16;
 	constant NumInReg 			: integer := 4; 
 	constant NumGroup 			: integer := 9;
-	constant NumAmpGroup 		: integer := integer(ceil(NumGroup/2+1)); -- Number of reg for find MaxAmp
+	constant NumAmpGroup 		: integer := integer(NumGroup/2+NumGroup/4+NumGroup/8+(NumGroup rem 2)); -- Number of reg for find MaxAmp
 	constant Piedistal_def 		: integer := 100; 
 	constant Piedistal_def_2 	: integer := 125;
 	constant MaxTime 				: integer := 160;  -- Maximal Valid time (750ns)
 	constant ResetTime 			: integer := 240;
 	
 	type array_group_sum is array (0 to NumGroup) of std_logic_vector (ADC_Bits+1 downto 0);
+	type array_group_amp is array (0 to NumAmpGroup) of std_logic_vector (ADC_Bits+1 downto 0);
 
 end parameters;
 

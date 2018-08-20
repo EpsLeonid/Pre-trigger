@@ -1,4 +1,26 @@
-V3 31
+V3 48
+EN work/Edge_Sensing 0 FL "C:/Work/COMET project/trunk/FPGA/LIB/Edge_Sensing.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB work/parameters 1534669871
+AR work/Edge_Sensing/Utility 0 \
+      FL "C:/Work/COMET project/trunk/FPGA/LIB/Edge_Sensing.vhd" \
+      EN work/Edge_Sensing 0
+EN work/Light_Pulser 0 FL "C:/Work/COMET project/trunk/FPGA/LIB/Light_Pulser.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
+      PB ieee/std_logic_arith 1381692177 PB ieee/MATH_REAL 1381692182 \
+      PB work/parameters 1534669871
+AR work/Light_Pulser/Utility 0 \
+      FL "C:/Work/COMET project/trunk/FPGA/LIB/Light_Pulser.vhd" \
+      EN work/Light_Pulser 0 CP work/V_Counter CP work/Edge_Sensing CP work/SRFF
+EN work/PhaseSW 0 FL "C:/Work/COMET project/trunk/FPGA/LIB/PhaseSW.vhd" \
+      PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 LB UNISIM \
+      PH unisim/VCOMPONENTS 1381692182
+AR work/PhaseSW/Behavioral 0 \
+      FL "C:/Work/COMET project/trunk/FPGA/LIB/PhaseSW.vhd" EN work/PhaseSW 0 \
+      CP work/V_Counter CP work/SRFF
+EN work/SRFF 0 FL "C:/Work/COMET project/trunk/FPGA/LIB/SRFF.vhd" \
+      PB ieee/std_logic_1164 1381692176
+AR work/SRFF/Utility 0 \
+      FL "C:/Work/COMET project/trunk/FPGA/LIB/SRFF.vhd" EN work/SRFF 0
 FL "C:/Work/COMET project/trunk/FPGA/LIB/V_Counter.vhd" 2018/08/19.16:09:36 P.20131013
 EN work/V_Counter 1534669876 \
       FL "C:/Work/COMET project/trunk/FPGA/LIB/V_Counter.vhd" \
@@ -14,7 +36,7 @@ EN work/FindMaxAmp 1534669874 \
       LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1534669871
 AR work/FindMaxAmp/Behavioral 1534669875 \
       FL "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" \
-      EN work/FindMaxAmp 1534669874
+      EN work/FindMaxAmp 1534669874 CP work/SRFF
 FL "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd" 2018/08/17.10:51:14 P.20131013
 EN work/ISERDES_8bit 1534669872 \
       FL "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd" \
@@ -39,8 +61,9 @@ EN work/Main 1534669878 \
       LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1534669871
 AR work/Main/Behavioral 1534669879 \
       FL "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" \
-      EN work/Main 1534669878 CP IBUFGDS CP BUFR CP IBUFDS CP work/ISERDES_8bit \
-      CP work/FindMaxAmp CP work/V_Counter
+      EN work/Main 1534669878 CP IBUFG CP IBUFGDS CP work/PhaseSW CP BUFR CP IBUFDS \
+      CP work/ISERDES_8bit CP work/FindMaxAmp CP work/Light_Pulser \
+      CP work/V_Counter
 FL "C:/Work/COMET project/trunk/FPGA/Pre-trigger_Xilinx/Parameters.vhd" 2018/05/01.22:41:14 P.20131013
 FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd 2018/08/16.11:19:13 P.20131013
 FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd 2018/08/16.11:23:03 P.20131013
