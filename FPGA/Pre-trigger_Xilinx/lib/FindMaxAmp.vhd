@@ -34,11 +34,11 @@ library work;
 use work.parameters.all;
 
 entity FindMaxAmp is
-	Port ( In_Data        	: in	array_adc;
-			 In_DataPrev		: in  array_prev_adc;
+	Port ( In_Data				: in	array_adc;
+			 In_DataPrev		: in	array_prev_adc;
 			 RegInit 			: in	STD_LOGIC;
-			 MaxAmp 				: out	STD_LOGIC_VECTOR (ADC_Bits+1 downto 0);
-			 MaxCellNumber 	: out STD_LOGIC_VECTOR (9 downto 0);
+			 MaxAmp 				: out	STD_LOGIC_VECTOR (Sum_Bits-1 downto 0);
+			 MaxCellNumber 	: out STD_LOGIC_VECTOR (BitNumGroup downto 0);
 			 ThrNum1 			: out STD_LOGIC_VECTOR (3 downto 0);
 			 ThrNum2 			: out STD_LOGIC_VECTOR (3 downto 0);
 			 ThrNum3 			: out	STD_LOGIC_VECTOR (3 downto 0);
@@ -48,8 +48,8 @@ entity FindMaxAmp is
 			 Trig 				: out	STD_LOGIC;
 			 SaveTrigData		: out	STD_LOGIC;
 			 
-			 Clock 				: in  STD_LOGIC;
-			 Clock160 			: in  STD_LOGIC;
+			 Clock 				: in	STD_LOGIC;
+			 Clock160 			: in	STD_LOGIC;
 			 
 			 Reset 				: in  STD_LOGIC;
 --			 ResetAll 			: out	STD_LOGIC;
@@ -66,10 +66,10 @@ architecture Behavioral of FindMaxAmp is
 	signal Aver2			: array_adc;
 	signal GroupSum		: array_group_sum;
 
-	signal GroupValue_Up_LT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ?????? ? ?????????? ??????? ?????? (????? ???? ?????? ????? ????????)
-	signal GroupValue_Up_MT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ?????? ? ?????????? ???????? ?????? (????? ???? ?????? ????? ????????)
-	signal GroupValue_Up_HT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ?????? ? ?????????? ???????? ?????? (????? ???? ?????? ????? ????????)
-	signal GroupValue_Amp_Done	: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ?????? ?? ??????????? ????????? ????? ??????? ????? ??????????? ? ???????? ????????
+	signal GroupValue_Up_LT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- flag exceeding (overpass) the lower threshold
+	signal GroupValue_Up_MT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- flag exceeding (overpass) the middle threshold
+	signal GroupValue_Up_HT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- flag exceeding (overpass) the high threshold
+	signal GroupValue_Amp_Done	: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- flag that the amplitude in channels was finded
 
 	signal GroupLT_Trig		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ???? ??????????? ??????? ??????
 	signal GroupMT_Trig		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ???? ??????????? ???????? ??????
@@ -80,6 +80,9 @@ architecture Behavioral of FindMaxAmp is
 	signal DelayGroupAmp		: array_group_sum;
 
 	signal GroupChAmps		: array_group_amp;
+	signal GroupChNum			: array_group_num;
+
+	signal ResetAll			: STD_LOGIC;
 
 begin
 
@@ -116,25 +119,33 @@ begin
 	GroupSum(8) <= (Aver2(10)+Aver2(11)+Aver2(14)+Aver2(15));
 
 	Thresh_i: for iGroup in 0 to NumGroup-1 generate
-		GroupValue_Up_LT(iGroup) <= '1' when GroupSum(iGroup) >= ThresholdData_2 else
+		GroupValue_Up_LT(iGroup) <= '1' when (GroupSum(iGroup) >= ThresholdData_0) else
 			'0';
 		GroupValue_Up_MT(iGroup) <= '1' when (GroupSum(iGroup) >= ThresholdData_1 and GroupSum(iGroup) < ThresholdData_2) else
 			'0';
-		GroupValue_Up_HT(iGroup) <= '1' when (GroupSum(iGroup) >= ThresholdData_0 and GroupSum(iGroup) < ThresholdData_1) else
+		GroupValue_Up_HT(iGroup) <= '1' when (GroupSum(iGroup) >= ThresholdData_2) else
 			'0';
 		Threshold : entity work.SRFF 
 			port map (
-				S		=> GroupValue_Up_HT(iGroup),
-				CLK	=> CLK160,
+				S		=> GroupValue_Up_LT(iGroup),
+				CLK	=> Clock160,
 				R		=> ResetAll,
 				q		=> GroupLT_Trig(iGroup)
 			);
 	end generate Thresh_i;
 		
-	FastTrig_i: for iGroup in 0 to NumGroup-1 generate
-		FastTrig <= '1' when (LThreshold(iGroup) = '1' or MThreshold(iGroup) = '1' or HThreshold(iGroup) = '1') else
-						'0';
-	end generate FastTrig_i;
+--	FastTrig_i: for iGroup in 0 to NumGroup-1 generate
+	process(Clock160)
+	begin
+		if rising_edge(Clock160) then
+			if ((GroupLT_Trig(0) = '1') or (GroupLT_Trig(1) = '1') or (GroupLT_Trig(2) = '1') or 
+				 (GroupLT_Trig(3) = '1') or (GroupLT_Trig(4) = '1') or (GroupLT_Trig(5) = '1') or 
+				 (GroupLT_Trig(6) = '1') or (GroupLT_Trig(7) = '1') or (GroupLT_Trig(8) = '1')) then FastTrig <= '1';
+																														  else FastTrig <= '0';
+			end if;
+		end if;
+	end process;
+--	end generate FastTrig_i;
 
 -- Group Amplitudes
 
@@ -145,31 +156,72 @@ begin
 		Amp : entity work.SRFF 
 			port map (
 				S		=> GroupValue_Amp_Done(iGroup),
-				CLK	=> CLK160,
+				CLK	=> Clock160,
 				R		=> ResetAll,
 				q		=> GroupAmp_Trig(iGroup)
 			);
 	end generate Amp_i;
 
-	Trig_i: for iGroup in 0 to NumGroup-1 generate
-		Trig <= '1' when GroupAmp_Trig(iGroup) = '1' else
-						'0';
-	end generate Trig_i;
+--	Trig_i: for iGroup in 0 to NumGroup-1 generate
+	process(Clock160)
+	begin
+		if rising_edge(Clock160) then
+			if ((GroupAmp_Trig(0) = '1') or (GroupAmp_Trig(1) = '1') or (GroupAmp_Trig(2) = '1') or 
+				 (GroupAmp_Trig(3) = '1') or (GroupAmp_Trig(4) = '1') or (GroupAmp_Trig(5) = '1') or 
+				 (GroupAmp_Trig(6) = '1') or (GroupAmp_Trig(7) = '1') or (GroupAmp_Trig(8) = '1')) then Trig <= '1';
+																															  else Trig <= '0';
+			end if;
+		end if;
+	end process;
+--	end generate Trig_i;
 
 -- *************** Max Amp Search ********************
 
-	MaxAmp_S1: for iGroup in 1 to NumAmpGroup-1 generate
-		GroupChAmps(iGroup/2-1) <= DelayGroupAmp(iGroup-1) when (DelayGroupAmp(iGroup-1) > DelayGroupAmp(iGroup) else 
-		GroupChAmps(iGroup/2-1) <= DelayGroupAmp(iGroup);
-	end generate;
-	MaxAmp_S2: for iGroup in 1 to NumAmpGroup/2 generate
-		GroupChAmps(iGroup*4-1) <= GroupChAmps(iGroup*2-1) when (GroupChAmps(iGroup*2-1) > GroupChAmps(iGroup*2) else 
-		GroupChAmps(iGroup*4-1) <= GroupChAmps(iGroup*2);
-	end generate;
-	MaxAmp_S3: for iGroup in 1 to NumAmpGroup/4-1 generate
-		GroupChAmps(iGroup*8-1) <= GroupChAmps(iGroup*4-1) when (GroupChAmps(iGroup*4-1) > GroupChAmps(iGroup*4) else 
-		GroupChAmps(iGroup*8-1) <= GroupChAmps(iGroup*4);
-	end generate;
+	process(Clock160)
+	begin
+		if rising_edge(Clock160) then
+			if (DelayGroupAmp(0) > DelayGroupAmp(1)) then GroupChAmps(0) <= DelayGroupAmp(0);
+																		 GroupChNum(0) <= "0000";
+																  else GroupChAmps(0) <= DelayGroupAmp(1);
+																		 GroupChNum(0) <= "0001";
+			end if;
+			if (DelayGroupAmp(2) > DelayGroupAmp(3)) then GroupChAmps(1) <= DelayGroupAmp(2);
+																		 GroupChNum(1) <= "0010";
+																  else GroupChAmps(1) <= DelayGroupAmp(3);
+																		 GroupChNum(1) <= "0011";
+			end if;
+			if (DelayGroupAmp(4) > DelayGroupAmp(5)) then GroupChAmps(2) <= DelayGroupAmp(4);
+																		 GroupChNum(2) <= "0100";
+																  else GroupChAmps(2) <= DelayGroupAmp(5);
+																		 GroupChNum(2) <= "0101";
+			end if;
+			if (DelayGroupAmp(6) > DelayGroupAmp(7)) then GroupChAmps(3) <= DelayGroupAmp(6);
+																		 GroupChNum(3) <= "0110";
+																  else GroupChAmps(3) <= DelayGroupAmp(7);
+																		 GroupChNum(3) <= "0111";
+			end if;
+			if (GroupChAmps(0) > GroupChAmps(1)) then GroupChAmps(4) <= GroupChAmps(0);
+																	GroupChNum(4) <= GroupChNum(0);
+															 else GroupChAmps(4) <= GroupChAmps(1);
+																	GroupChNum(4) <= GroupChNum(1);
+			end if;
+			if (GroupChAmps(2) > GroupChAmps(3)) then GroupChAmps(5) <= GroupChAmps(2);
+																	GroupChNum(5) <= GroupChNum(2);
+															 else GroupChAmps(5) <= GroupChAmps(3);
+																	GroupChNum(5) <= GroupChNum(3);
+			end if;
+			if (GroupChAmps(4) > GroupChAmps(5)) then GroupChAmps(6) <= GroupChAmps(4);
+																	GroupChNum(6) <= GroupChNum(4);
+															 else GroupChAmps(6) <= GroupChAmps(5);
+																	GroupChNum(6) <= GroupChNum(5);
+			end if;
+			if (GroupChAmps(6) > DelayGroupAmp(8)) then MaxAmp <= GroupChAmps(6);
+																	  MaxCellNumber <= GroupChNum(6);
+																else MaxAmp <= DelayGroupAmp(8);
+																	  MaxCellNumber <= "1000";
+			end if;
+		end if;
+	end process;
 
 	
 

@@ -19,7 +19,7 @@ begin
 	process (CLK,S,R,CLRN)
 		begin
 			if CLRN = '0' then
-				Q <= '0';
+				Trig <= '0';
 				else 
 				if rising_edge(CLK) then
 					if S='1' and R='0' then Trig <= '1';

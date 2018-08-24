@@ -30,12 +30,65 @@ library UNISIM;
 use UNISIM.VComponents.all;
 
 entity adc_ctrl_i is
+	port (
+			
+			Clock			: in	std_logic;			-- Pin 
+			ADC_Test		: in	std_logic := '0';	-- Pin 
+			ADC_Reset	: in	std_logic := '0';	-- Pin 
+
+			ADC_CSB		: out std_logic := '1';	-- Pin 
+			ADC_SDIO		: out std_logic := '0';	-- Pin 
+			ADC_SCLK		: out std_logic := '0'	-- Pin 
+			
+			);
 end adc_ctrl_i;
 
 architecture Behavioral of adc_ctrl_i is
 
+	signal s_fadc_csb			: std_logic := '1';
+	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
+	signal s_fadc_sdio_reset: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000000000000000001111111100000001";
+	signal s_fadc_sclk		: std_logic := '0';
+	signal test					: std_logic := '0';
+	signal shift_sdio_test	: std_logic;
+	signal reset				: std_logic := '0';
+	signal shift_sdio_reset	: std_logic;
+
 begin
 
+	s_fadc_sclk <= Clock;
+
+	process(s_fadc_sclk)
+	begin
+		if rising_edge(s_fadc_sclk) then
+			if 	test = '1' 			 then ADC_SDIO <= shift_sdio_test;
+													ADC_CSB <= '0';
+													ADC_SCLK <= s_fadc_sclk;
+			elsif reset = '1' 		 then ADC_SDIO <= shift_sdio_reset;
+													ADC_CSB <= '0';
+													ADC_SCLK <= s_fadc_sclk;
+											 else ADC_SDIO <= '0';
+													ADC_CSB <= '1';
+													ADC_SCLK <= '0';
+			end if;
+		end if;
+	end process;
+
+	ShiftReg_test : entity work.ShiftReg 
+		generic map (WIDTH => 50) 
+		port map (
+			CLK	=> Clock,
+			SI		=> s_fadc_sdio_test,
+			SO		=> shift_sdio_test
+		);
+
+	ShiftReg_reset : entity work.ShiftReg 
+		generic map (WIDTH => 50) 
+		port map (
+			CLK	=> Clock,
+			SI		=> s_fadc_sdio_reset,
+			SO		=> shift_sdio_reset
+		);
 
 end Behavioral;
 

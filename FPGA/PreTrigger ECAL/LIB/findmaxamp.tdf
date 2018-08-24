@@ -155,7 +155,7 @@ END GENERATE;
 FOR i in 0 to (NumTrigCh-1) GENERATE
 --	InData_Reg[i][0].(data[],clock,enable,load) = (In_Data[i][ADC_Bits-1..0],Clock, VCC,VCC);
 	InData_Reg[i][0].(data[],clock,enable,load) = (SUB_Ped[i].result[ADC_Bits-1..0],Clock, VCC,VCC);
-		FOR j IN 0 TO (NumInReg-2) GENERATE
+	FOR j IN 0 TO (NumInReg-2) GENERATE
 		InData_Reg[i][j+1].data[] = InData_Reg[i][j].q[];
 		InData_Reg[i][j+1].(clock,enable,load) = (Clock,VCC,VCC);
 	END GENERATE;
