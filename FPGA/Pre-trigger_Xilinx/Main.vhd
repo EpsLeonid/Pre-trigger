@@ -39,7 +39,6 @@ port(
 -- 1. Clocks
 	Qclock		: in std_logic; -- system clock
 	FCT_40		: in std_logic; -- system clock
-	FCT_40_n		: in std_logic; -- system clock
 	FCT_160		: in std_logic; -- clock
 	FCT_160_n	: in std_logic; -- clock
 -- In Trigger module Link's Clock is checked inside Altera but switched outside 
@@ -171,15 +170,13 @@ BUFG_inst : IBUFG
 		I => Qclock      -- Clock buffer input
 	);
 
-LVDS_Clk40 : IBUFGDS
+LVDS_Clk40 : IBUFG
 	generic map (
 		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-		DIFF_TERM => TRUE, -- Differential Termination 
 		IOSTANDARD => "DEFAULT")
 	port map (
 		O => FCT40,  -- Clock buffer output
-		I => FCT_40,  -- Diff_p clock buffer input
-		IB => FCT_40_n -- Diff_n clock buffer input
+		I => FCT_40  -- Diff_p clock buffer input
 	);
 
 LVDS_FCT_160 : IBUFGDS
@@ -255,131 +252,47 @@ DLL: entity work.DLL
 				'0';
 --********
 
---******** 2. Input LVDS ADC buffer ********--
--- Input LVDS ADC buffer
+	adc_deser_i: entity work.adc_deser
+	port map(
+		Clock_i		=> Clk80,
+		SDATAP		=> ADCInDataLVDS,
+		SDATAN		=> ADCInDataLVDS_n,
+		SDATAPrevP	=> ADCInDataLVDSPrev,
+		SDATAPrevN	=> ADCInDataLVDSPrev_n,
 
-LVDS_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
-
-	LVDS_signal : IBUFDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			DIFF_TERM => TRUE, -- Differential Termination 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => ADCInData(i),  -- Buffer output
-			I => ADCInDataLVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => ADCInDataLVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
-		);
-
-	SERDES : entity work.ISERDES_8bit 
-	port map (
-				DataIn 	=> ADCInData(i),	-- input of data from ADC by bits
-				Clock		=> CLK80,
-				ClkDiv	=> ADC_DCO(i/4),
-				DataOut	=> InDataReg(i)
-				);
-
-end generate LVDS_buf_ADC;
-
--- Input LVDS ADC buffer from prev.board
-LVDS_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
-	LVDS_signal : IBUFDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			DIFF_TERM => TRUE, -- Differential Termination 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => ADCInDataPrev(i),  -- Buffer output
-			I => ADCInDataLVDSPrev(i),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => ADCInDataLVDSPrev_n(i) -- Diff_n buffer input (connect directly to top-level port)
-		);
-	SERDES : entity work.ISERDES_8bit 
-	port map  (
-		DataIn 	=> ADCInDataPrev(i),	-- input of data from ADC by bits
-		Clock		=> CLK80,
-		ClkDiv	=> ADC_DCOPrev(i/4),
-		DataOut	=> InDataPrevReg(i)
-				 );
-
-end generate LVDS_buf_ADCPrev;
-
--- Input LVDS ADC DCO buffer
-LVDS_ADC_DCO: for i in 0 to NUM_TrigCell/4-1 generate 
-	LVDS_signal : IBUFGDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			DIFF_TERM => TRUE, -- Differential Termination 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => ADC_DCO(i),  -- Buffer output
-			I => ADC_DCO_LVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => ADC_DCO_LVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
-		);
-end generate LVDS_ADC_DCO;
-
--- Input LVDS ADC FCO buffer
-LVDS_ADC_FCO: for i in 0 to NUM_TrigCell/4-1 generate 
-	LVDS_signal : IBUFGDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			DIFF_TERM => TRUE, -- Differential Termination 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => ADC_FCO(i),  -- Buffer output
-			I => ADC_FCO_LVDS(i),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => ADC_FCO_LVDS_n(i) -- Diff_n buffer input (connect directly to top-level port)
-		);
-end generate LVDS_ADC_FCO;
-
--- Input LVDS ADC DCO buffer from prev.board
-LVDS_ADC_DCOPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
-	LVDS_signal : IBUFGDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			DIFF_TERM => TRUE, -- Differential Termination 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => ADC_DCOPrev(i),  -- Buffer output
-			I => ADC_DCO_LVDSPrev(i),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => ADC_DCO_LVDSPrev_n(i) -- Diff_n buffer input (connect directly to top-level port)
-		);
-end generate LVDS_ADC_DCOPrev;
-
-LVDS_signal : IBUFDS
-	generic map (
-		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-		DIFF_TERM => TRUE, -- Differential Termination 
-		IOSTANDARD => "DEFAULT")
-	port map (
-		O => TrigIn,		-- Buffer output
-		I => TrigInLVDS,	-- Diff_p buffer input (connect directly to top-level port)
-		IB => TrigInLVDS_n	-- Diff_n buffer input (connect directly to top-level port)
+		DCOP			=> ADC_DCO_LVDS,
+		DCON			=> ADC_DCO_LVDS_n,
+		FCOP			=> ADC_FCO_LVDS,
+		FCON			=> ADC_FCO_LVDS_n,
+		DCOPrevP		=> ADC_DCO_LVDSPrev,
+		DCOPrevN		=> ADC_DCO_LVDSPrev_n,
+		
+		o_adc_data	=> InDataReg,
+		o_adc_data_prev	=> InDataPrevReg
 	);
 
-FindMaxAmp_i: entity work.FindMaxAmp
+	FindMaxAmp_i: entity work.FindMaxAmp
+	port map(
+		In_Data			=> InDataReg,
+		In_DataPrev		=> InDataPrevReg,
+		RegInit			=> '0',
+		MaxAmp			=> TriggerData(9 downto 0),
+		MaxCellNumber	=> TriggerData(13 downto 10),
+		ThrNum1			=> TriggerData(23 downto 20),
+		ThrNum2			=> TriggerData(27 downto 24),
+		ThrNum3			=> TriggerData(31 downto 28),
+		FastTrig			=> FastTrigDes_o,
+		Trig				=> TrigDes_o,
+	--	SaveTrigData	=> '0',
 
-port map(
+		Clock				=> CLK40,
+		Clock160			=> CLK160,
 
-	In_Data			=> InDataReg,
-	In_DataPrev		=> InDataPrevReg,
-	RegInit			=> '0',
-	MaxAmp			=> TriggerData(9 downto 0),
-	MaxCellNumber	=> TriggerData(13 downto 10),
-	ThrNum1			=> TriggerData(23 downto 20),
-	ThrNum2			=> TriggerData(27 downto 24),
-	ThrNum3			=> TriggerData(31 downto 28),
-	FastTrig			=> FastTrigDes_o,
-	Trig				=> TrigDes_o,
---	SaveTrigData	=> '0',
+		Reset				=> Reset
+	--	ResetAll			=> '0',
+	--	Error				=> '0',
 
-	Clock				=> CLK40,
-	Clock160			=> CLK160,
-
-	Reset				=> Reset
---	ResetAll			=> '0',
---	Error				=> '0',
-
---	test				=> 
+	--	test				=> 
 	);
 
 	ADC_CLK <= CLK40;
@@ -391,11 +304,24 @@ port map(
 
 	TriggerData(19 downto 14) <= (others => '0');
 	TriggerData(63 downto 34) <= (others => '1');
+	
+--******** TriggerIn part ********--
+
+	LVDS_signal : IBUFDS
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+		DIFF_TERM => TRUE, -- Differential Termination 
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => TrigIn,		-- Buffer output
+		I => TrigInLVDS,	-- Diff_p buffer input (connect directly to top-level port)
+		IB => TrigInLVDS_n	-- Diff_n buffer input (connect directly to top-level port)
+	);
 
 --******** Ethernet part ********--
 
-	TxEn			<= '1';
-	TxD(3 downto 0)			<= (others => '1');
+	TxEn					<= '1';
+	TxD(3 downto 0)	<= (others => '1');
 
 --******** ADC test part ********--
 

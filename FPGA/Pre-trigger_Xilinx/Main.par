@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-L2-EPSHT2::  Thu Aug 23 18:04:52 2018
+L2-EPSHT2::  Fri Aug 24 13:48:35 2018
 
 par -w -intstyle ise -ol high -t 1 Main_map.ncd Main.ncd Main.pcf 
 
@@ -116,7 +116,7 @@ Phase  2  : 1545 unrouted;      REAL time: 9 secs
 
 Phase  3  : 414 unrouted;      REAL time: 9 secs 
 
-Phase  4  : 414 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 12 secs 
+Phase  4  : 414 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 11 secs 
 
 Updating file: Main.ncd with current fully routed design.
 
@@ -161,13 +161,13 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |              Quarts |         Local|      |    9 |  0.205     |  1.282      |
 +---------------------+--------------+------+------+------------+-------------+
-|          ADC_DCO<0> |         Local|      |    8 |  1.110     |  2.309      |
+|  adc_deser_i/DCO<0> |         Local|      |    8 |  1.110     |  2.309      |
 +---------------------+--------------+------+------+------------+-------------+
-|          ADC_DCO<1> |         Local|      |    8 |  0.246     |  1.242      |
+|  adc_deser_i/DCO<1> |         Local|      |    8 |  0.246     |  1.242      |
 +---------------------+--------------+------+------+------------+-------------+
-|          ADC_DCO<2> |         Local|      |    8 |  1.209     |  2.163      |
+|  adc_deser_i/DCO<2> |         Local|      |    8 |  1.209     |  2.163      |
 +---------------------+--------------+------+------+------------+-------------+
-|          ADC_DCO<3> |         Local|      |    8 |  0.899     |  3.061      |
+|  adc_deser_i/DCO<3> |         Local|      |    8 |  0.899     |  3.061      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing

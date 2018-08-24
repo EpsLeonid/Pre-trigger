@@ -47,7 +47,12 @@ architecture Behavioral of adc_ctrl_i is
 
 	signal s_fadc_csb			: std_logic := '1';
 	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
+--																			     "set	addr		  data	set  addr			 data "
+--																				   3bit 13bit		  8bit	3bit 13bit			 8bit
+-- Data from ADC must be 10 0110 0011 for 10-bits ADC
+-- Data from ADC must be	1010 0011 for 8-bits ADC
 	signal s_fadc_sdio_reset: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000000000000000001111111100000001";
+--																			     "set	addr		  data	set  addr			 data "
 	signal s_fadc_sclk		: std_logic := '0';
 	signal test					: std_logic := '0';
 	signal shift_sdio_test	: std_logic;
