@@ -75,7 +75,10 @@ architecture Behavioral of FindMaxAmp is
 	signal GroupMT_Trig		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ???? ??????????? ???????? ??????
 	signal GroupHT_Trig		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ???? ??????????? ???????? ??????
 	signal GroupAmp_Trig		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- ???? ??????????? ?????????
-
+	
+	signal FastTrig_o			: STD_LOGIC;
+	signal Trig_o				: STD_LOGIC;
+	
 	signal GroupAmp			: array_group_sum;
 	signal DelayGroupAmp		: array_group_sum;
 
@@ -140,12 +143,12 @@ begin
 		if rising_edge(Clock160) then
 			if ((GroupLT_Trig(0) = '1') or (GroupLT_Trig(1) = '1') or (GroupLT_Trig(2) = '1') or 
 				 (GroupLT_Trig(3) = '1') or (GroupLT_Trig(4) = '1') or (GroupLT_Trig(5) = '1') or 
-				 (GroupLT_Trig(6) = '1') or (GroupLT_Trig(7) = '1') or (GroupLT_Trig(8) = '1')) then FastTrig <= '1';
-																														  else FastTrig <= '0';
+				 (GroupLT_Trig(6) = '1') or (GroupLT_Trig(7) = '1') or (GroupLT_Trig(8) = '1')) then FastTrig_o <= '1';
+																														  else FastTrig_o <= '0';
 			end if;
 		end if;
 	end process;
---	end generate FastTrig_i;
+	FastTrig <= FastTrig_o;
 
 -- Group Amplitudes
 
@@ -168,12 +171,12 @@ begin
 		if rising_edge(Clock160) then
 			if ((GroupAmp_Trig(0) = '1') or (GroupAmp_Trig(1) = '1') or (GroupAmp_Trig(2) = '1') or 
 				 (GroupAmp_Trig(3) = '1') or (GroupAmp_Trig(4) = '1') or (GroupAmp_Trig(5) = '1') or 
-				 (GroupAmp_Trig(6) = '1') or (GroupAmp_Trig(7) = '1') or (GroupAmp_Trig(8) = '1')) then Trig <= '1';
-																															  else Trig <= '0';
+				 (GroupAmp_Trig(6) = '1') or (GroupAmp_Trig(7) = '1') or (GroupAmp_Trig(8) = '1')) then Trig_o <= '1';
+																															  else Trig_o <= '0';
 			end if;
 		end if;
 	end process;
---	end generate Trig_i;
+	Trig <= Trig_o;
 
 -- *************** Max Amp Search ********************
 
@@ -224,5 +227,23 @@ begin
 	end process;
 
 	
+--******** Test part ********--
+
+	Test(0) <= Clock160;
+	Test(1) <= GroupLT_Trig(0);
+	Test(2) <= GroupMT_Trig(0);
+	Test(3) <= GroupHT_Trig(0);
+	Test(4) <= FastTrig_o;
+	Test(5) <= GroupAmp_Trig(0);
+	Test(6) <= Trig_o;
+	Test(7) <= Clock160;
+	Test(8) <= Clock160;
+	Test(9) <= Clock160;
+	Test(10) <= Clock160;
+	Test(11) <= Clock160;
+	Test(12) <= Clock160;
+	Test(13) <= Clock160;
+	Test(14) <= Clock160;
+	Test(15) <= Clock160;
 
 end Behavioral;

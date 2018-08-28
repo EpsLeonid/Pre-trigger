@@ -111,14 +111,14 @@ Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-t
 Architecture parameters of Entity parameters is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ShiftReg.vhd" in Library work.
 Architecture behavioral of Entity shiftreg is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd" in Library work.
-Architecture utility of Entity srff is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_8bit.vhd" in Library work.
 Architecture behavioral of Entity iserdes_8bit is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd" in Library work.
 Architecture utility of Entity v_counter is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd" in Library work.
 Architecture utility of Entity edge_sensing is up to date.
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd" in Library work.
+Architecture utility of Entity srff is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" in Library work.
 Architecture behavioral of Entity phasesw is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/DLL.vhd" in Library work.
@@ -126,13 +126,9 @@ Architecture behavioral of Entity dll is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Light_Pulser.vhd" in Library work.
 Architecture utility of Entity light_pulser is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/adc_deser.vhd" in Library work.
-Entity <adc_deser> compiled.
-Entity <adc_deser> (Architecture <Behavioral>) compiled.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/FindMaxAmp.vhd" in Library work.
-Architecture behavioral of Entity findmaxamp is up to date.
+Architecture behavioral of Entity adc_deser is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/adc_ctrl_i.vhd" in Library work.
-Entity <adc_ctrl_i> compiled.
-Entity <adc_ctrl_i> (Architecture <behavioral>) compiled.
+Architecture behavioral of Entity adc_ctrl_i is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" in Library work.
 Entity <main> compiled.
 Entity <main> (Architecture <behavioral>) compiled.
@@ -190,7 +186,6 @@ Analyzing Entity <Main> in library <work> (Architecture <behavioral>).
     Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <BUFG_inst> in unit <Main>.
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <BUFG_inst> in unit <Main>.
     Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_Clk40> in unit <Main>.
-    Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_Clk40> in unit <Main>.
     Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_Clk40> in unit <Main>.
     Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_Clk40> in unit <Main>.
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_Clk40> in unit <Main>.
@@ -199,13 +194,13 @@ Analyzing Entity <Main> in library <work> (Architecture <behavioral>).
     Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_FCT_160> in unit <Main>.
     Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_FCT_160> in unit <Main>.
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_FCT_160> in unit <Main>.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 199: Unconnected output port 'Test' of component 'PhaseSW'.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 223: Unconnected output port 'CLKIN_IBUFG_OUT' of component 'DLL'.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 277: Unconnected output port 'ThrNum4' of component 'FindMaxAmp'.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 277: Unconnected output port 'ThrNum5' of component 'FindMaxAmp'.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 277: Unconnected output port 'SaveTrigData' of component 'FindMaxAmp'.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 277: Unconnected output port 'Error' of component 'FindMaxAmp'.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 277: Unconnected output port 'test' of component 'FindMaxAmp'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 196: Unconnected output port 'Test' of component 'PhaseSW'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 220: Unconnected output port 'CLKIN_IBUFG_OUT' of component 'DLL'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 274: Unconnected output port 'ThrNum4' of component 'FindMaxAmp'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 274: Unconnected output port 'ThrNum5' of component 'FindMaxAmp'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 274: Unconnected output port 'SaveTrigData' of component 'FindMaxAmp'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 274: Unconnected output port 'Error' of component 'FindMaxAmp'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 274: Unconnected output port 'test' of component 'FindMaxAmp'.
     Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <LVDS_signal> in unit <Main>.
     Set user-defined property "DIFF_TERM =  TRUE" for instance <LVDS_signal> in unit <Main>.
     Set user-defined property "DQS_BIAS =  FALSE" for instance <LVDS_signal> in unit <Main>.
@@ -213,9 +208,9 @@ WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-tri
     Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_signal> in unit <Main>.
     Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <LVDS_signal> in unit <Main>.
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_signal> in unit <Main>.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 348: Unconnected input port 'cnt_en' of component 'V_Counter' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 348: Unconnected input port 'sclr' of component 'V_Counter' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 348: Unconnected input port 'dir' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 345: Unconnected input port 'cnt_en' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 345: Unconnected input port 'sclr' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/Main.vhd" line 345: Unconnected input port 'dir' of component 'V_Counter' is tied to default value.
 Entity <Main> analyzed. Unit <Main> generated.
 
 Analyzing generic Entity <PhaseSW> in library <work> (Architecture <Behavioral>).
@@ -2409,7 +2404,7 @@ Optimization Goal                  : Speed
 Keep Hierarchy                     : No
 
 Design Statistics
-# IOs                              : 542
+# IOs                              : 541
 
 Cell Usage :
 # BELS                             : 986
@@ -2434,8 +2429,8 @@ Cell Usage :
 #      BUFG                        : 5
 # IO Buffers                       : 313
 #      IBUFDS                      : 141
-#      IBUFG                       : 2
-#      IBUFGDS                     : 78
+#      IBUFG                       : 3
+#      IBUFGDS                     : 77
 #      OBUF                        : 92
 # DCM_ADVs                         : 1
 #      DCM_ADV                     : 1
@@ -2451,8 +2446,8 @@ Selected Device : 4vlx60ff1148-10
  Number of Slices:                      394  out of  26624     1%  
  Number of Slice Flip Flops:            439  out of  53248     0%  
  Number of 4 input LUTs:                414  out of  53248     0%  
- Number of IOs:                         542
- Number of bonded IOBs:                 532  out of    640    83%  
+ Number of IOs:                         541
+ Number of bonded IOBs:                 531  out of    640    82%  
     IOB Flip Flops:                       3
  Number of GCLKs:                         5  out of     32    15%  
  Number of DCM_ADVs:                      1  out of      8    12%  
@@ -2813,12 +2808,12 @@ Offset:              5.412ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 15.00 secs
-Total CPU time to Xst completion: 14.72 secs
+Total REAL time to Xst completion: 14.00 secs
+Total CPU time to Xst completion: 14.05 secs
  
 --> 
 
-Total memory usage is 358812 kilobytes
+Total memory usage is 359708 kilobytes
 
 Number of errors   :    0 (   0 filtered)
 Number of warnings :  409 (   0 filtered)
