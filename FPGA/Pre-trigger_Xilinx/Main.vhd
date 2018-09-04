@@ -347,7 +347,7 @@ DLL: entity work.DLL
 				WIDTH => 24
 			)
 	port map (
-				clock 	=> CLK40,
+				clock 	=> Quarts,--CLK40,
 				clk_en	=>	'1',
 				q			=> TestCnt
 				);

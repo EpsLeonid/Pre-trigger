@@ -75,11 +75,13 @@ R_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Red
 --============================================================================
 --******** 3. Trigger ******************************************************
 FastTrig[4..1]	: DFF;
+FastTrigDelay[4..1]	: DFF;
 Trig			: node;
 TrigDes			: SRFF;
 EventCout		: lpm_counter WITH (lpm_width=32, lpm_direction="up");
 EndTransf		: node;
 TrigTransf		: lpm_shiftreg with (lpm_width=44, lpm_direction="left");
+DataTransfCout	: lpm_counter WITH (lpm_width=6, lpm_direction="up");
 
 --============================================================================
 --******** 5. System ******************************************************
@@ -141,7 +143,7 @@ PhaseSw.SysClk 	= FCTClk40;				-- 40MHz from FCT
 PhaseSw.Reset	= GND  ;
 --    Phase25     = PhaseSw.Phase25 ; -- selected clock output to real pin
 IF (PhaseSw.SysClk_Selected == VCC) Then PLL_res = FQuartz;
-									 Else PLL_res = FCTClk40;
+									Else PLL_res = FCTClk40;
 END IF;
 
 --**************** PLL section ***********************************************
@@ -178,15 +180,29 @@ FastTrig[2].(d, clk) = (FastTrig_in[2], clk160);
 FastTrig[3].(d, clk) = (FastTrig_in[3], clk160);
 FastTrig[4].(d, clk) = (FastTrig_in[4], clk160);
 
-IF ((FastTrig[1].q OR FastTrig[2].q OR FastTrig[3].q OR FastTrig[4].q) == VCC) Then Trig = VCC;
-																			   Else Trig = GND;
+FastTrigDelay[1].(d, clk) = (FastTrig[1], clk160);
+FastTrigDelay[2].(d, clk) = (FastTrig[2], clk160);
+FastTrigDelay[3].(d, clk) = (FastTrig[3], clk160);
+FastTrigDelay[4].(d, clk) = (FastTrig[4], clk160);
+
+IF (((FastTrig[1].q and !FastTrigDelay[1].q) OR 
+	 (FastTrig[2].q and !FastTrigDelay[2].q) OR 
+	 (FastTrig[3].q and !FastTrigDelay[3].q) OR 
+	 (FastTrig[4].q and !FastTrigDelay[4].q)) == VCC) Then Trig = VCC;
+													  Else Trig = GND;
 END IF;
 
-TrigDes.(S, Clk, R, clrn) = (Trig, Clk160, Reset, EndTransf);
+TrigDes.(S, Clk, R, clrn) = (Trig, Clk160, Reset, !EndTransf);
 
 EventCout.(clock, clk_en, cnt_en, aclr) = (Clk160, VCC, ((FastTrig[1].q OR FastTrig[2].q OR FastTrig[3].q OR FastTrig[4].q) AND !TrigDes.q), Reset);
 
 TrigTransf.(data[], clock, enable, load) = ((Hedder,EventCout.q[],CRC), clk40, TrigDes.q, VCC);
+
+DataTransfCout.(clock, clk_en, cnt_en, aclr) = (clk40, VCC, TrigDes.q, Trig);
+
+IF (DataTransfCout.q[] == b"101011") then EndTransf = VCC;
+									 else EndTransf = GND;
+END IF;
 
 Trigger = TrigTransf.shiftout;
 

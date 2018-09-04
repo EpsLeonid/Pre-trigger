@@ -9,37 +9,38 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Tue Aug 28 16:56:33 2018
+Mapped Date    : Fri Aug 31 14:30:47 2018
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:  454
 Logic Utilization:
-  Number of Slice Flip Flops:           439 out of  53,248    1%
-  Number of 4 input LUTs:               375 out of  53,248    1%
+  Number of Slice Flip Flops:           446 out of  53,248    1%
+  Number of 4 input LUTs:               373 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            347 out of  26,624    1%
-    Number of Slices containing only related logic:     347 out of     347 100%
-    Number of Slices containing unrelated logic:          0 out of     347   0%
+  Number of occupied Slices:            351 out of  26,624    1%
+    Number of Slices containing only related logic:     351 out of     351 100%
+    Number of Slices containing unrelated logic:          0 out of     351   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         413 out of  53,248    1%
-    Number used as logic:               375
+  Total Number of 4 input LUTs:         411 out of  53,248    1%
+    Number used as logic:               371
     Number used as a route-thru:         38
+    Number used as Shift registers:       2
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
   Number of bonded IOBs:                144 out of     640   22%
-    IOB Flip Flops:                       3
-  Number of BUFG/BUFGCTRLs:               3 out of      32    9%
-    Number used as BUFGs:                 3
+    IOB Flip Flops:                       1
+  Number of BUFG/BUFGCTRLs:               4 out of      32   12%
+    Number used as BUFGs:                 4
   Number of DCM_ADVs:                     1 out of       8   12%
   Number of ISERDESs:                    32 out of     640    5%
 
-Average Fanout of Non-Clock Nets:                1.55
+Average Fanout of Non-Clock Nets:                1.52
 
 Peak Memory Usage:  406 MB
-Total REAL time to MAP completion:  5 secs 
+Total REAL time to MAP completion:  6 secs 
 Total CPU time to MAP completion:   3 secs 
 
 NOTES:
@@ -1018,7 +1019,7 @@ INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance
 Section 4 - Removed Logic Summary
 ---------------------------------
  846 block(s) removed
-   2 block(s) optimized away
+   4 block(s) optimized away
  802 signal(s) removed
 
 Section 5 - Removed Logic
@@ -3273,7 +3274,7 @@ Section 6 - IOB Properties
 | Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<8>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<9>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| TrigDes                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| TrigDes                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<0>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<1>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<2>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
@@ -3307,7 +3308,7 @@ Section 6 - IOB Properties
 | TriggerData<30>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<31>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<32>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| TriggerData<33>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| TriggerData<33>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<34>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<35>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<36>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
