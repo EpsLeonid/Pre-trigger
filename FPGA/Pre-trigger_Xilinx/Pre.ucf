@@ -524,14 +524,14 @@ NET "ADCInDataLVDS_n[127]" LOC = M20;
 
 #-----------------------------------
 
-NET "ADCInDataLVDS[0]" DIFF_TERM = "TRUE";
-NET "ADCInDataLVDS[1]" DIFF_TERM = "TRUE";
-NET "ADCInDataLVDS[2]" DIFF_TERM = "TRUE";
-NET "ADCInDataLVDS[3]" DIFF_TERM = "TRUE";
-NET "ADCInDataLVDS[4]" DIFF_TERM = "TRUE";
-NET "ADCInDataLVDS[5]" DIFF_TERM = "TRUE";
-NET "ADCInDataLVDS[6]" DIFF_TERM = "TRUE";
-NET "ADCInDataLVDS[7]" DIFF_TERM = "TRUE";
+NET "ADCInDataLVDS[0]" DIFF_TERM = "FALSE";
+NET "ADCInDataLVDS[1]" DIFF_TERM = "FALSE";
+NET "ADCInDataLVDS[2]" DIFF_TERM = "FALSE";
+NET "ADCInDataLVDS[3]" DIFF_TERM = "FALSE";
+NET "ADCInDataLVDS[4]" DIFF_TERM = "FALSE";
+NET "ADCInDataLVDS[5]" DIFF_TERM = "FALSE";
+NET "ADCInDataLVDS[6]" DIFF_TERM = "FALSE";
+NET "ADCInDataLVDS[7]" DIFF_TERM = "FALSE";
 NET "ADCInDataLVDS[8]" DIFF_TERM = "TRUE";
 NET "ADCInDataLVDS[9]" DIFF_TERM = "TRUE";
 NET "ADCInDataLVDS[10]" DIFF_TERM = "TRUE";
@@ -687,8 +687,8 @@ NET "TxD[3]" LOC = A10;
 #-----------------------------------
 
 NET "Led1" LOC = C19; # Clk_light
-NET "Led2" LOC = C18; # Trig_light
-NET "Led3" LOC = C17; # Err_light
+NET "Led2" LOC = C17; # Trig_light
+NET "Led3" LOC = C18; # Err_light
 NET "Led4" LOC = E18; # 
 NET "Led5" LOC = E17; # 
 NET "ExtReset" LOC = AP4;
@@ -703,3 +703,5 @@ NET "Test[6]" LOC = B5;
 NET "Test[7]" LOC = A5;
 NET "Test[8]" LOC = B6;
 NET "Test[9]" LOC = A6;
+#NET "ADC_res" LOC = B6;
+#NET "ADC_test" LOC = A6;

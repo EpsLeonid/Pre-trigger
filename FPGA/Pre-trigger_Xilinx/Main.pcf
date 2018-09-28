@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Aug 31 14:30:52 2018
+// Written by: Map P.20131013 on Fri Sep 28 10:37:41 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -12,8 +12,8 @@ COMP "ADCInDataLVDS<15>" LOCATE = SITE "AE33" LEVEL 1;
 COMP "Col" LOCATE = SITE "B11" LEVEL 1;
 COMP "Crs" LOCATE = SITE "A11" LEVEL 1;
 COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
-COMP "Led2" LOCATE = SITE "C18" LEVEL 1;
-COMP "Led3" LOCATE = SITE "C17" LEVEL 1;
+COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
+COMP "Led3" LOCATE = SITE "C18" LEVEL 1;
 COMP "Led4" LOCATE = SITE "E18" LEVEL 1;
 COMP "Led5" LOCATE = SITE "E17" LEVEL 1;
 COMP "RxDv" LOCATE = SITE "C8" LEVEL 1;
@@ -147,6 +147,10 @@ COMP "TriggerData<9>" LOCATE = SITE "C3" LEVEL 1;
 COMP "Sw_Quartz" LOCATE = SITE "J17" LEVEL 1;
 COMP "ADC_CLK" LOCATE = SITE "G17" LEVEL 1;
 COMP "ADC_CSB" LOCATE = SITE "E16" LEVEL 1;
+TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_Bit_write" BEL "ADCtest_CSB_trig" BEL
+        "ADCTest/count_0" BEL "ADCTest/count_1" BEL "ADCTest/count_2" BEL
+        "ADCTest/count_3" BEL "ADCTest/count_4" BEL "ADCTest/count_5" BEL
+        "DLL/CLKDV_BUFG_INST" BEL "ADC_SCLK";
 PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1_pins<3> = BEL
         "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1" PINNAME CLK;
 PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2_pins<3> = BEL
@@ -244,7 +248,8 @@ TIMEGRP DLL_CLK2X_BUF = BEL "Led_B/ES1/Trig0" BEL "Led_B/ES1/Trig1" BEL
         "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_1_pins<3>" PIN
         "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_2_pins<3>" PIN
         "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2_pins<3>";
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2_pins<3>" BEL
+        "ADC_CLK" BEL "Test<9>";
 TIMEGRP Qclock = BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
         "CntTest/count_2" BEL "CntTest/count_3" BEL "CntTest/count_4" BEL
         "CntTest/count_5" BEL "CntTest/count_6" BEL "CntTest/count_7" BEL
@@ -265,8 +270,8 @@ TIMEGRP Qclock = BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
         "PhaseSwitch/TimingCnt/count_2" BEL "PhaseSwitch/TimingCnt/count_1"
         BEL "PhaseSwitch/TimingCnt/count_0" BEL "PhaseSwitch/Sync_TRG1" BEL
         "Quarts_BUFG";
-PIN DLL/DCM_ADV_INST_pins<4> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
-TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<4>";
+PIN DLL/DCM_ADV_INST_pins<5> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
+TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<5>";
 TIMEGRP DLL_CLKFX_BUF = BEL "DLL/CLKFX_BUFG_INST" BEL
         "FindMaxAmp_i/Amp_i[0].Amp/Trig" BEL "FindMaxAmp_i/Inhibit_srff/Trig"
         BEL "FindMaxAmp_i/AllReset_SRFF/Trig" BEL
@@ -620,6 +625,8 @@ TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1" 6.25 ns HIGH 50%;
 TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2" 6.25 ns HIGH 50%;
 TS_DCO3 = PERIOD TIMEGRP "ADC_DCO_LVDS3" 6.25 ns HIGH 50%;
 TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_MuxClock_in / 2 HIGH 50%
+        INPUT_JITTER 0.375 ns;
+TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CLKDV_BUF" TS_MuxClock_in * 2 HIGH 50%
         INPUT_JITTER 0.375 ns;
 TS_DLL_CLKFX_BUF = PERIOD TIMEGRP "DLL_CLKFX_BUF" TS_MuxClock_in / 4 HIGH 50%
         INPUT_JITTER 0.375 ns;

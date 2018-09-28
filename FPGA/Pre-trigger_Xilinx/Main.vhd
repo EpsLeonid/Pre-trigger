@@ -62,6 +62,8 @@ port(
 	ADCInDataLVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 	ADCInDataLVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 
+	ADC_test				: in std_logic;
+	ADC_res				: in std_logic;
 	ADC_CSB				: out std_logic := '1';	-- Pin 
 	ADC_SDIO				: out std_logic := '0';	-- Pin 
 	ADC_SCLK				: out std_logic := '0';	-- Pin 
@@ -99,8 +101,9 @@ port(
 	ExtReset		: in std_logic;  -- external Reset (tied to GND --VCC)	<- Pin
 
 -- 6. Test
-	Test			: out std_logic_vector(9 downto 0):= (others => '0'));
+	Test			: out std_logic_vector(9 downto 0):= (others => '0')
 
+	);
 end Main;
 
 architecture Behavioral of Main is
@@ -126,7 +129,22 @@ architecture Behavioral of Main is
 
 	--- ADC SPI interface signals
 	signal s_fadc_test		: std_logic := '0'; 
+	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
+											--									  "set	addr	 	data   set	addr		  data "
+											--									   3bit	 13bit	 	8bit   3bit	13bit		  8bit
+	signal shift_sdio_test	: std_logic;
+	
 	signal s_fadc_reset		: std_logic := '0'; 
+	signal s_fadc_sdio_reset: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000000000000000001111111100000001";
+	signal shift_sdio_reset	: std_logic;
+	
+	signal ADCtest_Bit_write: std_logic := '0'; 
+	signal ADCtest_reg_sset	: std_logic := '1'; 
+	signal ADCtest_SDIO_trig: std_logic; 
+	signal ADCtest_CSB_trig	: std_logic; 
+	
+	signal ADCtest_bit_count: STD_LOGIC_VECTOR(5 downto 0);
+	
 	signal s_fadc_csb			: std_logic := '1';
 	signal s_fadc_sdio		: std_logic := '0'; 
 	signal s_fadc_sclk		: std_logic := '0';
@@ -156,6 +174,7 @@ architecture Behavioral of Main is
 
 	--- Test
 	signal TestCnt	: std_logic_vector(23 downto 0);
+	signal test_out: std_logic_vector(15 downto 0);
 
 begin
 
@@ -230,7 +249,15 @@ DLL: entity work.DLL
 	);
 
 --******** LED ********--
-	LED1 <= '1' when ((TestCnt(22)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
+--	process(Clk80)
+--	begin
+--		if rising_edge(Clk80) then
+--			if ((TestCnt(23)='1' and s_clock_locked = '1' and Clk_Selected = '1') or (s_clock_locked = '1' and Clk_Selected = '0')) then LED1 <= '1';
+--																																											else LED1 <= '0';
+--			end if;
+--		end if;
+--	end process;
+	LED1 <= '1' when ((TestCnt(23)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
 				'0';
 	Led_B : entity work.Light_Pulser 
 		generic map ( DIV	=> 2,
@@ -241,8 +268,8 @@ DLL: entity work.DLL
 					 o_flash => LED2
 					);
 
-	LED3 <= '1' when TestCnt(20)='1' else
-				'0' when TestCnt(20)='0' else
+	LED3 <= '1' when TestCnt(23)='1' else
+				'0' when TestCnt(23)='0' else
 				'0';
 	LED4 <= '1' when TestCnt(21)='1' else
 				'0' when TestCnt(21)='0' else
@@ -288,14 +315,14 @@ DLL: entity work.DLL
 		Clock				=> CLK40,
 		Clock160			=> CLK160,
 
-		Reset				=> Reset
+		Reset				=> Reset,
 	--	ResetAll			=> '0',
 	--	Error				=> '0',
 
-	--	test				=> 
+		test				=> test_out
 	);
 
-	ADC_CLK <= CLK40;
+	ADC_CLK <= CLK80;
 	TriggerData(32) <= FastTrigDes_o;
 	TriggerData(33) <= TrigDes_o;
 
@@ -325,20 +352,74 @@ DLL: entity work.DLL
 
 --******** ADC test part ********--
 
-	ADC_Ctrl : entity work.adc_ctrl_i 
-	port map (
-			Clock			=> Clk20,
-			ADC_Test		=> s_fadc_test,
-			ADC_Reset	=> s_fadc_reset,
+--	ADC_Ctrl : entity work.adc_ctrl_i 
+--	port map (
+--			Clock			=> Clk20,
+--			ADC_Test		=> '1',--s_fadc_test,
+--			ADC_Reset	=> s_fadc_reset,
+--
+--			ADC_CSB		=> s_fadc_csb,
+--			ADC_SDIO		=> s_fadc_sdio,
+--			ADC_SCLK		=> s_fadc_sclk
+--				);
 
-			ADC_CSB		=> s_fadc_csb,
-			ADC_SDIO		=> s_fadc_sdio,
-			ADC_SCLK		=> s_fadc_sclk
+	ADCTest : entity work.V_Counter 
+	generic map(
+				WIDTH => 6
+			)
+	port map (
+				clock 	=> Clk20,--CLK40,
+				clk_en	=> ADCtest_Bit_write,
+				q			=> ADCtest_bit_count
 				);
 
-	ADC_CSB		<= s_fadc_csb;
-	ADC_SDIO		<= s_fadc_sdio;
-	ADC_SCLK		<= s_fadc_sclk;
+	process (Clk20)
+	begin
+		if rising_edge(Clk20) then
+			if (ADCtest_bit_count < "110100") Then ADCtest_Bit_write <= '1';
+															Else ADCtest_Bit_write <= '0';
+			end if;
+			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+																												  ADC_SDIO <= ADCtest_SDIO_trig;
+																											Else ADCtest_reg_sset <= '1';
+																												  ADC_SDIO <= '0';
+			END IF;
+			IF (((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "011001")) OR ((ADCtest_bit_count >= "011011") AND (ADCtest_bit_count < "110011")))Then 
+				ADCtest_CSB_trig <= '0';
+			ELSE 
+				ADCtest_CSB_trig <= '1';
+			END IF;
+		end if;
+	end process;
+	
+	Shifr_reg: for i in 49 downto 0 generate 
+		process (Clk20)
+		begin
+			if rising_edge(Clk20) then
+				if ADCtest_reg_sset = '0' then
+					ADCtest_SDIO_trig <= s_fadc_sdio_test(i);
+				end if;
+			end if;
+		end process;
+	end generate;
+	ADC_CSB <= ADCtest_CSB_trig;
+	ADC_SCLK <= Clk20;
+
+--	ShiftReg_test : entity work.ShiftReg 
+--		generic map (WIDTH => 50) 
+--		port map (
+--			CLK	=> Clk20,
+--			SI		=> s_fadc_sdio_test,
+--			Sset	=> ADCtest_reg_sset,
+--			SO		=> shift_sdio_test
+--		);
+
+--	ADC_CSB		<= '0';
+--	ADC_SDIO		<= shift_sdio_test;
+--	ADC_SCLK		<= Clk20;
+--	ADC_CSB		<= s_fadc_csb;
+--	ADC_SDIO		<= s_fadc_sdio;
+--	ADC_SCLK		<= s_fadc_sclk;
 
 --******** Test part ********--
 
@@ -352,6 +433,15 @@ DLL: entity work.DLL
 				q			=> TestCnt
 				);
 
-	Test <= TestCnt(9 downto 0);
+	Test(0) <= InDataReg(0)(0);
+	Test(1) <= InDataReg(0)(1);
+	Test(2) <= InDataReg(0)(2);
+	Test(3) <= InDataReg(0)(3);
+	Test(4) <= InDataReg(0)(4);
+	Test(5) <= InDataReg(0)(5);
+	Test(6) <= InDataReg(0)(6);
+	Test(7) <= InDataReg(0)(7);
+	Test(8) <= test_out(1);
+	Test(9) <= Clk80;
 
 end Behavioral;

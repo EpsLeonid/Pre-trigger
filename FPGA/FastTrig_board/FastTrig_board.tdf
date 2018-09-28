@@ -15,8 +15,8 @@ INCLUDE "PhaseSwitch.inc";
 
 INCLUDE "PLL_Trigger.inc";
 
-Constant Hedder = b"0010";
-Constant CRC = b"00100010";
+Constant Hedder = b"0110";
+Constant CRC = b"00110010";
 
 SUBDESIGN FastTrig_board
 (
@@ -57,6 +57,8 @@ Clk40			: node; -- This is Global Node
 Clk80			: node; -- This is Global Node
 Clk160			: node; -- This is Global Node
 
+ClkQuartz		: node; -- This is Global Node
+
 PhaseSw			: PhaseSwitch with (FmaxThresh=42000, FminThresh=38000, RefClock=40000);
 
 --******** Power-up self-Reset and self-Set pulses ***************************
@@ -74,14 +76,19 @@ R_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Red
 
 --============================================================================
 --******** 3. Trigger ******************************************************
-FastTrig[4..1]	: DFF;
+FastTrig[4..1],
 FastTrigDelay[4..1]	: DFF;
+DelayLine[5..1]	: DFF;
 Trig			: node;
 TrigDes			: SRFF;
 EventCout		: lpm_counter WITH (lpm_width=32, lpm_direction="up");
-EndTransf		: node;
+TrigTransf_load	: EdgeSensing;
+TrigTransf_en	: SRFF;
 TrigTransf		: lpm_shiftreg with (lpm_width=44, lpm_direction="left");
-DataTransfCout	: lpm_counter WITH (lpm_width=6, lpm_direction="up");
+DataTransfCout	: lpm_counter WITH (lpm_width=10, lpm_direction="up");
+EndTransf		: node;
+EndTransfDelay	: DFF;
+AllReset		: DFF;
 
 --============================================================================
 --******** 5. System ******************************************************
@@ -147,13 +154,15 @@ IF (PhaseSw.SysClk_Selected == VCC) Then PLL_res = FQuartz;
 END IF;
 
 --**************** PLL section ***********************************************
-PLL.inclk0	= PLL_In;
+PLL.inclk0	= FQuartz;--PLL_In;
 --PLL1.pfdena = VCC;--!Reset;
 --PLLlocked	= PLL.locked;      -- output to pad P2 for monitoring
 --PLLExtOut	= PLL.e0;
 Clk40		= Global(PLL.c0); --  40MHz clock
 Clk80		= Global(PLL.c1); --  80MHz clock
 Clk160		= Global(PLL.c2); -- 160MHz clock
+
+ClkQuartz	= Global(FQuartz);
 
 --============================================================================
 -- ******** 2. Indicators section ********************************************
@@ -175,36 +184,54 @@ Error = PhaseSw.Error;
 --============================================================================
 --******** 3. Trigger section *********************************************
 
-FastTrig[1].(d, clk) = (FastTrig_in[1], clk160);
-FastTrig[2].(d, clk) = (FastTrig_in[2], clk160);
-FastTrig[3].(d, clk) = (FastTrig_in[3], clk160);
-FastTrig[4].(d, clk) = (FastTrig_in[4], clk160);
+FastTrig[1].(d, clk) = (FastTrig_in[1], Clk160);
+FastTrig[2].(d, clk) = (FastTrig_in[2], Clk160);
+FastTrig[3].(d, clk) = (FastTrig_in[3], Clk160);
+FastTrig[4].(d, clk) = (FastTrig_in[4], Clk160);
 
-FastTrigDelay[1].(d, clk) = (FastTrig[1], clk160);
-FastTrigDelay[2].(d, clk) = (FastTrig[2], clk160);
-FastTrigDelay[3].(d, clk) = (FastTrig[3], clk160);
-FastTrigDelay[4].(d, clk) = (FastTrig[4], clk160);
+FastTrigDelay[1].(d, clk) = (FastTrig[1], Clk160);
+FastTrigDelay[2].(d, clk) = (FastTrig[2], Clk160);
+FastTrigDelay[3].(d, clk) = (FastTrig[3], Clk160);
+FastTrigDelay[4].(d, clk) = (FastTrig[4], Clk160);
 
-IF (((FastTrig[1].q and !FastTrigDelay[1].q) OR 
+DelayLine[1].(d, clk) = ((FastTrig[1].q and !FastTrigDelay[1].q), clk160);
+DelayLine[2].(d, clk) = (DelayLine[1].q, clk160);
+DelayLine[3].(d, clk) = (DelayLine[2].q, clk160);
+DelayLine[4].(d, clk) = (DelayLine[3].q, clk160);
+DelayLine[5].(d, clk) = (DelayLine[4].q, clk160);
+
+IF ((DelayLine[1].q %OR 
 	 (FastTrig[2].q and !FastTrigDelay[2].q) OR 
 	 (FastTrig[3].q and !FastTrigDelay[3].q) OR 
-	 (FastTrig[4].q and !FastTrigDelay[4].q)) == VCC) Then Trig = VCC;
-													  Else Trig = GND;
+	 (FastTrig[4].q and !FastTrigDelay[4].q)%) == VCC) Then Trig = VCC;
+													   Else Trig = GND;
 END IF;
 
-TrigDes.(S, Clk, R, clrn) = (Trig, Clk160, Reset, !EndTransf);
+EventCout.(clock, clk_en, cnt_en, aclr) = (Clk160, VCC, DelayLine[1].q, Reset);
 
-EventCout.(clock, clk_en, cnt_en, aclr) = (Clk160, VCC, ((FastTrig[1].q OR FastTrig[2].q OR FastTrig[3].q OR FastTrig[4].q) AND !TrigDes.q), Reset);
+TrigTransf_load.(d, clk) = (DelayLine[1].q, Clk160);
 
-TrigTransf.(data[], clock, enable, load) = ((Hedder,EventCout.q[],CRC), clk40, TrigDes.q, VCC);
+TrigTransf_en.(S, Clk, R, clrn) = (Trig, Clk160, Reset, !AllReset.q);
+--TrigTransf.(data[], clock, enable, load) = ((Hedder,EventCout.q[],CRC), Clk80, VCC, TrigTransf_load.q);--TrigDes.q);
+TrigTransf.(data[], clock, enable, load, sclr) = (b"10110001110000111100000111110000111100011100", Clk80, TrigTransf_en.q, TrigTransf_load.q, AllReset.q);--TrigDes.q);
 
-DataTransfCout.(clock, clk_en, cnt_en, aclr) = (clk40, VCC, TrigDes.q, Trig);
+TrigDes.(S, Clk, R, clrn) = (TrigTransf_load.q, Clk80, Reset, !AllReset.q);
 
-IF (DataTransfCout.q[] == b"101011") then EndTransf = VCC;
-									 else EndTransf = GND;
+DataTransfCout.(clock, clk_en, cnt_en, sclr) = (Clk80, VCC, TrigDes.q and !DelayLine[2].q and !DelayLine[3].q, EndTransfDelay.q);-- AllReset.q);
+
+IF (DataTransfCout.q[] == b"0000101011") then EndTransf = VCC;
+										 else EndTransf = GND;
 END IF;
 
-Trigger = TrigTransf.shiftout;
+IF (TrigDes.q == VCC) then Trigger = TrigTransf.shiftout;
+					  else Trigger = GND;
+END IF;
+
+EndTransfDelay.(d, clk) = (EndTransf, clk80);
+
+AllReset.(d, clk) = (EndTransf and !EndTransfDelay.q, clk80);
+--AllReset.(d, clk) = (TrigDes.q, Clk160);
+
 
 --============================================================================
 -- 10. Testing circuitry ******************************************************
@@ -220,14 +247,14 @@ TestCt.cnt_en			= PowerUp0;
 TestCt.aclr				= !PowerUp0;    -- even if NO clock - Reset does occur
 
 Test0	= VCC;
-Test1	= GND;
-Test2	= VCC;
-Test3	= GND;
-Test4	= VCC;
-Test5	= GND;
-Test6	= VCC;
-Test7	= GND;
-Test8	= VCC;
-Test9	= GND;
+Test1	= FQuartz;
+Test2	= Clk160;
+Test3	= FastTrig[1].q;
+Test4	= Trig;
+Test5	= TrigDes.q;-- and !FastTrigDelay[1].q;
+Test6	= EventCout.q[0];
+Test7	= TrigDes.q and !DelayLine[2].q and !DelayLine[3].q;
+Test8	= TrigTransf_en.q;--TestCt.q[1];
+Test9	= TestCt.q[3];
 
 END;

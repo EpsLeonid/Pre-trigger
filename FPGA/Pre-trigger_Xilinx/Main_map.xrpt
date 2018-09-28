@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Fri Aug 31 14:30:54 2018">
+  <application stringID="Map" timeStamp="Fri Sep 28 10:37:44 2018">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -73,13 +73,13 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="454"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="416124"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="6 secs "/>
-        <item stringID="MAP_TOTAL_CPU_TIME" value="3 secs "/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="415484"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="12 secs "/>
+        <item stringID="MAP_TOTAL_CPU_TIME" value="4 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING"/>
       <section label="Logic Utilization" stringID="MAP_LOGIC_UTILIZATION">
-        <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="446"/>
+        <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="454"/>
         <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="0"/>
         <item dataType="int" stringID="MAP_NUM_ACAL_REG" value="0"/>
         <item dataType="int" stringID="MAP_AVAILABLE_SLICEL" value="13312"/>
@@ -88,14 +88,14 @@
         <item dataType="int" stringID="MAP_LUTS_PER_SLICE" value="2"/>
         <item AVAILABLE="13312" dataType="int" stringID="MAP_NUM_SLICEM" value="2"/>
         <item AVAILABLE="13312" dataType="int" stringID="MAP_NUM_SLICEL" value="2"/>
-        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="373"/>
+        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="382"/>
         <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="38"/>
         <item dataType="int" stringID="MAP_NUM_ACAL_LUT" value="0"/>
       </section>
       <section label="Logic Distribution" stringID="MAP_LOGIC_DISTRIBUTION">
-        <item dataType="int" label="Number of occupied Slices" stringID="MAP_AGG_SLICE" value="351"/>
+        <item dataType="int" label="Number of occupied Slices" stringID="MAP_AGG_SLICE" value="354"/>
         <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
-        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="411"/>
+        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="420"/>
         <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="38"/>
         <item dataType="int" stringID="MAP_NUM_DP_RAM" value="0"/>
         <item dataType="int" stringID="MAP_NUM_RAM32" value="0"/>
@@ -123,8 +123,8 @@
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_BONDED_IOBS" value="0"/>
       </section>
       <section stringID="MAP_HARD_IP_REPORTING">
-        <item AVAILABLE="32" dataType="int" stringID="MAP_BUFG_BUFGCTRL" value="4"/>
-        <item dataType="int" label="Number used as BUFGs" stringID="MAP_NUM_BUFG" value="4"/>
+        <item AVAILABLE="32" dataType="int" stringID="MAP_BUFG_BUFGCTRL" value="5"/>
+        <item dataType="int" label="Number used as BUFGs" stringID="MAP_NUM_BUFG" value="5"/>
         <item dataType="int" stringID="MAP_NUM_BUFGCTRL" value="0"/>
         <item AVAILABLE="160" dataType="int" stringID="MAP_FIFO16_RAMB16" value="0"/>
         <item dataType="int" stringID="MAP_NUM_FIFO16" value="0"/>
@@ -153,7 +153,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="2">
@@ -161,7 +161,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="3">
@@ -169,7 +169,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="4">
@@ -177,7 +177,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="5">
@@ -185,7 +185,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="6">
@@ -193,7 +193,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="7">
@@ -201,7 +201,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="8">
@@ -209,7 +209,7 @@
             <item stringID="Type" value="IOB ISERDES"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
             <item label="Reg&#xA;(s)" stringID="REGS" value="ISERDES"/>
           </row>
           <row stringID="row" value="9">
@@ -281,56 +281,56 @@
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="18">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;1>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="19">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;2>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="20">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;3>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="21">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;4>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="22">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;5>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="23">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;6>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="24">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;7>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
-            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
+            <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="FALSE"/>
           </row>
           <row stringID="row" value="25">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS_n&lt;8>"/>
@@ -597,7 +597,6 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
           </row>
           <row stringID="row" value="63">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="Sw_Quartz"/>
@@ -606,6 +605,7 @@
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
+            <item label="Reg&#xA;(s)" stringID="REGS" value="OFF1"/>
           </row>
           <row stringID="row" value="64">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="Test&lt;0>"/>
@@ -1257,7 +1257,7 @@
       </section>
       <section stringID="MAP_RPM_MACROS">
         <section stringID="MAP_SHAPE_SECTION">
-          <item dataType="int" stringID="MAP_NUM_SHAPE" value="36"/>
+          <item dataType="int" stringID="MAP_NUM_SHAPE" value="37"/>
         </section>
       </section>
       <section stringID="MAP_GUIDE_REPORT"/>

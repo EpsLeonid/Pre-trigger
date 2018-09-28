@@ -33,6 +33,7 @@ entity ShiftReg is
 		GENERIC (WIDTH  : NATURAL := 16); 
 		port(CLK	: in std_logic;
 				SI : in std_logic_vector(WIDTH-1 downto 0);
+				Sset: in std_logic;
 				SO : out std_logic);
 end ShiftReg;
 
@@ -44,13 +45,15 @@ begin
 
 	process (CLK)
 	begin
-	  if (CLK'event and CLK='1') then
-			tmp <= SI;
-			for i in 0 to WIDTH-2 loop
-				 tmp(i+1) <= tmp(i);
-			end loop;
-			SO <= tmp(WIDTH-1);
-	  end if;
+		if (CLK'event and CLK='1') then
+			if (Sset='1') then
+				tmp <= SI;
+				for i in 0 to WIDTH-2 loop
+					 tmp(i+1) <= tmp(i);
+				end loop;
+			end if;
+		end if;
 	end process;
+	SO <= tmp(WIDTH-1);
 
 end Behavioral;

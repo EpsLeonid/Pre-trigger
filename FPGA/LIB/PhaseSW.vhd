@@ -111,6 +111,6 @@ begin
 	Phase <= ((SysClk and MUX_Control) OR (Clock and not MUX_Control));
 	-- Mux section end 
 
-	SysClk_Selected <= MUX_Control;
+	SysClk_Selected <= not MUX_Control;
 
 end Behavioral;

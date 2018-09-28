@@ -9,22 +9,22 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Fri Aug 31 14:30:47 2018
+Mapped Date    : Fri Sep 28 10:37:31 2018
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:  454
 Logic Utilization:
-  Number of Slice Flip Flops:           446 out of  53,248    1%
-  Number of 4 input LUTs:               373 out of  53,248    1%
+  Number of Slice Flip Flops:           454 out of  53,248    1%
+  Number of 4 input LUTs:               382 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            351 out of  26,624    1%
-    Number of Slices containing only related logic:     351 out of     351 100%
-    Number of Slices containing unrelated logic:          0 out of     351   0%
+  Number of occupied Slices:            354 out of  26,624    1%
+    Number of Slices containing only related logic:     354 out of     354 100%
+    Number of Slices containing unrelated logic:          0 out of     354   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         411 out of  53,248    1%
-    Number used as logic:               371
+  Total Number of 4 input LUTs:         420 out of  53,248    1%
+    Number used as logic:               380
     Number used as a route-thru:         38
     Number used as Shift registers:       2
 
@@ -32,16 +32,16 @@ Logic Distribution:
   over-mapped for a non-slice resource or if Placement fails.
   Number of bonded IOBs:                144 out of     640   22%
     IOB Flip Flops:                       1
-  Number of BUFG/BUFGCTRLs:               4 out of      32   12%
-    Number used as BUFGs:                 4
+  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
+    Number used as BUFGs:                 5
   Number of DCM_ADVs:                     1 out of       8   12%
   Number of ISERDESs:                    32 out of     640    5%
 
-Average Fanout of Non-Clock Nets:                1.52
+Average Fanout of Non-Clock Nets:                1.57
 
 Peak Memory Usage:  406 MB
-Total REAL time to MAP completion:  6 secs 
-Total CPU time to MAP completion:   3 secs 
+Total REAL time to MAP completion:  12 secs 
+Total CPU time to MAP completion:   4 secs 
 
 NOTES:
 
@@ -994,14 +994,14 @@ WARNING:LIT:452 - IOBDELAY is set to NONE on ISERDES symbol
 
 Section 3 - Informational
 -------------------------
-INFO:LIT:243 - Logical network TxClk_IBUF has no load.
-INFO:LIT:395 - The above info message is repeated 9 more times for the following
-   (max. 5 shown):
+INFO:LIT:243 - Logical network ADC_test has no load.
+INFO:LIT:395 - The above info message is repeated 11 more times for the
+   following (max. 5 shown):
+   ADC_res,
+   TxClk_IBUF,
    Col_IBUF,
    Crs_IBUF,
-   ExtReset_IBUF,
-   RxClk_IBUF,
-   RxDv_IBUF
+   ExtReset_IBUF
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:MapLib:797 - Your design is targeting LX/SX Production Step 0/1/ES devices.
@@ -1018,9 +1018,9 @@ INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance
 
 Section 4 - Removed Logic Summary
 ---------------------------------
- 846 block(s) removed
+ 845 block(s) removed
    4 block(s) optimized away
- 802 signal(s) removed
+ 801 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -1037,8 +1037,6 @@ the lines that are least indented (begin at the leftmost edge).
 
 Loadless block "DLL/CLK90_BUFG_INST" (CKBUF) removed.
  The signal "DLL/CLK90_BUF" is loadless and has been removed.
-Loadless block "DLL/CLKDV_BUFG_INST" (CKBUF) removed.
- The signal "DLL/CLKDV_BUF" is loadless and has been removed.
 Loadless block "LVDS_Clk40" (CKBUF) removed.
  The signal "FCT_40" is loadless and has been removed.
   Loadless block "FCT_40" (PAD) removed.
@@ -3201,14 +3199,14 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ADCInDataLVDS<0>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS<1>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS<2>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS<3>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS<4>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS<5>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS<6>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS<7>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<0>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<1>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<2>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<3>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<4>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<5>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<6>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
+| ADCInDataLVDS<7>                   | IOB              | INPUT     | LVDS_25              | FALSE |          |      | ISERDES      |          |          |
 | ADCInDataLVDS<8>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
 | ADCInDataLVDS<9>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
 | ADCInDataLVDS<10>                  | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
@@ -3217,14 +3215,14 @@ Section 6 - IOB Properties
 | ADCInDataLVDS<13>                  | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
 | ADCInDataLVDS<14>                  | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
 | ADCInDataLVDS<15>                  | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | ISERDES      |          |          |
-| ADCInDataLVDS_n<0>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADCInDataLVDS_n<1>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADCInDataLVDS_n<2>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADCInDataLVDS_n<3>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADCInDataLVDS_n<4>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADCInDataLVDS_n<5>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADCInDataLVDS_n<6>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADCInDataLVDS_n<7>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
+| ADCInDataLVDS_n<0>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| ADCInDataLVDS_n<1>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| ADCInDataLVDS_n<2>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| ADCInDataLVDS_n<3>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| ADCInDataLVDS_n<4>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| ADCInDataLVDS_n<5>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| ADCInDataLVDS_n<6>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
+| ADCInDataLVDS_n<7>                 | IOB              | INPUT     | LVDS_25              | FALSE |          |      |              |          |          |
 | ADCInDataLVDS_n<8>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
 | ADCInDataLVDS_n<9>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
 | ADCInDataLVDS_n<10>                | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
@@ -3262,8 +3260,8 @@ Section 6 - IOB Properties
 | RxD<2>                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | RxD<3>                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | RxDv                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| Sw_FCTClk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Sw_Quartz                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Sw_FCTClk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Sw_Quartz                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<0>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<1>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<2>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |

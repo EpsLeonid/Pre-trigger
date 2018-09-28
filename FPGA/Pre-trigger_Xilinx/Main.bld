@@ -48,6 +48,13 @@ INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
    'TS_MuxClock_in', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The
    following new TNM groups and period specifications were generated at the
    DCM_ADV output(s): 
+   CLKDV: <TIMESPEC TS_DLL_CLKDV_BUF = PERIOD "DLL_CLKDV_BUF" TS_MuxClock_in * 2
+   HIGH 50% INPUT_JITTER 375 ps>
+
+INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
+   'TS_MuxClock_in', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The
+   following new TNM groups and period specifications were generated at the
+   DCM_ADV output(s): 
    CLKFX: <TIMESPEC TS_DLL_CLKFX_BUF = PERIOD "DLL_CLKFX_BUF" TS_MuxClock_in / 4
    HIGH 50% INPUT_JITTER 375 ps>
 
@@ -66,10 +73,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   4
 
-Total memory usage is 211992 kilobytes
+Total memory usage is 211480 kilobytes
 
 Writing NGD file "Main.ngd" ...
-Total REAL time to NGDBUILD completion:  5 sec
+Total REAL time to NGDBUILD completion:  6 sec
 Total CPU time to NGDBUILD completion:   5 sec
 
 Writing NGDBUILD log file "Main.bld"...

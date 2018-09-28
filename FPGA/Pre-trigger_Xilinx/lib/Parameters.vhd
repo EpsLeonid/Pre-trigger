@@ -14,9 +14,6 @@ package parameters is
 	constant NUM_ADCboard		: integer := 16;	-- Number of ADC boards in the trigger -- For tests!!!
 	constant NUM_TrigCell		: integer := 128;	-- Number of channels in the trigger -- For tests!!!
 	constant NUM_TrigCellPrev	: integer := 12;	-- Number of channels in the trigger from prev.board
-	constant ThresholdData_0	: integer := 100;
-	constant ThresholdData_1	: integer := 150;
-	constant ThresholdData_2	: integer := 243;
 	constant TrigBits				: integer := 64;		-- Number of triggerg bits to FCT
 	
 	type array_adc is array (0 to NUM_TrigCell) of std_logic_vector (ADC_Bits-1 downto 0);
@@ -33,6 +30,9 @@ package parameters is
 --	constant NumAmpGroup 		: integer := integer(NumGroup/2+NumGroup/4+NumGroup/8+(NumGroup rem 2)); -- Number of reg for find MaxAmp
 	constant Piedistal_def 		: integer := 100; 
 	constant Piedistal_def_2 	: integer := 125;
+	constant ThresholdData_0	: integer := 240;
+	constant ThresholdData_1	: integer := 150;
+	constant ThresholdData_2	: integer := 243;
 	constant MaxTime 				: integer := 160;  -- Maximal Valid time (750ns)
 	constant ResetTime 			: integer := 240;
 	

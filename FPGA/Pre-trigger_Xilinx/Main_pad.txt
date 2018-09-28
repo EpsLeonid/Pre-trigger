@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Fri Aug 31 14:31:54 2018
+Fri Sep 28 10:38:10 2018
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -72,14 +72,14 @@ Pinout by Pin Number:
 |AA19      |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AA20      |                   |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |AA22      |                   |         |VCCO_11             |         |           |11            |          |         |           |         |any******|          |           |                |
-|AA23      |ADCInDataLVDS<2>   |IOB      |IO_L17P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
-|AA24      |ADCInDataLVDS_n<2> |IOB      |IO_L17N_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|AA23      |ADCInDataLVDS<2>   |IOB      |IO_L17P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
+|AA24      |ADCInDataLVDS_n<2> |IOB      |IO_L17N_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AA25      |ADC_DCO_LVDS<0>    |IOB      |IO_L9P_CC_LC_11     |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
 |AA26      |ADC_DCO_LVDS_n<0>  |IOB      |IO_L9N_CC_LC_11     |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
 |AA27      |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|AA28      |ADCInDataLVDS<5>   |IOB      |IO_L1P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
-|AA29      |ADCInDataLVDS_n<5> |IOB      |IO_L1N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
-|AA30      |ADCInDataLVDS_n<6> |IOB      |IO_L3N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|AA28      |ADCInDataLVDS<5>   |IOB      |IO_L1P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
+|AA29      |ADCInDataLVDS_n<5> |IOB      |IO_L1N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
+|AA30      |ADCInDataLVDS_n<6> |IOB      |IO_L3N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AA31      |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |AA32      |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |AA33      |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
@@ -105,15 +105,15 @@ Pinout by Pin Number:
 |AB19      |                   |         |VCCO_2              |         |           |2             |          |         |           |         |any******|          |           |                |
 |AB20      |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AB21      |                   |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
-|AB22      |ADCInDataLVDS<3>   |IOB      |IO_L29P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
-|AB23      |ADCInDataLVDS_n<3> |IOB      |IO_L29N_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|AB22      |ADCInDataLVDS<3>   |IOB      |IO_L29P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
+|AB23      |ADCInDataLVDS_n<3> |IOB      |IO_L29N_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AB24      |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|AB25      |ADCInDataLVDS<4>   |IOB      |IO_L20P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
-|AB26      |ADCInDataLVDS_n<4> |IOB      |IO_L20N_VREF_11     |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|AB25      |ADCInDataLVDS<4>   |IOB      |IO_L20P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
+|AB26      |ADCInDataLVDS_n<4> |IOB      |IO_L20N_VREF_11     |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AB27      |                   |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
-|AB28      |ADCInDataLVDS_n<7> |IOB      |IO_L11N_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|AB28      |ADCInDataLVDS_n<7> |IOB      |IO_L11N_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AB29      |                   |         |VCCO_11             |         |           |11            |          |         |           |         |any******|          |           |                |
-|AB30      |ADCInDataLVDS<6>   |IOB      |IO_L3P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
+|AB30      |ADCInDataLVDS<6>   |IOB      |IO_L3P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
 |AB31      |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |AB32      |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |AB33      |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
@@ -145,7 +145,7 @@ Pinout by Pin Number:
 |AC25      |ADCInDataLVDS<10>  |IOB      |IO_L23P_VRN_11      |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
 |AC26      |                   |         |VCCO_11             |         |           |11            |          |         |           |         |any******|          |           |                |
 |AC27      |ADCInDataLVDS_n<11>|IOB      |IO_L19N_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
-|AC28      |ADCInDataLVDS<7>   |IOB      |IO_L11P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
+|AC28      |ADCInDataLVDS<7>   |IOB      |IO_L11P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
 |AC29      |ADCInDataLVDS<8>   |IOB      |IO_L7P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
 |AC30      |ADCInDataLVDS_n<8> |IOB      |IO_L7N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
 |AC31      |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
@@ -574,8 +574,8 @@ Pinout by Pin Number:
 |C14       |                   |LOWCAPIOB|IO_L25P_CC_LC_6     |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |C15       |                   |LOWCAPIOB|IO_L14N_GC_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |C16       |                   |         |VCCO_1              |         |           |1             |          |         |           |         |2.50     |          |           |                |
-|C17       |Led3               |IOB      |IO_L12P_GC_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
-|C18       |Led2               |IOB      |IO_L13N_GC_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|C17       |Led2               |IOB      |IO_L12P_GC_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|C18       |Led3               |IOB      |IO_L13N_GC_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C19       |Led1               |IOB      |IO_L13P_GC_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C20       |                   |LOWCAPIOB|IO_L15N_GC_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |C21       |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
@@ -1123,8 +1123,8 @@ Pinout by Pin Number:
 |W21       |                   |         |PWRDWN_B_0          |         |           |              |          |         |           |         |         |          |           |                |
 |W22       |                   |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |W23       |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|W24       |ADCInDataLVDS<0>   |IOB      |IO_L2P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
-|W25       |ADCInDataLVDS<1>   |IOB      |IO_L4P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
+|W24       |ADCInDataLVDS<0>   |IOB      |IO_L2P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
+|W25       |ADCInDataLVDS<1>   |IOB      |IO_L4P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |NONE            |
 |W26       |                   |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
 |W27       |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |W28       |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
@@ -1157,9 +1157,9 @@ Pinout by Pin Number:
 |Y21       |                   |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |Y22       |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |Y23       |                   |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
-|Y24       |ADCInDataLVDS_n<0> |IOB      |IO_L2N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|Y24       |ADCInDataLVDS_n<0> |IOB      |IO_L2N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |Y25       |                   |         |VCCO_11             |         |           |11            |          |         |           |         |any******|          |           |                |
-|Y26       |ADCInDataLVDS_n<1> |IOB      |IO_L4N_VREF_11      |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|Y26       |ADCInDataLVDS_n<1> |IOB      |IO_L4N_VREF_11      |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |Y27       |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |Y28       |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |Y29       |                   |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
