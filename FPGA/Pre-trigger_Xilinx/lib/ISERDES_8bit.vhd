@@ -48,6 +48,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal shift1	: std_logic; 
 	signal shift2	: std_logic;
 --	signal clkdiv	: std_logic;
+	signal Data		: std_logic_vector(ADC_Bits-1 downto 0);
 
 begin
 
@@ -76,12 +77,12 @@ begin
       SERDES_MODE => "MASTER") --Set SERDES mode to "MASTER" or "SLAVE" 
    port map (
       O => Open,    -- 1-bit output
-      Q1 => DataOut(0),  -- 1-bit output
-      Q2 => DataOut(1),  -- 1-bit output
-      Q3 => DataOut(2),  -- 1-bit output
-      Q4 => DataOut(3),  -- 1-bit output
-      Q5 => DataOut(4),  -- 1-bit output
-      Q6 => DataOut(5),  -- 1-bit output
+      Q1 => Data(0),  -- 1-bit output
+      Q2 => Data(1),  -- 1-bit output
+      Q3 => Data(2),  -- 1-bit output
+      Q4 => Data(3),  -- 1-bit output
+      Q5 => Data(4),  -- 1-bit output
+      Q6 => Data(5),  -- 1-bit output
       SHIFTOUT1 => shift1, -- 1-bit output
       SHIFTOUT2 => shift2, -- 1-bit output
       BITSLIP => '0',     -- 1-bit input
@@ -119,8 +120,8 @@ begin
       Q2 => Open,  -- 1-bit output
       Q3 => Open,  -- 1-bit output
       Q4 => Open,  -- 1-bit output
-      Q5 => DataOut(6),  -- 1-bit output
-      Q6 => DataOut(7),  -- 1-bit output
+      Q5 => Data(6),  -- 1-bit output
+      Q6 => Data(7),  -- 1-bit output
       SHIFTOUT1 => Open, -- 1-bit output
       SHIFTOUT2 => Open, -- 1-bit output
       BITSLIP => '0',     -- 1-bit input
@@ -138,6 +139,15 @@ begin
       SHIFTIN2 => shift2, -- 1-bit input
       SR => Rst           -- 1-bit input
    );
+
+	DataOut(0) <= not Data(0);
+	DataOut(1) <= Data(1);
+	DataOut(2) <= not Data(2);
+	DataOut(3) <= Data(3);
+	DataOut(4) <= not Data(4);
+	DataOut(5) <= Data(5);
+	DataOut(6) <= not Data(6);
+	DataOut(7) <= Data(7);
 
 end Behavioral;
 

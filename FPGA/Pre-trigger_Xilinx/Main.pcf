@@ -1,32 +1,8 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Sep 28 10:37:41 2018
+// Written by: Map P.20131013 on Fri Sep 28 19:16:22 2018
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "ADCInDataLVDS<10>" LOCATE = SITE "AC25" LEVEL 1;
-COMP "ADCInDataLVDS<11>" LOCATE = SITE "AD27" LEVEL 1;
-COMP "ADCInDataLVDS<12>" LOCATE = SITE "AD30" LEVEL 1;
-COMP "ADCInDataLVDS<13>" LOCATE = SITE "AE29" LEVEL 1;
-COMP "ADCInDataLVDS<14>" LOCATE = SITE "AE32" LEVEL 1;
-COMP "ADCInDataLVDS<15>" LOCATE = SITE "AE33" LEVEL 1;
-COMP "Col" LOCATE = SITE "B11" LEVEL 1;
-COMP "Crs" LOCATE = SITE "A11" LEVEL 1;
-COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
-COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
-COMP "Led3" LOCATE = SITE "C18" LEVEL 1;
-COMP "Led4" LOCATE = SITE "E18" LEVEL 1;
-COMP "Led5" LOCATE = SITE "E17" LEVEL 1;
-COMP "RxDv" LOCATE = SITE "C8" LEVEL 1;
-COMP "TxEn" LOCATE = SITE "A9" LEVEL 1;
-COMP "MuxClock_in" LOCATE = SITE "D16" LEVEL 1;
-COMP "Test<0>" LOCATE = SITE "B2" LEVEL 1;
-COMP "Test<1>" LOCATE = SITE "B3" LEVEL 1;
-COMP "Test<2>" LOCATE = SITE "A3" LEVEL 1;
-COMP "Test<3>" LOCATE = SITE "A4" LEVEL 1;
-COMP "Test<4>" LOCATE = SITE "D5" LEVEL 1;
-COMP "Test<5>" LOCATE = SITE "C5" LEVEL 1;
-COMP "Test<6>" LOCATE = SITE "B5" LEVEL 1;
-COMP "Test<7>" LOCATE = SITE "A5" LEVEL 1;
 COMP "Test<8>" LOCATE = SITE "B6" LEVEL 1;
 COMP "Test<9>" LOCATE = SITE "A6" LEVEL 1;
 COMP "ADCInDataLVDS_n<0>" LOCATE = SITE "Y24" LEVEL 1;
@@ -132,7 +108,6 @@ COMP "TriggerData<58>" LOCATE = SITE "AK4" LEVEL 1;
 COMP "TriggerData<59>" LOCATE = SITE "AE2" LEVEL 1;
 COMP "Sw_FCTClk" LOCATE = SITE "D17" LEVEL 1;
 COMP "ADC_SCLK" LOCATE = SITE "G16" LEVEL 1;
-COMP "ADC_SDIO" LOCATE = SITE "F16" LEVEL 1;
 COMP "FastTrigDes" LOCATE = SITE "B13" LEVEL 1;
 COMP "TriggerData<0>" LOCATE = SITE "L1" LEVEL 1;
 COMP "TriggerData<1>" LOCATE = SITE "AD4" LEVEL 1;
@@ -147,10 +122,62 @@ COMP "TriggerData<9>" LOCATE = SITE "C3" LEVEL 1;
 COMP "Sw_Quartz" LOCATE = SITE "J17" LEVEL 1;
 COMP "ADC_CLK" LOCATE = SITE "G17" LEVEL 1;
 COMP "ADC_CSB" LOCATE = SITE "E16" LEVEL 1;
-TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_Bit_write" BEL "ADCtest_CSB_trig" BEL
-        "ADCTest/count_0" BEL "ADCTest/count_1" BEL "ADCTest/count_2" BEL
-        "ADCTest/count_3" BEL "ADCTest/count_4" BEL "ADCTest/count_5" BEL
-        "DLL/CLKDV_BUFG_INST" BEL "ADC_SCLK";
+COMP "ADCInDataLVDS<10>" LOCATE = SITE "AC25" LEVEL 1;
+COMP "ADCInDataLVDS<11>" LOCATE = SITE "AD27" LEVEL 1;
+COMP "ADCInDataLVDS<12>" LOCATE = SITE "AD30" LEVEL 1;
+COMP "ADCInDataLVDS<13>" LOCATE = SITE "AE29" LEVEL 1;
+COMP "ADCInDataLVDS<14>" LOCATE = SITE "AE32" LEVEL 1;
+COMP "ADCInDataLVDS<15>" LOCATE = SITE "AE33" LEVEL 1;
+COMP "Col" LOCATE = SITE "B11" LEVEL 1;
+COMP "Crs" LOCATE = SITE "A11" LEVEL 1;
+COMP "ADC_SDIO" LOCATE = SITE "F16" LEVEL 1;
+COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
+COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
+COMP "Led3" LOCATE = SITE "C18" LEVEL 1;
+COMP "Led4" LOCATE = SITE "E18" LEVEL 1;
+COMP "Led5" LOCATE = SITE "E17" LEVEL 1;
+COMP "RxDv" LOCATE = SITE "C8" LEVEL 1;
+COMP "TxEn" LOCATE = SITE "A9" LEVEL 1;
+COMP "MuxClock_in" LOCATE = SITE "D16" LEVEL 1;
+COMP "Test<0>" LOCATE = SITE "B2" LEVEL 1;
+COMP "Test<1>" LOCATE = SITE "B3" LEVEL 1;
+COMP "Test<2>" LOCATE = SITE "A3" LEVEL 1;
+COMP "Test<3>" LOCATE = SITE "A4" LEVEL 1;
+COMP "Test<4>" LOCATE = SITE "D5" LEVEL 1;
+COMP "Test<5>" LOCATE = SITE "C5" LEVEL 1;
+COMP "Test<6>" LOCATE = SITE "B5" LEVEL 1;
+COMP "Test<7>" LOCATE = SITE "A5" LEVEL 1;
+TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_reg_sset" BEL "ADCtest_Bit_write" BEL
+        "ADCtest_CSB_trig" BEL "ADC_SDIO" BEL "ADCTest/count_0" BEL
+        "ADCTest/count_1" BEL "ADCTest/count_2" BEL "ADCTest/count_3" BEL
+        "ADCTest/count_4" BEL "ADCTest/count_5" BEL "DLL/CLKDV_BUFG_INST" BEL
+        "ShiftReg_test/tmp_49" BEL "ShiftReg_test/tmp_48" BEL
+        "ShiftReg_test/tmp_47" BEL "ShiftReg_test/tmp_46" BEL
+        "ShiftReg_test/tmp_45" BEL "ShiftReg_test/tmp_44" BEL
+        "ShiftReg_test/tmp_43" BEL "ShiftReg_test/tmp_42" BEL
+        "ShiftReg_test/tmp_41" BEL "ShiftReg_test/tmp_40" BEL
+        "ShiftReg_test/tmp_39" BEL "ShiftReg_test/tmp_38" BEL
+        "ShiftReg_test/tmp_37" BEL "ShiftReg_test/tmp_36" BEL
+        "ShiftReg_test/tmp_35" BEL "ShiftReg_test/tmp_34" BEL
+        "ShiftReg_test/tmp_33" BEL "ShiftReg_test/tmp_32" BEL
+        "ShiftReg_test/tmp_31" BEL "ShiftReg_test/tmp_30" BEL
+        "ShiftReg_test/tmp_29" BEL "ShiftReg_test/tmp_28" BEL
+        "ShiftReg_test/tmp_27" BEL "ShiftReg_test/tmp_26" BEL
+        "ShiftReg_test/tmp_25" BEL "ShiftReg_test/tmp_24" BEL
+        "ShiftReg_test/tmp_23" BEL "ShiftReg_test/tmp_22" BEL
+        "ShiftReg_test/tmp_21" BEL "ShiftReg_test/tmp_20" BEL
+        "ShiftReg_test/tmp_19" BEL "ShiftReg_test/tmp_18" BEL
+        "ShiftReg_test/tmp_17" BEL "ShiftReg_test/tmp_16" BEL
+        "ShiftReg_test/tmp_15" BEL "ShiftReg_test/tmp_14" BEL
+        "ShiftReg_test/tmp_13" BEL "ShiftReg_test/tmp_12" BEL
+        "ShiftReg_test/tmp_11" BEL "ShiftReg_test/tmp_10" BEL
+        "ShiftReg_test/tmp_9" BEL "ShiftReg_test/tmp_8" BEL
+        "ShiftReg_test/tmp_7" BEL "ShiftReg_test/tmp_6" BEL
+        "ShiftReg_test/tmp_5" BEL "ShiftReg_test/tmp_4" BEL
+        "ShiftReg_test/tmp_3" BEL "ShiftReg_test/tmp_2" BEL
+        "ShiftReg_test/tmp_1" BEL "ShiftReg_test/tmp_0" BEL "ADC_SCLK";
+TIMEGRP DLL_CLK0_BUF = BEL "PowerUp0" BEL "DLL/CLK0_BUFG_INST" BEL
+        "PowerUp2/Trig" BEL "PowerUp1/Trig";
 PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1_pins<3> = BEL
         "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1" PINNAME CLK;
 PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2_pins<3> = BEL
@@ -258,17 +285,18 @@ TIMEGRP Qclock = BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
         "CntTest/count_14" BEL "CntTest/count_15" BEL "CntTest/count_16" BEL
         "CntTest/count_17" BEL "CntTest/count_18" BEL "CntTest/count_19" BEL
         "CntTest/count_20" BEL "CntTest/count_21" BEL "CntTest/count_22" BEL
-        "CntTest/count_23" BEL "PhaseSwitch/TimingCnt/count_15" BEL
-        "PhaseSwitch/TimingCnt/count_14" BEL "PhaseSwitch/TimingCnt/count_13"
-        BEL "PhaseSwitch/TimingCnt/count_12" BEL
-        "PhaseSwitch/TimingCnt/count_11" BEL "PhaseSwitch/TimingCnt/count_10"
-        BEL "PhaseSwitch/TimingCnt/count_9" BEL
-        "PhaseSwitch/TimingCnt/count_8" BEL "PhaseSwitch/TimingCnt/count_7"
-        BEL "PhaseSwitch/TimingCnt/count_6" BEL
-        "PhaseSwitch/TimingCnt/count_5" BEL "PhaseSwitch/TimingCnt/count_4"
-        BEL "PhaseSwitch/TimingCnt/count_3" BEL
-        "PhaseSwitch/TimingCnt/count_2" BEL "PhaseSwitch/TimingCnt/count_1"
-        BEL "PhaseSwitch/TimingCnt/count_0" BEL "PhaseSwitch/Sync_TRG1" BEL
+        "CntTest/count_23" BEL "CntTest/count_24" BEL "CntTest/count_25" BEL
+        "PhaseSwitch/TimingCnt/count_15" BEL "PhaseSwitch/TimingCnt/count_14"
+        BEL "PhaseSwitch/TimingCnt/count_13" BEL
+        "PhaseSwitch/TimingCnt/count_12" BEL "PhaseSwitch/TimingCnt/count_11"
+        BEL "PhaseSwitch/TimingCnt/count_10" BEL
+        "PhaseSwitch/TimingCnt/count_9" BEL "PhaseSwitch/TimingCnt/count_8"
+        BEL "PhaseSwitch/TimingCnt/count_7" BEL
+        "PhaseSwitch/TimingCnt/count_6" BEL "PhaseSwitch/TimingCnt/count_5"
+        BEL "PhaseSwitch/TimingCnt/count_4" BEL
+        "PhaseSwitch/TimingCnt/count_3" BEL "PhaseSwitch/TimingCnt/count_2"
+        BEL "PhaseSwitch/TimingCnt/count_1" BEL
+        "PhaseSwitch/TimingCnt/count_0" BEL "PhaseSwitch/Sync_TRG1" BEL
         "Quarts_BUFG";
 PIN DLL/DCM_ADV_INST_pins<5> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
 TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<5>";
@@ -440,72 +468,73 @@ TIMEGRP DLL_CLKFX_BUF = BEL "DLL/CLKFX_BUFG_INST" BEL
         "FindMaxAmp_i/Sub_ped_delay_1_3" BEL "FindMaxAmp_i/Sub_ped_delay_1_2"
         BEL "FindMaxAmp_i/Sub_ped_delay_1_1" BEL
         "FindMaxAmp_i/Sub_ped_delay_1_0" BEL "FindMaxAmp_i/Sub_ped_15_7" BEL
-        "FindMaxAmp_i/Sub_ped_15_6" BEL "FindMaxAmp_i/Sub_ped_15_5" BEL
-        "FindMaxAmp_i/Sub_ped_15_4" BEL "FindMaxAmp_i/Sub_ped_15_3" BEL
-        "FindMaxAmp_i/Sub_ped_15_2" BEL "FindMaxAmp_i/Sub_ped_15_1" BEL
-        "FindMaxAmp_i/Sub_ped_15_0" BEL "FindMaxAmp_i/Sub_ped_14_7" BEL
-        "FindMaxAmp_i/Sub_ped_14_6" BEL "FindMaxAmp_i/Sub_ped_14_5" BEL
-        "FindMaxAmp_i/Sub_ped_14_4" BEL "FindMaxAmp_i/Sub_ped_14_3" BEL
-        "FindMaxAmp_i/Sub_ped_14_2" BEL "FindMaxAmp_i/Sub_ped_14_1" BEL
-        "FindMaxAmp_i/Sub_ped_14_0" BEL "FindMaxAmp_i/Sub_ped_12_7" BEL
-        "FindMaxAmp_i/Sub_ped_12_6" BEL "FindMaxAmp_i/Sub_ped_12_5" BEL
-        "FindMaxAmp_i/Sub_ped_12_4" BEL "FindMaxAmp_i/Sub_ped_12_3" BEL
-        "FindMaxAmp_i/Sub_ped_12_2" BEL "FindMaxAmp_i/Sub_ped_12_1" BEL
-        "FindMaxAmp_i/Sub_ped_12_0" BEL "FindMaxAmp_i/Sub_ped_13_7" BEL
-        "FindMaxAmp_i/Sub_ped_13_6" BEL "FindMaxAmp_i/Sub_ped_13_5" BEL
-        "FindMaxAmp_i/Sub_ped_13_4" BEL "FindMaxAmp_i/Sub_ped_13_3" BEL
-        "FindMaxAmp_i/Sub_ped_13_2" BEL "FindMaxAmp_i/Sub_ped_13_1" BEL
-        "FindMaxAmp_i/Sub_ped_13_0" BEL "FindMaxAmp_i/Sub_ped_11_7" BEL
-        "FindMaxAmp_i/Sub_ped_11_6" BEL "FindMaxAmp_i/Sub_ped_11_5" BEL
-        "FindMaxAmp_i/Sub_ped_11_4" BEL "FindMaxAmp_i/Sub_ped_11_3" BEL
-        "FindMaxAmp_i/Sub_ped_11_2" BEL "FindMaxAmp_i/Sub_ped_11_1" BEL
-        "FindMaxAmp_i/Sub_ped_11_0" BEL "FindMaxAmp_i/Sub_ped_10_7" BEL
-        "FindMaxAmp_i/Sub_ped_10_6" BEL "FindMaxAmp_i/Sub_ped_10_5" BEL
-        "FindMaxAmp_i/Sub_ped_10_4" BEL "FindMaxAmp_i/Sub_ped_10_3" BEL
-        "FindMaxAmp_i/Sub_ped_10_2" BEL "FindMaxAmp_i/Sub_ped_10_1" BEL
-        "FindMaxAmp_i/Sub_ped_10_0" BEL "FindMaxAmp_i/Sub_ped_9_7" BEL
-        "FindMaxAmp_i/Sub_ped_9_6" BEL "FindMaxAmp_i/Sub_ped_9_5" BEL
-        "FindMaxAmp_i/Sub_ped_9_4" BEL "FindMaxAmp_i/Sub_ped_9_3" BEL
-        "FindMaxAmp_i/Sub_ped_9_2" BEL "FindMaxAmp_i/Sub_ped_9_1" BEL
-        "FindMaxAmp_i/Sub_ped_9_0" BEL "FindMaxAmp_i/Sub_ped_8_7" BEL
-        "FindMaxAmp_i/Sub_ped_8_6" BEL "FindMaxAmp_i/Sub_ped_8_5" BEL
-        "FindMaxAmp_i/Sub_ped_8_4" BEL "FindMaxAmp_i/Sub_ped_8_3" BEL
-        "FindMaxAmp_i/Sub_ped_8_2" BEL "FindMaxAmp_i/Sub_ped_8_1" BEL
-        "FindMaxAmp_i/Sub_ped_8_0" BEL "FindMaxAmp_i/Sub_ped_6_7" BEL
-        "FindMaxAmp_i/Sub_ped_6_6" BEL "FindMaxAmp_i/Sub_ped_6_5" BEL
-        "FindMaxAmp_i/Sub_ped_6_4" BEL "FindMaxAmp_i/Sub_ped_6_3" BEL
-        "FindMaxAmp_i/Sub_ped_6_2" BEL "FindMaxAmp_i/Sub_ped_6_1" BEL
-        "FindMaxAmp_i/Sub_ped_6_0" BEL "FindMaxAmp_i/Sub_ped_5_7" BEL
-        "FindMaxAmp_i/Sub_ped_5_6" BEL "FindMaxAmp_i/Sub_ped_5_5" BEL
-        "FindMaxAmp_i/Sub_ped_5_4" BEL "FindMaxAmp_i/Sub_ped_5_3" BEL
-        "FindMaxAmp_i/Sub_ped_5_2" BEL "FindMaxAmp_i/Sub_ped_5_1" BEL
-        "FindMaxAmp_i/Sub_ped_5_0" BEL "FindMaxAmp_i/Sub_ped_7_7" BEL
-        "FindMaxAmp_i/Sub_ped_7_6" BEL "FindMaxAmp_i/Sub_ped_7_5" BEL
-        "FindMaxAmp_i/Sub_ped_7_4" BEL "FindMaxAmp_i/Sub_ped_7_3" BEL
-        "FindMaxAmp_i/Sub_ped_7_2" BEL "FindMaxAmp_i/Sub_ped_7_1" BEL
-        "FindMaxAmp_i/Sub_ped_7_0" BEL "FindMaxAmp_i/Sub_ped_4_7" BEL
-        "FindMaxAmp_i/Sub_ped_4_6" BEL "FindMaxAmp_i/Sub_ped_4_5" BEL
-        "FindMaxAmp_i/Sub_ped_4_4" BEL "FindMaxAmp_i/Sub_ped_4_3" BEL
-        "FindMaxAmp_i/Sub_ped_4_2" BEL "FindMaxAmp_i/Sub_ped_4_1" BEL
-        "FindMaxAmp_i/Sub_ped_4_0" BEL "FindMaxAmp_i/Sub_ped_3_7" BEL
-        "FindMaxAmp_i/Sub_ped_3_6" BEL "FindMaxAmp_i/Sub_ped_3_5" BEL
-        "FindMaxAmp_i/Sub_ped_3_4" BEL "FindMaxAmp_i/Sub_ped_3_3" BEL
-        "FindMaxAmp_i/Sub_ped_3_2" BEL "FindMaxAmp_i/Sub_ped_3_1" BEL
-        "FindMaxAmp_i/Sub_ped_3_0" BEL "FindMaxAmp_i/Sub_ped_2_7" BEL
-        "FindMaxAmp_i/Sub_ped_2_6" BEL "FindMaxAmp_i/Sub_ped_2_5" BEL
-        "FindMaxAmp_i/Sub_ped_2_4" BEL "FindMaxAmp_i/Sub_ped_2_3" BEL
-        "FindMaxAmp_i/Sub_ped_2_2" BEL "FindMaxAmp_i/Sub_ped_2_1" BEL
-        "FindMaxAmp_i/Sub_ped_2_0" BEL "FindMaxAmp_i/Sub_ped_0_7" BEL
+        "FindMaxAmp_i/Sub_ped_15_5" BEL "FindMaxAmp_i/Sub_ped_15_3" BEL
+        "FindMaxAmp_i/Sub_ped_15_1" BEL "FindMaxAmp_i/Sub_ped_14_7" BEL
+        "FindMaxAmp_i/Sub_ped_14_5" BEL "FindMaxAmp_i/Sub_ped_14_3" BEL
+        "FindMaxAmp_i/Sub_ped_14_1" BEL "FindMaxAmp_i/Sub_ped_12_7" BEL
+        "FindMaxAmp_i/Sub_ped_12_5" BEL "FindMaxAmp_i/Sub_ped_12_3" BEL
+        "FindMaxAmp_i/Sub_ped_12_1" BEL "FindMaxAmp_i/Sub_ped_13_7" BEL
+        "FindMaxAmp_i/Sub_ped_13_5" BEL "FindMaxAmp_i/Sub_ped_13_3" BEL
+        "FindMaxAmp_i/Sub_ped_13_1" BEL "FindMaxAmp_i/Sub_ped_11_7" BEL
+        "FindMaxAmp_i/Sub_ped_11_5" BEL "FindMaxAmp_i/Sub_ped_11_3" BEL
+        "FindMaxAmp_i/Sub_ped_11_1" BEL "FindMaxAmp_i/Sub_ped_10_7" BEL
+        "FindMaxAmp_i/Sub_ped_10_5" BEL "FindMaxAmp_i/Sub_ped_10_3" BEL
+        "FindMaxAmp_i/Sub_ped_10_1" BEL "FindMaxAmp_i/Sub_ped_9_7" BEL
+        "FindMaxAmp_i/Sub_ped_9_5" BEL "FindMaxAmp_i/Sub_ped_9_3" BEL
+        "FindMaxAmp_i/Sub_ped_9_1" BEL "FindMaxAmp_i/Sub_ped_8_7" BEL
+        "FindMaxAmp_i/Sub_ped_8_5" BEL "FindMaxAmp_i/Sub_ped_8_3" BEL
+        "FindMaxAmp_i/Sub_ped_8_1" BEL "FindMaxAmp_i/Sub_ped_6_7" BEL
+        "FindMaxAmp_i/Sub_ped_6_5" BEL "FindMaxAmp_i/Sub_ped_6_3" BEL
+        "FindMaxAmp_i/Sub_ped_6_1" BEL "FindMaxAmp_i/Sub_ped_5_7" BEL
+        "FindMaxAmp_i/Sub_ped_5_5" BEL "FindMaxAmp_i/Sub_ped_5_3" BEL
+        "FindMaxAmp_i/Sub_ped_5_1" BEL "FindMaxAmp_i/Sub_ped_7_7" BEL
+        "FindMaxAmp_i/Sub_ped_7_5" BEL "FindMaxAmp_i/Sub_ped_7_3" BEL
+        "FindMaxAmp_i/Sub_ped_7_1" BEL "FindMaxAmp_i/Sub_ped_4_7" BEL
+        "FindMaxAmp_i/Sub_ped_4_5" BEL "FindMaxAmp_i/Sub_ped_4_3" BEL
+        "FindMaxAmp_i/Sub_ped_4_1" BEL "FindMaxAmp_i/Sub_ped_3_7" BEL
+        "FindMaxAmp_i/Sub_ped_3_5" BEL "FindMaxAmp_i/Sub_ped_3_3" BEL
+        "FindMaxAmp_i/Sub_ped_3_1" BEL "FindMaxAmp_i/Sub_ped_2_7" BEL
+        "FindMaxAmp_i/Sub_ped_2_5" BEL "FindMaxAmp_i/Sub_ped_2_3" BEL
+        "FindMaxAmp_i/Sub_ped_2_1" BEL "FindMaxAmp_i/Sub_ped_0_7" BEL
         "FindMaxAmp_i/Sub_ped_0_6" BEL "FindMaxAmp_i/Sub_ped_0_5" BEL
         "FindMaxAmp_i/Sub_ped_0_4" BEL "FindMaxAmp_i/Sub_ped_0_3" BEL
         "FindMaxAmp_i/Sub_ped_0_2" BEL "FindMaxAmp_i/Sub_ped_0_1" BEL
         "FindMaxAmp_i/Sub_ped_0_0" BEL "FindMaxAmp_i/Sub_ped_1_7" BEL
-        "FindMaxAmp_i/Sub_ped_1_6" BEL "FindMaxAmp_i/Sub_ped_1_5" BEL
-        "FindMaxAmp_i/Sub_ped_1_4" BEL "FindMaxAmp_i/Sub_ped_1_3" BEL
-        "FindMaxAmp_i/Sub_ped_1_2" BEL "FindMaxAmp_i/Sub_ped_1_1" BEL
-        "FindMaxAmp_i/Sub_ped_1_0" BEL "FindMaxAmp_i/FastTrig_o" BEL
-        "FindMaxAmp_i/Trig_o" BEL "FindMaxAmp_i/Thresh_i[0].Threshold/Trig"
-        BEL "FindMaxAmp_i/Thresh_i[1].Threshold/Trig" BEL
+        "FindMaxAmp_i/Sub_ped_1_5" BEL "FindMaxAmp_i/Sub_ped_1_3" BEL
+        "FindMaxAmp_i/Sub_ped_1_1" BEL "FindMaxAmp_i/FastTrig_o" BEL
+        "FindMaxAmp_i/Trig_o" BEL "FindMaxAmp_i/Sub_ped_15_6" BEL
+        "FindMaxAmp_i/Sub_ped_15_4" BEL "FindMaxAmp_i/Sub_ped_15_2" BEL
+        "FindMaxAmp_i/Sub_ped_15_0" BEL "FindMaxAmp_i/Sub_ped_14_6" BEL
+        "FindMaxAmp_i/Sub_ped_14_4" BEL "FindMaxAmp_i/Sub_ped_14_2" BEL
+        "FindMaxAmp_i/Sub_ped_14_0" BEL "FindMaxAmp_i/Sub_ped_12_6" BEL
+        "FindMaxAmp_i/Sub_ped_12_4" BEL "FindMaxAmp_i/Sub_ped_12_2" BEL
+        "FindMaxAmp_i/Sub_ped_12_0" BEL "FindMaxAmp_i/Sub_ped_13_6" BEL
+        "FindMaxAmp_i/Sub_ped_13_4" BEL "FindMaxAmp_i/Sub_ped_13_2" BEL
+        "FindMaxAmp_i/Sub_ped_13_0" BEL "FindMaxAmp_i/Sub_ped_11_6" BEL
+        "FindMaxAmp_i/Sub_ped_11_4" BEL "FindMaxAmp_i/Sub_ped_11_2" BEL
+        "FindMaxAmp_i/Sub_ped_11_0" BEL "FindMaxAmp_i/Sub_ped_10_6" BEL
+        "FindMaxAmp_i/Sub_ped_10_4" BEL "FindMaxAmp_i/Sub_ped_10_2" BEL
+        "FindMaxAmp_i/Sub_ped_10_0" BEL "FindMaxAmp_i/Sub_ped_9_6" BEL
+        "FindMaxAmp_i/Sub_ped_9_4" BEL "FindMaxAmp_i/Sub_ped_9_2" BEL
+        "FindMaxAmp_i/Sub_ped_9_0" BEL "FindMaxAmp_i/Sub_ped_8_6" BEL
+        "FindMaxAmp_i/Sub_ped_8_4" BEL "FindMaxAmp_i/Sub_ped_8_2" BEL
+        "FindMaxAmp_i/Sub_ped_8_0" BEL "FindMaxAmp_i/Sub_ped_6_6" BEL
+        "FindMaxAmp_i/Sub_ped_6_4" BEL "FindMaxAmp_i/Sub_ped_6_2" BEL
+        "FindMaxAmp_i/Sub_ped_6_0" BEL "FindMaxAmp_i/Sub_ped_5_6" BEL
+        "FindMaxAmp_i/Sub_ped_5_4" BEL "FindMaxAmp_i/Sub_ped_5_2" BEL
+        "FindMaxAmp_i/Sub_ped_5_0" BEL "FindMaxAmp_i/Sub_ped_7_6" BEL
+        "FindMaxAmp_i/Sub_ped_7_4" BEL "FindMaxAmp_i/Sub_ped_7_2" BEL
+        "FindMaxAmp_i/Sub_ped_7_0" BEL "FindMaxAmp_i/Sub_ped_4_6" BEL
+        "FindMaxAmp_i/Sub_ped_4_4" BEL "FindMaxAmp_i/Sub_ped_4_2" BEL
+        "FindMaxAmp_i/Sub_ped_4_0" BEL "FindMaxAmp_i/Sub_ped_3_6" BEL
+        "FindMaxAmp_i/Sub_ped_3_4" BEL "FindMaxAmp_i/Sub_ped_3_2" BEL
+        "FindMaxAmp_i/Sub_ped_3_0" BEL "FindMaxAmp_i/Sub_ped_2_6" BEL
+        "FindMaxAmp_i/Sub_ped_2_4" BEL "FindMaxAmp_i/Sub_ped_2_2" BEL
+        "FindMaxAmp_i/Sub_ped_2_0" BEL "FindMaxAmp_i/Sub_ped_1_6" BEL
+        "FindMaxAmp_i/Sub_ped_1_4" BEL "FindMaxAmp_i/Sub_ped_1_2" BEL
+        "FindMaxAmp_i/Sub_ped_1_0" BEL
+        "FindMaxAmp_i/Thresh_i[0].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[1].Threshold/Trig" BEL
         "FindMaxAmp_i/Thresh_i[2].Threshold/Trig" BEL
         "FindMaxAmp_i/Thresh_i[3].Threshold/Trig" BEL
         "FindMaxAmp_i/Thresh_i[4].Threshold/Trig" BEL
@@ -624,6 +653,8 @@ TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 6.25 ns HIGH 50%;
 TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1" 6.25 ns HIGH 50%;
 TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2" 6.25 ns HIGH 50%;
 TS_DCO3 = PERIOD TIMEGRP "ADC_DCO_LVDS3" 6.25 ns HIGH 50%;
+TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_MuxClock_in HIGH 50%
+        INPUT_JITTER 0.375 ns;
 TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_MuxClock_in / 2 HIGH 50%
         INPUT_JITTER 0.375 ns;
 TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CLKDV_BUF" TS_MuxClock_in * 2 HIGH 50%

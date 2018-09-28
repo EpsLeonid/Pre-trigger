@@ -31,10 +31,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity ShiftReg is
 		GENERIC (WIDTH  : NATURAL := 16); 
-		port(CLK	: in std_logic;
-				SI : in std_logic_vector(WIDTH-1 downto 0);
-				Sset: in std_logic;
-				SO : out std_logic);
+		port(clock	: in std_logic;
+			  clk_en	: in STD_LOGIC := '1';
+				d		: in std_logic_vector(WIDTH-1 downto 0);
+				sset	: in std_logic;
+				sclr	: in std_logic := '0';
+				q		: out std_logic);
 end ShiftReg;
 
 architecture Behavioral of ShiftReg is
@@ -43,17 +45,18 @@ architecture Behavioral of ShiftReg is
 
 begin
 
-	process (CLK)
+	process (clock,sclr)
 	begin
-		if (CLK'event and CLK='1') then
-			if (Sset='1') then
-				tmp <= SI;
-				for i in 0 to WIDTH-2 loop
-					 tmp(i+1) <= tmp(i);
-				end loop;
-			end if;
+		if sclr ='1' then 
+			tmp <= (others => '0'); 
+		elsif sset = '1' then 
+			tmp <= d; 
+		elsif clock'event and clock='1' then  
+			if clk_en = '1' then 
+				tmp <= tmp(WIDTH-2 downto 0) & '0';
+			end if; 
 		end if;
 	end process;
-	SO <= tmp(WIDTH-1);
+	q <= tmp(WIDTH-1);
 
 end Behavioral;

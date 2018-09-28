@@ -24,6 +24,8 @@ use ieee.std_logic_unsigned.all;
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
 use IEEE.NUMERIC_STD.ALL;
+use IEEE.STD_LOGIC_ARITH.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx primitives in this code.
@@ -124,14 +126,20 @@ architecture Behavioral of Main is
 	---
 
 	--- system
+	signal PowerUp0			: std_logic;
+	signal PowerUp1_s			: std_logic;
+	signal PowerUp1_o			: std_logic;
+	signal PowerUp2_s			: std_logic;
+	signal PowerUp2_o			: std_logic;
+	signal PwrUpReset			: std_logic;
 	signal Reset				: std_logic;
 	---
 
 	--- ADC SPI interface signals
 	signal s_fadc_test		: std_logic := '0'; 
 	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
-											--									  "set	addr	 	data   set	addr		  data "
-											--									   3bit	 13bit	 	8bit   3bit	13bit		  8bit
+											--									  "set	addr		 data			 set	addr		  data "
+											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 	signal shift_sdio_test	: std_logic;
 	
 	signal s_fadc_reset		: std_logic := '0'; 
@@ -173,12 +181,42 @@ architecture Behavioral of Main is
 	signal RW				: std_logic := '0';
 
 	--- Test
-	signal TestCnt	: std_logic_vector(23 downto 0);
+	signal TestCnt	: std_logic_vector(25 downto 0);
 	signal test_out: std_logic_vector(15 downto 0);
 
 begin
 
 --=================Inicialization of input LVDS signals=================--
+--******** 1a. POWER_UP self-Reset pulse *************************************
+
+	process (Clk40)
+	begin
+		if Clk40'event and Clk40='1' then  
+			PowerUp0 <= not ExtReset AND s_clock_locked;
+		end if;
+	end process;
+	
+--	PowerUp1_s <= '1' when (PowerUp0= '1' and TestCt(25) = '1' and TestCt(0) = '1') else
+--					  '0';
+	PowerUp1_s <= (PowerUp0 AND (TestCnt(25) and TestCnt(0)));
+	PowerUp1 : entity work.SRFF 
+		port map (
+			S		=> PowerUp1_s,
+			CLK	=> Clk40,
+			R		=> ExtReset,
+			q		=> PowerUp1_o
+		);
+	PowerUp2_s <= (PowerUp1_o AND TestCnt(2));
+	PowerUp2 : entity work.SRFF 
+		port map (
+			S		=> PowerUp2_s,
+			CLK	=> Clk40,
+			R		=> ExtReset,
+			q		=> PowerUp2_o
+		);
+
+	PwrUpReset <= PowerUp1_o AND not PowerUp2_o;   -- ONE pulse ~1sec after powering up
+
 --******** 1. Reference clock's & Frequency Control ********--
 BUFG_inst : IBUFG
 	generic map (
@@ -368,23 +406,24 @@ DLL: entity work.DLL
 				WIDTH => 6
 			)
 	port map (
-				clock 	=> Clk20,--CLK40,
+				clock 	=> Clk20,
 				clk_en	=> ADCtest_Bit_write,
+				sclr		=> PwrUpReset,
 				q			=> ADCtest_bit_count
 				);
 
 	process (Clk20)
 	begin
 		if rising_edge(Clk20) then
-			if (ADCtest_bit_count < "110100") Then ADCtest_Bit_write <= '1';
+			if (ADCtest_bit_count < "110011") Then ADCtest_Bit_write <= '1';
 															Else ADCtest_Bit_write <= '0';
 			end if;
-			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110011")) Then ADCtest_reg_sset <= '0';
 																												  ADC_SDIO <= ADCtest_SDIO_trig;
 																											Else ADCtest_reg_sset <= '1';
 																												  ADC_SDIO <= '0';
 			END IF;
-			IF (((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "011001")) OR ((ADCtest_bit_count >= "011011") AND (ADCtest_bit_count < "110011")))Then 
+			IF (((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "010111")) OR ((ADCtest_bit_count >= "011011") AND (ADCtest_bit_count < "110011")))Then 
 				ADCtest_CSB_trig <= '0';
 			ELSE 
 				ADCtest_CSB_trig <= '1';
@@ -392,27 +431,26 @@ DLL: entity work.DLL
 		end if;
 	end process;
 	
-	Shifr_reg: for i in 49 downto 0 generate 
-		process (Clk20)
-		begin
-			if rising_edge(Clk20) then
-				if ADCtest_reg_sset = '0' then
-					ADCtest_SDIO_trig <= s_fadc_sdio_test(i);
-				end if;
-			end if;
-		end process;
-	end generate;
+--	process (Clk20)
+--	begin
+--		if Clk20'event and Clk20='1' then  
+--			ADCtest_SDIO_trig <= ADCtest_SDIO_trig(48 downto 0) & '0';
+--		elsif ADCtest_reg_sset = '1' then 
+--			ADCtest_SDIO_trig <= s_fadc_sdio_test; 
+--		end if;
+--	end process;
+--	ADCtest_SDIO_trig <= s_fadc_sdio_test(49);
+
 	ADC_CSB <= ADCtest_CSB_trig;
 	ADC_SCLK <= Clk20;
 
---	ShiftReg_test : entity work.ShiftReg 
---		generic map (WIDTH => 50) 
---		port map (
---			CLK	=> Clk20,
---			SI		=> s_fadc_sdio_test,
---			Sset	=> ADCtest_reg_sset,
---			SO		=> shift_sdio_test
---		);
+	ShiftReg_test : entity work.ShiftReg 
+		generic map (WIDTH => 50) 
+		port map(clock	=> clk20,
+				d		=> s_fadc_sdio_test,
+				sset	=> ADCtest_reg_sset,
+				q		=> ADCtest_SDIO_trig
+		);
 
 --	ADC_CSB		<= '0';
 --	ADC_SDIO		<= shift_sdio_test;
@@ -425,7 +463,7 @@ DLL: entity work.DLL
 
 	CntTest : entity work.V_Counter 
 	generic map(
-				WIDTH => 24
+				WIDTH => 26
 			)
 	port map (
 				clock 	=> Quarts,--CLK40,
