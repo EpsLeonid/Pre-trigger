@@ -415,15 +415,15 @@ DLL: entity work.DLL
 	process (Clk20)
 	begin
 		if rising_edge(Clk20) then
-			if (ADCtest_bit_count < "110011") Then ADCtest_Bit_write <= '1';
+			if (ADCtest_bit_count < "110100") Then ADCtest_Bit_write <= '1';
 															Else ADCtest_Bit_write <= '0';
 			end if;
-			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110011")) Then ADCtest_reg_sset <= '0';
+			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
 																												  ADC_SDIO <= ADCtest_SDIO_trig;
 																											Else ADCtest_reg_sset <= '1';
 																												  ADC_SDIO <= '0';
 			END IF;
-			IF (((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "010111")) OR ((ADCtest_bit_count >= "011011") AND (ADCtest_bit_count < "110011")))Then 
+			IF (((ADCtest_bit_count >= "000010") AND (ADCtest_bit_count < "11010")) OR ((ADCtest_bit_count >= "11100") AND (ADCtest_bit_count < "110100")))Then 
 				ADCtest_CSB_trig <= '0';
 			ELSE 
 				ADCtest_CSB_trig <= '1';
@@ -431,15 +431,9 @@ DLL: entity work.DLL
 		end if;
 	end process;
 	
---	process (Clk20)
---	begin
---		if Clk20'event and Clk20='1' then  
---			ADCtest_SDIO_trig <= ADCtest_SDIO_trig(48 downto 0) & '0';
---		elsif ADCtest_reg_sset = '1' then 
---			ADCtest_SDIO_trig <= s_fadc_sdio_test; 
---		end if;
---	end process;
---	ADCtest_SDIO_trig <= s_fadc_sdio_test(49);
+--	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "000000000000110100001100 00 000000001111111100000001";
+--											--									  "set	addr		 data			 set	addr		  data "
+--											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 
 	ADC_CSB <= ADCtest_CSB_trig;
 	ADC_SCLK <= Clk20;
@@ -451,13 +445,6 @@ DLL: entity work.DLL
 				sset	=> ADCtest_reg_sset,
 				q		=> ADCtest_SDIO_trig
 		);
-
---	ADC_CSB		<= '0';
---	ADC_SDIO		<= shift_sdio_test;
---	ADC_SCLK		<= Clk20;
---	ADC_CSB		<= s_fadc_csb;
---	ADC_SDIO		<= s_fadc_sdio;
---	ADC_SCLK		<= s_fadc_sclk;
 
 --******** Test part ********--
 

@@ -5,6 +5,15 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Col_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Crs_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">RxDv_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">RxClk_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
@@ -23,16 +32,17 @@
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">RxD&lt;3&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
-<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Col_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+<msg type="warning" file="Place" num="644" delta="old" >A clock IOB clock component is not placed at an optimal clock IOB site. The clock IOB component &lt;<arg fmt="%s" index="1">ADC_DCO_LVDS&lt;0&gt;</arg>&gt; is placed at site &lt;<arg fmt="%s" index="2">AA25</arg>&gt;. The clock IO site can use the fast path between the IO and the Clock buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN &lt;<arg fmt="%s" index="3">ADC_DCO_LVDS&lt;0&gt;.PAD</arg>&gt; allowing your design to continue. This constraint disables all clock placer rules related to the specified COMP.PIN. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 </msg>
 
-<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">Crs_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+<msg type="warning" file="Place" num="644" delta="old" >A clock IOB clock component is not placed at an optimal clock IOB site. The clock IOB component &lt;<arg fmt="%s" index="1">ADC_DCO_LVDS&lt;1&gt;</arg>&gt; is placed at site &lt;<arg fmt="%s" index="2">AD34</arg>&gt;. The clock IO site can use the fast path between the IO and the Clock buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN &lt;<arg fmt="%s" index="3">ADC_DCO_LVDS&lt;1&gt;.PAD</arg>&gt; allowing your design to continue. This constraint disables all clock placer rules related to the specified COMP.PIN. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 </msg>
 
-<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">RxDv_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+<msg type="warning" file="Place" num="644" delta="old" >A clock IOB clock component is not placed at an optimal clock IOB site. The clock IOB component &lt;<arg fmt="%s" index="1">ADC_DCO_LVDS&lt;2&gt;</arg>&gt; is placed at site &lt;<arg fmt="%s" index="2">AF29</arg>&gt;. The clock IO site can use the fast path between the IO and the Clock buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN &lt;<arg fmt="%s" index="3">ADC_DCO_LVDS&lt;2&gt;.PAD</arg>&gt; allowing your design to continue. This constraint disables all clock placer rules related to the specified COMP.PIN. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
 </msg>
 
-<msg type="info" file="Timing" num="2761" delta="old" >N/A entries in the Constraints List may indicate that the constraint is not analyzed due to the following: No paths covered by this constraint; Other constraints intersect with this constraint; or This constraint was disabled by a Path Tracing Control. Please run the Timespec Interaction Report (TSI) via command line (trce tsi) or Timing Analyzer GUI.</msg>
+<msg type="warning" file="Place" num="644" delta="old" >A clock IOB clock component is not placed at an optimal clock IOB site. The clock IOB component &lt;<arg fmt="%s" index="1">ADC_DCO_LVDS&lt;3&gt;</arg>&gt; is placed at site &lt;<arg fmt="%s" index="2">AG27</arg>&gt;. The clock IO site can use the fast path between the IO and the Clock buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN &lt;<arg fmt="%s" index="3">ADC_DCO_LVDS&lt;3&gt;.PAD</arg>&gt; allowing your design to continue. This constraint disables all clock placer rules related to the specified COMP.PIN. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
+</msg>
 
 <msg type="warning" file="ParHelpers" num="361" delta="old" >There are <arg fmt="%d" index="1">9</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 

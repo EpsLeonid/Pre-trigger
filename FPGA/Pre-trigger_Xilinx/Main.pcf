@@ -1,8 +1,33 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Sep 28 19:16:22 2018
+// Written by: Map P.20131013 on Tue Oct 16 18:37:45 2018
 //! **************************************************************************
 
 SCHEMATIC START;
+COMP "ADCInDataLVDS<10>" LOCATE = SITE "AC25" LEVEL 1;
+COMP "ADCInDataLVDS<11>" LOCATE = SITE "AD27" LEVEL 1;
+COMP "ADCInDataLVDS<12>" LOCATE = SITE "AD30" LEVEL 1;
+COMP "ADCInDataLVDS<13>" LOCATE = SITE "AE29" LEVEL 1;
+COMP "ADCInDataLVDS<14>" LOCATE = SITE "AE32" LEVEL 1;
+COMP "ADCInDataLVDS<15>" LOCATE = SITE "AE33" LEVEL 1;
+COMP "Col" LOCATE = SITE "B11" LEVEL 1;
+COMP "Crs" LOCATE = SITE "A11" LEVEL 1;
+COMP "ADC_SDIO" LOCATE = SITE "F16" LEVEL 1;
+COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
+COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
+COMP "Led3" LOCATE = SITE "C18" LEVEL 1;
+COMP "Led4" LOCATE = SITE "E18" LEVEL 1;
+COMP "Led5" LOCATE = SITE "E17" LEVEL 1;
+COMP "RxDv" LOCATE = SITE "C8" LEVEL 1;
+COMP "TxEn" LOCATE = SITE "A9" LEVEL 1;
+COMP "MuxClock_in" LOCATE = SITE "D16" LEVEL 1;
+COMP "Test<0>" LOCATE = SITE "B2" LEVEL 1;
+COMP "Test<1>" LOCATE = SITE "B3" LEVEL 1;
+COMP "Test<2>" LOCATE = SITE "A3" LEVEL 1;
+COMP "Test<3>" LOCATE = SITE "A4" LEVEL 1;
+COMP "Test<4>" LOCATE = SITE "D5" LEVEL 1;
+COMP "Test<5>" LOCATE = SITE "C5" LEVEL 1;
+COMP "Test<6>" LOCATE = SITE "B5" LEVEL 1;
+COMP "Test<7>" LOCATE = SITE "A5" LEVEL 1;
 COMP "Test<8>" LOCATE = SITE "B6" LEVEL 1;
 COMP "Test<9>" LOCATE = SITE "A6" LEVEL 1;
 COMP "ADCInDataLVDS_n<0>" LOCATE = SITE "Y24" LEVEL 1;
@@ -44,9 +69,17 @@ COMP "RxD<1>" LOCATE = SITE "C7" LEVEL 1;
 COMP "RxD<2>" LOCATE = SITE "D7" LEVEL 1;
 COMP "RxD<3>" LOCATE = SITE "D6" LEVEL 1;
 COMP "ADC_DCO_LVDS<0>" LOCATE = SITE "AA25" LEVEL 1;
+PIN ADC_DCO_LVDS<0>_pin<0> = BEL "ADC_DCO_LVDS<0>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<0>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "ADC_DCO_LVDS<1>" LOCATE = SITE "AD34" LEVEL 1;
+PIN ADC_DCO_LVDS<1>_pin<0> = BEL "ADC_DCO_LVDS<1>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<1>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "ADC_DCO_LVDS<2>" LOCATE = SITE "AF29" LEVEL 1;
+PIN ADC_DCO_LVDS<2>_pin<0> = BEL "ADC_DCO_LVDS<2>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<2>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "ADC_DCO_LVDS<3>" LOCATE = SITE "AG27" LEVEL 1;
+PIN ADC_DCO_LVDS<3>_pin<0> = BEL "ADC_DCO_LVDS<3>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<3>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "TxD<0>" LOCATE = SITE "D10" LEVEL 1;
 COMP "TxD<1>" LOCATE = SITE "C10" LEVEL 1;
 COMP "TxD<2>" LOCATE = SITE "B10" LEVEL 1;
@@ -122,31 +155,6 @@ COMP "TriggerData<9>" LOCATE = SITE "C3" LEVEL 1;
 COMP "Sw_Quartz" LOCATE = SITE "J17" LEVEL 1;
 COMP "ADC_CLK" LOCATE = SITE "G17" LEVEL 1;
 COMP "ADC_CSB" LOCATE = SITE "E16" LEVEL 1;
-COMP "ADCInDataLVDS<10>" LOCATE = SITE "AC25" LEVEL 1;
-COMP "ADCInDataLVDS<11>" LOCATE = SITE "AD27" LEVEL 1;
-COMP "ADCInDataLVDS<12>" LOCATE = SITE "AD30" LEVEL 1;
-COMP "ADCInDataLVDS<13>" LOCATE = SITE "AE29" LEVEL 1;
-COMP "ADCInDataLVDS<14>" LOCATE = SITE "AE32" LEVEL 1;
-COMP "ADCInDataLVDS<15>" LOCATE = SITE "AE33" LEVEL 1;
-COMP "Col" LOCATE = SITE "B11" LEVEL 1;
-COMP "Crs" LOCATE = SITE "A11" LEVEL 1;
-COMP "ADC_SDIO" LOCATE = SITE "F16" LEVEL 1;
-COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
-COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
-COMP "Led3" LOCATE = SITE "C18" LEVEL 1;
-COMP "Led4" LOCATE = SITE "E18" LEVEL 1;
-COMP "Led5" LOCATE = SITE "E17" LEVEL 1;
-COMP "RxDv" LOCATE = SITE "C8" LEVEL 1;
-COMP "TxEn" LOCATE = SITE "A9" LEVEL 1;
-COMP "MuxClock_in" LOCATE = SITE "D16" LEVEL 1;
-COMP "Test<0>" LOCATE = SITE "B2" LEVEL 1;
-COMP "Test<1>" LOCATE = SITE "B3" LEVEL 1;
-COMP "Test<2>" LOCATE = SITE "A3" LEVEL 1;
-COMP "Test<3>" LOCATE = SITE "A4" LEVEL 1;
-COMP "Test<4>" LOCATE = SITE "D5" LEVEL 1;
-COMP "Test<5>" LOCATE = SITE "C5" LEVEL 1;
-COMP "Test<6>" LOCATE = SITE "B5" LEVEL 1;
-COMP "Test<7>" LOCATE = SITE "A5" LEVEL 1;
 TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_reg_sset" BEL "ADCtest_Bit_write" BEL
         "ADCtest_CSB_trig" BEL "ADC_SDIO" BEL "ADCTest/count_0" BEL
         "ADCTest/count_1" BEL "ADCTest/count_2" BEL "ADCTest/count_3" BEL
@@ -178,105 +186,9 @@ TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_reg_sset" BEL "ADCtest_Bit_write" BEL
         "ShiftReg_test/tmp_1" BEL "ShiftReg_test/tmp_0" BEL "ADC_SCLK";
 TIMEGRP DLL_CLK0_BUF = BEL "PowerUp0" BEL "DLL/CLK0_BUFG_INST" BEL
         "PowerUp2/Trig" BEL "PowerUp1/Trig";
-PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_2" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_1_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_1" PINNAME CLK;
-PIN adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2_pins<3> = BEL
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2" PINNAME CLK;
 TIMEGRP DLL_CLK2X_BUF = BEL "Led_B/ES1/Trig0" BEL "Led_B/ES1/Trig1" BEL
-        "DLL/CLK2X_BUFG_INST" BEL "Led_B/DurTrig_SRFF/Trig" PIN
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_2_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_1_pins<3>" PIN
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2_pins<3>" BEL
-        "ADC_CLK" BEL "Test<9>";
+        "DLL/CLK2X_BUFG_INST" BEL "Led_B/DurTrig_SRFF/Trig" BEL "ADC_CLK" BEL
+        "Test<9>";
 TIMEGRP Qclock = BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
         "CntTest/count_2" BEL "CntTest/count_3" BEL "CntTest/count_4" BEL
         "CntTest/count_5" BEL "CntTest/count_6" BEL "CntTest/count_7" BEL
@@ -468,73 +380,72 @@ TIMEGRP DLL_CLKFX_BUF = BEL "DLL/CLKFX_BUFG_INST" BEL
         "FindMaxAmp_i/Sub_ped_delay_1_3" BEL "FindMaxAmp_i/Sub_ped_delay_1_2"
         BEL "FindMaxAmp_i/Sub_ped_delay_1_1" BEL
         "FindMaxAmp_i/Sub_ped_delay_1_0" BEL "FindMaxAmp_i/Sub_ped_15_7" BEL
-        "FindMaxAmp_i/Sub_ped_15_5" BEL "FindMaxAmp_i/Sub_ped_15_3" BEL
-        "FindMaxAmp_i/Sub_ped_15_1" BEL "FindMaxAmp_i/Sub_ped_14_7" BEL
-        "FindMaxAmp_i/Sub_ped_14_5" BEL "FindMaxAmp_i/Sub_ped_14_3" BEL
-        "FindMaxAmp_i/Sub_ped_14_1" BEL "FindMaxAmp_i/Sub_ped_12_7" BEL
-        "FindMaxAmp_i/Sub_ped_12_5" BEL "FindMaxAmp_i/Sub_ped_12_3" BEL
-        "FindMaxAmp_i/Sub_ped_12_1" BEL "FindMaxAmp_i/Sub_ped_13_7" BEL
-        "FindMaxAmp_i/Sub_ped_13_5" BEL "FindMaxAmp_i/Sub_ped_13_3" BEL
-        "FindMaxAmp_i/Sub_ped_13_1" BEL "FindMaxAmp_i/Sub_ped_11_7" BEL
-        "FindMaxAmp_i/Sub_ped_11_5" BEL "FindMaxAmp_i/Sub_ped_11_3" BEL
-        "FindMaxAmp_i/Sub_ped_11_1" BEL "FindMaxAmp_i/Sub_ped_10_7" BEL
-        "FindMaxAmp_i/Sub_ped_10_5" BEL "FindMaxAmp_i/Sub_ped_10_3" BEL
-        "FindMaxAmp_i/Sub_ped_10_1" BEL "FindMaxAmp_i/Sub_ped_9_7" BEL
-        "FindMaxAmp_i/Sub_ped_9_5" BEL "FindMaxAmp_i/Sub_ped_9_3" BEL
-        "FindMaxAmp_i/Sub_ped_9_1" BEL "FindMaxAmp_i/Sub_ped_8_7" BEL
-        "FindMaxAmp_i/Sub_ped_8_5" BEL "FindMaxAmp_i/Sub_ped_8_3" BEL
-        "FindMaxAmp_i/Sub_ped_8_1" BEL "FindMaxAmp_i/Sub_ped_6_7" BEL
-        "FindMaxAmp_i/Sub_ped_6_5" BEL "FindMaxAmp_i/Sub_ped_6_3" BEL
-        "FindMaxAmp_i/Sub_ped_6_1" BEL "FindMaxAmp_i/Sub_ped_5_7" BEL
-        "FindMaxAmp_i/Sub_ped_5_5" BEL "FindMaxAmp_i/Sub_ped_5_3" BEL
-        "FindMaxAmp_i/Sub_ped_5_1" BEL "FindMaxAmp_i/Sub_ped_7_7" BEL
-        "FindMaxAmp_i/Sub_ped_7_5" BEL "FindMaxAmp_i/Sub_ped_7_3" BEL
-        "FindMaxAmp_i/Sub_ped_7_1" BEL "FindMaxAmp_i/Sub_ped_4_7" BEL
-        "FindMaxAmp_i/Sub_ped_4_5" BEL "FindMaxAmp_i/Sub_ped_4_3" BEL
-        "FindMaxAmp_i/Sub_ped_4_1" BEL "FindMaxAmp_i/Sub_ped_3_7" BEL
-        "FindMaxAmp_i/Sub_ped_3_5" BEL "FindMaxAmp_i/Sub_ped_3_3" BEL
-        "FindMaxAmp_i/Sub_ped_3_1" BEL "FindMaxAmp_i/Sub_ped_2_7" BEL
-        "FindMaxAmp_i/Sub_ped_2_5" BEL "FindMaxAmp_i/Sub_ped_2_3" BEL
-        "FindMaxAmp_i/Sub_ped_2_1" BEL "FindMaxAmp_i/Sub_ped_0_7" BEL
+        "FindMaxAmp_i/Sub_ped_15_6" BEL "FindMaxAmp_i/Sub_ped_15_5" BEL
+        "FindMaxAmp_i/Sub_ped_15_4" BEL "FindMaxAmp_i/Sub_ped_15_3" BEL
+        "FindMaxAmp_i/Sub_ped_15_2" BEL "FindMaxAmp_i/Sub_ped_15_1" BEL
+        "FindMaxAmp_i/Sub_ped_15_0" BEL "FindMaxAmp_i/Sub_ped_14_7" BEL
+        "FindMaxAmp_i/Sub_ped_14_6" BEL "FindMaxAmp_i/Sub_ped_14_5" BEL
+        "FindMaxAmp_i/Sub_ped_14_4" BEL "FindMaxAmp_i/Sub_ped_14_3" BEL
+        "FindMaxAmp_i/Sub_ped_14_2" BEL "FindMaxAmp_i/Sub_ped_14_1" BEL
+        "FindMaxAmp_i/Sub_ped_14_0" BEL "FindMaxAmp_i/Sub_ped_12_7" BEL
+        "FindMaxAmp_i/Sub_ped_12_6" BEL "FindMaxAmp_i/Sub_ped_12_5" BEL
+        "FindMaxAmp_i/Sub_ped_12_4" BEL "FindMaxAmp_i/Sub_ped_12_3" BEL
+        "FindMaxAmp_i/Sub_ped_12_2" BEL "FindMaxAmp_i/Sub_ped_12_1" BEL
+        "FindMaxAmp_i/Sub_ped_12_0" BEL "FindMaxAmp_i/Sub_ped_13_7" BEL
+        "FindMaxAmp_i/Sub_ped_13_6" BEL "FindMaxAmp_i/Sub_ped_13_5" BEL
+        "FindMaxAmp_i/Sub_ped_13_4" BEL "FindMaxAmp_i/Sub_ped_13_3" BEL
+        "FindMaxAmp_i/Sub_ped_13_2" BEL "FindMaxAmp_i/Sub_ped_13_1" BEL
+        "FindMaxAmp_i/Sub_ped_13_0" BEL "FindMaxAmp_i/Sub_ped_11_7" BEL
+        "FindMaxAmp_i/Sub_ped_11_6" BEL "FindMaxAmp_i/Sub_ped_11_5" BEL
+        "FindMaxAmp_i/Sub_ped_11_4" BEL "FindMaxAmp_i/Sub_ped_11_3" BEL
+        "FindMaxAmp_i/Sub_ped_11_2" BEL "FindMaxAmp_i/Sub_ped_11_1" BEL
+        "FindMaxAmp_i/Sub_ped_11_0" BEL "FindMaxAmp_i/Sub_ped_10_7" BEL
+        "FindMaxAmp_i/Sub_ped_10_6" BEL "FindMaxAmp_i/Sub_ped_10_5" BEL
+        "FindMaxAmp_i/Sub_ped_10_4" BEL "FindMaxAmp_i/Sub_ped_10_3" BEL
+        "FindMaxAmp_i/Sub_ped_10_2" BEL "FindMaxAmp_i/Sub_ped_10_1" BEL
+        "FindMaxAmp_i/Sub_ped_10_0" BEL "FindMaxAmp_i/Sub_ped_9_7" BEL
+        "FindMaxAmp_i/Sub_ped_9_6" BEL "FindMaxAmp_i/Sub_ped_9_5" BEL
+        "FindMaxAmp_i/Sub_ped_9_4" BEL "FindMaxAmp_i/Sub_ped_9_3" BEL
+        "FindMaxAmp_i/Sub_ped_9_2" BEL "FindMaxAmp_i/Sub_ped_9_1" BEL
+        "FindMaxAmp_i/Sub_ped_9_0" BEL "FindMaxAmp_i/Sub_ped_8_7" BEL
+        "FindMaxAmp_i/Sub_ped_8_6" BEL "FindMaxAmp_i/Sub_ped_8_5" BEL
+        "FindMaxAmp_i/Sub_ped_8_4" BEL "FindMaxAmp_i/Sub_ped_8_3" BEL
+        "FindMaxAmp_i/Sub_ped_8_2" BEL "FindMaxAmp_i/Sub_ped_8_1" BEL
+        "FindMaxAmp_i/Sub_ped_8_0" BEL "FindMaxAmp_i/Sub_ped_6_7" BEL
+        "FindMaxAmp_i/Sub_ped_6_6" BEL "FindMaxAmp_i/Sub_ped_6_5" BEL
+        "FindMaxAmp_i/Sub_ped_6_4" BEL "FindMaxAmp_i/Sub_ped_6_3" BEL
+        "FindMaxAmp_i/Sub_ped_6_2" BEL "FindMaxAmp_i/Sub_ped_6_1" BEL
+        "FindMaxAmp_i/Sub_ped_6_0" BEL "FindMaxAmp_i/Sub_ped_5_7" BEL
+        "FindMaxAmp_i/Sub_ped_5_6" BEL "FindMaxAmp_i/Sub_ped_5_5" BEL
+        "FindMaxAmp_i/Sub_ped_5_4" BEL "FindMaxAmp_i/Sub_ped_5_3" BEL
+        "FindMaxAmp_i/Sub_ped_5_2" BEL "FindMaxAmp_i/Sub_ped_5_1" BEL
+        "FindMaxAmp_i/Sub_ped_5_0" BEL "FindMaxAmp_i/Sub_ped_7_7" BEL
+        "FindMaxAmp_i/Sub_ped_7_6" BEL "FindMaxAmp_i/Sub_ped_7_5" BEL
+        "FindMaxAmp_i/Sub_ped_7_4" BEL "FindMaxAmp_i/Sub_ped_7_3" BEL
+        "FindMaxAmp_i/Sub_ped_7_2" BEL "FindMaxAmp_i/Sub_ped_7_1" BEL
+        "FindMaxAmp_i/Sub_ped_7_0" BEL "FindMaxAmp_i/Sub_ped_4_7" BEL
+        "FindMaxAmp_i/Sub_ped_4_6" BEL "FindMaxAmp_i/Sub_ped_4_5" BEL
+        "FindMaxAmp_i/Sub_ped_4_4" BEL "FindMaxAmp_i/Sub_ped_4_3" BEL
+        "FindMaxAmp_i/Sub_ped_4_2" BEL "FindMaxAmp_i/Sub_ped_4_1" BEL
+        "FindMaxAmp_i/Sub_ped_4_0" BEL "FindMaxAmp_i/Sub_ped_3_7" BEL
+        "FindMaxAmp_i/Sub_ped_3_6" BEL "FindMaxAmp_i/Sub_ped_3_5" BEL
+        "FindMaxAmp_i/Sub_ped_3_4" BEL "FindMaxAmp_i/Sub_ped_3_3" BEL
+        "FindMaxAmp_i/Sub_ped_3_2" BEL "FindMaxAmp_i/Sub_ped_3_1" BEL
+        "FindMaxAmp_i/Sub_ped_3_0" BEL "FindMaxAmp_i/Sub_ped_2_7" BEL
+        "FindMaxAmp_i/Sub_ped_2_6" BEL "FindMaxAmp_i/Sub_ped_2_5" BEL
+        "FindMaxAmp_i/Sub_ped_2_4" BEL "FindMaxAmp_i/Sub_ped_2_3" BEL
+        "FindMaxAmp_i/Sub_ped_2_2" BEL "FindMaxAmp_i/Sub_ped_2_1" BEL
+        "FindMaxAmp_i/Sub_ped_2_0" BEL "FindMaxAmp_i/Sub_ped_0_7" BEL
         "FindMaxAmp_i/Sub_ped_0_6" BEL "FindMaxAmp_i/Sub_ped_0_5" BEL
         "FindMaxAmp_i/Sub_ped_0_4" BEL "FindMaxAmp_i/Sub_ped_0_3" BEL
         "FindMaxAmp_i/Sub_ped_0_2" BEL "FindMaxAmp_i/Sub_ped_0_1" BEL
         "FindMaxAmp_i/Sub_ped_0_0" BEL "FindMaxAmp_i/Sub_ped_1_7" BEL
-        "FindMaxAmp_i/Sub_ped_1_5" BEL "FindMaxAmp_i/Sub_ped_1_3" BEL
-        "FindMaxAmp_i/Sub_ped_1_1" BEL "FindMaxAmp_i/FastTrig_o" BEL
-        "FindMaxAmp_i/Trig_o" BEL "FindMaxAmp_i/Sub_ped_15_6" BEL
-        "FindMaxAmp_i/Sub_ped_15_4" BEL "FindMaxAmp_i/Sub_ped_15_2" BEL
-        "FindMaxAmp_i/Sub_ped_15_0" BEL "FindMaxAmp_i/Sub_ped_14_6" BEL
-        "FindMaxAmp_i/Sub_ped_14_4" BEL "FindMaxAmp_i/Sub_ped_14_2" BEL
-        "FindMaxAmp_i/Sub_ped_14_0" BEL "FindMaxAmp_i/Sub_ped_12_6" BEL
-        "FindMaxAmp_i/Sub_ped_12_4" BEL "FindMaxAmp_i/Sub_ped_12_2" BEL
-        "FindMaxAmp_i/Sub_ped_12_0" BEL "FindMaxAmp_i/Sub_ped_13_6" BEL
-        "FindMaxAmp_i/Sub_ped_13_4" BEL "FindMaxAmp_i/Sub_ped_13_2" BEL
-        "FindMaxAmp_i/Sub_ped_13_0" BEL "FindMaxAmp_i/Sub_ped_11_6" BEL
-        "FindMaxAmp_i/Sub_ped_11_4" BEL "FindMaxAmp_i/Sub_ped_11_2" BEL
-        "FindMaxAmp_i/Sub_ped_11_0" BEL "FindMaxAmp_i/Sub_ped_10_6" BEL
-        "FindMaxAmp_i/Sub_ped_10_4" BEL "FindMaxAmp_i/Sub_ped_10_2" BEL
-        "FindMaxAmp_i/Sub_ped_10_0" BEL "FindMaxAmp_i/Sub_ped_9_6" BEL
-        "FindMaxAmp_i/Sub_ped_9_4" BEL "FindMaxAmp_i/Sub_ped_9_2" BEL
-        "FindMaxAmp_i/Sub_ped_9_0" BEL "FindMaxAmp_i/Sub_ped_8_6" BEL
-        "FindMaxAmp_i/Sub_ped_8_4" BEL "FindMaxAmp_i/Sub_ped_8_2" BEL
-        "FindMaxAmp_i/Sub_ped_8_0" BEL "FindMaxAmp_i/Sub_ped_6_6" BEL
-        "FindMaxAmp_i/Sub_ped_6_4" BEL "FindMaxAmp_i/Sub_ped_6_2" BEL
-        "FindMaxAmp_i/Sub_ped_6_0" BEL "FindMaxAmp_i/Sub_ped_5_6" BEL
-        "FindMaxAmp_i/Sub_ped_5_4" BEL "FindMaxAmp_i/Sub_ped_5_2" BEL
-        "FindMaxAmp_i/Sub_ped_5_0" BEL "FindMaxAmp_i/Sub_ped_7_6" BEL
-        "FindMaxAmp_i/Sub_ped_7_4" BEL "FindMaxAmp_i/Sub_ped_7_2" BEL
-        "FindMaxAmp_i/Sub_ped_7_0" BEL "FindMaxAmp_i/Sub_ped_4_6" BEL
-        "FindMaxAmp_i/Sub_ped_4_4" BEL "FindMaxAmp_i/Sub_ped_4_2" BEL
-        "FindMaxAmp_i/Sub_ped_4_0" BEL "FindMaxAmp_i/Sub_ped_3_6" BEL
-        "FindMaxAmp_i/Sub_ped_3_4" BEL "FindMaxAmp_i/Sub_ped_3_2" BEL
-        "FindMaxAmp_i/Sub_ped_3_0" BEL "FindMaxAmp_i/Sub_ped_2_6" BEL
-        "FindMaxAmp_i/Sub_ped_2_4" BEL "FindMaxAmp_i/Sub_ped_2_2" BEL
-        "FindMaxAmp_i/Sub_ped_2_0" BEL "FindMaxAmp_i/Sub_ped_1_6" BEL
-        "FindMaxAmp_i/Sub_ped_1_4" BEL "FindMaxAmp_i/Sub_ped_1_2" BEL
-        "FindMaxAmp_i/Sub_ped_1_0" BEL
-        "FindMaxAmp_i/Thresh_i[0].Threshold/Trig" BEL
-        "FindMaxAmp_i/Thresh_i[1].Threshold/Trig" BEL
+        "FindMaxAmp_i/Sub_ped_1_6" BEL "FindMaxAmp_i/Sub_ped_1_5" BEL
+        "FindMaxAmp_i/Sub_ped_1_4" BEL "FindMaxAmp_i/Sub_ped_1_3" BEL
+        "FindMaxAmp_i/Sub_ped_1_2" BEL "FindMaxAmp_i/Sub_ped_1_1" BEL
+        "FindMaxAmp_i/Sub_ped_1_0" BEL "FindMaxAmp_i/FastTrig_o" BEL
+        "FindMaxAmp_i/Trig_o" BEL "FindMaxAmp_i/Thresh_i[0].Threshold/Trig"
+        BEL "FindMaxAmp_i/Thresh_i[1].Threshold/Trig" BEL
         "FindMaxAmp_i/Thresh_i[2].Threshold/Trig" BEL
         "FindMaxAmp_i/Thresh_i[3].Threshold/Trig" BEL
         "FindMaxAmp_i/Thresh_i[4].Threshold/Trig" BEL
@@ -546,113 +457,177 @@ TIMEGRP DLL_CLKFX_BUF = BEL "DLL/CLKFX_BUFG_INST" BEL
         "FindMaxAmp_i/DelayENDCycle_9" BEL
         "FindMaxAmp_i/Mshreg_DelayReset_5/SRL16E" BEL
         "FindMaxAmp_i/DelayReset_5";
-PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_2" PINNAME CLKDIV;
-TIMEGRP ADC_DCO_LVDS0 = PIN
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[0].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[1].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[2].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/adc_serdes_2_pins<4>";
-PIN adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_2" PINNAME CLKDIV;
-TIMEGRP ADC_DCO_LVDS1 = PIN
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[4].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[5].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[6].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[7].SERDES/adc_serdes_2_pins<4>";
-PIN adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_2" PINNAME CLKDIV;
-TIMEGRP ADC_DCO_LVDS2 = PIN
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[8].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[9].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[10].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[11].SERDES/adc_serdes_2_pins<4>";
-PIN adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_2" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_1_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_1" PINNAME CLKDIV;
-PIN adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2_pins<4> = BEL
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2" PINNAME CLKDIV;
-TIMEGRP ADC_DCO_LVDS3 = PIN
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[12].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[13].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[14].SERDES/adc_serdes_2_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_1_pins<4>" PIN
-        "adc_deser_i/LVDS_buf_ADC[15].SERDES/adc_serdes_2_pins<4>";
+TIMEGRP ADC_DCO_LVDS0 = BEL "adc_deser_i/LVDS_buf_ADC[0].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[0].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[1].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[2].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/DCO<0>_BUFG";
+TIMEGRP ADC_DCO_LVDS1 = BEL "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[4].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[5].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[6].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[7].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/DCO<1>_BUFG";
+TIMEGRP ADC_DCO_LVDS2 = BEL "adc_deser_i/LVDS_buf_ADC[8].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[8].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[9].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[10].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[11].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/DCO<2>_BUFG";
+TIMEGRP ADC_DCO_LVDS3 = BEL "adc_deser_i/LVDS_buf_ADC[12].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DataN_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DataP_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DataN_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DataP_2" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DataN_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DataP_3" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DivClk/clk_divider_1" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/IDDR_inst/FF0" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/IDDR_inst/FF1" BEL
+        "adc_deser_i/LVDS_buf_ADC[12].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[13].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[14].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/LVDS_buf_ADC[15].SERDES/DivClk/clk_divider_0" BEL
+        "adc_deser_i/DCO<3>_BUFG";
 TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 TS_MuxClock_in = PERIOD TIMEGRP "MuxClock_in" 25 ns HIGH 50% INPUT_JITTER
         0.375 ns;
-TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 6.25 ns HIGH 50%;
-TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1" 6.25 ns HIGH 50%;
-TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2" 6.25 ns HIGH 50%;
-TS_DCO3 = PERIOD TIMEGRP "ADC_DCO_LVDS3" 6.25 ns HIGH 50%;
+TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 3.125 ns HIGH 50%;
+TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1" 3.125 ns HIGH 50%;
+TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2" 3.125 ns HIGH 50%;
+TS_DCO3 = PERIOD TIMEGRP "ADC_DCO_LVDS3" 3.125 ns HIGH 50%;
 TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_MuxClock_in HIGH 50%
         INPUT_JITTER 0.375 ns;
 TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_MuxClock_in / 2 HIGH 50%
