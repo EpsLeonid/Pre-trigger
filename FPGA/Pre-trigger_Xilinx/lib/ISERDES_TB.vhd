@@ -41,38 +41,39 @@ ARCHITECTURE behavior OF ISERDES_TB IS
  
     COMPONENT ISERDES_8bit
     PORT(
-         DataIn : IN  std_logic;
          Clock : IN  std_logic;
 --			Clk_Div	: out std_logic;
          Rst : IN  std_logic;
-         DataOut : OUT  std_logic_vector(7 downto 0);
-			Test : OUT  std_logic_vector(15 downto 0)
+         DataIn : IN  std_logic;
+         Test : IN  std_logic;
+         DataOut : OUT  std_logic_vector(7 downto 0)
+--			Test : OUT  std_logic_vector(15 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal DataIn : std_logic := '0';
    signal Clock : std_logic := '0';
    signal i_clk : std_logic := '0';
-   signal ClockDiv : std_logic := '0';
+   signal ClkDiv : std_logic := '0';
+   signal DataIn : std_logic := '0';
    signal Rst : std_logic := '0';
 
  	--Outputs
 --	signal Clk_Div : std_logic;
    signal DataOut : std_logic_vector(7 downto 0);
-   signal Test : std_logic_vector(15 downto 0);
+   signal Test : std_logic := '0';
 
    -- Clock period definitions
---   constant Clock_period : time := 3125 ps;
-   constant Clock_period : time := 5 ns;
+   constant Clock_period : time := 3125 ps;
+--   constant Clock_period : time := 5 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: ISERDES_8bit PORT MAP (
           DataIn => DataIn,
-          Clock => i_clk,
+          Clock => Clock,
 --			 Clk_Div	=> Clk_Div,
           Rst => Rst,
           DataOut => DataOut,
@@ -92,9 +93,9 @@ BEGIN
  
    ClockDiv_process :process
    begin
-		ClockDiv <= '0';
+		ClkDiv <= '0';
 		wait for Clock_period*2;
-		ClockDiv <= '1';
+		ClkDiv <= '1';
 		wait for Clock_period*2;
    end process;
 
@@ -103,6 +104,7 @@ BEGIN
    begin		
       -- hold reset state for 100 ns.
 		DataIn <= '0';
+		Test <= '0';
       wait for Clock_period*5;
 		
 		Rst <= '1';
@@ -110,7 +112,7 @@ BEGIN
       wait for Clock_period*2;
 
 		Rst <= '0';
-
+		Test <= '1';
       wait for Clock_period*3;
 
 		DataIn <= '1';

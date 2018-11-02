@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Tue Oct 16 18:38:06 2018
+Fri Nov 02 18:26:07 2018
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -21,9 +21,9 @@ Pinout by Pin Number:
 |Pin Number|Signal Name        |Pin Usage|Pin Name            |Direction|IO Standard|IO Bank Number|Drive (mA)|Slew Rate|Termination|IOB Delay|Voltage  |Constraint|IO Register|Signal Integrity|
 +-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 |A2        |                   |         |VCCO_6              |         |           |6             |          |         |           |         |2.50     |          |           |                |
-|A3        |Test<2>            |IOB      |IO_L20N_VREF_6      |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
-|A4        |Test<3>            |IOB      |IO_L20P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
-|A5        |Test<7>            |IOB      |IO_L22P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
+|A3        |Test<2>            |IOB      |IO_L20N_VREF_6      |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|A4        |Test<3>            |IOB      |IO_L20P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|A5        |Test<7>            |IOB      |IO_L22P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |A6        |Test<9>            |IOB      |IO_L12P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |A7        |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |A8        |TxClk              |IOB      |IO_L10P_6           |INPUT    |LVCMOS25*  |6             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
@@ -525,10 +525,10 @@ Pinout by Pin Number:
 |AP32      |                   |IOBS     |IO_L12N_VREF_7      |UNUSED   |           |7             |          |         |           |         |         |          |           |                |
 |AP33      |                   |         |VCCO_7              |         |           |7             |          |         |           |         |any******|          |           |                |
 |B1        |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|B2        |Test<0>            |IOB      |IO_L30N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
-|B3        |Test<1>            |IOB      |IO_L30P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
+|B2        |Test<0>            |IOB      |IO_L30N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|B3        |Test<1>            |IOB      |IO_L30P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |B4        |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|B5        |Test<6>            |IOB      |IO_L22N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
+|B5        |Test<6>            |IOB      |IO_L22N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |B6        |Test<8>            |IOB      |IO_L12N_VREF_6      |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |B7        |RxD<0>             |IOB      |IO_L14P_6           |INPUT    |LVCMOS25*  |6             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |B8        |RxClk              |IOB      |IO_L10N_6           |INPUT    |LVCMOS25*  |6             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
@@ -562,7 +562,7 @@ Pinout by Pin Number:
 |C2        |TriggerData<8>     |IOB      |IO_L7P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C3        |TriggerData<9>     |IOB      |IO_L1N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C4        |TriggerData<32>    |IOB      |IO_L1P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
-|C5        |Test<5>            |IOB      |IO_L27P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
+|C5        |Test<5>            |IOB      |IO_L27P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C6        |                   |         |VCCO_6              |         |           |6             |          |         |           |         |2.50     |          |           |                |
 |C7        |RxD<1>             |IOB      |IO_L14N_6           |INPUT    |LVCMOS25*  |6             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |C8        |RxDv               |IOB      |IO_L4N_VREF_6       |INPUT    |LVCMOS25*  |6             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
@@ -596,7 +596,7 @@ Pinout by Pin Number:
 |D2        |TriggerData<34>    |IOB      |IO_L7N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |D3        |                   |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
 |D4        |TriggerData<35>    |IOB      |IO_L3P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
-|D5        |Test<4>            |IOB      |IO_L27N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |YES        |NONE            |
+|D5        |Test<4>            |IOB      |IO_L27N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |D6        |RxD<3>             |IOB      |IO_L18N_6           |INPUT    |LVCMOS25*  |6             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |D7        |RxD<2>             |IOB      |IO_L18P_6           |INPUT    |LVCMOS25*  |6             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |D8        |                   |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |

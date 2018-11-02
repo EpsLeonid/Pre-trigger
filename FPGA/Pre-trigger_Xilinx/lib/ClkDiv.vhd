@@ -29,12 +29,12 @@ library work;
 use work.parameters.all;
 
 entity ClkDiv is
-	 Port ( i_clk			: in  STD_LOGIC;
-			  o_clk_div2	: out std_logic;
-			  o_clk_div4	: out std_logic;
-			  o_clk_div8	: out std_logic;
-			  o_clk_div16	: out std_logic;
-			  o_clk			: out std_logic);
+	Port (i_clk			: in  STD_LOGIC;
+			o_clk_div2	: out std_logic;
+			o_clk_div4	: out std_logic;
+			o_clk_div8	: out std_logic;
+			o_clk_div16	: out std_logic;
+			o_clk			: out std_logic);
 end ClkDiv;
 
 architecture Behavioral of ClkDiv is
@@ -46,7 +46,7 @@ begin
 	p_clk_divider: process(i_clk)
 	begin
 		if(rising_edge(i_clk)) then
-			clk_divider <= clk_divider + 1;
+			clk_divider <= clk_divider + '1';
 		end if;
 	end process p_clk_divider;
 	o_clk_div2	<= clk_divider(0);
@@ -54,7 +54,7 @@ begin
 	o_clk_div8	<= clk_divider(2);
 	o_clk_div16	<= clk_divider(3);
 	
-	o_clk <= transport clk_divider(1) after 0 ns;
+	o_clk <=  clk_divider(1);
 
 end Behavioral;
 

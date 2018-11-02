@@ -150,7 +150,7 @@ LVDS_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate
 	SERDES : entity work.ISERDES_8bit 
 	port map  (
 		DataIn 	=> SDATAPrev(i),	-- input of data from ADC by bits
-		Clock		=> DCOPrev(i/4),--Clock_i,
+		Clock		=> DCOPrev(i),--Clock_i,
 --		ClkDiv	=> DCODivPrev(i/4),
 		DataOut	=> o_adc_data_prev(i)
 				 );

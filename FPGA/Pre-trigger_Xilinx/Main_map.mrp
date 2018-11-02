@@ -9,38 +9,38 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Tue Oct 16 18:37:40 2018
+Mapped Date    : Fri Nov 02 18:25:19 2018
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:  453
 Logic Utilization:
-  Number of Slice Flip Flops:           767 out of  53,248    1%
-  Number of 4 input LUTs:               407 out of  53,248    1%
+  Number of Slice Flip Flops:           847 out of  53,248    1%
+  Number of 4 input LUTs:               423 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            549 out of  26,624    2%
-    Number of Slices containing only related logic:     549 out of     549 100%
-    Number of Slices containing unrelated logic:          0 out of     549   0%
+  Number of occupied Slices:            613 out of  26,624    2%
+    Number of Slices containing only related logic:     613 out of     613 100%
+    Number of Slices containing unrelated logic:          0 out of     613   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         447 out of  53,248    1%
-    Number used as logic:               405
+  Total Number of 4 input LUTs:         463 out of  53,248    1%
+    Number used as logic:               421
     Number used as a route-thru:         40
     Number used as Shift registers:       2
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
   Number of bonded IOBs:                144 out of     640   22%
-    IOB Flip Flops:                      41
+    IOB Flip Flops:                      33
   Number of BUFG/BUFGCTRLs:               9 out of      32   28%
     Number used as BUFGs:                 9
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.64
+Average Fanout of Non-Clock Nets:                1.72
 
-Peak Memory Usage:  458 MB
-Total REAL time to MAP completion:  5 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  445 MB
+Total REAL time to MAP completion:  14 secs 
+Total CPU time to MAP completion:   4 secs 
 
 NOTES:
 
@@ -1016,7 +1016,7 @@ Section 4 - Removed Logic Summary
 ---------------------------------
  721 block(s) removed
    4 block(s) optimized away
- 553 signal(s) removed
+ 562 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -1046,51 +1046,6 @@ Loadless block "LVDS_signal" (IBUFDS) removed.
   Loadless block "TrigInLVDS" (PAD) removed.
  The signal "TrigInLVDS_n" is loadless and has been removed.
   Loadless block "TrigInLVDS_n" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[10].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<10>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<10>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<10>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<10>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[11].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<11>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<11>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<11>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<11>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[3].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<3>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<3>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<3>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<3>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[4].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<4>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<4>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<4>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<4>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[5].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<5>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<5>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<5>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<5>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[6].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<6>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<6>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<6>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<6>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[7].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<7>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<7>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<7>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<7>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[8].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<8>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<8>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<8>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<8>" (PAD) removed.
-Loadless block "adc_deser_i/LVDS_ADC_DCOPrev[9].LVDS_signal" (IBUFGDS) removed.
- The signal "ADC_DCO_LVDSPrev<9>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev<9>" (PAD) removed.
- The signal "ADC_DCO_LVDSPrev_n<9>" is loadless and has been removed.
-  Loadless block "ADC_DCO_LVDSPrev_n<9>" (PAD) removed.
 Loadless block "adc_deser_i/LVDS_ADC_FCO[0].LVDS_signal" (IBUFGDS) removed.
  The signal "ADC_FCO_LVDS<0>" is loadless and has been removed.
   Loadless block "ADC_FCO_LVDS<0>" (PAD) removed.
@@ -1258,38 +1213,47 @@ removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[10].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<10>" is loadless and has been removed.
- The signal "adc_deser_i/DCOPrev<2>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<10>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[11].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<11>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<11>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[1].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<1>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<1>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[2].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<2>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<2>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[3].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<3>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<3>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[4].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<4>" is loadless and has been removed.
- The signal "adc_deser_i/DCOPrev<1>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<4>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[5].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<5>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<5>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[6].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<6>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<6>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[7].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<7>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<7>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[8].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<8>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<8>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[9].SERDES/IDDR_inst" (IDDR)
 removed.
  The signal "adc_deser_i/SDATAPrev<9>" is loadless and has been removed.
+ The signal "adc_deser_i/DCOPrev<9>" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADC[100].SERDES/IDDR_inst" (IDDR) removed.
  The signal "adc_deser_i/SDATA<100>" is loadless and has been removed.
  The signal "adc_deser_i/DCO<25>" is loadless and has been removed.
@@ -2102,16 +2066,52 @@ The signal "ADC_DCO_LVDS<9>" is unused and has been removed.
  Unused block "ADC_DCO_LVDS<9>" (PAD) removed.
 The signal "ADC_DCO_LVDSPrev<0>" is unused and has been removed.
  Unused block "ADC_DCO_LVDSPrev<0>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<10>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<10>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<11>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<11>" (PAD) removed.
 The signal "ADC_DCO_LVDSPrev<1>" is unused and has been removed.
  Unused block "ADC_DCO_LVDSPrev<1>" (PAD) removed.
 The signal "ADC_DCO_LVDSPrev<2>" is unused and has been removed.
  Unused block "ADC_DCO_LVDSPrev<2>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<3>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<3>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<4>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<4>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<5>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<5>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<6>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<6>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<7>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<7>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<8>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<8>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev<9>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev<9>" (PAD) removed.
 The signal "ADC_DCO_LVDSPrev_n<0>" is unused and has been removed.
  Unused block "ADC_DCO_LVDSPrev_n<0>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<10>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<10>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<11>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<11>" (PAD) removed.
 The signal "ADC_DCO_LVDSPrev_n<1>" is unused and has been removed.
  Unused block "ADC_DCO_LVDSPrev_n<1>" (PAD) removed.
 The signal "ADC_DCO_LVDSPrev_n<2>" is unused and has been removed.
  Unused block "ADC_DCO_LVDSPrev_n<2>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<3>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<3>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<4>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<4>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<5>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<5>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<6>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<6>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<7>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<7>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<8>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<8>" (PAD) removed.
+The signal "ADC_DCO_LVDSPrev_n<9>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDSPrev_n<9>" (PAD) removed.
 The signal "ADC_DCO_LVDS_n<10>" is unused and has been removed.
  Unused block "ADC_DCO_LVDS_n<10>" (PAD) removed.
 The signal "ADC_DCO_LVDS_n<11>" is unused and has been removed.
@@ -2169,8 +2169,17 @@ The signal "ADC_DCO_LVDS_n<8>" is unused and has been removed.
 The signal "ADC_DCO_LVDS_n<9>" is unused and has been removed.
  Unused block "ADC_DCO_LVDS_n<9>" (PAD) removed.
 Unused block "adc_deser_i/LVDS_ADC_DCOPrev[0].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[10].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[11].LVDS_signal" (IBUFGDS) removed.
 Unused block "adc_deser_i/LVDS_ADC_DCOPrev[1].LVDS_signal" (IBUFGDS) removed.
 Unused block "adc_deser_i/LVDS_ADC_DCOPrev[2].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[3].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[4].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[5].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[6].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[7].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[8].LVDS_signal" (IBUFGDS) removed.
+Unused block "adc_deser_i/LVDS_ADC_DCOPrev[9].LVDS_signal" (IBUFGDS) removed.
 Unused block "adc_deser_i/LVDS_ADC_DCO[10].LVDS_signal" (IBUFGDS) removed.
 Unused block "adc_deser_i/LVDS_ADC_DCO[11].LVDS_signal" (IBUFGDS) removed.
 Unused block "adc_deser_i/LVDS_ADC_DCO[12].LVDS_signal" (IBUFGDS) removed.
@@ -2418,14 +2427,14 @@ Section 6 - IOB Properties
 | RxDv                               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | Sw_FCTClk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Sw_Quartz                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<0>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<1>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<2>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<3>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<4>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<5>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| Test<0>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<1>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<2>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<3>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<4>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<5>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<8>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<9>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TrigDes                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
