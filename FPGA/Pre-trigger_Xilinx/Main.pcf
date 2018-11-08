@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Nov 02 18:25:32 2018
+// Written by: Map P.20131013 on Wed Nov 07 16:33:51 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -548,8 +548,8 @@ TIMEGRP ADC_DCO_LVDS0 = BEL "adc_deser_i/LVDS_buf_ADC[0].SERDES/clkdiv_es" BEL
         "adc_deser_i/LVDS_buf_ADC[0].SERDES/clkdiv_0" BEL
         "adc_deser_i/LVDS_buf_ADC[1].SERDES/clkdiv_0" BEL
         "adc_deser_i/LVDS_buf_ADC[2].SERDES/clkdiv_0" BEL
-        "adc_deser_i/LVDS_buf_ADC[3].SERDES/clkdiv_0" BEL
-        "adc_deser_i/DCO<0>_BUFG";
+        "adc_deser_i/LVDS_buf_ADC[3].SERDES/clkdiv_0" BEL "Test_8_OBUF_BUFG"
+        BEL "Test<8>";
 TIMEGRP ADC_DCO_LVDS1 = BEL "adc_deser_i/LVDS_buf_ADC[4].SERDES/clkdiv_es" BEL
         "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataN_0" BEL
         "adc_deser_i/LVDS_buf_ADC[4].SERDES/DataP_0" BEL

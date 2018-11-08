@@ -137,7 +137,7 @@ architecture Behavioral of Main is
 
 	--- ADC SPI interface signals
 	signal s_fadc_test		: std_logic := '0'; 
-	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
+	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000101000000000001111111100000001";
 											--									  "set	addr		 data			 set	addr		  data "
 											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 	signal shift_sdio_test	: std_logic;
@@ -182,7 +182,7 @@ architecture Behavioral of Main is
 
 	--- Test
 	signal TestCnt	: std_logic_vector(25 downto 0);
-	signal test_out: std_logic_vector(15 downto 0);
+	signal test_out: std_logic_vector(31 downto 0);
 
 begin
 
@@ -333,6 +333,7 @@ DLL: entity work.DLL
 		DCOPrevN		=> ADC_DCO_LVDSPrev_n,
 		
 		o_adc_data	=> InDataReg,
+		o_dco			=> test_out,
 		o_adc_data_prev	=> InDataPrevReg
 	);
 
@@ -353,11 +354,11 @@ DLL: entity work.DLL
 		Clock				=> CLK40,
 		Clock160			=> CLK160,
 
-		Reset				=> Reset,
+		Reset				=> Reset
 	--	ResetAll			=> '0',
 	--	Error				=> '0',
 
-		test				=> test_out
+--		test				=> test_out
 	);
 
 	ADC_CLK <= CLK80;
@@ -466,7 +467,7 @@ DLL: entity work.DLL
 	Test(5) <= InDataReg(0)(5);
 	Test(6) <= InDataReg(0)(6);
 	Test(7) <= InDataReg(0)(7);
-	Test(8) <= test_out(1);
+	Test(8) <= test_out(0);
 	Test(9) <= Clk80;
 
 end Behavioral;

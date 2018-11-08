@@ -51,7 +51,9 @@ entity adc_deser is
 	DCOPrevN		: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	
 	o_adc_data	: out array_adc;
-	o_adc_data_prev	: out array_prev_adc
+	o_dco			: out std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	o_adc_data_prev	: out array_prev_adc;
+	o_dco_prev			: out std_logic_vector(NUM_TrigCellPrev-1 downto 0)	-- 
 	);
 end adc_deser;
 
@@ -79,6 +81,7 @@ LVDS_ADC_DCO: for i in 0 to NUM_TrigCell/4-1 generate
 			I => DCOP(i),  -- Diff_p buffer input (connect directly to top-level port)
 			IB => DCON(i) -- Diff_n buffer input (connect directly to top-level port)
 		);
+	o_dco(i) <= DCO(i);
 end generate LVDS_ADC_DCO;
 
 -- Input LVDS ADC FCO buffer
@@ -107,6 +110,7 @@ LVDS_ADC_DCOPrev: for i in 0 to NUM_TrigCellPrev-1 generate
 			I => DCOPrevP(i),  -- Diff_p buffer input (connect directly to top-level port)
 			IB => DCOPrevN(i) -- Diff_n buffer input (connect directly to top-level port)
 		);
+	o_dco_prev(i) <= DCOPrev(i);
 end generate LVDS_ADC_DCOPrev;
 
 -- Input LVDS ADC buffer

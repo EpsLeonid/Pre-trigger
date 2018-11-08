@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-L2-EPSHT2::  Fri Nov 02 18:25:36 2018
+L2-EPSHT2::  Wed Nov 07 16:33:56 2018
 
 par -w -intstyle ise -ol high -t 1 Main_map.ncd Main.ncd Main.pcf 
 
@@ -41,8 +41,8 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 8 secs 
-Finished initial Timing Analysis.  REAL time: 8 secs 
+Starting initial Timing Analysis.  REAL time: 7 secs 
+Finished initial Timing Analysis.  REAL time: 7 secs 
 
 WARNING:Par:288 - The signal Col_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal Crs_IBUF has no load.  PAR will not attempt to route this signal.
@@ -55,17 +55,17 @@ WARNING:Par:288 - The signal RxD<2>_IBUF has no load.  PAR will not attempt to r
 WARNING:Par:288 - The signal RxD<3>_IBUF has no load.  PAR will not attempt to route this signal.
 
 Starting Placer
-Total REAL time at the beginning of Placer: 9 secs 
-Total CPU  time at the beginning of Placer: 6 secs 
+Total REAL time at the beginning of Placer: 7 secs 
+Total CPU  time at the beginning of Placer: 5 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:d61eebd3) REAL time: 11 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:d61eebd3) REAL time: 10 secs 
 
 Phase 2.7  Design Feasibility Check
-Phase 2.7  Design Feasibility Check (Checksum:d61eebd3) REAL time: 11 secs 
+Phase 2.7  Design Feasibility Check (Checksum:d61eebd3) REAL time: 10 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:a8e654a3) REAL time: 11 secs 
+Phase 3.31  Local Placement Optimization (Checksum:94632d53) REAL time: 10 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
@@ -98,12 +98,12 @@ WARNING:Place:644 - A clock IOB clock component is not placed at an optimal cloc
    constraint disables all clock placer rules related to the specified COMP.PIN. The use of this override is highly
    discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in
    the design.
-Phase 4.2  Initial Clock and IO Placement (Checksum:b01aea5) REAL time: 11 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:1481be2e) REAL time: 10 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:b01aea5) REAL time: 11 secs 
+Phase 5.36  Local Placement Optimization (Checksum:1481be2e) REAL time: 10 secs 
 
-......
+........
 Phase 6.30  Global Clock Region Assignment
 
 
@@ -117,22 +117,22 @@ Phase 6.30  Global Clock Region Assignment
 
 # Location of Clock Components
 INST "DLL/CLKDV_BUFG_INST" LOC = "BUFGCTRL_X0Y21" ;
-INST "adc_deser_i/DCO<0>_BUFG" LOC = "BUFGCTRL_X0Y2" ;
 INST "adc_deser_i/DCO<1>_BUFG" LOC = "BUFGCTRL_X0Y14" ;
-INST "adc_deser_i/DCO<2>_BUFG" LOC = "BUFGCTRL_X0Y1" ;
-INST "adc_deser_i/DCO<3>_BUFG" LOC = "BUFGCTRL_X0Y12" ;
-INST "Quarts_BUFG" LOC = "BUFGCTRL_X0Y28" ;
-INST "DLL/CLK2X_BUFG_INST" LOC = "BUFGCTRL_X0Y25" ;
-INST "DLL/CLKFX_BUFG_INST" LOC = "BUFGCTRL_X0Y19" ;
-INST "DLL/CLK0_BUFG_INST" LOC = "BUFGCTRL_X0Y16" ;
-INST "XIL_ML_UNUSED_DCM_1" LOC = "DCM_ADV_X0Y2" ;
-INST "XIL_ML_UNUSED_DCM_2" LOC = "DCM_ADV_X0Y1" ;
-INST "XIL_ML_UNUSED_DCM_3" LOC = "DCM_ADV_X0Y7" ;
-INST "XIL_ML_UNUSED_DCM_4" LOC = "DCM_ADV_X0Y0" ;
-INST "XIL_ML_UNUSED_DCM_5" LOC = "DCM_ADV_X0Y6" ;
-INST "XIL_ML_UNUSED_DCM_6" LOC = "DCM_ADV_X0Y3" ;
-INST "XIL_ML_UNUSED_DCM_7" LOC = "DCM_ADV_X0Y4" ;
-INST "DLL/DCM_ADV_INST" LOC = "DCM_ADV_X0Y5" ;
+INST "adc_deser_i/DCO<2>_BUFG" LOC = "BUFGCTRL_X0Y2" ;
+INST "adc_deser_i/DCO<3>_BUFG" LOC = "BUFGCTRL_X0Y11" ;
+INST "Quarts_BUFG" LOC = "BUFGCTRL_X0Y19" ;
+INST "DLL/CLK2X_BUFG_INST" LOC = "BUFGCTRL_X0Y27" ;
+INST "DLL/CLKFX_BUFG_INST" LOC = "BUFGCTRL_X0Y26" ;
+INST "Test_8_OBUF_BUFG" LOC = "BUFGCTRL_X0Y6" ;
+INST "DLL/CLK0_BUFG_INST" LOC = "BUFGCTRL_X0Y31" ;
+INST "XIL_ML_UNUSED_DCM_1" LOC = "DCM_ADV_X0Y6" ;
+INST "XIL_ML_UNUSED_DCM_2" LOC = "DCM_ADV_X0Y3" ;
+INST "XIL_ML_UNUSED_DCM_3" LOC = "DCM_ADV_X0Y0" ;
+INST "XIL_ML_UNUSED_DCM_4" LOC = "DCM_ADV_X0Y2" ;
+INST "XIL_ML_UNUSED_DCM_5" LOC = "DCM_ADV_X0Y7" ;
+INST "XIL_ML_UNUSED_DCM_6" LOC = "DCM_ADV_X0Y5" ;
+INST "XIL_ML_UNUSED_DCM_7" LOC = "DCM_ADV_X0Y1" ;
+INST "DLL/DCM_ADV_INST" LOC = "DCM_ADV_X0Y4" ;
 INST "MuxClock_in" LOC = "D16" ;
 INST "ADC_DCO_LVDS<0>" LOC = "AA25" ;
 INST "ADC_DCO_LVDS<1>" LOC = "AD34" ;
@@ -145,45 +145,45 @@ NET "ADC_SCLK_OBUF" TNM_NET = "TN_ADC_SCLK_OBUF" ;
 TIMEGRP "TN_ADC_SCLK_OBUF" AREA_GROUP = "CLKAG_ADC_SCLK_OBUF" ;
 AREA_GROUP "CLKAG_ADC_SCLK_OBUF" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
-# adc_deser_i/DCO<0> driven by BUFGCTRL_X0Y2
-NET "adc_deser_i/DCO<0>" TNM_NET = "TN_adc_deser_i/DCO<0>" ;
-TIMEGRP "TN_adc_deser_i/DCO<0>" AREA_GROUP = "CLKAG_adc_deser_i/DCO<0>" ;
-AREA_GROUP "CLKAG_adc_deser_i/DCO<0>" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
-
 # adc_deser_i/DCO<1> driven by BUFGCTRL_X0Y14
 NET "adc_deser_i/DCO<1>" TNM_NET = "TN_adc_deser_i/DCO<1>" ;
 TIMEGRP "TN_adc_deser_i/DCO<1>" AREA_GROUP = "CLKAG_adc_deser_i/DCO<1>" ;
 AREA_GROUP "CLKAG_adc_deser_i/DCO<1>" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
-# adc_deser_i/DCO<2> driven by BUFGCTRL_X0Y1
+# adc_deser_i/DCO<2> driven by BUFGCTRL_X0Y2
 NET "adc_deser_i/DCO<2>" TNM_NET = "TN_adc_deser_i/DCO<2>" ;
 TIMEGRP "TN_adc_deser_i/DCO<2>" AREA_GROUP = "CLKAG_adc_deser_i/DCO<2>" ;
 AREA_GROUP "CLKAG_adc_deser_i/DCO<2>" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
-# adc_deser_i/DCO<3> driven by BUFGCTRL_X0Y12
+# adc_deser_i/DCO<3> driven by BUFGCTRL_X0Y11
 NET "adc_deser_i/DCO<3>" TNM_NET = "TN_adc_deser_i/DCO<3>" ;
 TIMEGRP "TN_adc_deser_i/DCO<3>" AREA_GROUP = "CLKAG_adc_deser_i/DCO<3>" ;
 AREA_GROUP "CLKAG_adc_deser_i/DCO<3>" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
-# Quarts driven by BUFGCTRL_X0Y28
+# Quarts driven by BUFGCTRL_X0Y19
 NET "Quarts" TNM_NET = "TN_Quarts" ;
 TIMEGRP "TN_Quarts" AREA_GROUP = "CLKAG_Quarts" ;
-AREA_GROUP "CLKAG_Quarts" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6 ;
+AREA_GROUP "CLKAG_Quarts" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4 ;
 
-# Test_9_OBUF driven by BUFGCTRL_X0Y25
+# Test_9_OBUF driven by BUFGCTRL_X0Y27
 NET "Test_9_OBUF" TNM_NET = "TN_Test_9_OBUF" ;
 TIMEGRP "TN_Test_9_OBUF" AREA_GROUP = "CLKAG_Test_9_OBUF" ;
 AREA_GROUP "CLKAG_Test_9_OBUF" RANGE =   CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
-# Clk160 driven by BUFGCTRL_X0Y19
+# Clk160 driven by BUFGCTRL_X0Y26
 NET "Clk160" TNM_NET = "TN_Clk160" ;
 TIMEGRP "TN_Clk160" AREA_GROUP = "CLKAG_Clk160" ;
 AREA_GROUP "CLKAG_Clk160" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
-# Clk40 driven by BUFGCTRL_X0Y16
+# Test_8_OBUF driven by BUFGCTRL_X0Y6
+NET "Test_8_OBUF" TNM_NET = "TN_Test_8_OBUF" ;
+TIMEGRP "TN_Test_8_OBUF" AREA_GROUP = "CLKAG_Test_8_OBUF" ;
+AREA_GROUP "CLKAG_Test_8_OBUF" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
+
+# Clk40 driven by BUFGCTRL_X0Y31
 NET "Clk40" TNM_NET = "TN_Clk40" ;
 TIMEGRP "TN_Clk40" AREA_GROUP = "CLKAG_Clk40" ;
-AREA_GROUP "CLKAG_Clk40" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
+AREA_GROUP "CLKAG_Clk40" RANGE =   CLOCKREGION_X0Y0, CLOCKREGION_X1Y0, CLOCKREGION_X0Y1, CLOCKREGION_X1Y1, CLOCKREGION_X0Y2, CLOCKREGION_X1Y2, CLOCKREGION_X0Y3, CLOCKREGION_X1Y3, CLOCKREGION_X0Y4, CLOCKREGION_X1Y4, CLOCKREGION_X0Y5, CLOCKREGION_X1Y5, CLOCKREGION_X0Y6, CLOCKREGION_X1Y6, CLOCKREGION_X0Y7, CLOCKREGION_X1Y7 ;
 
 # NOTE: 
 # This report is provided to help reproduce successful clock-region 
@@ -272,13 +272,13 @@ Clock-Region: <CLOCKREGION_X0Y2>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     48 |Clk160
-      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     38 |adc_deser_i/DCO<0>
-      0 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |adc_deser_i/DCO<1>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     68 |Clk160
+      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     40 |Test_8_OBUF
+      0 |      0 |      0 |      0 |      1 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     19 |adc_deser_i/DCO<1>
       0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     42 |adc_deser_i/DCO<2>
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      5 |adc_deser_i/DCO<3>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    133 | Total 
+      0 |      0 |      0 |      0 |      5 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    174 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -307,13 +307,13 @@ Clock-Region: <CLOCKREGION_X0Y3>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    199 |Clk160
-      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |adc_deser_i/DCO<0>
-      0 |      0 |      0 |      0 |      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     56 |adc_deser_i/DCO<1>
-      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     16 |adc_deser_i/DCO<2>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    168 |Clk160
+      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |Test_8_OBUF
+      0 |      0 |      0 |      0 |      3 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     35 |adc_deser_i/DCO<1>
+      0 |      0 |      0 |      0 |      2 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     20 |adc_deser_i/DCO<2>
       0 |      0 |      0 |      0 |      4 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     58 |adc_deser_i/DCO<3>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |     11 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    333 | Total 
+      0 |      0 |      0 |      0 |     11 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |    283 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -327,10 +327,10 @@ Clock-Region: <CLOCKREGION_X1Y3>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     12 |ADC_SCLK_OBUF
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |ADC_SCLK_OBUF
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |Clk40
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     13 | Total 
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      3 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -344,14 +344,14 @@ Clock-Region: <CLOCKREGION_X0Y4>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |    137 |Clk160
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      8 |Quarts
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     25 |adc_deser_i/DCO<0>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     24 |adc_deser_i/DCO<1>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     26 |adc_deser_i/DCO<2>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     17 |adc_deser_i/DCO<3>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |    148 |Clk160
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     17 |Quarts
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     25 |Test_8_OBUF
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     30 |adc_deser_i/DCO<1>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     22 |adc_deser_i/DCO<2>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     21 |adc_deser_i/DCO<3>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |    237 | Total 
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |    263 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -365,18 +365,18 @@ Clock-Region: <CLOCKREGION_X1Y4>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     44 |ADC_SCLK_OBUF
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |      7 |Clk160
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     50 |ADC_SCLK_OBUF
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |      5 |Clk160
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |Clk40
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     26 |Quarts
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |adc_deser_i/DCO<0>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      3 |Test_8_OBUF
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |     83 | Total 
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |     86 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
 Clock-Region: <CLOCKREGION_X0Y5> 
- key resource utilizations (used/available): global-clocks - 3/8 ;
+ key resource utilizations (used/available): global-clocks - 1/8 ;
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
    BRAM |    DCM |   PMCD |     GT | ILOGIC | OLOGIC |   MULT |   EMAC |    PPC |   PCIE | IDLYCT | LUTRAM |     FF | <- (Types of Resources in this  Region)
    FIFO |        |        |        |        |        |        |        |        |        |        |        |        |
@@ -385,11 +385,9 @@ Clock-Region: <CLOCKREGION_X0Y5>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      1 |Quarts
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |adc_deser_i/DCO<1>
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |adc_deser_i/DCO<3>
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 |ADC_SCLK_OBUF
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      9 | Total 
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      2 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -403,12 +401,12 @@ Clock-Region: <CLOCKREGION_X1Y5>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
         |        |        |        |        |        |        |        |        |        |        |        |        | <Global clock Net Name>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      4 |ADC_SCLK_OBUF
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      6 |Clk160
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      6 |ADC_SCLK_OBUF
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      8 |Clk160
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     14 |Test_8_OBUF
       0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      3 |Test_9_OBUF
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     13 |adc_deser_i/DCO<0>
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
-      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     26 | Total 
+      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |      0 |     31 | Total 
 --------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+--------+----------------------------------------
 
 
@@ -482,37 +480,37 @@ maybe moved to adjacent clock-regions as long as the "number of clocks per regio
 ######################################################################################
 
 
-Phase 6.30  Global Clock Region Assignment (Checksum:b01aea5) REAL time: 16 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:1481be2e) REAL time: 12 secs 
 
 Phase 7.3  Local Placement Optimization
-Phase 7.3  Local Placement Optimization (Checksum:b01aea5) REAL time: 16 secs 
+Phase 7.3  Local Placement Optimization (Checksum:1481be2e) REAL time: 12 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:b01aea5) REAL time: 16 secs 
+Phase 8.5  Local Placement Optimization (Checksum:1481be2e) REAL time: 12 secs 
 
 Phase 9.8  Global Placement
-........
+.........
 .....
-.............
-.....
+..........
 ......
 .......
-Phase 9.8  Global Placement (Checksum:938e03e3) REAL time: 18 secs 
+.....
+Phase 9.8  Global Placement (Checksum:230d35cc) REAL time: 12 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:938e03e3) REAL time: 18 secs 
+Phase 10.5  Local Placement Optimization (Checksum:230d35cc) REAL time: 12 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:a80d275c) REAL time: 20 secs 
+Phase 11.18  Placement Optimization (Checksum:14f1a907) REAL time: 13 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:a80d275c) REAL time: 20 secs 
+Phase 12.5  Local Placement Optimization (Checksum:14f1a907) REAL time: 13 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:a80d275c) REAL time: 20 secs 
+Phase 13.34  Placement Validation (Checksum:14f1a907) REAL time: 13 secs 
 
-Total REAL time to Placer completion: 20 secs 
-Total CPU  time to Placer completion: 9 secs 
+Total REAL time to Placer completion: 13 secs 
+Total CPU  time to Placer completion: 8 secs 
 Writing design to file Main.ncd
 
 
@@ -520,29 +518,29 @@ Writing design to file Main.ncd
 Starting Router
 
 
-Phase  1  : 2820 unrouted;      REAL time: 23 secs 
+Phase  1  : 2820 unrouted;      REAL time: 14 secs 
 
-Phase  2  : 2069 unrouted;      REAL time: 23 secs 
+Phase  2  : 2069 unrouted;      REAL time: 15 secs 
 
-Phase  3  : 418 unrouted;      REAL time: 23 secs 
+Phase  3  : 416 unrouted;      REAL time: 15 secs 
 
-Phase  4  : 434 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 26 secs 
+Phase  4  : 419 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
 
 Updating file: Main.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 27 secs 
+Phase  5  : 0 unrouted; (Setup:17, Hold:0, Component Switching Limit:0)     REAL time: 18 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 27 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 20 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 27 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 20 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 27 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 20 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 27 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 20 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 27 secs 
-Total REAL time to Router completion: 27 secs 
-Total CPU time to Router completion: 13 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 20 secs 
+Total REAL time to Router completion: 20 secs 
+Total CPU time to Router completion: 14 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -560,26 +558,26 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|              Clk160 |BUFGCTRL_X0Y19| No   |  209 |  0.332     |  2.953      |
+|              Clk160 |BUFGCTRL_X0Y26| No   |  209 |  0.343     |  2.980      |
 +---------------------+--------------+------+------+------------+-------------+
-|         Test_9_OBUF |BUFGCTRL_X0Y25| No   |    4 |  0.000     |  2.676      |
+|         Test_9_OBUF |BUFGCTRL_X0Y27| No   |    4 |  0.000     |  2.679      |
 +---------------------+--------------+------+------+------------+-------------+
-|       ADC_SCLK_OBUF |BUFGCTRL_X0Y21| No   |   34 |  0.054     |  2.582      |
+|       ADC_SCLK_OBUF |BUFGCTRL_X0Y21| No   |   34 |  0.050     |  2.585      |
 +---------------------+--------------+------+------+------------+-------------+
-|  adc_deser_i/DCO<2> | BUFGCTRL_X0Y1| No   |   56 |  0.148     |  2.975      |
+|  adc_deser_i/DCO<2> | BUFGCTRL_X0Y2| No   |   56 |  0.114     |  2.975      |
 +---------------------+--------------+------+------+------------+-------------+
-|  adc_deser_i/DCO<3> |BUFGCTRL_X0Y12| No   |   56 |  0.086     |  2.960      |
+|  adc_deser_i/DCO<3> |BUFGCTRL_X0Y11| No   |   56 |  0.087     |  2.961      |
 +---------------------+--------------+------+------+------------+-------------+
-|  adc_deser_i/DCO<0> | BUFGCTRL_X0Y2| No   |   56 |  0.394     |  2.978      |
+|         Test_8_OBUF | BUFGCTRL_X0Y6| No   |   56 |  0.443     |  2.978      |
 +---------------------+--------------+------+------+------------+-------------+
-|  adc_deser_i/DCO<1> |BUFGCTRL_X0Y14| No   |   56 |  0.405     |  2.972      |
+|  adc_deser_i/DCO<1> |BUFGCTRL_X0Y14| No   |   56 |  0.335     |  2.972      |
 +---------------------+--------------+------+------+------------+-------------+
-|               Clk40 |BUFGCTRL_X0Y16| No   |    4 |  0.004     |  2.614      |
+|               Clk40 |BUFGCTRL_X0Y31| No   |    4 |  0.017     |  2.617      |
 +---------------------+--------------+------+------+------------+-------------+
-|              Quarts |BUFGCTRL_X0Y28| No   |   22 |  0.048     |  2.686      |
+|              Quarts |BUFGCTRL_X0Y19| No   |   22 |  0.083     |  2.698      |
 +---------------------+--------------+------+------+------------+-------------+
 |PhaseSwitch/Sync_TRG |              |      |      |            |             |
-|                   1 |         Local|      |   10 |  0.509     |  2.167      |
+|                   1 |         Local|      |   10 |  0.986     |  2.604      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -601,38 +599,38 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2"  | SETUP       |     0.007ns|     3.111ns|       0|           0
-  3.125 ns HIGH 50%                         | HOLD        |     0.513ns|            |       0|           0
+  TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0"  | SETUP       |     0.002ns|     3.121ns|       0|           0
+  3.125 ns HIGH 50%                         | HOLD        |     0.508ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0"  | SETUP       |     0.018ns|     3.089ns|       0|           0
-  3.125 ns HIGH 50%                         | HOLD        |     0.505ns|            |       0|           0
+  TS_DCO3 = PERIOD TIMEGRP "ADC_DCO_LVDS3"  | SETUP       |     0.023ns|     3.079ns|       0|           0
+  3.125 ns HIGH 50%                         | HOLD        |     0.512ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1"  | SETUP       |     0.062ns|     3.001ns|       0|           0
-  3.125 ns HIGH 50%                         | HOLD        |     0.513ns|            |       0|           0
+  TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1"  | SETUP       |     0.054ns|     3.017ns|       0|           0
+  3.125 ns HIGH 50%                         | HOLD        |     0.502ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_DCO3 = PERIOD TIMEGRP "ADC_DCO_LVDS3"  | SETUP       |     0.068ns|     2.989ns|       0|           0
-  3.125 ns HIGH 50%                         | HOLD        |     0.522ns|            |       0|           0
+  TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2"  | SETUP       |     0.064ns|     2.997ns|       0|           0
+  3.125 ns HIGH 50%                         | HOLD        |     0.507ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_DLL_CLKFX_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     0.113ns|     6.137ns|       0|           0
-  KFX_BUF" TS_MuxClock_in / 4 HIGH 50%      | HOLD        |     0.534ns|            |       0|           0
+  TS_DLL_CLKFX_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     0.067ns|     6.183ns|       0|           0
+  KFX_BUF" TS_MuxClock_in / 4 HIGH 50%      | HOLD        |     0.495ns|            |       0|           0
       INPUT_JITTER 0.375 ns                 |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
   TS_MuxClock_in = PERIOD TIMEGRP "MuxClock | MINLOWPULSE |    15.000ns|    10.000ns|       0|           0
   _in" 25 ns HIGH 50% INPUT_JITTER          |             |            |            |        |            
   0.375 ns                                  |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     3.999ns|     4.502ns|       0|           0
-  K2X_BUF" TS_MuxClock_in / 2 HIGH 50%      | HOLD        |     0.516ns|            |       0|           0
+  TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     3.516ns|     5.468ns|       0|           0
+  K2X_BUF" TS_MuxClock_in / 2 HIGH 50%      | HOLD        |     0.525ns|            |       0|           0
       INPUT_JITTER 0.375 ns                 |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |    21.184ns|     7.632ns|       0|           0
-  KDV_BUF" TS_MuxClock_in * 2 HIGH 50%      | HOLD        |     0.514ns|            |       0|           0
+  TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |    20.367ns|     9.266ns|       0|           0
+  KDV_BUF" TS_MuxClock_in * 2 HIGH 50%      | HOLD        |     0.523ns|            |       0|           0
       INPUT_JITTER 0.375 ns                 |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
   TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns | SETUP       |    21.868ns|     3.132ns|       0|           0
    HIGH 50% INPUT_JITTER 0.375 ns           | HOLD        |     0.796ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK | SETUP       |    22.387ns|     2.613ns|       0|           0
+  TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK | SETUP       |    22.233ns|     2.767ns|       0|           0
   0_BUF" TS_MuxClock_in HIGH 50%         IN | HOLD        |     0.574ns|            |       0|           0
   PUT_JITTER 0.375 ns                       |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
@@ -648,11 +646,11 @@ Derived Constraints for TS_MuxClock_in
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_MuxClock_in                 |     25.000ns|     10.000ns|     24.548ns|            0|            0|            0|        10992|
-| TS_DLL_CLK0_BUF               |     25.000ns|      2.613ns|          N/A|            0|            0|            7|            0|
-| TS_DLL_CLK2X_BUF              |     12.500ns|      4.502ns|          N/A|            0|            0|            7|            0|
-| TS_DLL_CLKDV_BUF              |     50.000ns|      7.632ns|          N/A|            0|            0|          118|            0|
-| TS_DLL_CLKFX_BUF              |      6.250ns|      6.137ns|          N/A|            0|            0|        10860|            0|
+|TS_MuxClock_in                 |     25.000ns|     10.000ns|     24.732ns|            0|            0|            0|        10992|
+| TS_DLL_CLK0_BUF               |     25.000ns|      2.767ns|          N/A|            0|            0|            7|            0|
+| TS_DLL_CLK2X_BUF              |     12.500ns|      5.468ns|          N/A|            0|            0|            7|            0|
+| TS_DLL_CLKDV_BUF              |     50.000ns|      9.266ns|          N/A|            0|            0|          118|            0|
+| TS_DLL_CLKFX_BUF              |      6.250ns|      6.183ns|          N/A|            0|            0|        10860|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -664,10 +662,10 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 9 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 31 secs 
-Total CPU time to PAR completion: 17 secs 
+Total REAL time to PAR completion: 25 secs 
+Total CPU time to PAR completion: 18 secs 
 
-Peak Memory Usage:  551 MB
+Peak Memory Usage:  563 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.
