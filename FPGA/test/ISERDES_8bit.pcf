@@ -1,0 +1,172 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Wed Nov 07 19:17:32 2018
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "ADCInDataLVDSPrev<0>" LOCATE = SITE "AP15" LEVEL 1;
+COMP "ADCInDataLVDSPrev<1>" LOCATE = SITE "AM15" LEVEL 1;
+COMP "ADCInDataLVDSPrev<2>" LOCATE = SITE "AN14" LEVEL 1;
+COMP "ADCInDataLVDSPrev<3>" LOCATE = SITE "AM13" LEVEL 1;
+COMP "ADCInDataLVDSPrev<4>" LOCATE = SITE "AN12" LEVEL 1;
+COMP "ADCInDataLVDSPrev<5>" LOCATE = SITE "AM12" LEVEL 1;
+COMP "ADCInDataLVDSPrev<6>" LOCATE = SITE "AP11" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<0>" LOCATE = SITE "AJ22" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<0>" LOCATE = SITE "AN15" LEVEL 1;
+COMP "ADCInDataLVDS<0>" LOCATE = SITE "W24" LEVEL 1;
+COMP "ADCInDataLVDSPrev<7>" LOCATE = SITE "AP9" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<1>" LOCATE = SITE "AM20" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<1>" LOCATE = SITE "AL15" LEVEL 1;
+COMP "ADCInDataLVDS<1>" LOCATE = SITE "W25" LEVEL 1;
+COMP "ADCInDataLVDSPrev<8>" LOCATE = SITE "AN8" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<2>" LOCATE = SITE "AN20" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<2>" LOCATE = SITE "AP14" LEVEL 1;
+COMP "ADC_SCLK" LOCATE = SITE "G16" LEVEL 1;
+COMP "ADCInDataLVDS<2>" LOCATE = SITE "AA23" LEVEL 1;
+COMP "ADCInDataLVDSPrev<9>" LOCATE = SITE "AN7" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<3>" LOCATE = SITE "AJ19" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<3>" LOCATE = SITE "AN13" LEVEL 1;
+COMP "ADCInDataLVDS<3>" LOCATE = SITE "AB22" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<4>" LOCATE = SITE "AH19" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<4>" LOCATE = SITE "AP12" LEVEL 1;
+COMP "ADCInDataLVDS<4>" LOCATE = SITE "AB25" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<5>" LOCATE = SITE "AL18" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<5>" LOCATE = SITE "AM11" LEVEL 1;
+COMP "ADCInDataLVDS<5>" LOCATE = SITE "AA28" LEVEL 1;
+COMP "Sw_Quartz" LOCATE = SITE "J17" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<6>" LOCATE = SITE "AK18" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<6>" LOCATE = SITE "AP10" LEVEL 1;
+COMP "ADCInDataLVDS<6>" LOCATE = SITE "AB30" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<7>" LOCATE = SITE "AJ17" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<7>" LOCATE = SITE "AN9" LEVEL 1;
+COMP "Qclock" LOCATE = SITE "H17" LEVEL 1;
+COMP "ADCInDataLVDS<7>" LOCATE = SITE "AC28" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<8>" LOCATE = SITE "AM17" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<8>" LOCATE = SITE "AM8" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<9>" LOCATE = SITE "AL16" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<9>" LOCATE = SITE "AM7" LEVEL 1;
+COMP "ADC_DCO_LVDS<0>" LOCATE = SITE "AA25" LEVEL 1;
+PIN ADC_DCO_LVDS<0>_pin<0> = BEL "ADC_DCO_LVDS<0>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<0>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "ADC_DCO_LVDS<1>" LOCATE = SITE "AD34" LEVEL 1;
+PIN ADC_DCO_LVDS<1>_pin<0> = BEL "ADC_DCO_LVDS<1>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<1>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
+COMP "ADCInDataLVDSPrev<10>" LOCATE = SITE "AP7" LEVEL 1;
+COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
+COMP "Led3" LOCATE = SITE "C18" LEVEL 1;
+COMP "ADCInDataLVDSPrev<11>" LOCATE = SITE "AP5" LEVEL 1;
+COMP "Led4" LOCATE = SITE "E18" LEVEL 1;
+COMP "Led5" LOCATE = SITE "E17" LEVEL 1;
+COMP "MuxClock_in" LOCATE = SITE "D16" LEVEL 1;
+COMP "Test<0>" LOCATE = SITE "B2" LEVEL 1;
+COMP "ADC_SDIO" LOCATE = SITE "F16" LEVEL 1;
+COMP "Test<1>" LOCATE = SITE "B3" LEVEL 1;
+COMP "Test<2>" LOCATE = SITE "A3" LEVEL 1;
+COMP "Test<3>" LOCATE = SITE "A4" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<0>" LOCATE = SITE "AJ21" LEVEL 1;
+COMP "Test<4>" LOCATE = SITE "D5" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<1>" LOCATE = SITE "AL19" LEVEL 1;
+COMP "Test<5>" LOCATE = SITE "C5" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<10>" LOCATE = SITE "AL13" LEVEL 1;
+COMP "Sw_FCTClk" LOCATE = SITE "D17" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<2>" LOCATE = SITE "AP20" LEVEL 1;
+COMP "Test<6>" LOCATE = SITE "B5" LEVEL 1;
+COMP "ADCInDataLVDS_n<0>" LOCATE = SITE "Y24" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<11>" LOCATE = SITE "AL10" LEVEL 1;
+COMP "ADCInDataLVDS_n<1>" LOCATE = SITE "Y26" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<3>" LOCATE = SITE "AK19" LEVEL 1;
+COMP "Test<7>" LOCATE = SITE "A5" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<0>" LOCATE = SITE "AA26" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<10>" LOCATE = SITE "AK13" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<10>" LOCATE = SITE "AP6" LEVEL 1;
+COMP "ADCInDataLVDS_n<2>" LOCATE = SITE "AA24" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<4>" LOCATE = SITE "AH18" LEVEL 1;
+COMP "Test<8>" LOCATE = SITE "B6" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<1>" LOCATE = SITE "AC34" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev<11>" LOCATE = SITE "AL11" LEVEL 1;
+COMP "ADCInDataLVDSPrev_n<11>" LOCATE = SITE "AN5" LEVEL 1;
+COMP "ADCInDataLVDS_n<3>" LOCATE = SITE "AB23" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<5>" LOCATE = SITE "AM18" LEVEL 1;
+COMP "Test<9>" LOCATE = SITE "A6" LEVEL 1;
+COMP "ADCInDataLVDS_n<4>" LOCATE = SITE "AB26" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<6>" LOCATE = SITE "AK17" LEVEL 1;
+COMP "ADC_CLK" LOCATE = SITE "G17" LEVEL 1;
+COMP "ADCInDataLVDS_n<5>" LOCATE = SITE "AA29" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<7>" LOCATE = SITE "AH17" LEVEL 1;
+COMP "ADCInDataLVDS_n<6>" LOCATE = SITE "AA30" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<8>" LOCATE = SITE "AM16" LEVEL 1;
+COMP "ADC_CSB" LOCATE = SITE "E16" LEVEL 1;
+COMP "ADCInDataLVDS_n<7>" LOCATE = SITE "AB28" LEVEL 1;
+COMP "ADC_DCO_LVDSPrev_n<9>" LOCATE = SITE "AK16" LEVEL 1;
+COMP "ExtReset" LOCATE = SITE "AP4" LEVEL 1;
+TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_Bit_write" BEL "ADCtest_CSB_trig" BEL
+        "ADCtest_reg_sset" BEL "ADC_SDIO" BEL "ADCTest/count_0" BEL
+        "ADCTest/count_1" BEL "ADCTest/count_2" BEL "ADCTest/count_3" BEL
+        "ADCTest/count_4" BEL "ADCTest/count_5" BEL "DLL/CLKDV_BUFG_INST" BEL
+        "ShiftReg_test/tmp_49" BEL "ShiftReg_test/tmp_48" BEL
+        "ShiftReg_test/tmp_47" BEL "ShiftReg_test/tmp_46" BEL
+        "ShiftReg_test/tmp_45" BEL "ShiftReg_test/tmp_44" BEL
+        "ShiftReg_test/tmp_43" BEL "ShiftReg_test/tmp_42" BEL
+        "ShiftReg_test/tmp_41" BEL "ShiftReg_test/tmp_40" BEL
+        "ShiftReg_test/tmp_39" BEL "ShiftReg_test/tmp_38" BEL
+        "ShiftReg_test/tmp_37" BEL "ShiftReg_test/tmp_36" BEL
+        "ShiftReg_test/tmp_35" BEL "ShiftReg_test/tmp_34" BEL
+        "ShiftReg_test/tmp_33" BEL "ShiftReg_test/tmp_32" BEL
+        "ShiftReg_test/tmp_31" BEL "ShiftReg_test/tmp_30" BEL
+        "ShiftReg_test/tmp_29" BEL "ShiftReg_test/tmp_28" BEL
+        "ShiftReg_test/tmp_27" BEL "ShiftReg_test/tmp_26" BEL
+        "ShiftReg_test/tmp_25" BEL "ShiftReg_test/tmp_24" BEL
+        "ShiftReg_test/tmp_23" BEL "ShiftReg_test/tmp_22" BEL
+        "ShiftReg_test/tmp_21" BEL "ShiftReg_test/tmp_20" BEL
+        "ShiftReg_test/tmp_19" BEL "ShiftReg_test/tmp_18" BEL
+        "ShiftReg_test/tmp_17" BEL "ShiftReg_test/tmp_16" BEL
+        "ShiftReg_test/tmp_15" BEL "ShiftReg_test/tmp_14" BEL
+        "ShiftReg_test/tmp_13" BEL "ShiftReg_test/tmp_12" BEL
+        "ShiftReg_test/tmp_11" BEL "ShiftReg_test/tmp_10" BEL
+        "ShiftReg_test/tmp_9" BEL "ShiftReg_test/tmp_8" BEL
+        "ShiftReg_test/tmp_7" BEL "ShiftReg_test/tmp_6" BEL
+        "ShiftReg_test/tmp_5" BEL "ShiftReg_test/tmp_4" BEL
+        "ShiftReg_test/tmp_3" BEL "ShiftReg_test/tmp_2" BEL
+        "ShiftReg_test/tmp_1" BEL "ShiftReg_test/tmp_0" BEL "ADC_SCLK";
+TIMEGRP ADC_DCO_LVDS0 = BEL "clkdiv_es" BEL "DataN_0" BEL "DataP_0" BEL
+        "clkdiv_a" BEL "DataN_1" BEL "DataP_1" BEL "DataOut_0" BEL "clkdiv_b"
+        BEL "DataOut_1" BEL "DataN_2" BEL "DataP_2" BEL "DataOut_3" BEL
+        "DataOut_2" BEL "DataN_3" BEL "DataP_3" BEL "DataOut_4" BEL
+        "DataOut_5" BEL "DataOut_6" BEL "DataOut_7" BEL "clkdiv_1" BEL
+        "IDDR_inst/FF0" BEL "IDDR_inst/FF1" BEL "clkdiv_0" BEL "DCO_BUFG" BEL
+        "Test<8>";
+TIMEGRP DLL_CLK0_BUF = BEL "PowerUp0" BEL "DLL/CLK0_BUFG_INST" BEL
+        "PowerUp2/Trig" BEL "PowerUp1/Trig";
+TIMEGRP Qclock = BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
+        "CntTest/count_2" BEL "CntTest/count_3" BEL "CntTest/count_4" BEL
+        "CntTest/count_5" BEL "CntTest/count_6" BEL "CntTest/count_7" BEL
+        "CntTest/count_8" BEL "CntTest/count_9" BEL "CntTest/count_10" BEL
+        "CntTest/count_11" BEL "CntTest/count_12" BEL "CntTest/count_13" BEL
+        "CntTest/count_14" BEL "CntTest/count_15" BEL "CntTest/count_16" BEL
+        "CntTest/count_17" BEL "CntTest/count_18" BEL "CntTest/count_19" BEL
+        "CntTest/count_20" BEL "CntTest/count_21" BEL "CntTest/count_22" BEL
+        "CntTest/count_23" BEL "CntTest/count_24" BEL "CntTest/count_25" BEL
+        "PhaseSwitch/TimingCnt/count_15" BEL "PhaseSwitch/TimingCnt/count_14"
+        BEL "PhaseSwitch/TimingCnt/count_13" BEL
+        "PhaseSwitch/TimingCnt/count_12" BEL "PhaseSwitch/TimingCnt/count_11"
+        BEL "PhaseSwitch/TimingCnt/count_10" BEL
+        "PhaseSwitch/TimingCnt/count_9" BEL "PhaseSwitch/TimingCnt/count_8"
+        BEL "PhaseSwitch/TimingCnt/count_7" BEL
+        "PhaseSwitch/TimingCnt/count_6" BEL "PhaseSwitch/TimingCnt/count_5"
+        BEL "PhaseSwitch/TimingCnt/count_4" BEL
+        "PhaseSwitch/TimingCnt/count_3" BEL "PhaseSwitch/TimingCnt/count_2"
+        BEL "PhaseSwitch/TimingCnt/count_1" BEL
+        "PhaseSwitch/TimingCnt/count_0" BEL "PhaseSwitch/Sync_TRG1" BEL
+        "Quarts_BUFG";
+PIN DLL/DCM_ADV_INST_pins<4> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
+TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<4>";
+TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
+TS_MuxClock_in = PERIOD TIMEGRP "MuxClock_in" 25 ns HIGH 50% INPUT_JITTER
+        0.375 ns;
+TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 3.125 ns HIGH 50%;
+TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_MuxClock_in HIGH 50%
+        INPUT_JITTER 0.375 ns;
+TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CLKDV_BUF" TS_MuxClock_in * 2 HIGH 50%
+        INPUT_JITTER 0.375 ns;
+SCHEMATIC END;
+

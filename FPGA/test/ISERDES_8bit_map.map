@@ -1,0 +1,78 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Map Application Log File for Design 'ISERDES_8bit'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc4vlx60-ff1148-10 -global_opt off -cm
+area -ir off -pr off -c 100 -o ISERDES_8bit_map.ncd ISERDES_8bit.ngd
+ISERDES_8bit.pcf 
+Target Device  : xc4vlx60
+Target Package : ff1148
+Target Speed   : -10
+Mapper Version : virtex4 -- $Revision: 1.55 $
+Mapped Date    : Wed Nov 07 19:17:28 2018
+
+Mapping design into LUTs...
+WARNING:MapLib:701 - Signal FCT_40 connected to top level port FCT_40 has been
+   removed.
+WARNING:MapLib:701 - Signal FCT_160 connected to top level port FCT_160 has been
+   removed.
+WARNING:MapLib:701 - Signal FCT_160_n connected to top level port FCT_160_n has
+   been removed.
+Running directed packing...
+Running delay-based LUT packing...
+Running related packing...
+Updating timing models...
+
+Design Summary
+--------------
+
+Design Summary:
+Number of errors:      0
+Number of warnings:    3
+Logic Utilization:
+  Number of Slice Flip Flops:           128 out of  53,248    1%
+  Number of 4 input LUTs:                29 out of  53,248    1%
+Logic Distribution:
+  Number of occupied Slices:             82 out of  26,624    1%
+    Number of Slices containing only related logic:      82 out of      82 100%
+    Number of Slices containing unrelated logic:          0 out of      82   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:          69 out of  53,248    1%
+    Number used as logic:                29
+    Number used as a route-thru:         40
+
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  Number of bonded IOBs:                 92 out of     640   14%
+    IOB Flip Flops:                       3
+  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
+    Number used as BUFGs:                 5
+  Number of DCM_ADVs:                     1 out of       8   12%
+
+Average Fanout of Non-Clock Nets:                1.38
+
+Peak Memory Usage:  438 MB
+Total REAL time to MAP completion:  3 secs 
+Total CPU time to MAP completion:   3 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Mapping completed.
+See MAP report file "ISERDES_8bit_map.mrp" for details.

@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_TB_isim_beh.exe" -prj "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_TB_beh.prj" "work.ISERDES_TB" 

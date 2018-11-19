@@ -1,0 +1,292 @@
+Release 14.7 Map P.20131013 (nt64)
+Xilinx Mapping Report File for Design 'ISERDES_8bit'
+
+Design Information
+------------------
+Command Line   : map -intstyle ise -p xc4vlx60-ff1148-10 -global_opt off -cm
+area -ir off -pr off -c 100 -o ISERDES_8bit_map.ncd ISERDES_8bit.ngd
+ISERDES_8bit.pcf 
+Target Device  : xc4vlx60
+Target Package : ff1148
+Target Speed   : -10
+Mapper Version : virtex4 -- $Revision: 1.55 $
+Mapped Date    : Wed Nov 07 19:17:28 2018
+
+Design Summary
+--------------
+Number of errors:      0
+Number of warnings:    3
+Logic Utilization:
+  Number of Slice Flip Flops:           128 out of  53,248    1%
+  Number of 4 input LUTs:                29 out of  53,248    1%
+Logic Distribution:
+  Number of occupied Slices:             82 out of  26,624    1%
+    Number of Slices containing only related logic:      82 out of      82 100%
+    Number of Slices containing unrelated logic:          0 out of      82   0%
+      *See NOTES below for an explanation of the effects of unrelated logic.
+  Total Number of 4 input LUTs:          69 out of  53,248    1%
+    Number used as logic:                29
+    Number used as a route-thru:         40
+
+  The Slice Logic Distribution report is not meaningful if the design is
+  over-mapped for a non-slice resource or if Placement fails.
+  Number of bonded IOBs:                 92 out of     640   14%
+    IOB Flip Flops:                       3
+  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
+    Number used as BUFGs:                 5
+  Number of DCM_ADVs:                     1 out of       8   12%
+
+Average Fanout of Non-Clock Nets:                1.38
+
+Peak Memory Usage:  438 MB
+Total REAL time to MAP completion:  3 secs 
+Total CPU time to MAP completion:   3 secs 
+
+NOTES:
+
+   Related logic is defined as being logic that shares connectivity - e.g. two
+   LUTs are "related" if they share common inputs.  When assembling slices,
+   Map gives priority to combine logic that is related.  Doing so results in
+   the best timing performance.
+
+   Unrelated logic shares no connectivity.  Map will only begin packing
+   unrelated logic into a slice once 99% of the slices are occupied through
+   related logic packing.
+
+   Note that once logic distribution reaches the 99% level through related
+   logic packing, this does not mean the device is completely utilized.
+   Unrelated logic packing will then begin, continuing until all usable LUTs
+   and FFs are occupied.  Depending on your timing budget, increased levels of
+   unrelated logic packing may adversely affect the overall timing performance
+   of your design.
+
+Table of Contents
+-----------------
+Section 1 - Errors
+Section 2 - Warnings
+Section 3 - Informational
+Section 4 - Removed Logic Summary
+Section 5 - Removed Logic
+Section 6 - IOB Properties
+Section 7 - RPMs
+Section 8 - Guide Report
+Section 9 - Area Group and Partition Summary
+Section 10 - Timing Report
+Section 11 - Configuration String Information
+Section 12 - Control Set Information
+Section 13 - Utilization by Hierarchy
+
+Section 1 - Errors
+------------------
+
+Section 2 - Warnings
+--------------------
+WARNING:MapLib:701 - Signal FCT_40 connected to top level port FCT_40 has been
+   removed.
+WARNING:MapLib:701 - Signal FCT_160 connected to top level port FCT_160 has been
+   removed.
+WARNING:MapLib:701 - Signal FCT_160_n connected to top level port FCT_160_n has
+   been removed.
+
+Section 3 - Informational
+-------------------------
+INFO:LIT:243 - Logical network TxClk has no load.
+INFO:LIT:395 - The above info message is repeated 387 more times for the
+   following (max. 5 shown):
+   Col,
+   ADC_test,
+   Crs,
+   RxClk,
+   TrigDes
+   To see the details of these info messages, please use the -detail switch.
+INFO:MapLib:562 - No environment variables are currently set.
+INFO:MapLib:797 - Your design is targeting LX/SX Production Step 0/1/ES devices.
+   Please note that there are new specifications for the DCMs to guarantee
+   maximum frequency performance. If the DCM input clock might stop or if the
+   DCM reset might be asserted for an extended time, then use of the dcm_standby
+   macro may be required. Please see Answer Record 21127.
+INFO:LIT:244 - All of the single ended outputs in this design are using slew
+   rate limited output drivers. The delay on speed critical single ended outputs
+   can be dramatically reduced by designating them as fast outputs.
+
+Section 4 - Removed Logic Summary
+---------------------------------
+   7 block(s) removed
+   2 block(s) optimized away
+   5 signal(s) removed
+
+Section 5 - Removed Logic
+-------------------------
+
+The trimmed logic report below shows the logic removed from your design due to
+sourceless or loadless signals, and VCC or ground connections.  If the removal
+of a signal or symbol results in the subsequent removal of an additional signal
+or symbol, the message explaining that second removal will be indented.  This
+indentation will be repeated as a chain of related logic is removed.
+
+To quickly locate the original cause for the removal of a chain of logic, look
+above the place where that logic is listed in the trimming report, then locate
+the lines that are least indented (begin at the leftmost edge).
+
+Loadless block "DLL/CLK90_BUFG_INST" (CKBUF) removed.
+ The signal "DLL/CLK90_BUF" is loadless and has been removed.
+Loadless block "DLL/CLKFX_BUFG_INST" (CKBUF) removed.
+ The signal "DLL/CLKFX_BUF" is loadless and has been removed.
+Loadless block "LVDS_Clk40" (CKBUF) removed.
+ The signal "FCT_40" is loadless and has been removed.
+  Loadless block "FCT_40" (PAD) removed.
+Loadless block "LVDS_FCT_160" (IBUFGDS) removed.
+ The signal "FCT_160" is loadless and has been removed.
+  Loadless block "FCT_160" (PAD) removed.
+ The signal "FCT_160_n" is loadless and has been removed.
+  Loadless block "FCT_160_n" (PAD) removed.
+
+Optimized Block(s):
+TYPE 		BLOCK
+GND 		XST_GND
+VCC 		XST_VCC
+
+To enable printing of redundant blocks removed and signals merged, set the
+detailed map report option and rerun map.
+
+Section 6 - IOB Properties
+--------------------------
+
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
+|                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ADCInDataLVDS<0>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | IFF1         |          |          |
+|                                    | IDDR:OPPOSITE    |           |                      |       |          |      | IFF2         |          |          |
+| ADCInDataLVDS<1>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS<2>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS<3>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS<4>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS<5>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS<6>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS<7>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<0>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<1>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<2>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<3>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<4>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<5>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<6>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<7>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<8>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<9>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<10>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev<11>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<0>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<1>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<2>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<3>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<4>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<5>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<6>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<7>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<8>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<9>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<10>            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDSPrev_n<11>            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<0>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
+| ADCInDataLVDS_n<1>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<2>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<3>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<4>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<5>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<6>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<7>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_CLK                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ADC_CSB                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ADC_DCO_LVDS<0>                    | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
+| ADC_DCO_LVDS<1>                    | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<0>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<1>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<2>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<3>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<4>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<5>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<6>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<7>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<8>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<9>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<10>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev<11>               | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<0>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<1>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<2>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<3>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<4>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<5>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<6>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<7>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<8>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<9>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<10>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDSPrev_n<11>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_DCO_LVDS_n<0>                  | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
+| ADC_DCO_LVDS_n<1>                  | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADC_SCLK                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ADC_SDIO                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| ExtReset                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| Led1                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Led2                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Led3                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Led4                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Led5                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| MuxClock_in                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| Qclock                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| Sw_FCTClk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Sw_Quartz                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| Test<0>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<1>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<2>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<3>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<4>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<5>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<8>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<9>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
++---------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+Section 7 - RPMs
+----------------
+
+Section 8 - Guide Report
+------------------------
+Guide not run on this design.
+
+Section 9 - Area Group and Partition Summary
+--------------------------------------------
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+Area Group Information
+----------------------
+
+  No area groups were found in this design.
+
+----------------------
+
+Section 10 - Timing Report
+--------------------------
+This design was not run using timing mode.
+
+Section 11 - Configuration String Details
+-----------------------------------------
+Use the "-detail" map option to print out Configuration Strings
+
+Section 12 - Control Set Information
+------------------------------------
+No control set information for this architecture.
+
+Section 13 - Utilization by Hierarchy
+-------------------------------------
+Use the "-detail" map option to print out the Utilization by Hierarchy section.
