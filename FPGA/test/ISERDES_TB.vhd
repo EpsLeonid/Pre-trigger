@@ -2,10 +2,10 @@
 -- Company: 
 -- Engineer:
 --
--- Create Date:   16:43:12 10/16/2018
+-- Create Date:   18:33:58 11/20/2018
 -- Design Name:   
--- Module Name:   D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/Pre-trigger_Xilinx/lib/ISERDES_TB.vhd
--- Project Name:  Pre-trigger
+-- Module Name:   D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_TB.vhd
+-- Project Name:  test
 -- Target Device:  
 -- Tool versions:  
 -- Description:   
@@ -41,97 +41,209 @@ ARCHITECTURE behavior OF ISERDES_TB IS
  
     COMPONENT ISERDES_8bit
     PORT(
-         Clock : IN  std_logic;
---			Clk_Div	: out std_logic;
-         Rst : IN  std_logic;
-         DataIn : IN  std_logic;
-         Test : IN  std_logic;
-         DataOut : OUT  std_logic_vector(7 downto 0)
---			Test : OUT  std_logic_vector(15 downto 0)
+         Qclock : IN  std_logic;
+         FCT_40 : IN  std_logic;
+         FCT_160 : IN  std_logic;
+         FCT_160_n : IN  std_logic;
+         Sw_Quartz : OUT  std_logic;
+         Sw_FCTClk : OUT  std_logic;
+         MuxClock_in : IN  std_logic;
+         Led1 : OUT  std_logic;
+         Led2 : OUT  std_logic;
+         Led3 : OUT  std_logic;
+         Led4 : OUT  std_logic;
+         Led5 : OUT  std_logic;
+         ADCInDataLVDS : IN  std_logic_vector(127 downto 0);
+         ADCInDataLVDS_n : IN  std_logic_vector(127 downto 0);
+         ADCInDataLVDSPrev : IN  std_logic_vector(11 downto 0);
+         ADCInDataLVDSPrev_n : IN  std_logic_vector(11 downto 0);
+         ADC_test : IN  std_logic;
+         ADC_res : IN  std_logic;
+         ADC_CSB : OUT  std_logic;
+         ADC_SDIO : OUT  std_logic;
+         ADC_SCLK : OUT  std_logic;
+         ADC_CLK : OUT  std_logic;
+         ADC_DCO_LVDS : IN  std_logic_vector(1 downto 0);
+         ADC_DCO_LVDS_n : IN  std_logic_vector(1 downto 0);
+         ADC_DCO_LVDSPrev : IN  std_logic_vector(11 downto 0);
+         ADC_DCO_LVDSPrev_n : IN  std_logic_vector(11 downto 0);
+         TrigInLVDS : IN  std_logic;
+         TrigInLVDS_n : IN  std_logic;
+         FastTrigDes : OUT  std_logic;
+         TrigDes : OUT  std_logic;
+         TriggerData : OUT  std_logic_vector(63 downto 0);
+         RxClk : IN  std_logic;
+         Crs : IN  std_logic;
+         RxDv : IN  std_logic;
+         RxD : IN  std_logic_vector(3 downto 0);
+         TxClk : IN  std_logic;
+         TxEn : OUT  std_logic;
+         TxD : OUT  std_logic_vector(3 downto 0);
+         Col : IN  std_logic;
+         ExtReset : IN  std_logic;
+         Test : OUT  std_logic_vector(9 downto 0)
         );
     END COMPONENT;
     
 
    --Inputs
-   signal Clock : std_logic := '0';
-   signal i_clk : std_logic := '0';
-   signal ClockDiv : std_logic := '0';
-   signal DataIn : std_logic := '0';
-   signal Rst : std_logic := '0';
+   signal Qclock : std_logic := '0';
+   signal FCT_40 : std_logic := '0';
+   signal FCT_160 : std_logic := '0';
+   signal FCT_160_n : std_logic := '0';
+   signal MuxClock_in : std_logic := '0';
+   signal ADCInDataLVDS : std_logic_vector(127 downto 0) := (others => '0');
+   signal ADCInDataLVDS_n : std_logic_vector(127 downto 0) := (others => '0');
+   signal ADCInDataLVDSPrev : std_logic_vector(11 downto 0) := (others => '0');
+   signal ADCInDataLVDSPrev_n : std_logic_vector(11 downto 0) := (others => '0');
+   signal ADC_test : std_logic := '0';
+   signal ADC_res : std_logic := '0';
+   signal ADC_DCO_LVDS : std_logic_vector(1 downto 0) := (others => '0');
+   signal ADC_DCO_LVDS_n : std_logic_vector(1 downto 0) := (others => '0');
+   signal ADC_DCO_LVDSPrev : std_logic_vector(11 downto 0) := (others => '0');
+   signal ADC_DCO_LVDSPrev_n : std_logic_vector(11 downto 0) := (others => '0');
+   signal TrigInLVDS : std_logic := '0';
+   signal TrigInLVDS_n : std_logic := '0';
+   signal RxClk : std_logic := '0';
+   signal Crs : std_logic := '0';
+   signal RxDv : std_logic := '0';
+   signal RxD : std_logic_vector(3 downto 0) := (others => '0');
+   signal TxClk : std_logic := '0';
+   signal Col : std_logic := '0';
+   signal ExtReset : std_logic := '0';
 
  	--Outputs
---	signal Clk_Div : std_logic;
-   signal DataOut : std_logic_vector(7 downto 0);
-   signal Test : std_logic := '0';
+   signal Sw_Quartz : std_logic;
+   signal Sw_FCTClk : std_logic;
+   signal Led1 : std_logic;
+   signal Led2 : std_logic;
+   signal Led3 : std_logic;
+   signal Led4 : std_logic;
+   signal Led5 : std_logic;
+   signal ADC_CSB : std_logic;
+   signal ADC_SDIO : std_logic;
+   signal ADC_SCLK : std_logic;
+   signal ADC_CLK : std_logic;
+   signal FastTrigDes : std_logic;
+   signal TrigDes : std_logic;
+   signal TriggerData : std_logic_vector(63 downto 0);
+   signal TxEn : std_logic;
+   signal TxD : std_logic_vector(3 downto 0);
+   signal Test : std_logic_vector(9 downto 0);
 
    -- Clock period definitions
-   constant Clock_period : time := 3125 ps;
---   constant Clock_period : time := 5 ns;
+   constant Qclock_period : time := 25 ns;
+   constant MuxClock_in_period : time := 25 ns;
+   constant ADC_SCLK_period : time := 50 ns;
+   constant ADC_CLK_period : time := 12500 ps;
+   constant RxClk_period : time := 40 ns;
+   constant TxClk_period : time := 40 ns;
  
 BEGIN
  
 	-- Instantiate the Unit Under Test (UUT)
    uut: ISERDES_8bit PORT MAP (
-          DataIn => DataIn,
-          Clock => Clock,
---			 Clk_Div	=> Clk_Div,
-          Rst => Rst,
-          DataOut => DataOut,
-			 Test => Test
+          Qclock => Qclock,
+          FCT_40 => FCT_40,
+          FCT_160 => FCT_160,
+          FCT_160_n => FCT_160_n,
+          Sw_Quartz => Sw_Quartz,
+          Sw_FCTClk => Sw_FCTClk,
+          MuxClock_in => MuxClock_in,
+          Led1 => Led1,
+          Led2 => Led2,
+          Led3 => Led3,
+          Led4 => Led4,
+          Led5 => Led5,
+          ADCInDataLVDS => ADCInDataLVDS,
+          ADCInDataLVDS_n => ADCInDataLVDS_n,
+          ADCInDataLVDSPrev => ADCInDataLVDSPrev,
+          ADCInDataLVDSPrev_n => ADCInDataLVDSPrev_n,
+          ADC_test => ADC_test,
+          ADC_res => ADC_res,
+          ADC_CSB => ADC_CSB,
+          ADC_SDIO => ADC_SDIO,
+          ADC_SCLK => ADC_SCLK,
+          ADC_CLK => ADC_CLK,
+          ADC_DCO_LVDS => ADC_DCO_LVDS,
+          ADC_DCO_LVDS_n => ADC_DCO_LVDS_n,
+          ADC_DCO_LVDSPrev => ADC_DCO_LVDSPrev,
+          ADC_DCO_LVDSPrev_n => ADC_DCO_LVDSPrev_n,
+          TrigInLVDS => TrigInLVDS,
+          TrigInLVDS_n => TrigInLVDS_n,
+          FastTrigDes => FastTrigDes,
+          TrigDes => TrigDes,
+          TriggerData => TriggerData,
+          RxClk => RxClk,
+          Crs => Crs,
+          RxDv => RxDv,
+          RxD => RxD,
+          TxClk => TxClk,
+          TxEn => TxEn,
+          TxD => TxD,
+          Col => Col,
+          ExtReset => ExtReset,
+          Test => Test
         );
 
    -- Clock process definitions
-   Clock_process :process
+   Qclock_process :process
    begin
-		Clock <= '0';
-		wait for Clock_period/2;
-		Clock <= '1';
-		wait for Clock_period/2;
+		Qclock <= '0';
+		wait for Qclock_period/2;
+		Qclock <= '1';
+		wait for Qclock_period/2;
    end process;
  
-	i_clk <= transport Clock after Clock_period/4;
- 
-   ClockDiv_process :process
+   MuxClock_in_process :process
    begin
-		ClockDiv <= '0';
-		wait for Clock_period*2;
-		ClockDiv <= '1';
-		wait for Clock_period*2;
+		MuxClock_in <= '0';
+		wait for MuxClock_in_period/2;
+		MuxClock_in <= '1';
+		wait for MuxClock_in_period/2;
    end process;
+ 
+   ADC_SCLK_process :process
+   begin
+		ADC_SCLK <= '0';
+		wait for ADC_SCLK_period/2;
+		ADC_SCLK <= '1';
+		wait for ADC_SCLK_period/2;
+   end process;
+ 
+   ADC_CLK_process :process
+   begin
+		ADC_CLK <= '0';
+		wait for ADC_CLK_period/2;
+		ADC_CLK <= '1';
+		wait for ADC_CLK_period/2;
+   end process;
+ 
+--   RxClk_process :process
+--   begin
+--		RxClk <= '0';
+--		wait for RxClk_period/2;
+--		RxClk <= '1';
+--		wait for RxClk_period/2;
+--   end process;
+-- 
+--   TxClk_process :process
+--   begin
+--		TxClk <= '0';
+--		wait for TxClk_period/2;
+--		TxClk <= '1';
+--		wait for TxClk_period/2;
+--   end process;
+ 
 
    -- Stimulus process
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-		DataIn <= '0';
-		Test <= '0';
-      wait for Clock_period*5;
-		
-		Rst <= '1';
+      wait for 100 ns;	
 
-      wait for Clock_period*2;
+      wait for Qclock_period*10;
 
-		Rst <= '0';
-		Test <= '1';
-      wait for Clock_period*3;
-
-		DataIn <= '1';
-      wait for Clock_period/2;	
-		DataIn <= '0';
-      wait for Clock_period/2;	
-		DataIn <= '1';
-      wait for Clock_period/2;	
-		DataIn <= '1';
-      wait for Clock_period/2;	
-		DataIn <= '0';
-      wait for Clock_period/2;	
-		DataIn <= '1';
-      wait for Clock_period/2;	
-		DataIn <= '0';
-      wait for Clock_period/2;	
-		DataIn <= '1';
-      wait for Clock_period/2;	
-		DataIn <= '0';
       -- insert stimulus here 
 
       wait;

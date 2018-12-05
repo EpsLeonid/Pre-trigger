@@ -30,8 +30,8 @@ package parameters is
 --	constant NumAmpGroup 		: integer := integer(NumGroup/2+NumGroup/4+NumGroup/8+(NumGroup rem 2)); -- Number of reg for find MaxAmp
 	constant Piedistal_def 		: integer := 100; 
 	constant Piedistal_def_2 	: integer := 125;
-	constant ThresholdData_0	: integer := 240;
-	constant ThresholdData_1	: integer := 150;
+	constant ThresholdData_0	: integer := 200;
+	constant ThresholdData_1	: integer := 220;
 	constant ThresholdData_2	: integer := 243;
 	constant MaxTime 				: integer := 160;  -- Maximal Valid time (750ns)
 	constant ResetTime 			: integer := 240;

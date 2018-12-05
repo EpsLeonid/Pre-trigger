@@ -69,6 +69,8 @@ port (
 	ADC_CLK				: out std_logic;	-- Pin 
 	ADC_DCO_LVDS		: in std_logic_vector(1 downto 0);	-- 
 	ADC_DCO_LVDS_n		: in std_logic_vector(1 downto 0);	-- 
+	ADC_FCO_LVDS		: in std_logic_vector(1 downto 0);	-- 
+	ADC_FCO_LVDS_n		: in std_logic_vector(1 downto 0);	-- 
 	ADC_DCO_LVDSPrev	: in std_logic_vector(11 downto 0);	-- 
 	ADC_DCO_LVDSPrev_n: in std_logic_vector(11 downto 0);	-- 
 
@@ -111,7 +113,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal CLK40_90d			: std_logic;
 	signal Clk20				: std_logic;
 	signal Clk80				: std_logic;
-	signal Clk160				: std_logic;
+	signal Clk320				: std_logic;
 	signal FCT160				: std_logic;
 	signal Phase				: std_logic;
 	signal Clk_Selected		: std_logic := '0';
@@ -126,10 +128,14 @@ architecture Behavioral of ISERDES_8bit is
 	signal PowerUp2_o			: std_logic;
 	signal PwrUpReset			: std_logic;
 	signal Reset				: std_logic := '0';
+	signal AllReset			: std_logic := '0';
 	---
 
+	--- Input ADC Data
 	signal DCO		: std_logic;
 	signal DCO_O	: std_logic;
+	signal FCO		: std_logic;
+	signal FCO_O	: std_logic;
 	signal SDATA	: std_logic;
 	signal shift1	: std_logic; 
 	signal shift2	: std_logic;
@@ -141,8 +147,22 @@ architecture Behavioral of ISERDES_8bit is
 	signal Data_n	: std_logic := '0';
 	signal DataP	: std_logic_vector(ADC_Bits/2-1 downto 0):= (others => '0');
 	signal DataN	: std_logic_vector(ADC_Bits/2-1 downto 0):= (others => '0');
-	
+	signal DataP_del	: std_logic_vector(ADC_Bits/2-1 downto 0):= (others => '0');
+	signal DataN_del	: std_logic_vector(ADC_Bits/2-1 downto 0):= (others => '0');
 	signal DataOut	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
+	
+	--- Processing Data
+	signal InData	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
+	signal Sub_Ped	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
+	signal Sub_ped_delay	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
+	signal AverData: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
+	signal GroupValue_Up_LT:std_logic;
+	signal GroupLT_Trig:std_logic;
+	signal GroupSum: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal GroupAmp: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal DelayGroupAmp	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal GroupValue_Amp_Done:std_logic;
+	signal GroupAmp_Trig:std_logic;
 	
 	--- TriggerDes
 	signal TrigIn	: std_logic;
@@ -151,7 +171,7 @@ architecture Behavioral of ISERDES_8bit is
 
 	--- ADC SPI interface signals
 	signal s_fadc_test		: std_logic := '0'; 
-	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000101000000000001111111100000001";
+	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
 											--									  "set	addr		 data			 set	addr		  data "
 											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 	signal shift_sdio_test	: std_logic;
@@ -270,7 +290,7 @@ DLL: entity work.DLL
 		CLKDV_OUT => Clk20,					-- 0 degree DCM CLK output
 		CLK2X_OUT => Clk80,				-- 2X DCM CLK output
 		CLK90_OUT => Clk40_90d,			-- 90 degree DCM CLK output
-		CLKFX_OUT => Clk160,				-- DCM CLK synthesis out (M/D)
+		CLKFX_OUT => Clk320,				-- DCM CLK synthesis out (M/D)
 		LOCKED_OUT => s_clock_locked,	-- DCM LOCK status output
 		CLKIN_IN => MuxClock_in,			-- Clock input (from IBUFG, BUFG or DCM)
 		RST_IN => Reset					-- DCM asynchronous reset input
@@ -307,7 +327,7 @@ DLL: entity work.DLL
 				'0';
 --********
 
--- Input LVDS ADC DCO buffer
+-- Input LVDS ADC buffer
 	DCO_LVDS_signal : IBUFGDS
 		generic map (
 			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
@@ -317,6 +337,17 @@ DLL: entity work.DLL
 			O => DCO,  -- Buffer output
 			I => ADC_DCO_LVDS(0),  -- Diff_p buffer input (connect directly to top-level port)
 			IB => ADC_DCO_LVDS_n(0) -- Diff_n buffer input (connect directly to top-level port)
+		);
+
+	FCO_LVDS_signal : IBUFGDS
+		generic map (
+			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+			DIFF_TERM => TRUE, -- Differential Termination 
+			IOSTANDARD => "DEFAULT")
+		port map (
+			O => FCO,  -- Buffer output
+			I => ADC_FCO_LVDS(0),  -- Diff_p buffer input (connect directly to top-level port)
+			IB => ADC_FCO_LVDS_n(0) -- Diff_n buffer input (connect directly to top-level port)
 		);
 
 	Data_LVDS_signal : IBUFDS
@@ -340,21 +371,30 @@ DLL: entity work.DLL
 	port map (
 		Q1 => Data_p,	-- 1-bit output for positive edge of clock 
 		Q2 => Data_n,	-- 1-bit output for negative edge of clock
-		C => DCO,		-- 1-bit clock input
+		C => DCO,--Clk320,--		-- 1-bit clock input
 		CE => '1',		-- 1-bit clock enable input
 		D => SDATA,	-- 1-bit DDR data input
 		R => Reset,		-- 1-bit reset
 		S => '0'			-- 1-bit set
 	);
 
-	DDR_Reg: process(DCO)
+	DDR_P_null: process(DCO)
 	begin
 		if(rising_edge(DCO)) then
 			if Reset ='1' then 
 				DataP(0) <= '0';
-				DataN(0) <= '0';
 			else 
 				DataP(0) <= Data_p;
+			end if;
+		end if;
+	end process;
+
+	DDR_N_null: process(DCO)
+	begin
+		if(falling_edge(DCO)) then
+			if Reset ='1' then 
+				DataN(0) <= '0';
+			else 
 				DataN(0) <= Data_n;
 			end if;
 		end if;
@@ -376,7 +416,7 @@ DLL: entity work.DLL
 	DDR_Reg_N: for i in 0 to 2 generate
 		DDR_Reg_neg: process(DCO)
 		begin
-			if(rising_edge(DCO)) then
+			if(falling_edge(DCO)) then
 				if Reset ='1' then 
 					DataN(i+1) <= '0';
 				else 
@@ -386,49 +426,161 @@ DLL: entity work.DLL
 		end process DDR_Reg_neg;
 	end generate;
 	
---	DivClk : entity work.ClkDiv
---	port map (
---				i_clk => Clock,	-- input of data clock from ADC 
---				o_clk	=> clkdiv	-- output of data clock divided by 4 and delay to 3125 ps (frame clock)
---				);
-	
---	Clk_Div <= clkdiv(1);
-	
 	Clk_div_es: process(DCO)
-		begin
-			if(rising_edge(DCO)) then
-				clkdiv <= clkdiv + '1';
-				clkdiv_a <= clkdiv(1);
-				clkdiv_b <= clkdiv_a;
-				if clkdiv_a = '1' and clkdiv_b = '0' then
-					clkdiv_es <= '1';
-				else clkdiv_es <= '0';
-				end if;
+	begin
+		if(rising_edge(DCO)) then
+			clkdiv <= clkdiv + '1';
+			clkdiv_a <= (clkdiv(1));-- and not clkdiv(0) and Clk320);
+			clkdiv_b <= clkdiv_a;
+			if clkdiv_a = '1' and clkdiv_b = '0' then
+				clkdiv_es <= '1';
+			else clkdiv_es <= '0';
 			end if;
-		end process Clk_div_es;
-	
---	clkdiv_es <= '1' when (clkdiv_1='1' and clkdiv_2='0') else
---					 '0';
-	
---	Reg: for i in 0 to 3 generate
-		adc_data: process(DCO)
+		end if;
+	end process Clk_div_es;
+
+	DDR_Reg_P_del: for i in 0 to 3 generate
+		DDR_Reg_pos: process(DCO)
 		begin
 			if(rising_edge(DCO)) then
 				if clkdiv_es = '1' then
---				DataOut(2*i) <= DataP(i);
---				DataOut(2*i+1) <= DataN(i);
-					DataOut(0) <= DataP(0);
-					DataOut(1) <= DataN(0);
-					DataOut(2) <= DataP(1);
-					DataOut(3) <= DataN(1);
-					DataOut(4) <= DataP(2);
-					DataOut(5) <= DataN(2);
-					DataOut(6) <= DataP(3);
-					DataOut(7) <= DataN(3);
+					DataP_del(i) <= DataP(i);
 				end if;
 			end if;
-		end process adc_data;
---	end generate;
+		end process DDR_Reg_pos;
+	end generate;
+
+	DDR_Reg_N_del: for i in 0 to 3 generate
+		DDR_Reg_neg: process(DCO)
+		begin
+			if(falling_edge(DCO)) then
+				if clkdiv_es = '1' then
+					DataN_del(i) <= DataN(i);
+				end if;
+			end if;
+		end process DDR_Reg_neg;
+	end generate;
+
+	adc_data: process(FCO)
+	begin
+		if(rising_edge(FCO)) then
+--			if clkdiv_es = '1' then
+--				DataOut(2*i) <= DataP(i);
+--				DataOut(2*i+1) <= DataN(i);
+				DataOut(0) <= DataN_del(2);
+				DataOut(1) <= DataP_del(3);
+				DataOut(2) <= DataN_del(3);
+				DataOut(3) <= DataP_del(0);
+				DataOut(4) <= DataN_del(0);
+				DataOut(5) <= DataP_del(1);
+				DataOut(6) <= DataN_del(1);
+				DataOut(7) <= DataP_del(2);
+--				DataOut(0) <= DataP_del(0);
+--				DataOut(1) <= DataN_del(0);
+--				DataOut(2) <= DataP_del(1);
+--				DataOut(3) <= DataN_del(1);
+--				DataOut(4) <= DataP_del(2);
+--				DataOut(5) <= DataN_del(2);
+--				DataOut(6) <= DataP_del(3);
+--				DataOut(7) <= DataN_del(3);
+--			end if;
+		end if;
+	end process adc_data;
+	
+	process (Clk80)
+	begin 
+		if (rising_edge(Clk80)) then
+			if (DataOut >= "10000000") then 
+				FastTrigDes_o <= '1';
+			else FastTrigDes_o <= '0';
+			end if;
+		end if;
+	end process;
+	
+-- Processing Input ADC data
+
+	InData <= DataOut;
+
+	ThreshData: process (Clk80)
+	begin 
+		if (rising_edge(Clk80)) then
+			Sub_ped <= InData - Piedistal_def;
+			Sub_ped_delay <= Sub_ped; 
+			AverData <= (Sub_ped_delay + Sub_ped)/2;
+			GroupSum <= AverData*4;
+			if (GroupSum >= ThresholdData_0) then GroupValue_Up_LT <= '1';
+														else GroupValue_Up_LT <= '0';
+			end if;
+		end if;
+	end process;
+	
+	LT_Trig: entity work.SRFF 
+		port map (
+			S		=> GroupValue_Up_LT,
+			CLK	=> Clk80,
+			R		=> AllReset,
+			q		=> GroupLT_Trig
+		);
+	
+	AmpData: process (Clk80)
+	begin 
+		if (rising_edge(Clk80)) then
+			DelayGroupAmp <= GroupSum; 
+			if ((DelayGroupAmp > GroupSum) and (GroupLT_Trig = '1')) then GroupValue_Amp_Done <= '1';
+																						else GroupValue_Amp_Done <= '0';
+			end if;
+		end if;
+	end process;
+	
+	Amp_Trig: entity work.SRFF 
+	port map (
+		S		=> GroupValue_Amp_Done,
+		CLK	=> Clk80,
+		R		=> AllReset,
+		q		=> GroupAmp_Trig
+	);
+	
+	GrAmp: process (Clk80)
+	begin 
+		if (rising_edge(Clk80)) then
+			if AllReset = '1' then
+				GroupAmp <= (others => '0');
+			elsif (GroupLT_Trig = '1' and GroupAmp_Trig = '0') then 
+				GroupAmp <= DelayGroupAmp;
+			end if;
+		end if;
+	end process;
+	
+	TriggerDes: process (Clk80)
+	begin 
+		if (rising_edge(Clk80)) then
+			if (GroupLT_Trig = '1') then FastTrigDes_o <= '1';
+											else FastTrigDes_o <= '0';
+			end if;
+			if (GroupAmp_Trig = '1') then TrigDes_o <= '1';
+											 else TrigDes_o <= '0';
+			end if;
+		end if;
+	end process;
+	
+	FastTrigDes <= FastTrigDes_o;
+	TrigDes <= TrigDes_o;
+	
+	TrigData: process (Clk40)
+	begin 
+		if (rising_edge(Clk40)) then
+			if (FastTrigDes_o = '1') then 
+				TriggerData(9 downto 0) <= GroupAmp;
+				TriggerData(13 downto 10) <= b"0001";
+				TriggerData(14) <= FastTrigDes_o;
+				TriggerData(15) <= TrigDes_o;
+				TriggerData(63 downto 16) <= (others => '1');
+			else TriggerData(63 downto 0) <= (others => '0');
+			end if;
+		end if;
+	end process;
+
+-- ADC Setup
 
 	ADC_CLK <= CLK80;
 
@@ -450,7 +602,7 @@ DLL: entity work.DLL
 															Else ADCtest_Bit_write <= '0';
 			end if;
 			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
-																												  ADC_SDIO <= ADCtest_SDIO_trig;
+																												  ADC_SDIO <= ADCtest_SDIO_trig;--'0';--
 																											Else ADCtest_reg_sset <= '1';
 																												  ADC_SDIO <= '0';
 			END IF;
@@ -466,7 +618,7 @@ DLL: entity work.DLL
 --											--									  "set	addr		 data			 set	addr		  data "
 --											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 
-	ADC_CSB <= ADCtest_CSB_trig;
+	ADC_CSB <= ADCtest_CSB_trig;--'1';--
 	ADC_SCLK <= Clk20;
 
 	ShiftReg_test : entity work.ShiftReg 
@@ -489,16 +641,16 @@ DLL: entity work.DLL
 				q			=> TestCnt
 				);
 
-   OBUF_inst : OBUF
-   generic map (
-      CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-      DRIVE => 12,
-      IOSTANDARD => "DEFAULT",
-      SLEW => "SLOW")
-   port map (
-      O => DCO_O,     -- Buffer output (connect directly to top-level port)
-      I => DCO      -- Buffer input 
-   );
+--   OBUF_inst : OBUF
+--   generic map (
+--      CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+--      DRIVE => 12,
+--      IOSTANDARD => "DEFAULT",
+--      SLEW => "SLOW")
+--   port map (
+--      O => DCO_O,     -- Buffer output (connect directly to top-level port)
+--      I => DCO      -- Buffer input 
+--   );
 
 	Test(0) <= DataOut(0);
 	Test(1) <= DataOut(1);
@@ -508,8 +660,8 @@ DLL: entity work.DLL
 	Test(5) <= DataOut(5);
 	Test(6) <= DataOut(6);
 	Test(7) <= DataOut(7);
-	Test(8) <= DCO_O;
-	Test(9) <= clkdiv_es;
+	Test(8) <= FastTrigDes_o;
+	Test(9) <= FCO;
 
 end Behavioral;
 

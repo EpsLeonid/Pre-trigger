@@ -26,6 +26,12 @@ WARNING:ConstraintSystem:137 - Constraint <NET "ADC_DCO_LVDS[1]" TNM_NET =
    "ADC_DCO_LVDS1";> [Pre.ucf(30)]: No appropriate instances for the TNM
    constraint are driven by "ADC_DCO_LVDS<1>".
 
+WARNING:ConstraintSystem:119 - Constraint <NET "ADC_DCO_LVDS<1>"
+   CLOCK_DEDICATED_ROUTE = FALSE;> [Pre.ucf(31)]: This constraint cannot be
+   distributed from the design objects matching 'NET "ADC_DCO_LVDS<1>"' because
+   those design objects do not contain or drive any instances of the correct
+   type.
+
 WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_DCO1 = PERIOD
    "ADC_DCO_LVDS1" 3125 ps HIGH 50 %;> [Pre.ucf(32)]: Unable to find an active
    'TNM' or 'TimeGrp' constraint named 'ADC_DCO_LVDS1'.
@@ -56,6 +62,13 @@ INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
    'TS_MuxClock_in', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The
    following new TNM groups and period specifications were generated at the
    DCM_ADV output(s): 
+   CLK2X: <TIMESPEC TS_DLL_CLK2X_BUF = PERIOD "DLL_CLK2X_BUF" TS_MuxClock_in / 2
+   HIGH 50% INPUT_JITTER 375 ps>
+
+INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
+   'TS_MuxClock_in', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The
+   following new TNM groups and period specifications were generated at the
+   DCM_ADV output(s): 
    CLKDV: <TIMESPEC TS_DLL_CLKDV_BUF = PERIOD "DLL_CLKDV_BUF" TS_MuxClock_in * 2
    HIGH 50% INPUT_JITTER 375 ps>
 
@@ -75,6 +88,12 @@ WARNING:ConstraintSystem:197 - The following specification is invalid because
 Done...
 
 Checking expanded design ...
+WARNING:NgdBuild:971 - IO attribute 'DIFF_TERM' on net 'ADC_FCO_LVDS<1>' has
+   been applied incorrectly. It should be placed on a port net, pad, or a
+   buffer.
+WARNING:NgdBuild:971 - IO attribute 'DIFF_TERM' on net 'ADC_DCO_LVDS<1>' has
+   been applied incorrectly. It should be placed on a port net, pad, or a
+   buffer.
 
 Partition Implementation Status
 -------------------------------
@@ -85,9 +104,9 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings:   8
+  Number of warnings:  11
 
-Total memory usage is 202328 kilobytes
+Total memory usage is 198380 kilobytes
 
 Writing NGD file "ISERDES_8bit.ngd" ...
 Total REAL time to NGDBUILD completion:  3 sec

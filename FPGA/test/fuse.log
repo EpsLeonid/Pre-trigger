@@ -4,6 +4,14 @@ Number of CPUs detected in this system: 8
 Turning on mult-threading, number of parallel sub-compilation jobs: 16 
 Determining compilation order of HDL files
 Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/Parameters.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../LIB/V_Counter.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../LIB/SRFF.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../LIB/Edge_Sensing.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../Pre-trigger_Xilinx/lib/ShiftReg.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../Pre-trigger_Xilinx/DLL.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../LIB/PhaseSW.vhd" into library work
+Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../LIB/Light_Pulser.vhd" into library work
+WARNING:HDLCompiler:946 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/../LIB/Light_Pulser.vhd" Line 49: Actual for formal port sclr is neither a static name nor a globally static expression
 Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" into library work
 Parsing VHDL file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_TB.vhd" into library work
 Starting static elaboration
@@ -20,12 +28,33 @@ Compiling package textio
 Compiling package vital_timing
 Compiling package vital_primitives
 Compiling package vpkg
+Compiling architecture utility of entity SRFF [srff_default]
+Compiling architecture ibufg_v of entity IBUFG [\IBUFG("DONT_CARE","0",true,"DEF...]
+Compiling architecture ibufgds_v of entity IBUFGDS [\IBUFGDS("DONT_CARE",true,"0",tr...]
+Compiling architecture utility of entity V_Counter [\V_Counter(16)\]
+Compiling architecture behavioral of entity PhaseSW [\PhaseSW(42000,38000,40000)\]
+Compiling architecture bufg_v of entity BUFG [bufg_default]
+Compiling architecture dcm_adv_clock_divide_by_2_v of entity dcm_adv_clock_divide_by_2 [dcm_adv_clock_divide_by_2_defaul...]
+Compiling architecture dcm_adv_maximum_period_check_v of entity dcm_adv_maximum_period_check [\dcm_adv_maximum_period_check(" ...]
+Compiling architecture dcm_adv_maximum_period_check_v of entity dcm_adv_maximum_period_check [\dcm_adv_maximum_period_check(" ...]
+Compiling architecture dcm_adv_clock_lost_v of entity dcm_adv_clock_lost [dcm_adv_clock_lost_default]
+Compiling architecture dcm_adv_v of entity DCM_ADV [\DCM_ADV(true," ",true,false,2.0...]
+Compiling architecture behavioral of entity DLL [dll_default]
+Compiling architecture utility of entity V_Counter [\V_Counter(1)\]
+Compiling architecture utility of entity V_Counter [\V_Counter(7)\]
+Compiling architecture utility of entity Edge_Sensing [edge_sensing_default]
+Compiling architecture utility of entity Light_Pulser [\Light_Pulser(2,100)\]
+Compiling architecture ibufds_v of entity IBUFDS [\IBUFDS("DONT_CARE",true,"FALSE"...]
 Compiling architecture iddr_v of entity IDDR [\IDDR("OPPOSITE_EDGE",'0','0',"S...]
+Compiling architecture utility of entity V_Counter [\V_Counter(6)\]
+Compiling architecture behavioral of entity ShiftReg [\ShiftReg(50)\]
+Compiling architecture utility of entity V_Counter [\V_Counter(26)\]
+Compiling architecture obuf_v of entity OBUF [\OBUF("DONT_CARE",12,"DEFAULT","...]
 Compiling architecture behavioral of entity ISERDES_8bit [iserdes_8bit_default]
 Compiling architecture behavior of entity iserdes_tb
 Time Resolution for simulation is 1ps.
-Waiting for 1 sub-compilation(s) to finish...
-Compiled 17 VHDL Units
+Waiting for 20 sub-compilation(s) to finish...
+Compiled 59 VHDL Units
 Built simulation executable D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_TB_isim_beh.exe
-Fuse Memory Usage: 63684 KB
-Fuse CPU Usage: 920 ms
+Fuse Memory Usage: 65700 KB
+Fuse CPU Usage: 982 ms

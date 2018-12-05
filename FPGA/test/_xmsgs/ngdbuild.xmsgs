@@ -14,6 +14,9 @@
 <msg type="warning" file="ConstraintSystem" num="137" delta="old" >Constraint <arg fmt="%s" index="1">&lt;NET &quot;ADC_DCO_LVDS[1]&quot; TNM_NET = &quot;ADC_DCO_LVDS1&quot;;&gt; [Pre.ucf(30)]</arg>: No appropriate instances for the TNM constraint are driven by &quot;<arg fmt="%s" index="2">ADC_DCO_LVDS&lt;1&gt;</arg>&quot;.
 </msg>
 
+<msg type="warning" file="ConstraintSystem" num="119" delta="old" >Constraint <arg fmt="%s" index="1">&lt;NET &quot;ADC_DCO_LVDS&lt;1&gt;&quot; CLOCK_DEDICATED_ROUTE = FALSE;&gt; [Pre.ucf(31)]</arg>: This constraint cannot be distributed from the design objects matching &apos;<arg fmt="%s" index="2">NET &quot;ADC_DCO_LVDS&lt;1&gt;&quot;</arg>&apos; because those design objects do not contain or drive any instances of the correct type.
+</msg>
+
 <msg type="warning" file="ConstraintSystem" num="56" delta="old" >Constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_DCO1 = PERIOD &quot;ADC_DCO_LVDS1&quot; 3125 ps HIGH 50 %;&gt; [Pre.ucf(32)]</arg>: Unable to find an active <arg fmt="%s" index="2">&apos;TNM&apos; or &apos;TimeGrp&apos;</arg> constraint named &apos;<arg fmt="%s" index="3">ADC_DCO_LVDS1</arg>&apos;.
 </msg>
 
@@ -30,6 +33,10 @@
 </msg>
 
 <msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">MuxClock_in</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_MuxClock_in</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_ADV</arg> instance <arg fmt="%s" index="5">DLL/DCM_ADV_INST</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLK2X</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_DLL_CLK2X_BUF = PERIOD &quot;DLL_CLK2X_BUF&quot; TS_MuxClock_in / 2 HIGH 50% INPUT_JITTER 375 ps&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">MuxClock_in</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_MuxClock_in</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_ADV</arg> instance <arg fmt="%s" index="5">DLL/DCM_ADV_INST</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_ADV</arg> output(s): 
 <arg fmt="%s" index="7">CLKDV</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_DLL_CLKDV_BUF = PERIOD &quot;DLL_CLKDV_BUF&quot; TS_MuxClock_in * 2 HIGH 50% INPUT_JITTER 375 ps&gt;</arg>
 </msg>
 
@@ -39,6 +46,12 @@
 
 <msg type="warning" file="ConstraintSystem" num="197" delta="old" >The following specification is invalid because the referenced TNM constraint was removed:
 <arg fmt="%s" index="1">&lt;TIMESPEC TS_DCO1 = PERIOD &quot;ADC_DCO_LVDS1&quot; 3125 ps HIGH 50 %;&gt; [Pre.ucf(32)]</arg>
+</msg>
+
+<msg type="warning" file="NgdBuild" num="971" delta="old" >IO attribute &apos;<arg fmt="%s" index="1">DIFF_TERM</arg>&apos; on <arg fmt="%s" index="2">net</arg> &apos;<arg fmt="%s" index="3">ADC_FCO_LVDS&lt;1&gt;</arg>&apos; has been applied incorrectly. It should be placed on a port net, pad, or a buffer.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="971" delta="old" >IO attribute &apos;<arg fmt="%s" index="1">DIFF_TERM</arg>&apos; on <arg fmt="%s" index="2">net</arg> &apos;<arg fmt="%s" index="3">ADC_DCO_LVDS&lt;1&gt;</arg>&apos; has been applied incorrectly. It should be placed on a port net, pad, or a buffer.
 </msg>
 
 </messages>

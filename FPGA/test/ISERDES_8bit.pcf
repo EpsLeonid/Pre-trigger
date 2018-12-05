@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Wed Nov 07 19:17:32 2018
+// Written by: Map P.20131013 on Mon Dec 03 17:14:23 2018
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -44,12 +44,9 @@ COMP "ADC_DCO_LVDSPrev<8>" LOCATE = SITE "AM17" LEVEL 1;
 COMP "ADCInDataLVDSPrev_n<8>" LOCATE = SITE "AM8" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev<9>" LOCATE = SITE "AL16" LEVEL 1;
 COMP "ADCInDataLVDSPrev_n<9>" LOCATE = SITE "AM7" LEVEL 1;
-COMP "ADC_DCO_LVDS<0>" LOCATE = SITE "AA25" LEVEL 1;
+COMP "ADC_DCO_LVDS<0>" LOCATE = SITE "AD34" LEVEL 1;
 PIN ADC_DCO_LVDS<0>_pin<0> = BEL "ADC_DCO_LVDS<0>" PINNAME PAD;
 PIN "ADC_DCO_LVDS<0>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
-COMP "ADC_DCO_LVDS<1>" LOCATE = SITE "AD34" LEVEL 1;
-PIN ADC_DCO_LVDS<1>_pin<0> = BEL "ADC_DCO_LVDS<1>" PINNAME PAD;
-PIN "ADC_DCO_LVDS<1>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
 COMP "ADCInDataLVDSPrev<10>" LOCATE = SITE "AP7" LEVEL 1;
 COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
@@ -76,13 +73,13 @@ COMP "ADC_DCO_LVDSPrev_n<11>" LOCATE = SITE "AL10" LEVEL 1;
 COMP "ADCInDataLVDS_n<1>" LOCATE = SITE "Y26" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev_n<3>" LOCATE = SITE "AK19" LEVEL 1;
 COMP "Test<7>" LOCATE = SITE "A5" LEVEL 1;
-COMP "ADC_DCO_LVDS_n<0>" LOCATE = SITE "AA26" LEVEL 1;
+COMP "ADC_FCO_LVDS<0>" LOCATE = SITE "AA25" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<0>" LOCATE = SITE "AC34" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev<10>" LOCATE = SITE "AK13" LEVEL 1;
 COMP "ADCInDataLVDSPrev_n<10>" LOCATE = SITE "AP6" LEVEL 1;
 COMP "ADCInDataLVDS_n<2>" LOCATE = SITE "AA24" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev_n<4>" LOCATE = SITE "AH18" LEVEL 1;
 COMP "Test<8>" LOCATE = SITE "B6" LEVEL 1;
-COMP "ADC_DCO_LVDS_n<1>" LOCATE = SITE "AC34" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev<11>" LOCATE = SITE "AL11" LEVEL 1;
 COMP "ADCInDataLVDSPrev_n<11>" LOCATE = SITE "AN5" LEVEL 1;
 COMP "ADCInDataLVDS_n<3>" LOCATE = SITE "AB23" LEVEL 1;
@@ -98,6 +95,7 @@ COMP "ADC_DCO_LVDSPrev_n<8>" LOCATE = SITE "AM16" LEVEL 1;
 COMP "ADC_CSB" LOCATE = SITE "E16" LEVEL 1;
 COMP "ADCInDataLVDS_n<7>" LOCATE = SITE "AB28" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev_n<9>" LOCATE = SITE "AK16" LEVEL 1;
+COMP "ADC_FCO_LVDS_n<0>" LOCATE = SITE "AA26" LEVEL 1;
 COMP "ExtReset" LOCATE = SITE "AP4" LEVEL 1;
 TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_Bit_write" BEL "ADCtest_CSB_trig" BEL
         "ADCtest_reg_sset" BEL "ADC_SDIO" BEL "ADCTest/count_0" BEL
@@ -128,13 +126,16 @@ TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_Bit_write" BEL "ADCtest_CSB_trig" BEL
         "ShiftReg_test/tmp_5" BEL "ShiftReg_test/tmp_4" BEL
         "ShiftReg_test/tmp_3" BEL "ShiftReg_test/tmp_2" BEL
         "ShiftReg_test/tmp_1" BEL "ShiftReg_test/tmp_0" BEL "ADC_SCLK";
+TIMEGRP DLL_CLK2X_BUF = BEL "FastTrigDes_o" BEL "Led_B/ES1/Trig0" BEL
+        "Led_B/ES1/Trig1" BEL "DLL/CLK2X_BUFG_INST" BEL
+        "Led_B/DurTrig_SRFF/Trig" BEL "FastTrigDes_o_1" BEL "ADC_CLK";
 TIMEGRP ADC_DCO_LVDS0 = BEL "clkdiv_es" BEL "DataN_0" BEL "DataP_0" BEL
-        "clkdiv_a" BEL "DataN_1" BEL "DataP_1" BEL "DataOut_0" BEL "clkdiv_b"
-        BEL "DataOut_1" BEL "DataN_2" BEL "DataP_2" BEL "DataOut_3" BEL
-        "DataOut_2" BEL "DataN_3" BEL "DataP_3" BEL "DataOut_4" BEL
-        "DataOut_5" BEL "DataOut_6" BEL "DataOut_7" BEL "clkdiv_1" BEL
-        "IDDR_inst/FF0" BEL "IDDR_inst/FF1" BEL "clkdiv_0" BEL "DCO_BUFG" BEL
-        "Test<8>";
+        "clkdiv_a" BEL "DataN_del_0" BEL "DataN_1" BEL "DataP_1" BEL
+        "clkdiv_b" BEL "DataP_del_0" BEL "DataN_del_1" BEL "DataN_2" BEL
+        "DataP_2" BEL "DataP_del_1" BEL "DataN_del_2" BEL "DataN_3" BEL
+        "DataP_3" BEL "DataP_del_2" BEL "DataN_del_3" BEL "DataP_del_3" BEL
+        "clkdiv_1" BEL "IDDR_inst/FF0" BEL "IDDR_inst/FF1" BEL "clkdiv_0" BEL
+        "DCO_BUFG";
 TIMEGRP DLL_CLK0_BUF = BEL "PowerUp0" BEL "DLL/CLK0_BUFG_INST" BEL
         "PowerUp2/Trig" BEL "PowerUp1/Trig";
 TIMEGRP Qclock = BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
@@ -165,6 +166,8 @@ TS_MuxClock_in = PERIOD TIMEGRP "MuxClock_in" 25 ns HIGH 50% INPUT_JITTER
         0.375 ns;
 TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 3.125 ns HIGH 50%;
 TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_MuxClock_in HIGH 50%
+        INPUT_JITTER 0.375 ns;
+TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_MuxClock_in / 2 HIGH 50%
         INPUT_JITTER 0.375 ns;
 TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CLKDV_BUF" TS_MuxClock_in * 2 HIGH 50%
         INPUT_JITTER 0.375 ns;
