@@ -40,6 +40,9 @@ package parameters is
 	type array_group_amp is array (0 to NumAmpGroup) of std_logic_vector (Sum_Bits-1 downto 0);
 	type array_group_num is array (0 to NumAmpGroup) of std_logic_vector (BitNumGroup downto 0);
 
+--Test
+	type array_Ram is array (0 to 255) of std_logic_vector (ADC_Bits-1 downto 0);
+
 end parameters;
 
 package body parameters is

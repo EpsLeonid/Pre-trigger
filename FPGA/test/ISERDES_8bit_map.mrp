@@ -10,35 +10,38 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Mon Dec 03 17:14:20 2018
+Mapped Date    : Fri Dec 07 17:59:18 2018
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:    3
+Number of warnings:   11
 Logic Utilization:
-  Number of Slice Flip Flops:           133 out of  53,248    1%
-  Number of 4 input LUTs:                31 out of  53,248    1%
+  Number of Slice Flip Flops:           166 out of  53,248    1%
+  Number of 4 input LUTs:                63 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:             86 out of  26,624    1%
-    Number of Slices containing only related logic:      86 out of      86 100%
-    Number of Slices containing unrelated logic:          0 out of      86   0%
+  Number of occupied Slices:            111 out of  26,624    1%
+    Number of Slices containing only related logic:     111 out of     111 100%
+    Number of Slices containing unrelated logic:          0 out of     111   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:          71 out of  53,248    1%
-    Number used as logic:                31
-    Number used as a route-thru:         40
+  Total Number of 4 input LUTs:         104 out of  53,248    1%
+    Number used as logic:                62
+    Number used as a route-thru:         41
+    Number used as Shift registers:       1
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
-  Number of bonded IOBs:                 92 out of     640   14%
-    IOB Flip Flops:                      12
-  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
-    Number used as BUFGs:                 5
+  Number of bonded IOBs:                152 out of     640   23%
+    IOB Flip Flops:                       2
+  Number of BUFG/BUFGCTRLs:               4 out of      32   12%
+    Number used as BUFGs:                 4
+  Number of FIFO16/RAMB16s:               1 out of     160    1%
+    Number used as RAMB16s:               1
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.38
+Average Fanout of Non-Clock Nets:                1.75
 
-Peak Memory Usage:  445 MB
+Peak Memory Usage:  446 MB
 Total REAL time to MAP completion:  3 secs 
 Total CPU time to MAP completion:   3 secs 
 
@@ -87,17 +90,33 @@ WARNING:MapLib:701 - Signal FCT_160 connected to top level port FCT_160 has been
    removed.
 WARNING:MapLib:701 - Signal FCT_160_n connected to top level port FCT_160_n has
    been removed.
+WARNING:MapLib:701 - Signal ADC_DCO_LVDS<0> connected to top level port
+   ADC_DCO_LVDS<0> has been removed.
+WARNING:MapLib:701 - Signal ADC_DCO_LVDS_n<0> connected to top level port
+   ADC_DCO_LVDS_n<0> has been removed.
+WARNING:MapLib:701 - Signal ADC_FCO_LVDS<0> connected to top level port
+   ADC_FCO_LVDS<0> has been removed.
+WARNING:MapLib:701 - Signal ADC_FCO_LVDS_n<0> connected to top level port
+   ADC_FCO_LVDS_n<0> has been removed.
+WARNING:MapLib:701 - Signal ADCInDataLVDS<0> connected to top level port
+   ADCInDataLVDS<0> has been removed.
+WARNING:MapLib:701 - Signal ADCInDataLVDS_n<0> connected to top level port
+   ADCInDataLVDS_n<0> has been removed.
+WARNING:MapLib:41 - All members of TNM group "ADC_DCO_LVDS0" have been optimized
+   out of the design.
+WARNING:MapLib:50 - The period specification "TS_DCO0" has been discarded
+   because the group "ADC_DCO_LVDS0" has been optimized away.
 
 Section 3 - Informational
 -------------------------
 INFO:LIT:243 - Logical network TxClk has no load.
-INFO:LIT:395 - The above info message is repeated 389 more times for the
+INFO:LIT:395 - The above info message is repeated 323 more times for the
    following (max. 5 shown):
    Col,
    ADC_test,
    Crs,
    RxClk,
-   TrigDes
+   ADC_res
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:MapLib:797 - Your design is targeting LX/SX Production Step 0/1/ES devices.
@@ -111,9 +130,9 @@ INFO:LIT:244 - All of the single ended outputs in this design are using slew
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   7 block(s) removed
-   2 block(s) optimized away
-   5 signal(s) removed
+  17 block(s) removed
+   3 block(s) optimized away
+  13 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -132,6 +151,14 @@ Loadless block "DLL/CLK90_BUFG_INST" (CKBUF) removed.
  The signal "DLL/CLK90_BUF" is loadless and has been removed.
 Loadless block "DLL/CLKFX_BUFG_INST" (CKBUF) removed.
  The signal "DLL/CLKFX_BUF" is loadless and has been removed.
+Loadless block "FCO_LVDS_signal" (IBUFGDS) removed.
+ The signal "ADC_FCO_LVDS<0>" is loadless and has been removed.
+  Loadless block "ADC_FCO_LVDS<0>" (PAD) removed.
+ The signal "ADC_FCO_LVDS_n<0>" is loadless and has been removed.
+  Loadless block "ADC_FCO_LVDS_n<0>" (PAD) removed.
+Loadless block "IDDR_inst" (IDDR) removed.
+ The signal "SDATA" is loadless and has been removed.
+ The signal "DCO" is loadless and has been removed.
 Loadless block "LVDS_Clk40" (CKBUF) removed.
  The signal "FCT_40" is loadless and has been removed.
   Loadless block "FCT_40" (PAD) removed.
@@ -140,6 +167,22 @@ Loadless block "LVDS_FCT_160" (IBUFGDS) removed.
   Loadless block "FCT_160" (PAD) removed.
  The signal "FCT_160_n" is loadless and has been removed.
   Loadless block "FCT_160_n" (PAD) removed.
+
+The trimmed logic reported below is either:
+   1. part of a cycle
+   2. part of disabled logic
+   3. a side-effect of other trimmed logic
+
+The signal "ADCInDataLVDS<0>" is unused and has been removed.
+ Unused block "ADCInDataLVDS<0>" (PAD) removed.
+The signal "ADCInDataLVDS_n<0>" is unused and has been removed.
+ Unused block "ADCInDataLVDS_n<0>" (PAD) removed.
+The signal "ADC_DCO_LVDS<0>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDS<0>" (PAD) removed.
+The signal "ADC_DCO_LVDS_n<0>" is unused and has been removed.
+ Unused block "ADC_DCO_LVDS_n<0>" (PAD) removed.
+Unused block "DCO_LVDS_signal" (IBUFGDS) removed.
+Unused block "Data_LVDS_signal" (IBUFDS) removed.
 
 Optimized Block(s):
 TYPE 		BLOCK
@@ -156,8 +199,6 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ADCInDataLVDS<0>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | IFF1         |          |          |
-|                                    | IDDR:OPPOSITE    |           |                      |       |          |      | IFF2         |          |          |
 | ADCInDataLVDS<1>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS<2>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS<3>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
@@ -189,7 +230,6 @@ Section 6 - IOB Properties
 | ADCInDataLVDSPrev_n<9>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDSPrev_n<10>            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDSPrev_n<11>            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| ADCInDataLVDS_n<0>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
 | ADCInDataLVDS_n<1>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS_n<2>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS_n<3>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
@@ -199,7 +239,6 @@ Section 6 - IOB Properties
 | ADCInDataLVDS_n<7>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADC_CLK                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ADC_CSB                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| ADC_DCO_LVDS<0>                    | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
 | ADC_DCO_LVDSPrev<0>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADC_DCO_LVDSPrev<1>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADC_DCO_LVDSPrev<2>                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
@@ -224,12 +263,10 @@ Section 6 - IOB Properties
 | ADC_DCO_LVDSPrev_n<9>              | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADC_DCO_LVDSPrev_n<10>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADC_DCO_LVDSPrev_n<11>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| ADC_DCO_LVDS_n<0>                  | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADC_FCO_LVDS<0>                    | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
-| ADC_FCO_LVDS_n<0>                  | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
 | ADC_SCLK                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ADC_SDIO                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ExtReset                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| FastTrigDes                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Led1                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Led2                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Led3                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
@@ -239,16 +276,81 @@ Section 6 - IOB Properties
 | Qclock                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | Sw_FCTClk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Sw_Quartz                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<0>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<1>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<2>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<3>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<4>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<5>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| Test<0>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<1>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<2>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<3>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<4>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<5>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<8>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<9>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TrigDes                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<0>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<1>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<2>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<3>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<4>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<5>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<6>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<7>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<8>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<9>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<10>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<11>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<12>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<13>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<14>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<15>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<16>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<17>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<18>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<19>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<20>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<21>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<22>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<23>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<24>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<25>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<26>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<27>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<28>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<29>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<30>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<31>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<32>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<33>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<34>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<35>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<36>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<37>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<38>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<39>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<40>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<41>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<42>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<43>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<44>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<45>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<46>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<47>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<48>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<49>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<50>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<51>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<52>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<53>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<54>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<55>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<56>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<57>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<58>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<59>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<60>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<61>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<62>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TriggerData<63>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs
