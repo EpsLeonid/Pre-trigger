@@ -10,24 +10,24 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Fri Dec 07 17:59:18 2018
+Mapped Date    : Sat Dec 29 12:06:46 2018
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:   11
 Logic Utilization:
-  Number of Slice Flip Flops:           166 out of  53,248    1%
-  Number of 4 input LUTs:                63 out of  53,248    1%
+  Number of Slice Flip Flops:           127 out of  53,248    1%
+  Number of 4 input LUTs:                47 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            111 out of  26,624    1%
-    Number of Slices containing only related logic:     111 out of     111 100%
-    Number of Slices containing unrelated logic:          0 out of     111   0%
+  Number of occupied Slices:             87 out of  26,624    1%
+    Number of Slices containing only related logic:      87 out of      87 100%
+    Number of Slices containing unrelated logic:          0 out of      87   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         104 out of  53,248    1%
-    Number used as logic:                62
+  Total Number of 4 input LUTs:          88 out of  53,248    1%
+    Number used as logic:                41
     Number used as a route-thru:         41
-    Number used as Shift registers:       1
+    Number used as Shift registers:       6
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
@@ -39,10 +39,10 @@ Logic Distribution:
     Number used as RAMB16s:               1
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.75
+Average Fanout of Non-Clock Nets:                1.70
 
-Peak Memory Usage:  446 MB
-Total REAL time to MAP completion:  3 secs 
+Peak Memory Usage:  440 MB
+Total REAL time to MAP completion:  4 secs 
 Total CPU time to MAP completion:   3 secs 
 
 NOTES:
@@ -131,7 +131,7 @@ INFO:LIT:244 - All of the single ended outputs in this design are using slew
 Section 4 - Removed Logic Summary
 ---------------------------------
   17 block(s) removed
-   3 block(s) optimized away
+   8 block(s) optimized away
   13 signal(s) removed
 
 Section 5 - Removed Logic

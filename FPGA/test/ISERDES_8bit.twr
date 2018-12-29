@@ -32,17 +32,17 @@ For more information, see Period Analysis in the Timing Closure User Guide (UG61
 
  519 paths analyzed, 121 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   2.952ns.
+ Minimum period is   2.948ns.
 --------------------------------------------------------------------------------
 
-Paths for end point CntTest/count_25 (SLICE_X71Y180.CIN), 24 paths
+Paths for end point CntTest/count_25 (SLICE_X75Y186.CIN), 24 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     22.048ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     22.052ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CntTest/count_0 (FF)
   Destination:          CntTest/count_25 (FF)
   Requirement:          25.000ns
   Data Path Delay:      2.760ns (Levels of Logic = 13)
-  Clock Path Skew:      -0.004ns (0.123 - 0.127)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -57,59 +57,59 @@ Slack (setup path):     22.048ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y168.XQ     Tcko                  0.340   CntTest/count<0>
+    SLICE_X75Y174.XQ     Tcko                  0.340   CntTest/count<0>
                                                        CntTest/count_0
-    SLICE_X71Y168.F3     net (fanout=5)        0.422   CntTest/count<0>
-    SLICE_X71Y168.COUT   Topcyf                0.573   CntTest/count<0>
+    SLICE_X75Y174.F3     net (fanout=5)        0.422   CntTest/count<0>
+    SLICE_X75Y174.COUT   Topcyf                0.573   CntTest/count<0>
                                                        CntTest/Mcount_count_lut<0>_INV_0
                                                        CntTest/Mcount_count_cy<0>
                                                        CntTest/Mcount_count_cy<1>
-    SLICE_X71Y169.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
-    SLICE_X71Y169.COUT   Tbyp                  0.086   CntTest/count<2>
+    SLICE_X75Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.COUT   Tbyp                  0.086   CntTest/count<2>
                                                        CntTest/Mcount_count_cy<2>
                                                        CntTest/Mcount_count_cy<3>
-    SLICE_X71Y170.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
-    SLICE_X71Y170.COUT   Tbyp                  0.086   CntTest/count<4>
+    SLICE_X75Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.COUT   Tbyp                  0.086   CntTest/count<4>
                                                        CntTest/Mcount_count_cy<4>
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.COUT   Tbyp                  0.086   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.COUT   Tbyp                  0.086   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CLK    Tcinck                0.479   CntTest/count<24>
+    SLICE_X75Y186.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
+    SLICE_X75Y186.CLK    Tcinck                0.479   CntTest/count<24>
                                                        CntTest/Mcount_count_cy<24>
                                                        CntTest/Mcount_count_xor<25>
                                                        CntTest/count_25
@@ -118,12 +118,12 @@ Slack (setup path):     22.048ns (requirement - (data path - clock path skew + u
                                                        (84.7% logic, 15.3% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     22.078ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     22.079ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CntTest/count_5 (FF)
   Destination:          CntTest/count_25 (FF)
   Requirement:          25.000ns
   Data Path Delay:      2.733ns (Levels of Logic = 11)
-  Clock Path Skew:      -0.001ns (0.123 - 0.124)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -138,50 +138,50 @@ Slack (setup path):     22.078ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y170.YQ     Tcko                  0.340   CntTest/count<4>
+    SLICE_X75Y176.YQ     Tcko                  0.340   CntTest/count<4>
                                                        CntTest/count_5
-    SLICE_X71Y170.G1     net (fanout=2)        0.581   CntTest/count<5>
-    SLICE_X71Y170.COUT   Topcyg                0.559   CntTest/count<4>
+    SLICE_X75Y176.G1     net (fanout=2)        0.581   CntTest/count<5>
+    SLICE_X75Y176.COUT   Topcyg                0.559   CntTest/count<4>
                                                        CntTest/count<5>_rt
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.COUT   Tbyp                  0.086   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.COUT   Tbyp                  0.086   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CLK    Tcinck                0.479   CntTest/count<24>
+    SLICE_X75Y186.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
+    SLICE_X75Y186.CLK    Tcinck                0.479   CntTest/count<24>
                                                        CntTest/Mcount_count_cy<24>
                                                        CntTest/Mcount_count_xor<25>
                                                        CntTest/count_25
@@ -190,12 +190,12 @@ Slack (setup path):     22.078ns (requirement - (data path - clock path skew + u
                                                        (78.7% logic, 21.3% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     22.109ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               CntTest/count_4 (FF)
+Slack (setup path):     22.135ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CntTest/count_1 (FF)
   Destination:          CntTest/count_25 (FF)
   Requirement:          25.000ns
-  Data Path Delay:      2.702ns (Levels of Logic = 11)
-  Clock Path Skew:      -0.001ns (0.123 - 0.124)
+  Data Path Delay:      2.677ns (Levels of Logic = 13)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -206,72 +206,79 @@ Slack (setup path):     22.109ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: CntTest/count_4 to CntTest/count_25
+  Maximum Data Path: CntTest/count_1 to CntTest/count_25
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y170.XQ     Tcko                  0.340   CntTest/count<4>
-                                                       CntTest/count_4
-    SLICE_X71Y170.F2     net (fanout=2)        0.536   CntTest/count<4>
-    SLICE_X71Y170.COUT   Topcyf                0.573   CntTest/count<4>
-                                                       CntTest/count<4>_rt
+    SLICE_X75Y174.YQ     Tcko                  0.340   CntTest/count<0>
+                                                       CntTest/count_1
+    SLICE_X75Y174.G4     net (fanout=2)        0.353   CntTest/count<1>
+    SLICE_X75Y174.COUT   Topcyg                0.559   CntTest/count<0>
+                                                       CntTest/count<1>_rt
+                                                       CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.COUT   Tbyp                  0.086   CntTest/count<2>
+                                                       CntTest/Mcount_count_cy<2>
+                                                       CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.COUT   Tbyp                  0.086   CntTest/count<4>
                                                        CntTest/Mcount_count_cy<4>
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.COUT   Tbyp                  0.086   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.COUT   Tbyp                  0.086   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CLK    Tcinck                0.479   CntTest/count<24>
+    SLICE_X75Y186.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
+    SLICE_X75Y186.CLK    Tcinck                0.479   CntTest/count<24>
                                                        CntTest/Mcount_count_cy<24>
                                                        CntTest/Mcount_count_xor<25>
                                                        CntTest/count_25
     -------------------------------------------------  ---------------------------
-    Total                                      2.702ns (2.166ns logic, 0.536ns route)
-                                                       (80.2% logic, 19.8% route)
+    Total                                      2.677ns (2.324ns logic, 0.353ns route)
+                                                       (86.8% logic, 13.2% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point CntTest/count_24 (SLICE_X71Y180.CIN), 24 paths
+Paths for end point CntTest/count_24 (SLICE_X75Y186.CIN), 24 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     22.100ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     22.104ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CntTest/count_0 (FF)
   Destination:          CntTest/count_24 (FF)
   Requirement:          25.000ns
   Data Path Delay:      2.708ns (Levels of Logic = 13)
-  Clock Path Skew:      -0.004ns (0.123 - 0.127)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -286,59 +293,59 @@ Slack (setup path):     22.100ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y168.XQ     Tcko                  0.340   CntTest/count<0>
+    SLICE_X75Y174.XQ     Tcko                  0.340   CntTest/count<0>
                                                        CntTest/count_0
-    SLICE_X71Y168.F3     net (fanout=5)        0.422   CntTest/count<0>
-    SLICE_X71Y168.COUT   Topcyf                0.573   CntTest/count<0>
+    SLICE_X75Y174.F3     net (fanout=5)        0.422   CntTest/count<0>
+    SLICE_X75Y174.COUT   Topcyf                0.573   CntTest/count<0>
                                                        CntTest/Mcount_count_lut<0>_INV_0
                                                        CntTest/Mcount_count_cy<0>
                                                        CntTest/Mcount_count_cy<1>
-    SLICE_X71Y169.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
-    SLICE_X71Y169.COUT   Tbyp                  0.086   CntTest/count<2>
+    SLICE_X75Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.COUT   Tbyp                  0.086   CntTest/count<2>
                                                        CntTest/Mcount_count_cy<2>
                                                        CntTest/Mcount_count_cy<3>
-    SLICE_X71Y170.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
-    SLICE_X71Y170.COUT   Tbyp                  0.086   CntTest/count<4>
+    SLICE_X75Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.COUT   Tbyp                  0.086   CntTest/count<4>
                                                        CntTest/Mcount_count_cy<4>
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.COUT   Tbyp                  0.086   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.COUT   Tbyp                  0.086   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CLK    Tcinck                0.427   CntTest/count<24>
+    SLICE_X75Y186.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
+    SLICE_X75Y186.CLK    Tcinck                0.427   CntTest/count<24>
                                                        CntTest/Mcount_count_xor<24>
                                                        CntTest/count_24
     -------------------------------------------------  ---------------------------
@@ -346,12 +353,12 @@ Slack (setup path):     22.100ns (requirement - (data path - clock path skew + u
                                                        (84.4% logic, 15.6% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     22.130ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     22.131ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CntTest/count_5 (FF)
   Destination:          CntTest/count_24 (FF)
   Requirement:          25.000ns
   Data Path Delay:      2.681ns (Levels of Logic = 11)
-  Clock Path Skew:      -0.001ns (0.123 - 0.124)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -366,50 +373,50 @@ Slack (setup path):     22.130ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y170.YQ     Tcko                  0.340   CntTest/count<4>
+    SLICE_X75Y176.YQ     Tcko                  0.340   CntTest/count<4>
                                                        CntTest/count_5
-    SLICE_X71Y170.G1     net (fanout=2)        0.581   CntTest/count<5>
-    SLICE_X71Y170.COUT   Topcyg                0.559   CntTest/count<4>
+    SLICE_X75Y176.G1     net (fanout=2)        0.581   CntTest/count<5>
+    SLICE_X75Y176.COUT   Topcyg                0.559   CntTest/count<4>
                                                        CntTest/count<5>_rt
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.COUT   Tbyp                  0.086   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.COUT   Tbyp                  0.086   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CLK    Tcinck                0.427   CntTest/count<24>
+    SLICE_X75Y186.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
+    SLICE_X75Y186.CLK    Tcinck                0.427   CntTest/count<24>
                                                        CntTest/Mcount_count_xor<24>
                                                        CntTest/count_24
     -------------------------------------------------  ---------------------------
@@ -417,12 +424,12 @@ Slack (setup path):     22.130ns (requirement - (data path - clock path skew + u
                                                        (78.3% logic, 21.7% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     22.161ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               CntTest/count_4 (FF)
+Slack (setup path):     22.187ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CntTest/count_1 (FF)
   Destination:          CntTest/count_24 (FF)
   Requirement:          25.000ns
-  Data Path Delay:      2.650ns (Levels of Logic = 11)
-  Clock Path Skew:      -0.001ns (0.123 - 0.124)
+  Data Path Delay:      2.625ns (Levels of Logic = 13)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -433,71 +440,78 @@ Slack (setup path):     22.161ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: CntTest/count_4 to CntTest/count_24
+  Maximum Data Path: CntTest/count_1 to CntTest/count_24
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y170.XQ     Tcko                  0.340   CntTest/count<4>
-                                                       CntTest/count_4
-    SLICE_X71Y170.F2     net (fanout=2)        0.536   CntTest/count<4>
-    SLICE_X71Y170.COUT   Topcyf                0.573   CntTest/count<4>
-                                                       CntTest/count<4>_rt
+    SLICE_X75Y174.YQ     Tcko                  0.340   CntTest/count<0>
+                                                       CntTest/count_1
+    SLICE_X75Y174.G4     net (fanout=2)        0.353   CntTest/count<1>
+    SLICE_X75Y174.COUT   Topcyg                0.559   CntTest/count<0>
+                                                       CntTest/count<1>_rt
+                                                       CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.COUT   Tbyp                  0.086   CntTest/count<2>
+                                                       CntTest/Mcount_count_cy<2>
+                                                       CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.COUT   Tbyp                  0.086   CntTest/count<4>
                                                        CntTest/Mcount_count_cy<4>
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.COUT   Tbyp                  0.086   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.COUT   Tbyp                  0.086   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
-    SLICE_X71Y180.CLK    Tcinck                0.427   CntTest/count<24>
+    SLICE_X75Y186.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<23>
+    SLICE_X75Y186.CLK    Tcinck                0.427   CntTest/count<24>
                                                        CntTest/Mcount_count_xor<24>
                                                        CntTest/count_24
     -------------------------------------------------  ---------------------------
-    Total                                      2.650ns (2.114ns logic, 0.536ns route)
-                                                       (79.8% logic, 20.2% route)
+    Total                                      2.625ns (2.272ns logic, 0.353ns route)
+                                                       (86.6% logic, 13.4% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point CntTest/count_23 (SLICE_X71Y179.CIN), 22 paths
+Paths for end point CntTest/count_23 (SLICE_X75Y185.CIN), 22 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     22.131ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     22.138ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CntTest/count_0 (FF)
   Destination:          CntTest/count_23 (FF)
   Requirement:          25.000ns
   Data Path Delay:      2.674ns (Levels of Logic = 12)
-  Clock Path Skew:      -0.007ns (0.120 - 0.127)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -512,55 +526,55 @@ Slack (setup path):     22.131ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y168.XQ     Tcko                  0.340   CntTest/count<0>
+    SLICE_X75Y174.XQ     Tcko                  0.340   CntTest/count<0>
                                                        CntTest/count_0
-    SLICE_X71Y168.F3     net (fanout=5)        0.422   CntTest/count<0>
-    SLICE_X71Y168.COUT   Topcyf                0.573   CntTest/count<0>
+    SLICE_X75Y174.F3     net (fanout=5)        0.422   CntTest/count<0>
+    SLICE_X75Y174.COUT   Topcyf                0.573   CntTest/count<0>
                                                        CntTest/Mcount_count_lut<0>_INV_0
                                                        CntTest/Mcount_count_cy<0>
                                                        CntTest/Mcount_count_cy<1>
-    SLICE_X71Y169.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
-    SLICE_X71Y169.COUT   Tbyp                  0.086   CntTest/count<2>
+    SLICE_X75Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.COUT   Tbyp                  0.086   CntTest/count<2>
                                                        CntTest/Mcount_count_cy<2>
                                                        CntTest/Mcount_count_cy<3>
-    SLICE_X71Y170.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
-    SLICE_X71Y170.COUT   Tbyp                  0.086   CntTest/count<4>
+    SLICE_X75Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.COUT   Tbyp                  0.086   CntTest/count<4>
                                                        CntTest/Mcount_count_cy<4>
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CLK    Tcinck                0.479   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.CLK    Tcinck                0.479   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_xor<23>
                                                        CntTest/count_23
@@ -569,12 +583,12 @@ Slack (setup path):     22.131ns (requirement - (data path - clock path skew + u
                                                        (84.2% logic, 15.8% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     22.161ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     22.165ns (requirement - (data path - clock path skew + uncertainty))
   Source:               CntTest/count_5 (FF)
   Destination:          CntTest/count_23 (FF)
   Requirement:          25.000ns
   Data Path Delay:      2.647ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.004ns (0.120 - 0.124)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -589,46 +603,46 @@ Slack (setup path):     22.161ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y170.YQ     Tcko                  0.340   CntTest/count<4>
+    SLICE_X75Y176.YQ     Tcko                  0.340   CntTest/count<4>
                                                        CntTest/count_5
-    SLICE_X71Y170.G1     net (fanout=2)        0.581   CntTest/count<5>
-    SLICE_X71Y170.COUT   Topcyg                0.559   CntTest/count<4>
+    SLICE_X75Y176.G1     net (fanout=2)        0.581   CntTest/count<5>
+    SLICE_X75Y176.COUT   Topcyg                0.559   CntTest/count<4>
                                                        CntTest/count<5>_rt
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CLK    Tcinck                0.479   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.CLK    Tcinck                0.479   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_xor<23>
                                                        CntTest/count_23
@@ -637,12 +651,12 @@ Slack (setup path):     22.161ns (requirement - (data path - clock path skew + u
                                                        (78.1% logic, 21.9% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     22.192ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               CntTest/count_4 (FF)
+Slack (setup path):     22.221ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               CntTest/count_1 (FF)
   Destination:          CntTest/count_23 (FF)
   Requirement:          25.000ns
-  Data Path Delay:      2.616ns (Levels of Logic = 10)
-  Clock Path Skew:      -0.004ns (0.120 - 0.124)
+  Data Path Delay:      2.591ns (Levels of Logic = 12)
+  Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 0.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.188ns
@@ -653,64 +667,71 @@ Slack (setup path):     22.192ns (requirement - (data path - clock path skew + u
     Discrete Jitter (DJ):       0.000ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: CntTest/count_4 to CntTest/count_23
+  Maximum Data Path: CntTest/count_1 to CntTest/count_23
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y170.XQ     Tcko                  0.340   CntTest/count<4>
-                                                       CntTest/count_4
-    SLICE_X71Y170.F2     net (fanout=2)        0.536   CntTest/count<4>
-    SLICE_X71Y170.COUT   Topcyf                0.573   CntTest/count<4>
-                                                       CntTest/count<4>_rt
+    SLICE_X75Y174.YQ     Tcko                  0.340   CntTest/count<0>
+                                                       CntTest/count_1
+    SLICE_X75Y174.G4     net (fanout=2)        0.353   CntTest/count<1>
+    SLICE_X75Y174.COUT   Topcyg                0.559   CntTest/count<0>
+                                                       CntTest/count<1>_rt
+                                                       CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<1>
+    SLICE_X75Y175.COUT   Tbyp                  0.086   CntTest/count<2>
+                                                       CntTest/Mcount_count_cy<2>
+                                                       CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<3>
+    SLICE_X75Y176.COUT   Tbyp                  0.086   CntTest/count<4>
                                                        CntTest/Mcount_count_cy<4>
                                                        CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
-    SLICE_X71Y171.COUT   Tbyp                  0.086   CntTest/count<6>
+    SLICE_X75Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<5>
+    SLICE_X75Y177.COUT   Tbyp                  0.086   CntTest/count<6>
                                                        CntTest/Mcount_count_cy<6>
                                                        CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
-    SLICE_X71Y172.COUT   Tbyp                  0.086   CntTest/count<8>
+    SLICE_X75Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<7>
+    SLICE_X75Y178.COUT   Tbyp                  0.086   CntTest/count<8>
                                                        CntTest/Mcount_count_cy<8>
                                                        CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
-    SLICE_X71Y173.COUT   Tbyp                  0.086   CntTest/count<10>
+    SLICE_X75Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<9>
+    SLICE_X75Y179.COUT   Tbyp                  0.086   CntTest/count<10>
                                                        CntTest/Mcount_count_cy<10>
                                                        CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
-    SLICE_X71Y174.COUT   Tbyp                  0.086   CntTest/count<12>
+    SLICE_X75Y180.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<11>
+    SLICE_X75Y180.COUT   Tbyp                  0.086   CntTest/count<12>
                                                        CntTest/Mcount_count_cy<12>
                                                        CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
-    SLICE_X71Y175.COUT   Tbyp                  0.086   CntTest/count<14>
+    SLICE_X75Y181.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<13>
+    SLICE_X75Y181.COUT   Tbyp                  0.086   CntTest/count<14>
                                                        CntTest/Mcount_count_cy<14>
                                                        CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
-    SLICE_X71Y176.COUT   Tbyp                  0.086   CntTest/count<16>
+    SLICE_X75Y182.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<15>
+    SLICE_X75Y182.COUT   Tbyp                  0.086   CntTest/count<16>
                                                        CntTest/Mcount_count_cy<16>
                                                        CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
-    SLICE_X71Y177.COUT   Tbyp                  0.086   CntTest/count<18>
+    SLICE_X75Y183.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<17>
+    SLICE_X75Y183.COUT   Tbyp                  0.086   CntTest/count<18>
                                                        CntTest/Mcount_count_cy<18>
                                                        CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
-    SLICE_X71Y178.COUT   Tbyp                  0.086   CntTest/count<20>
+    SLICE_X75Y184.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<19>
+    SLICE_X75Y184.COUT   Tbyp                  0.086   CntTest/count<20>
                                                        CntTest/Mcount_count_cy<20>
                                                        CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
-    SLICE_X71Y179.CLK    Tcinck                0.479   CntTest/count<22>
+    SLICE_X75Y185.CIN    net (fanout=1)        0.000   CntTest/Mcount_count_cy<21>
+    SLICE_X75Y185.CLK    Tcinck                0.479   CntTest/count<22>
                                                        CntTest/Mcount_count_cy<22>
                                                        CntTest/Mcount_count_xor<23>
                                                        CntTest/count_23
     -------------------------------------------------  ---------------------------
-    Total                                      2.616ns (2.080ns logic, 0.536ns route)
-                                                       (79.5% logic, 20.5% route)
+    Total                                      2.591ns (2.238ns logic, 0.353ns route)
+                                                       (86.4% logic, 13.6% route)
 
 --------------------------------------------------------------------------------
 
 Hold Paths: TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 --------------------------------------------------------------------------------
 
-Paths for end point CntTest/count_24 (SLICE_X71Y180.F4), 1 path
+Paths for end point CntTest/count_24 (SLICE_X75Y186.F4), 1 path
 --------------------------------------------------------------------------------
 Slack (hold path):      0.785ns (requirement - (clock path skew + uncertainty - data path))
   Source:               CntTest/count_24 (FF)
@@ -726,10 +747,10 @@ Slack (hold path):      0.785ns (requirement - (clock path skew + uncertainty - 
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y180.XQ     Tcko                  0.313   CntTest/count<24>
+    SLICE_X75Y186.XQ     Tcko                  0.313   CntTest/count<24>
                                                        CntTest/count_24
-    SLICE_X71Y180.F4     net (fanout=1)        0.308   CntTest/count<24>
-    SLICE_X71Y180.CLK    Tckf        (-Th)    -0.164   CntTest/count<24>
+    SLICE_X75Y186.F4     net (fanout=1)        0.308   CntTest/count<24>
+    SLICE_X75Y186.CLK    Tckf        (-Th)    -0.164   CntTest/count<24>
                                                        CntTest/count<24>_rt
                                                        CntTest/Mcount_count_xor<24>
                                                        CntTest/count_24
@@ -739,61 +760,61 @@ Slack (hold path):      0.785ns (requirement - (clock path skew + uncertainty - 
 
 --------------------------------------------------------------------------------
 
-Paths for end point CntTest/count_1 (SLICE_X71Y168.G4), 1 path
+Paths for end point PhaseSwitch/TimingCnt/count_3 (SLICE_X49Y158.G4), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.791ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               CntTest/count_1 (FF)
-  Destination:          CntTest/count_1 (FF)
+Slack (hold path):      0.785ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               PhaseSwitch/TimingCnt/count_3 (FF)
+  Destination:          PhaseSwitch/TimingCnt/count_3 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.791ns (Levels of Logic = 1)
+  Data Path Delay:      0.785ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 25.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path: CntTest/count_1 to CntTest/count_1
+  Minimum Data Path: PhaseSwitch/TimingCnt/count_3 to PhaseSwitch/TimingCnt/count_3
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y168.YQ     Tcko                  0.313   CntTest/count<0>
-                                                       CntTest/count_1
-    SLICE_X71Y168.G4     net (fanout=2)        0.325   CntTest/count<1>
-    SLICE_X71Y168.CLK    Tckg        (-Th)    -0.153   CntTest/count<0>
-                                                       CntTest/count<1>_rt
-                                                       CntTest/Mcount_count_xor<1>
-                                                       CntTest/count_1
+    SLICE_X49Y158.YQ     Tcko                  0.313   PhaseSwitch/TimingCnt/count<2>
+                                                       PhaseSwitch/TimingCnt/count_3
+    SLICE_X49Y158.G4     net (fanout=2)        0.319   PhaseSwitch/TimingCnt/count<3>
+    SLICE_X49Y158.CLK    Tckg        (-Th)    -0.153   PhaseSwitch/TimingCnt/count<2>
+                                                       PhaseSwitch/TimingCnt/count<3>_rt
+                                                       PhaseSwitch/TimingCnt/Mcount_count_xor<3>
+                                                       PhaseSwitch/TimingCnt/count_3
     -------------------------------------------------  ---------------------------
-    Total                                      0.791ns (0.466ns logic, 0.325ns route)
-                                                       (58.9% logic, 41.1% route)
+    Total                                      0.785ns (0.466ns logic, 0.319ns route)
+                                                       (59.4% logic, 40.6% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point CntTest/count_12 (SLICE_X71Y174.F4), 1 path
+Paths for end point PhaseSwitch/TimingCnt/count_9 (SLICE_X49Y161.G4), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.796ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               CntTest/count_12 (FF)
-  Destination:          CntTest/count_12 (FF)
+Slack (hold path):      0.785ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               PhaseSwitch/TimingCnt/count_9 (FF)
+  Destination:          PhaseSwitch/TimingCnt/count_9 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.796ns (Levels of Logic = 1)
+  Data Path Delay:      0.785ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
   Source Clock:         Quarts rising at 25.000ns
   Destination Clock:    Quarts rising at 25.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path: CntTest/count_12 to CntTest/count_12
+  Minimum Data Path: PhaseSwitch/TimingCnt/count_9 to PhaseSwitch/TimingCnt/count_9
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X71Y174.XQ     Tcko                  0.313   CntTest/count<12>
-                                                       CntTest/count_12
-    SLICE_X71Y174.F4     net (fanout=2)        0.319   CntTest/count<12>
-    SLICE_X71Y174.CLK    Tckf        (-Th)    -0.164   CntTest/count<12>
-                                                       CntTest/count<12>_rt
-                                                       CntTest/Mcount_count_xor<12>
-                                                       CntTest/count_12
+    SLICE_X49Y161.YQ     Tcko                  0.313   PhaseSwitch/TimingCnt/count<8>
+                                                       PhaseSwitch/TimingCnt/count_9
+    SLICE_X49Y161.G4     net (fanout=2)        0.319   PhaseSwitch/TimingCnt/count<9>
+    SLICE_X49Y161.CLK    Tckg        (-Th)    -0.153   PhaseSwitch/TimingCnt/count<8>
+                                                       PhaseSwitch/TimingCnt/count<9>_rt
+                                                       PhaseSwitch/TimingCnt/Mcount_count_xor<9>
+                                                       PhaseSwitch/TimingCnt/count_9
     -------------------------------------------------  ---------------------------
-    Total                                      0.796ns (0.477ns logic, 0.319ns route)
-                                                       (59.9% logic, 40.1% route)
+    Total                                      0.785ns (0.466ns logic, 0.319ns route)
+                                                       (59.4% logic, 40.6% route)
 
 --------------------------------------------------------------------------------
 
@@ -803,9 +824,18 @@ Slack: 23.942ns (period - (min low pulse limit / (low pulse / period)))
   Period: 25.000ns
   Low pulse: 12.500ns
   Low pulse limit: 0.529ns (Tcl)
+  Physical resource: PhaseSwitch/Sync_TRG1/CLK
+  Logical resource: PhaseSwitch/Sync_TRG1/CK
+  Location pin: SLICE_X48Y158.CLK
+  Clock network: Quarts
+--------------------------------------------------------------------------------
+Slack: 23.942ns (period - (min low pulse limit / (low pulse / period)))
+  Period: 25.000ns
+  Low pulse: 12.500ns
+  Low pulse limit: 0.529ns (Tcl)
   Physical resource: CntTest/count<0>/CLK
   Logical resource: CntTest/count_0/CK
-  Location pin: SLICE_X71Y168.CLK
+  Location pin: SLICE_X75Y174.CLK
   Clock network: Quarts
 --------------------------------------------------------------------------------
 Slack: 23.942ns (period - (min low pulse limit / (low pulse / period)))
@@ -814,16 +844,7 @@ Slack: 23.942ns (period - (min low pulse limit / (low pulse / period)))
   Low pulse limit: 0.529ns (Tcl)
   Physical resource: CntTest/count<0>/CLK
   Logical resource: CntTest/count_1/CK
-  Location pin: SLICE_X71Y168.CLK
-  Clock network: Quarts
---------------------------------------------------------------------------------
-Slack: 23.942ns (period - (min low pulse limit / (low pulse / period)))
-  Period: 25.000ns
-  Low pulse: 12.500ns
-  Low pulse limit: 0.529ns (Tcl)
-  Physical resource: CntTest/count<2>/CLK
-  Logical resource: CntTest/count_2/CK
-  Location pin: SLICE_X71Y169.CLK
+  Location pin: SLICE_X75Y174.CLK
   Clock network: Quarts
 --------------------------------------------------------------------------------
 
@@ -870,18 +891,84 @@ Timing constraint: TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF"
 TS_MuxClock_in HIGH 50%         INPUT_JITTER 0.375 ns;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 26 paths analyzed, 26 endpoints analyzed, 0 failing endpoints
+ 14 paths analyzed, 14 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   5.296ns.
+ Minimum period is   5.646ns.
 --------------------------------------------------------------------------------
 
-Paths for end point TriggerData_15 (SLICE_X102Y209.G3), 1 path
+Paths for end point TriggerData_14 (SLICE_X94Y151.BY), 1 path
 --------------------------------------------------------------------------------
-Slack (setup path):     9.852ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     9.677ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               FastTrigDes_o (FF)
+  Destination:          TriggerData_14 (FF)
+  Requirement:          12.500ns
+  Data Path Delay:      2.333ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.102ns (5.870 - 5.972)
+  Source Clock:         ADC_CLK_OBUF rising at 12.500ns
+  Destination Clock:    Clk40 rising at 25.000ns
+  Clock Uncertainty:    0.388ns
+
+  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.000ns
+    Total Input Jitter (TIJ):   0.375ns
+    Discrete Jitter (DJ):       0.120ns
+    Phase Error (PE):           0.140ns
+
+  Maximum Data Path: FastTrigDes_o to TriggerData_14
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X94Y198.YQ     Tcko                  0.360   FastTrigDes_o
+                                                       FastTrigDes_o
+    SLICE_X94Y151.BY     net (fanout=6)        1.693   FastTrigDes_o
+    SLICE_X94Y151.CLK    Tdick                 0.280   TriggerData_14
+                                                       TriggerData_14
+    -------------------------------------------------  ---------------------------
+    Total                                      2.333ns (0.640ns logic, 1.693ns route)
+                                                       (27.4% logic, 72.6% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point TriggerData_10 (SLICE_X94Y174.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     10.136ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               FastTrigDes_o (FF)
+  Destination:          TriggerData_10 (FF)
+  Requirement:          12.500ns
+  Data Path Delay:      1.924ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.052ns (5.920 - 5.972)
+  Source Clock:         ADC_CLK_OBUF rising at 12.500ns
+  Destination Clock:    Clk40 rising at 25.000ns
+  Clock Uncertainty:    0.388ns
+
+  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.000ns
+    Total Input Jitter (TIJ):   0.375ns
+    Discrete Jitter (DJ):       0.120ns
+    Phase Error (PE):           0.140ns
+
+  Maximum Data Path: FastTrigDes_o to TriggerData_10
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X94Y198.YQ     Tcko                  0.360   FastTrigDes_o
+                                                       FastTrigDes_o
+    SLICE_X94Y174.BY     net (fanout=6)        1.284   FastTrigDes_o
+    SLICE_X94Y174.CLK    Tdick                 0.280   TriggerData_10
+                                                       TriggerData_10
+    -------------------------------------------------  ---------------------------
+    Total                                      1.924ns (0.640ns logic, 1.284ns route)
+                                                       (33.3% logic, 66.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point TriggerData_15 (SLICE_X102Y200.G4), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     10.707ns (requirement - (data path - clock path skew + uncertainty))
   Source:               FastTrigDes_o (FF)
   Destination:          TriggerData_15 (FF)
   Requirement:          12.500ns
-  Data Path Delay:      2.260ns (Levels of Logic = 1)
+  Data Path Delay:      1.405ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
   Source Clock:         ADC_CLK_OBUF rising at 12.500ns
   Destination Clock:    Clk40 rising at 25.000ns
@@ -897,82 +984,15 @@ Slack (setup path):     9.852ns (requirement - (data path - clock path skew + un
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X92Y170.YQ     Tcko                  0.360   FastTrigDes_o
+    SLICE_X94Y198.YQ     Tcko                  0.360   FastTrigDes_o
                                                        FastTrigDes_o
-    SLICE_X102Y209.G3    net (fanout=12)       1.687   FastTrigDes_o
-    SLICE_X102Y209.CLK   Tgck                  0.213   TriggerData_15
+    SLICE_X102Y200.G4    net (fanout=6)        0.832   FastTrigDes_o
+    SLICE_X102Y200.CLK   Tgck                  0.213   TriggerData_15
                                                        TriggerData_15_rstpot
                                                        TriggerData_15
     -------------------------------------------------  ---------------------------
-    Total                                      2.260ns (0.573ns logic, 1.687ns route)
-                                                       (25.4% logic, 74.6% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point TriggerData_14 (SLICE_X102Y147.BY), 1 path
---------------------------------------------------------------------------------
-Slack (setup path):     9.960ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               FastTrigDes_o (FF)
-  Destination:          TriggerData_14 (FF)
-  Requirement:          12.500ns
-  Data Path Delay:      2.124ns (Levels of Logic = 0)
-  Clock Path Skew:      -0.028ns (5.893 - 5.921)
-  Source Clock:         ADC_CLK_OBUF rising at 12.500ns
-  Destination Clock:    Clk40 rising at 25.000ns
-  Clock Uncertainty:    0.388ns
-
-  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.140ns
-
-  Maximum Data Path: FastTrigDes_o to TriggerData_14
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X92Y170.YQ     Tcko                  0.360   FastTrigDes_o
-                                                       FastTrigDes_o
-    SLICE_X102Y147.BY    net (fanout=12)       1.484   FastTrigDes_o
-    SLICE_X102Y147.CLK   Tdick                 0.280   TriggerData_14
-                                                       TriggerData_14
-    -------------------------------------------------  ---------------------------
-    Total                                      2.124ns (0.640ns logic, 1.484ns route)
-                                                       (30.1% logic, 69.9% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point TriggerData_5 (SLICE_X97Y160.F1), 1 path
---------------------------------------------------------------------------------
-Slack (setup path):     10.159ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               FastTrigDes_o (FF)
-  Destination:          TriggerData_5 (FF)
-  Requirement:          12.500ns
-  Data Path Delay:      1.953ns (Levels of Logic = 1)
-  Clock Path Skew:      0.000ns
-  Source Clock:         ADC_CLK_OBUF rising at 12.500ns
-  Destination Clock:    Clk40 rising at 25.000ns
-  Clock Uncertainty:    0.388ns
-
-  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.140ns
-
-  Maximum Data Path: FastTrigDes_o to TriggerData_5
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X92Y170.YQ     Tcko                  0.360   FastTrigDes_o
-                                                       FastTrigDes_o
-    SLICE_X97Y160.F1     net (fanout=12)       1.358   FastTrigDes_o
-    SLICE_X97Y160.CLK    Tfck                  0.235   TriggerData_5
-                                                       TriggerData_5_rstpot
-                                                       TriggerData_5
-    -------------------------------------------------  ---------------------------
-    Total                                      1.953ns (0.595ns logic, 1.358ns route)
-                                                       (30.5% logic, 69.5% route)
+    Total                                      1.405ns (0.573ns logic, 0.832ns route)
+                                                       (40.8% logic, 59.2% route)
 
 --------------------------------------------------------------------------------
 
@@ -980,48 +1000,14 @@ Hold Paths: TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_MuxClock_in HIGH 
         INPUT_JITTER 0.375 ns;
 --------------------------------------------------------------------------------
 
-Paths for end point TriggerData_15 (SLICE_X102Y209.G4), 1 path
+Paths for end point DelayReset_0 (SLICE_X83Y182.G4), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.154ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               TrigDes_o (FF)
-  Destination:          TriggerData_15 (FF)
-  Requirement:          0.000ns
-  Data Path Delay:      0.542ns (Levels of Logic = 1)
-  Clock Path Skew:      0.000ns
-  Source Clock:         ADC_CLK_OBUF rising at 25.000ns
-  Destination Clock:    Clk40 rising at 25.000ns
-  Clock Uncertainty:    0.388ns
-
-  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.140ns
-
-  Minimum Data Path: TrigDes_o to TriggerData_15
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X102Y208.YQ    Tcko                  0.331   TrigDes_o
-                                                       TrigDes_o
-    SLICE_X102Y209.G4    net (fanout=3)        0.354   TrigDes_o
-    SLICE_X102Y209.CLK   Tckg        (-Th)     0.143   TriggerData_15
-                                                       TriggerData_15_rstpot
-                                                       TriggerData_15
-    -------------------------------------------------  ---------------------------
-    Total                                      0.542ns (0.188ns logic, 0.354ns route)
-                                                       (34.7% logic, 65.3% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point DelayReset_0 (SLICE_X84Y171.G2), 1 path
---------------------------------------------------------------------------------
-Slack (hold path):      0.335ns (requirement - (clock path skew + uncertainty - data path))
+Slack (hold path):      0.155ns (requirement - (clock path skew + uncertainty - data path))
   Source:               LT_Trig/Trig (FF)
   Destination:          DelayReset_0 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.715ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.008ns (5.880 - 5.888)
+  Data Path Delay:      0.531ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.012ns (5.875 - 5.887)
   Source Clock:         ADC_CLK_OBUF rising at 25.000ns
   Destination Clock:    Clk40 rising at 25.000ns
   Clock Uncertainty:    0.388ns
@@ -1036,43 +1022,83 @@ Slack (hold path):      0.335ns (requirement - (clock path skew + uncertainty - 
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X84Y168.YQ     Tcko                  0.331   LT_Trig/Trig
+    SLICE_X82Y182.YQ     Tcko                  0.331   LT_Trig/Trig
                                                        LT_Trig/Trig
-    SLICE_X84Y171.G2     net (fanout=6)        0.527   LT_Trig/Trig
-    SLICE_X84Y171.CLK    Tckg        (-Th)     0.143   DelayReset<0>
-                                                       DelayReset_0_and0000_inv1
+    SLICE_X83Y182.G4     net (fanout=4)        0.325   LT_Trig/Trig
+    SLICE_X83Y182.CLK    Tckg        (-Th)     0.125   DelayReset<0>
+                                                       DelayReset_0_rstpot1
                                                        DelayReset_0
     -------------------------------------------------  ---------------------------
-    Total                                      0.715ns (0.188ns logic, 0.527ns route)
-                                                       (26.3% logic, 73.7% route)
+    Total                                      0.531ns (0.206ns logic, 0.325ns route)
+                                                       (38.8% logic, 61.2% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point PowerUp2/Trig (SLICE_X79Y150.G4), 1 path
+Paths for end point DelayReset_0 (SLICE_X83Y182.G3), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.502ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               PowerUp2/Trig (FF)
-  Destination:          PowerUp2/Trig (FF)
+Slack (hold path):      0.225ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               Amp_Trig/Trig (FF)
+  Destination:          DelayReset_0 (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.502ns (Levels of Logic = 1)
-  Clock Path Skew:      0.000ns
-  Source Clock:         Clk40 rising at 25.000ns
+  Data Path Delay:      0.599ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.014ns (5.875 - 5.889)
+  Source Clock:         ADC_CLK_OBUF rising at 25.000ns
   Destination Clock:    Clk40 rising at 25.000ns
-  Clock Uncertainty:    0.000ns
+  Clock Uncertainty:    0.388ns
 
-  Minimum Data Path: PowerUp2/Trig to PowerUp2/Trig
+  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.000ns
+    Total Input Jitter (TIJ):   0.375ns
+    Discrete Jitter (DJ):       0.120ns
+    Phase Error (PE):           0.140ns
+
+  Minimum Data Path: Amp_Trig/Trig to DelayReset_0
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X79Y150.YQ     Tcko                  0.313   PowerUp2/Trig
-                                                       PowerUp2/Trig
-    SLICE_X79Y150.G4     net (fanout=2)        0.314   PowerUp2/Trig
-    SLICE_X79Y150.CLK    Tckg        (-Th)     0.125   PowerUp2/Trig
-                                                       PowerUp2/Trig_mux00001
-                                                       PowerUp2/Trig
+    SLICE_X82Y184.YQ     Tcko                  0.331   Amp_Trig/Trig
+                                                       Amp_Trig/Trig
+    SLICE_X83Y182.G3     net (fanout=4)        0.393   Amp_Trig/Trig
+    SLICE_X83Y182.CLK    Tckg        (-Th)     0.125   DelayReset<0>
+                                                       DelayReset_0_rstpot1
+                                                       DelayReset_0
     -------------------------------------------------  ---------------------------
-    Total                                      0.502ns (0.188ns logic, 0.314ns route)
-                                                       (37.5% logic, 62.5% route)
+    Total                                      0.599ns (0.206ns logic, 0.393ns route)
+                                                       (34.4% logic, 65.6% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point TriggerData_15 (SLICE_X102Y200.G3), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.370ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               TrigDes_o (FF)
+  Destination:          TriggerData_15 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.765ns (Levels of Logic = 1)
+  Clock Path Skew:      0.007ns (5.999 - 5.992)
+  Source Clock:         ADC_CLK_OBUF rising at 25.000ns
+  Destination Clock:    Clk40 rising at 25.000ns
+  Clock Uncertainty:    0.388ns
+
+  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.000ns
+    Total Input Jitter (TIJ):   0.375ns
+    Discrete Jitter (DJ):       0.120ns
+    Phase Error (PE):           0.140ns
+
+  Minimum Data Path: TrigDes_o to TriggerData_15
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X99Y200.YQ     Tcko                  0.313   TrigDes_o
+                                                       TrigDes_o
+    SLICE_X102Y200.G3    net (fanout=3)        0.595   TrigDes_o
+    SLICE_X102Y200.CLK   Tckg        (-Th)     0.143   TriggerData_15
+                                                       TriggerData_15_rstpot
+                                                       TriggerData_15
+    -------------------------------------------------  ---------------------------
+    Total                                      0.765ns (0.170ns logic, 0.595ns route)
+                                                       (22.2% logic, 77.8% route)
 
 --------------------------------------------------------------------------------
 
@@ -1085,7 +1111,7 @@ Slack: 23.600ns (period - (min low pulse limit / (low pulse / period)))
   Low pulse limit: 0.700ns (Twpl)
   Physical resource: AllReset/CLK
   Logical resource: Mshreg_AllReset/SRL16E/WS
-  Location pin: SLICE_X84Y170.CLK
+  Location pin: SLICE_X82Y183.CLK
   Clock network: Clk40
 --------------------------------------------------------------------------------
 Slack: 23.628ns (period - (min high pulse limit / (high pulse / period)))
@@ -1094,7 +1120,7 @@ Slack: 23.628ns (period - (min high pulse limit / (high pulse / period)))
   High pulse limit: 0.686ns (Twph)
   Physical resource: AllReset/CLK
   Logical resource: Mshreg_AllReset/SRL16E/WS
-  Location pin: SLICE_X84Y170.CLK
+  Location pin: SLICE_X82Y183.CLK
   Clock network: Clk40
 --------------------------------------------------------------------------------
 Slack: 23.942ns (period - (min low pulse limit / (low pulse / period)))
@@ -1103,7 +1129,7 @@ Slack: 23.942ns (period - (min low pulse limit / (low pulse / period)))
   Low pulse limit: 0.529ns (Tcl)
   Physical resource: PowerUp1/Trig/CLK
   Logical resource: PowerUp1/Trig/CK
-  Location pin: SLICE_X79Y144.CLK
+  Location pin: SLICE_X77Y148.CLK
   Clock network: Clk40
 --------------------------------------------------------------------------------
 
@@ -1112,147 +1138,18 @@ Timing constraint: TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF"
 TS_MuxClock_in / 2 HIGH 50%         INPUT_JITTER 0.375 ns;
 For more information, see Period Analysis in the Timing Closure User Guide (UG612).
 
- 169 paths analyzed, 90 endpoints analyzed, 0 failing endpoints
+ 30 paths analyzed, 26 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   3.187ns.
+ Minimum period is   3.564ns.
 --------------------------------------------------------------------------------
 
-Paths for end point GroupValue_Amp_Done (SLICE_X88Y170.G3), 18 paths
+Paths for end point Mshreg_Sub_ped_delay_3/SRL16E (SLICE_X82Y180.BY), 1 path
 --------------------------------------------------------------------------------
-Slack (setup path):     9.313ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               GroupSum_5 (FF)
-  Destination:          GroupValue_Amp_Done (FF)
-  Requirement:          12.500ns
-  Data Path Delay:      2.939ns (Levels of Logic = 3)
-  Clock Path Skew:      0.000ns
-  Source Clock:         ADC_CLK_OBUF rising at 0.000ns
-  Destination Clock:    ADC_CLK_OBUF rising at 12.500ns
-  Clock Uncertainty:    0.248ns
-
-  Clock Uncertainty:          0.248ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path: GroupSum_5 to GroupValue_Amp_Done
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X83Y168.XQ     Tcko                  0.340   GroupSum<5>
-                                                       GroupSum_5
-    SLICE_X85Y166.G2     net (fanout=3)        0.757   GroupSum<5>
-    SLICE_X85Y166.COUT   Topcyg                0.559   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_lut<5>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-    SLICE_X85Y167.CIN    net (fanout=1)        0.000   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-    SLICE_X85Y167.COUT   Tbyp                  0.086   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<6>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-    SLICE_X88Y170.G3     net (fanout=1)        0.984   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-    SLICE_X88Y170.CLK    Tgck                  0.213   GroupValue_Amp_Done
-                                                       GroupValue_Amp_Done_rstpot1
-                                                       GroupValue_Amp_Done
-    -------------------------------------------------  ---------------------------
-    Total                                      2.939ns (1.198ns logic, 1.741ns route)
-                                                       (40.8% logic, 59.2% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     9.332ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               GroupSum_2 (FF)
-  Destination:          GroupValue_Amp_Done (FF)
-  Requirement:          12.500ns
-  Data Path Delay:      2.920ns (Levels of Logic = 4)
-  Clock Path Skew:      0.000ns
-  Source Clock:         ADC_CLK_OBUF rising at 0.000ns
-  Destination Clock:    ADC_CLK_OBUF rising at 12.500ns
-  Clock Uncertainty:    0.248ns
-
-  Clock Uncertainty:          0.248ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path: GroupSum_2 to GroupValue_Amp_Done
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X83Y166.YQ     Tcko                  0.340   GroupSum<3>
-                                                       GroupSum_2
-    SLICE_X85Y165.F3     net (fanout=2)        0.638   GroupSum<2>
-    SLICE_X85Y165.COUT   Topcyf                0.573   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<3>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_lut<2>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<2>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<3>
-    SLICE_X85Y166.CIN    net (fanout=1)        0.000   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<3>
-    SLICE_X85Y166.COUT   Tbyp                  0.086   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<4>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-    SLICE_X85Y167.CIN    net (fanout=1)        0.000   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-    SLICE_X85Y167.COUT   Tbyp                  0.086   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<6>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-    SLICE_X88Y170.G3     net (fanout=1)        0.984   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-    SLICE_X88Y170.CLK    Tgck                  0.213   GroupValue_Amp_Done
-                                                       GroupValue_Amp_Done_rstpot1
-                                                       GroupValue_Amp_Done
-    -------------------------------------------------  ---------------------------
-    Total                                      2.920ns (1.298ns logic, 1.622ns route)
-                                                       (44.5% logic, 55.5% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     9.337ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               GroupSum_2 (FF)
-  Destination:          GroupValue_Amp_Done (FF)
-  Requirement:          12.500ns
-  Data Path Delay:      2.915ns (Levels of Logic = 4)
-  Clock Path Skew:      0.000ns
-  Source Clock:         ADC_CLK_OBUF rising at 0.000ns
-  Destination Clock:    ADC_CLK_OBUF rising at 12.500ns
-  Clock Uncertainty:    0.248ns
-
-  Clock Uncertainty:          0.248ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.000ns
-
-  Maximum Data Path: GroupSum_2 to GroupValue_Amp_Done
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X83Y166.YQ     Tcko                  0.340   GroupSum<3>
-                                                       GroupSum_2
-    SLICE_X85Y165.F3     net (fanout=2)        0.638   GroupSum<2>
-    SLICE_X85Y165.COUT   Topcyf                0.568   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<3>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<2>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<3>
-    SLICE_X85Y166.CIN    net (fanout=1)        0.000   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<3>
-    SLICE_X85Y166.COUT   Tbyp                  0.086   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<4>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-    SLICE_X85Y167.CIN    net (fanout=1)        0.000   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<5>
-    SLICE_X85Y167.COUT   Tbyp                  0.086   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<6>
-                                                       Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-    SLICE_X88Y170.G3     net (fanout=1)        0.984   Mcompar_GroupValue_Amp_Done_cmp_gt0000_cy<7>
-    SLICE_X88Y170.CLK    Tgck                  0.213   GroupValue_Amp_Done
-                                                       GroupValue_Amp_Done_rstpot1
-                                                       GroupValue_Amp_Done
-    -------------------------------------------------  ---------------------------
-    Total                                      2.915ns (1.293ns logic, 1.622ns route)
-                                                       (44.4% logic, 55.6% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point Sub_Ped_0 (SLICE_X81Y166.BY), 1 path
---------------------------------------------------------------------------------
-Slack (setup path):     9.421ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     8.936ns (requirement - (data path - clock path skew + uncertainty))
   Source:               Mrom__varindex0000 (RAM)
-  Destination:          Sub_Ped_0 (FF)
+  Destination:          Mshreg_Sub_ped_delay_3/SRL16E (FF)
   Requirement:          12.500ns
-  Data Path Delay:      2.831ns (Levels of Logic = 0)
+  Data Path Delay:      3.316ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
   Source Clock:         ADC_CLK_OBUF rising at 0.000ns
   Destination Clock:    ADC_CLK_OBUF rising at 12.500ns
@@ -1264,28 +1161,61 @@ Slack (setup path):     9.421ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.120ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: Mrom__varindex0000 to Sub_Ped_0
+  Maximum Data Path: Mrom__varindex0000 to Mshreg_Sub_ped_delay_3/SRL16E
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X2Y21.DOA0    Trcko_DOWA            2.100   Mrom__varindex0000
+    RAMB16_X2Y22.DOA3    Trcko_DOWA            2.100   Mrom__varindex0000
                                                        Mrom__varindex0000
-    SLICE_X81Y166.BY     net (fanout=2)        0.439   Test_0_OBUF
-    SLICE_X81Y166.CLK    Tdick                 0.292   Sub_Ped<1>
-                                                       Sub_Ped_0
+    SLICE_X82Y180.BY     net (fanout=2)        0.920   Test_3_OBUF
+    SLICE_X82Y180.CLK    Tds                   0.296   Sub_ped_delay<4>
+                                                       Mshreg_Sub_ped_delay_3/SRL16E
     -------------------------------------------------  ---------------------------
-    Total                                      2.831ns (2.392ns logic, 0.439ns route)
-                                                       (84.5% logic, 15.5% route)
+    Total                                      3.316ns (2.396ns logic, 0.920ns route)
+                                                       (72.3% logic, 27.7% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point Sub_Ped_2 (SLICE_X81Y169.BY), 1 path
+Paths for end point Led_B/ES1/Trig0 (SLICE_X58Y174.BY), 1 path
 --------------------------------------------------------------------------------
-Slack (setup path):     9.421ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     9.041ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               FastTrigDes_o (FF)
+  Destination:          Led_B/ES1/Trig0 (FF)
+  Requirement:          12.500ns
+  Data Path Delay:      2.943ns (Levels of Logic = 0)
+  Clock Path Skew:      -0.268ns (1.607 - 1.875)
+  Source Clock:         ADC_CLK_OBUF rising at 0.000ns
+  Destination Clock:    ADC_CLK_OBUF rising at 12.500ns
+  Clock Uncertainty:    0.248ns
+
+  Clock Uncertainty:          0.248ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.000ns
+    Total Input Jitter (TIJ):   0.375ns
+    Discrete Jitter (DJ):       0.120ns
+    Phase Error (PE):           0.000ns
+
+  Maximum Data Path: FastTrigDes_o to Led_B/ES1/Trig0
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X94Y198.YQ     Tcko                  0.360   FastTrigDes_o
+                                                       FastTrigDes_o
+    SLICE_X58Y174.BY     net (fanout=6)        2.303   FastTrigDes_o
+    SLICE_X58Y174.CLK    Tdick                 0.280   Led_B/ES1/Trig1
+                                                       Led_B/ES1/Trig0
+    -------------------------------------------------  ---------------------------
+    Total                                      2.943ns (0.640ns logic, 2.303ns route)
+                                                       (21.7% logic, 78.3% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point Mshreg_Sub_ped_delay_4/SRL16E (SLICE_X82Y180.BX), 1 path
+--------------------------------------------------------------------------------
+Slack (setup path):     9.118ns (requirement - (data path - clock path skew + uncertainty))
   Source:               Mrom__varindex0000 (RAM)
-  Destination:          Sub_Ped_2 (FF)
+  Destination:          Mshreg_Sub_ped_delay_4/SRL16E (FF)
   Requirement:          12.500ns
-  Data Path Delay:      2.831ns (Levels of Logic = 0)
+  Data Path Delay:      3.134ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
   Source Clock:         ADC_CLK_OBUF rising at 0.000ns
   Destination Clock:    ADC_CLK_OBUF rising at 12.500ns
@@ -1297,18 +1227,18 @@ Slack (setup path):     9.421ns (requirement - (data path - clock path skew + un
     Discrete Jitter (DJ):       0.120ns
     Phase Error (PE):           0.000ns
 
-  Maximum Data Path: Mrom__varindex0000 to Sub_Ped_2
+  Maximum Data Path: Mrom__varindex0000 to Mshreg_Sub_ped_delay_4/SRL16E
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    RAMB16_X2Y21.DOA2    Trcko_DOWA            2.100   Mrom__varindex0000
+    RAMB16_X2Y22.DOA4    Trcko_DOWA            2.100   Mrom__varindex0000
                                                        Mrom__varindex0000
-    SLICE_X81Y169.BY     net (fanout=2)        0.439   Test_2_OBUF
-    SLICE_X81Y169.CLK    Tdick                 0.292   Sub_Ped<3>
-                                                       Sub_Ped_2
+    SLICE_X82Y180.BX     net (fanout=1)        0.612   rdata<4>
+    SLICE_X82Y180.CLK    Tds                   0.422   Sub_ped_delay<4>
+                                                       Mshreg_Sub_ped_delay_4/SRL16E
     -------------------------------------------------  ---------------------------
-    Total                                      2.831ns (2.392ns logic, 0.439ns route)
-                                                       (84.5% logic, 15.5% route)
+    Total                                      3.134ns (2.522ns logic, 0.612ns route)
+                                                       (80.5% logic, 19.5% route)
 
 --------------------------------------------------------------------------------
 
@@ -1316,14 +1246,14 @@ Hold Paths: TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_MuxClock_in / 2
         INPUT_JITTER 0.375 ns;
 --------------------------------------------------------------------------------
 
-Paths for end point LT_Trig/Trig (SLICE_X84Y168.G2), 1 path
+Paths for end point LT_Trig/Trig (SLICE_X82Y182.G2), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.329ns (requirement - (clock path skew + uncertainty - data path))
+Slack (hold path):      0.293ns (requirement - (clock path skew + uncertainty - data path))
   Source:               AllReset (FF)
   Destination:          LT_Trig/Trig (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.725ns (Levels of Logic = 1)
-  Clock Path Skew:      0.008ns (5.888 - 5.880)
+  Data Path Delay:      0.693ns (Levels of Logic = 1)
+  Clock Path Skew:      0.012ns (5.887 - 5.875)
   Source Clock:         Clk40 rising at 0.000ns
   Destination Clock:    ADC_CLK_OBUF rising at 0.000ns
   Clock Uncertainty:    0.388ns
@@ -1338,26 +1268,26 @@ Slack (hold path):      0.329ns (requirement - (clock path skew + uncertainty - 
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X84Y170.YQ     Tcko                  0.331   AllReset
+    SLICE_X82Y183.YQ     Tcko                  0.331   AllReset
                                                        AllReset
-    SLICE_X84Y168.G2     net (fanout=8)        0.537   AllReset
-    SLICE_X84Y168.CLK    Tckg        (-Th)     0.143   LT_Trig/Trig
+    SLICE_X82Y182.G2     net (fanout=5)        0.505   AllReset
+    SLICE_X82Y182.CLK    Tckg        (-Th)     0.143   LT_Trig/Trig
                                                        LT_Trig/Trig_mux00001
                                                        LT_Trig/Trig
     -------------------------------------------------  ---------------------------
-    Total                                      0.725ns (0.188ns logic, 0.537ns route)
-                                                       (25.9% logic, 74.1% route)
+    Total                                      0.693ns (0.188ns logic, 0.505ns route)
+                                                       (27.1% logic, 72.9% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point Amp_Trig/Trig (SLICE_X89Y170.G3), 1 path
+Paths for end point Amp_Trig/Trig (SLICE_X82Y184.G1), 1 path
 --------------------------------------------------------------------------------
-Slack (hold path):      0.436ns (requirement - (clock path skew + uncertainty - data path))
+Slack (hold path):      0.349ns (requirement - (clock path skew + uncertainty - data path))
   Source:               AllReset (FF)
   Destination:          Amp_Trig/Trig (FF)
   Requirement:          0.000ns
-  Data Path Delay:      0.866ns (Levels of Logic = 1)
-  Clock Path Skew:      0.042ns (5.922 - 5.880)
+  Data Path Delay:      0.751ns (Levels of Logic = 1)
+  Clock Path Skew:      0.014ns (5.889 - 5.875)
   Source Clock:         Clk40 rising at 0.000ns
   Destination Clock:    ADC_CLK_OBUF rising at 0.000ns
   Clock Uncertainty:    0.388ns
@@ -1372,23 +1302,23 @@ Slack (hold path):      0.436ns (requirement - (clock path skew + uncertainty - 
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X84Y170.YQ     Tcko                  0.331   AllReset
+    SLICE_X82Y183.YQ     Tcko                  0.331   AllReset
                                                        AllReset
-    SLICE_X89Y170.G3     net (fanout=8)        0.660   AllReset
-    SLICE_X89Y170.CLK    Tckg        (-Th)     0.125   Amp_Trig/Trig
+    SLICE_X82Y184.G1     net (fanout=5)        0.563   AllReset
+    SLICE_X82Y184.CLK    Tckg        (-Th)     0.143   Amp_Trig/Trig
                                                        Amp_Trig/Trig_mux00001
                                                        Amp_Trig/Trig
     -------------------------------------------------  ---------------------------
-    Total                                      0.866ns (0.206ns logic, 0.660ns route)
-                                                       (23.8% logic, 76.2% route)
+    Total                                      0.751ns (0.188ns logic, 0.563ns route)
+                                                       (25.0% logic, 75.0% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point Led_B/DurTrig_SRFF/Trig (SLICE_X58Y174.G4), 1 path
+Paths for end point Amp_Trig/Trig (SLICE_X82Y184.G4), 1 path
 --------------------------------------------------------------------------------
 Slack (hold path):      0.501ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               Led_B/ES1/Trig1 (FF)
-  Destination:          Led_B/DurTrig_SRFF/Trig (FF)
+  Source:               GroupValue_Amp_Done (FF)
+  Destination:          Amp_Trig/Trig (FF)
   Requirement:          0.000ns
   Data Path Delay:      0.501ns (Levels of Logic = 1)
   Clock Path Skew:      0.000ns
@@ -1396,16 +1326,16 @@ Slack (hold path):      0.501ns (requirement - (clock path skew + uncertainty - 
   Destination Clock:    ADC_CLK_OBUF rising at 12.500ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path: Led_B/ES1/Trig1 to Led_B/DurTrig_SRFF/Trig
+  Minimum Data Path: GroupValue_Amp_Done to Amp_Trig/Trig
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X59Y175.XQ     Tcko                  0.313   Led_B/ES1/Trig1
-                                                       Led_B/ES1/Trig1
-    SLICE_X58Y174.G4     net (fanout=2)        0.331   Led_B/ES1/Trig1
-    SLICE_X58Y174.CLK    Tckg        (-Th)     0.143   Led_B/DurTrig_SRFF/Trig
-                                                       Led_B/DurTrig_SRFF/Trig_mux00001
-                                                       Led_B/DurTrig_SRFF/Trig
+    SLICE_X83Y184.YQ     Tcko                  0.313   GroupValue_Amp_Done
+                                                       GroupValue_Amp_Done
+    SLICE_X82Y184.G4     net (fanout=2)        0.331   GroupValue_Amp_Done
+    SLICE_X82Y184.CLK    Tckg        (-Th)     0.143   Amp_Trig/Trig
+                                                       Amp_Trig/Trig_mux00001
+                                                       Amp_Trig/Trig
     -------------------------------------------------  ---------------------------
     Total                                      0.501ns (0.170ns logic, 0.331ns route)
                                                        (33.9% logic, 66.1% route)
@@ -1420,25 +1350,25 @@ Slack: 10.000ns (period - min period limit)
   Min period limit: 2.500ns (400.000MHz) (Trper_CLKA)
   Physical resource: Mrom__varindex0000/CLKA
   Logical resource: Mrom__varindex0000/CLKA
-  Location pin: RAMB16_X2Y21.CLKA
+  Location pin: RAMB16_X2Y22.CLKA
   Clock network: ADC_CLK_OBUF
 --------------------------------------------------------------------------------
-Slack: 11.442ns (period - (min low pulse limit / (low pulse / period)))
+Slack: 11.100ns (period - (min low pulse limit / (low pulse / period)))
   Period: 12.500ns
   Low pulse: 6.250ns
-  Low pulse limit: 0.529ns (Tcl)
-  Physical resource: AverData<1>/CLK
-  Logical resource: AverData_1/CK
-  Location pin: SLICE_X80Y167.CLK
+  Low pulse limit: 0.700ns (Twpl)
+  Physical resource: Sub_ped_delay<4>/CLK
+  Logical resource: Mshreg_Sub_ped_delay_4/SRL16E/WS
+  Location pin: SLICE_X82Y180.CLK
   Clock network: ADC_CLK_OBUF
 --------------------------------------------------------------------------------
-Slack: 11.442ns (period - (min low pulse limit / (low pulse / period)))
+Slack: 11.100ns (period - (min low pulse limit / (low pulse / period)))
   Period: 12.500ns
   Low pulse: 6.250ns
-  Low pulse limit: 0.529ns (Tcl)
-  Physical resource: AverData<2>/CLK
-  Logical resource: AverData_2/CK
-  Location pin: SLICE_X80Y168.CLK
+  Low pulse limit: 0.700ns (Twpl)
+  Physical resource: Sub_ped_delay<4>/CLK
+  Logical resource: Mshreg_Sub_ped_delay_3/SRL16E/WS
+  Location pin: SLICE_X82Y180.CLK
   Clock network: ADC_CLK_OBUF
 --------------------------------------------------------------------------------
 
@@ -1449,86 +1379,17 @@ For more information, see Period Analysis in the Timing Closure User Guide (UG61
 
  120 paths analyzed, 81 endpoints analyzed, 0 failing endpoints
  0 timing errors detected. (0 setup errors, 0 hold errors, 0 component switching limit errors)
- Minimum period is   8.790ns.
+ Minimum period is   9.428ns.
 --------------------------------------------------------------------------------
 
-Paths for end point ADCTest/count_4 (SLICE_X56Y160.SR), 2 paths
+Paths for end point ADCTest/count_5 (SLICE_X59Y160.SR), 2 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     20.605ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               PowerUp1/Trig (FF)
-  Destination:          ADCTest/count_4 (FF)
-  Requirement:          25.000ns
-  Data Path Delay:      3.971ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.036ns (5.718 - 5.754)
-  Source Clock:         Clk40 rising at 25.000ns
-  Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
-  Clock Uncertainty:    0.388ns
-
-  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.140ns
-
-  Maximum Data Path: PowerUp1/Trig to ADCTest/count_4
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X79Y144.XQ     Tcko                  0.340   PowerUp1/Trig
-                                                       PowerUp1/Trig
-    SLICE_X70Y150.G4     net (fanout=4)        0.974   PowerUp1/Trig
-    SLICE_X70Y150.Y      Tilo                  0.195   PwrUpReset
-                                                       PwrUpReset1
-    SLICE_X56Y160.SR     net (fanout=4)        1.305   PwrUpReset
-    SLICE_X56Y160.CLK    Tsrck                 1.157   ADCTest/count<4>
-                                                       ADCTest/count_4
-    -------------------------------------------------  ---------------------------
-    Total                                      3.971ns (1.692ns logic, 2.279ns route)
-                                                       (42.6% logic, 57.4% route)
-
---------------------------------------------------------------------------------
-Slack (setup path):     20.753ns (requirement - (data path - clock path skew + uncertainty))
-  Source:               PowerUp2/Trig (FF)
-  Destination:          ADCTest/count_4 (FF)
-  Requirement:          25.000ns
-  Data Path Delay:      3.814ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.045ns (5.718 - 5.763)
-  Source Clock:         Clk40 rising at 25.000ns
-  Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
-  Clock Uncertainty:    0.388ns
-
-  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
-    Total System Jitter (TSJ):  0.000ns
-    Total Input Jitter (TIJ):   0.375ns
-    Discrete Jitter (DJ):       0.120ns
-    Phase Error (PE):           0.140ns
-
-  Maximum Data Path: PowerUp2/Trig to ADCTest/count_4
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X79Y150.YQ     Tcko                  0.340   PowerUp2/Trig
-                                                       PowerUp2/Trig
-    SLICE_X70Y150.G3     net (fanout=2)        0.817   PowerUp2/Trig
-    SLICE_X70Y150.Y      Tilo                  0.195   PwrUpReset
-                                                       PwrUpReset1
-    SLICE_X56Y160.SR     net (fanout=4)        1.305   PwrUpReset
-    SLICE_X56Y160.CLK    Tsrck                 1.157   ADCTest/count<4>
-                                                       ADCTest/count_4
-    -------------------------------------------------  ---------------------------
-    Total                                      3.814ns (1.692ns logic, 2.122ns route)
-                                                       (44.4% logic, 55.6% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point ADCTest/count_5 (SLICE_X56Y161.SR), 2 paths
---------------------------------------------------------------------------------
-Slack (setup path):     20.614ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     20.286ns (requirement - (data path - clock path skew + uncertainty))
   Source:               PowerUp1/Trig (FF)
   Destination:          ADCTest/count_5 (FF)
   Requirement:          25.000ns
-  Data Path Delay:      3.962ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.036ns (5.718 - 5.754)
+  Data Path Delay:      4.299ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.027ns (5.727 - 5.754)
   Source Clock:         Clk40 rising at 25.000ns
   Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
   Clock Uncertainty:    0.388ns
@@ -1543,25 +1404,25 @@ Slack (setup path):     20.614ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X79Y144.XQ     Tcko                  0.340   PowerUp1/Trig
+    SLICE_X77Y148.XQ     Tcko                  0.340   PowerUp1/Trig
                                                        PowerUp1/Trig
-    SLICE_X70Y150.G4     net (fanout=4)        0.974   PowerUp1/Trig
-    SLICE_X70Y150.Y      Tilo                  0.195   PwrUpReset
+    SLICE_X76Y138.G1     net (fanout=4)        1.002   PowerUp1/Trig
+    SLICE_X76Y138.Y      Tilo                  0.195   PwrUpReset
                                                        PwrUpReset1
-    SLICE_X56Y161.SR     net (fanout=4)        1.296   PwrUpReset
-    SLICE_X56Y161.CLK    Tsrck                 1.157   ADCTest/count<5>
+    SLICE_X59Y160.SR     net (fanout=4)        1.725   PwrUpReset
+    SLICE_X59Y160.CLK    Tsrck                 1.037   ADCTest/count<5>
                                                        ADCTest/count_5
     -------------------------------------------------  ---------------------------
-    Total                                      3.962ns (1.692ns logic, 2.270ns route)
-                                                       (42.7% logic, 57.3% route)
+    Total                                      4.299ns (1.572ns logic, 2.727ns route)
+                                                       (36.6% logic, 63.4% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     20.762ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     20.928ns (requirement - (data path - clock path skew + uncertainty))
   Source:               PowerUp2/Trig (FF)
   Destination:          ADCTest/count_5 (FF)
   Requirement:          25.000ns
-  Data Path Delay:      3.805ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.045ns (5.718 - 5.763)
+  Data Path Delay:      3.657ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.027ns (5.727 - 5.754)
   Source Clock:         Clk40 rising at 25.000ns
   Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
   Clock Uncertainty:    0.388ns
@@ -1576,28 +1437,97 @@ Slack (setup path):     20.762ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X79Y150.YQ     Tcko                  0.340   PowerUp2/Trig
+    SLICE_X77Y138.YQ     Tcko                  0.340   PowerUp2/Trig
                                                        PowerUp2/Trig
-    SLICE_X70Y150.G3     net (fanout=2)        0.817   PowerUp2/Trig
-    SLICE_X70Y150.Y      Tilo                  0.195   PwrUpReset
+    SLICE_X76Y138.G4     net (fanout=2)        0.360   PowerUp2/Trig
+    SLICE_X76Y138.Y      Tilo                  0.195   PwrUpReset
                                                        PwrUpReset1
-    SLICE_X56Y161.SR     net (fanout=4)        1.296   PwrUpReset
-    SLICE_X56Y161.CLK    Tsrck                 1.157   ADCTest/count<5>
+    SLICE_X59Y160.SR     net (fanout=4)        1.725   PwrUpReset
+    SLICE_X59Y160.CLK    Tsrck                 1.037   ADCTest/count<5>
                                                        ADCTest/count_5
     -------------------------------------------------  ---------------------------
-    Total                                      3.805ns (1.692ns logic, 2.113ns route)
-                                                       (44.5% logic, 55.5% route)
+    Total                                      3.657ns (1.572ns logic, 2.085ns route)
+                                                       (43.0% logic, 57.0% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point ADCTest/count_0 (SLICE_X57Y162.SR), 2 paths
+Paths for end point ADCTest/count_4 (SLICE_X58Y161.SR), 2 paths
 --------------------------------------------------------------------------------
-Slack (setup path):     20.716ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     20.365ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PowerUp1/Trig (FF)
+  Destination:          ADCTest/count_4 (FF)
+  Requirement:          25.000ns
+  Data Path Delay:      4.220ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.027ns (5.727 - 5.754)
+  Source Clock:         Clk40 rising at 25.000ns
+  Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
+  Clock Uncertainty:    0.388ns
+
+  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.000ns
+    Total Input Jitter (TIJ):   0.375ns
+    Discrete Jitter (DJ):       0.120ns
+    Phase Error (PE):           0.140ns
+
+  Maximum Data Path: PowerUp1/Trig to ADCTest/count_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X77Y148.XQ     Tcko                  0.340   PowerUp1/Trig
+                                                       PowerUp1/Trig
+    SLICE_X76Y138.G1     net (fanout=4)        1.002   PowerUp1/Trig
+    SLICE_X76Y138.Y      Tilo                  0.195   PwrUpReset
+                                                       PwrUpReset1
+    SLICE_X58Y161.SR     net (fanout=4)        1.526   PwrUpReset
+    SLICE_X58Y161.CLK    Tsrck                 1.157   ADCTest/count<4>
+                                                       ADCTest/count_4
+    -------------------------------------------------  ---------------------------
+    Total                                      4.220ns (1.692ns logic, 2.528ns route)
+                                                       (40.1% logic, 59.9% route)
+
+--------------------------------------------------------------------------------
+Slack (setup path):     21.007ns (requirement - (data path - clock path skew + uncertainty))
+  Source:               PowerUp2/Trig (FF)
+  Destination:          ADCTest/count_4 (FF)
+  Requirement:          25.000ns
+  Data Path Delay:      3.578ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.027ns (5.727 - 5.754)
+  Source Clock:         Clk40 rising at 25.000ns
+  Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
+  Clock Uncertainty:    0.388ns
+
+  Clock Uncertainty:          0.388ns  ((TSJ^2 + TIJ^2)^1/2 + DJ) / 2 + PE
+    Total System Jitter (TSJ):  0.000ns
+    Total Input Jitter (TIJ):   0.375ns
+    Discrete Jitter (DJ):       0.120ns
+    Phase Error (PE):           0.140ns
+
+  Maximum Data Path: PowerUp2/Trig to ADCTest/count_4
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X77Y138.YQ     Tcko                  0.340   PowerUp2/Trig
+                                                       PowerUp2/Trig
+    SLICE_X76Y138.G4     net (fanout=2)        0.360   PowerUp2/Trig
+    SLICE_X76Y138.Y      Tilo                  0.195   PwrUpReset
+                                                       PwrUpReset1
+    SLICE_X58Y161.SR     net (fanout=4)        1.526   PwrUpReset
+    SLICE_X58Y161.CLK    Tsrck                 1.157   ADCTest/count<4>
+                                                       ADCTest/count_4
+    -------------------------------------------------  ---------------------------
+    Total                                      3.578ns (1.692ns logic, 1.886ns route)
+                                                       (47.3% logic, 52.7% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ADCTest/count_0 (SLICE_X58Y160.SR), 2 paths
+--------------------------------------------------------------------------------
+Slack (setup path):     20.365ns (requirement - (data path - clock path skew + uncertainty))
   Source:               PowerUp1/Trig (FF)
   Destination:          ADCTest/count_0 (FF)
   Requirement:          25.000ns
-  Data Path Delay:      3.858ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.038ns (5.716 - 5.754)
+  Data Path Delay:      4.220ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.027ns (5.727 - 5.754)
   Source Clock:         Clk40 rising at 25.000ns
   Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
   Clock Uncertainty:    0.388ns
@@ -1612,25 +1542,25 @@ Slack (setup path):     20.716ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X79Y144.XQ     Tcko                  0.340   PowerUp1/Trig
+    SLICE_X77Y148.XQ     Tcko                  0.340   PowerUp1/Trig
                                                        PowerUp1/Trig
-    SLICE_X70Y150.G4     net (fanout=4)        0.974   PowerUp1/Trig
-    SLICE_X70Y150.Y      Tilo                  0.195   PwrUpReset
+    SLICE_X76Y138.G1     net (fanout=4)        1.002   PowerUp1/Trig
+    SLICE_X76Y138.Y      Tilo                  0.195   PwrUpReset
                                                        PwrUpReset1
-    SLICE_X57Y162.SR     net (fanout=4)        1.312   PwrUpReset
-    SLICE_X57Y162.CLK    Tsrck                 1.037   ADCTest/count<0>
+    SLICE_X58Y160.SR     net (fanout=4)        1.526   PwrUpReset
+    SLICE_X58Y160.CLK    Tsrck                 1.157   ADCTest/count<0>
                                                        ADCTest/count_0
     -------------------------------------------------  ---------------------------
-    Total                                      3.858ns (1.572ns logic, 2.286ns route)
-                                                       (40.7% logic, 59.3% route)
+    Total                                      4.220ns (1.692ns logic, 2.528ns route)
+                                                       (40.1% logic, 59.9% route)
 
 --------------------------------------------------------------------------------
-Slack (setup path):     20.864ns (requirement - (data path - clock path skew + uncertainty))
+Slack (setup path):     21.007ns (requirement - (data path - clock path skew + uncertainty))
   Source:               PowerUp2/Trig (FF)
   Destination:          ADCTest/count_0 (FF)
   Requirement:          25.000ns
-  Data Path Delay:      3.701ns (Levels of Logic = 1)
-  Clock Path Skew:      -0.047ns (5.716 - 5.763)
+  Data Path Delay:      3.578ns (Levels of Logic = 1)
+  Clock Path Skew:      -0.027ns (5.727 - 5.754)
   Source Clock:         Clk40 rising at 25.000ns
   Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
   Clock Uncertainty:    0.388ns
@@ -1645,17 +1575,17 @@ Slack (setup path):     20.864ns (requirement - (data path - clock path skew + u
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X79Y150.YQ     Tcko                  0.340   PowerUp2/Trig
+    SLICE_X77Y138.YQ     Tcko                  0.340   PowerUp2/Trig
                                                        PowerUp2/Trig
-    SLICE_X70Y150.G3     net (fanout=2)        0.817   PowerUp2/Trig
-    SLICE_X70Y150.Y      Tilo                  0.195   PwrUpReset
+    SLICE_X76Y138.G4     net (fanout=2)        0.360   PowerUp2/Trig
+    SLICE_X76Y138.Y      Tilo                  0.195   PwrUpReset
                                                        PwrUpReset1
-    SLICE_X57Y162.SR     net (fanout=4)        1.312   PwrUpReset
-    SLICE_X57Y162.CLK    Tsrck                 1.037   ADCTest/count<0>
+    SLICE_X58Y160.SR     net (fanout=4)        1.526   PwrUpReset
+    SLICE_X58Y160.CLK    Tsrck                 1.157   ADCTest/count<0>
                                                        ADCTest/count_0
     -------------------------------------------------  ---------------------------
-    Total                                      3.701ns (1.572ns logic, 2.129ns route)
-                                                       (42.5% logic, 57.5% route)
+    Total                                      3.578ns (1.692ns logic, 1.886ns route)
+                                                       (47.3% logic, 52.7% route)
 
 --------------------------------------------------------------------------------
 
@@ -1663,11 +1593,38 @@ Hold Paths: TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CLKDV_BUF" TS_MuxClock_in * 2
         INPUT_JITTER 0.375 ns;
 --------------------------------------------------------------------------------
 
-Paths for end point ShiftReg_test/tmp_13 (SLICE_X51Y131.BX), 1 path
+Paths for end point ShiftReg_test/tmp_34 (SLICE_X52Y148.BY), 1 path
+--------------------------------------------------------------------------------
+Slack (hold path):      0.514ns (requirement - (clock path skew + uncertainty - data path))
+  Source:               ShiftReg_test/tmp_33 (FF)
+  Destination:          ShiftReg_test/tmp_34 (FF)
+  Requirement:          0.000ns
+  Data Path Delay:      0.545ns (Levels of Logic = 0)
+  Clock Path Skew:      0.031ns (0.680 - 0.649)
+  Source Clock:         ADC_SCLK_OBUF rising at 50.000ns
+  Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
+  Clock Uncertainty:    0.000ns
+
+  Minimum Data Path: ShiftReg_test/tmp_33 to ShiftReg_test/tmp_34
+    Location             Delay type         Delay(ns)  Physical Resource
+                                                       Logical Resource(s)
+    -------------------------------------------------  -------------------
+    SLICE_X54Y148.XQ     Tcko                  0.331   ShiftReg_test/tmp<33>
+                                                       ShiftReg_test/tmp_33
+    SLICE_X52Y148.BY     net (fanout=1)        0.295   ShiftReg_test/tmp<33>
+    SLICE_X52Y148.CLK    Tckdi       (-Th)     0.081   ShiftReg_test/tmp<35>
+                                                       ShiftReg_test/tmp_34
+    -------------------------------------------------  ---------------------------
+    Total                                      0.545ns (0.250ns logic, 0.295ns route)
+                                                       (45.9% logic, 54.1% route)
+
+--------------------------------------------------------------------------------
+
+Paths for end point ShiftReg_test/tmp_19 (SLICE_X53Y145.BX), 1 path
 --------------------------------------------------------------------------------
 Slack (hold path):      0.523ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               ShiftReg_test/tmp_12 (FF)
-  Destination:          ShiftReg_test/tmp_13 (FF)
+  Source:               ShiftReg_test/tmp_18 (FF)
+  Destination:          ShiftReg_test/tmp_19 (FF)
   Requirement:          0.000ns
   Data Path Delay:      0.523ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
@@ -1675,26 +1632,26 @@ Slack (hold path):      0.523ns (requirement - (clock path skew + uncertainty - 
   Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path: ShiftReg_test/tmp_12 to ShiftReg_test/tmp_13
+  Minimum Data Path: ShiftReg_test/tmp_18 to ShiftReg_test/tmp_19
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X51Y131.YQ     Tcko                  0.313   ShiftReg_test/tmp<13>
-                                                       ShiftReg_test/tmp_12
-    SLICE_X51Y131.BX     net (fanout=1)        0.289   ShiftReg_test/tmp<12>
-    SLICE_X51Y131.CLK    Tckdi       (-Th)     0.079   ShiftReg_test/tmp<13>
-                                                       ShiftReg_test/tmp_13
+    SLICE_X53Y145.YQ     Tcko                  0.313   ShiftReg_test/tmp<19>
+                                                       ShiftReg_test/tmp_18
+    SLICE_X53Y145.BX     net (fanout=1)        0.289   ShiftReg_test/tmp<18>
+    SLICE_X53Y145.CLK    Tckdi       (-Th)     0.079   ShiftReg_test/tmp<19>
+                                                       ShiftReg_test/tmp_19
     -------------------------------------------------  ---------------------------
     Total                                      0.523ns (0.234ns logic, 0.289ns route)
                                                        (44.7% logic, 55.3% route)
 
 --------------------------------------------------------------------------------
 
-Paths for end point ShiftReg_test/tmp_23 (SLICE_X49Y130.BX), 1 path
+Paths for end point ShiftReg_test/tmp_27 (SLICE_X53Y150.BX), 1 path
 --------------------------------------------------------------------------------
 Slack (hold path):      0.523ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               ShiftReg_test/tmp_22 (FF)
-  Destination:          ShiftReg_test/tmp_23 (FF)
+  Source:               ShiftReg_test/tmp_26 (FF)
+  Destination:          ShiftReg_test/tmp_27 (FF)
   Requirement:          0.000ns
   Data Path Delay:      0.523ns (Levels of Logic = 0)
   Clock Path Skew:      0.000ns
@@ -1702,42 +1659,15 @@ Slack (hold path):      0.523ns (requirement - (clock path skew + uncertainty - 
   Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
   Clock Uncertainty:    0.000ns
 
-  Minimum Data Path: ShiftReg_test/tmp_22 to ShiftReg_test/tmp_23
+  Minimum Data Path: ShiftReg_test/tmp_26 to ShiftReg_test/tmp_27
     Location             Delay type         Delay(ns)  Physical Resource
                                                        Logical Resource(s)
     -------------------------------------------------  -------------------
-    SLICE_X49Y130.YQ     Tcko                  0.313   ShiftReg_test/tmp<23>
-                                                       ShiftReg_test/tmp_22
-    SLICE_X49Y130.BX     net (fanout=1)        0.289   ShiftReg_test/tmp<22>
-    SLICE_X49Y130.CLK    Tckdi       (-Th)     0.079   ShiftReg_test/tmp<23>
-                                                       ShiftReg_test/tmp_23
-    -------------------------------------------------  ---------------------------
-    Total                                      0.523ns (0.234ns logic, 0.289ns route)
-                                                       (44.7% logic, 55.3% route)
-
---------------------------------------------------------------------------------
-
-Paths for end point ShiftReg_test/tmp_31 (SLICE_X49Y144.BX), 1 path
---------------------------------------------------------------------------------
-Slack (hold path):      0.523ns (requirement - (clock path skew + uncertainty - data path))
-  Source:               ShiftReg_test/tmp_30 (FF)
-  Destination:          ShiftReg_test/tmp_31 (FF)
-  Requirement:          0.000ns
-  Data Path Delay:      0.523ns (Levels of Logic = 0)
-  Clock Path Skew:      0.000ns
-  Source Clock:         ADC_SCLK_OBUF rising at 50.000ns
-  Destination Clock:    ADC_SCLK_OBUF rising at 50.000ns
-  Clock Uncertainty:    0.000ns
-
-  Minimum Data Path: ShiftReg_test/tmp_30 to ShiftReg_test/tmp_31
-    Location             Delay type         Delay(ns)  Physical Resource
-                                                       Logical Resource(s)
-    -------------------------------------------------  -------------------
-    SLICE_X49Y144.YQ     Tcko                  0.313   ShiftReg_test/tmp<31>
-                                                       ShiftReg_test/tmp_30
-    SLICE_X49Y144.BX     net (fanout=1)        0.289   ShiftReg_test/tmp<30>
-    SLICE_X49Y144.CLK    Tckdi       (-Th)     0.079   ShiftReg_test/tmp<31>
-                                                       ShiftReg_test/tmp_31
+    SLICE_X53Y150.YQ     Tcko                  0.313   ShiftReg_test/tmp<27>
+                                                       ShiftReg_test/tmp_26
+    SLICE_X53Y150.BX     net (fanout=1)        0.289   ShiftReg_test/tmp<26>
+    SLICE_X53Y150.CLK    Tckdi       (-Th)     0.079   ShiftReg_test/tmp<27>
+                                                       ShiftReg_test/tmp_27
     -------------------------------------------------  ---------------------------
     Total                                      0.523ns (0.234ns logic, 0.289ns route)
                                                        (44.7% logic, 55.3% route)
@@ -1753,7 +1683,7 @@ Slack: 48.638ns (period - (min low pulse limit / (low pulse / period)))
   Low pulse limit: 0.681ns (Trpw)
   Physical resource: ShiftReg_test/tmp<13>/SR
   Logical resource: ShiftReg_test/tmp_13/SR
-  Location pin: SLICE_X51Y131.SR
+  Location pin: SLICE_X53Y147.SR
   Clock network: ADCtest_reg_sset
 --------------------------------------------------------------------------------
 Slack: 48.638ns (period - (min high pulse limit / (high pulse / period)))
@@ -1762,7 +1692,7 @@ Slack: 48.638ns (period - (min high pulse limit / (high pulse / period)))
   High pulse limit: 0.681ns (Trpw)
   Physical resource: ShiftReg_test/tmp<13>/SR
   Logical resource: ShiftReg_test/tmp_13/SR
-  Location pin: SLICE_X51Y131.SR
+  Location pin: SLICE_X53Y147.SR
   Clock network: ADCtest_reg_sset
 --------------------------------------------------------------------------------
 Slack: 48.638ns (period - (min low pulse limit / (low pulse / period)))
@@ -1771,7 +1701,7 @@ Slack: 48.638ns (period - (min low pulse limit / (low pulse / period)))
   Low pulse limit: 0.681ns (Trpw)
   Physical resource: ShiftReg_test/tmp<13>/SR
   Logical resource: ShiftReg_test/tmp_12/SR
-  Location pin: SLICE_X51Y131.SR
+  Location pin: SLICE_X53Y147.SR
   Clock network: ADCtest_reg_sset
 --------------------------------------------------------------------------------
 
@@ -1783,10 +1713,10 @@ Derived Constraints for TS_MuxClock_in
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_MuxClock_in                 |     25.000ns|     10.000ns|      6.374ns|            0|            0|            0|          315|
-| TS_DLL_CLK0_BUF               |     25.000ns|      5.296ns|          N/A|            0|            0|           26|            0|
-| TS_DLL_CLK2X_BUF              |     12.500ns|      3.187ns|          N/A|            0|            0|          169|            0|
-| TS_DLL_CLKDV_BUF              |     50.000ns|      8.790ns|          N/A|            0|            0|          120|            0|
+|TS_MuxClock_in                 |     25.000ns|     10.000ns|      7.128ns|            0|            0|            0|          164|
+| TS_DLL_CLK0_BUF               |     25.000ns|      5.646ns|          N/A|            0|            0|           14|            0|
+| TS_DLL_CLK2X_BUF              |     12.500ns|      3.564ns|          N/A|            0|            0|           30|            0|
+| TS_DLL_CLKDV_BUF              |     50.000ns|      9.428ns|          N/A|            0|            0|          120|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -1801,7 +1731,7 @@ Clock to Setup on destination clock MuxClock_in
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-MuxClock_in    |    4.395|         |         |         |
+MuxClock_in    |    4.714|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock Qclock
@@ -1809,7 +1739,7 @@ Clock to Setup on destination clock Qclock
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Qclock         |    2.952|         |         |         |
+Qclock         |    2.948|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 
@@ -1818,7 +1748,7 @@ Timing summary:
 
 Timing errors: 0  Score: 0  (Setup/Max: 0, Hold: 0)
 
-Constraints cover 834 paths, 0 nets, and 433 connections
+Constraints cover 683 paths, 0 nets, and 332 connections
 
 Design statistics:
    Minimum period:  10.000ns{1}   (Maximum frequency: 100.000MHz)
@@ -1827,14 +1757,14 @@ Design statistics:
 ------------------------------------Footnotes-----------------------------------
 1)  The minimum period statistic assumes all single cycle delays.
 
-Analysis completed Fri Dec 07 17:59:46 2018 
+Analysis completed Sat Dec 29 12:07:15 2018 
 --------------------------------------------------------------------------------
 
 Trace Settings:
 -------------------------
 Trace Settings 
 
-Peak Memory Usage: 368 MB
+Peak Memory Usage: 370 MB
 
 
 

@@ -577,9 +577,9 @@ DLL: entity work.DLL
 		if (rising_edge(Clk80)) then
 			Sub_ped <= InData;-- - Piedistal_def;
 			Sub_ped_delay <= Sub_ped; 
-			AverData <= (Sub_ped_delay + Sub_ped);
-			GroupSum <= AverData(8 downto 1) + AverData(8 downto 1) + AverData(8 downto 1) + AverData(8 downto 1);
-			if (GroupSum >= ThresholdData_0) then GroupValue_Up_LT <= '1';
+--			AverData(8 downto 1) <= (Sub_ped_delay + Sub_ped);
+--			GroupSum <= AverData(8 downto 1) + AverData(8 downto 1) + AverData(8 downto 1) + AverData(8 downto 1);
+			if (Sub_ped_delay >= ThresholdData_0) then GroupValue_Up_LT <= '1';
 														else GroupValue_Up_LT <= '0';
 			end if;
 		end if;

@@ -65,6 +65,8 @@ ARCHITECTURE behavior OF ISERDES_TB IS
          ADC_CLK : OUT  std_logic;
          ADC_DCO_LVDS : IN  std_logic_vector(1 downto 0);
          ADC_DCO_LVDS_n : IN  std_logic_vector(1 downto 0);
+         ADC_FCO_LVDS : IN  std_logic_vector(1 downto 0);
+         ADC_FCO_LVDS_n : IN  std_logic_vector(1 downto 0);
          ADC_DCO_LVDSPrev : IN  std_logic_vector(11 downto 0);
          ADC_DCO_LVDSPrev_n : IN  std_logic_vector(11 downto 0);
          TrigInLVDS : IN  std_logic;
@@ -99,6 +101,8 @@ ARCHITECTURE behavior OF ISERDES_TB IS
    signal ADC_test : std_logic := '0';
    signal ADC_res : std_logic := '0';
    signal ADC_DCO_LVDS : std_logic_vector(1 downto 0) := (others => '0');
+   signal ADC_FCO_LVDS_n : std_logic_vector(1 downto 0) := (others => '0');
+   signal ADC_FCO_LVDS : std_logic_vector(1 downto 0) := (others => '0');
    signal ADC_DCO_LVDS_n : std_logic_vector(1 downto 0) := (others => '0');
    signal ADC_DCO_LVDSPrev : std_logic_vector(11 downto 0) := (others => '0');
    signal ADC_DCO_LVDSPrev_n : std_logic_vector(11 downto 0) := (others => '0');
@@ -136,6 +140,8 @@ ARCHITECTURE behavior OF ISERDES_TB IS
    constant MuxClock_in_period : time := 25 ns;
    constant ADC_SCLK_period : time := 50 ns;
    constant ADC_CLK_period : time := 12500 ps;
+   constant FCO_period : time := 12500 ps;
+   constant DCO_period : time := 3125 ps;
    constant RxClk_period : time := 40 ns;
    constant TxClk_period : time := 40 ns;
  
@@ -167,6 +173,8 @@ BEGIN
           ADC_CLK => ADC_CLK,
           ADC_DCO_LVDS => ADC_DCO_LVDS,
           ADC_DCO_LVDS_n => ADC_DCO_LVDS_n,
+          ADC_FCO_LVDS => ADC_FCO_LVDS,
+          ADC_FCO_LVDS_n => ADC_FCO_LVDS_n,
           ADC_DCO_LVDSPrev => ADC_DCO_LVDSPrev,
           ADC_DCO_LVDSPrev_n => ADC_DCO_LVDSPrev_n,
           TrigInLVDS => TrigInLVDS,
@@ -219,6 +227,26 @@ BEGIN
 		wait for ADC_CLK_period/2;
    end process;
  
+   FCO_process :process
+   begin
+		ADC_FCO_LVDS(0) <= '0';
+		ADC_FCO_LVDS_n(0) <= '1';
+		wait for FCO_period/2;
+		ADC_FCO_LVDS(0) <= '1';
+		ADC_FCO_LVDS_n(0) <= '0';
+		wait for FCO_period/2;
+   end process;
+
+   DCO_process :process
+   begin
+		ADC_DCO_LVDS(0) <= '0';
+		ADC_DCO_LVDS_n(0) <= '1';
+		wait for DCO_period/2;
+		ADC_DCO_LVDS(0) <= '1';
+		ADC_DCO_LVDS_n(0) <= '0';
+		wait for DCO_period/2;
+   end process;
+
 --   RxClk_process :process
 --   begin
 --		RxClk <= '0';
@@ -240,9 +268,13 @@ BEGIN
    stim_proc: process
    begin		
       -- hold reset state for 100 ns.
-      wait for 100 ns;	
+      wait for Qclock_period*5;
+		
+		ExtReset <= '1';
 
-      wait for Qclock_period*10;
+      wait for Qclock_period*2;
+
+		ExtReset <= '0';
 
       -- insert stimulus here 
 
