@@ -20,7 +20,7 @@
          </top_modules>
       </db_ref>
    </db_ref_list>
-   <WVObjectSize size="37" />
+   <WVObjectSize size="54" />
    <wvobject fp_name="/iserdes_tb/qclock" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">qclock</obj_property>
       <obj_property name="ObjectShortName">qclock</obj_property>
@@ -32,6 +32,10 @@
    <wvobject fp_name="/iserdes_tb/muxclock_in" type="logic" db_ref_id="1">
       <obj_property name="ElementShortName">muxclock_in</obj_property>
       <obj_property name="ObjectShortName">muxclock_in</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/clk80" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">clk80</obj_property>
+      <obj_property name="ObjectShortName">clk80</obj_property>
    </wvobject>
    <wvobject fp_name="/iserdes_tb/adc_dco_lvds" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">adc_dco_lvds[1:0]</obj_property>
@@ -74,10 +78,6 @@
       <obj_property name="ElementShortName">enimram</obj_property>
       <obj_property name="ObjectShortName">enimram</obj_property>
    </wvobject>
-   <wvobject fp_name="/iserdes_tb/uut/clk80" type="logic" db_ref_id="1">
-      <obj_property name="ElementShortName">clk80</obj_property>
-      <obj_property name="ObjectShortName">clk80</obj_property>
-   </wvobject>
    <wvobject fp_name="/iserdes_tb/uut/rdata" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">rdata[15:0]</obj_property>
       <obj_property name="ObjectShortName">rdata[15:0]</obj_property>
@@ -89,13 +89,18 @@
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/iserdes_tb/uut/sub_ped" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">sub_ped[7:0]</obj_property>
-      <obj_property name="ObjectShortName">sub_ped[7:0]</obj_property>
+      <obj_property name="ElementShortName">sub_ped[9:0]</obj_property>
+      <obj_property name="ObjectShortName">sub_ped[9:0]</obj_property>
+      <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/averdata_med" type="array" db_ref_id="1">
+      <obj_property name="ElementShortName">averdata_med[9:0]</obj_property>
+      <obj_property name="ObjectShortName">averdata_med[9:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/iserdes_tb/uut/averdata" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">averdata[8:0]</obj_property>
-      <obj_property name="ObjectShortName">averdata[8:0]</obj_property>
+      <obj_property name="ElementShortName">averdata[9:0]</obj_property>
+      <obj_property name="ObjectShortName">averdata[9:0]</obj_property>
       <obj_property name="Radix">UNSIGNEDDECRADIX</obj_property>
    </wvobject>
    <wvobject fp_name="/iserdes_tb/uut/grouplt_trig" type="logic" db_ref_id="1">
@@ -124,9 +129,73 @@
       <obj_property name="ElementShortName">trigdes</obj_property>
       <obj_property name="ObjectShortName">trigdes</obj_property>
    </wvobject>
-   <wvobject fp_name="/iserdes_tb/triggerdata" type="array" db_ref_id="1">
-      <obj_property name="ElementShortName">triggerdata[63:0]</obj_property>
-      <obj_property name="ObjectShortName">triggerdata[63:0]</obj_property>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[15]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[15]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[15]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[14]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[14]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[14]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[13]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[13]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[13]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[12]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[12]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[12]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[11]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[11]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[11]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[10]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[10]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[10]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[9]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[9]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[9]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[8]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[8]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[8]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[7]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[7]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[7]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[6]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[6]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[6]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[5]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[5]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[5]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[4]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[4]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[4]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[3]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[3]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[3]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[2]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[2]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[2]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[1]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[1]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[1]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/triggerdata[0]" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">[0]</obj_property>
+      <obj_property name="ObjectShortName">triggerdata[0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/iserdes_tb/uut/allreset" type="logic" db_ref_id="1">
+      <obj_property name="ElementShortName">allreset</obj_property>
+      <obj_property name="ObjectShortName">allreset</obj_property>
    </wvobject>
    <wvobject fp_name="/iserdes_tb/test" type="array" db_ref_id="1">
       <obj_property name="ElementShortName">test[9:0]</obj_property>

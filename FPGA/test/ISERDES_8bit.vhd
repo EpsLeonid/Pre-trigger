@@ -154,14 +154,16 @@ architecture Behavioral of ISERDES_8bit is
 	
 	--- Processing Data
 	signal InData	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
-	signal Sub_Ped	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
-	signal Sub_ped_delay	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
-	signal AverData: std_logic_vector(ADC_Bits downto 0):= (others => '0');
+	signal Sub_Ped	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal Sub_ped_delay	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal AverData: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal AverData_med: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal GroupValue_Up_LT:std_logic;
 	signal GroupLT_Trig:std_logic;
 	signal GroupSum: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal GroupAmp: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal DelayGroupAmp	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal DelayGroupAmp_mid	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal GroupValue_Amp_Done:std_logic;
 	signal GroupAmp_Trig:std_logic;
 	
@@ -342,7 +344,7 @@ DLL: entity work.DLL
 --			end if;
 --		end if;
 --	end process;
-	LED1 <= '1' when ((TestCnt(23)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
+	LED1 <= '1' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
 				'0';
 	Led_B : entity work.Light_Pulser 
 		generic map ( DIV	=> 2,
@@ -353,14 +355,14 @@ DLL: entity work.DLL
 					 o_flash => LED2
 					);
 
-	LED3 <= '1' when TestCnt(23)='1' else
-				'0' when TestCnt(23)='0' else
+	LED3 <= '1' when TestCnt(24)='1' else
+				'0' when TestCnt(24)='0' else
 				'0';
-	LED4 <= '1' when TestCnt(21)='1' else
-				'0' when TestCnt(21)='0' else
+	LED4 <= '1' when TestCnt(22)='1' else
+				'0' when TestCnt(22)='0' else
 				'0';
-	LED5 <= '1' when TestCnt(23)='1' else
-				'0' when TestCnt(23)='0' else
+	LED5 <= '1' when TestCnt(24)='1' else
+				'0' when TestCnt(24)='0' else
 				'0';
 --********
 
@@ -552,7 +554,7 @@ DLL: entity work.DLL
 	process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			if (TestCnt(23 downto 7) = X"FFFF") then 
+			if (TestCnt(15 downto 8) = X"FF") then 
 				EnImRam <= '1';
 			else EnImRam <= '0';
 			end if;
@@ -575,11 +577,12 @@ DLL: entity work.DLL
 	ThreshData: process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			Sub_ped <= InData;-- - Piedistal_def;
+			Sub_ped(7 downto 0) <= InData;-- - Piedistal_def;
 			Sub_ped_delay <= Sub_ped; 
---			AverData(8 downto 1) <= (Sub_ped_delay + Sub_ped);
---			GroupSum <= AverData(8 downto 1) + AverData(8 downto 1) + AverData(8 downto 1) + AverData(8 downto 1);
-			if (Sub_ped_delay >= ThresholdData_0) then GroupValue_Up_LT <= '1';
+			AverData_med <= (Sub_ped_delay + Sub_ped);
+			AverData(7 downto 0) <= AverData_med(8 downto 1);
+			GroupSum <= AverData + AverData + AverData + AverData;
+			if (AverData >= ThresholdData_0) then GroupValue_Up_LT <= '1';
 														else GroupValue_Up_LT <= '0';
 			end if;
 		end if;
@@ -596,9 +599,15 @@ DLL: entity work.DLL
 	AmpData: process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			DelayGroupAmp <= GroupSum; 
-			if ((DelayGroupAmp > GroupSum) and (GroupLT_Trig = '1')) then GroupValue_Amp_Done <= '1';
-																						else GroupValue_Amp_Done <= '0';
+			if AllReset = '1' then
+				DelayGroupAmp_mid <= (others => '0');
+				DelayGroupAmp <= (others => '0');
+			else
+				DelayGroupAmp_mid <= GroupSum; 
+				DelayGroupAmp <= DelayGroupAmp_mid; 
+				if ((DelayGroupAmp_mid > GroupSum) and (GroupLT_Trig = '1')) then GroupValue_Amp_Done <= '1';
+																								 else GroupValue_Amp_Done <= '0';
+				end if;
 			end if;
 		end if;
 	end process;
@@ -651,9 +660,9 @@ DLL: entity work.DLL
 		end if;
 	end process;
 	
-	ResetAll: process (Clk40)
+	ResetAll: process (Clk80)
 	begin 
-		if (rising_edge(Clk40)) then
+		if (rising_edge(Clk80)) then
 			if ((GroupLT_Trig = '1') and (GroupAmp_Trig = '1') ) then
 				DelayReset(0) <= '1';
 				else DelayReset(0) <= '0';
@@ -727,7 +736,7 @@ DLL: entity work.DLL
 				WIDTH => 26
 			)
 	port map (
-				clock 	=> Quarts,--CLK40,
+				clock 	=> clk80,--Quarts,--CLK40,
 				clk_en	=>	'1',
 				q			=> TestCnt
 				);
