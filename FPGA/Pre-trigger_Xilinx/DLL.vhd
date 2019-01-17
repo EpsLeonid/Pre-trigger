@@ -84,7 +84,7 @@ begin
    generic map( CLK_FEEDBACK => "1X",
             CLKDV_DIVIDE => 2.0,
             CLKFX_DIVIDE => 1,
-            CLKFX_MULTIPLY => 8,
+            CLKFX_MULTIPLY => 4,
             CLKIN_DIVIDE_BY_2 => FALSE,
             CLKIN_PERIOD => 25.000,
             CLKOUT_PHASE_SHIFT => "NONE",

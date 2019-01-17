@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Wed Jan 09 18:05:12 2019">
+  <application stringID="Map" timeStamp="Thu Jan 17 18:02:20 2019">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -73,8 +73,8 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="11"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="452796"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="8 secs "/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="452992"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="3 secs "/>
         <item stringID="MAP_TOTAL_CPU_TIME" value="3 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING"/>
@@ -112,7 +112,7 @@
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_OPAD" value="0"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_BONDED_OPAD" value="0"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_IPADS_PER_MONITOR" value="0"/>
-        <item AVAILABLE="640" dataType="int" stringID="MAP_AGG_BONDED_IO" value="152"/>
+        <item AVAILABLE="640" dataType="int" stringID="MAP_AGG_BONDED_IO" value="154"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_AGG_UNBONDED_IO" value="0"/>
         <item AVAILABLE="0" dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="1"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_IOB_LATCH" value="0"/>
@@ -723,6 +723,18 @@
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
           <row stringID="row" value="89">
+            <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TrigInLVDS"/>
+            <item stringID="Type" value="IOB "/>
+            <item stringID="Direction" value="INPUT"/>
+            <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
+          </row>
+          <row stringID="row" value="90">
+            <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TrigInLVDS_n"/>
+            <item stringID="Type" value="IOB "/>
+            <item stringID="Direction" value="INPUT"/>
+            <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVCMOS25"/>
+          </row>
+          <row stringID="row" value="91">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;0>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -730,7 +742,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="90">
+          <row stringID="row" value="92">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;1>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -738,7 +750,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="91">
+          <row stringID="row" value="93">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;2>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -746,7 +758,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="92">
+          <row stringID="row" value="94">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;3>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -754,7 +766,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="93">
+          <row stringID="row" value="95">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;4>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -762,7 +774,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="94">
+          <row stringID="row" value="96">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;5>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -770,7 +782,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="95">
+          <row stringID="row" value="97">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;6>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -778,7 +790,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="96">
+          <row stringID="row" value="98">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;7>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -786,7 +798,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="97">
+          <row stringID="row" value="99">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;8>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -794,7 +806,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="98">
+          <row stringID="row" value="100">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;9>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -802,7 +814,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="99">
+          <row stringID="row" value="101">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;10>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -810,7 +822,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="100">
+          <row stringID="row" value="102">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;11>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -818,7 +830,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="101">
+          <row stringID="row" value="103">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;12>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -826,7 +838,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="102">
+          <row stringID="row" value="104">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;13>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -834,7 +846,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="103">
+          <row stringID="row" value="105">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;14>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -842,7 +854,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="104">
+          <row stringID="row" value="106">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;15>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -850,7 +862,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="105">
+          <row stringID="row" value="107">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;16>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -858,7 +870,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="106">
+          <row stringID="row" value="108">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;17>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -866,7 +878,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="107">
+          <row stringID="row" value="109">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;18>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -874,7 +886,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="108">
+          <row stringID="row" value="110">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;19>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -882,7 +894,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="109">
+          <row stringID="row" value="111">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;20>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -890,7 +902,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="110">
+          <row stringID="row" value="112">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;21>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -898,7 +910,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="111">
+          <row stringID="row" value="113">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;22>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -906,7 +918,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="112">
+          <row stringID="row" value="114">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;23>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -914,7 +926,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="113">
+          <row stringID="row" value="115">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;24>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -922,7 +934,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="114">
+          <row stringID="row" value="116">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;25>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -930,7 +942,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="115">
+          <row stringID="row" value="117">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;26>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -938,7 +950,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="116">
+          <row stringID="row" value="118">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;27>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -946,7 +958,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="117">
+          <row stringID="row" value="119">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;28>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -954,7 +966,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="118">
+          <row stringID="row" value="120">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;29>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -962,7 +974,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="119">
+          <row stringID="row" value="121">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;30>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -970,7 +982,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="120">
+          <row stringID="row" value="122">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;31>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -978,7 +990,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="121">
+          <row stringID="row" value="123">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;32>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -986,7 +998,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="122">
+          <row stringID="row" value="124">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;33>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -994,7 +1006,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="123">
+          <row stringID="row" value="125">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;34>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1002,7 +1014,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="124">
+          <row stringID="row" value="126">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;35>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1010,7 +1022,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="125">
+          <row stringID="row" value="127">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;36>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1018,7 +1030,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="126">
+          <row stringID="row" value="128">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;37>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1026,7 +1038,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="127">
+          <row stringID="row" value="129">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;38>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1034,7 +1046,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="128">
+          <row stringID="row" value="130">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;39>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1042,7 +1054,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="129">
+          <row stringID="row" value="131">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;40>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1050,7 +1062,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="130">
+          <row stringID="row" value="132">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;41>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1058,7 +1070,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="131">
+          <row stringID="row" value="133">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;42>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1066,7 +1078,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="132">
+          <row stringID="row" value="134">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;43>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1074,7 +1086,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="133">
+          <row stringID="row" value="135">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;44>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1082,7 +1094,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="134">
+          <row stringID="row" value="136">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;45>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1090,7 +1102,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="135">
+          <row stringID="row" value="137">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;46>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1098,7 +1110,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="136">
+          <row stringID="row" value="138">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;47>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1106,7 +1118,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="137">
+          <row stringID="row" value="139">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;48>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1114,7 +1126,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="138">
+          <row stringID="row" value="140">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;49>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1122,7 +1134,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="139">
+          <row stringID="row" value="141">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;50>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1130,7 +1142,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="140">
+          <row stringID="row" value="142">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;51>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1138,7 +1150,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="141">
+          <row stringID="row" value="143">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;52>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1146,7 +1158,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="142">
+          <row stringID="row" value="144">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;53>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1154,7 +1166,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="143">
+          <row stringID="row" value="145">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;54>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1162,7 +1174,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="144">
+          <row stringID="row" value="146">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;55>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1170,7 +1182,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="145">
+          <row stringID="row" value="147">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;56>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1178,7 +1190,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="146">
+          <row stringID="row" value="148">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;57>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1186,7 +1198,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="147">
+          <row stringID="row" value="149">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;58>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1194,7 +1206,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="148">
+          <row stringID="row" value="150">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;59>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1202,7 +1214,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="149">
+          <row stringID="row" value="151">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;60>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1210,7 +1222,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="150">
+          <row stringID="row" value="152">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;61>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1218,7 +1230,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="151">
+          <row stringID="row" value="153">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;62>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1226,7 +1238,7 @@
             <item label="Drive&#xA;Strength" stringID="DRIVE_STRENGTH" value="12"/>
             <item label="Slew&#xA;Rate" stringID="SLEW_RATE" value="SLOW"/>
           </row>
-          <row stringID="row" value="152">
+          <row stringID="row" value="154">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="TriggerData&lt;63>"/>
             <item stringID="Type" value="IOB "/>
             <item stringID="Direction" value="OUTPUT"/>
@@ -1310,12 +1322,12 @@
         <item stringID="MAP_INVERT_CLK_DOB_REG" value="FALSE"/>
         <item stringID="MAP_RAM_EXTENSION_A" value="NONE"/>
         <item stringID="MAP_RAM_EXTENSION_B" value="NONE"/>
-        <item stringID="MAP_READ_WIDTH_A" value="18"/>
+        <item stringID="MAP_READ_WIDTH_A" value="9"/>
         <item stringID="MAP_READ_WIDTH_B" value="0"/>
         <item stringID="MAP_SAVEDATA" value="FALSE"/>
         <item stringID="MAP_WRITE_MODE_A" value="WRITE_FIRST"/>
         <item stringID="MAP_WRITE_MODE_B" value="WRITE_FIRST"/>
-        <item stringID="MAP_WRITE_WIDTH_A" value="18"/>
+        <item stringID="MAP_WRITE_WIDTH_A" value="9"/>
         <item stringID="MAP_WRITE_WIDTH_B" value="0"/>
         <item stringID="MAP_INITP_00" value="0000000000000000000000000000000000000000000000000000000000000000"/>
         <item stringID="MAP_INITP_01" value="0000000000000000000000000000000000000000000000000000000000000000"/>
@@ -1325,22 +1337,22 @@
         <item stringID="MAP_INITP_05" value="0000000000000000000000000000000000000000000000000000000000000000"/>
         <item stringID="MAP_INITP_06" value="0000000000000000000000000000000000000000000000000000000000000000"/>
         <item stringID="MAP_INITP_07" value="0000000000000000000000000000000000000000000000000000000000000000"/>
-        <item stringID="MAP_INIT_00" value="00140013001200110010000F000E000D000C000B000A00090008000700060000"/>
-        <item stringID="MAP_INIT_01" value="00240023002200210020001F001E001D001C001B001A00190018001700160015"/>
-        <item stringID="MAP_INIT_02" value="00340033003200310030002F002E002D002C002B002A00290028002700260025"/>
-        <item stringID="MAP_INIT_03" value="00440043004200410040003F003E003D003C003B003A00390038003700360035"/>
-        <item stringID="MAP_INIT_04" value="00540053005200510050004F004E004D004C004B004A00490048004700460045"/>
-        <item stringID="MAP_INIT_05" value="00640063006200610060005F005E005D005C005B005A00590058005700560055"/>
-        <item stringID="MAP_INIT_06" value="008400820080007E007C007A00780076007400720070006E006C006A00680066"/>
-        <item stringID="MAP_INIT_07" value="00A400A200A0009E009C009A00980096009400920090008E008C008A00880086"/>
-        <item stringID="MAP_INIT_08" value="00A200A500A800AB00AE00B100B400B700B400B200B000AE00AC00AA00A800A6"/>
-        <item stringID="MAP_INIT_09" value="007200750078007B007E008100840087008A008D0090009300960099009C009F"/>
-        <item stringID="MAP_INIT_0A" value="00500051005200530054005500560057005A005D0060006300660069006C006F"/>
-        <item stringID="MAP_INIT_0B" value="0040004100420043004400450046004700480049004A004B004C004D004E004F"/>
-        <item stringID="MAP_INIT_0C" value="0030003100320033003400350036003700380039003A003B003C003D003E003F"/>
-        <item stringID="MAP_INIT_0D" value="0020002100220023002400250026002700280029002A002B002C002D002E002F"/>
-        <item stringID="MAP_INIT_0E" value="0010001100120013001400150016001700180019001A001B001C001D001E001F"/>
-        <item stringID="MAP_INIT_0F" value="0000000100020003000400050006000700080009000A000B000C000D000E000F"/>
+        <item stringID="MAP_INIT_00" value="020202020202020102020202020202010202020202788C9DA0A6B4BAA0704001"/>
+        <item stringID="MAP_INIT_01" value="0202020202020201020202020202020102020202020202010202020202020201"/>
+        <item stringID="MAP_INIT_02" value="0202020202020201020202020202020102020202020202010202020202020201"/>
+        <item stringID="MAP_INIT_03" value="0002020202020201020202020202020102020202020202010202020202020201"/>
+        <item stringID="MAP_INIT_04" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_05" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_06" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_07" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_08" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_09" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_0A" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_0B" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_0C" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_0D" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_0E" value="0000000000000000000000000000000000000000000000000000000000000000"/>
+        <item stringID="MAP_INIT_0F" value="0000000000000000000000000000000000000000000000000000000000000000"/>
         <item stringID="MAP_INIT_10" value="0000000000000000000000000000000000000000000000000000000000000000"/>
         <item stringID="MAP_INIT_11" value="0000000000000000000000000000000000000000000000000000000000000000"/>
         <item stringID="MAP_INIT_12" value="0000000000000000000000000000000000000000000000000000000000000000"/>

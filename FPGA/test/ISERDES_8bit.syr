@@ -3,14 +3,14 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
-Total REAL time to Xst completion: 2.00 secs
-Total CPU time to Xst completion: 2.45 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
-Total REAL time to Xst completion: 2.00 secs
-Total CPU time to Xst completion: 2.45 secs
+Total REAL time to Xst completion: 1.00 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: ISERDES_8bit.prj
 
@@ -108,8 +108,7 @@ Slice Utilization Ratio Delta      : 5
 *                          HDL Compilation                              *
 =========================================================================
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/Parameters.vhd" in Library work.
-Package <parameters> compiled.
-Package body <parameters> compiled.
+Architecture parameters of Entity parameters is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd" in Library work.
 Architecture utility of Entity v_counter is up to date.
 Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd" in Library work.
@@ -173,8 +172,8 @@ Analyzing hierarchy for entity <SRFF> in library <work> (architecture <Utility>)
 *                            HDL Analysis                               *
 =========================================================================
 Analyzing Entity <ISERDES_8bit> in library <work> (Architecture <behavioral>).
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 251: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 259: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 252: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 260: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
     Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <BUFG_inst> in unit <ISERDES_8bit>.
     Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <BUFG_inst> in unit <ISERDES_8bit>.
     Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <BUFG_inst> in unit <ISERDES_8bit>.
@@ -188,8 +187,8 @@ WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/IS
     Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <LVDS_FCT_160> in unit <ISERDES_8bit>.
     Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <LVDS_FCT_160> in unit <ISERDES_8bit>.
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <LVDS_FCT_160> in unit <ISERDES_8bit>.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 302: Unconnected output port 'Test' of component 'PhaseSW'.
-WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 326: Unconnected output port 'CLKIN_IBUFG_OUT' of component 'DLL'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 303: Unconnected output port 'Test' of component 'PhaseSW'.
+WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 327: Unconnected output port 'CLKIN_IBUFG_OUT' of component 'DLL'.
     Set user-defined property "CAPACITANCE =  DONT_CARE" for instance <DCO_LVDS_signal> in unit <ISERDES_8bit>.
     Set user-defined property "DIFF_TERM =  TRUE" for instance <DCO_LVDS_signal> in unit <ISERDES_8bit>.
     Set user-defined property "IBUF_DELAY_VALUE =  0" for instance <DCO_LVDS_signal> in unit <ISERDES_8bit>.
@@ -211,18 +210,22 @@ WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/IS
     Set user-defined property "INIT_Q1 =  0" for instance <IDDR_inst> in unit <ISERDES_8bit>.
     Set user-defined property "INIT_Q2 =  0" for instance <IDDR_inst> in unit <ISERDES_8bit>.
     Set user-defined property "SRTYPE =  SYNC" for instance <IDDR_inst> in unit <ISERDES_8bit>.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 591: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 615: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 687: Unconnected input port 'cnt_en' of component 'V_Counter' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 687: Unconnected input port 'dir' of component 'V_Counter' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 724: Unconnected input port 'clk_en' of component 'ShiftReg' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 724: Unconnected input port 'sclr' of component 'ShiftReg' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 734: Unconnected input port 'cnt_en' of component 'V_Counter' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 734: Unconnected input port 'sclr' of component 'V_Counter' is tied to default value.
-WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 734: Unconnected input port 'dir' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 592: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 616: Unconnected input port 'CLRN' of component 'SRFF' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 689: Unconnected input port 'cnt_en' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 689: Unconnected input port 'dir' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 726: Unconnected input port 'clk_en' of component 'ShiftReg' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 726: Unconnected input port 'sclr' of component 'ShiftReg' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 736: Unconnected input port 'cnt_en' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 736: Unconnected input port 'sclr' of component 'V_Counter' is tied to default value.
+WARNING:Xst:752 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.vhd" line 736: Unconnected input port 'dir' of component 'V_Counter' is tied to default value.
 INFO:Xst:2679 - Register <TriggerData<13>> in unit <ISERDES_8bit> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <TriggerData<12>> in unit <ISERDES_8bit> has a constant value of 0 during circuit operation. The register is replaced by logic.
 INFO:Xst:2679 - Register <TriggerData<11>> in unit <ISERDES_8bit> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <TriggerData<19>> in unit <ISERDES_8bit> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <TriggerData<18>> in unit <ISERDES_8bit> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <TriggerData<17>> in unit <ISERDES_8bit> has a constant value of 0 during circuit operation. The register is replaced by logic.
+INFO:Xst:2679 - Register <TriggerData<16>> in unit <ISERDES_8bit> has a constant value of 0 during circuit operation. The register is replaced by logic.
 Entity <ISERDES_8bit> analyzed. Unit <ISERDES_8bit> generated.
 
 Analyzing Entity <SRFF> in library <work> (Architecture <Utility>).
@@ -249,7 +252,7 @@ Analyzing Entity <DLL> in library <work> (Architecture <BEHAVIORAL>).
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <CLKIN_IBUFG_INST> in unit <DLL>.
     Set user-defined property "CLKDV_DIVIDE =  2.0000000000000000" for instance <DCM_ADV_INST> in unit <DLL>.
     Set user-defined property "CLKFX_DIVIDE =  1" for instance <DCM_ADV_INST> in unit <DLL>.
-    Set user-defined property "CLKFX_MULTIPLY =  8" for instance <DCM_ADV_INST> in unit <DLL>.
+    Set user-defined property "CLKFX_MULTIPLY =  4" for instance <DCM_ADV_INST> in unit <DLL>.
     Set user-defined property "CLKIN_DIVIDE_BY_2 =  FALSE" for instance <DCM_ADV_INST> in unit <DLL>.
     Set user-defined property "CLKIN_PERIOD =  25.0000000000000000" for instance <DCM_ADV_INST> in unit <DLL>.
     Set user-defined property "CLKOUT_PHASE_SHIFT =  NONE" for instance <DCM_ADV_INST> in unit <DLL>.
@@ -439,7 +442,6 @@ WARNING:Xst:1780 - Signal <s_fadc_sdio> is never used or assigned. This unconnec
 WARNING:Xst:1780 - Signal <s_fadc_sclk> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <s_fadc_reset> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <s_fadc_csb> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <rdata<15:8>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <TrigIn> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <TestCnt<23>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <TestCnt<21:16>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -453,15 +455,12 @@ WARNING:Xst:1780 - Signal <FCO_O> is never used or assigned. This unconnected si
 WARNING:Xst:646 - Signal <DataOut> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <DCO_O> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <Clock_in> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
-WARNING:Xst:646 - Signal <Clk320> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:1780 - Signal <Clk320> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <Clk160> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <CLK40_90d> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <AverData_med<9>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <AverData_med<0>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:653 - Signal <AverData<9:8>> is used but never assigned. This sourceless signal will be automatically connected to value 00.
-    Register <TriggerData<16>> equivalent to <TriggerData<10>> has been removed
-    Register <TriggerData<17>> equivalent to <TriggerData<10>> has been removed
-    Register <TriggerData<18>> equivalent to <TriggerData<10>> has been removed
-    Register <TriggerData<19>> equivalent to <TriggerData<10>> has been removed
     Register <TriggerData<20>> equivalent to <TriggerData<10>> has been removed
     Register <TriggerData<21>> equivalent to <TriggerData<10>> has been removed
     Register <TriggerData<22>> equivalent to <TriggerData<10>> has been removed
@@ -506,22 +505,22 @@ WARNING:Xst:653 - Signal <AverData<9:8>> is used but never assigned. This source
     Register <TriggerData<61>> equivalent to <TriggerData<10>> has been removed
     Register <TriggerData<62>> equivalent to <TriggerData<10>> has been removed
     Register <TriggerData<63>> equivalent to <TriggerData<10>> has been removed
-    Found 256x16-bit ROM for signal <$varindex0000> created at line 568.
+    Found 128x8-bit ROM for signal <$varindex0000> created at line 569.
     Found 1-bit register for signal <ADC_SDIO>.
     Found 2-bit register for signal <TriggerData<15:14>>.
     Found 11-bit register for signal <TriggerData<10:0>>.
-    Found 6-bit comparator greatequal for signal <ADC_SDIO$cmp_ge0000> created at line 704.
-    Found 6-bit comparator less for signal <ADC_SDIO$cmp_lt0000> created at line 704.
+    Found 6-bit comparator greatequal for signal <ADC_SDIO$cmp_ge0000> created at line 706.
+    Found 6-bit comparator less for signal <ADC_SDIO$cmp_lt0000> created at line 706.
     Found 1-bit register for signal <ADCtest_Bit_write>.
     Found 1-bit register for signal <ADCtest_CSB_trig>.
-    Found 6-bit comparator greatequal for signal <ADCtest_CSB_trig$cmp_ge0000> created at line 709.
-    Found 6-bit comparator greatequal for signal <ADCtest_CSB_trig$cmp_ge0001> created at line 709.
-    Found 6-bit comparator less for signal <ADCtest_CSB_trig$cmp_lt0000> created at line 709.
+    Found 6-bit comparator greatequal for signal <ADCtest_CSB_trig$cmp_ge0000> created at line 711.
+    Found 6-bit comparator greatequal for signal <ADCtest_CSB_trig$cmp_ge0001> created at line 711.
+    Found 6-bit comparator less for signal <ADCtest_CSB_trig$cmp_lt0000> created at line 711.
     Found 1-bit register for signal <ADCtest_reg_sset>.
     Found 1-bit register for signal <AllReset>.
     Found 8-bit register for signal <AverData<7:0>>.
     Found 10-bit register for signal <AverData_med>.
-    Found 10-bit adder for signal <AverData_med$add0000> created at line 582.
+    Found 10-bit adder for signal <AverData_med$add0000> created at line 583.
     Found 2-bit up counter for signal <clkdiv>.
     Found 10-bit register for signal <DelayGroupAmp>.
     Found 10-bit register for signal <DelayGroupAmp_mid>.
@@ -530,21 +529,21 @@ WARNING:Xst:653 - Signal <AverData<9:8>> is used but never assigned. This source
     Found 1-bit register for signal <FastTrigDes_o>.
     Found 10-bit register for signal <GroupAmp>.
     Found 10-bit register for signal <GroupSum>.
-    Found 10-bit adder for signal <GroupSum$add0000> created at line 584.
-    Found 10-bit adder for signal <GroupSum$addsub0000> created at line 584.
+    Found 10-bit adder for signal <GroupSum$add0000> created at line 585.
+    Found 10-bit adder for signal <GroupSum$addsub0000> created at line 585.
     Found 1-bit register for signal <GroupValue_Amp_Done>.
-    Found 10-bit comparator greater for signal <GroupValue_Amp_Done$cmp_gt0000> created at line 608.
+    Found 10-bit comparator greater for signal <GroupValue_Amp_Done$cmp_gt0000> created at line 609.
     Found 1-bit register for signal <GroupValue_Up_LT>.
-    Found 11-bit comparator greatequal for signal <GroupValue_Up_LT$cmp_ge0000> created at line 585.
+    Found 11-bit comparator greatequal for signal <GroupValue_Up_LT$cmp_ge0000> created at line 586.
     Found 1-bit register for signal <PowerUp0>.
-    Found 16-bit register for signal <rdata>.
+    Found 8-bit register for signal <rdata>.
     Found 8-bit register for signal <Sub_Ped<7:0>>.
     Found 10-bit register for signal <Sub_ped_delay>.
     Found 1-bit register for signal <TrigDes_o>.
     Summary:
 	inferred   1 ROM(s).
 	inferred   1 Counter(s).
-	inferred 126 D-type flip-flop(s).
+	inferred 118 D-type flip-flop(s).
 	inferred   3 Adder/Subtractor(s).
 	inferred   7 Comparator(s).
 Unit <ISERDES_8bit> synthesized.
@@ -559,7 +558,7 @@ HDL Synthesis Report
 
 Macro Statistics
 # ROMs                                                 : 1
- 256x16-bit ROM                                        : 1
+ 128x8-bit ROM                                         : 1
 # Adders/Subtractors                                   : 3
  10-bit adder                                          : 3
 # Counters                                             : 3
@@ -569,8 +568,8 @@ Macro Statistics
 # Registers                                            : 117
  1-bit register                                        : 109
  10-bit register                                       : 6
- 16-bit register                                       : 1
  7-bit register                                        : 1
+ 8-bit register                                        : 1
 # Comparators                                          : 7
  10-bit comparator greater                             : 1
  11-bit comparator greatequal                          : 1
@@ -589,14 +588,6 @@ WARNING:Xst:1426 - The value init of the FF/Latch Sync_TRG2 hinder the constant 
 WARNING:Xst:1293 - FF/Latch <count_0> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <Sub_ped_delay_8> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <Sub_ped_delay_9> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <rdata_8> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <rdata_9> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <rdata_10> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <rdata_11> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <rdata_12> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <rdata_13> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <rdata_14> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <rdata_15> of sequential type is unconnected in block <ISERDES_8bit>.
 WARNING:Xst:2677 - Node <AverData_med_0> of sequential type is unconnected in block <ISERDES_8bit>.
 WARNING:Xst:2677 - Node <AverData_med_9> of sequential type is unconnected in block <ISERDES_8bit>.
 WARNING:Xst:1290 - Hierarchical block <Timer> is unconnected in block <Led_B>.
@@ -609,14 +600,14 @@ INFO:Xst:3225 - The RAM <Mrom__varindex0000> will be implemented as BLOCK RAM
     | ram_type           | Block                               |          |
     -----------------------------------------------------------------------
     | Port A                                                              |
-    |     aspect ratio   | 256-word x 16-bit                   |          |
+    |     aspect ratio   | 128-word x 8-bit                    |          |
     |     mode           | write-first                         |          |
     |     clkA           | connected to signal <ADC_CLK>       | rise     |
-    |     enA            | connected to signal <Test<8>>       | high     |
+    |     enA            | connected to signal <Test<9>>       | high     |
     |     weA            | connected to signal <GND>           | high     |
     |     addrA          | connected to signal <TestCnt>       |          |
     |     diA            | connected to signal <GND>           |          |
-    |     doA            | connected to signal <Test>          |          |
+    |     doA            | connected to signal <rdata>         |          |
     -----------------------------------------------------------------------
     | optimization       | speed                               |          |
     -----------------------------------------------------------------------
@@ -629,7 +620,7 @@ Advanced HDL Synthesis Report
 
 Macro Statistics
 # RAMs                                                 : 1
- 256x16-bit single-port block RAM                      : 1
+ 128x8-bit single-port block RAM                       : 1
 # Adders/Subtractors                                   : 3
  10-bit adder                                          : 3
 # Counters                                             : 3
@@ -735,8 +726,8 @@ Cell Usage :
 #      GND                         : 1
 #      INV                         : 8
 #      LUT1                        : 40
-#      LUT2                        : 27
-#      LUT3                        : 7
+#      LUT2                        : 26
+#      LUT3                        : 8
 #      LUT4                        : 19
 #      LUT4_L                      : 2
 #      MUXCY                       : 56
@@ -831,7 +822,7 @@ Speed Grade: -10
 
    Minimum period: 5.834ns (Maximum Frequency: 171.412MHz)
    Minimum input arrival time before clock: 6.702ns
-   Maximum output required time after clock: 6.434ns
+   Maximum output required time after clock: 5.474ns
    Maximum combinational path delay: No path found
 
 Timing Detail:
@@ -841,7 +832,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'MuxClock_in'
   Clock period: 5.834ns (frequency: 171.412MHz)
-  Total number of paths / destination ports: 795 / 244
+  Total number of paths / destination ports: 795 / 243
 -------------------------------------------------------------------------
 Delay:               2.917ns (Levels of Logic = 27)
   Source:            CntTest/count_0 (FF)
@@ -965,22 +956,23 @@ Offset:              6.702ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'MuxClock_in'
-  Total number of paths / destination ports: 78 / 78
+  Total number of paths / destination ports: 72 / 72
 -------------------------------------------------------------------------
-Offset:              6.434ns (Levels of Logic = 1)
-  Source:            Mrom__varindex0000 (RAM)
-  Destination:       Test<3> (PAD)
+Offset:              5.409ns (Levels of Logic = 2)
+  Source:            CntTest/count_24 (FF)
+  Destination:       Led1 (PAD)
   Source Clock:      MuxClock_in rising 2.0X
 
-  Data Path: Mrom__varindex0000 to Test<3>
+  Data Path: CntTest/count_24 to Led1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     RAMB16:CLKA->DOA3     2   2.100   0.377  Mrom__varindex0000 (Test_3_OBUF)
-     OBUF:I->O                 3.957          Test_3_OBUF (Test<3>)
+     FD:C->Q               4   0.360   0.537  CntTest/count_24 (CntTest/count_24)
+     LUT3:I2->O            1   0.195   0.360  Led1_or00001 (Led1_OBUF)
+     OBUF:I->O                 3.957          Led1_OBUF (Led1)
     ----------------------------------------
-    Total                      6.434ns (6.057ns logic, 0.377ns route)
-                                       (94.1% logic, 5.9% route)
+    Total                      5.409ns (4.512ns logic, 0.897ns route)
+                                       (83.4% logic, 16.6% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'PhaseSwitch/Sync_TRG1'
@@ -1005,14 +997,14 @@ Offset:              5.474ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.39 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 6.40 secs
  
 --> 
 
-Total memory usage is 336400 kilobytes
+Total memory usage is 333008 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  125 (   0 filtered)
-Number of infos    :   13 (   0 filtered)
+Number of warnings :  117 (   0 filtered)
+Number of infos    :   17 (   0 filtered)
 

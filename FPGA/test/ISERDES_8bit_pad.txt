@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Wed Jan 09 18:05:33 2019
+Thu Jan 17 18:02:36 2019
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -31,8 +31,8 @@ Pinout by Pin Number:
 |A10       |                       |IOBM     |IO_L15P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |A11       |                       |IOBM     |IO_L3P_6            |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |A12       |                       |         |VCCO_6              |         |           |6             |          |         |           |         |2.50     |          |           |                |
-|A13       |                       |IOBS     |IO_L17N_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
-|A14       |TrigDes                |IOB      |IO_L17P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|A13       |TrigDes                |IOB      |IO_L17N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|A14       |                       |IOBM     |IO_L17P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |A15       |                       |LOWCAPIOB|IO_L24P_LC_1        |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |A16       |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |A17       |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
@@ -63,7 +63,7 @@ Pinout by Pin Number:
 |AA9       |                       |LOWCAPIOB|IO_L8P_CC_LC_12     |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AA10      |                       |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
 |AA11      |                       |IOBS     |IO_L3N_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AA12      |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
+|AA12      |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
 |AA13      |                       |IOBS     |IO_L5N_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AA15      |                       |IOBS     |IO_L13N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AA16      |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
@@ -92,7 +92,7 @@ Pinout by Pin Number:
 |AB6       |                       |IOBM     |IO_L1P_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AB7       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |AB8       |                       |IOBS     |IO_L12N_VREF_12     |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AB9       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
+|AB9       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
 |AB10      |                       |LOWCAPIOB|IO_L25N_CC_LC_12    |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AB11      |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |AB12      |                       |IOBS     |IO_L29N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
@@ -119,11 +119,11 @@ Pinout by Pin Number:
 |AB33      |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |AB34      |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AC1       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|AC2       |                       |IOBS     |IO_L2N_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AC3       |                       |IOBM     |IO_L2P_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AC4       |                       |IOBS     |IO_L6N_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AC2       |TriggerData<44>        |IOB      |IO_L2N_12           |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AC3       |TriggerData<6>         |IOB      |IO_L2P_12           |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AC4       |TriggerData<7>         |IOB      |IO_L6N_12           |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AC5       |                       |IOBM     |IO_L6P_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AC6       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
+|AC6       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
 |AC7       |                       |IOBM     |IO_L12P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AC8       |                       |IOBS     |IO_L17N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AC9       |                       |IOBM     |IO_L17P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
@@ -152,10 +152,10 @@ Pinout by Pin Number:
 |AC32      |                       |IOBM     |IO_L6P_11           |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AC33      |                       |IOBS     |IO_L6N_11           |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AC34      |                       |LOWCAPIOB|IO_L8N_CC_LC_11     |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AD1       |                       |IOBS     |IO_L4N_VREF_12      |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AD2       |                       |IOBM     |IO_L4P_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AD3       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
-|AD4       |                       |IOBS     |IO_L14N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AD1       |TriggerData<25>        |IOB      |IO_L4N_VREF_12      |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AD2       |TriggerData<49>        |IOB      |IO_L4P_12           |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AD3       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
+|AD4       |TriggerData<1>         |IOB      |IO_L14N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AD5       |                       |IOBS     |IO_L11N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AD6       |                       |IOBM     |IO_L11P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AD7       |                       |LOWCAPIOB|IO_L24N_CC_LC_12    |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
@@ -186,10 +186,10 @@ Pinout by Pin Number:
 |AD32      |                       |IOBS     |IO_L10N_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AD33      |                       |         |VCCO_11             |         |           |11            |          |         |           |         |2.50     |          |           |                |
 |AD34      |                       |LOWCAPIOB|IO_L8P_CC_LC_11     |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AE1       |                       |IOBS     |IO_L7N_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AE2       |                       |IOBS     |IO_L10N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AE3       |                       |IOBM     |IO_L10P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AE4       |                       |IOBM     |IO_L14P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AE1       |TriggerData<39>        |IOB      |IO_L7N_12           |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AE2       |TriggerData<59>        |IOB      |IO_L10N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AE3       |TriggerData<23>        |IOB      |IO_L10P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AE4       |TriggerData<50>        |IOB      |IO_L14P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AE5       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AE6       |                       |IOBS     |IO_L19N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AE7       |                       |LOWCAPIOB|IO_L24P_CC_LC_12    |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
@@ -220,13 +220,13 @@ Pinout by Pin Number:
 |AE32      |                       |IOBM     |IO_L10P_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AE33      |                       |IOBM     |IO_L5P_11           |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AE34      |                       |IOBS     |IO_L5N_11           |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AF1       |                       |IOBM     |IO_L7P_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AF1       |TriggerData<43>        |IOB      |IO_L7P_12           |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AF2       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|AF3       |                       |IOBS     |IO_L18N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AF4       |                       |IOBS     |IO_L20N_VREF_12     |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AF3       |TriggerData<51>        |IOB      |IO_L18N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AF4       |TriggerData<61>        |IOB      |IO_L20N_VREF_12     |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AF5       |                       |IOBM     |IO_L20P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AF6       |                       |IOBM     |IO_L19P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AF7       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
+|AF7       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
 |AF8       |                       |IOBM     |IO_L27P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AF9       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |AF10      |                       |IOBM     |IO_L20P_8           |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
@@ -254,10 +254,10 @@ Pinout by Pin Number:
 |AF32      |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AF33      |                       |IOBM     |IO_L14P_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AF34      |                       |IOBS     |IO_L14N_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AG1       |                       |IOBS     |IO_L16N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AG2       |                       |IOBM     |IO_L16P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AG3       |                       |IOBM     |IO_L18P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AG4       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
+|AG1       |TriggerData<38>        |IOB      |IO_L16N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AG2       |TriggerData<37>        |IOB      |IO_L16P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AG3       |TriggerData<63>        |IOB      |IO_L18P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AG4       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
 |AG5       |                       |IOBS     |IO_L23N_VRP_12      |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AG6       |                       |IOBM     |IO_L23P_VRN_12      |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AG7       |                       |IOBS     |IO_L31N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
@@ -288,10 +288,10 @@ Pinout by Pin Number:
 |AG32      |                       |IOBM     |IO_L13P_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AG33      |                       |IOBS     |IO_L13N_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AG34      |                       |         |VCCO_11             |         |           |11            |          |         |           |         |2.50     |          |           |                |
-|AH1       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
-|AH2       |                       |IOBS     |IO_L15N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AH3       |                       |IOBM     |IO_L15P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AH4       |                       |IOBS     |IO_L28N_VREF_12     |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AH1       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
+|AH2       |TriggerData<42>        |IOB      |IO_L15N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AH3       |TriggerData<54>        |IOB      |IO_L15P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AH4       |TriggerData<56>        |IOB      |IO_L28N_VREF_12     |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AH5       |                       |IOBM     |IO_L28P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |AH6       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AH7       |                       |IOBS     |IO_L12N_VREF_8      |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
@@ -322,10 +322,10 @@ Pinout by Pin Number:
 |AH32      |                       |IOBM     |IO_L22P_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AH33      |                       |IOBS     |IO_L22N_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AH34      |                       |IOBS     |IO_L18N_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AJ1       |                       |IOBS     |IO_L22N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AJ2       |                       |IOBM     |IO_L22P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AJ1       |TriggerData<45>        |IOB      |IO_L22N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AJ2       |TriggerData<60>        |IOB      |IO_L22P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AJ3       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|AJ4       |                       |IOBS     |IO_L2N_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
+|AJ4       |TriggerData<36>        |IOB      |IO_L2N_8            |OUTPUT   |LVCMOS25*  |8             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AJ5       |                       |IOBS     |IO_L6N_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
 |AJ6       |                       |IOBM     |IO_L6P_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
 |AJ7       |                       |IOBS     |IO_L7N_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
@@ -356,10 +356,10 @@ Pinout by Pin Number:
 |AJ32      |                       |IOBS     |IO_L28N_VREF_11     |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AJ33      |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AJ34      |                       |IOBM     |IO_L18P_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AK1       |                       |IOBS     |IO_L21N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AK2       |                       |IOBS     |IO_L26N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AK3       |                       |IOBM     |IO_L26P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AK4       |                       |IOBM     |IO_L2P_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
+|AK1       |TriggerData<47>        |IOB      |IO_L21N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AK2       |TriggerData<40>        |IOB      |IO_L26N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AK3       |TriggerData<41>        |IOB      |IO_L26P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AK4       |TriggerData<58>        |IOB      |IO_L2P_8            |OUTPUT   |LVCMOS25*  |8             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AK5       |                       |         |VCCO_8              |         |           |8             |          |         |           |         |2.50     |          |           |                |
 |AK6       |                       |IOBS     |IO_L10N_8           |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
 |AK7       |                       |IOBM     |IO_L7P_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
@@ -390,10 +390,10 @@ Pinout by Pin Number:
 |AK32      |                       |LOWCAPIOB|IO_L25N_CC_LC_11    |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AK33      |                       |IOBM     |IO_L26P_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AK34      |                       |IOBS     |IO_L26N_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AL1       |                       |IOBM     |IO_L21P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AL2       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
-|AL3       |                       |IOBS     |IO_L32N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AL4       |                       |IOBS     |IO_L1N_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
+|AL1       |TriggerData<57>        |IOB      |IO_L21P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AL2       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
+|AL3       |TriggerData<52>        |IOB      |IO_L32N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AL4       |TriggerData<55>        |IOB      |IO_L1N_8            |OUTPUT   |LVCMOS25*  |8             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AL5       |                       |IOBM     |IO_L1P_8            |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
 |AL6       |                       |IOBM     |IO_L10P_8           |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
 |AL7       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
@@ -424,9 +424,9 @@ Pinout by Pin Number:
 |AL32      |                       |         |VCCO_11             |         |           |11            |          |         |           |         |2.50     |          |           |                |
 |AL33      |                       |IOBM     |IO_L30P_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
 |AL34      |                       |IOBS     |IO_L30N_11          |UNUSED   |           |11            |          |         |           |         |         |          |           |                |
-|AM1       |                       |IOBS     |IO_L30N_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AM2       |                       |IOBM     |IO_L30P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|AM3       |                       |IOBM     |IO_L32P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
+|AM1       |TriggerData<53>        |IOB      |IO_L30N_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AM2       |TriggerData<62>        |IOB      |IO_L30P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|AM3       |TriggerData<48>        |IOB      |IO_L32P_12          |OUTPUT   |LVCMOS25*  |12            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |AM4       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |AM5       |                       |IOBS     |IO_L14N_8           |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
 |AM6       |                       |IOBM     |IO_L14P_8           |UNUSED   |           |8             |          |         |           |         |         |          |           |                |
@@ -536,7 +536,7 @@ Pinout by Pin Number:
 |B10       |                       |IOBM     |IO_L2P_6            |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |B11       |                       |IOBS     |IO_L3N_6            |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |B12       |                       |LOWCAPIOB|IO_L9N_CC_LC_6      |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
-|B13       |                       |LOWCAPIOB|IO_L9P_CC_LC_6      |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
+|B13       |FastTrigDes            |IOB      |IO_L9P_CC_LC_6      |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |B14       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |B15       |                       |LOWCAPIOB|IO_L24N_LC_1        |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |B16       |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
@@ -559,9 +559,9 @@ Pinout by Pin Number:
 |B33       |                       |IOBS     |IO_L31N_5           |UNUSED   |           |5             |          |         |           |         |         |          |           |                |
 |B34       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |C1        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|C2        |TriggerData<28>        |IOB      |IO_L7P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|C3        |TriggerData<17>        |IOB      |IO_L1N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|C4        |TriggerData<16>        |IOB      |IO_L1P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|C2        |TriggerData<8>         |IOB      |IO_L7P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|C3        |TriggerData<9>         |IOB      |IO_L1N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|C4        |TriggerData<32>        |IOB      |IO_L1P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C5        |Test<5>                |IOB      |IO_L27P_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C6        |                       |         |VCCO_6              |         |           |6             |          |         |           |         |2.50     |          |           |                |
 |C7        |                       |IOBS     |IO_L14N_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
@@ -592,10 +592,10 @@ Pinout by Pin Number:
 |C32       |                       |IOBM     |IO_L2P_9            |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |C33       |                       |IOBM     |IO_L7P_9            |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |C34       |                       |IOBS     |IO_L7N_9            |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|D1        |TriggerData<30>        |IOB      |IO_L8P_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|D2        |TriggerData<29>        |IOB      |IO_L7N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|D1        |TriggerData<33>        |IOB      |IO_L8P_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|D2        |TriggerData<34>        |IOB      |IO_L7N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |D3        |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|D4        |TriggerData<20>        |IOB      |IO_L3P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|D4        |TriggerData<35>        |IOB      |IO_L3P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |D5        |Test<4>                |IOB      |IO_L27N_6           |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |D6        |                       |IOBS     |IO_L18N_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |D7        |                       |IOBM     |IO_L18P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
@@ -626,10 +626,10 @@ Pinout by Pin Number:
 |D32       |                       |IOBS     |IO_L2N_9            |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |D33       |                       |         |VCCO_9              |         |           |9             |          |         |           |         |any******|          |           |                |
 |D34       |                       |LOWCAPIOB|IO_L8P_CC_LC_9      |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|E1        |TriggerData<31>        |IOB      |IO_L8N_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|E2        |TriggerData<33>        |IOB      |IO_L9N_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|E3        |TriggerData<32>        |IOB      |IO_L9P_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|E4        |TriggerData<21>        |IOB      |IO_L3N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|E1        |TriggerData<11>        |IOB      |IO_L8N_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|E2        |TriggerData<19>        |IOB      |IO_L9N_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|E3        |TriggerData<27>        |IOB      |IO_L9P_CC_LC_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|E4        |TriggerData<17>        |IOB      |IO_L3N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |E5        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |E6        |                       |IOBM     |IO_L26P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |E7        |                       |IOBS     |IO_L23N_VRP_6       |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
@@ -660,11 +660,11 @@ Pinout by Pin Number:
 |E32       |                       |IOBM     |IO_L11P_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |E33       |                       |IOBS     |IO_L11N_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |E34       |                       |LOWCAPIOB|IO_L8N_CC_LC_9      |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|F1        |TriggerData<0>         |IOB      |IO_L17P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|F1        |TriggerData<18>        |IOB      |IO_L17P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |F2        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|F3        |TriggerData<27>        |IOB      |IO_L6N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|F4        |TriggerData<26>        |IOB      |IO_L6P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|F5        |TriggerData<18>        |IOB      |IO_L2P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|F3        |TriggerData<26>        |IOB      |IO_L6N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|F4        |TriggerData<10>        |IOB      |IO_L6P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|F5        |TrigInLVDS             |IOB      |IO_L2P_10           |INPUT    |LVCMOS25*  |10            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |F6        |                       |IOBS     |IO_L26N_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |F7        |                       |         |VCCO_6              |         |           |6             |          |         |           |         |2.50     |          |           |                |
 |F8        |                       |IOBM     |IO_L16P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
@@ -694,11 +694,11 @@ Pinout by Pin Number:
 |F32       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |F33       |                       |IOBM     |IO_L14P_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |F34       |                       |IOBS     |IO_L14N_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|G1        |TriggerData<1>         |IOB      |IO_L17N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|G2        |TriggerData<43>        |IOB      |IO_L14N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|G3        |TriggerData<42>        |IOB      |IO_L14P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|G1        |TriggerData<21>        |IOB      |IO_L17N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|G2        |TriggerData<30>        |IOB      |IO_L14N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|G3        |TriggerData<16>        |IOB      |IO_L14P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |G4        |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|G5        |TriggerData<19>        |IOB      |IO_L2N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|G5        |TrigInLVDS_n           |IOB      |IO_L2N_10           |INPUT    |LVCMOS25*  |10            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |G6        |                       |IOBS     |IO_L28N_VREF_6      |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |G7        |                       |IOBM     |IO_L28P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |G8        |                       |IOBS     |IO_L16N_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
@@ -729,15 +729,15 @@ Pinout by Pin Number:
 |G33       |                       |IOBS     |IO_L16N_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |G34       |                       |         |VCCO_9              |         |           |9             |          |         |           |         |any******|          |           |                |
 |H1        |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|H2        |TriggerData<5>         |IOB      |IO_L19N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|H3        |TriggerData<4>         |IOB      |IO_L19P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|H4        |TriggerData<37>        |IOB      |IO_L11N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|H5        |TriggerData<36>        |IOB      |IO_L11P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|H2        |TriggerData<20>        |IOB      |IO_L19N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|H3        |TriggerData<28>        |IOB      |IO_L19P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|H4        |TriggerData<29>        |IOB      |IO_L11N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|H5        |                       |IOBM     |IO_L11P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |H6        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |H7        |                       |IOBS     |IO_L31N_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |H8        |                       |IOBM     |IO_L31P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |H9        |                       |LOWCAPIOB|IO_L8N_CC_LC_6      |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
-|H10       |FastTrigDes            |IOB      |IO_L8P_CC_LC_6      |OUTPUT   |LVCMOS25*  |6             |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|H10       |                       |LOWCAPIOB|IO_L8P_CC_LC_6      |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |H11       |                       |         |VCCO_6              |         |           |6             |          |         |           |         |2.50     |          |           |                |
 |H12       |                       |IOBM     |IO_L13P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |H13       |                       |LOWCAPIOB|IO_L6N_D20_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
@@ -762,12 +762,12 @@ Pinout by Pin Number:
 |H32       |                       |IOBM     |IO_L20P_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |H33       |                       |IOBM     |IO_L22P_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |H34       |                       |IOBS     |IO_L22N_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|J1        |TriggerData<13>        |IOB      |IO_L23N_VRP_10      |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|J2        |TriggerData<12>        |IOB      |IO_L23P_VRN_10      |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|J1        |TriggerData<13>        |IOB      |IO_L23N_VRP_10      |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|J2        |TriggerData<12>        |IOB      |IO_L23P_VRN_10      |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |J3        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|J4        |TriggerData<2>         |IOB      |IO_L18P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|J5        |TriggerData<35>        |IOB      |IO_L10N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|J6        |TriggerData<34>        |IOB      |IO_L10P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|J4        |TriggerData<31>        |IOB      |IO_L18P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|J5        |                       |IOBS     |IO_L10N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|J6        |                       |IOBM     |IO_L10P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |J7        |                       |IOBS     |IO_L32N_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |J8        |                       |         |VCCO_6              |         |           |6             |          |         |           |         |2.50     |          |           |                |
 |J9        |                       |LOWCAPIOB|IO_L24P_CC_LC_6     |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
@@ -796,12 +796,12 @@ Pinout by Pin Number:
 |J32       |                       |IOBS     |IO_L20N_VREF_9      |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |J33       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |J34       |                       |IOBM     |IO_L29P_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|K1        |TriggerData<51>        |IOB      |IO_L26N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|K2        |TriggerData<50>        |IOB      |IO_L26P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|K3        |TriggerData<48>        |IOB      |IO_L25P_CC_LC_10    |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|K4        |TriggerData<3>         |IOB      |IO_L18N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|K1        |TriggerData<24>        |IOB      |IO_L26N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|K2        |TriggerData<15>        |IOB      |IO_L26P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|K3        |TriggerData<2>         |IOB      |IO_L25P_CC_LC_10    |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|K4        |TriggerData<3>         |IOB      |IO_L18N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |K5        |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|K6        |TriggerData<46>        |IOB      |IO_L16P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|K6        |                       |IOBM     |IO_L16P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |K7        |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |K8        |                       |IOBM     |IO_L32P_6           |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |K9        |                       |LOWCAPIOB|IO_L24N_CC_LC_6     |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
@@ -830,15 +830,15 @@ Pinout by Pin Number:
 |K32       |                       |IOBM     |IO_L26P_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |K33       |                       |IOBS     |IO_L26N_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |K34       |                       |IOBS     |IO_L29N_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|L1        |TriggerData<56>        |IOB      |IO_L29P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|L1        |TriggerData<0>         |IOB      |IO_L29P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |L2        |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|L3        |TriggerData<49>        |IOB      |IO_L25N_CC_LC_10    |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|L4        |TriggerData<11>        |IOB      |IO_L22N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|L5        |TriggerData<10>        |IOB      |IO_L22P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|L6        |TriggerData<45>        |IOB      |IO_L16N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|L3        |TriggerData<14>        |IOB      |IO_L25N_CC_LC_10    |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|L4        |TriggerData<4>         |IOB      |IO_L22N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|L5        |                       |IOBM     |IO_L22P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|L6        |                       |IOBS     |IO_L16N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |L7        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|L8        |TriggerData<44>        |IOB      |IO_L15P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|L9        |TriggerData<23>        |IOB      |IO_L4N_VREF_10      |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|L8        |                       |IOBM     |IO_L15P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|L9        |                       |IOBS     |IO_L4N_VREF_10      |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |L10       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |L11       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |L12       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
@@ -864,16 +864,16 @@ Pinout by Pin Number:
 |L32       |                       |         |VCCO_9              |         |           |9             |          |         |           |         |any******|          |           |                |
 |L33       |                       |IOBM     |IO_L31P_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
 |L34       |                       |IOBS     |IO_L31N_9           |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
-|M1        |TriggerData<57>        |IOB      |IO_L29N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|M2        |TriggerData<55>        |IOB      |IO_L28N_VREF_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|M3        |TriggerData<54>        |IOB      |IO_L28P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|M1        |TriggerData<46>        |IOB      |IO_L29N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|M2        |TriggerData<22>        |IOB      |IO_L28N_VREF_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
+|M3        |TriggerData<5>         |IOB      |IO_L28P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |M4        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|M5        |TriggerData<53>        |IOB      |IO_L27N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|M6        |TriggerData<52>        |IOB      |IO_L27P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|M7        |TriggerData<8>         |IOB      |IO_L21P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|M8        |TriggerData<15>        |IOB      |IO_L15N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|M5        |                       |IOBS     |IO_L27N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|M6        |                       |IOBM     |IO_L27P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|M7        |                       |IOBM     |IO_L21P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|M8        |                       |IOBS     |IO_L15N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |M9        |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|M10       |TriggerData<22>        |IOB      |IO_L4P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|M10       |                       |IOBM     |IO_L4P_10           |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |M11       |                       |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
 |M12       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |M13       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
@@ -902,15 +902,15 @@ Pinout by Pin Number:
 |N2        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |N3        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |N4        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
-|N5        |TriggerData<58>        |IOB      |IO_L30P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|N5        |                       |IOBM     |IO_L30P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |N6        |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|N7        |TriggerData<9>         |IOB      |IO_L21N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|N7        |                       |IOBS     |IO_L21N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |N8        |                       |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
-|N9        |TriggerData<39>        |IOB      |IO_L12N_VREF_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|N10       |TriggerData<47>        |IOB      |IO_L12P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|N9        |                       |IOBS     |IO_L12N_VREF_10     |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|N10       |                       |IOBM     |IO_L12P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |N11       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|N12       |TriggerData<25>        |IOB      |IO_L5N_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|N13       |TriggerData<24>        |IOB      |IO_L5P_10           |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|N12       |                       |IOBS     |IO_L5N_10           |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|N13       |                       |IOBM     |IO_L5P_10           |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |N14       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |N15       |                       |LOWCAPIOB|IO_L16N_GC_CC_LC_1  |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |N16       |                       |         |VCCO_1              |         |           |1             |          |         |           |         |2.50     |          |           |                |
@@ -936,14 +936,14 @@ Pinout by Pin Number:
 |P2        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |P3        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |P4        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
-|P5        |TriggerData<59>        |IOB      |IO_L30N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|P6        |TriggerData<61>        |IOB      |IO_L31N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|P7        |TriggerData<60>        |IOB      |IO_L31P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|P5        |                       |IOBS     |IO_L30N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|P6        |                       |IOBS     |IO_L31N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|P7        |                       |IOBM     |IO_L31P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |P8        |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|P9        |TriggerData<7>         |IOB      |IO_L20N_VREF_10     |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|P10       |TriggerData<6>         |IOB      |IO_L20P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|P11       |TriggerData<41>        |IOB      |IO_L13N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|P12       |TriggerData<40>        |IOB      |IO_L13P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|P9        |                       |IOBS     |IO_L20N_VREF_10     |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|P10       |                       |IOBM     |IO_L20P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|P11       |                       |IOBS     |IO_L13N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|P12       |                       |IOBM     |IO_L13P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |P13       |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
 |P15       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |P16       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
@@ -972,9 +972,9 @@ Pinout by Pin Number:
 |R6        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |R7        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |R8        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
-|R9        |TriggerData<63>        |IOB      |IO_L32N_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|R9        |                       |IOBS     |IO_L32N_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |R10       |                       |         |VCCO_10             |         |           |10            |          |         |           |         |2.50     |          |           |                |
-|R11       |TriggerData<14>        |IOB      |IO_L24P_CC_LC_10    |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|R11       |                       |LOWCAPIOB|IO_L24P_CC_LC_10    |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |R12       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |R13       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |R14       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
@@ -1007,8 +1007,8 @@ Pinout by Pin Number:
 |T7        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |T8        |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
 |T9        |                       |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
-|T10       |TriggerData<62>        |IOB      |IO_L32P_10          |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
-|T11       |TriggerData<38>        |IOB      |IO_L24N_CC_LC_10    |OUTPUT   |LVCMOS25*  |10            |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|T10       |                       |IOBM     |IO_L32P_10          |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
+|T11       |                       |LOWCAPIOB|IO_L24N_CC_LC_10    |UNUSED   |           |10            |          |         |           |         |         |          |           |                |
 |T12       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |T13       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |T14       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
@@ -1148,7 +1148,7 @@ Pinout by Pin Number:
 |Y12       |                       |LOWCAPIOB|IO_L9N_CC_LC_12     |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |Y13       |                       |LOWCAPIOB|IO_L9P_CC_LC_12     |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |Y14       |                       |IOBM     |IO_L5P_12           |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
-|Y15       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |any******|          |           |                |
+|Y15       |                       |         |VCCO_12             |         |           |12            |          |         |           |         |2.50     |          |           |                |
 |Y16       |                       |IOBM     |IO_L13P_12          |UNUSED   |           |12            |          |         |           |         |         |          |           |                |
 |Y17       |                       |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
 |Y18       |                       |         |DOUT_BUSY_0         |         |           |              |          |         |           |         |         |          |           |                |

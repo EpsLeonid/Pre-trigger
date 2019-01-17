@@ -10,7 +10,7 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Wed Jan 09 18:05:03 2019
+Mapped Date    : Thu Jan 17 18:02:16 2019
 
 Design Summary
 --------------
@@ -31,7 +31,7 @@ Logic Distribution:
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
-  Number of bonded IOBs:                152 out of     640   23%
+  Number of bonded IOBs:                154 out of     640   24%
     IOB Flip Flops:                       1
   Number of BUFG/BUFGCTRLs:               3 out of      32    9%
     Number used as BUFGs:                 3
@@ -39,10 +39,10 @@ Logic Distribution:
     Number used as RAMB16s:               1
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.75
+Average Fanout of Non-Clock Nets:                1.72
 
 Peak Memory Usage:  442 MB
-Total REAL time to MAP completion:  8 secs 
+Total REAL time to MAP completion:  3 secs 
 Total CPU time to MAP completion:   3 secs 
 
 NOTES:
@@ -287,6 +287,8 @@ Section 6 - IOB Properties
 | Test<8>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<9>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TrigDes                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TrigInLVDS                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| TrigInLVDS_n                       | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | TriggerData<0>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<1>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<2>                     | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
