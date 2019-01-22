@@ -113,7 +113,9 @@ architecture Behavioral of ISERDES_8bit is
 	signal CLK40_90d			: std_logic;
 	signal Clk20				: std_logic;
 	signal Clk80				: std_logic;
+	signal Clk80_o				: std_logic;
 	signal Clk160				: std_logic;
+	signal Clk160_o			: std_logic;
 	signal Clk320				: std_logic;
 	signal FCT160				: std_logic;
 	signal Phase				: std_logic;
@@ -328,12 +330,24 @@ DLL: entity work.DLL
 	port map (
 		CLK0_OUT => Clk40,					-- 0 degree DCM CLK output
 		CLKDV_OUT => Clk20,					-- 0 degree DCM CLK output
-		CLK2X_OUT => Clk80,				-- 2X DCM CLK output
+		CLK2X_OUT => Clk80_o,				-- 2X DCM CLK output
 		CLK90_OUT => Clk40_90d,			-- 90 degree DCM CLK output
-		CLKFX_OUT => Clk160,				-- DCM CLK synthesis out (M/D)
+		CLKFX_OUT => Clk160_o,				-- DCM CLK synthesis out (M/D)
 		LOCKED_OUT => s_clock_locked,	-- DCM LOCK status output
 		CLKIN_IN => MuxClock_in,			-- Clock input (from IBUFG, BUFG or DCM)
 		RST_IN => Reset					-- DCM asynchronous reset input
+	);
+
+	Global_clk80: BUFG
+	port map (
+		O => Clk80,     -- Clock buffer output
+		I => Clk80_o      -- Clock buffer input
+	);
+
+	Global_clk160: BUFG
+	port map (
+		O => Clk160,     -- Clock buffer output
+		I => Clk160_o      -- Clock buffer input
 	);
 
 --******** LED ********--
@@ -582,7 +596,6 @@ DLL: entity work.DLL
 			Sub_ped_delay <= Sub_ped; 
 			AverData_med <= (Sub_ped_delay + Sub_ped);
 			AverData(7 downto 0) <= AverData_med(8 downto 1);
-			GroupSum <= AverData + AverData + AverData + AverData;
 			if (AverData >= ThresholdData_0) then GroupValue_Up_LT <= '1';
 														else GroupValue_Up_LT <= '0';
 			end if;
@@ -603,7 +616,9 @@ DLL: entity work.DLL
 			if AllReset = '1' then
 				DelayGroupAmp_mid <= (others => '0');
 				DelayGroupAmp <= (others => '0');
+				GroupSum <= (others => '0');
 			else
+				GroupSum <= AverData + AverData + AverData + AverData;
 				DelayGroupAmp_mid <= GroupSum; 
 				DelayGroupAmp <= DelayGroupAmp_mid; 
 				if ((DelayGroupAmp_mid > GroupSum) and (GroupLT_Trig = '1')) then GroupValue_Amp_Done <= '1';
@@ -754,16 +769,16 @@ DLL: entity work.DLL
 --      I => DCO      -- Buffer input 
 --   );
 
-	Test(0) <= GroupAmp(0);
-	Test(1) <= GroupAmp(1);
-	Test(2) <= GroupAmp(2);
-	Test(3) <= GroupAmp(3);
-	Test(4) <= GroupAmp(4);
-	Test(5) <= GroupAmp(5);
-	Test(6) <= GroupAmp(6);
-	Test(7) <= GroupAmp(7);
-	Test(8) <= GroupAmp_Trig;
-	Test(9) <= EnImRam;
+	Test(0) <= DataOut(0);
+	Test(1) <= DataOut(1);
+	Test(2) <= DataOut(2);
+	Test(3) <= DataOut(3);
+	Test(4) <= DataOut(4);
+	Test(5) <= DataOut(5);
+	Test(6) <= DataOut(6);
+	Test(7) <= DataOut(7);
+	Test(8) <= DCO;
+	Test(9) <= FCO;
 
 end Behavioral;
 

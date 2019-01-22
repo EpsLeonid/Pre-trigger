@@ -10,7 +10,7 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Thu Jan 17 18:02:16 2019
+Mapped Date    : Tue Jan 22 18:39:19 2019
 
 Mapping design into LUTs...
 WARNING:MapLib:701 - Signal FCT_40 connected to top level port FCT_40 has been
@@ -19,22 +19,6 @@ WARNING:MapLib:701 - Signal FCT_160 connected to top level port FCT_160 has been
    removed.
 WARNING:MapLib:701 - Signal FCT_160_n connected to top level port FCT_160_n has
    been removed.
-WARNING:MapLib:701 - Signal ADC_DCO_LVDS<0> connected to top level port
-   ADC_DCO_LVDS<0> has been removed.
-WARNING:MapLib:701 - Signal ADC_DCO_LVDS_n<0> connected to top level port
-   ADC_DCO_LVDS_n<0> has been removed.
-WARNING:MapLib:701 - Signal ADC_FCO_LVDS<0> connected to top level port
-   ADC_FCO_LVDS<0> has been removed.
-WARNING:MapLib:701 - Signal ADC_FCO_LVDS_n<0> connected to top level port
-   ADC_FCO_LVDS_n<0> has been removed.
-WARNING:MapLib:701 - Signal ADCInDataLVDS<0> connected to top level port
-   ADCInDataLVDS<0> has been removed.
-WARNING:MapLib:701 - Signal ADCInDataLVDS_n<0> connected to top level port
-   ADCInDataLVDS_n<0> has been removed.
-WARNING:MapLib:41 - All members of TNM group "ADC_DCO_LVDS0" have been optimized
-   out of the design.
-WARNING:MapLib:50 - The period specification "TS_DCO0" has been discarded
-   because the group "ADC_DCO_LVDS0" has been optimized away.
 Running directed packing...
 Running delay-based LUT packing...
 Running related packing...
@@ -45,34 +29,34 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:   11
+Number of warnings:    3
 Logic Utilization:
-  Number of Slice Flip Flops:           193 out of  53,248    1%
-  Number of 4 input LUTs:                60 out of  53,248    1%
+  Number of Slice Flip Flops:           215 out of  53,248    1%
+  Number of 4 input LUTs:                61 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            125 out of  26,624    1%
-    Number of Slices containing only related logic:     125 out of     125 100%
-    Number of Slices containing unrelated logic:          0 out of     125   0%
+  Number of occupied Slices:            139 out of  26,624    1%
+    Number of Slices containing only related logic:     139 out of     139 100%
+    Number of Slices containing unrelated logic:          0 out of     139   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         100 out of  53,248    1%
-    Number used as logic:                58
+  Total Number of 4 input LUTs:         101 out of  53,248    1%
+    Number used as logic:                60
     Number used as a route-thru:         40
-    Number used as Shift registers:       2
+    Number used as Shift registers:       1
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
-  Number of bonded IOBs:                154 out of     640   24%
-    IOB Flip Flops:                       1
-  Number of BUFG/BUFGCTRLs:               3 out of      32    9%
-    Number used as BUFGs:                 3
+  Number of bonded IOBs:                160 out of     640   25%
+    IOB Flip Flops:                      11
+  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
+    Number used as BUFGs:                 5
   Number of FIFO16/RAMB16s:               1 out of     160    1%
     Number used as RAMB16s:               1
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.72
+Average Fanout of Non-Clock Nets:                1.69
 
-Peak Memory Usage:  442 MB
-Total REAL time to MAP completion:  3 secs 
+Peak Memory Usage:  445 MB
+Total REAL time to MAP completion:  4 secs 
 Total CPU time to MAP completion:   3 secs 
 
 NOTES:
