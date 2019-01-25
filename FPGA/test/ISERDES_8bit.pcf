@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Jan 22 18:39:23 2019
+// Written by: Map P.20131013 on Fri Jan 25 18:05:31 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -194,19 +194,18 @@ TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_Bit_write" BEL "ADCtest_CSB_trig" BEL
         "ShiftReg_test/tmp_5" BEL "ShiftReg_test/tmp_4" BEL
         "ShiftReg_test/tmp_3" BEL "ShiftReg_test/tmp_2" BEL
         "ShiftReg_test/tmp_1" BEL "ShiftReg_test/tmp_0" BEL "ADC_SCLK";
-TIMEGRP ADC_DCO_LVDS0 = BEL "clkdiv_es" BEL "DataN_0" BEL "DataP_0" BEL
-        "clkdiv_a" BEL "DataN_del_0" BEL "DataN_1" BEL "DataP_1" BEL
-        "clkdiv_b" BEL "DataP_del_0" BEL "DataN_del_1" BEL "DataN_2" BEL
-        "DataP_2" BEL "DataP_del_1" BEL "DataN_del_2" BEL "DataN_3" BEL
-        "DataP_3" BEL "DataP_del_2" BEL "DataN_del_3" BEL "DataP_del_3" BEL
-        "clkdiv_1" BEL "IDDR_inst/FF0" BEL "IDDR_inst/FF1" BEL "clkdiv_0" BEL
-        "Test_8_OBUF_BUFG" BEL "Test<8>";
 TIMEGRP DLL_CLK0_BUF = BEL "PowerUp0" BEL "TriggerData_10" BEL
         "TriggerData_14" BEL "TriggerData_15" BEL "TriggerData_4" BEL
         "TriggerData_5" BEL "TriggerData_6" BEL "TriggerData_7" BEL
         "TriggerData_8" BEL "TriggerData_9" BEL "TriggerData_2" BEL
         "TriggerData_3" BEL "DLL/CLK0_BUFG_INST" BEL "PowerUp2/Trig" BEL
         "PowerUp1/Trig";
+TIMEGRP ADC_DCO_LVDS0 = BEL "DataN_0" BEL "DataP_0" BEL "DataN_del_0" BEL
+        "DataN_1" BEL "DataP_1" BEL "DataP_del_0" BEL "DataN_del_1" BEL
+        "DataN_2" BEL "DataP_2" BEL "DataP_del_1" BEL "DataN_del_2" BEL
+        "DataN_3" BEL "DataP_3" BEL "DataP_del_2" BEL "DataN_del_3" BEL
+        "DataP_del_3" BEL "IDDR_inst/FF0" BEL "IDDR_inst/FF1" BEL
+        "IDDR_inst/FF2" BEL "IDDR_inst/FF3";
 PIN Mrom__varindex0000_pins<12> = BEL "Mrom__varindex0000" PINNAME CLKA;
 TIMEGRP DLL_CLK2X_BUF = BEL "DelayReset_0" BEL "Sub_Ped_2" BEL "Sub_Ped_3" BEL
         "Sub_Ped_4" BEL "Sub_Ped_5" BEL "Sub_Ped_6" BEL "Sub_Ped_7" BEL

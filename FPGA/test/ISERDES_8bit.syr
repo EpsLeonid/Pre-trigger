@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.09 secs
  
 --> Reading design: ISERDES_8bit.prj
 
@@ -206,7 +206,7 @@ WARNING:Xst:753 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/IS
     Set user-defined property "IBUF_LOW_PWR =  TRUE" for instance <Data_LVDS_signal> in unit <ISERDES_8bit>.
     Set user-defined property "IFD_DELAY_VALUE =  AUTO" for instance <Data_LVDS_signal> in unit <ISERDES_8bit>.
     Set user-defined property "IOSTANDARD =  DEFAULT" for instance <Data_LVDS_signal> in unit <ISERDES_8bit>.
-    Set user-defined property "DDR_CLK_EDGE =  OPPOSITE_EDGE" for instance <IDDR_inst> in unit <ISERDES_8bit>.
+    Set user-defined property "DDR_CLK_EDGE =  SAME_EDGE_PIPELINED" for instance <IDDR_inst> in unit <ISERDES_8bit>.
     Set user-defined property "INIT_Q1 =  0" for instance <IDDR_inst> in unit <ISERDES_8bit>.
     Set user-defined property "INIT_Q2 =  0" for instance <IDDR_inst> in unit <ISERDES_8bit>.
     Set user-defined property "SRTYPE =  SYNC" for instance <IDDR_inst> in unit <ISERDES_8bit>.
@@ -442,6 +442,7 @@ WARNING:Xst:1780 - Signal <s_fadc_sdio> is never used or assigned. This unconnec
 WARNING:Xst:1780 - Signal <s_fadc_sclk> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <s_fadc_reset> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <s_fadc_csb> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
+WARNING:Xst:646 - Signal <clkdiv_es> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:1780 - Signal <TrigIn> is never used or assigned. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <TestCnt<23>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
 WARNING:Xst:646 - Signal <TestCnt<21:16>> is assigned but never used. This unconnected signal will be trimmed during the optimization process.
@@ -521,9 +522,6 @@ WARNING:Xst:653 - Signal <AverData<9:8>> is used but never assigned. This source
     Found 10-bit register for signal <AverData_med>.
     Found 10-bit adder for signal <AverData_med$add0000> created at line 597.
     Found 2-bit up counter for signal <clkdiv>.
-    Found 1-bit register for signal <clkdiv_a>.
-    Found 1-bit register for signal <clkdiv_b>.
-    Found 1-bit register for signal <clkdiv_es>.
     Found 4-bit register for signal <DataN>.
     Found 4-bit register for signal <DataN_del>.
     Found 8-bit register for signal <DataOut>.
@@ -550,7 +548,7 @@ WARNING:Xst:653 - Signal <AverData<9:8>> is used but never assigned. This source
     Summary:
 	inferred   1 ROM(s).
 	inferred   1 Counter(s).
-	inferred 145 D-type flip-flop(s).
+	inferred 142 D-type flip-flop(s).
 	inferred   3 Adder/Subtractor(s).
 	inferred   7 Comparator(s).
 Unit <ISERDES_8bit> synthesized.
@@ -568,13 +566,12 @@ Macro Statistics
  128x8-bit ROM                                         : 1
 # Adders/Subtractors                                   : 3
  10-bit adder                                          : 3
-# Counters                                             : 4
+# Counters                                             : 3
  16-bit updown counter                                 : 1
- 2-bit up counter                                      : 1
  26-bit up counter                                     : 1
  6-bit up counter                                      : 1
-# Registers                                            : 144
- 1-bit register                                        : 136
+# Registers                                            : 141
+ 1-bit register                                        : 133
  10-bit register                                       : 6
  7-bit register                                        : 1
  8-bit register                                        : 1
@@ -631,13 +628,12 @@ Macro Statistics
  128x8-bit single-port block RAM                       : 1
 # Adders/Subtractors                                   : 3
  10-bit adder                                          : 3
-# Counters                                             : 4
+# Counters                                             : 3
  16-bit updown counter                                 : 1
- 2-bit up counter                                      : 1
  26-bit up counter                                     : 1
  6-bit up counter                                      : 1
-# Registers                                            : 201
- Flip-Flops                                            : 201
+# Registers                                            : 198
+ Flip-Flops                                            : 198
 # Comparators                                          : 7
  10-bit comparator greater                             : 1
  11-bit comparator greatequal                          : 1
@@ -697,8 +693,8 @@ Unit <ISERDES_8bit> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 223
- Flip-Flops                                            : 223
+# Registers                                            : 218
+ Flip-Flops                                            : 218
 # Shift Registers                                      : 1
  10-bit shift register                                 : 1
 
@@ -729,11 +725,11 @@ Design Statistics
 # IOs                              : 423
 
 Cell Usage :
-# BELS                             : 214
+# BELS                             : 212
 #      GND                         : 1
 #      INV                         : 8
 #      LUT1                        : 40
-#      LUT2                        : 28
+#      LUT2                        : 26
 #      LUT3                        : 8
 #      LUT4                        : 19
 #      LUT4_L                      : 2
@@ -741,23 +737,21 @@ Cell Usage :
 #      MUXF5                       : 2
 #      VCC                         : 1
 #      XORCY                       : 49
-# FlipFlops/Latches                : 225
-#      FD                          : 75
+# FlipFlops/Latches                : 220
+#      FD                          : 80
 #      FDC                         : 3
 #      FDCE                        : 5
 #      FDCP                        : 50
-#      FDE                         : 5
-#      FDE_1                       : 4
-#      FDR                         : 48
-#      FDR_1                       : 4
+#      FDE                         : 1
+#      FDR                         : 50
 #      FDRE                        : 30
 #      IDDR                        : 1
 # RAMS                             : 1
 #      RAMB16                      : 1
 # Shift Registers                  : 1
 #      SRL16                       : 1
-# Clock Buffers                    : 8
-#      BUFG                        : 8
+# Clock Buffers                    : 7
+#      BUFG                        : 7
 # IO Buffers                       : 95
 #      IBUF                        : 1
 #      IBUFDS                      : 1
@@ -773,17 +767,17 @@ Device utilization summary:
 
 Selected Device : 4vlx60ff1148-10 
 
- Number of Slices:                      133  out of  26624     0%  
- Number of Slice Flip Flops:            216  out of  53248     0%  
- Number of 4 input LUTs:                106  out of  53248     0%  
-    Number used as logic:               105
+ Number of Slices:                      130  out of  26624     0%  
+ Number of Slice Flip Flops:            211  out of  53248     0%  
+ Number of 4 input LUTs:                104  out of  53248     0%  
+    Number used as logic:               103
     Number used as Shift registers:       1
  Number of IOs:                         423
  Number of bonded IOBs:                  99  out of    640    15%  
     IOB Flip Flops:                       9
  Number of FIFO16/RAMB16s:                1  out of    160     0%  
     Number used as RAMB16s:               1
- Number of GCLKs:                         8  out of     32    25%  
+ Number of GCLKs:                         7  out of     32    21%  
  Number of DCM_ADVs:                      1  out of      8    12%  
 
 ---------------------------
@@ -808,8 +802,8 @@ Clock Information:
 Clock Signal                       | Clock buffer(FF name)      | Load  |
 -----------------------------------+----------------------------+-------+
 MuxClock_in                        | DLL/DCM_ADV_INST:CLKDV     | 60    |
-ADC_DCO_LVDS<0>                    | IBUFGDS+BUFG               | 22    |
 MuxClock_in                        | DLL/DCM_ADV_INST:CLK0      | 14    |
+ADC_DCO_LVDS<0>                    | IBUFGDS                    | 17    |
 MuxClock_in                        | DLL/DCM_ADV_INST:CLK2X+BUFG| 104   |
 ADC_FCO_LVDS<0>                    | IBUFGDS                    | 8     |
 Qclock                             | IBUFG                      | 17    |
@@ -889,24 +883,24 @@ Delay:               2.917ns (Levels of Logic = 27)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'ADC_DCO_LVDS<0>'
-  Clock period: 2.690ns (frequency: 371.733MHz)
-  Total number of paths / destination ports: 29 / 27
+  Clock period: 0.759ns (frequency: 1317.176MHz)
+  Total number of paths / destination ports: 14 / 14
 -------------------------------------------------------------------------
-Delay:               1.345ns (Levels of Logic = 0)
-  Source:            clkdiv_es (FF)
+Delay:               0.759ns (Levels of Logic = 0)
+  Source:            DataN_0 (FF)
   Destination:       DataN_del_0 (FF)
   Source Clock:      ADC_DCO_LVDS<0> rising
-  Destination Clock: ADC_DCO_LVDS<0> falling
+  Destination Clock: ADC_DCO_LVDS<0> rising
 
-  Data Path: clkdiv_es to DataN_del_0
+  Data Path: DataN_0 to DataN_del_0
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDR:C->Q              8   0.360   0.445  clkdiv_es (clkdiv_es)
-     FDE_1:CE                  0.540          DataN_del_0
+     FDR:C->Q              2   0.360   0.377  DataN_0 (DataN_0)
+     FD:D                      0.022          DataN_del_0
     ----------------------------------------
-    Total                      1.345ns (0.900ns logic, 0.445ns route)
-                                       (66.9% logic, 33.1% route)
+    Total                      0.759ns (0.382ns logic, 0.377ns route)
+                                       (50.3% logic, 49.7% route)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Qclock'
@@ -1046,7 +1040,7 @@ Offset:              4.677ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default path analysis
-  Total number of paths / destination ports: 4 / 2
+  Total number of paths / destination ports: 2 / 1
 -------------------------------------------------------------------------
 Delay:               5.391ns (Levels of Logic = 2)
   Source:            ADC_FCO_LVDS<0> (PAD)
@@ -1065,14 +1059,14 @@ Delay:               5.391ns (Levels of Logic = 2)
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.46 secs
+Total REAL time to Xst completion: 7.00 secs
+Total CPU time to Xst completion: 7.11 secs
  
 --> 
 
-Total memory usage is 334800 kilobytes
+Total memory usage is 335312 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  116 (   0 filtered)
+Number of warnings :  117 (   0 filtered)
 Number of infos    :   17 (   0 filtered)
 

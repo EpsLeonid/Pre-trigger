@@ -5,7 +5,7 @@
     The structure and the elements are likely to change over the next few releases.
     This means code written to parse this file will need to be revisited each subsequent release.-->
 
-  <application stringID="Map" timeStamp="Tue Jan 22 18:39:23 2019">
+  <application stringID="Map" timeStamp="Fri Jan 25 18:05:31 2019">
     <section stringID="User_Env">
       <table stringID="User_EnvVar">
         <column stringID="variable"/>
@@ -73,13 +73,13 @@
         <item dataType="int" stringID="MAP_NUM_ERRORS" value="0"/>
         <item dataType="int" stringID="MAP_FILTERED_WARNINGS" value="0"/>
         <item dataType="int" stringID="MAP_NUM_WARNINGS" value="3"/>
-        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="455228"/>
-        <item stringID="MAP_TOTAL_REAL_TIME" value="4 secs "/>
+        <item UNITS="KB" dataType="int" stringID="MAP_PEAK_MEMORY" value="455232"/>
+        <item stringID="MAP_TOTAL_REAL_TIME" value="5 secs "/>
         <item stringID="MAP_TOTAL_CPU_TIME" value="3 secs "/>
       </section>
       <section stringID="MAP_SLICE_REPORTING"/>
       <section label="Logic Utilization" stringID="MAP_LOGIC_UTILIZATION">
-        <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="215"/>
+        <item dataType="int" label="Number of Slice Flip Flops" stringID="MAP_NUM_SLICE_FF" value="210"/>
         <item dataType="int" stringID="MAP_NUM_SLICE_LATCH" value="0"/>
         <item dataType="int" stringID="MAP_NUM_ACAL_REG" value="0"/>
         <item dataType="int" stringID="MAP_AVAILABLE_SLICEL" value="13312"/>
@@ -88,14 +88,14 @@
         <item dataType="int" stringID="MAP_LUTS_PER_SLICE" value="2"/>
         <item AVAILABLE="13312" dataType="int" stringID="MAP_NUM_SLICEM" value="1"/>
         <item AVAILABLE="13312" dataType="int" stringID="MAP_NUM_SLICEL" value="1"/>
-        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="61"/>
+        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="59"/>
         <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="40"/>
         <item dataType="int" stringID="MAP_NUM_ACAL_LUT" value="0"/>
       </section>
       <section label="Logic Distribution" stringID="MAP_LOGIC_DISTRIBUTION">
-        <item dataType="int" label="Number of occupied Slices" stringID="MAP_AGG_SLICE" value="139"/>
+        <item dataType="int" label="Number of occupied Slices" stringID="MAP_AGG_SLICE" value="133"/>
         <item dataType="int" label="Number of Slices containing unrelated logic" stringID="MAP_NUM_SLICE_UNRELATED" value="0"/>
-        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="101"/>
+        <item dataType="int" label="Number of 4 input LUTs" stringID="MAP_NUM_4_INPUT_LUT" value="99"/>
         <item dataType="int" label="Number of route-thrus" stringID="MAP_NUM_LUT_RT" value="40"/>
         <item dataType="int" stringID="MAP_NUM_DP_RAM" value="0"/>
         <item dataType="int" stringID="MAP_NUM_RAM32" value="0"/>
@@ -114,7 +114,7 @@
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_IPADS_PER_MONITOR" value="0"/>
         <item AVAILABLE="640" dataType="int" stringID="MAP_AGG_BONDED_IO" value="160"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_AGG_UNBONDED_IO" value="0"/>
-        <item AVAILABLE="0" dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="11"/>
+        <item AVAILABLE="0" dataType="int" label="IOB Flip Flops" stringID="MAP_NUM_IOB_FF" value="13"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_IOB_LATCH" value="0"/>
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_IOB_DUALFLOP" value="0"/>
         <item AVAILABLE="224" dataType="int" stringID="MAP_NUM_IOBM" value="0"/>
@@ -123,8 +123,8 @@
         <item AVAILABLE="0" dataType="int" stringID="MAP_NUM_BONDED_IOBS" value="0"/>
       </section>
       <section stringID="MAP_HARD_IP_REPORTING">
-        <item AVAILABLE="32" dataType="int" stringID="MAP_BUFG_BUFGCTRL" value="5"/>
-        <item dataType="int" label="Number used as BUFGs" stringID="MAP_NUM_BUFG" value="5"/>
+        <item AVAILABLE="32" dataType="int" stringID="MAP_BUFG_BUFGCTRL" value="4"/>
+        <item dataType="int" label="Number used as BUFGs" stringID="MAP_NUM_BUFG" value="4"/>
         <item dataType="int" stringID="MAP_NUM_BUFGCTRL" value="0"/>
         <item AVAILABLE="160" dataType="int" stringID="MAP_FIFO16_RAMB16" value="1"/>
         <item dataType="int" stringID="MAP_NUM_FIFO16" value="0"/>
@@ -149,11 +149,11 @@
           <column label="IOB&#xA;Delay" stringID="IOB_DELAY"/>
           <row stringID="row" value="1">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS&lt;0>"/>
-            <item stringID="Type" value="IOB IDDR:OPPOSITE"/>
+            <item stringID="Type" value="IOB IDDR:PIPELINED"/>
             <item stringID="Direction" value="INPUT"/>
             <item label="IO&#xA;Standard" sort="smart" stringID="IO_STANDARD" value="LVDS_25"/>
             <item label="Diff&#xA;Term" stringID="DIFF_TERM" value="TRUE"/>
-            <item label="Reg&#xA;(s)" stringID="REGS" value="IFF1 IFF2"/>
+            <item label="Reg&#xA;(s)" stringID="REGS" value="IFF1 IFF2 IFF3 IFF4"/>
           </row>
           <row stringID="row" value="2">
             <item label="IOB&#xA;Name" sort="smart" stringID="IOB_NAME" value="ADCInDataLVDS&lt;1>"/>

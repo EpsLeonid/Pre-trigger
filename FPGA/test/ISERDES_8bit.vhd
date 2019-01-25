@@ -417,7 +417,7 @@ DLL: entity work.DLL
 
 	IDDR_inst : IDDR 
 	generic map (
-		DDR_CLK_EDGE => "OPPOSITE_EDGE", -- "OPPOSITE_EDGE", "SAME_EDGE" 
+		DDR_CLK_EDGE => "SAME_EDGE_PIPELINED", -- "OPPOSITE_EDGE", "SAME_EDGE" 
 													-- or "SAME_EDGE_PIPELINED" 
 		INIT_Q1 => '0', -- Initial value of Q1: '0' or '1'
 		INIT_Q2 => '0', -- Initial value of Q2: '0' or '1'
@@ -425,9 +425,9 @@ DLL: entity work.DLL
 	port map (
 		Q1 => Data_p,	-- 1-bit output for positive edge of clock 
 		Q2 => Data_n,	-- 1-bit output for negative edge of clock
-		C => DCO,--Clk320,--		-- 1-bit clock input
+		C => DCO,		-- Clk320,--		-- 1-bit clock input
 		CE => '1',		-- 1-bit clock enable input
-		D => SDATA,	-- 1-bit DDR data input
+		D => SDATA,		-- 1-bit DDR data input
 		R => Reset,		-- 1-bit reset
 		S => '0'			-- 1-bit set
 	);
@@ -445,7 +445,7 @@ DLL: entity work.DLL
 
 	DDR_N_null: process(DCO)
 	begin
-		if(falling_edge(DCO)) then
+		if(rising_edge(DCO)) then
 			if Reset ='1' then 
 				DataN(0) <= '0';
 			else 
@@ -470,7 +470,7 @@ DLL: entity work.DLL
 	DDR_Reg_N: for i in 0 to 2 generate
 		DDR_Reg_neg: process(DCO)
 		begin
-			if(falling_edge(DCO)) then
+			if(rising_edge(DCO)) then
 				if Reset ='1' then 
 					DataN(i+1) <= '0';
 				else 
@@ -497,9 +497,9 @@ DLL: entity work.DLL
 		DDR_Reg_pos: process(DCO)
 		begin
 			if(rising_edge(DCO)) then
-				if clkdiv_es = '1' then
+--				if clkdiv_es = '1' then
 					DataP_del(i) <= DataP(i);
-				end if;
+--				end if;
 			end if;
 		end process DDR_Reg_pos;
 	end generate;
@@ -507,10 +507,10 @@ DLL: entity work.DLL
 	DDR_Reg_N_del: for i in 0 to 3 generate
 		DDR_Reg_neg: process(DCO)
 		begin
-			if(falling_edge(DCO)) then
-				if clkdiv_es = '1' then
+			if(rising_edge(DCO)) then
+--				if clkdiv_es = '1' then
 					DataN_del(i) <= DataN(i);
-				end if;
+--				end if;
 			end if;
 		end process DDR_Reg_neg;
 	end generate;
@@ -521,22 +521,22 @@ DLL: entity work.DLL
 --			if clkdiv_es = '1' then
 --				DataOut(2*i) <= DataP(i);
 --				DataOut(2*i+1) <= DataN(i);
-				DataOut(0) <= DataN_del(2);
-				DataOut(1) <= DataP_del(3);
-				DataOut(2) <= DataN_del(3);
-				DataOut(3) <= DataP_del(0);
-				DataOut(4) <= DataN_del(0);
-				DataOut(5) <= DataP_del(1);
-				DataOut(6) <= DataN_del(1);
-				DataOut(7) <= DataP_del(2);
---				DataOut(0) <= DataP_del(0);
---				DataOut(1) <= DataN_del(0);
---				DataOut(2) <= DataP_del(1);
---				DataOut(3) <= DataN_del(1);
---				DataOut(4) <= DataP_del(2);
---				DataOut(5) <= DataN_del(2);
---				DataOut(6) <= DataP_del(3);
---				DataOut(7) <= DataN_del(3);
+				DataOut(0) <= DataN_del(1);
+				DataOut(1) <= DataP_del(1);
+				DataOut(2) <= DataN_del(2);
+				DataOut(3) <= DataP_del(2);
+				DataOut(4) <= DataN_del(3);
+				DataOut(5) <= DataP_del(3);
+				DataOut(6) <= DataN_del(0);
+				DataOut(7) <= DataP_del(0);
+--				DataOut(0) <= DataN(0);
+--				DataOut(1) <= DataP(0);
+--				DataOut(2) <= DataN(1);
+--				DataOut(3) <= DataP(1);
+--				DataOut(4) <= DataN(2);
+--				DataOut(5) <= DataP(2);
+--				DataOut(6) <= DataN(3);
+--				DataOut(7) <= DataP(3);
 --			end if;
 		end if;
 	end process adc_data;
@@ -777,8 +777,18 @@ DLL: entity work.DLL
 	Test(5) <= DataOut(5);
 	Test(6) <= DataOut(6);
 	Test(7) <= DataOut(7);
-	Test(8) <= DCO;
+	Test(8) <= Data_n;
 	Test(9) <= FCO;
 
-end Behavioral;
+--	Test(0) <= DataP(0);
+--	Test(1) <= DataP(1);
+--	Test(2) <= DataP(2);
+--	Test(3) <= DataP(3);
+--	Test(4) <= DataP_del(0);
+--	Test(5) <= DataP_del(1);
+--	Test(6) <= DataP_del(2);
+--	Test(7) <= DataP_del(3);
+--	Test(8) <= clkdiv_es;
+--	Test(9) <= FCO;
 
+end Behavioral;

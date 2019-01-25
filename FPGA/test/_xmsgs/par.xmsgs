@@ -225,7 +225,13 @@
 </arg>
 </msg>
 
-<msg type="warning" file="Place" num="644" delta="old" >A clock IOB clock component is not placed at an optimal clock IOB site. The clock IOB component &lt;<arg fmt="%s" index="1">ADC_DCO_LVDS&lt;0&gt;</arg>&gt; is placed at site &lt;<arg fmt="%s" index="2">AD34</arg>&gt;. The clock IO site can use the fast path between the IO and the Clock buffer/GCLK if the IOB is placed in the master Clock IOB Site. This is normally an ERROR but the CLOCK_DEDICATED_ROUTE constraint was applied on COMP.PIN &lt;<arg fmt="%s" index="3">ADC_DCO_LVDS&lt;0&gt;.PAD</arg>&gt; allowing your design to continue. This constraint disables all clock placer rules related to the specified COMP.PIN. The use of this override is highly discouraged as it may lead to very poor timing results. It is recommended that this error condition be corrected in the design.
+<msg type="warning" file="Par" num="468" delta="old" >Your design did not meet timing.  The following are some suggestions to assist you to meet timing in your design.
+
+Review the timing report using Timing Analyzer (In ISE select &quot;Post-Place &amp;
+Route Static Timing Report&quot;). Go to the failing constraint(s) and evaluate the failing paths for each constraint.
+
+Try the Design Goal and Strategies for Timing Performance(In ISE select Project -&gt; Design Goals &amp; Strategies) to ensure the best options are set in the tools for timing closure.
+
 </msg>
 
 <msg type="warning" file="ParHelpers" num="361" delta="old" >There are <arg fmt="%d" index="1">64</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
