@@ -161,14 +161,14 @@ architecture Behavioral of ISERDES_8bit is
 	signal Sub_ped_delay	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal AverData: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal AverData_med: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
-	signal GroupValue_Up_LT:std_logic;
-	signal GroupLT_Trig:std_logic;
-	signal GroupSum: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
-	signal GroupAmp: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal GroupValue_Up_LT : std_logic := '0';
+	signal GroupLT_Trig : std_logic := '0';
+	signal GroupSum : std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
+	signal GroupAmp : std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal DelayGroupAmp	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal DelayGroupAmp_mid	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
-	signal GroupValue_Amp_Done:std_logic;
-	signal GroupAmp_Trig:std_logic;
+	signal GroupValue_Amp_Done : std_logic := '0';
+	signal GroupAmp_Trig : std_logic := '0';
 	
 	--- TriggerDes
 	signal TrigIn	: std_logic;
@@ -186,16 +186,19 @@ architecture Behavioral of ISERDES_8bit is
 	signal s_fadc_sdio_reset: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000000000000000001111111100000001";
 	signal shift_sdio_reset	: std_logic;
 	
-	signal ADCtest_Bit_write: std_logic := '0'; 
-	signal ADCtest_reg_sset	: std_logic := '1'; 
-	signal ADCtest_SDIO_trig: std_logic; 
-	signal ADCtest_CSB_trig	: std_logic; 
-	
-	signal ADCtest_bit_count: STD_LOGIC_VECTOR(5 downto 0);
-	
 	signal s_fadc_csb			: std_logic := '1';
 	signal s_fadc_sdio		: std_logic := '0'; 
 	signal s_fadc_sclk		: std_logic := '0';
+	
+	signal ADC_Bit_write: std_logic := '0'; 
+	signal ADC_bit_count: STD_LOGIC_VECTOR(5 downto 0);
+	
+	signal ADCtest_reg_sset	: std_logic := '1'; 
+	signal ADCtest_SDIO_trig: std_logic; 
+	signal ADCreset_reg_sset	: std_logic := '1'; 
+	signal ADCreset_SDIO_trig: std_logic; 
+	signal ADC_CSB_trig	: std_logic := '1'; 
+	
 
 	--- Test
 	signal TestCnt	: std_logic_vector(25 downto 0);
@@ -411,8 +414,8 @@ DLL: entity work.DLL
 			IOSTANDARD => "DEFAULT")
 		port map (
 			O => SDATA,  -- Buffer output
-			I => ADCInDataLVDS(0),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => ADCInDataLVDS_n(0) -- Diff_n buffer input (connect directly to top-level port)
+			I => ADCInDataLVDS(4),  -- Diff_p buffer input (connect directly to top-level port)
+			IB => ADCInDataLVDS_n(4) -- Diff_n buffer input (connect directly to top-level port)
 		);
 
 	IDDR_inst : IDDR 
@@ -480,18 +483,6 @@ DLL: entity work.DLL
 		end process DDR_Reg_neg;
 	end generate;
 	
-	Clk_div_es: process(DCO)
-	begin
-		if(rising_edge(DCO)) then
-			clkdiv <= clkdiv + '1';
-			clkdiv_a <= (clkdiv(1));-- and not clkdiv(0) and Clk320);
-			clkdiv_b <= clkdiv_a;
-			if clkdiv_a = '1' and clkdiv_b = '0' then
-				clkdiv_es <= '1';
-			else clkdiv_es <= '0';
-			end if;
-		end if;
-	end process Clk_div_es;
 
 	DDR_Reg_P_del: for i in 0 to 3 generate
 		DDR_Reg_pos: process(DCO)
@@ -521,22 +512,22 @@ DLL: entity work.DLL
 --			if clkdiv_es = '1' then
 --				DataOut(2*i) <= DataP(i);
 --				DataOut(2*i+1) <= DataN(i);
-				DataOut(0) <= DataN_del(1);
-				DataOut(1) <= DataP_del(1);
-				DataOut(2) <= DataN_del(2);
-				DataOut(3) <= DataP_del(2);
-				DataOut(4) <= DataN_del(3);
-				DataOut(5) <= DataP_del(3);
-				DataOut(6) <= DataN_del(0);
-				DataOut(7) <= DataP_del(0);
---				DataOut(0) <= DataN(0);
---				DataOut(1) <= DataP(0);
---				DataOut(2) <= DataN(1);
---				DataOut(3) <= DataP(1);
---				DataOut(4) <= DataN(2);
---				DataOut(5) <= DataP(2);
---				DataOut(6) <= DataN(3);
---				DataOut(7) <= DataP(3);
+				DataOut(0) <= DataN_del(0);
+				DataOut(1) <= DataP_del(0);
+				DataOut(2) <= DataN_del(1);
+				DataOut(3) <= DataP_del(1);
+				DataOut(4) <= DataN_del(2);
+				DataOut(5) <= DataP_del(2);
+				DataOut(6) <= DataN_del(3);
+				DataOut(7) <= DataP_del(3);
+--				DataOut(0) <= DataN(2);
+--				DataOut(1) <= DataP(2);
+--				DataOut(2) <= DataN(3);
+--				DataOut(3) <= DataP(3);
+--				DataOut(4) <= DataN(0);
+--				DataOut(5) <= DataP(0);
+--				DataOut(6) <= DataN(1);
+--				DataOut(7) <= DataP(1);
 --			end if;
 		end if;
 	end process adc_data;
@@ -592,7 +583,7 @@ DLL: entity work.DLL
 	ThreshData: process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			Sub_ped(7 downto 0) <= InData;-- - Piedistal_def;
+			Sub_ped(7 downto 0) <= DataOut;--InData;-- - Piedistal_def;
 			Sub_ped_delay <= Sub_ped; 
 			AverData_med <= (Sub_ped_delay + Sub_ped);
 			AverData(7 downto 0) <= AverData_med(8 downto 1);
@@ -697,46 +688,23 @@ DLL: entity work.DLL
 		end if;
 	end process;
 
--- ADC Setup
+-- ADC Configuration
+
+	s_fadc_test <='1';
+	s_fadc_reset <='0';
 
 	ADC_CLK <= CLK80;
 
-	ADCTest : entity work.V_Counter 
+	ADC_Cnt : entity work.V_Counter 
 	generic map(
 				WIDTH => 6
 			)
 	port map (
 				clock 	=> Clk20,
-				clk_en	=> ADCtest_Bit_write,
+				clk_en	=> ADC_Bit_write,
 				sclr		=> PwrUpReset,
-				q			=> ADCtest_bit_count
+				q			=> ADC_bit_count
 				);
-
-	process (Clk20)
-	begin
-		if rising_edge(Clk20) then
-			if (ADCtest_bit_count < "110100") Then ADCtest_Bit_write <= '1';
-															Else ADCtest_Bit_write <= '0';
-			end if;
-			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
-																												  ADC_SDIO <= ADCtest_SDIO_trig;--'0';--
-																											Else ADCtest_reg_sset <= '1';
-																												  ADC_SDIO <= '0';
-			END IF;
-			IF (((ADCtest_bit_count >= "000010") AND (ADCtest_bit_count < "11010")) OR ((ADCtest_bit_count >= "11100") AND (ADCtest_bit_count < "110100")))Then 
-				ADCtest_CSB_trig <= '0';
-			ELSE 
-				ADCtest_CSB_trig <= '1';
-			END IF;
-		end if;
-	end process;
-	
---	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "000000000000110100001100 00 000000001111111100000001";
---											--									  "set	addr		 data			 set	addr		  data "
---											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
-
-	ADC_CSB <= ADCtest_CSB_trig;--'1';--
-	ADC_SCLK <= Clk20;
 
 	ShiftReg_test : entity work.ShiftReg 
 		generic map (WIDTH => 50) 
@@ -745,6 +713,69 @@ DLL: entity work.DLL
 				sset	=> ADCtest_reg_sset,
 				q		=> ADCtest_SDIO_trig
 		);
+	ShiftReg_reset : entity work.ShiftReg 
+		generic map (WIDTH => 50) 
+		port map(clock	=> clk20,
+				d		=> s_fadc_sdio_reset,
+				sset	=> ADCreset_reg_sset,
+				q		=> ADCreset_SDIO_trig
+		);
+
+--	ADC_prog: process (Clk20)
+--	begin
+--		if rising_edge(Clk20) then
+----			if (s_fadc_test = '1') then 
+----				if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
+----														Else ADC_Bit_write <= '0';
+----				end if;
+----				IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+----																									 ADC_SDIO <= ADCtest_SDIO_trig;--'0';--
+----																									 Else ADCtest_reg_sset <= '1';
+----																									 ADC_SDIO <= '0';
+----				END IF;
+----				IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
+----					ADC_CSB_trig <= '0';
+----				ELSE 
+----					ADC_CSB_trig <= '1';
+----				END IF;
+----				ADC_CSB <= ADC_CSB_trig;
+----			elsif (s_fadc_reset = '1') then 
+----				if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
+----														Else ADC_Bit_write <= '0';
+----				end if;
+----				IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCreset_reg_sset <= '0';
+----																									 ADC_SDIO <= ADCreset_SDIO_trig;--'0';--
+----																									 Else ADCreset_reg_sset <= '1';
+----																									 ADC_SDIO <= '0';
+----				END IF;
+----				IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
+----					ADC_CSB_trig <= '0';
+----				ELSE 
+----					ADC_CSB_trig <= '1';
+----				END IF;
+----				ADC_CSB <= ADC_CSB_trig;
+----			else 
+----				ADC_CSB <= '1';
+----			end if;
+--
+--			if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
+--													Else ADC_Bit_write <= '0';
+--			end if;
+--			IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+--																								 ADC_SDIO <= ADCreset_SDIO_trig;--ADCtest_SDIO_trig;--'0';--
+--																								 Else ADCtest_reg_sset <= '1';
+--																								 ADC_SDIO <= '0';
+--			END IF;
+--			IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
+--				ADC_CSB_trig <= '0';
+--			ELSE 
+--				ADC_CSB_trig <= '1';
+--			END IF;
+--		end if;
+--	end process;
+
+--	ADC_CSB <= '1';--ADC_CSB_trig;
+--	ADC_SCLK <= Clk20;
 
 --******** Test part ********--
 
@@ -777,8 +808,8 @@ DLL: entity work.DLL
 	Test(5) <= DataOut(5);
 	Test(6) <= DataOut(6);
 	Test(7) <= DataOut(7);
-	Test(8) <= Data_n;
-	Test(9) <= FCO;
+	Test(8) <= GroupLT_Trig;
+	Test(9) <= GroupAmp_Trig;
 
 --	Test(0) <= DataP(0);
 --	Test(1) <= DataP(1);

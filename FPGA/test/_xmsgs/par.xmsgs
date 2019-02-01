@@ -5,6 +5,9 @@
      behavior or data corruption.  It is strongly advised that
      users do not edit the contents of this file. -->
 <messages>
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS_n&lt;0&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS_n&lt;1&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
@@ -12,9 +15,6 @@
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS_n&lt;3&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS_n&lt;4&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS_n&lt;5&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
@@ -30,6 +30,9 @@
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADC_DCO_LVDSPrev_n&lt;11&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ExtReset_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDSPrev_n&lt;10&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
@@ -68,6 +71,9 @@
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADC_DCO_LVDSPrev&lt;9&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
+<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS&lt;0&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
+</msg>
+
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS&lt;1&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
@@ -75,9 +81,6 @@
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS&lt;3&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
-</msg>
-
-<msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS&lt;4&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
 </msg>
 
 <msg type="warning" file="Par" num="288" delta="old" >The signal <arg fmt="%s" index="1">ADCInDataLVDS&lt;5&gt;_IBUF</arg> has no load.  PAR will not attempt to route this signal.
@@ -199,25 +202,11 @@
 
 <msg type="warning" file="Place" num="838" delta="old" >An IO Bus with more than one IO standard is found.
 <arg fmt="%s" index="1">Components associated with this bus are as follows: 
-	 Comp: ADCInDataLVDS_n&lt;0&gt;   IOSTANDARD = LVDS_25
-	 Comp: ADCInDataLVDS_n&lt;1&gt;   IOSTANDARD = LVCMOS25
-	 Comp: ADCInDataLVDS_n&lt;2&gt;   IOSTANDARD = LVCMOS25
-	 Comp: ADCInDataLVDS_n&lt;3&gt;   IOSTANDARD = LVCMOS25
-	 Comp: ADCInDataLVDS_n&lt;4&gt;   IOSTANDARD = LVCMOS25
-	 Comp: ADCInDataLVDS_n&lt;5&gt;   IOSTANDARD = LVCMOS25
-	 Comp: ADCInDataLVDS_n&lt;6&gt;   IOSTANDARD = LVCMOS25
-	 Comp: ADCInDataLVDS_n&lt;7&gt;   IOSTANDARD = LVCMOS25
-
-</arg>
-</msg>
-
-<msg type="warning" file="Place" num="838" delta="old" >An IO Bus with more than one IO standard is found.
-<arg fmt="%s" index="1">Components associated with this bus are as follows: 
-	 Comp: ADCInDataLVDS&lt;0&gt;   IOSTANDARD = LVDS_25
+	 Comp: ADCInDataLVDS&lt;0&gt;   IOSTANDARD = LVCMOS25
 	 Comp: ADCInDataLVDS&lt;1&gt;   IOSTANDARD = LVCMOS25
 	 Comp: ADCInDataLVDS&lt;2&gt;   IOSTANDARD = LVCMOS25
 	 Comp: ADCInDataLVDS&lt;3&gt;   IOSTANDARD = LVCMOS25
-	 Comp: ADCInDataLVDS&lt;4&gt;   IOSTANDARD = LVCMOS25
+	 Comp: ADCInDataLVDS&lt;4&gt;   IOSTANDARD = LVDS_25
 	 Comp: ADCInDataLVDS&lt;5&gt;   IOSTANDARD = LVCMOS25
 	 Comp: ADCInDataLVDS&lt;6&gt;   IOSTANDARD = LVCMOS25
 	 Comp: ADCInDataLVDS&lt;7&gt;   IOSTANDARD = LVCMOS25
@@ -225,20 +214,28 @@
 </arg>
 </msg>
 
-<msg type="warning" file="Par" num="468" delta="old" >Your design did not meet timing.  The following are some suggestions to assist you to meet timing in your design.
+<msg type="warning" file="Place" num="838" delta="old" >An IO Bus with more than one IO standard is found.
+<arg fmt="%s" index="1">Components associated with this bus are as follows: 
+	 Comp: ADCInDataLVDS_n&lt;0&gt;   IOSTANDARD = LVCMOS25
+	 Comp: ADCInDataLVDS_n&lt;1&gt;   IOSTANDARD = LVCMOS25
+	 Comp: ADCInDataLVDS_n&lt;2&gt;   IOSTANDARD = LVCMOS25
+	 Comp: ADCInDataLVDS_n&lt;3&gt;   IOSTANDARD = LVCMOS25
+	 Comp: ADCInDataLVDS_n&lt;4&gt;   IOSTANDARD = LVDS_25
+	 Comp: ADCInDataLVDS_n&lt;5&gt;   IOSTANDARD = LVCMOS25
+	 Comp: ADCInDataLVDS_n&lt;6&gt;   IOSTANDARD = LVCMOS25
+	 Comp: ADCInDataLVDS_n&lt;7&gt;   IOSTANDARD = LVCMOS25
 
-Review the timing report using Timing Analyzer (In ISE select &quot;Post-Place &amp;
-Route Static Timing Report&quot;). Go to the failing constraint(s) and evaluate the failing paths for each constraint.
+</arg>
+</msg>
 
-Try the Design Goal and Strategies for Timing Performance(In ISE select Project -&gt; Design Goals &amp; Strategies) to ensure the best options are set in the tools for timing closure.
+<msg type="info" file="Place" num="834" delta="old" >Only a subset of IOs are locked. Out of <arg fmt="%d" index="1">165</arg> IOs, <arg fmt="%d" index="2">161</arg> are locked and <arg fmt="%d" index="3">4</arg> are not locked. <arg fmt="%s" index="4">If you would like to print the names of these IOs, please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1.</arg> 
+</msg>
+
+<msg type="warning" file="ParHelpers" num="361" delta="old" >There are <arg fmt="%d" index="1">65</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
 </msg>
 
-<msg type="warning" file="ParHelpers" num="361" delta="old" >There are <arg fmt="%d" index="1">64</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
-
-</msg>
-
-<msg type="warning" file="Par" num="283" delta="old" >There are <arg fmt="%d" index="1">64</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
+<msg type="warning" file="Par" num="283" delta="old" >There are <arg fmt="%d" index="1">65</arg> loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
 </msg>
 

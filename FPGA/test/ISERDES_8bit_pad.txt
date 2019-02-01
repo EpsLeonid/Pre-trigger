@@ -1,7 +1,7 @@
 Release 14.7 - par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-Fri Jan 25 18:06:09 2019
+Fri Feb 01 12:20:30 2019
 
 
 INFO: The IO information is provided in three file formats as part of the Place and Route (PAR) process.  These formats are:
@@ -108,8 +108,8 @@ Pinout by Pin Number:
 |AB22      |ADCInDataLVDS<3>       |IOB      |IO_L29P_11          |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AB23      |ADCInDataLVDS_n<3>     |IOB      |IO_L29N_11          |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AB24      |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|AB25      |ADCInDataLVDS<4>       |IOB      |IO_L20P_11          |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
-|AB26      |ADCInDataLVDS_n<4>     |IOB      |IO_L20N_VREF_11     |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
+|AB25      |ADCInDataLVDS<4>       |IOB      |IO_L20P_11          |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
+|AB26      |ADCInDataLVDS_n<4>     |IOB      |IO_L20N_VREF_11     |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
 |AB27      |                       |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
 |AB28      |ADCInDataLVDS_n<7>     |IOB      |IO_L11N_11          |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |AB29      |                       |         |VCCO_11             |         |           |11            |          |         |           |         |2.50     |          |           |                |
@@ -572,7 +572,7 @@ Pinout by Pin Number:
 |C12       |                       |IOBS     |IO_L1N_6            |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |C13       |                       |LOWCAPIOB|IO_L25N_CC_LC_6     |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
 |C14       |                       |LOWCAPIOB|IO_L25P_CC_LC_6     |UNUSED   |           |6             |          |         |           |         |         |          |           |                |
-|C15       |                       |LOWCAPIOB|IO_L14N_GC_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
+|C15       |FCT_40                 |IOB      |IO_L14N_GC_LC_1     |INPUT    |LVCMOS25*  |1             |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |C16       |                       |         |VCCO_1              |         |           |1             |          |         |           |         |2.50     |          |           |                |
 |C17       |Led2                   |IOB      |IO_L12P_GC_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
 |C18       |Led3                   |IOB      |IO_L13N_GC_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |LOCATED   |NO         |NONE            |
@@ -843,8 +843,8 @@ Pinout by Pin Number:
 |L11       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |L12       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |L13       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|L14       |                       |LOWCAPIOB|IO_L2N_D28_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
-|L15       |                       |LOWCAPIOB|IO_L2P_D29_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
+|L14       |TxD<3>                 |IOB      |IO_L2N_D28_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|L15       |TxD<2>                 |IOB      |IO_L2P_D29_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
 |L16       |                       |LOWCAPIOB|IO_L18N_VRP_LC_1    |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |L17       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |L18       |                       |LOWCAPIOB|IO_L9N_GC_LC_1      |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
@@ -915,8 +915,8 @@ Pinout by Pin Number:
 |N15       |                       |LOWCAPIOB|IO_L16N_GC_CC_LC_1  |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |N16       |                       |         |VCCO_1              |         |           |1             |          |         |           |         |2.50     |          |           |                |
 |N17       |                       |LOWCAPIOB|IO_L10N_GC_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
-|N18       |                       |LOWCAPIOB|IO_L1N_D30_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
-|N19       |                       |LOWCAPIOB|IO_L1P_D31_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
+|N18       |TxD<1>                 |IOB      |IO_L1N_D30_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
+|N19       |TxD<0>                 |IOB      |IO_L1P_D31_LC_1     |OUTPUT   |LVCMOS25*  |1             |12        |SLOW     |NONE**     |         |         |UNLOCATED |NO         |NONE            |
 |N20       |                       |LOWCAPIOB|IO_L5P_D23_LC_1     |UNUSED   |           |1             |          |         |           |         |         |          |           |                |
 |N21       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |N22       |                       |IOBM     |IO_L5P_9            |UNUSED   |           |9             |          |         |           |         |         |          |           |                |
@@ -1123,7 +1123,7 @@ Pinout by Pin Number:
 |W21       |                       |         |PWRDWN_B_0          |         |           |              |          |         |           |         |         |          |           |                |
 |W22       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |W23       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
-|W24       |ADCInDataLVDS<0>       |IOB      |IO_L2P_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |YES        |DIFF_TERM       |
+|W24       |ADCInDataLVDS<0>       |IOB      |IO_L2P_11           |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |W25       |ADCInDataLVDS<1>       |IOB      |IO_L4P_11           |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |W26       |                       |         |VCCAUX              |         |           |              |          |         |           |         |2.5      |          |           |                |
 |W27       |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |
@@ -1157,7 +1157,7 @@ Pinout by Pin Number:
 |Y21       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
 |Y22       |                       |         |GND                 |         |           |              |          |         |           |         |         |          |           |                |
 |Y23       |                       |         |VCCINT              |         |           |              |          |         |           |         |1.2      |          |           |                |
-|Y24       |ADCInDataLVDS_n<0>     |IOB      |IO_L2N_11           |INPUT    |LVDS_25    |11            |          |         |           |NONE     |         |LOCATED   |NO         |DIFF_TERM       |
+|Y24       |ADCInDataLVDS_n<0>     |IOB      |IO_L2N_11           |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |Y25       |                       |         |VCCO_11             |         |           |11            |          |         |           |         |2.50     |          |           |                |
 |Y26       |ADCInDataLVDS_n<1>     |IOB      |IO_L4N_VREF_11      |INPUT    |LVCMOS25*  |11            |          |         |           |NONE     |         |LOCATED   |NO         |NONE            |
 |Y27       |                       |         |NC                  |         |           |              |          |         |           |         |         |          |           |                |

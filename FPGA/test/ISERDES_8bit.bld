@@ -14,14 +14,6 @@ Done.
 Annotating constraints to design from ucf file "Pre.ucf" ...
 Resolving constraint associations...
 Checking Constraint Associations...
-WARNING:ConstraintSystem:137 - Constraint <NET "FCT_40" TNM_NET = "FCT_40";>
-   [Pre.ucf(5)]: No appropriate instances for the TNM constraint are driven by
-   "FCT_40".
-
-WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_FCT_40 = PERIOD "FCT_40"
-   25 ns HIGH 50 % INPUT_JITTER 375 ps;> [Pre.ucf(6)]: Unable to find an active
-   'TNM' or 'TimeGrp' constraint named 'FCT_40'.
-
 WARNING:ConstraintSystem:137 - Constraint <NET "ADC_DCO_LVDS[1]" TNM_NET =
    "ADC_DCO_LVDS1";> [Pre.ucf(30)]: No appropriate instances for the TNM
    constraint are driven by "ADC_DCO_LVDS<1>".
@@ -36,21 +28,6 @@ WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_DCO1 = PERIOD
    "ADC_DCO_LVDS1" 3125 ps HIGH 50 %;> [Pre.ucf(32)]: Unable to find an active
    'TNM' or 'TimeGrp' constraint named 'ADC_DCO_LVDS1'.
 
-WARNING:ConstraintSystem:191 - The TNM 'FCT_40', does not directly or indirectly
-   drive any flip-flops, latches and/or RAMS and cannot be actively used by the
-   referencing Period constraint 'TS_FCT_40'. If clock manager blocks are
-   directly or indirectly driven, a new TNM constraint will not be derived even
-   though the referencing constraint is a PERIOD constraint unless an output of
-   the clock manager drives flip-flops, latches or RAMs. This TNM is used in the
-   following user PERIOD specification:
-   <TIMESPEC TS_FCT_40 = PERIOD "FCT_40" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
-   [Pre.ucf(6)]
-
-WARNING:ConstraintSystem:197 - The following specification is invalid because
-   the referenced TNM constraint was removed:
-   <TIMESPEC TS_FCT_40 = PERIOD "FCT_40" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
-   [Pre.ucf(6)]
-
 INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
    'TS_MuxClock_in', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The
    following new TNM groups and period specifications were generated at the
@@ -63,13 +40,6 @@ INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
    following new TNM groups and period specifications were generated at the
    DCM_ADV output(s): 
    CLK2X: <TIMESPEC TS_DLL_CLK2X_BUF = PERIOD "DLL_CLK2X_BUF" TS_MuxClock_in / 2
-   HIGH 50% INPUT_JITTER 375 ps>
-
-INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
-   'TS_MuxClock_in', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The
-   following new TNM groups and period specifications were generated at the
-   DCM_ADV output(s): 
-   CLKDV: <TIMESPEC TS_DLL_CLKDV_BUF = PERIOD "DLL_CLKDV_BUF" TS_MuxClock_in * 2
    HIGH 50% INPUT_JITTER 375 ps>
 
 WARNING:ConstraintSystem:191 - The TNM 'ADC_DCO_LVDS1', does not directly or
@@ -88,10 +58,10 @@ WARNING:ConstraintSystem:197 - The following specification is invalid because
 Done...
 
 Checking expanded design ...
-WARNING:NgdBuild:971 - IO attribute 'DIFF_TERM' on net 'ADC_FCO_LVDS<1>' has
+WARNING:NgdBuild:971 - IO attribute 'DIFF_TERM' on net 'ADC_DCO_LVDS<1>' has
    been applied incorrectly. It should be placed on a port net, pad, or a
    buffer.
-WARNING:NgdBuild:971 - IO attribute 'DIFF_TERM' on net 'ADC_DCO_LVDS<1>' has
+WARNING:NgdBuild:971 - IO attribute 'DIFF_TERM' on net 'ADC_FCO_LVDS<1>' has
    been applied incorrectly. It should be placed on a port net, pad, or a
    buffer.
 
@@ -104,12 +74,12 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings:  11
+  Number of warnings:   7
 
-Total memory usage is 205644 kilobytes
+Total memory usage is 205452 kilobytes
 
 Writing NGD file "ISERDES_8bit.ngd" ...
-Total REAL time to NGDBUILD completion:  4 sec
+Total REAL time to NGDBUILD completion:  3 sec
 Total CPU time to NGDBUILD completion:   3 sec
 
 Writing NGDBUILD log file "ISERDES_8bit.bld"...

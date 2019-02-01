@@ -28,7 +28,7 @@ package parameters is
 	constant BitNumGroup 		: integer := integer(floor(log2(real(NumGroup))));
 	constant NumAmpGroup 		: integer := 9;	-- Number of reg for find MaxAmp
 --	constant NumAmpGroup 		: integer := integer(NumGroup/2+NumGroup/4+NumGroup/8+(NumGroup rem 2)); -- Number of reg for find MaxAmp
-	constant Piedistal_def 		: integer := 100; 
+	constant Piedistal_def 		: integer := 128; 
 	constant Piedistal_def_2 	: integer := 125;
 	constant ThresholdData_0	: integer := 150;
 	constant ThresholdData_1	: integer := 220;

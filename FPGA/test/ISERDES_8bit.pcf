@@ -1,9 +1,8 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Jan 25 18:05:31 2019
+// Written by: Map P.20131013 on Fri Feb 01 12:20:13 2019
 //! **************************************************************************
 
 SCHEMATIC START;
-COMP "ADC_SDIO" LOCATE = SITE "F16" LEVEL 1;
 COMP "Led1" LOCATE = SITE "C19" LEVEL 1;
 COMP "Led2" LOCATE = SITE "C17" LEVEL 1;
 COMP "Led3" LOCATE = SITE "C18" LEVEL 1;
@@ -46,6 +45,7 @@ COMP "ADC_DCO_LVDSPrev<6>" LOCATE = SITE "AK18" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev<7>" LOCATE = SITE "AJ17" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev<8>" LOCATE = SITE "AM17" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev<9>" LOCATE = SITE "AL16" LEVEL 1;
+COMP "FCT_40" LOCATE = SITE "C15" LEVEL 1;
 COMP "ADCInDataLVDS<0>" LOCATE = SITE "W24" LEVEL 1;
 COMP "ADCInDataLVDS<1>" LOCATE = SITE "W25" LEVEL 1;
 COMP "ADCInDataLVDS<2>" LOCATE = SITE "AA23" LEVEL 1;
@@ -60,56 +60,56 @@ PIN "ADC_DCO_LVDS<0>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "Qclock" LOCATE = SITE "H17" LEVEL 1;
 COMP "TriggerData<10>" LOCATE = SITE "F4" LEVEL 1;
 COMP "TriggerData<11>" LOCATE = SITE "E1" LEVEL 1;
-COMP "TriggerData<20>" LOCATE = SITE "H2" LEVEL 1;
 COMP "TriggerData<12>" LOCATE = SITE "J2" LEVEL 1;
-COMP "TriggerData<21>" LOCATE = SITE "G1" LEVEL 1;
+COMP "TriggerData<20>" LOCATE = SITE "H2" LEVEL 1;
 COMP "TriggerData<13>" LOCATE = SITE "J1" LEVEL 1;
-COMP "TriggerData<30>" LOCATE = SITE "G2" LEVEL 1;
-COMP "TriggerData<22>" LOCATE = SITE "M2" LEVEL 1;
+COMP "TriggerData<21>" LOCATE = SITE "G1" LEVEL 1;
 COMP "TriggerData<14>" LOCATE = SITE "L3" LEVEL 1;
-COMP "TriggerData<31>" LOCATE = SITE "J4" LEVEL 1;
-COMP "TriggerData<23>" LOCATE = SITE "AE3" LEVEL 1;
+COMP "TriggerData<22>" LOCATE = SITE "M2" LEVEL 1;
+COMP "TriggerData<30>" LOCATE = SITE "G2" LEVEL 1;
 COMP "TriggerData<15>" LOCATE = SITE "K2" LEVEL 1;
-COMP "TriggerData<40>" LOCATE = SITE "AK2" LEVEL 1;
-COMP "TriggerData<32>" LOCATE = SITE "C4" LEVEL 1;
-COMP "TriggerData<24>" LOCATE = SITE "K1" LEVEL 1;
+COMP "TriggerData<23>" LOCATE = SITE "AE3" LEVEL 1;
+COMP "TriggerData<31>" LOCATE = SITE "J4" LEVEL 1;
 COMP "TriggerData<16>" LOCATE = SITE "G3" LEVEL 1;
-COMP "TriggerData<41>" LOCATE = SITE "AK3" LEVEL 1;
-COMP "TriggerData<33>" LOCATE = SITE "D1" LEVEL 1;
-COMP "TriggerData<25>" LOCATE = SITE "AD1" LEVEL 1;
+COMP "TriggerData<24>" LOCATE = SITE "K1" LEVEL 1;
+COMP "TriggerData<32>" LOCATE = SITE "C4" LEVEL 1;
+COMP "TriggerData<40>" LOCATE = SITE "AK2" LEVEL 1;
 COMP "TriggerData<17>" LOCATE = SITE "E4" LEVEL 1;
-COMP "TriggerData<50>" LOCATE = SITE "AE4" LEVEL 1;
-COMP "TriggerData<42>" LOCATE = SITE "AH2" LEVEL 1;
-COMP "TriggerData<34>" LOCATE = SITE "D2" LEVEL 1;
-COMP "TriggerData<26>" LOCATE = SITE "F3" LEVEL 1;
+COMP "TriggerData<25>" LOCATE = SITE "AD1" LEVEL 1;
+COMP "TriggerData<33>" LOCATE = SITE "D1" LEVEL 1;
+COMP "TriggerData<41>" LOCATE = SITE "AK3" LEVEL 1;
 COMP "TriggerData<18>" LOCATE = SITE "F1" LEVEL 1;
-COMP "TriggerData<51>" LOCATE = SITE "AF3" LEVEL 1;
-COMP "TriggerData<43>" LOCATE = SITE "AF1" LEVEL 1;
-COMP "TriggerData<35>" LOCATE = SITE "D4" LEVEL 1;
-COMP "TriggerData<27>" LOCATE = SITE "E3" LEVEL 1;
+COMP "TriggerData<26>" LOCATE = SITE "F3" LEVEL 1;
+COMP "TriggerData<34>" LOCATE = SITE "D2" LEVEL 1;
+COMP "TriggerData<42>" LOCATE = SITE "AH2" LEVEL 1;
+COMP "TriggerData<50>" LOCATE = SITE "AE4" LEVEL 1;
 COMP "TriggerData<19>" LOCATE = SITE "E2" LEVEL 1;
-COMP "TriggerData<60>" LOCATE = SITE "AJ2" LEVEL 1;
-COMP "TriggerData<52>" LOCATE = SITE "AL3" LEVEL 1;
-COMP "TriggerData<44>" LOCATE = SITE "AC2" LEVEL 1;
-COMP "TriggerData<36>" LOCATE = SITE "AJ4" LEVEL 1;
+COMP "TriggerData<27>" LOCATE = SITE "E3" LEVEL 1;
+COMP "TriggerData<35>" LOCATE = SITE "D4" LEVEL 1;
+COMP "TriggerData<43>" LOCATE = SITE "AF1" LEVEL 1;
+COMP "TriggerData<51>" LOCATE = SITE "AF3" LEVEL 1;
 COMP "TriggerData<28>" LOCATE = SITE "H3" LEVEL 1;
-COMP "TriggerData<61>" LOCATE = SITE "AF4" LEVEL 1;
-COMP "TriggerData<53>" LOCATE = SITE "AM1" LEVEL 1;
-COMP "TriggerData<45>" LOCATE = SITE "AJ1" LEVEL 1;
-COMP "TriggerData<37>" LOCATE = SITE "AG2" LEVEL 1;
+COMP "TriggerData<36>" LOCATE = SITE "AJ4" LEVEL 1;
+COMP "TriggerData<44>" LOCATE = SITE "AC2" LEVEL 1;
+COMP "TriggerData<52>" LOCATE = SITE "AL3" LEVEL 1;
+COMP "TriggerData<60>" LOCATE = SITE "AJ2" LEVEL 1;
 COMP "TriggerData<29>" LOCATE = SITE "H4" LEVEL 1;
-COMP "TriggerData<62>" LOCATE = SITE "AM2" LEVEL 1;
-COMP "TriggerData<54>" LOCATE = SITE "AH3" LEVEL 1;
-COMP "TriggerData<46>" LOCATE = SITE "M1" LEVEL 1;
+COMP "TriggerData<37>" LOCATE = SITE "AG2" LEVEL 1;
+COMP "TriggerData<45>" LOCATE = SITE "AJ1" LEVEL 1;
+COMP "TriggerData<53>" LOCATE = SITE "AM1" LEVEL 1;
+COMP "TriggerData<61>" LOCATE = SITE "AF4" LEVEL 1;
 COMP "TriggerData<38>" LOCATE = SITE "AG1" LEVEL 1;
-COMP "TriggerData<63>" LOCATE = SITE "AG3" LEVEL 1;
-COMP "TriggerData<55>" LOCATE = SITE "AL4" LEVEL 1;
-COMP "TriggerData<47>" LOCATE = SITE "AK1" LEVEL 1;
+COMP "TriggerData<46>" LOCATE = SITE "M1" LEVEL 1;
+COMP "TriggerData<54>" LOCATE = SITE "AH3" LEVEL 1;
+COMP "TriggerData<62>" LOCATE = SITE "AM2" LEVEL 1;
 COMP "TriggerData<39>" LOCATE = SITE "AE1" LEVEL 1;
-COMP "TriggerData<56>" LOCATE = SITE "AH4" LEVEL 1;
+COMP "TriggerData<47>" LOCATE = SITE "AK1" LEVEL 1;
+COMP "TriggerData<55>" LOCATE = SITE "AL4" LEVEL 1;
+COMP "TriggerData<63>" LOCATE = SITE "AG3" LEVEL 1;
 COMP "TriggerData<48>" LOCATE = SITE "AM3" LEVEL 1;
-COMP "TriggerData<57>" LOCATE = SITE "AL1" LEVEL 1;
+COMP "TriggerData<56>" LOCATE = SITE "AH4" LEVEL 1;
 COMP "TriggerData<49>" LOCATE = SITE "AD2" LEVEL 1;
+COMP "TriggerData<57>" LOCATE = SITE "AL1" LEVEL 1;
 COMP "TriggerData<58>" LOCATE = SITE "AK4" LEVEL 1;
 COMP "TriggerData<59>" LOCATE = SITE "AE2" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev_n<0>" LOCATE = SITE "AJ21" LEVEL 1;
@@ -135,6 +135,7 @@ COMP "ADCInDataLVDSPrev_n<9>" LOCATE = SITE "AM7" LEVEL 1;
 COMP "Sw_FCTClk" LOCATE = SITE "D17" LEVEL 1;
 COMP "TrigInLVDS" LOCATE = SITE "F5" LEVEL 1;
 COMP "ADC_SCLK" LOCATE = SITE "G16" LEVEL 1;
+COMP "ADC_SDIO" LOCATE = SITE "F16" LEVEL 1;
 COMP "ADC_FCO_LVDS<0>" LOCATE = SITE "AA25" LEVEL 1;
 COMP "FastTrigDes" LOCATE = SITE "B13" LEVEL 1;
 COMP "ADC_DCO_LVDSPrev<10>" LOCATE = SITE "AK13" LEVEL 1;
@@ -165,85 +166,62 @@ COMP "ADCInDataLVDSPrev<7>" LOCATE = SITE "AP9" LEVEL 1;
 COMP "ADCInDataLVDSPrev<8>" LOCATE = SITE "AN8" LEVEL 1;
 COMP "ADCInDataLVDSPrev<9>" LOCATE = SITE "AN7" LEVEL 1;
 COMP "TrigInLVDS_n" LOCATE = SITE "G5" LEVEL 1;
-TIMEGRP DLL_CLKDV_BUF = BEL "ADCtest_Bit_write" BEL "ADCtest_CSB_trig" BEL
-        "ADCtest_reg_sset" BEL "ADC_SDIO" BEL "ADCTest/count_0" BEL
-        "ADCTest/count_1" BEL "ADCTest/count_2" BEL "ADCTest/count_3" BEL
-        "ADCTest/count_4" BEL "ADCTest/count_5" BEL "DLL/CLKDV_BUFG_INST" BEL
-        "ShiftReg_test/tmp_49" BEL "ShiftReg_test/tmp_48" BEL
-        "ShiftReg_test/tmp_47" BEL "ShiftReg_test/tmp_46" BEL
-        "ShiftReg_test/tmp_45" BEL "ShiftReg_test/tmp_44" BEL
-        "ShiftReg_test/tmp_43" BEL "ShiftReg_test/tmp_42" BEL
-        "ShiftReg_test/tmp_41" BEL "ShiftReg_test/tmp_40" BEL
-        "ShiftReg_test/tmp_39" BEL "ShiftReg_test/tmp_38" BEL
-        "ShiftReg_test/tmp_37" BEL "ShiftReg_test/tmp_36" BEL
-        "ShiftReg_test/tmp_35" BEL "ShiftReg_test/tmp_34" BEL
-        "ShiftReg_test/tmp_33" BEL "ShiftReg_test/tmp_32" BEL
-        "ShiftReg_test/tmp_31" BEL "ShiftReg_test/tmp_30" BEL
-        "ShiftReg_test/tmp_29" BEL "ShiftReg_test/tmp_28" BEL
-        "ShiftReg_test/tmp_27" BEL "ShiftReg_test/tmp_26" BEL
-        "ShiftReg_test/tmp_25" BEL "ShiftReg_test/tmp_24" BEL
-        "ShiftReg_test/tmp_23" BEL "ShiftReg_test/tmp_22" BEL
-        "ShiftReg_test/tmp_21" BEL "ShiftReg_test/tmp_20" BEL
-        "ShiftReg_test/tmp_19" BEL "ShiftReg_test/tmp_18" BEL
-        "ShiftReg_test/tmp_17" BEL "ShiftReg_test/tmp_16" BEL
-        "ShiftReg_test/tmp_15" BEL "ShiftReg_test/tmp_14" BEL
-        "ShiftReg_test/tmp_13" BEL "ShiftReg_test/tmp_12" BEL
-        "ShiftReg_test/tmp_11" BEL "ShiftReg_test/tmp_10" BEL
-        "ShiftReg_test/tmp_9" BEL "ShiftReg_test/tmp_8" BEL
-        "ShiftReg_test/tmp_7" BEL "ShiftReg_test/tmp_6" BEL
-        "ShiftReg_test/tmp_5" BEL "ShiftReg_test/tmp_4" BEL
-        "ShiftReg_test/tmp_3" BEL "ShiftReg_test/tmp_2" BEL
-        "ShiftReg_test/tmp_1" BEL "ShiftReg_test/tmp_0" BEL "ADC_SCLK";
-TIMEGRP DLL_CLK0_BUF = BEL "PowerUp0" BEL "TriggerData_10" BEL
-        "TriggerData_14" BEL "TriggerData_15" BEL "TriggerData_4" BEL
-        "TriggerData_5" BEL "TriggerData_6" BEL "TriggerData_7" BEL
-        "TriggerData_8" BEL "TriggerData_9" BEL "TriggerData_2" BEL
-        "TriggerData_3" BEL "DLL/CLK0_BUFG_INST" BEL "PowerUp2/Trig" BEL
-        "PowerUp1/Trig";
-TIMEGRP ADC_DCO_LVDS0 = BEL "DataN_0" BEL "DataP_0" BEL "DataN_del_0" BEL
-        "DataN_1" BEL "DataP_1" BEL "DataP_del_0" BEL "DataN_del_1" BEL
-        "DataN_2" BEL "DataP_2" BEL "DataP_del_1" BEL "DataN_del_2" BEL
-        "DataN_3" BEL "DataP_3" BEL "DataP_del_2" BEL "DataN_del_3" BEL
-        "DataP_del_3" BEL "IDDR_inst/FF0" BEL "IDDR_inst/FF1" BEL
-        "IDDR_inst/FF2" BEL "IDDR_inst/FF3";
-PIN Mrom__varindex0000_pins<12> = BEL "Mrom__varindex0000" PINNAME CLKA;
-TIMEGRP DLL_CLK2X_BUF = BEL "DelayReset_0" BEL "Sub_Ped_2" BEL "Sub_Ped_3" BEL
+TIMEGRP DLL_CLK2X_BUF = BEL "DelayReset_0" BEL "GroupValue_Amp_Done" BEL
+        "Sub_Ped_0" BEL "Sub_Ped_1" BEL "Sub_Ped_2" BEL "Sub_Ped_3" BEL
         "Sub_Ped_4" BEL "Sub_Ped_5" BEL "Sub_Ped_6" BEL "Sub_Ped_7" BEL
-        "Sub_Ped_0" BEL "Sub_Ped_1" BEL "Sub_ped_delay_0" BEL
-        "Sub_ped_delay_1" BEL "Sub_ped_delay_2" BEL "Sub_ped_delay_3" BEL
-        "Sub_ped_delay_4" BEL "Sub_ped_delay_5" BEL "Sub_ped_delay_6" BEL
-        "Sub_ped_delay_7" BEL "AverData_med_1" BEL "AverData_med_2" BEL
-        "AverData_med_3" BEL "AverData_med_4" BEL "AverData_med_5" BEL
-        "AverData_med_6" BEL "AverData_med_7" BEL "AverData_med_8" BEL
-        "AverData_2" BEL "AverData_3" BEL "AverData_4" BEL "AverData_5" BEL
-        "AverData_6" BEL "AverData_7" BEL "AverData_0" BEL "AverData_1" BEL
-        "GroupValue_Amp_Done" BEL "GroupSum_2" BEL "GroupSum_3" BEL
-        "GroupSum_4" BEL "GroupSum_5" BEL "GroupSum_6" BEL "GroupSum_7" BEL
-        "GroupSum_8" BEL "GroupSum_9" BEL "DelayGroupAmp_mid_2" BEL
+        "TrigDes_o" BEL "Sub_ped_delay_0" BEL "Sub_ped_delay_1" BEL
+        "Sub_ped_delay_2" BEL "Sub_ped_delay_3" BEL "Sub_ped_delay_4" BEL
+        "Sub_ped_delay_5" BEL "Sub_ped_delay_6" BEL "Sub_ped_delay_7" BEL
+        "AverData_med_2" BEL "AverData_med_3" BEL "AverData_med_4" BEL
+        "AverData_med_5" BEL "AverData_med_6" BEL "AverData_med_7" BEL
+        "AverData_med_8" BEL "AverData_7" BEL "AverData_4" BEL "AverData_6"
+        BEL "AverData_5" BEL "AverData_1" BEL "AverData_3" BEL "AverData_2"
+        BEL "GroupSum_2" BEL "GroupSum_3" BEL "GroupSum_4" BEL "GroupSum_5"
+        BEL "GroupSum_6" BEL "GroupSum_7" BEL "GroupSum_8" BEL "GroupSum_9"
+        BEL "GroupValue_Up_LT" BEL "DelayGroupAmp_mid_2" BEL
         "DelayGroupAmp_mid_3" BEL "DelayGroupAmp_mid_4" BEL
         "DelayGroupAmp_mid_5" BEL "DelayGroupAmp_mid_6" BEL
         "DelayGroupAmp_mid_7" BEL "DelayGroupAmp_mid_8" BEL
-        "DelayGroupAmp_mid_9" BEL "FastTrigDes_o" BEL "DelayGroupAmp_2" BEL
-        "DelayGroupAmp_3" BEL "DelayGroupAmp_4" BEL "DelayGroupAmp_5" BEL
-        "DelayGroupAmp_6" BEL "DelayGroupAmp_7" BEL "DelayGroupAmp_8" BEL
-        "DelayGroupAmp_9" BEL "TrigDes_o" BEL "GroupAmp_2" BEL "GroupAmp_3"
-        BEL "GroupAmp_4" BEL "GroupAmp_5" BEL "GroupAmp_6" BEL "GroupAmp_7"
-        BEL "GroupAmp_8" BEL "GroupAmp_9" BEL "Led_B/ES1/Trig0" BEL
-        "Led_B/ES1/Trig1" BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
-        "CntTest/count_2" BEL "CntTest/count_3" BEL "CntTest/count_4" BEL
-        "CntTest/count_5" BEL "CntTest/count_6" BEL "CntTest/count_7" BEL
-        "CntTest/count_8" BEL "CntTest/count_9" BEL "CntTest/count_10" BEL
-        "CntTest/count_11" BEL "CntTest/count_12" BEL "CntTest/count_13" BEL
-        "CntTest/count_14" BEL "CntTest/count_15" BEL "CntTest/count_16" BEL
-        "CntTest/count_17" BEL "CntTest/count_18" BEL "CntTest/count_19" BEL
-        "CntTest/count_20" BEL "CntTest/count_21" BEL "CntTest/count_22" BEL
-        "CntTest/count_23" BEL "CntTest/count_24" BEL "CntTest/count_25" BEL
-        "Global_clk80" BEL "DLL/CLK2X_BUFG_INST" BEL "Led_B/DurTrig_SRFF/Trig"
-        BEL "Amp_Trig/Trig" BEL "LT_Trig/Trig" BEL "GroupValue_Up_LT" BEL
-        "EnImRam" BEL "Mshreg_AllReset/SRL16E" BEL "AllReset" BEL "ADC_CLK"
-        PIN "Mrom__varindex0000_pins<12>";
-PIN DLL/DCM_ADV_INST_pins<4> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
-TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<4>";
+        "DelayGroupAmp_mid_9" BEL "DelayGroupAmp_2" BEL "DelayGroupAmp_3" BEL
+        "DelayGroupAmp_4" BEL "DelayGroupAmp_5" BEL "DelayGroupAmp_6" BEL
+        "DelayGroupAmp_7" BEL "DelayGroupAmp_8" BEL "DelayGroupAmp_9" BEL
+        "FastTrigDes_o" BEL "GroupAmp_2" BEL "GroupAmp_3" BEL "GroupAmp_4" BEL
+        "GroupAmp_5" BEL "GroupAmp_6" BEL "GroupAmp_7" BEL "GroupAmp_8" BEL
+        "GroupAmp_9" BEL "Led_B/ES1/Trig1" BEL "Led_B/ES1/Trig0" BEL
+        "CntTest/count_0" BEL "CntTest/count_1" BEL "CntTest/count_2" BEL
+        "CntTest/count_3" BEL "CntTest/count_4" BEL "CntTest/count_5" BEL
+        "CntTest/count_6" BEL "CntTest/count_7" BEL "CntTest/count_8" BEL
+        "CntTest/count_9" BEL "CntTest/count_10" BEL "CntTest/count_11" BEL
+        "CntTest/count_12" BEL "CntTest/count_13" BEL "CntTest/count_14" BEL
+        "CntTest/count_15" BEL "CntTest/count_16" BEL "CntTest/count_17" BEL
+        "CntTest/count_18" BEL "CntTest/count_19" BEL "CntTest/count_20" BEL
+        "CntTest/count_21" BEL "CntTest/count_22" BEL "CntTest/count_23" BEL
+        "CntTest/count_24" BEL "Global_clk80" BEL "DLL/CLK2X_BUFG_INST" BEL
+        "Led_B/DurTrig_SRFF/Trig" BEL "Amp_Trig/Trig" BEL "LT_Trig/Trig" BEL
+        "Mshreg_AllReset/SRL16E" BEL "AllReset" BEL "Mshreg_AverData_0/SRL16E"
+        BEL "ADC_CLK";
+TIMEGRP ADC_DCO_LVDS0 = BEL "DataN_1" BEL "DataP_1" BEL "DataN_2" BEL
+        "DataP_2" BEL "DataN_del_3" BEL "DataP_del_3" BEL "IDDR_inst/FF0" BEL
+        "IDDR_inst/FF1" BEL "IDDR_inst/FF2" BEL "IDDR_inst/FF3" BEL
+        "Mshreg_DataN_01/SRL16E" BEL "DataN_01" BEL "Mshreg_DataP_01/SRL16E"
+        BEL "DataP_01";
+TIMEGRP DLL_CLK0_BUF = BEL "TriggerData_2" BEL "TriggerData_3" BEL
+        "TriggerData_4" BEL "TriggerData_5" BEL "TriggerData_6" BEL
+        "TriggerData_7" BEL "TriggerData_8" BEL "TriggerData_9" BEL
+        "TriggerData_10" BEL "TriggerData_15" BEL "DLL/CLK0_BUFG_INST";
+PIN DLL/DCM_ADV_INST_pins<3> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
+TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<3>";
+TIMEGRP FCT_40 = BEL "PhaseSwitch/SysClkCnt/count_15" BEL
+        "PhaseSwitch/SysClkCnt/count_14" BEL "PhaseSwitch/SysClkCnt/count_13"
+        BEL "PhaseSwitch/SysClkCnt/count_12" BEL
+        "PhaseSwitch/SysClkCnt/count_11" BEL "PhaseSwitch/SysClkCnt/count_10"
+        BEL "PhaseSwitch/SysClkCnt/count_9" BEL
+        "PhaseSwitch/SysClkCnt/count_8" BEL "PhaseSwitch/SysClkCnt/count_7"
+        BEL "PhaseSwitch/SysClkCnt/count_6" BEL
+        "PhaseSwitch/SysClkCnt/count_5" BEL "PhaseSwitch/SysClkCnt/count_4"
+        BEL "PhaseSwitch/SysClkCnt/count_3" BEL
+        "PhaseSwitch/SysClkCnt/count_2" BEL "PhaseSwitch/SysClkCnt/count_1"
+        BEL "PhaseSwitch/SysClkCnt/count_0";
 TIMEGRP Qclock = BEL "PhaseSwitch/TimingCnt/count_15" BEL
         "PhaseSwitch/TimingCnt/count_14" BEL "PhaseSwitch/TimingCnt/count_13"
         BEL "PhaseSwitch/TimingCnt/count_12" BEL
@@ -256,14 +234,13 @@ TIMEGRP Qclock = BEL "PhaseSwitch/TimingCnt/count_15" BEL
         "PhaseSwitch/TimingCnt/count_2" BEL "PhaseSwitch/TimingCnt/count_1"
         BEL "PhaseSwitch/TimingCnt/count_0" BEL "PhaseSwitch/Sync_TRG1";
 TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
+TS_FCT_40 = PERIOD TIMEGRP "FCT_40" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 TS_MuxClock_in = PERIOD TIMEGRP "MuxClock_in" 25 ns HIGH 50% INPUT_JITTER
         0.375 ns;
 TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 3.125 ns HIGH 50%;
 TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_MuxClock_in HIGH 50%
         INPUT_JITTER 0.375 ns;
 TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_MuxClock_in / 2 HIGH 50%
-        INPUT_JITTER 0.375 ns;
-TS_DLL_CLKDV_BUF = PERIOD TIMEGRP "DLL_CLKDV_BUF" TS_MuxClock_in * 2 HIGH 50%
         INPUT_JITTER 0.375 ns;
 SCHEMATIC END;
 

@@ -10,39 +10,37 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Fri Jan 25 18:05:26 2019
+Mapped Date    : Fri Feb 01 12:20:10 2019
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:    3
+Number of warnings:    2
 Logic Utilization:
-  Number of Slice Flip Flops:           210 out of  53,248    1%
-  Number of 4 input LUTs:                59 out of  53,248    1%
+  Number of Slice Flip Flops:           158 out of  53,248    1%
+  Number of 4 input LUTs:                51 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            133 out of  26,624    1%
-    Number of Slices containing only related logic:     133 out of     133 100%
-    Number of Slices containing unrelated logic:          0 out of     133   0%
+  Number of occupied Slices:            106 out of  26,624    1%
+    Number of Slices containing only related logic:     106 out of     106 100%
+    Number of Slices containing unrelated logic:          0 out of     106   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:          99 out of  53,248    1%
-    Number used as logic:                58
-    Number used as a route-thru:         40
-    Number used as Shift registers:       1
+  Total Number of 4 input LUTs:         112 out of  53,248    1%
+    Number used as logic:                47
+    Number used as a route-thru:         61
+    Number used as Shift registers:       4
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
-  Number of bonded IOBs:                160 out of     640   25%
+  Number of bonded IOBs:                165 out of     640   25%
     IOB Flip Flops:                      13
-  Number of BUFG/BUFGCTRLs:               4 out of      32   12%
-    Number used as BUFGs:                 4
-  Number of FIFO16/RAMB16s:               1 out of     160    1%
-    Number used as RAMB16s:               1
+  Number of BUFG/BUFGCTRLs:               3 out of      32    9%
+    Number used as BUFGs:                 3
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.68
+Average Fanout of Non-Clock Nets:                1.49
 
-Peak Memory Usage:  445 MB
-Total REAL time to MAP completion:  5 secs 
+Peak Memory Usage:  444 MB
+Total REAL time to MAP completion:  3 secs 
 Total CPU time to MAP completion:   3 secs 
 
 NOTES:
@@ -84,8 +82,6 @@ Section 1 - Errors
 
 Section 2 - Warnings
 --------------------
-WARNING:MapLib:701 - Signal FCT_40 connected to top level port FCT_40 has been
-   removed.
 WARNING:MapLib:701 - Signal FCT_160 connected to top level port FCT_160 has been
    removed.
 WARNING:MapLib:701 - Signal FCT_160_n connected to top level port FCT_160_n has
@@ -93,14 +89,14 @@ WARNING:MapLib:701 - Signal FCT_160_n connected to top level port FCT_160_n has
 
 Section 3 - Informational
 -------------------------
-INFO:LIT:243 - Logical network TxClk has no load.
-INFO:LIT:395 - The above info message is repeated 323 more times for the
+INFO:LIT:243 - Logical network ADCInDataLVDS<127> has no load.
+INFO:LIT:395 - The above info message is repeated 320 more times for the
    following (max. 5 shown):
-   Col,
-   ADC_test,
-   Crs,
-   RxClk,
-   ADC_res
+   ADCInDataLVDS<126>,
+   ADCInDataLVDS<125>,
+   ADCInDataLVDS<124>,
+   ADCInDataLVDS<123>,
+   ADCInDataLVDS<122>
    To see the details of these info messages, please use the -detail switch.
 INFO:MapLib:562 - No environment variables are currently set.
 INFO:MapLib:797 - Your design is targeting LX/SX Production Step 0/1/ES devices.
@@ -114,8 +110,8 @@ INFO:LIT:244 - All of the single ended outputs in this design are using slew
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   8 block(s) removed
-   3 block(s) optimized away
+   7 block(s) removed
+   6 block(s) optimized away
    6 signal(s) removed
 
 Section 5 - Removed Logic
@@ -133,13 +129,12 @@ the lines that are least indented (begin at the leftmost edge).
 
 Loadless block "DLL/CLK90_BUFG_INST" (CKBUF) removed.
  The signal "DLL/CLK90_BUF" is loadless and has been removed.
+Loadless block "DLL/CLKDV_BUFG_INST" (CKBUF) removed.
+ The signal "DLL/CLKDV_BUF" is loadless and has been removed.
 Loadless block "Global_clk160" (CKBUF) removed.
  The signal "Clk160_o" is loadless and has been removed.
   Loadless block "DLL/CLKFX_BUFG_INST" (CKBUF) removed.
    The signal "DLL/CLKFX_BUF" is loadless and has been removed.
-Loadless block "LVDS_Clk40" (CKBUF) removed.
- The signal "FCT_40" is loadless and has been removed.
-  Loadless block "FCT_40" (PAD) removed.
 Loadless block "LVDS_FCT_160" (IBUFGDS) removed.
  The signal "FCT_160" is loadless and has been removed.
   Loadless block "FCT_160" (PAD) removed.
@@ -161,14 +156,14 @@ Section 6 - IOB Properties
 | IOB Name                           | Type             | Direction | IO Standard          | Diff  | Drive    | Slew | Reg (s)      | Resistor | IOB      |
 |                                    |                  |           |                      | Term  | Strength | Rate |              |          | Delay    |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ADCInDataLVDS<0>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | IFF1         |          |          |
-|                                    | IDDR:PIPELINED   |           |                      |       |          |      | IFF2         |          |          |
-|                                    |                  |           |                      |       |          |      | IFF3         |          |          |
-|                                    |                  |           |                      |       |          |      | IFF4         |          |          |
+| ADCInDataLVDS<0>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS<1>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS<2>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS<3>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| ADCInDataLVDS<4>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS<4>                   | IOB              | INPUT     | LVDS_25              | TRUE  |          |      | IFF1         |          |          |
+|                                    | IDDR:PIPELINED   |           |                      |       |          |      | IFF2         |          |          |
+|                                    |                  |           |                      |       |          |      | IFF3         |          |          |
+|                                    |                  |           |                      |       |          |      | IFF4         |          |          |
 | ADCInDataLVDS<5>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS<6>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS<7>                   | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
@@ -196,11 +191,11 @@ Section 6 - IOB Properties
 | ADCInDataLVDSPrev_n<9>             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDSPrev_n<10>            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDSPrev_n<11>            | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| ADCInDataLVDS_n<0>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
+| ADCInDataLVDS_n<0>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS_n<1>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS_n<2>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS_n<3>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| ADCInDataLVDS_n<4>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| ADCInDataLVDS_n<4>                 | IOB              | INPUT     | LVDS_25              | TRUE  |          |      |              |          |          |
 | ADCInDataLVDS_n<5>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS_n<6>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADCInDataLVDS_n<7>                 | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
@@ -237,6 +232,7 @@ Section 6 - IOB Properties
 | ADC_SCLK                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ADC_SDIO                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ExtReset                           | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
+| FCT_40                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | FastTrigDes                        | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Led1                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Led2                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
@@ -324,6 +320,10 @@ Section 6 - IOB Properties
 | TriggerData<61>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<62>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TriggerData<63>                    | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TxD<0>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TxD<1>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TxD<2>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| TxD<3>                             | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 +---------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 Section 7 - RPMs
