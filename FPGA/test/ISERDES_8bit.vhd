@@ -721,9 +721,9 @@ DLL: entity work.DLL
 				q		=> ADCreset_SDIO_trig
 		);
 
---	ADC_prog: process (Clk20)
---	begin
---		if rising_edge(Clk20) then
+	ADC_prog: process (Clk20)
+	begin
+		if rising_edge(Clk20) then
 ----			if (s_fadc_test = '1') then 
 ----				if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
 ----														Else ADC_Bit_write <= '0';
@@ -758,21 +758,21 @@ DLL: entity work.DLL
 ----				ADC_CSB <= '1';
 ----			end if;
 --
---			if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
---													Else ADC_Bit_write <= '0';
---			end if;
---			IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
---																								 ADC_SDIO <= ADCreset_SDIO_trig;--ADCtest_SDIO_trig;--'0';--
---																								 Else ADCtest_reg_sset <= '1';
---																								 ADC_SDIO <= '0';
---			END IF;
---			IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
---				ADC_CSB_trig <= '0';
---			ELSE 
---				ADC_CSB_trig <= '1';
---			END IF;
---		end if;
---	end process;
+			if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
+													Else ADC_Bit_write <= '0';
+			end if;
+			IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+																								 ADC_SDIO <= ADCreset_SDIO_trig;--ADCtest_SDIO_trig;--'0';--
+																								 Else ADCtest_reg_sset <= '1';
+																								 ADC_SDIO <= '0';
+			END IF;
+			IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
+				ADC_CSB_trig <= '0';
+			ELSE 
+				ADC_CSB_trig <= '1';
+			END IF;
+		end if;
+	end process;
 
 --	ADC_CSB <= '1';--ADC_CSB_trig;
 --	ADC_SCLK <= Clk20;
