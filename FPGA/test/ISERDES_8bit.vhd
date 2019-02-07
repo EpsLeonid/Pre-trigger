@@ -131,8 +131,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal PowerUp2_o			: std_logic;
 	signal PwrUpReset			: std_logic;
 	signal Reset				: std_logic := '0';
-	signal DelayReset			: STD_LOGIC_VECTOR (9 downto 0);
-	signal AllReset			: std_logic := '0';
+	signal o_blue_led			: std_logic := '1';
 	---
 
 	--- Input ADC Data
@@ -154,6 +153,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal DataP_del	: std_logic_vector(ADC_Bits/2-1 downto 0):= (others => '0');
 	signal DataN_del	: std_logic_vector(ADC_Bits/2-1 downto 0):= (others => '0');
 	signal DataOut	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
+	---
 	
 	--- Processing Data
 	signal InData	: std_logic_vector(ADC_Bits-1 downto 0):= (others => '0');
@@ -169,12 +169,17 @@ architecture Behavioral of ISERDES_8bit is
 	signal DelayGroupAmp_mid	: std_logic_vector(ADC_Bits+1 downto 0):= (others => '0');
 	signal GroupValue_Amp_Done : std_logic := '0';
 	signal GroupAmp_Trig : std_logic := '0';
+
+	signal DelayReset			: STD_LOGIC_VECTOR (9 downto 0);
+	signal AllReset			: std_logic := '0';
+	---
 	
 	--- TriggerDes
 	signal TrigIn	: std_logic;
 	signal TrigDes_o	: std_logic;
 	signal FastTrigDes_o	: std_logic;
 
+	---
 	--- ADC SPI interface signals
 	signal s_fadc_test		: std_logic := '0'; 
 	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
@@ -198,7 +203,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal ADCreset_reg_sset	: std_logic := '1'; 
 	signal ADCreset_SDIO_trig: std_logic; 
 	signal ADC_CSB_trig	: std_logic := '1'; 
-	
+	---
 
 	--- Test
 	signal TestCnt	: std_logic_vector(25 downto 0);
@@ -206,22 +211,6 @@ architecture Behavioral of ISERDES_8bit is
 	signal ImRam	: std_logic_vector(15 downto 0);
 	signal EnImRam	: std_logic := '0';
 	type   ram_type is array (0 to 127) of std_logic_vector (7 downto 0);
---	signal RamData : ram_type:=(X"0001", X"0060", X"0076", X"00A0", X"00BA", X"00B5", X"00B1", X"00A9", 
---									  X"00A8", X"0092", X"0090", X"008E", X"008C", X"008A", X"0088", X"0086", 
---									  X"0084", X"0082", X"0080", X"007E", X"007C", X"007A", X"0078", X"0076", 
---									  X"0074", X"0072", X"0070", X"006E", X"006C", X"006A", X"0068", X"0066", 
---									  X"0064", X"0063", X"0062", X"0061", X"0060", X"005F", X"005E", X"005D", 
---									  X"005C", X"005B", X"005A", X"0059", X"0058", X"0057", X"0056", X"0055", 
---									  X"0054", X"0053", X"0052", X"0051", X"0050", X"004F", X"004E", X"004D", 
---									  X"004C", X"004B", X"004A", X"0049", X"0048", X"0047", X"0046", X"0045", 
---									  X"0044", X"0043", X"0042", X"0041", X"0040", X"003F", X"003E", X"003D", 
---									  X"003C", X"003B", X"003A", X"0039", X"0038", X"0037", X"0036", X"0035", 
---									  X"0034", X"0033", X"0032", X"0031", X"0030", X"002F", X"002E", X"002D", 
---									  X"002C", X"002B", X"002A", X"0029", X"0028", X"0027", X"0026", X"0025", 
---									  X"0024", X"0023", X"0022", X"0021", X"0020", X"001F", X"001E", X"001D", 
---									  X"001C", X"001B", X"001A", X"0019", X"0018", X"0017", X"0016", X"0015", 
---									  X"0014", X"0013", X"0012", X"0011", X"0010", X"000F", X"000E", X"000D", 
---									  X"000C", X"0005", X"0000", X"0000", X"0000", X"0000", X"0000", X"0000");
 	signal RamData : ram_type:=(X"01", X"40", X"70", X"A0", X"BA", X"B4", X"A6", X"A0", 
 									  X"9D", X"8C", X"78", X"02", X"02", X"02", X"02", X"02", 
 									  X"01", X"02", X"02", X"02", X"02", X"02", X"02", X"02", 
@@ -362,20 +351,31 @@ DLL: entity work.DLL
 --			end if;
 --		end if;
 --	end process;
-	LED1 <= '1' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
-				'0';
-	Led_B : entity work.Light_Pulser 
-		generic map ( DIV	=> 2,
-						  DUR	=> 100)
+	LED1 <= '0' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
+				'1';
+--	Led_B : entity work.Light_Pulser 
+--		generic map ( DIV	=> 2,
+--						  DUR	=> 100)
+--		port map( 
+--					 clock => CLK80,
+--					 i_event => TestCnt(21),--FastTrigDes_o,
+--					 o_flash => o_blue_led
+--					);
+
+	Led_B : entity work.Light_LED 
 		port map( 
 					 clock => CLK80,
 					 i_event => FastTrigDes_o,
-					 o_flash => LED2
+					 o_flash => o_blue_led
 					);
 
-	LED3 <= '1' when TestCnt(24)='1' else
-				'0' when TestCnt(24)='0' else
-				'0';
+	LED2 <=  '0' when o_blue_led = '1' else
+				'1' when o_blue_led = '0' else
+				'1';
+
+	LED3 <= '1' ;--when TestCnt(24)='1' else
+--				'0' when TestCnt(24)='0' else
+--				'0';
 	LED4 <= '1' when TestCnt(22)='1' else
 				'0' when TestCnt(22)='0' else
 				'0';
@@ -583,7 +583,7 @@ DLL: entity work.DLL
 	ThreshData: process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			Sub_ped(7 downto 0) <= DataOut;--InData;-- - Piedistal_def;
+			Sub_ped(7 downto 0) <= DataOut;-- InData;-- - Piedistal_def;
 			Sub_ped_delay <= Sub_ped; 
 			AverData_med <= (Sub_ped_delay + Sub_ped);
 			AverData(7 downto 0) <= AverData_med(8 downto 1);
@@ -721,9 +721,9 @@ DLL: entity work.DLL
 				q		=> ADCreset_SDIO_trig
 		);
 
-	ADC_prog: process (Clk20)
-	begin
-		if rising_edge(Clk20) then
+--	ADC_prog: process (Clk20)
+--	begin
+--		if rising_edge(Clk20) then
 ----			if (s_fadc_test = '1') then 
 ----				if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
 ----														Else ADC_Bit_write <= '0';
@@ -758,23 +758,23 @@ DLL: entity work.DLL
 ----				ADC_CSB <= '1';
 ----			end if;
 --
-			if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
-													Else ADC_Bit_write <= '0';
-			end if;
-			IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
-																								 ADC_SDIO <= ADCreset_SDIO_trig;--ADCtest_SDIO_trig;--'0';--
-																								 Else ADCtest_reg_sset <= '1';
-																								 ADC_SDIO <= '0';
-			END IF;
-			IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
-				ADC_CSB_trig <= '0';
-			ELSE 
-				ADC_CSB_trig <= '1';
-			END IF;
-		end if;
-	end process;
-
---	ADC_CSB <= '1';--ADC_CSB_trig;
+--			if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
+--													Else ADC_Bit_write <= '0';
+--			end if;
+--			IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+--																								 ADC_SDIO <= ADCreset_SDIO_trig;--ADCtest_SDIO_trig;--'0';--
+--																								 Else ADCtest_reg_sset <= '1';
+--																								 ADC_SDIO <= '0';
+--			END IF;
+--			IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
+--				ADC_CSB_trig <= '0';
+--			ELSE 
+--				ADC_CSB_trig <= '1';
+--			END IF;
+--		end if;
+--	end process;
+--
+--	ADC_CSB <= ADC_CSB_trig;-- '1';--
 --	ADC_SCLK <= Clk20;
 
 --******** Test part ********--
@@ -809,7 +809,7 @@ DLL: entity work.DLL
 	Test(6) <= DataOut(6);
 	Test(7) <= DataOut(7);
 	Test(8) <= GroupLT_Trig;
-	Test(9) <= GroupAmp_Trig;
+	Test(9) <= s_clock_locked;
 
 --	Test(0) <= DataP(0);
 --	Test(1) <= DataP(1);

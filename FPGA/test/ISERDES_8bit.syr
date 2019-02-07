@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.41 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.42 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> WARNING:Xst:1583 - You are using an internal switch '-use_new_parser'.
 WARNING:Xst:3152 - You have chosen to run a version of XST which is not the default solution
@@ -122,32 +122,32 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Parsing                                  *
 =========================================================================
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\Parameters.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\test\Parameters.vhd" into library work
 Parsing package <parameters>.
 Parsing package body <parameters>.
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\V_Counter.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\LIB\V_Counter.vhd" into library work
 Parsing entity <V_Counter>.
 Parsing architecture <Utility> of entity <v_counter>.
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\SRFF.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\LIB\SRFF.vhd" into library work
 Parsing entity <SRFF>.
 Parsing architecture <Utility> of entity <srff>.
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\Edge_Sensing.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\LIB\Edge_Sensing.vhd" into library work
 Parsing entity <Edge_Sensing>.
 Parsing architecture <Utility> of entity <edge_sensing>.
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\test\Light_LED.vhd" into library work
+Parsing entity <Light_LED>.
+Parsing architecture <Utility> of entity <light_led>.
+WARNING:HDLCompiler:946 - "C:\Work\COMET project\trunk\FPGA\test\Light_LED.vhd" Line 41: Actual for formal port sclr is neither a static name nor a globally static expression
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd" into library work
 Parsing entity <ShiftReg>.
 Parsing architecture <Behavioral> of entity <shiftreg>.
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\Pre-trigger_Xilinx\DLL.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\Pre-trigger_Xilinx\DLL.vhd" into library work
 Parsing entity <DLL>.
 Parsing architecture <BEHAVIORAL> of entity <dll>.
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\PhaseSW.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\LIB\PhaseSW.vhd" into library work
 Parsing entity <PhaseSW>.
 Parsing architecture <Behavioral> of entity <phasesw>.
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\Light_Pulser.vhd" into library work
-Parsing entity <Light_Pulser>.
-Parsing architecture <Utility> of entity <light_pulser>.
-WARNING:HDLCompiler:946 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\Light_Pulser.vhd" Line 49: Actual for formal port sclr is neither a static name nor a globally static expression
-Parsing VHDL file "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" into library work
+Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" into library work
 Parsing entity <ISERDES_8bit>.
 Parsing architecture <Behavioral> of entity <iserdes_8bit>.
 
@@ -156,10 +156,12 @@ Parsing architecture <Behavioral> of entity <iserdes_8bit>.
 =========================================================================
 
 Elaborating entity <ISERDES_8bit> (architecture <Behavioral>) from library <work>.
-WARNING:HDLCompiler:871 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 133: Using initial value '0' for reset since it is never assigned
-WARNING:HDLCompiler:871 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 180: Using initial value "00000000000011010000110000000000001111111100000001" for s_fadc_sdio_test since it is never assigned
-WARNING:HDLCompiler:871 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 186: Using initial value "00000000000011010000000000000000001111111100000001" for s_fadc_sdio_reset since it is never assigned
-WARNING:HDLCompiler:871 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 198: Using initial value '1' for adcreset_reg_sset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 133: Using initial value '0' for reset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 185: Using initial value "00000000000011010000110000000000001111111100000001" for s_fadc_sdio_test since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 191: Using initial value "00000000000011010000000000000000001111111100000001" for s_fadc_sdio_reset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 198: Using initial value '0' for adc_bit_write since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 201: Using initial value '1' for adctest_reg_sset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 203: Using initial value '1' for adcreset_reg_sset since it is never assigned
 
 Elaborating entity <SRFF> (architecture <Utility>) from library <work>.
 
@@ -169,35 +171,36 @@ Elaborating entity <V_Counter> (architecture <Utility>) with generics from libra
 
 Elaborating entity <DLL> (architecture <BEHAVIORAL>) from library <work>.
 
-Elaborating entity <Light_Pulser> (architecture <Utility>) with generics from library <work>.
-
-Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
-
-Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
+Elaborating entity <Light_LED> (architecture <Utility>) from library <work>.
 
 Elaborating entity <Edge_Sensing> (architecture <Utility>) from library <work>.
-WARNING:HDLCompiler:1127 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 579: Assignment to indata ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 693: Assignment to s_fadc_test ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 694: Assignment to s_fadc_reset ignored, since the identifier is never used
+
+Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 579: Assignment to indata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 693: Assignment to s_fadc_test ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 694: Assignment to s_fadc_reset ignored, since the identifier is never used
 
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
 
 Elaborating entity <ShiftReg> (architecture <Behavioral>) with generics from library <work>.
-WARNING:HDLCompiler:92 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd" Line 52: sset should be on the sensitivity list of the process
-WARNING:HDLCompiler:92 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd" Line 53: d should be on the sensitivity list of the process
-WARNING:HDLCompiler:1127 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 724: Assignment to adc_csb_trig ignored, since the identifier is never used
+WARNING:HDLCompiler:92 - "C:\Work\COMET project\trunk\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd" Line 52: sset should be on the sensitivity list of the process
+WARNING:HDLCompiler:92 - "C:\Work\COMET project\trunk\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd" Line 53: d should be on the sensitivity list of the process
 
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
-WARNING:HDLCompiler:634 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 160: Net <Sub_Ped[9]> does not have a driver.
-WARNING:HDLCompiler:634 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" Line 162: Net <AverData[9]> does not have a driver.
-WARNING:Xst:2972 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" line 709. All outputs of instance <ShiftReg_test> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:HDLCompiler:634 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 160: Net <Sub_Ped[9]> does not have a driver.
+WARNING:HDLCompiler:634 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 162: Net <AverData[9]> does not have a driver.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 246. All outputs of instance <PowerUp1> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 254. All outputs of instance <PowerUp2> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 698. All outputs of instance <ADC_Cnt> of block <V_Counter> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 709. All outputs of instance <ShiftReg_test> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 716. All outputs of instance <ShiftReg_reset> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
 =========================================================================
 
 Synthesizing Unit <ISERDES_8bit>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd".
+    Related source file is "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd".
 WARNING:Xst:647 - Input <ADCInDataLVDS<3:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ADCInDataLVDS<127:5>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ADCInDataLVDS_n<3:0>> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -220,15 +223,18 @@ WARNING:Xst:647 - Input <Crs> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <RxDv> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <TxClk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Col> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" line 308: Output port <Test> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" line 308: Output port <Phase> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" line 332: Output port <CLKIN_IBUFG_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" line 332: Output port <CLK90_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\test\ISERDES_8bit.vhd" line 709: Output port <q> of the instance <ShiftReg_test> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 297: Output port <Test> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 297: Output port <Phase> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 321: Output port <CLKIN_IBUFG_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 321: Output port <CLK90_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 698: Output port <q> of the instance <ADC_Cnt> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 709: Output port <q> of the instance <ShiftReg_test> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 716: Output port <q> of the instance <ShiftReg_reset> is unconnected or connected to loadless signal.
 WARNING:Xst:2935 - Signal 'TxD', unconnected in block 'ISERDES_8bit', is tied to its initial value (0000).
 WARNING:Xst:2935 - Signal 'Sub_Ped<9:8>', unconnected in block 'ISERDES_8bit', is tied to its initial value (00).
 WARNING:Xst:2935 - Signal 'AverData<9:8>', unconnected in block 'ISERDES_8bit', is tied to its initial value (00).
 WARNING:Xst:2935 - Signal 'ADC_CSB', unconnected in block 'ISERDES_8bit', is tied to its initial value (1).
+WARNING:Xst:2935 - Signal 'ADC_SDIO', unconnected in block 'ISERDES_8bit', is tied to its initial value (0).
 WARNING:Xst:2935 - Signal 'ADC_SCLK', unconnected in block 'ISERDES_8bit', is tied to its initial value (0).
     Register <DataN_del<2>> equivalent to <DataN<3>> has been removed
     Register <DataN_del<1>> equivalent to <DataN<2>> has been removed
@@ -275,24 +281,19 @@ WARNING:Xst:2935 - Signal 'ADC_SCLK', unconnected in block 'ISERDES_8bit', is ti
     Found 64-bit register for signal <TriggerData>.
     Found 10-bit register for signal <DelayReset>.
     Found 1-bit register for signal <AllReset>.
-    Found 1-bit register for signal <ADC_Bit_write>.
-    Found 1-bit register for signal <ADC_SDIO>.
-    Found 1-bit register for signal <PowerUp0>.
     Found 8-bit register for signal <Sub_ped_delay>.
     Found 10-bit adder for signal <Sub_ped_delay[9]_Sub_Ped[9]_add_6_OUT> created at line 588.
-    Found 10-bit comparator lessequal for signal <n0037> created at line 590
+    Found 10-bit comparator lessequal for signal <n0039> created at line 590
     Found 10-bit comparator greater for signal <GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_14_o> created at line 615
-    Found 6-bit comparator lessequal for signal <n0086> created at line 764
-    Found 6-bit comparator greater for signal <ADC_bit_count[5]_PWR_9_o_LessThan_29_o> created at line 764
     WARNING:Xst:2404 -  FFs/Latches <Sub_ped_delay<9:8>> (without init value) have a constant value of 0 in block <ISERDES_8bit>.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred 174 D-type flip-flop(s).
-	inferred   4 Comparator(s).
+	inferred 171 D-type flip-flop(s).
+	inferred   2 Comparator(s).
 Unit <ISERDES_8bit> synthesized.
 
 Synthesizing Unit <SRFF>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\SRFF.vhd".
+    Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\SRFF.vhd".
     Found 1-bit register for signal <Trig>.
     Summary:
 	inferred   1 D-type flip-flop(s).
@@ -300,7 +301,7 @@ Synthesizing Unit <SRFF>.
 Unit <SRFF> synthesized.
 
 Synthesizing Unit <PhaseSW>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\PhaseSW.vhd".
+    Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\PhaseSW.vhd".
         Fmax = 42000
         Fmin = 38000
         RefClock = 40000
@@ -315,7 +316,7 @@ WARNING:Xst:2935 - Signal 'Test', unconnected in block 'PhaseSW', is tied to its
 Unit <PhaseSW> synthesized.
 
 Synthesizing Unit <V_Counter_1>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\V_Counter.vhd".
+    Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\V_Counter.vhd".
         WIDTH = 16
 WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 16-bit register for signal <count>.
@@ -327,119 +328,38 @@ WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and 
 Unit <V_Counter_1> synthesized.
 
 Synthesizing Unit <DLL>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\Pre-trigger_Xilinx\DLL.vhd".
+    Related source file is "C:\Work\COMET project\trunk\FPGA\Pre-trigger_Xilinx\DLL.vhd".
     Summary:
 	no macro.
 Unit <DLL> synthesized.
-WARNING:Xst:2972 - "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\Light_Pulser.vhd" line 36. All outputs of instance <Prescaler> of block <V_Counter> are unconnected in block <Light_Pulser>. Underlying logic will be removed.
 
-Synthesizing Unit <Light_Pulser>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\Light_Pulser.vhd".
-        DIV = 2
-        DUR = 100
-    WARNING:Xst:2404 -  FFs/Latches <Flah_Freq<0:0>> (without init value) have a constant value of 0 in block <Light_Pulser>.
+Synthesizing Unit <Light_LED>.
+    Related source file is "C:\Work\COMET project\trunk\FPGA\test\Light_LED.vhd".
     Summary:
 	no macro.
-Unit <Light_Pulser> synthesized.
-
-Synthesizing Unit <V_Counter_2>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\V_Counter.vhd".
-        WIDTH = 1
-WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 1-bit register for signal <count_0>.
-    Summary:
-	inferred   1 D-type flip-flop(s).
-Unit <V_Counter_2> synthesized.
-
-Synthesizing Unit <V_Counter_3>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\V_Counter.vhd".
-        WIDTH = 7
-WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 7-bit register for signal <count>.
-    Found 7-bit adder for signal <GND_18_o_count[6]_mux_2_OUT> created at line 33.
-    Summary:
-	inferred   1 Adder/Subtractor(s).
-	inferred   7 D-type flip-flop(s).
-Unit <V_Counter_3> synthesized.
+Unit <Light_LED> synthesized.
 
 Synthesizing Unit <Edge_Sensing>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\Edge_Sensing.vhd".
+    Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\Edge_Sensing.vhd".
     Found 1-bit register for signal <Trig0>.
     Found 1-bit register for signal <Trig1>.
     Summary:
 	inferred   2 D-type flip-flop(s).
 Unit <Edge_Sensing> synthesized.
 
-Synthesizing Unit <V_Counter_4>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\V_Counter.vhd".
-        WIDTH = 6
+Synthesizing Unit <V_Counter_2>.
+    Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\V_Counter.vhd".
+        WIDTH = 21
 WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 6-bit register for signal <count>.
-    Found 6-bit adder for signal <GND_24_o_count[5]_mux_2_OUT> created at line 33.
+    Found 21-bit register for signal <count>.
+    Found 21-bit adder for signal <GND_20_o_count[20]_mux_2_OUT> created at line 33.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred   6 D-type flip-flop(s).
-Unit <V_Counter_4> synthesized.
+	inferred  21 D-type flip-flop(s).
+Unit <V_Counter_2> synthesized.
 
-Synthesizing Unit <ShiftReg>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd".
-        WIDTH = 50
-    Found 1-bit register for signal <tmp<49>>.
-    Found 1-bit register for signal <tmp<48>>.
-    Found 1-bit register for signal <tmp<47>>.
-    Found 1-bit register for signal <tmp<46>>.
-    Found 1-bit register for signal <tmp<45>>.
-    Found 1-bit register for signal <tmp<44>>.
-    Found 1-bit register for signal <tmp<43>>.
-    Found 1-bit register for signal <tmp<42>>.
-    Found 1-bit register for signal <tmp<41>>.
-    Found 1-bit register for signal <tmp<40>>.
-    Found 1-bit register for signal <tmp<39>>.
-    Found 1-bit register for signal <tmp<38>>.
-    Found 1-bit register for signal <tmp<37>>.
-    Found 1-bit register for signal <tmp<36>>.
-    Found 1-bit register for signal <tmp<35>>.
-    Found 1-bit register for signal <tmp<34>>.
-    Found 1-bit register for signal <tmp<33>>.
-    Found 1-bit register for signal <tmp<32>>.
-    Found 1-bit register for signal <tmp<31>>.
-    Found 1-bit register for signal <tmp<30>>.
-    Found 1-bit register for signal <tmp<29>>.
-    Found 1-bit register for signal <tmp<28>>.
-    Found 1-bit register for signal <tmp<27>>.
-    Found 1-bit register for signal <tmp<26>>.
-    Found 1-bit register for signal <tmp<25>>.
-    Found 1-bit register for signal <tmp<24>>.
-    Found 1-bit register for signal <tmp<23>>.
-    Found 1-bit register for signal <tmp<22>>.
-    Found 1-bit register for signal <tmp<21>>.
-    Found 1-bit register for signal <tmp<20>>.
-    Found 1-bit register for signal <tmp<19>>.
-    Found 1-bit register for signal <tmp<18>>.
-    Found 1-bit register for signal <tmp<17>>.
-    Found 1-bit register for signal <tmp<16>>.
-    Found 1-bit register for signal <tmp<15>>.
-    Found 1-bit register for signal <tmp<14>>.
-    Found 1-bit register for signal <tmp<13>>.
-    Found 1-bit register for signal <tmp<12>>.
-    Found 1-bit register for signal <tmp<11>>.
-    Found 1-bit register for signal <tmp<10>>.
-    Found 1-bit register for signal <tmp<9>>.
-    Found 1-bit register for signal <tmp<8>>.
-    Found 1-bit register for signal <tmp<7>>.
-    Found 1-bit register for signal <tmp<6>>.
-    Found 1-bit register for signal <tmp<5>>.
-    Found 1-bit register for signal <tmp<4>>.
-    Found 1-bit register for signal <tmp<3>>.
-    Found 1-bit register for signal <tmp<2>>.
-    Found 1-bit register for signal <tmp<1>>.
-    Found 1-bit register for signal <tmp<0>>.
-    Summary:
-	no macro.
-Unit <ShiftReg> synthesized.
-
-Synthesizing Unit <V_Counter_5>.
-    Related source file is "\\vmware-host\Shared Folders\COMET electronics\FPGA\LIB\V_Counter.vhd".
+Synthesizing Unit <V_Counter_4>.
+    Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\V_Counter.vhd".
         WIDTH = 26
 WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
     Found 26-bit register for signal <count>.
@@ -447,35 +367,31 @@ WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and 
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred  26 D-type flip-flop(s).
-Unit <V_Counter_5> synthesized.
+Unit <V_Counter_4> synthesized.
 
 =========================================================================
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 6
+# Adders/Subtractors                                   : 5
  10-bit adder                                          : 1
  16-bit addsub                                         : 2
+ 21-bit adder                                          : 1
  26-bit adder                                          : 1
- 6-bit adder                                           : 1
- 7-bit adder                                           : 1
-# Registers                                            : 43
- 1-bit register                                        : 27
+# Registers                                            : 37
+ 1-bit register                                        : 22
  10-bit register                                       : 6
  16-bit register                                       : 2
+ 21-bit register                                       : 1
  26-bit register                                       : 1
- 6-bit register                                        : 1
  64-bit register                                       : 1
- 7-bit register                                        : 1
  8-bit register                                        : 4
-# Comparators                                          : 6
+# Comparators                                          : 4
  10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 1
  16-bit comparator greater                             : 2
- 6-bit comparator greater                              : 1
- 6-bit comparator lessequal                            : 1
-# Multiplexers                                         : 10
- 1-bit 2-to-1 multiplexer                              : 10
+# Multiplexers                                         : 6
+ 1-bit 2-to-1 multiplexer                              : 6
 
 =========================================================================
 
@@ -491,14 +407,6 @@ WARNING:Xst:1293 - FF/Latch <TriggerData_13> has a constant value of 0 in block 
 WARNING:Xst:1293 - FF/Latch <TriggerData_12> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_11> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <GroupSum_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_0> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_1> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_2> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_3> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_4> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_5> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_6> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <ADC_SDIO> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <GroupSum_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_mid_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_mid_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
@@ -510,26 +418,18 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_0> has 
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <AverData_med_0> of sequential type is unconnected in block <ISERDES_8bit>.
 WARNING:Xst:2677 - Node <AverData_med_9> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:1290 - Hierarchical block <ShiftReg_reset> is unconnected in block <ISERDES_8bit>.
-   It will be removed from the design.
-WARNING:Xst:1290 - Hierarchical block <Timer> is unconnected in block <Led_B>.
-   It will be removed from the design.
 
 Synthesizing (advanced) Unit <V_Counter_1>.
 The following registers are absorbed into counter <count>: 1 register on signal <count>.
 Unit <V_Counter_1> synthesized (advanced).
 
-Synthesizing (advanced) Unit <V_Counter_3>.
+Synthesizing (advanced) Unit <V_Counter_2>.
 The following registers are absorbed into counter <count>: 1 register on signal <count>.
-Unit <V_Counter_3> synthesized (advanced).
+Unit <V_Counter_2> synthesized (advanced).
 
 Synthesizing (advanced) Unit <V_Counter_4>.
 The following registers are absorbed into counter <count>: 1 register on signal <count>.
 Unit <V_Counter_4> synthesized (advanced).
-
-Synthesizing (advanced) Unit <V_Counter_5>.
-The following registers are absorbed into counter <count>: 1 register on signal <count>.
-Unit <V_Counter_5> synthesized (advanced).
 WARNING:Xst:2677 - Node <AverData_med_0> of sequential type is unconnected in block <ISERDES_8bit>.
 WARNING:Xst:2677 - Node <AverData_med_9> of sequential type is unconnected in block <ISERDES_8bit>.
 
@@ -539,21 +439,18 @@ Advanced HDL Synthesis Report
 Macro Statistics
 # Adders/Subtractors                                   : 1
  10-bit adder                                          : 1
-# Counters                                             : 5
+# Counters                                             : 4
  16-bit updown counter                                 : 2
+ 21-bit up counter                                     : 1
  26-bit up counter                                     : 1
- 6-bit up counter                                      : 1
- 7-bit up counter                                      : 1
-# Registers                                            : 181
- Flip-Flops                                            : 181
-# Comparators                                          : 6
+# Registers                                            : 176
+ Flip-Flops                                            : 176
+# Comparators                                          : 4
  10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 1
  16-bit comparator greater                             : 2
- 6-bit comparator greater                              : 1
- 6-bit comparator lessequal                            : 1
-# Multiplexers                                         : 10
- 1-bit 2-to-1 multiplexer                              : 10
+# Multiplexers                                         : 6
+ 1-bit 2-to-1 multiplexer                              : 6
 
 =========================================================================
 
@@ -578,19 +475,12 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GroupAmp_0> has a c
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2261 - The FF/Latch <TriggerData_10> in Unit <ISERDES_8bit> is equivalent to the following 45 FFs/Latches, which will be removed : <TriggerData_14> <TriggerData_20> <TriggerData_21> <TriggerData_22> <TriggerData_23> <TriggerData_24> <TriggerData_25> <TriggerData_26> <TriggerData_27> <TriggerData_28> <TriggerData_29> <TriggerData_30> <TriggerData_31> <TriggerData_32> <TriggerData_33> <TriggerData_34> <TriggerData_35> <TriggerData_36> <TriggerData_37> <TriggerData_38> <TriggerData_39> <TriggerData_40> <TriggerData_41> <TriggerData_42> <TriggerData_43> <TriggerData_44> <TriggerData_45> <TriggerData_46> <TriggerData_47> <TriggerData_48> <TriggerData_49> <TriggerData_50> <TriggerData_51> <TriggerData_52> <TriggerData_53> <TriggerData_54> <TriggerData_55> <TriggerData_56> <TriggerData_57> <TriggerData_58> <TriggerData_59> <TriggerData_60> <TriggerData_61> <TriggerData_62> <TriggerData_63> 
-WARNING:Xst:1293 - FF/Latch <ADC_SDIO> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2973 - All outputs of instance <PowerUp1> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2973 - All outputs of instance <PowerUp2> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2677 - Node <ADC_Bit_write> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <PowerUp0> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_2> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_3> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_4> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_5> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_6> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <CntTest/count_25> of sequential type is unconnected in block <ISERDES_8bit>.
+WARNING:Xst:2677 - Node <Led_B/Timer/count_16> of sequential type is unconnected in block <ISERDES_8bit>.
+WARNING:Xst:2677 - Node <Led_B/Timer/count_17> of sequential type is unconnected in block <ISERDES_8bit>.
+WARNING:Xst:2677 - Node <Led_B/Timer/count_18> of sequential type is unconnected in block <ISERDES_8bit>.
+WARNING:Xst:2677 - Node <Led_B/Timer/count_19> of sequential type is unconnected in block <ISERDES_8bit>.
+WARNING:Xst:2677 - Node <Led_B/Timer/count_20> of sequential type is unconnected in block <ISERDES_8bit>.
 
 Optimizing unit <ISERDES_8bit> ...
 
@@ -622,8 +512,8 @@ Unit <ISERDES_8bit> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 164
- Flip-Flops                                            : 164
+# Registers                                            : 180
+ Flip-Flops                                            : 180
 # Shift Registers                                      : 4
  10-bit shift register                                 : 1
  2-bit shift register                                  : 3
@@ -649,23 +539,23 @@ Top Level Output File Name         : ISERDES_8bit.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 262
+# BELS                             : 311
 #      GND                         : 1
-#      INV                         : 9
-#      LUT1                        : 61
+#      INV                         : 11
+#      LUT1                        : 76
 #      LUT2                        : 25
 #      LUT3                        : 6
-#      LUT4                        : 8
+#      LUT4                        : 9
 #      LUT4_L                      : 1
-#      MUXCY                       : 86
+#      MUXCY                       : 101
 #      VCC                         : 1
-#      XORCY                       : 64
-# FlipFlops/Latches                : 168
+#      XORCY                       : 80
+# FlipFlops/Latches                : 184
 #      FD                          : 89
 #      FDCE                        : 3
 #      FDE                         : 1
 #      FDR                         : 34
-#      FDRE                        : 40
+#      FDRE                        : 56
 #      IDDR                        : 1
 # Shift Registers                  : 4
 #      SRL16                       : 4
@@ -684,10 +574,10 @@ Device utilization summary:
 
 Selected Device : 4vlx60ff1148-10 
 
- Number of Slices:                      102  out of  26624     0%  
- Number of Slice Flip Flops:            159  out of  53248     0%  
- Number of 4 input LUTs:                114  out of  53248     0%  
-    Number used as logic:               110
+ Number of Slices:                      110  out of  26624     0%  
+ Number of Slice Flip Flops:            175  out of  53248     0%  
+ Number of 4 input LUTs:                132  out of  53248     0%  
+    Number used as logic:               128
     Number used as Shift registers:       4
  Number of IOs:                         423
  Number of bonded IOBs:                 102  out of    640    15%  
@@ -716,7 +606,7 @@ Clock Information:
 -----------------------------------+----------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)      | Load  |
 -----------------------------------+----------------------------+-------+
-MuxClock_in                        | DCM_ADV:CLK2X+BUFG         | 100   |
+MuxClock_in                        | DCM_ADV:CLK2X+BUFG         | 116   |
 ADC_DCO_LVDS<0>                    | IBUFGDS                    | 11    |
 ADC_FCO_LVDS<0>                    | IBUFGDS                    | 16    |
 MuxClock_in                        | DCM_ADV:CLK0               | 10    |
@@ -731,7 +621,7 @@ Asynchronous Control Signals Information:
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-ADC_SDIO_OBUF(XST_GND:G)           | NONE(Amp_Trig/Trig)    | 3     |
+Amp_Trig/CLRN_inv(XST_GND:G)       | NONE(LT_Trig/Trig)     | 3     |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
@@ -740,7 +630,7 @@ Speed Grade: -10
 
    Minimum period: 6.788ns (Maximum Frequency: 147.321MHz)
    Minimum input arrival time before clock: 6.702ns
-   Maximum output required time after clock: 5.474ns
+   Maximum output required time after clock: 5.629ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -750,7 +640,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'MuxClock_in'
   Clock period: 6.788ns (frequency: 147.321MHz)
-  Total number of paths / destination ports: 617 / 155
+  Total number of paths / destination ports: 787 / 203
 -------------------------------------------------------------------------
 Delay:               3.394ns (Levels of Logic = 3)
   Source:            Sub_ped_delay_0 (FF)
@@ -889,23 +779,23 @@ Offset:              6.702ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'MuxClock_in'
-  Total number of paths / destination ports: 64 / 64
+  Total number of paths / destination ports: 62 / 62
 -------------------------------------------------------------------------
-Offset:              5.409ns (Levels of Logic = 2)
-  Source:            CntTest/count_24 (FF)
-  Destination:       Led1 (PAD)
+Offset:              5.629ns (Levels of Logic = 2)
+  Source:            Led_B/DurTrig_SRFF/Trig (FF)
+  Destination:       Led2 (PAD)
   Source Clock:      MuxClock_in rising 2.0X
 
-  Data Path: CntTest/count_24 to Led1
+  Data Path: Led_B/DurTrig_SRFF/Trig to Led2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               4   0.360   0.537  CntTest/count_24 (CntTest/count_24)
-     LUT3:I2->O            1   0.195   0.360  Led11 (Led1_OBUF)
-     OBUF:I->O                 3.957          Led1_OBUF (Led1)
+     FDCE:C->Q             3   0.360   0.375  Led_B/DurTrig_SRFF/Trig (Led_B/DurTrig_SRFF/Trig)
+     INV:I->O             17   0.358   0.580  Led21_INV_0 (Led2_OBUF)
+     OBUF:I->O                 3.957          Led2_OBUF (Led2)
     ----------------------------------------
-    Total                      5.409ns (4.512ns logic, 0.897ns route)
-                                       (83.4% logic, 16.6% route)
+    Total                      5.629ns (4.675ns logic, 0.954ns route)
+                                       (83.0% logic, 17.0% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ADC_FCO_LVDS<0>'
@@ -1004,8 +894,8 @@ Qclock         |    2.466|         |         |         |
 =========================================================================
 
 
-Total REAL time to Xst completion: 12.00 secs
-Total CPU time to Xst completion: 12.30 secs
+Total REAL time to Xst completion: 6.00 secs
+Total CPU time to Xst completion: 5.26 secs
  
 WARNING:Xst:3152 - You have chosen to run a version of XST which is not the default solution
    for the specified device family. You are free to use it in order to take
@@ -1017,9 +907,9 @@ WARNING:Xst:3152 - You have chosen to run a version of XST which is not the defa
    on the XST command line or in the XST process properties panel.
 --> 
 
-Total memory usage is 268696 kilobytes
+Total memory usage is 268440 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  114 (   0 filtered)
-Number of infos    :    7 (   0 filtered)
+Number of warnings :   99 (   0 filtered)
+Number of infos    :    9 (   0 filtered)
 
