@@ -10,36 +10,34 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Fri Feb 08 10:11:40 2019
+Mapped Date    : Fri Feb 08 12:56:52 2019
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    2
 Logic Utilization:
-  Number of Slice Flip Flops:           142 out of  53,248    1%
-  Number of 4 input LUTs:                52 out of  53,248    1%
+  Number of Slice Flip Flops:           170 out of  53,248    1%
+  Number of 4 input LUTs:                55 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:             97 out of  26,624    1%
-    Number of Slices containing only related logic:      97 out of      97 100%
-    Number of Slices containing unrelated logic:          0 out of      97   0%
+  Number of occupied Slices:            115 out of  26,624    1%
+    Number of Slices containing only related logic:     115 out of     115 100%
+    Number of Slices containing unrelated logic:          0 out of     115   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         113 out of  53,248    1%
-    Number used as logic:                49
-    Number used as a route-thru:         61
-    Number used as Shift registers:       3
+  Total Number of 4 input LUTs:         127 out of  53,248    1%
+    Number used as logic:                51
+    Number used as a route-thru:         72
+    Number used as Shift registers:       4
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
   Number of bonded IOBs:                165 out of     640   25%
-    IOB Flip Flops:                      13
+    IOB Flip Flops:                      11
   Number of BUFG/BUFGCTRLs:               3 out of      32    9%
     Number used as BUFGs:                 3
-  Number of FIFO16/RAMB16s:               1 out of     160    1%
-    Number used as RAMB16s:               1
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.51
+Average Fanout of Non-Clock Nets:                1.50
 
 Peak Memory Usage:  376 MB
 Total REAL time to MAP completion:  3 secs 
@@ -251,8 +249,8 @@ Section 6 - IOB Properties
 | Test<3>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<4>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<5>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<8>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<9>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TrigDes                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |

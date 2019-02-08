@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Feb 08 10:11:42 2019
+// Written by: Map P.20131013 on Fri Feb 08 12:56:55 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -166,38 +166,44 @@ COMP "ADCInDataLVDSPrev<7>" LOCATE = SITE "AP9" LEVEL 1;
 COMP "ADCInDataLVDSPrev<8>" LOCATE = SITE "AN8" LEVEL 1;
 COMP "ADCInDataLVDSPrev<9>" LOCATE = SITE "AN7" LEVEL 1;
 COMP "TrigInLVDS_n" LOCATE = SITE "G5" LEVEL 1;
-PIN Mram_RamData_pins<12> = BEL "Mram_RamData" PINNAME CLKA;
-TIMEGRP DLL_CLK2X_BUF = BEL "EnImRam" BEL "DelayReset_0" BEL "Sub_ped_delay_0"
-        BEL "Sub_ped_delay_1" BEL "Sub_ped_delay_2" BEL "Sub_ped_delay_3" BEL
+TIMEGRP DLL_CLK2X_BUF = BEL "StopReset" BEL "AverData_7" BEL "AverData_6" BEL
+        "AverData_5" BEL "AverData_4" BEL "AverData_1" BEL "AverData_3" BEL
+        "AverData_2" BEL "TrigDes_o" BEL "GroupValue_Up_LT" BEL
+        "FastTrigDes_o" BEL "DelayReset_0" BEL "Sub_Ped_5" BEL "Sub_Ped_7" BEL
+        "Sub_Ped_6" BEL "Sub_Ped_4" BEL "Sub_Ped_3" BEL "Sub_Ped_2" BEL
+        "Sub_Ped_1" BEL "Sub_Ped_0" BEL "Sub_ped_delay_0" BEL
+        "Sub_ped_delay_1" BEL "Sub_ped_delay_2" BEL "Sub_ped_delay_3" BEL
         "Sub_ped_delay_4" BEL "Sub_ped_delay_5" BEL "Sub_ped_delay_6" BEL
-        "Sub_ped_delay_7" BEL "GroupValue_Amp_Done" BEL "AverData_med_1" BEL
-        "AverData_med_2" BEL "AverData_med_3" BEL "AverData_med_4" BEL
-        "AverData_med_5" BEL "AverData_med_6" BEL "AverData_med_7" BEL
-        "AverData_med_8" BEL "TrigDes_o" BEL "AverData_7" BEL "AverData_4" BEL
-        "AverData_6" BEL "AverData_5" BEL "AverData_1" BEL "AverData_3" BEL
-        "AverData_2" BEL "AverData_0" BEL "GroupSum_2" BEL "GroupSum_3" BEL
-        "GroupSum_4" BEL "GroupSum_5" BEL "GroupSum_6" BEL "GroupSum_7" BEL
-        "GroupSum_8" BEL "GroupSum_9" BEL "GroupValue_Up_LT" BEL
+        "Sub_ped_delay_7" BEL "AverData_med_2" BEL "AverData_med_3" BEL
+        "AverData_med_4" BEL "AverData_med_5" BEL "AverData_med_6" BEL
+        "AverData_med_7" BEL "AverData_med_8" BEL "GroupSum_2" BEL
+        "GroupSum_3" BEL "GroupSum_4" BEL "GroupSum_5" BEL "GroupSum_6" BEL
+        "GroupSum_7" BEL "GroupSum_8" BEL "GroupSum_9" BEL
         "DelayGroupAmp_mid_2" BEL "DelayGroupAmp_mid_3" BEL
         "DelayGroupAmp_mid_4" BEL "DelayGroupAmp_mid_5" BEL
         "DelayGroupAmp_mid_6" BEL "DelayGroupAmp_mid_7" BEL
         "DelayGroupAmp_mid_8" BEL "DelayGroupAmp_mid_9" BEL "DelayGroupAmp_2"
         BEL "DelayGroupAmp_3" BEL "DelayGroupAmp_4" BEL "DelayGroupAmp_5" BEL
         "DelayGroupAmp_6" BEL "DelayGroupAmp_7" BEL "DelayGroupAmp_8" BEL
-        "DelayGroupAmp_9" BEL "FastTrigDes_o" BEL "GroupAmp_2" BEL
-        "GroupAmp_3" BEL "GroupAmp_4" BEL "GroupAmp_5" BEL "GroupAmp_6" BEL
-        "GroupAmp_7" BEL "GroupAmp_8" BEL "GroupAmp_9" BEL "CntTest/count_0"
-        BEL "CntTest/count_1" BEL "CntTest/count_2" BEL "CntTest/count_3" BEL
-        "CntTest/count_4" BEL "CntTest/count_5" BEL "CntTest/count_6" BEL
-        "CntTest/count_7" BEL "CntTest/count_8" BEL "CntTest/count_9" BEL
-        "CntTest/count_10" BEL "CntTest/count_11" BEL "CntTest/count_12" BEL
-        "CntTest/count_13" BEL "CntTest/count_14" BEL "CntTest/count_15" BEL
-        "CntTest/count_16" BEL "CntTest/count_17" BEL "CntTest/count_18" BEL
-        "CntTest/count_19" BEL "CntTest/count_20" BEL "CntTest/count_21" BEL
-        "CntTest/count_22" BEL "CntTest/count_23" BEL "CntTest/count_24" BEL
-        "Global_clk80" BEL "DLL/CLK2X_BUFG_INST" BEL "Amp_Trig/Trig" BEL
-        "LT_Trig/Trig" BEL "Mshreg_AllReset/SRL16E" BEL "AllReset" BEL
-        "ADC_CLK" PIN "Mram_RamData_pins<12>";
+        "DelayGroupAmp_9" BEL "GroupAmp_2" BEL "GroupAmp_3" BEL "GroupAmp_4"
+        BEL "GroupAmp_5" BEL "GroupAmp_6" BEL "GroupAmp_7" BEL "GroupAmp_8"
+        BEL "GroupAmp_9" BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
+        "CntTest/count_2" BEL "CntTest/count_3" BEL "CntTest/count_4" BEL
+        "CntTest/count_5" BEL "CntTest/count_6" BEL "CntTest/count_7" BEL
+        "CntTest/count_8" BEL "CntTest/count_9" BEL "CntTest/count_10" BEL
+        "CntTest/count_11" BEL "CntTest/count_12" BEL "CntTest/count_13" BEL
+        "CntTest/count_14" BEL "CntTest/count_15" BEL "CntTest/count_16" BEL
+        "CntTest/count_17" BEL "CntTest/count_18" BEL "CntTest/count_19" BEL
+        "CntTest/count_20" BEL "CntTest/count_21" BEL "CntTest/count_22" BEL
+        "CntTest/count_23" BEL "CntTest/count_24" BEL "ResetCnt/count_0" BEL
+        "ResetCnt/count_1" BEL "ResetCnt/count_2" BEL "ResetCnt/count_3" BEL
+        "ResetCnt/count_4" BEL "ResetCnt/count_5" BEL "ResetCnt/count_6" BEL
+        "ResetCnt/count_7" BEL "ResetCnt/count_8" BEL "ResetCnt/count_9" BEL
+        "ResetCnt/count_10" BEL "ResetCnt/count_11" BEL "Global_clk80" BEL
+        "DLL/CLK2X_BUFG_INST" BEL "Reset_Trig/Trig" BEL "Amp_Trig/Trig" BEL
+        "LT_Trig/Trig" BEL "GroupValue_Amp_Done" BEL "Reset_Trig/Trig_1" BEL
+        "Mshreg_DelayReset_2/SRL16E" BEL "DelayReset_2" BEL
+        "Mshreg_AverData_0" BEL "ADC_CLK";
 TIMEGRP ADC_DCO_LVDS0 = BEL "DataN_1" BEL "DataP_1" BEL "DataN_2" BEL
         "DataP_2" BEL "DataN_del_3" BEL "DataP_del_3" BEL "IDDR_inst/FF0" BEL
         "IDDR_inst/FF1" BEL "IDDR_inst/FF2" BEL "IDDR_inst/FF3" BEL
@@ -206,7 +212,7 @@ TIMEGRP ADC_DCO_LVDS0 = BEL "DataN_1" BEL "DataP_1" BEL "DataN_2" BEL
 TIMEGRP DLL_CLK0_BUF = BEL "TriggerData_2" BEL "TriggerData_3" BEL
         "TriggerData_4" BEL "TriggerData_5" BEL "TriggerData_6" BEL
         "TriggerData_7" BEL "TriggerData_8" BEL "TriggerData_9" BEL
-        "TriggerData_10" BEL "TriggerData_15" BEL "DLL/CLK0_BUFG_INST";
+        "TriggerData_12" BEL "TriggerData_15" BEL "DLL/CLK0_BUFG_INST";
 PIN DLL/DCM_ADV_INST_pins<3> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
 TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<3>";
 TIMEGRP FCT_40 = BEL "PhaseSwitch/SysClkCnt/count_15" BEL

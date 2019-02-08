@@ -120,7 +120,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal FCT160				: std_logic;
 	signal Phase				: std_logic;
 	signal Clk_Selected		: std_logic := '0';
-	signal s_clock_locked	: std_logic := '0';
+	signal s_clock_locked	: std_logic;
 	---
 
 	--- system
@@ -170,8 +170,10 @@ architecture Behavioral of ISERDES_8bit is
 	signal GroupValue_Amp_Done : std_logic := '0';
 	signal GroupAmp_Trig : std_logic := '0';
 
-	signal DelayReset			: STD_LOGIC_VECTOR (9 downto 0);
+	signal DelayReset			: std_logic_vector (9 downto 0);
 	signal AllReset			: std_logic := '0';
+	signal ResCnt				: std_logic_vector (11 downto 0);
+	signal StopReset			: std_logic := '0';
 	---
 	
 	--- TriggerDes
@@ -583,12 +585,16 @@ DLL: entity work.DLL_test
 	ThreshData: process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			Sub_ped(7 downto 0) <= InData;-- DataOut;-- - Piedistal_def;
-			Sub_ped_delay <= Sub_ped; 
-			AverData_med <= (Sub_ped_delay + Sub_ped);
-			AverData(7 downto 0) <= AverData_med(8 downto 1);
-			if (AverData >= ThresholdData_0) then GroupValue_Up_LT <= '1';
-														else GroupValue_Up_LT <= '0';
+			if AllReset = '1' then
+				GroupValue_Up_LT <= '0';
+			else
+				Sub_ped(7 downto 0) <= DataOut;-- InData;-- - Piedistal_def;
+				Sub_ped_delay <= Sub_ped; 
+				AverData_med <= (Sub_ped_delay + Sub_ped);
+				AverData(7 downto 0) <= AverData_med(8 downto 1);
+				if (AverData >= ThresholdData_0) then GroupValue_Up_LT <= '1';
+															else GroupValue_Up_LT <= '0';
+				end if;
 			end if;
 		end if;
 	end process;
@@ -608,6 +614,7 @@ DLL: entity work.DLL_test
 				DelayGroupAmp_mid <= (others => '0');
 				DelayGroupAmp <= (others => '0');
 				GroupSum <= (others => '0');
+				GroupValue_Amp_Done <='0';
 			else
 				GroupSum <= AverData + AverData + AverData + AverData;
 				DelayGroupAmp_mid <= GroupSum; 
@@ -658,11 +665,11 @@ DLL: entity work.DLL_test
 		if (rising_edge(Clk40)) then
 			if (FastTrigDes_o = '1') then 
 				TriggerData(9 downto 0) <= GroupAmp;
-				TriggerData(13 downto 10) <= b"0001";
+				TriggerData(13 downto 10) <= b"0100";
 				TriggerData(14) <= FastTrigDes_o;
 				TriggerData(15) <= TrigDes_o;
-				TriggerData(19 downto 16) <= (others => '0');
-				TriggerData(63 downto 20) <= (others => '1');
+				TriggerData(19 downto 16) <= (b"1010");
+				TriggerData(63 downto 20) <= (others => '0');
 			else TriggerData(63 downto 0) <= (others => '0');
 			end if;
 		end if;
@@ -677,16 +684,45 @@ DLL: entity work.DLL_test
 			end if;
 			DelayReset(1) <= DelayReset(0);
 			DelayReset(2) <= DelayReset(1);
-			DelayReset(3) <= DelayReset(2);
-			DelayReset(4) <= DelayReset(3);
-			DelayReset(5) <= DelayReset(4);
-			DelayReset(6) <= DelayReset(5);
-			DelayReset(7) <= DelayReset(6);
-			DelayReset(8) <= DelayReset(7);
-			DelayReset(9) <= DelayReset(8);
-			AllReset <= DelayReset(9);
+--			DelayReset(3) <= DelayReset(2);
+--			DelayReset(4) <= DelayReset(3);
+--			DelayReset(5) <= DelayReset(4);
+--			DelayReset(6) <= DelayReset(5);
+--			DelayReset(7) <= DelayReset(6);
+--			DelayReset(8) <= DelayReset(7);
+--			DelayReset(9) <= DelayReset(8);
 		end if;
 	end process;
+
+	Reset_Trig: entity work.SRFF 
+	port map (
+		S		=> DelayReset(2),
+		CLK	=> Clk80,
+		R		=> StopReset,
+		q		=> AllReset
+	);
+
+	ResetCnt: entity work.V_Counter 
+	generic map(
+				WIDTH => 12
+			)
+	port map (
+				clock 	=> clk80,--Quarts,--CLK40,
+				clk_en	=>	AllReset,
+				q			=> ResCnt
+				);
+
+	StopResetAll: process (Clk80)
+	begin 
+		if (rising_edge(Clk80)) then
+			if (ResCnt = X"FFF") then
+				StopReset <= '1';
+			else 
+				StopReset <= '0';
+			end if;
+		end if;
+	end process;
+
 
 -- ADC Configuration
 
@@ -806,10 +842,10 @@ DLL: entity work.DLL_test
 	Test(3) <= DataOut(3);
 	Test(4) <= DataOut(4);
 	Test(5) <= DataOut(5);
-	Test(6) <= DataOut(6);
-	Test(7) <= DataOut(7);
+	Test(6) <= StopReset;
+	Test(7) <= AllReset;
 	Test(8) <= GroupLT_Trig;
-	Test(9) <= s_clock_locked;
+	Test(9) <= GroupAmp_Trig;
 
 --	Test(0) <= DataP(0);
 --	Test(1) <= DataP(1);
