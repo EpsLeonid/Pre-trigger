@@ -48,10 +48,10 @@ port (
 -- Outputs for Indicators on LED's
 
 	Led1			: out std_logic;	-- drives the Green LED								-> Pin 
-	Led2			: out std_logic := '0';	-- drives the Blue LED						-> Pin 
-	Led3			: out std_logic := '0';	-- drives the Red LED						-> Pin 
-	Led4			: out std_logic := '0';	-- drives the Blue(Yellow) LED			-> Pin 
-	Led5			: out std_logic := '0';	-- drives the Blue(Yellow) LED			-> Pin 
+	Led2			: out std_logic := '1';	-- drives the Blue LED						-> Pin 
+	Led3			: out std_logic := '1';	-- drives the Red LED						-> Pin 
+	Led4			: out std_logic := '1';	-- drives the Blue(Yellow) LED			-> Pin 
+	Led5			: out std_logic := '1';	-- drives the Blue(Yellow) LED			-> Pin 
 
 -- 2. Channel  
 
@@ -318,7 +318,7 @@ Sw_Quartz <= not Clk_Selected;
 --		I => MuxClock_in      -- Clock buffer input
 --	);
 
-DLL: entity work.DLL
+DLL: entity work.DLL_test
 	port map (
 		CLK0_OUT => Clk40,					-- 0 degree DCM CLK output
 		CLKDV_OUT => Clk20,					-- 0 degree DCM CLK output
@@ -353,29 +353,29 @@ DLL: entity work.DLL
 --	end process;
 	LED1 <= '0' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
 				'1';
---	Led_B : entity work.Light_Pulser 
---		generic map ( DIV	=> 2,
---						  DUR	=> 100)
---		port map( 
---					 clock => CLK80,
---					 i_event => TestCnt(21),--FastTrigDes_o,
---					 o_flash => o_blue_led
---					);
-
-	Led_B : entity work.Light_LED 
+	Led_B : entity work.Light_Pulser 
+		generic map ( DIV	=> 2,
+						  DUR	=> 100)
 		port map( 
 					 clock => CLK80,
-					 i_event => FastTrigDes_o,
+					 i_event => TestCnt(21),--FastTrigDes_o,
 					 o_flash => o_blue_led
 					);
 
-	LED2 <=  '0' when o_blue_led = '1' else
-				'1' when o_blue_led = '0' else
-				'1';
+--	Led_B : entity work.Light_LED
+--		port map( 
+--					 clock => CLK80,
+--					 i_event => FastTrigDes_o,
+--					 o_flash => o_blue_led
+--					);
 
-	LED3 <= '1' ;--when TestCnt(24)='1' else
---				'0' when TestCnt(24)='0' else
---				'0';
+	LED2 <=  '1';-- when o_blue_led = '1' else
+--				'1' when o_blue_led = '0' else
+--				'1';
+
+	LED3 <= '1' when TestCnt(24)='1' else
+				'0' when TestCnt(24)='0' else
+				'0';
 	LED4 <= '1' when TestCnt(22)='1' else
 				'0' when TestCnt(22)='0' else
 				'0';
@@ -583,7 +583,7 @@ DLL: entity work.DLL
 	ThreshData: process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			Sub_ped(7 downto 0) <= DataOut;-- InData;-- - Piedistal_def;
+			Sub_ped(7 downto 0) <= InData;-- DataOut;-- - Piedistal_def;
 			Sub_ped_delay <= Sub_ped; 
 			AverData_med <= (Sub_ped_delay + Sub_ped);
 			AverData(7 downto 0) <= AverData_med(8 downto 1);

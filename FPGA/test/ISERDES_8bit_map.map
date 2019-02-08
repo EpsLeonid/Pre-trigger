@@ -10,17 +10,13 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Thu Feb 07 15:02:41 2019
+Mapped Date    : Fri Feb 08 10:11:40 2019
 
 Mapping design into LUTs...
 WARNING:MapLib:701 - Signal FCT_160 connected to top level port FCT_160 has been
    removed.
 WARNING:MapLib:701 - Signal FCT_160_n connected to top level port FCT_160_n has
    been removed.
-WARNING:LIT:176 - Clock buffer is designated to drive clock loads. BUFG symbol
-   "Global_clk80" (output signal=ADC_CLK_OBUF) has a mix of clock and non-clock
-   loads. The non-clock loads are:
-   Pin I1 of Led_B/Timer_clk_en1
 Running directed packing...
 Running delay-based LUT packing...
 Running related packing...
@@ -31,19 +27,19 @@ Design Summary
 
 Design Summary:
 Number of errors:      0
-Number of warnings:    3
+Number of warnings:    2
 Logic Utilization:
-  Number of Slice Flip Flops:           174 out of  53,248    1%
-  Number of 4 input LUTs:                54 out of  53,248    1%
+  Number of Slice Flip Flops:           142 out of  53,248    1%
+  Number of 4 input LUTs:                52 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            115 out of  26,624    1%
-    Number of Slices containing only related logic:     115 out of     115 100%
-    Number of Slices containing unrelated logic:          0 out of     115   0%
+  Number of occupied Slices:             97 out of  26,624    1%
+    Number of Slices containing only related logic:      97 out of      97 100%
+    Number of Slices containing unrelated logic:          0 out of      97   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         130 out of  53,248    1%
-    Number used as logic:                50
-    Number used as a route-thru:         76
-    Number used as Shift registers:       4
+  Total Number of 4 input LUTs:         113 out of  53,248    1%
+    Number used as logic:                49
+    Number used as a route-thru:         61
+    Number used as Shift registers:       3
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
@@ -51,9 +47,11 @@ Logic Distribution:
     IOB Flip Flops:                      13
   Number of BUFG/BUFGCTRLs:               3 out of      32    9%
     Number used as BUFGs:                 3
+  Number of FIFO16/RAMB16s:               1 out of     160    1%
+    Number used as RAMB16s:               1
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.55
+Average Fanout of Non-Clock Nets:                1.51
 
 Peak Memory Usage:  376 MB
 Total REAL time to MAP completion:  3 secs 
