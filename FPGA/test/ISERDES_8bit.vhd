@@ -131,7 +131,9 @@ architecture Behavioral of ISERDES_8bit is
 	signal PowerUp2_o			: std_logic;
 	signal PwrUpReset			: std_logic;
 	signal Reset				: std_logic := '0';
+	signal o_green_led		: std_logic := '1';
 	signal o_blue_led			: std_logic := '1';
+	signal o_red_led			: std_logic := '1';
 	---
 
 	--- Input ADC Data
@@ -353,14 +355,14 @@ DLL: entity work.DLL_test
 --			end if;
 --		end if;
 --	end process;
-	LED1 <= '0' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
-				'1';
+	o_green_led <= '0' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
+						'1';
 	Led_B : entity work.Light_Pulser 
-		generic map ( DIV	=> 2,
-						  DUR	=> 100)
+		generic map ( DIV	=> 4,
+						  DUR	=> 80)
 		port map( 
 					 clock => CLK80,
-					 i_event => TestCnt(21),--FastTrigDes_o,
+					 i_event => FastTrigDes_o,
 					 o_flash => o_blue_led
 					);
 
@@ -371,13 +373,13 @@ DLL: entity work.DLL_test
 --					 o_flash => o_blue_led
 --					);
 
-	LED2 <=  '1';-- when o_blue_led = '1' else
---				'1' when o_blue_led = '0' else
---				'1';
+	o_red_led <= '1' when s_clock_locked = '1' else
+					 '0';
 
-	LED3 <= '1' when TestCnt(24)='1' else
-				'0' when TestCnt(24)='0' else
-				'0';
+	LED1 <= o_green_led;
+	LED2 <= o_blue_led;
+	LED3 <= o_red_led;
+
 	LED4 <= '1' when TestCnt(22)='1' else
 				'0' when TestCnt(22)='0' else
 				'0';
@@ -582,9 +584,9 @@ DLL: entity work.DLL_test
 
 -- Processing Input ADC data
 
-	ThreshData: process (Clk80)
+	ThreshData: process (Clk160)
 	begin 
-		if (rising_edge(Clk80)) then
+		if (rising_edge(Clk160)) then
 			if AllReset = '1' then
 				GroupValue_Up_LT <= '0';
 			else
@@ -602,14 +604,14 @@ DLL: entity work.DLL_test
 	LT_Trig: entity work.SRFF 
 		port map (
 			S		=> GroupValue_Up_LT,
-			CLK	=> Clk80,
+			CLK	=> Clk160,
 			R		=> AllReset,
 			q		=> GroupLT_Trig
 		);
 	
-	AmpData: process (Clk80)
+	AmpData: process (Clk160)
 	begin 
-		if (rising_edge(Clk80)) then
+		if (rising_edge(Clk160)) then
 			if AllReset = '1' then
 				DelayGroupAmp_mid <= (others => '0');
 				DelayGroupAmp <= (others => '0');
@@ -629,14 +631,14 @@ DLL: entity work.DLL_test
 	Amp_Trig: entity work.SRFF 
 	port map (
 		S		=> GroupValue_Amp_Done,
-		CLK	=> Clk80,
+		CLK	=> Clk160,
 		R		=> AllReset,
 		q		=> GroupAmp_Trig
 	);
 	
-	GrAmp: process (Clk80)
+	GrAmp: process (Clk160)
 	begin 
-		if (rising_edge(Clk80)) then
+		if (rising_edge(Clk160)) then
 			if AllReset = '1' then
 				GroupAmp <= (others => '0');
 			elsif (GroupLT_Trig = '1' and GroupAmp_Trig = '0') then 
@@ -645,9 +647,9 @@ DLL: entity work.DLL_test
 		end if;
 	end process;
 	
-	TriggerDes: process (Clk80)
+	TriggerDes: process (Clk160)
 	begin 
-		if (rising_edge(Clk80)) then
+		if (rising_edge(Clk160)) then
 			if (GroupLT_Trig = '1') then FastTrigDes_o <= '1';
 											else FastTrigDes_o <= '0';
 			end if;

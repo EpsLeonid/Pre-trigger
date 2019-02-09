@@ -10,34 +10,34 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Fri Feb 08 12:56:52 2019
+Mapped Date    : Sat Feb 09 11:21:24 2019
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    2
 Logic Utilization:
-  Number of Slice Flip Flops:           170 out of  53,248    1%
-  Number of 4 input LUTs:                55 out of  53,248    1%
+  Number of Slice Flip Flops:           175 out of  53,248    1%
+  Number of 4 input LUTs:                56 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            115 out of  26,624    1%
-    Number of Slices containing only related logic:     115 out of     115 100%
-    Number of Slices containing unrelated logic:          0 out of     115   0%
+  Number of occupied Slices:            116 out of  26,624    1%
+    Number of Slices containing only related logic:     116 out of     116 100%
+    Number of Slices containing unrelated logic:          0 out of     116   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         127 out of  53,248    1%
-    Number used as logic:                51
+  Total Number of 4 input LUTs:         128 out of  53,248    1%
+    Number used as logic:                53
     Number used as a route-thru:         72
-    Number used as Shift registers:       4
+    Number used as Shift registers:       3
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
   Number of bonded IOBs:                165 out of     640   25%
     IOB Flip Flops:                      11
-  Number of BUFG/BUFGCTRLs:               3 out of      32    9%
-    Number used as BUFGs:                 3
+  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
+    Number used as BUFGs:                 5
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.50
+Average Fanout of Non-Clock Nets:                1.51
 
 Peak Memory Usage:  376 MB
 Total REAL time to MAP completion:  3 secs 
@@ -107,12 +107,15 @@ INFO:MapLib:797 - Your design is targeting LX/SX Production Step 0/1/ES devices.
 INFO:LIT:244 - All of the single ended outputs in this design are using slew
    rate limited output drivers. The delay on speed critical single ended outputs
    can be dramatically reduced by designating them as fast outputs.
+INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance
+   with the CLKFX and CLKFX180 outputs of the DCM_ADV comp DLL/DCM_ADV_INST,
+   consult the device Data Sheet.
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   7 block(s) removed
+   5 block(s) removed
    5 block(s) optimized away
-   6 signal(s) removed
+   4 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -131,10 +134,6 @@ Loadless block "DLL/CLK90_BUFG_INST" (CKBUF) removed.
  The signal "DLL/CLK90_BUF" is loadless and has been removed.
 Loadless block "DLL/CLKDV_BUFG_INST" (CKBUF) removed.
  The signal "DLL/CLKDV_BUF" is loadless and has been removed.
-Loadless block "Global_clk160" (CKBUF) removed.
- The signal "Clk160_o" is loadless and has been removed.
-  Loadless block "DLL/CLKFX_BUFG_INST" (CKBUF) removed.
-   The signal "DLL/CLKFX_BUF" is loadless and has been removed.
 Loadless block "LVDS_FCT_160" (IBUFGDS) removed.
  The signal "FCT_160" is loadless and has been removed.
   Loadless block "FCT_160" (PAD) removed.

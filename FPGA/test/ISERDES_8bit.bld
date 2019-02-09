@@ -40,6 +40,13 @@ INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
    CLK2X: <TIMESPEC TS_DLL_CLK2X_BUF = PERIOD "DLL_CLK2X_BUF" TS_MuxClock_in / 2
    HIGH 50% INPUT_JITTER 375 ps>
 
+INFO:ConstraintSystem:178 - TNM 'MuxClock_in', used in period specification
+   'TS_MuxClock_in', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The
+   following new TNM groups and period specifications were generated at the
+   DCM_ADV output(s): 
+   CLKFX: <TIMESPEC TS_DLL_CLKFX_BUF = PERIOD "DLL_CLKFX_BUF" TS_MuxClock_in / 4
+   HIGH 50% INPUT_JITTER 375 ps>
+
 WARNING:ConstraintSystem:191 - The TNM 'ADC_DCO_LVDS1', does not directly or
    indirectly drive any flip-flops, latches and/or RAMS and cannot be actively
    used by the referencing Period constraint 'TS_DCO1'. If clock manager blocks
@@ -74,10 +81,10 @@ NGDBUILD Design Results Summary:
   Number of errors:     0
   Number of warnings:   7
 
-Total memory usage is 190848 kilobytes
+Total memory usage is 189952 kilobytes
 
 Writing NGD file "ISERDES_8bit.ngd" ...
-Total REAL time to NGDBUILD completion:  3 sec
-Total CPU time to NGDBUILD completion:   3 sec
+Total REAL time to NGDBUILD completion:  4 sec
+Total CPU time to NGDBUILD completion:   4 sec
 
 Writing NGDBUILD log file "ISERDES_8bit.bld"...
