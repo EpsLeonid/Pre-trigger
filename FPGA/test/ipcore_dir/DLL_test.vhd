@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : xaw2vhdl
 --  /   /         Filename : DLL_test.vhd
--- /___/   /\     Timestamp : 02/08/2019 09:39:54
+-- /___/   /\     Timestamp : 02/11/2019 12:09:02
 -- \   \  /  \ 
 --  \___\/\___\ 
 --

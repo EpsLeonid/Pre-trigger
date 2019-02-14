@@ -1,1 +1,1 @@
--intstyle "ise" -incremental -lib "secureip" -o "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_TB_isim_beh.exe" -prj "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_TB_beh.prj" "work.ISERDES_TB" 
+-intstyle "ise" -incremental -lib "secureip" -o "C:/Work/COMET project/trunk/FPGA/test/PhaseSW_TB_isim_beh.exe" -prj "C:/Work/COMET project/trunk/FPGA/test/PhaseSW_TB_beh.prj" "work.PhaseSW_TB" 

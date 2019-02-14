@@ -58,13 +58,13 @@ ARCHITECTURE behavior OF PhaseSW_TB IS
 
 	--Outputs
 	signal Phase : std_logic;
-	signal SysClk_Selected : std_logic;
+	signal SysClk_Selected : std_logic := '0';
 	signal Test : std_logic_vector(4 downto 1);
 
 	-- Clock period definitions
 	constant Clock_period : time := 25 ns;
 	constant SysClk_period : time := 25 ns;
-	constant DUTY_CYCLE : real := 0.6;
+	constant DUTY_CYCLE : real := 0.5;
 	-- Test 
 	signal ClkDelay : std_logic;
 	signal SysClk_en : std_logic;
@@ -99,9 +99,9 @@ BEGIN
 --	end process;
 	SysClk_process :process
 	begin
-			SysClk <= '0';
-			wait for (SysClk_period - (SysClk_period * DUTY_CYCLE));
 			SysClk <= '1';
+			wait for (SysClk_period - (SysClk_period * DUTY_CYCLE));
+			SysClk <= '0';
 			wait for (SysClk_period*DUTY_CYCLE);
 	end process;
 
@@ -112,7 +112,7 @@ BEGIN
 	begin		
 		-- hold reset state for 100 ns.
 		ClkDelay <= '0';
-		wait for 100 ns;	
+		wait for 70 ns;	
 		ClkDelay <= '1';
 		wait for Clock_period*10;
 

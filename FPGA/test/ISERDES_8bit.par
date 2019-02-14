@@ -1,7 +1,7 @@
 Release 14.7 par P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
-VM-LAPTOP::  Sat Feb 09 11:21:30 2019
+VM-LAPTOP::  Thu Feb 14 13:52:50 2019
 
 par -w -intstyle ise -ol high -t 1 ISERDES_8bit_map.ncd ISERDES_8bit.ncd
 ISERDES_8bit.pcf 
@@ -25,15 +25,15 @@ Device speed data version:  "PRODUCTION 1.71 2013-10-13".
 
 Device Utilization Summary:
 
-   Number of BUFGs                           5 out of 32     15%
+   Number of BUFGs                           6 out of 32     18%
    Number of DCM_ADVs                        1 out of 8      12%
    Number of ILOGICs                         1 out of 640     1%
    Number of External IOBs                 165 out of 640    25%
       Number of LOCed IOBs                 161 out of 165    97%
 
-   Number of OLOGICs                         8 out of 640     1%
-   Number of Slices                        116 out of 26624   1%
-      Number of SLICEMs                      3 out of 13312   1%
+   Number of OLOGICs                        11 out of 640     1%
+   Number of Slices                        146 out of 26624   1%
+      Number of SLICEMs                      4 out of 13312   1%
 
 
 
@@ -42,8 +42,8 @@ Placer effort level (-pl):    High
 Placer cost table entry (-t): 1
 Router effort level (-rl):    High 
 
-Starting initial Timing Analysis.  REAL time: 5 secs 
-Finished initial Timing Analysis.  REAL time: 5 secs 
+Starting initial Timing Analysis.  REAL time: 7 secs 
+Finished initial Timing Analysis.  REAL time: 8 secs 
 
 WARNING:Par:288 - The signal ADCInDataLVDS_n<0>_IBUF has no load.  PAR will not attempt to route this signal.
 WARNING:Par:288 - The signal ADCInDataLVDS_n<1>_IBUF has no load.  PAR will not attempt to route this signal.
@@ -112,11 +112,11 @@ WARNING:Par:288 - The signal ADCInDataLVDSPrev<9>_IBUF has no load.  PAR will no
 WARNING:Par:288 - The signal TrigInLVDS_n_IBUF has no load.  PAR will not attempt to route this signal.
 
 Starting Placer
-Total REAL time at the beginning of Placer: 5 secs 
-Total CPU  time at the beginning of Placer: 5 secs 
+Total REAL time at the beginning of Placer: 8 secs 
+Total CPU  time at the beginning of Placer: 8 secs 
 
 Phase 1.1  Initial Placement Analysis
-Phase 1.1  Initial Placement Analysis (Checksum:91b6a607) REAL time: 5 secs 
+Phase 1.1  Initial Placement Analysis (Checksum:dd827f48) REAL time: 8 secs 
 
 Phase 2.7  Design Feasibility Check
 WARNING:Place:838 - An IO Bus with more than one IO standard is found.
@@ -145,49 +145,49 @@ WARNING:Place:838 - An IO Bus with more than one IO standard is found.
 
 INFO:Place:834 - Only a subset of IOs are locked. Out of 165 IOs, 161 are locked and 4 are not locked. If you would like
    to print the names of these IOs, please set the environment variable XIL_PAR_DESIGN_CHECK_VERBOSE to 1. 
-Phase 2.7  Design Feasibility Check (Checksum:91b6a607) REAL time: 6 secs 
+Phase 2.7  Design Feasibility Check (Checksum:dd827f48) REAL time: 8 secs 
 
 Phase 3.31  Local Placement Optimization
-Phase 3.31  Local Placement Optimization (Checksum:51989527) REAL time: 6 secs 
+Phase 3.31  Local Placement Optimization (Checksum:e596e368) REAL time: 8 secs 
 
 Phase 4.2  Initial Clock and IO Placement
 
-Phase 4.2  Initial Clock and IO Placement (Checksum:1f736cd7) REAL time: 6 secs 
+Phase 4.2  Initial Clock and IO Placement (Checksum:3370e4c3) REAL time: 8 secs 
 
 Phase 5.36  Local Placement Optimization
-Phase 5.36  Local Placement Optimization (Checksum:1f736cd7) REAL time: 6 secs 
+Phase 5.36  Local Placement Optimization (Checksum:3370e4c3) REAL time: 8 secs 
 
 Phase 6.30  Global Clock Region Assignment
-Phase 6.30  Global Clock Region Assignment (Checksum:1f736cd7) REAL time: 6 secs 
+Phase 6.30  Global Clock Region Assignment (Checksum:3370e4c3) REAL time: 8 secs 
 
 Phase 7.3  Local Placement Optimization
 
-Phase 7.3  Local Placement Optimization (Checksum:3da14a27) REAL time: 6 secs 
+Phase 7.3  Local Placement Optimization (Checksum:a56a8735) REAL time: 8 secs 
 
 Phase 8.5  Local Placement Optimization
-Phase 8.5  Local Placement Optimization (Checksum:3da14a27) REAL time: 6 secs 
+Phase 8.5  Local Placement Optimization (Checksum:a56a8735) REAL time: 8 secs 
 
 Phase 9.8  Global Placement
-......
+...
+...
+.....
 ..
-.......
-..
-Phase 9.8  Global Placement (Checksum:c3a30266) REAL time: 6 secs 
+Phase 9.8  Global Placement (Checksum:98330984) REAL time: 8 secs 
 
 Phase 10.5  Local Placement Optimization
-Phase 10.5  Local Placement Optimization (Checksum:c3a30266) REAL time: 6 secs 
+Phase 10.5  Local Placement Optimization (Checksum:98330984) REAL time: 8 secs 
 
 Phase 11.18  Placement Optimization
-Phase 11.18  Placement Optimization (Checksum:bac554ba) REAL time: 6 secs 
+Phase 11.18  Placement Optimization (Checksum:467c742) REAL time: 9 secs 
 
 Phase 12.5  Local Placement Optimization
-Phase 12.5  Local Placement Optimization (Checksum:bac554ba) REAL time: 6 secs 
+Phase 12.5  Local Placement Optimization (Checksum:467c742) REAL time: 9 secs 
 
 Phase 13.34  Placement Validation
-Phase 13.34  Placement Validation (Checksum:bac554ba) REAL time: 6 secs 
+Phase 13.34  Placement Validation (Checksum:467c742) REAL time: 9 secs 
 
-Total REAL time to Placer completion: 6 secs 
-Total CPU  time to Placer completion: 6 secs 
+Total REAL time to Placer completion: 9 secs 
+Total CPU  time to Placer completion: 9 secs 
 Writing design to file ISERDES_8bit.ncd
 
 
@@ -195,29 +195,29 @@ Writing design to file ISERDES_8bit.ncd
 Starting Router
 
 
-Phase  1  : 701 unrouted;      REAL time: 6 secs 
+Phase  1  : 874 unrouted;      REAL time: 10 secs 
 
-Phase  2  : 482 unrouted;      REAL time: 7 secs 
+Phase  2  : 622 unrouted;      REAL time: 10 secs 
 
-Phase  3  : 22 unrouted;      REAL time: 7 secs 
+Phase  3  : 67 unrouted;      REAL time: 10 secs 
 
-Phase  4  : 23 unrouted; (Setup:0, Hold:62, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  4  : 67 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
 
 Updating file: ISERDES_8bit.ncd with current fully routed design.
 
-Phase  5  : 0 unrouted; (Setup:0, Hold:22, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  5  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
 
-Phase  6  : 0 unrouted; (Setup:0, Hold:22, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  6  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
 
-Phase  7  : 0 unrouted; (Setup:0, Hold:22, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  7  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
 
-Phase  8  : 0 unrouted; (Setup:0, Hold:22, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  8  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
 
-Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
+Phase  9  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
 
-Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 10 secs 
-Total REAL time to Router completion: 10 secs 
-Total CPU time to Router completion: 10 secs 
+Phase 10  : 0 unrouted; (Setup:0, Hold:0, Component Switching Limit:0)     REAL time: 14 secs 
+Total REAL time to Router completion: 14 secs 
+Total CPU time to Router completion: 14 secs 
 
 Partition Implementation Status
 -------------------------------
@@ -235,22 +235,22 @@ Generating Clock Report
 +---------------------+--------------+------+------+------------+-------------+
 |        Clock Net    |   Resource   |Locked|Fanout|Net Skew(ns)|Max Delay(ns)|
 +---------------------+--------------+------+------+------------+-------------+
-|        ADC_CLK_OBUF |BUFGCTRL_X0Y19| No   |   27 |  0.070     |  2.655      |
+|              Clk160 |BUFGCTRL_X0Y17| No   |   39 |  0.321     |  2.847      |
 +---------------------+--------------+------+------+------------+-------------+
-|              Clk160 |BUFGCTRL_X0Y17| No   |   39 |  0.308     |  2.869      |
+|         Quarts_BUFG |BUFGCTRL_X0Y28| No   |   25 |  0.018     |  2.723      |
 +---------------------+--------------+------+------+------------+-------------+
-|               Clk40 |BUFGCTRL_X0Y29| No   |    6 |  0.106     |  2.866      |
+|        ADC_CLK_OBUF |BUFGCTRL_X0Y19| No   |   27 |  0.145     |  2.725      |
 +---------------------+--------------+------+------+------------+-------------+
-|               FCT40 |         Local|      |    8 |  0.564     |  1.648      |
+|               Clk40 |BUFGCTRL_X0Y29| No   |    6 |  0.098     |  2.858      |
 +---------------------+--------------+------+------+------------+-------------+
-|PhaseSwitch/Sync_TRG |              |      |      |            |             |
-|                   1 |         Local|      |   18 |  0.036     |  1.294      |
+|               FCT40 |         Local|      |   11 |  0.540     |  1.684      |
 +---------------------+--------------+------+------+------------+-------------+
-|              Quarts |         Local|      |    9 |  0.212     |  1.529      |
+|                 DCO |         Local|      |    7 |  2.360     |  3.982      |
 +---------------------+--------------+------+------+------------+-------------+
-|                 DCO |         Local|      |    7 |  1.472     |  3.094      |
+|                 FCO |         Local|      |   12 |  2.916     |  6.213      |
 +---------------------+--------------+------+------+------------+-------------+
-|                 FCO |         Local|      |   10 |  2.832     |  6.137      |
+|PhaseSwitch/EndTrig_ |              |      |      |            |             |
+|                   3 |         Local|      |    3 |  0.452     |  1.255      |
 +---------------------+--------------+------+------+------------+-------------+
 
 * Net Skew is the difference between the minimum and maximum routing
@@ -272,30 +272,30 @@ Asterisk (*) preceding a constraint indicates it was not met.
   Constraint                                |    Check    | Worst Case |  Best Case | Timing |   Timing   
                                             |             |    Slack   | Achievable | Errors |    Score   
 ----------------------------------------------------------------------------------------------------------
-  TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0"  | SETUP       |     0.404ns|     2.721ns|       0|           0
-  3.125 ns HIGH 50%                         | HOLD        |     0.291ns|            |       0|           0
+  TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0"  | SETUP       |     0.393ns|     2.732ns|       0|           0
+  3.125 ns HIGH 50%                         | HOLD        |     0.462ns|            |       0|           0
+----------------------------------------------------------------------------------------------------------
+  TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK | SETUP       |     1.189ns|    20.244ns|       0|           0
+  0_BUF" TS_MuxClock_in HIGH 50%         IN | HOLD        |     1.927ns|            |       0|           0
+  PUT_JITTER 0.375 ns                       |             |            |            |        |            
+----------------------------------------------------------------------------------------------------------
+  TS_DLL_CLKFX_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     1.350ns|     4.900ns|       0|           0
+  KFX_BUF" TS_MuxClock_in / 4 HIGH 50%      | HOLD        |     0.335ns|            |       0|           0
+      INPUT_JITTER 0.375 ns                 |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
   TS_MuxClock_in = PERIOD TIMEGRP "MuxClock | MINLOWPULSE |    15.000ns|    10.000ns|       0|           0
   _in" 25 ns HIGH 50% INPUT_JITTER          |             |            |            |        |            
   0.375 ns                                  |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK | SETUP       |     1.516ns|    18.936ns|       0|           0
-  0_BUF" TS_MuxClock_in HIGH 50%         IN | HOLD        |     1.955ns|            |       0|           0
-  PUT_JITTER 0.375 ns                       |             |            |            |        |            
-----------------------------------------------------------------------------------------------------------
-  TS_DLL_CLKFX_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     2.534ns|     3.716ns|       0|           0
-  KFX_BUF" TS_MuxClock_in / 4 HIGH 50%      | HOLD        |     0.529ns|            |       0|           0
+  TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     2.929ns|     6.642ns|       0|           0
+  K2X_BUF" TS_MuxClock_in / 2 HIGH 50%      | HOLD        |     0.558ns|            |       0|           0
       INPUT_JITTER 0.375 ns                 |             |            |            |        |            
 ----------------------------------------------------------------------------------------------------------
-  TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CL | SETUP       |     3.627ns|     5.246ns|       0|           0
-  K2X_BUF" TS_MuxClock_in / 2 HIGH 50%      | HOLD        |     0.135ns|            |       0|           0
-      INPUT_JITTER 0.375 ns                 |             |            |            |        |            
+  TS_FCT_40 = PERIOD TIMEGRP "FCT_40" 25 ns | SETUP       |    21.004ns|     3.996ns|       0|           0
+   HIGH 50% INPUT_JITTER 0.375 ns           | HOLD        |     0.517ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
-  TS_FCT_40 = PERIOD TIMEGRP "FCT_40" 25 ns | SETUP       |    22.323ns|     2.677ns|       0|           0
-   HIGH 50% INPUT_JITTER 0.375 ns           | HOLD        |     0.802ns|            |       0|           0
-----------------------------------------------------------------------------------------------------------
-  TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns | SETUP       |    22.457ns|     2.543ns|       0|           0
-   HIGH 50% INPUT_JITTER 0.375 ns           | HOLD        |     0.798ns|            |       0|           0
+  TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns | SETUP       |    21.963ns|     3.037ns|       0|           0
+   HIGH 50% INPUT_JITTER 0.375 ns           | HOLD        |     0.679ns|            |       0|           0
 ----------------------------------------------------------------------------------------------------------
 
 
@@ -309,10 +309,10 @@ Derived Constraints for TS_MuxClock_in
 |           Constraint          | Requirement |-------------+-------------|-------------+-------------|-------------+-------------|
 |                               |             |   Direct    | Derivative  |   Direct    | Derivative  |   Direct    | Derivative  |
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
-|TS_MuxClock_in                 |     25.000ns|     10.000ns|     18.936ns|            0|            0|            0|          762|
-| TS_DLL_CLK0_BUF               |     25.000ns|     18.936ns|          N/A|            0|            0|           19|            0|
-| TS_DLL_CLK2X_BUF              |     12.500ns|      5.246ns|          N/A|            0|            0|          447|            0|
-| TS_DLL_CLKFX_BUF              |      6.250ns|      3.716ns|          N/A|            0|            0|          296|            0|
+|TS_MuxClock_in                 |     25.000ns|     10.000ns|     20.244ns|            0|            0|            0|          675|
+| TS_DLL_CLK0_BUF               |     25.000ns|     20.244ns|          N/A|            0|            0|           19|            0|
+| TS_DLL_CLK2X_BUF              |     12.500ns|      6.642ns|          N/A|            0|            0|          358|            0|
+| TS_DLL_CLKFX_BUF              |      6.250ns|      4.900ns|          N/A|            0|            0|          298|            0|
 +-------------------------------+-------------+-------------+-------------+-------------+-------------+-------------+-------------+
 
 All constraints were met.
@@ -324,10 +324,10 @@ All signals are completely routed.
 
 WARNING:Par:283 - There are 65 loadless signals in this design. This design will cause Bitgen to issue DRC warnings.
 
-Total REAL time to PAR completion: 13 secs 
-Total CPU time to PAR completion: 13 secs 
+Total REAL time to PAR completion: 18 secs 
+Total CPU time to PAR completion: 18 secs 
 
-Peak Memory Usage:  487 MB
+Peak Memory Usage:  488 MB
 
 Placement: Completed - No errors found.
 Routing: Completed - No errors found.

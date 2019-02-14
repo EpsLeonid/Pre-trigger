@@ -137,6 +137,7 @@ ARCHITECTURE behavior OF ISERDES_TB IS
 
    -- Clock period definitions
    constant Qclock_period : time := 25 ns;
+   constant FCT_40_period : time := 25 ns;
    constant MuxClock_in_period : time := 25 ns;
    constant ADC_SCLK_period : time := 50 ns;
    constant ADC_CLK_period : time := 12500 ps;
@@ -203,6 +204,14 @@ BEGIN
 		wait for Qclock_period/2;
    end process;
  
+   FCT_40_process :process
+   begin
+		FCT_40 <= '0';
+		wait for FCT_40_period/2;
+		FCT_40 <= '1';
+		wait for FCT_40_period/2;
+   end process;
+
    MuxClock_in_process :process
    begin
 		MuxClock_in <= '0';

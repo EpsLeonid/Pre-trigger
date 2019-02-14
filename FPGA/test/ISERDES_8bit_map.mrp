@@ -10,38 +10,38 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Sat Feb 09 11:21:24 2019
+Mapped Date    : Thu Feb 14 13:52:42 2019
 
 Design Summary
 --------------
 Number of errors:      0
 Number of warnings:    2
 Logic Utilization:
-  Number of Slice Flip Flops:           175 out of  53,248    1%
-  Number of 4 input LUTs:                56 out of  53,248    1%
+  Number of Slice Flip Flops:           206 out of  53,248    1%
+  Number of 4 input LUTs:                81 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            116 out of  26,624    1%
-    Number of Slices containing only related logic:     116 out of     116 100%
-    Number of Slices containing unrelated logic:          0 out of     116   0%
+  Number of occupied Slices:            146 out of  26,624    1%
+    Number of Slices containing only related logic:     146 out of     146 100%
+    Number of Slices containing unrelated logic:          0 out of     146   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         128 out of  53,248    1%
-    Number used as logic:                53
-    Number used as a route-thru:         72
-    Number used as Shift registers:       3
+  Total Number of 4 input LUTs:         174 out of  53,248    1%
+    Number used as logic:                77
+    Number used as a route-thru:         93
+    Number used as Shift registers:       4
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
   Number of bonded IOBs:                165 out of     640   25%
-    IOB Flip Flops:                      11
-  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
-    Number used as BUFGs:                 5
+    IOB Flip Flops:                      13
+  Number of BUFG/BUFGCTRLs:               6 out of      32   18%
+    Number used as BUFGs:                 6
   Number of DCM_ADVs:                     1 out of       8   12%
 
-Average Fanout of Non-Clock Nets:                1.51
+Average Fanout of Non-Clock Nets:                1.77
 
-Peak Memory Usage:  376 MB
-Total REAL time to MAP completion:  3 secs 
-Total CPU time to MAP completion:   3 secs 
+Peak Memory Usage:  375 MB
+Total REAL time to MAP completion:  4 secs 
+Total CPU time to MAP completion:   4 secs 
 
 NOTES:
 
@@ -113,8 +113,8 @@ INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance
 
 Section 4 - Removed Logic Summary
 ---------------------------------
-   5 block(s) removed
-   5 block(s) optimized away
+   6 block(s) removed
+   6 block(s) optimized away
    4 signal(s) removed
 
 Section 5 - Removed Logic
@@ -130,6 +130,7 @@ To quickly locate the original cause for the removal of a chain of logic, look
 above the place where that logic is listed in the trimming report, then locate
 the lines that are least indented (begin at the leftmost edge).
 
+Loadless block "ClockSwitch" (BUFGCTRL) removed.
 Loadless block "DLL/CLK90_BUFG_INST" (CKBUF) removed.
  The signal "DLL/CLK90_BUF" is loadless and has been removed.
 Loadless block "DLL/CLKDV_BUFG_INST" (CKBUF) removed.
@@ -240,16 +241,16 @@ Section 6 - IOB Properties
 | Led5                               | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | MuxClock_in                        | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | Qclock                             | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
-| Sw_FCTClk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| Sw_Quartz                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| Sw_FCTClk                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| Sw_Quartz                          | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<0>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<1>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<2>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<3>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<4>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<5>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
-| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
+| Test<6>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| Test<7>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
 | Test<8>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Test<9>                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | TrigDes                            | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |

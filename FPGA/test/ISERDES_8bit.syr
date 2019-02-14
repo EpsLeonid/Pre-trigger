@@ -143,9 +143,14 @@ Parsing architecture <Behavioral> of entity <shiftreg>.
 Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\LIB\PhaseSW.vhd" into library work
 Parsing entity <PhaseSW>.
 Parsing architecture <Behavioral> of entity <phasesw>.
+WARNING:HDLCompiler:946 - "C:\Work\COMET project\trunk\FPGA\LIB\PhaseSW.vhd" Line 135: Actual for formal port sclr is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:\Work\COMET project\trunk\FPGA\LIB\PhaseSW.vhd" Line 152: Actual for formal port r is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:\Work\COMET project\trunk\FPGA\LIB\PhaseSW.vhd" Line 153: Actual for formal port clrn is neither a static name nor a globally static expression
+WARNING:HDLCompiler:946 - "C:\Work\COMET project\trunk\FPGA\LIB\PhaseSW.vhd" Line 198: Actual for formal port sclr is neither a static name nor a globally static expression
 Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\LIB\Light_Pulser.vhd" into library work
 Parsing entity <Light_Pulser>.
 Parsing architecture <Utility> of entity <light_pulser>.
+WARNING:HDLCompiler:946 - "C:\Work\COMET project\trunk\FPGA\LIB\Light_Pulser.vhd" Line 48: Actual for formal port clk_en is neither a static name nor a globally static expression
 WARNING:HDLCompiler:946 - "C:\Work\COMET project\trunk\FPGA\LIB\Light_Pulser.vhd" Line 49: Actual for formal port sclr is neither a static name nor a globally static expression
 Parsing VHDL file "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" into library work
 Parsing entity <ISERDES_8bit>.
@@ -156,12 +161,12 @@ Parsing architecture <Behavioral> of entity <iserdes_8bit>.
 =========================================================================
 
 Elaborating entity <ISERDES_8bit> (architecture <Behavioral>) from library <work>.
-WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 133: Using initial value '0' for reset since it is never assigned
-WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 189: Using initial value "00000000000011010000110000000000001111111100000001" for s_fadc_sdio_test since it is never assigned
-WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 195: Using initial value "00000000000011010000000000000000001111111100000001" for s_fadc_sdio_reset since it is never assigned
-WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 202: Using initial value '0' for adc_bit_write since it is never assigned
-WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 205: Using initial value '1' for adctest_reg_sset since it is never assigned
-WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 207: Using initial value '1' for adcreset_reg_sset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 135: Using initial value '0' for reset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 192: Using initial value "00000000000011010000110000000000001111111100000001" for s_fadc_sdio_test since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 198: Using initial value "00000000000011010000000000000000001111111100000001" for s_fadc_sdio_reset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 205: Using initial value '0' for adc_bit_write since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 208: Using initial value '1' for adctest_reg_sset since it is never assigned
+WARNING:HDLCompiler:871 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 210: Using initial value '1' for adcreset_reg_sset since it is never assigned
 
 Elaborating entity <SRFF> (architecture <Utility>) from library <work>.
 
@@ -178,11 +183,11 @@ Elaborating entity <V_Counter> (architecture <Utility>) with generics from libra
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
 
 Elaborating entity <Edge_Sensing> (architecture <Utility>) from library <work>.
-WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 583: Assignment to indata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 601: Assignment to indata ignored, since the identifier is never used
 
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
-WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 731: Assignment to s_fadc_test ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 732: Assignment to s_fadc_reset ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 772: Assignment to s_fadc_test ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 773: Assignment to s_fadc_reset ignored, since the identifier is never used
 
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
 
@@ -191,13 +196,12 @@ WARNING:HDLCompiler:92 - "C:\Work\COMET project\trunk\FPGA\Pre-trigger_Xilinx\li
 WARNING:HDLCompiler:92 - "C:\Work\COMET project\trunk\FPGA\Pre-trigger_Xilinx\lib\ShiftReg.vhd" Line 53: d should be on the sensitivity list of the process
 
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
-WARNING:HDLCompiler:634 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 162: Net <Sub_Ped[9]> does not have a driver.
-WARNING:HDLCompiler:634 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 164: Net <AverData[9]> does not have a driver.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 250. All outputs of instance <PowerUp1> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 258. All outputs of instance <PowerUp2> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 736. All outputs of instance <ADC_Cnt> of block <V_Counter> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 747. All outputs of instance <ShiftReg_test> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 754. All outputs of instance <ShiftReg_reset> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:HDLCompiler:634 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 164: Net <Sub_Ped[9]> does not have a driver.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 253. All outputs of instance <PowerUp1> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 261. All outputs of instance <PowerUp2> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 777. All outputs of instance <ADC_Cnt> of block <V_Counter> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 788. All outputs of instance <ShiftReg_test> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 795. All outputs of instance <ShiftReg_reset> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -227,16 +231,15 @@ WARNING:Xst:647 - Input <Crs> is never used. This port will be preserved and lef
 WARNING:Xst:647 - Input <RxDv> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <TxClk> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <Col> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 301: Output port <Test> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 301: Output port <Phase> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 325: Output port <CLKIN_IBUFG_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 325: Output port <CLK90_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 736: Output port <q> of the instance <ADC_Cnt> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 747: Output port <q> of the instance <ShiftReg_test> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 754: Output port <q> of the instance <ShiftReg_reset> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 304: Output port <Test> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 304: Output port <Phase> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 341: Output port <CLKIN_IBUFG_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 341: Output port <CLK90_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 777: Output port <q> of the instance <ADC_Cnt> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 788: Output port <q> of the instance <ShiftReg_test> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 795: Output port <q> of the instance <ShiftReg_reset> is unconnected or connected to loadless signal.
 WARNING:Xst:2935 - Signal 'TxD', unconnected in block 'ISERDES_8bit', is tied to its initial value (0000).
 WARNING:Xst:2935 - Signal 'Sub_Ped<9:8>', unconnected in block 'ISERDES_8bit', is tied to its initial value (00).
-WARNING:Xst:2935 - Signal 'AverData<9:8>', unconnected in block 'ISERDES_8bit', is tied to its initial value (00).
 WARNING:Xst:2935 - Signal 'ADC_CSB', unconnected in block 'ISERDES_8bit', is tied to its initial value (1).
 WARNING:Xst:2935 - Signal 'ADC_SDIO', unconnected in block 'ISERDES_8bit', is tied to its initial value (0).
 WARNING:Xst:2935 - Signal 'ADC_SCLK', unconnected in block 'ISERDES_8bit', is tied to its initial value (0).
@@ -257,6 +260,9 @@ WARNING:Xst:2935 - Signal 'ADC_SCLK', unconnected in block 'ISERDES_8bit', is ti
     Found 1-bit register for signal <DataP_del<3>>.
     Found 1-bit register for signal <DataN_del<3>>.
     Found 8-bit register for signal <DataOut>.
+    Found 10-bit register for signal <Sub_ped_delay>.
+    Found 8-bit register for signal <AverData_med<8:1>>.
+    Found 10-bit register for signal <AverData>.
     Found 1-bit register for signal <GroupValue_Up_LT>.
     Found 1-bit register for signal <Sub_Ped<7>>.
     Found 1-bit register for signal <Sub_Ped<6>>.
@@ -266,16 +272,6 @@ WARNING:Xst:2935 - Signal 'ADC_SCLK', unconnected in block 'ISERDES_8bit', is ti
     Found 1-bit register for signal <Sub_Ped<2>>.
     Found 1-bit register for signal <Sub_Ped<1>>.
     Found 1-bit register for signal <Sub_Ped<0>>.
-    Found 10-bit register for signal <Sub_ped_delay>.
-    Found 10-bit register for signal <AverData_med>.
-    Found 1-bit register for signal <AverData<7>>.
-    Found 1-bit register for signal <AverData<6>>.
-    Found 1-bit register for signal <AverData<5>>.
-    Found 1-bit register for signal <AverData<4>>.
-    Found 1-bit register for signal <AverData<3>>.
-    Found 1-bit register for signal <AverData<2>>.
-    Found 1-bit register for signal <AverData<1>>.
-    Found 1-bit register for signal <AverData<0>>.
     Found 10-bit register for signal <DelayGroupAmp_mid>.
     Found 10-bit register for signal <DelayGroupAmp>.
     Found 10-bit register for signal <GroupSum>.
@@ -284,16 +280,19 @@ WARNING:Xst:2935 - Signal 'ADC_SCLK', unconnected in block 'ISERDES_8bit', is ti
     Found 1-bit register for signal <FastTrigDes>.
     Found 1-bit register for signal <TrigDes>.
     Found 64-bit register for signal <TriggerData>.
+    Found 1-bit register for signal <DelayReset<5>>.
+    Found 1-bit register for signal <DelayReset<4>>.
+    Found 1-bit register for signal <DelayReset<3>>.
     Found 1-bit register for signal <DelayReset<2>>.
     Found 1-bit register for signal <DelayReset<1>>.
     Found 1-bit register for signal <DelayReset<0>>.
     Found 1-bit register for signal <StopReset>.
-    Found 10-bit adder for signal <Sub_ped_delay[9]_Sub_Ped[9]_add_6_OUT> created at line 595.
-    Found 10-bit comparator lessequal for signal <n0041> created at line 597
-    Found 10-bit comparator greater for signal <GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o> created at line 624
+    Found 10-bit adder for signal <Sub_ped_delay[9]_Sub_Ped[9]_add_6_OUT> created at line 616.
+    Found 10-bit comparator lessequal for signal <n0044> created at line 618
+    Found 10-bit comparator greater for signal <GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o> created at line 645
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred 166 D-type flip-flop(s).
+	inferred 169 D-type flip-flop(s).
 	inferred   2 Comparator(s).
 Unit <ISERDES_8bit> synthesized.
 
@@ -310,13 +309,19 @@ Synthesizing Unit <PhaseSW>.
         Fmax = 42000
         Fmin = 38000
         RefClock = 40000
-WARNING:Xst:2935 - Signal 'Test', unconnected in block 'PhaseSW', is tied to its initial value (0000).
-    Found 1-bit register for signal <Sync_TRG2>.
-    Found 1-bit register for signal <Sync_TRG1>.
-    Found 16-bit comparator greater for signal <PWR_13_o_SysClkCnt_out[15]_LessThan_2_o> created at line 101
-    Found 16-bit comparator greater for signal <SysClkCnt_out[15]_PWR_13_o_LessThan_3_o> created at line 101
+    Found 1-bit register for signal <EndTrig<4>>.
+    Found 1-bit register for signal <EndTrig<3>>.
+    Found 1-bit register for signal <EndTrig<2>>.
+    Found 1-bit register for signal <RefTimeZero>.
+    Found 1-bit register for signal <SysClkZero>.
+    Found 1-bit register for signal <Fnorm>.
+    Found 1-bit register for signal <FnormTrig>.
+    Found 1-bit register for signal <MUX_Control>.
+    Found 1-bit register for signal <CycleEnd>.
+    Found 16-bit comparator greater for signal <PWR_13_o_SysClkCnt_o[15]_LessThan_2_o> created at line 205
+    Found 16-bit comparator greater for signal <SysClkCnt_o[15]_PWR_13_o_LessThan_3_o> created at line 205
     Summary:
-	inferred   2 D-type flip-flop(s).
+	inferred   9 D-type flip-flop(s).
 	inferred   2 Comparator(s).
 Unit <PhaseSW> synthesized.
 
@@ -337,36 +342,36 @@ Synthesizing Unit <DLL_test>.
     Summary:
 	no macro.
 Unit <DLL_test> synthesized.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\LIB\Light_Pulser.vhd" line 36. All outputs of instance <Prescaler> of block <V_Counter> are unconnected in block <Light_Pulser>. Underlying logic will be removed.
 
 Synthesizing Unit <Light_Pulser>.
     Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\Light_Pulser.vhd".
-        DIV = 4
-        DUR = 80
-    WARNING:Xst:2404 -  FFs/Latches <Flah_Freq<0:0>> (without init value) have a constant value of 0 in block <Light_Pulser>.
+        DIV = 1000
+        DUR = 10000
+    Found 1-bit register for signal <Flah_Freq>.
     Summary:
-	no macro.
+	inferred   1 D-type flip-flop(s).
 Unit <Light_Pulser> synthesized.
 
 Synthesizing Unit <V_Counter_2>.
     Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\V_Counter.vhd".
-        WIDTH = 2
+        WIDTH = 10
 WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 1-bit register for signal <count<1>>.
-    Found 1-bit register for signal <count<0>>.
+    Found 10-bit register for signal <count>.
+    Found 10-bit adder for signal <count[9]_GND_17_o_mux_3_OUT> created at line 33.
     Summary:
-	inferred   2 D-type flip-flop(s).
+	inferred   1 Adder/Subtractor(s).
+	inferred  10 D-type flip-flop(s).
 Unit <V_Counter_2> synthesized.
 
 Synthesizing Unit <V_Counter_3>.
     Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\V_Counter.vhd".
-        WIDTH = 7
+        WIDTH = 14
 WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 7-bit register for signal <count>.
-    Found 7-bit adder for signal <GND_18_o_count[6]_mux_2_OUT> created at line 33.
+    Found 14-bit register for signal <count>.
+    Found 14-bit adder for signal <GND_18_o_count[13]_mux_2_OUT> created at line 33.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred   7 D-type flip-flop(s).
+	inferred  14 D-type flip-flop(s).
 Unit <V_Counter_3> synthesized.
 
 Synthesizing Unit <Edge_Sensing>.
@@ -379,13 +384,13 @@ Unit <Edge_Sensing> synthesized.
 
 Synthesizing Unit <V_Counter_4>.
     Related source file is "C:\Work\COMET project\trunk\FPGA\LIB\V_Counter.vhd".
-        WIDTH = 12
+        WIDTH = 11
 WARNING:Xst:647 - Input <cnt_en> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
-    Found 12-bit register for signal <count>.
-    Found 12-bit adder for signal <GND_24_o_count[11]_mux_2_OUT> created at line 33.
+    Found 11-bit register for signal <count>.
+    Found 11-bit adder for signal <GND_24_o_count[10]_mux_2_OUT> created at line 33.
     Summary:
 	inferred   1 Adder/Subtractor(s).
-	inferred  12 D-type flip-flop(s).
+	inferred  11 D-type flip-flop(s).
 Unit <V_Counter_4> synthesized.
 
 Synthesizing Unit <V_Counter_6>.
@@ -403,27 +408,27 @@ Unit <V_Counter_6> synthesized.
 HDL Synthesis Report
 
 Macro Statistics
-# Adders/Subtractors                                   : 6
- 10-bit adder                                          : 1
- 12-bit adder                                          : 1
+# Adders/Subtractors                                   : 7
+ 10-bit adder                                          : 2
+ 11-bit adder                                          : 1
+ 14-bit adder                                          : 1
  16-bit addsub                                         : 2
  26-bit adder                                          : 1
- 7-bit adder                                           : 1
-# Registers                                            : 48
- 1-bit register                                        : 34
- 10-bit register                                       : 6
- 12-bit register                                       : 1
+# Registers                                            : 54
+ 1-bit register                                        : 38
+ 10-bit register                                       : 7
+ 11-bit register                                       : 1
+ 14-bit register                                       : 1
  16-bit register                                       : 2
  26-bit register                                       : 1
  64-bit register                                       : 1
- 7-bit register                                        : 1
- 8-bit register                                        : 2
+ 8-bit register                                        : 3
 # Comparators                                          : 4
  10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 1
  16-bit comparator greater                             : 2
-# Multiplexers                                         : 8
- 1-bit 2-to-1 multiplexer                              : 8
+# Multiplexers                                         : 10
+ 1-bit 2-to-1 multiplexer                              : 10
 
 =========================================================================
 
@@ -431,53 +436,52 @@ Macro Statistics
 *                       Advanced HDL Synthesis                          *
 =========================================================================
 
-WARNING:Xst:1293 - FF/Latch <TriggerData_46> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_45> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_44> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_43> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_42> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_41> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_40> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_39> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_38> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_37> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_36> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_35> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_34> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_33> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_32> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_31> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_30> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_63> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_62> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_61> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_60> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_59> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_58> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_57> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_56> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_55> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_54> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_53> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_52> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_51> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_50> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_49> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_48> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_34> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_35> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_36> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_37> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_38> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_39> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_40> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_41> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_42> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_43> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_44> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_45> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_46> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_47> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_0> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_1> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_2> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_3> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_4> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_5> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <count_6> has a constant value of 0 in block <Timer>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_48> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_49> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_50> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_51> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_52> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_53> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_54> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_55> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_56> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_57> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_58> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_59> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_60> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_61> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_62> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_63> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <Sub_ped_delay_8> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <Sub_ped_delay_9> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <AverData_8> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <AverData_9> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <GroupSum_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <GroupSum_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_10> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_11> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_13> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_16> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_18> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_20> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_32> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_31> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_30> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_29> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_28> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_27> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
@@ -487,26 +491,22 @@ WARNING:Xst:1293 - FF/Latch <TriggerData_24> has a constant value of 0 in block 
 WARNING:Xst:1293 - FF/Latch <TriggerData_23> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_22> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_21> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_20> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_18> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_16> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_13> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_mid_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_mid_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_mid_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GroupAmp_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GroupAmp_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GroupAmp_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:2677 - Node <AverData_med_0> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <AverData_med_9> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:1290 - Hierarchical block <Timer> is unconnected in block <Led_B>.
-   It will be removed from the design.
+WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 
 Synthesizing (advanced) Unit <V_Counter_1>.
 The following registers are absorbed into counter <count>: 1 register on signal <count>.
 Unit <V_Counter_1> synthesized (advanced).
+
+Synthesizing (advanced) Unit <V_Counter_2>.
+The following registers are absorbed into counter <count>: 1 register on signal <count>.
+Unit <V_Counter_2> synthesized (advanced).
 
 Synthesizing (advanced) Unit <V_Counter_3>.
 The following registers are absorbed into counter <count>: 1 register on signal <count>.
@@ -519,34 +519,35 @@ Unit <V_Counter_4> synthesized (advanced).
 Synthesizing (advanced) Unit <V_Counter_6>.
 The following registers are absorbed into counter <count>: 1 register on signal <count>.
 Unit <V_Counter_6> synthesized (advanced).
-WARNING:Xst:2677 - Node <AverData_med_0> of sequential type is unconnected in block <ISERDES_8bit>.
-WARNING:Xst:2677 - Node <AverData_med_9> of sequential type is unconnected in block <ISERDES_8bit>.
+WARNING:Xst:2677 - Node <Sub_ped_delay_9> of sequential type is unconnected in block <ISERDES_8bit>.
 
 =========================================================================
 Advanced HDL Synthesis Report
 
 Macro Statistics
 # Adders/Subtractors                                   : 1
- 10-bit adder                                          : 1
-# Counters                                             : 5
- 12-bit up counter                                     : 1
+ 9-bit adder                                           : 1
+# Counters                                             : 6
+ 10-bit up counter                                     : 1
+ 11-bit up counter                                     : 1
+ 14-bit up counter                                     : 1
  16-bit updown counter                                 : 2
  26-bit up counter                                     : 1
- 7-bit up counter                                      : 1
-# Registers                                            : 172
- Flip-Flops                                            : 172
+# Registers                                            : 185
+ Flip-Flops                                            : 185
 # Comparators                                          : 4
  10-bit comparator greater                             : 1
  10-bit comparator lessequal                           : 1
  16-bit comparator greater                             : 2
-# Multiplexers                                         : 8
- 1-bit 2-to-1 multiplexer                              : 8
+# Multiplexers                                         : 10
+ 1-bit 2-to-1 multiplexer                              : 10
 
 =========================================================================
 
 =========================================================================
 *                         Low Level Synthesis                           *
 =========================================================================
+WARNING:Xst:1293 - FF/Latch <TriggerData_33> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_34> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_35> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_36> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
@@ -578,7 +579,8 @@ WARNING:Xst:1293 - FF/Latch <TriggerData_61> has a constant value of 0 in block 
 WARNING:Xst:1293 - FF/Latch <TriggerData_62> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_63> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <Sub_ped_delay_8> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Sub_ped_delay_9> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <AverData_8> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <AverData_9> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <GroupSum_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <GroupSum_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_10> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
@@ -587,8 +589,6 @@ WARNING:Xst:1293 - FF/Latch <TriggerData_13> has a constant value of 0 in block 
 WARNING:Xst:1293 - FF/Latch <TriggerData_16> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_18> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_20> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_21> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <TriggerData_33> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_32> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_31> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_30> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
@@ -600,6 +600,7 @@ WARNING:Xst:1293 - FF/Latch <TriggerData_25> has a constant value of 0 in block 
 WARNING:Xst:1293 - FF/Latch <TriggerData_24> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_23> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1293 - FF/Latch <TriggerData_22> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
+WARNING:Xst:1293 - FF/Latch <TriggerData_21> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_mid_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_mid_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <DelayGroupAmp_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
@@ -609,47 +610,47 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <GroupAmp_0> has a c
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2261 - The FF/Latch <TriggerData_12> in Unit <ISERDES_8bit> is equivalent to the following 3 FFs/Latches, which will be removed : <TriggerData_14> <TriggerData_17> <TriggerData_19> 
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_1> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_2> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_3> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_4> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_5> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
-WARNING:Xst:1293 - FF/Latch <Led_B/Timer/count_6> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 WARNING:Xst:2677 - Node <CntTest/count_25> of sequential type is unconnected in block <ISERDES_8bit>.
+INFO:Xst:1901 - Instance ClockSwitch in unit ISERDES_8bit of type BUFGMUX_VIRTEX4 has been replaced by BUFGCTRL
 
 Optimizing unit <ISERDES_8bit> ...
 
 Optimizing unit <PhaseSW> ...
 
+Optimizing unit <Light_Pulser> ...
+
 Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block ISERDES_8bit, actual ratio is 0.
 FlipFlop Reset_Trig/Trig has been replicated 1 time(s)
+FlipFlop DataOut_7 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop DataOut_6 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_5 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_4 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_3 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_2 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_1 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_0 has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop PhaseSwitch/Sync_TRG2 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop PhaseSwitch/MUX_Control has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
 Processing Unit <ISERDES_8bit> :
 	Found 2-bit shift register for signal <DataN_01>.
 	Found 2-bit shift register for signal <DataP_01>.
-	Found 2-bit shift register for signal <DelayReset_2>.
+	Found 5-bit shift register for signal <DelayReset_5>.
+	Found 2-bit shift register for signal <PhaseSwitch/EndTrig_3>.
 Unit <ISERDES_8bit> processed.
 
 =========================================================================
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 179
- Flip-Flops                                            : 179
-# Shift Registers                                      : 3
+# Registers                                            : 211
+ Flip-Flops                                            : 211
+# Shift Registers                                      : 4
  2-bit shift register                                  : 3
+ 5-bit shift register                                  : 1
 
 =========================================================================
 
@@ -672,28 +673,30 @@ Top Level Output File Name         : ISERDES_8bit.ngc
 
 Primitive and Black Box Usage:
 ------------------------------
-# BELS                             : 305
+# BELS                             : 394
 #      GND                         : 1
-#      INV                         : 13
-#      LUT1                        : 72
+#      INV                         : 16
+#      LUT1                        : 93
 #      LUT2                        : 24
-#      LUT3                        : 9
-#      LUT4                        : 11
+#      LUT3                        : 12
+#      LUT4                        : 28
+#      LUT4_D                      : 1
 #      LUT4_L                      : 1
-#      MUXCY                       : 97
+#      MUXCY                       : 118
 #      VCC                         : 1
-#      XORCY                       : 76
-# FlipFlops/Latches                : 183
-#      FD                          : 57
-#      FDCE                        : 5
-#      FDE                         : 44
-#      FDR                         : 36
-#      FDRE                        : 40
+#      XORCY                       : 99
+# FlipFlops/Latches                : 216
+#      FD                          : 62
+#      FDCE                        : 6
+#      FDE                         : 20
+#      FDR                         : 73
+#      FDRE                        : 54
 #      IDDR                        : 1
-# Shift Registers                  : 3
-#      SRL16                       : 3
-# Clock Buffers                    : 7
-#      BUFG                        : 7
+# Shift Registers                  : 4
+#      SRL16                       : 4
+# Clock Buffers                    : 9
+#      BUFG                        : 8
+#      BUFGCTRL                    : 1
 # IO Buffers                       : 98
 #      IBUFDS                      : 1
 #      IBUFG                       : 3
@@ -707,15 +710,15 @@ Device utilization summary:
 
 Selected Device : 4vlx60ff1148-10 
 
- Number of Slices:                      111  out of  26624     0%  
- Number of Slice Flip Flops:            176  out of  53248     0%  
- Number of 4 input LUTs:                133  out of  53248     0%  
-    Number used as logic:               130
-    Number used as Shift registers:       3
+ Number of Slices:                      128  out of  26624     0%  
+ Number of Slice Flip Flops:            207  out of  53248     0%  
+ Number of 4 input LUTs:                179  out of  53248     0%  
+    Number used as logic:               175
+    Number used as Shift registers:       4
  Number of IOs:                         423
  Number of bonded IOBs:                 102  out of    640    15%  
-    IOB Flip Flops:                       7
- Number of GCLKs:                         7  out of     32    21%  
+    IOB Flip Flops:                       9
+ Number of GCLKs:                         9  out of     32    28%  
  Number of DCM_ADVs:                      1  out of      8    12%  
 
 ---------------------------
@@ -736,18 +739,18 @@ NOTE: THESE TIMING NUMBERS ARE ONLY A SYNTHESIS ESTIMATE.
 
 Clock Information:
 ------------------
------------------------------------+----------------------------+-------+
-Clock Signal                       | Clock buffer(FF name)      | Load  |
------------------------------------+----------------------------+-------+
-MuxClock_in                        | DCM_ADV:CLKFX+BUFG         | 70    |
-MuxClock_in                        | DCM_ADV:CLK2X+BUFG         | 46    |
-ADC_DCO_LVDS<0>                    | IBUFGDS                    | 11    |
-ADC_FCO_LVDS<0>                    | IBUFGDS                    | 14    |
-MuxClock_in                        | DCM_ADV:CLK0               | 10    |
-FCT_40                             | IBUFG                      | 16    |
-Qclock                             | IBUFG                      | 17    |
-PhaseSwitch/Sync_TRG1              | NONE(PhaseSwitch/Sync_TRG2)| 2     |
------------------------------------+----------------------------+-------+
+-----------------------------------+------------------------------+-------+
+Clock Signal                       | Clock buffer(FF name)        | Load  |
+-----------------------------------+------------------------------+-------+
+MuxClock_in                        | DCM_ADV:CLKFX+BUFG           | 70    |
+MuxClock_in                        | DCM_ADV:CLK2X+BUFG           | 45    |
+ADC_DCO_LVDS<0>                    | IBUFGDS                      | 11    |
+ADC_FCO_LVDS<0>                    | IBUFGDS                      | 16    |
+MuxClock_in                        | DCM_ADV:CLK0                 | 10    |
+Qclock                             | IBUFG+BUFG                   | 47    |
+FCT_40                             | IBUFG                        | 19    |
+PhaseSwitch/EndTrig_3              | NONE(PhaseSwitch/MUX_Control)| 2     |
+-----------------------------------+------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
 Asynchronous Control Signals Information:
@@ -755,7 +758,7 @@ Asynchronous Control Signals Information:
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-Amp_Trig/CLRN_inv(XST_GND:G)       | NONE(Amp_Trig/Trig)    | 5     |
+Amp_Trig/CLRN_inv(XST_GND:G)       | NONE(Amp_Trig/Trig)    | 6     |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
@@ -764,7 +767,7 @@ Speed Grade: -10
 
    Minimum period: 11.599ns (Maximum Frequency: 86.217MHz)
    Minimum input arrival time before clock: 6.702ns
-   Maximum output required time after clock: 5.575ns
+   Maximum output required time after clock: 5.641ns
    Maximum combinational path delay: No path found
 
 Timing Details:
@@ -774,7 +777,7 @@ All values displayed in nanoseconds (ns)
 =========================================================================
 Timing constraint: Default period analysis for Clock 'MuxClock_in'
   Clock period: 11.599ns (frequency: 86.217MHz)
-  Total number of paths / destination ports: 763 / 218
+  Total number of paths / destination ports: 676 / 256
 -------------------------------------------------------------------------
 Delay:               2.900ns (Levels of Logic = 10)
   Source:            GroupSum_2 (FF)
@@ -787,15 +790,15 @@ Delay:               2.900ns (Levels of Logic = 10)
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
      FDR:C->Q              2   0.360   0.602  GroupSum_2 (GroupSum_2)
-     LUT2:I0->O            1   0.195   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_lut<0> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_lut<0>)
-     MUXCY:S->O            1   0.366   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<0> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<0>)
-     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<1> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<1>)
-     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<2> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<2>)
-     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<3> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<3>)
-     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<4> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<4>)
-     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<5> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<5>)
-     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<6> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<6>)
-     MUXCY:CI->O           1   0.369   0.523  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<7> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_16_o_cy<7>)
+     LUT2:I0->O            1   0.195   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_lut<0> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_lut<0>)
+     MUXCY:S->O            1   0.366   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<0> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<0>)
+     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<1> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<1>)
+     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<2> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<2>)
+     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<3> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<3>)
+     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<4> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<4>)
+     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<5> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<5>)
+     MUXCY:CI->O           1   0.044   0.000  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<6> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<6>)
+     MUXCY:CI->O           1   0.369   0.523  Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<7> (Mcompar_GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o_cy<7>)
      LUT3:I2->O            1   0.195   0.000  GroupValue_Amp_Done_rstpot (GroupValue_Amp_Done_rstpot)
      FD:D                      0.022          GroupValue_Amp_Done
     ----------------------------------------
@@ -824,80 +827,81 @@ Delay:               2.225ns (Levels of Logic = 0)
                                        (100.0% logic, 0.0% route)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'FCT_40'
-  Clock period: 2.466ns (frequency: 405.482MHz)
-  Total number of paths / destination ports: 136 / 16
--------------------------------------------------------------------------
-Delay:               2.466ns (Levels of Logic = 17)
-  Source:            PhaseSwitch/SysClkCnt/count_0 (FF)
-  Destination:       PhaseSwitch/SysClkCnt/count_15 (FF)
-  Source Clock:      FCT_40 rising
-  Destination Clock: FCT_40 rising
-
-  Data Path: PhaseSwitch/SysClkCnt/count_0 to PhaseSwitch/SysClkCnt/count_15
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDRE:C->Q             2   0.360   0.377  PhaseSwitch/SysClkCnt/count_0 (PhaseSwitch/SysClkCnt/count_0)
-     INV:I->O              1   0.358   0.000  PhaseSwitch/SysClkCnt/Mcount_count_lut<0>_INV_0 (PhaseSwitch/SysClkCnt/Mcount_count_lut<0>)
-     MUXCY:S->O            1   0.366   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<0> (PhaseSwitch/SysClkCnt/Mcount_count_cy<0>)
-     MUXCY:CI->O           1   0.045   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<1> (PhaseSwitch/SysClkCnt/Mcount_count_cy<1>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<2> (PhaseSwitch/SysClkCnt/Mcount_count_cy<2>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<3> (PhaseSwitch/SysClkCnt/Mcount_count_cy<3>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<4> (PhaseSwitch/SysClkCnt/Mcount_count_cy<4>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<5> (PhaseSwitch/SysClkCnt/Mcount_count_cy<5>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<6> (PhaseSwitch/SysClkCnt/Mcount_count_cy<6>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<7> (PhaseSwitch/SysClkCnt/Mcount_count_cy<7>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<8> (PhaseSwitch/SysClkCnt/Mcount_count_cy<8>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<9> (PhaseSwitch/SysClkCnt/Mcount_count_cy<9>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<10> (PhaseSwitch/SysClkCnt/Mcount_count_cy<10>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<11> (PhaseSwitch/SysClkCnt/Mcount_count_cy<11>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<12> (PhaseSwitch/SysClkCnt/Mcount_count_cy<12>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<13> (PhaseSwitch/SysClkCnt/Mcount_count_cy<13>)
-     MUXCY:CI->O           0   0.044   0.000  PhaseSwitch/SysClkCnt/Mcount_count_cy<14> (PhaseSwitch/SysClkCnt/Mcount_count_cy<14>)
-     XORCY:CI->O           1   0.360   0.000  PhaseSwitch/SysClkCnt/Mcount_count_xor<15> (PhaseSwitch/Result<15>)
-     FDRE:D                    0.022          PhaseSwitch/SysClkCnt/count_15
-    ----------------------------------------
-    Total                      2.466ns (2.089ns logic, 0.377ns route)
-                                       (84.7% logic, 15.3% route)
-
-=========================================================================
 Timing constraint: Default period analysis for Clock 'Qclock'
-  Clock period: 2.466ns (frequency: 405.482MHz)
-  Total number of paths / destination ports: 168 / 33
+  Clock period: 2.849ns (frequency: 350.945MHz)
+  Total number of paths / destination ports: 517 / 64
 -------------------------------------------------------------------------
-Delay:               2.466ns (Levels of Logic = 17)
-  Source:            PhaseSwitch/TimingCnt/count_0 (FF)
-  Destination:       PhaseSwitch/TimingCnt/count_15 (FF)
+Delay:               2.849ns (Levels of Logic = 26)
+  Source:            CntTest/count_0 (FF)
+  Destination:       CntTest/count_24 (FF)
   Source Clock:      Qclock rising
   Destination Clock: Qclock rising
 
-  Data Path: PhaseSwitch/TimingCnt/count_0 to PhaseSwitch/TimingCnt/count_15
+  Data Path: CntTest/count_0 to CntTest/count_24
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FDRE:C->Q             2   0.360   0.377  PhaseSwitch/TimingCnt/count_0 (PhaseSwitch/TimingCnt/count_0)
-     INV:I->O              1   0.358   0.000  PhaseSwitch/TimingCnt/Mcount_count_lut<0>_INV_0 (PhaseSwitch/TimingCnt/Mcount_count_lut<0>)
-     MUXCY:S->O            1   0.366   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<0> (PhaseSwitch/TimingCnt/Mcount_count_cy<0>)
-     MUXCY:CI->O           1   0.045   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<1> (PhaseSwitch/TimingCnt/Mcount_count_cy<1>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<2> (PhaseSwitch/TimingCnt/Mcount_count_cy<2>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<3> (PhaseSwitch/TimingCnt/Mcount_count_cy<3>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<4> (PhaseSwitch/TimingCnt/Mcount_count_cy<4>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<5> (PhaseSwitch/TimingCnt/Mcount_count_cy<5>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<6> (PhaseSwitch/TimingCnt/Mcount_count_cy<6>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<7> (PhaseSwitch/TimingCnt/Mcount_count_cy<7>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<8> (PhaseSwitch/TimingCnt/Mcount_count_cy<8>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<9> (PhaseSwitch/TimingCnt/Mcount_count_cy<9>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<10> (PhaseSwitch/TimingCnt/Mcount_count_cy<10>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<11> (PhaseSwitch/TimingCnt/Mcount_count_cy<11>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<12> (PhaseSwitch/TimingCnt/Mcount_count_cy<12>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<13> (PhaseSwitch/TimingCnt/Mcount_count_cy<13>)
-     MUXCY:CI->O           0   0.044   0.000  PhaseSwitch/TimingCnt/Mcount_count_cy<14> (PhaseSwitch/TimingCnt/Mcount_count_cy<14>)
-     XORCY:CI->O           1   0.360   0.000  PhaseSwitch/TimingCnt/Mcount_count_xor<15> (PhaseSwitch/Result<15>1)
-     FDRE:D                    0.022          PhaseSwitch/TimingCnt/count_15
+     FD:C->Q               1   0.360   0.360  CntTest/count_0 (CntTest/count_0)
+     INV:I->O              1   0.358   0.000  CntTest/Mcount_count_lut<0>_INV_0 (CntTest/Mcount_count_lut<0>)
+     MUXCY:S->O            1   0.366   0.000  CntTest/Mcount_count_cy<0> (CntTest/Mcount_count_cy<0>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<1> (CntTest/Mcount_count_cy<1>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<2> (CntTest/Mcount_count_cy<2>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<3> (CntTest/Mcount_count_cy<3>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<4> (CntTest/Mcount_count_cy<4>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<5> (CntTest/Mcount_count_cy<5>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<6> (CntTest/Mcount_count_cy<6>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<7> (CntTest/Mcount_count_cy<7>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<8> (CntTest/Mcount_count_cy<8>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<9> (CntTest/Mcount_count_cy<9>)
+     MUXCY:CI->O           1   0.045   0.000  CntTest/Mcount_count_cy<10> (CntTest/Mcount_count_cy<10>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<11> (CntTest/Mcount_count_cy<11>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<12> (CntTest/Mcount_count_cy<12>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<13> (CntTest/Mcount_count_cy<13>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<14> (CntTest/Mcount_count_cy<14>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<15> (CntTest/Mcount_count_cy<15>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<16> (CntTest/Mcount_count_cy<16>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<17> (CntTest/Mcount_count_cy<17>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<18> (CntTest/Mcount_count_cy<18>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<19> (CntTest/Mcount_count_cy<19>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<20> (CntTest/Mcount_count_cy<20>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<21> (CntTest/Mcount_count_cy<21>)
+     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<22> (CntTest/Mcount_count_cy<22>)
+     MUXCY:CI->O           0   0.044   0.000  CntTest/Mcount_count_cy<23> (CntTest/Mcount_count_cy<23>)
+     XORCY:CI->O           1   0.360   0.000  CntTest/Mcount_count_xor<24> (Result<24>)
+     FD:D                      0.022          CntTest/count_24
     ----------------------------------------
-    Total                      2.466ns (2.089ns logic, 0.377ns route)
-                                       (84.7% logic, 15.3% route)
+    Total                      2.849ns (2.490ns logic, 0.360ns route)
+                                       (87.4% logic, 12.6% route)
+
+=========================================================================
+Timing constraint: Default period analysis for Clock 'FCT_40'
+  Clock period: 3.629ns (frequency: 275.531MHz)
+  Total number of paths / destination ports: 181 / 20
+-------------------------------------------------------------------------
+Delay:               3.629ns (Levels of Logic = 9)
+  Source:            PhaseSwitch/SysClkCt/count_0 (FF)
+  Destination:       PhaseSwitch/Fnorm (FF)
+  Source Clock:      FCT_40 rising
+  Destination Clock: FCT_40 rising
+
+  Data Path: PhaseSwitch/SysClkCt/count_0 to PhaseSwitch/Fnorm
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FDRE:C->Q             3   0.360   0.756  PhaseSwitch/SysClkCt/count_0 (PhaseSwitch/SysClkCt/count_0)
+     LUT4:I0->O            1   0.195   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_lut<0> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_lut<0>)
+     MUXCY:S->O            1   0.366   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<0> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<0>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<1> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<1>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<2> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<2>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<3> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<3>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<4> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<4>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<5> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<5>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<6> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<6>)
+     MUXCY:CI->O           1   0.263   0.360  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<7> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<7>)
+     FDR:R                     1.062          PhaseSwitch/Fnorm
+    ----------------------------------------
+    Total                      3.629ns (2.513ns logic, 1.116ns route)
+                                       (69.3% logic, 30.7% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ADC_DCO_LVDS<0>'
@@ -920,62 +924,82 @@ Offset:              6.702ns (Levels of Logic = 1)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'MuxClock_in'
-  Total number of paths / destination ports: 23 / 23
+  Total number of paths / destination ports: 18 / 18
 -------------------------------------------------------------------------
-Offset:              5.575ns (Levels of Logic = 2)
-  Source:            CntTest/count_24 (FF)
-  Destination:       Led1 (PAD)
+Offset:              5.641ns (Levels of Logic = 2)
+  Source:            Led_B/DurTrig_SRFF/Trig (FF)
+  Destination:       Led2 (PAD)
   Source Clock:      MuxClock_in rising 2.0X
 
-  Data Path: CntTest/count_24 to Led1
+  Data Path: Led_B/DurTrig_SRFF/Trig to Led2
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               3   0.360   0.703  CntTest/count_24 (CntTest/count_24)
-     LUT3:I0->O            1   0.195   0.360  o_green_led1 (Led1_OBUF)
-     OBUF:I->O                 3.957          Led1_OBUF (Led1)
+     FDCE:C->Q             3   0.360   0.375  Led_B/DurTrig_SRFF/Trig (Led_B/DurTrig_SRFF/Trig)
+     INV:I->O             15   0.358   0.591  Led21_INV_0 (Led2_OBUF)
+     OBUF:I->O                 3.957          Led2_OBUF (Led2)
     ----------------------------------------
-    Total                      5.575ns (4.512ns logic, 1.063ns route)
-                                       (80.9% logic, 19.1% route)
+    Total                      5.641ns (4.675ns logic, 0.966ns route)
+                                       (82.9% logic, 17.1% route)
 
 =========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'ADC_FCO_LVDS<0>'
-  Total number of paths / destination ports: 6 / 6
+  Total number of paths / destination ports: 8 / 8
 -------------------------------------------------------------------------
 Offset:              4.677ns (Levels of Logic = 1)
-  Source:            DataOut_5_1 (FF)
-  Destination:       Test<5> (PAD)
+  Source:            DataOut_7_1 (FF)
+  Destination:       Test<7> (PAD)
   Source Clock:      ADC_FCO_LVDS<0> rising
 
-  Data Path: DataOut_5_1 to Test<5>
+  Data Path: DataOut_7_1 to Test<7>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               1   0.360   0.360  DataOut_5_1 (DataOut_5_1)
-     OBUF:I->O                 3.957          Test_5_OBUF (Test<5>)
+     FD:C->Q               1   0.360   0.360  DataOut_7_1 (DataOut_7_1)
+     OBUF:I->O                 3.957          Test_7_OBUF (Test<7>)
     ----------------------------------------
     Total                      4.677ns (4.317ns logic, 0.360ns route)
                                        (92.3% logic, 7.7% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'PhaseSwitch/Sync_TRG1'
-  Total number of paths / destination ports: 3 / 3
+Timing constraint: Default OFFSET OUT AFTER for Clock 'PhaseSwitch/EndTrig_3'
+  Total number of paths / destination ports: 4 / 4
 -------------------------------------------------------------------------
-Offset:              5.474ns (Levels of Logic = 2)
-  Source:            PhaseSwitch/Sync_TRG2 (FF)
+Offset:              5.574ns (Levels of Logic = 2)
+  Source:            PhaseSwitch/MUX_Control (FF)
   Destination:       Led1 (PAD)
-  Source Clock:      PhaseSwitch/Sync_TRG1 rising
+  Source Clock:      PhaseSwitch/EndTrig_3 rising
 
-  Data Path: PhaseSwitch/Sync_TRG2 to Led1
+  Data Path: PhaseSwitch/MUX_Control to Led1
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               2   0.360   0.602  PhaseSwitch/Sync_TRG2 (PhaseSwitch/Sync_TRG2)
+     FD:C->Q               4   0.360   0.702  PhaseSwitch/MUX_Control (PhaseSwitch/MUX_Control)
+     LUT3:I0->O            1   0.195   0.360  o_green_led1 (Led1_OBUF)
+     OBUF:I->O                 3.957          Led1_OBUF (Led1)
+    ----------------------------------------
+    Total                      5.574ns (4.512ns logic, 1.062ns route)
+                                       (81.0% logic, 19.0% route)
+
+=========================================================================
+Timing constraint: Default OFFSET OUT AFTER for Clock 'Qclock'
+  Total number of paths / destination ports: 4 / 4
+-------------------------------------------------------------------------
+Offset:              5.471ns (Levels of Logic = 2)
+  Source:            CntTest/count_24 (FF)
+  Destination:       Led1 (PAD)
+  Source Clock:      Qclock rising
+
+  Data Path: CntTest/count_24 to Led1
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     FD:C->Q               4   0.360   0.599  CntTest/count_24 (CntTest/count_24)
      LUT3:I1->O            1   0.195   0.360  o_green_led1 (Led1_OBUF)
      OBUF:I->O                 3.957          Led1_OBUF (Led1)
     ----------------------------------------
-    Total                      5.474ns (4.512ns logic, 0.962ns route)
-                                       (82.4% logic, 17.6% route)
+    Total                      5.471ns (4.512ns logic, 0.959ns route)
+                                       (82.5% logic, 17.5% route)
 
 =========================================================================
 
@@ -995,7 +1019,7 @@ Clock to Setup on destination clock ADC_FCO_LVDS<0>
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-ADC_DCO_LVDS<0>|    0.757|         |         |         |
+ADC_DCO_LVDS<0>|    0.759|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock FCT_40
@@ -1003,8 +1027,8 @@ Clock to Setup on destination clock FCT_40
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-FCT_40         |    2.466|         |         |         |
-Qclock         |    2.358|         |         |         |
+FCT_40         |    3.629|         |         |         |
+Qclock         |    2.350|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock MuxClock_in
@@ -1013,15 +1037,15 @@ Clock to Setup on destination clock MuxClock_in
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
 ADC_FCO_LVDS<0>|    0.742|         |         |         |
-MuxClock_in    |    2.900|         |         |         |
+MuxClock_in    |    3.507|         |         |         |
 ---------------+---------+---------+---------+---------+
 
-Clock to Setup on destination clock PhaseSwitch/Sync_TRG1
+Clock to Setup on destination clock PhaseSwitch/EndTrig_3
 ---------------+---------+---------+---------+---------+
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-FCT_40         |    3.118|         |         |         |
+FCT_40         |    0.759|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock Qclock
@@ -1029,14 +1053,15 @@ Clock to Setup on destination clock Qclock
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-Qclock         |    2.466|         |         |         |
+FCT_40         |    2.057|         |         |         |
+Qclock         |    2.849|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
 Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.10 secs
+Total CPU time to Xst completion: 6.08 secs
  
 WARNING:Xst:3152 - You have chosen to run a version of XST which is not the default solution
    for the specified device family. You are free to use it in order to take
@@ -1048,9 +1073,9 @@ WARNING:Xst:3152 - You have chosen to run a version of XST which is not the defa
    on the XST command line or in the XST process properties panel.
 --> 
 
-Total memory usage is 269144 kilobytes
+Total memory usage is 270104 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  200 (   0 filtered)
-Number of infos    :    9 (   0 filtered)
+Number of warnings :  185 (   0 filtered)
+Number of infos    :   10 (   0 filtered)
 

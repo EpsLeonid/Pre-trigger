@@ -36,14 +36,14 @@ port (
 
 -- 1. Clocks
 	Qclock		: in std_logic; -- system clock
-	FCT_40		: in std_logic; -- system clock
-	FCT_160		: in std_logic; -- clock
-	FCT_160_n	: in std_logic; -- clock
+	FCT_40		: in std_logic := '0'; -- system clock
+	FCT_160		: in std_logic := '0'; -- clock
+	FCT_160_n	: in std_logic := '0'; -- clock
 -- In Trigger module Link's Clock is checked inside Altera but switched outside 
-	Sw_Quartz	: out std_logic;	-- connects Quartz to PLL ref.Input			-> Pin 
-	Sw_FCTClk	: out std_logic;	-- connects Link's Clock to PLL ref.Input	-> Pin 
+	Sw_Quartz	: out std_logic := '1';	-- connects Quartz to PLL ref.Input			-> Pin 
+	Sw_FCTClk	: out std_logic := '0';	-- connects Link's Clock to PLL ref.Input	-> Pin 
 
-	MuxClock_in		: in std_logic;	-- Ref.clock for PLL (dedicated)			<- Pin 
+	MuxClock_in		: in std_logic := '0';	-- Ref.clock for PLL (dedicated)			<- Pin 
 
 -- Outputs for Indicators on LED's
 
@@ -108,6 +108,8 @@ architecture Behavioral of ISERDES_8bit is
 	--- clocking
 	signal Quarts				: std_logic;
 	signal FCT40				: std_logic;
+	signal ResultClock			: std_logic;	-- Ref.clock for PLL (dedicated)
+	signal resultclock1 : std_logic;
 	signal Clock_in			: std_logic;
 	signal Clk40				: std_logic;
 	signal CLK40_90d			: std_logic;
@@ -119,7 +121,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal Clk320				: std_logic;
 	signal FCT160				: std_logic;
 	signal Phase				: std_logic;
-	signal Clk_Selected		: std_logic := '0';
+	signal Clk_Selected		: std_logic := '1';
 	signal s_clock_locked	: std_logic;
 	---
 
@@ -174,7 +176,7 @@ architecture Behavioral of ISERDES_8bit is
 
 	signal DelayReset			: std_logic_vector (9 downto 0);
 	signal AllReset			: std_logic := '0';
-	signal ResCnt				: std_logic_vector (11 downto 0);
+	signal ResCnt				: std_logic_vector (10 downto 0);
 	signal StopReset			: std_logic := '0';
 	---
 	
@@ -182,6 +184,7 @@ architecture Behavioral of ISERDES_8bit is
 	signal TrigIn	: std_logic;
 	signal TrigDes_o	: std_logic;
 	signal FastTrigDes_o	: std_logic;
+	signal TrigDelayReset: std_logic_vector (9 downto 0);
 
 	---
 	--- ADC SPI interface signals
@@ -239,7 +242,7 @@ begin
 
 	process (Clk40)
 	begin
-		if Clk40'event and Clk40='1' then  
+		if(rising_edge(Clk40)) then 
 			PowerUp0 <= not ExtReset AND s_clock_locked;
 		end if;
 	end process;
@@ -308,19 +311,32 @@ PhaseSwitch: entity work.PhaseSW
 				  SysClk				=> FCT40,
 				  Reset				=> Reset,
 				  Phase				=> Phase,
-				  SysClk_Selected	=> Clk_Selected
+				  SysClk_Selected	=> Clk_Selected--Test(9)
 				);
+
+--Clk_Selected <= '0';
+
 Sw_FCTClk <= Clk_Selected;
 Sw_Quartz <= not Clk_Selected;
 
---ClockIn_BUF : IBUFG
---	generic map (
---		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE"   
---		IOSTANDARD => "DEFAULT")
---	port map (
---		O => Clock_in,     -- Clock buffer output
---		I => MuxClock_in      -- Clock buffer input
---	);
+--process (Quarts)
+--begin
+--	if rising_edge(Quarts) then
+--		if Clk_Selected = '1' then ResultClock <= FCT40;
+--									 else ResultClock <= Quarts;
+--		end if;
+--	end if;
+--end process;
+
+ClockSwitch : BUFGMUX_VIRTEX4
+port map (
+	O => ResultClock,    -- Clock MUX output
+	I0 => Quarts,  -- Clock0 input
+	I1 => FCT40,  -- Clock1 input
+	S => Clk_Selected			-- Clock select input
+);
+
+--bufgggg : BUFG port map ( i=> ResultClock1, o=>resultClock);
 
 DLL: entity work.DLL_test
 	port map (
@@ -358,26 +374,28 @@ DLL: entity work.DLL_test
 	o_green_led <= '0' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
 						'1';
 	Led_B : entity work.Light_Pulser 
-		generic map ( DIV	=> 4,
-						  DUR	=> 80)
+		generic map ( DIV	=> 1000,
+						  DUR	=> 10000)
 		port map( 
 					 clock => CLK80,
 					 i_event => FastTrigDes_o,
 					 o_flash => o_blue_led
 					);
 
---	Led_B : entity work.Light_LED
+--	Led_R : entity work.Light_Pulser 
+--		generic map ( DIV	=> 1000,
+--						  DUR	=> 10000)
 --		port map( 
 --					 clock => CLK80,
---					 i_event => FastTrigDes_o,
---					 o_flash => o_blue_led
+--					 i_event => not s_clock_locked,
+--					 o_flash => o_red_led
 --					);
 
-	o_red_led <= '1' when s_clock_locked = '1' else
-					 '0';
+	o_red_led <= '0' when ((s_clock_locked = '0') OR (TestCnt(24)='1' and Clk_Selected = '0')) else
+					 '1';
 
 	LED1 <= o_green_led;
-	LED2 <= o_blue_led;
+	LED2 <= not o_blue_led;
 	LED3 <= o_red_led;
 
 	LED4 <= '1' when TestCnt(22)='1' else
@@ -588,6 +606,9 @@ DLL: entity work.DLL_test
 	begin 
 		if (rising_edge(Clk160)) then
 			if AllReset = '1' then
+				Sub_ped_delay <= (others => '0');
+				AverData_med <= (others => '0');
+				AverData <= (others => '0');
 				GroupValue_Up_LT <= '0';
 			else
 				Sub_ped(7 downto 0) <= DataOut;-- InData;-- - Piedistal_def;
@@ -650,16 +671,36 @@ DLL: entity work.DLL_test
 	TriggerDes: process (Clk160)
 	begin 
 		if (rising_edge(Clk160)) then
-			if (GroupLT_Trig = '1') then FastTrigDes_o <= '1';
-											else FastTrigDes_o <= '0';
+			if AllReset = '1' then 
+				FastTrigDes_o <= '0';
+			elsif (GroupLT_Trig = '1') then FastTrigDes_o <= '1';
+												else FastTrigDes_o <= '0';
 			end if;
-			if (GroupAmp_Trig = '1') then TrigDes_o <= '1';
+			if AllReset = '1' then 
+				TrigDes_o <= '0';
+			elsif (GroupAmp_Trig = '1') then TrigDes_o <= '1';
 											 else TrigDes_o <= '0';
 			end if;
 		end if;
 	end process;
 	
-	FastTrigDes <= FastTrigDes_o;
+	FastTrig: process (Clk80)
+	begin 
+		if (rising_edge(Clk80)) then
+			TrigDelayReset(0) <= FastTrigDes_o;
+			TrigDelayReset(1) <= TrigDelayReset(0);
+			TrigDelayReset(2) <= TrigDelayReset(1);
+			TrigDelayReset(3) <= TrigDelayReset(2);
+			TrigDelayReset(4) <= TrigDelayReset(3);
+			TrigDelayReset(5) <= TrigDelayReset(4);
+			TrigDelayReset(6) <= TrigDelayReset(5);
+			TrigDelayReset(7) <= TrigDelayReset(6);
+			TrigDelayReset(8) <= TrigDelayReset(7);
+			TrigDelayReset(9) <= TrigDelayReset(8);
+		end if;
+	end process;
+
+	FastTrigDes <= FastTrigDes_o;--TrigDelayReset(9);--
 	TrigDes <= TrigDes_o;
 	
 	TrigData: process (Clk40)
@@ -686,9 +727,9 @@ DLL: entity work.DLL_test
 			end if;
 			DelayReset(1) <= DelayReset(0);
 			DelayReset(2) <= DelayReset(1);
---			DelayReset(3) <= DelayReset(2);
---			DelayReset(4) <= DelayReset(3);
---			DelayReset(5) <= DelayReset(4);
+			DelayReset(3) <= DelayReset(2);
+			DelayReset(4) <= DelayReset(3);
+			DelayReset(5) <= DelayReset(4);
 --			DelayReset(6) <= DelayReset(5);
 --			DelayReset(7) <= DelayReset(6);
 --			DelayReset(8) <= DelayReset(7);
@@ -698,7 +739,7 @@ DLL: entity work.DLL_test
 
 	Reset_Trig: entity work.SRFF 
 	port map (
-		S		=> DelayReset(2),
+		S		=> DelayReset(5),
 		CLK	=> Clk80,
 		R		=> StopReset,
 		q		=> AllReset
@@ -706,7 +747,7 @@ DLL: entity work.DLL_test
 
 	ResetCnt: entity work.V_Counter 
 	generic map(
-				WIDTH => 12
+				WIDTH => 11
 			)
 	port map (
 				clock 	=> clk80,--Quarts,--CLK40,
@@ -717,7 +758,7 @@ DLL: entity work.DLL_test
 	StopResetAll: process (Clk80)
 	begin 
 		if (rising_edge(Clk80)) then
-			if (ResCnt = X"FFF") then
+			if (ResCnt = X"7FF") then
 				StopReset <= '1';
 			else 
 				StopReset <= '0';
@@ -822,7 +863,7 @@ DLL: entity work.DLL_test
 				WIDTH => 26
 			)
 	port map (
-				clock 	=> clk80,--Quarts,--CLK40,
+				clock 	=> Quarts,--clk80,--CLK40,
 				clk_en	=>	'1',
 				q			=> TestCnt
 				);
@@ -844,8 +885,8 @@ DLL: entity work.DLL_test
 	Test(3) <= DataOut(3);
 	Test(4) <= DataOut(4);
 	Test(5) <= DataOut(5);
-	Test(6) <= StopReset;
-	Test(7) <= AllReset;
+	Test(6) <= DataOut(6);
+	Test(7) <= DataOut(7);
 	Test(8) <= GroupLT_Trig;
 	Test(9) <= GroupAmp_Trig;
 

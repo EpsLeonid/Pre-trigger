@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat Feb 09 11:21:27 2019
+// Written by: Map P.20131013 on Thu Feb 14 13:52:46 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -166,19 +166,20 @@ COMP "ADCInDataLVDSPrev<7>" LOCATE = SITE "AP9" LEVEL 1;
 COMP "ADCInDataLVDSPrev<8>" LOCATE = SITE "AN8" LEVEL 1;
 COMP "ADCInDataLVDSPrev<9>" LOCATE = SITE "AN7" LEVEL 1;
 COMP "TrigInLVDS_n" LOCATE = SITE "G5" LEVEL 1;
-TIMEGRP DLL_CLKFX_BUF = BEL "AverData_7" BEL "AverData_6" BEL "AverData_5" BEL
-        "AverData_4" BEL "AverData_1" BEL "AverData_3" BEL "AverData_2" BEL
-        "GroupValue_Up_LT" BEL "TrigDes_o" BEL "FastTrigDes_o" BEL "Sub_Ped_5"
-        BEL "Sub_Ped_7" BEL "Sub_Ped_6" BEL "Sub_Ped_4" BEL "Sub_Ped_3" BEL
-        "Sub_Ped_2" BEL "Sub_Ped_1" BEL "Sub_Ped_0" BEL "Sub_ped_delay_0" BEL
-        "Sub_ped_delay_1" BEL "Sub_ped_delay_2" BEL "Sub_ped_delay_3" BEL
-        "Sub_ped_delay_4" BEL "Sub_ped_delay_5" BEL "Sub_ped_delay_6" BEL
-        "Sub_ped_delay_7" BEL "AverData_med_1" BEL "AverData_med_2" BEL
-        "AverData_med_3" BEL "AverData_med_4" BEL "AverData_med_5" BEL
-        "AverData_med_6" BEL "AverData_med_7" BEL "AverData_med_8" BEL
-        "AverData_0" BEL "GroupSum_2" BEL "GroupSum_3" BEL "GroupSum_4" BEL
-        "GroupSum_5" BEL "GroupSum_6" BEL "GroupSum_7" BEL "GroupSum_8" BEL
-        "GroupSum_9" BEL "DelayGroupAmp_mid_2" BEL "DelayGroupAmp_mid_3" BEL
+TIMEGRP DLL_CLKFX_BUF = BEL "GroupValue_Up_LT" BEL "FastTrigDes_o" BEL
+        "TrigDes_o" BEL "Sub_Ped_5" BEL "Sub_Ped_7" BEL "Sub_Ped_6" BEL
+        "Sub_Ped_2" BEL "Sub_Ped_4" BEL "Sub_Ped_3" BEL "Sub_Ped_1" BEL
+        "Sub_Ped_0" BEL "Sub_ped_delay_0" BEL "Sub_ped_delay_1" BEL
+        "Sub_ped_delay_2" BEL "Sub_ped_delay_3" BEL "Sub_ped_delay_4" BEL
+        "Sub_ped_delay_5" BEL "Sub_ped_delay_6" BEL "Sub_ped_delay_7" BEL
+        "AverData_med_1" BEL "AverData_med_2" BEL "AverData_med_3" BEL
+        "AverData_med_4" BEL "AverData_med_5" BEL "AverData_med_6" BEL
+        "AverData_med_7" BEL "AverData_med_8" BEL "AverData_0" BEL
+        "AverData_1" BEL "AverData_2" BEL "AverData_3" BEL "AverData_4" BEL
+        "AverData_5" BEL "AverData_6" BEL "AverData_7" BEL "GroupSum_2" BEL
+        "GroupSum_3" BEL "GroupSum_4" BEL "GroupSum_5" BEL "GroupSum_6" BEL
+        "GroupSum_7" BEL "GroupSum_8" BEL "GroupSum_9" BEL
+        "DelayGroupAmp_mid_2" BEL "DelayGroupAmp_mid_3" BEL
         "DelayGroupAmp_mid_4" BEL "DelayGroupAmp_mid_5" BEL
         "DelayGroupAmp_mid_6" BEL "DelayGroupAmp_mid_7" BEL
         "DelayGroupAmp_mid_8" BEL "DelayGroupAmp_mid_9" BEL "DelayGroupAmp_2"
@@ -189,22 +190,26 @@ TIMEGRP DLL_CLKFX_BUF = BEL "AverData_7" BEL "AverData_6" BEL "AverData_5" BEL
         BEL "GroupAmp_9" BEL "Global_clk160" BEL "DLL/CLKFX_BUFG_INST" BEL
         "Amp_Trig/Trig" BEL "LT_Trig/Trig" BEL "GroupValue_Amp_Done";
 TIMEGRP DLL_CLK2X_BUF = BEL "StopReset" BEL "DelayReset_0" BEL
-        "Led_B/ES1/Trig1" BEL "Led_B/ES1/Trig0" BEL "CntTest/count_0" BEL
-        "CntTest/count_1" BEL "CntTest/count_2" BEL "CntTest/count_3" BEL
-        "CntTest/count_4" BEL "CntTest/count_5" BEL "CntTest/count_6" BEL
-        "CntTest/count_7" BEL "CntTest/count_8" BEL "CntTest/count_9" BEL
-        "CntTest/count_10" BEL "CntTest/count_11" BEL "CntTest/count_12" BEL
-        "CntTest/count_13" BEL "CntTest/count_14" BEL "CntTest/count_15" BEL
-        "CntTest/count_16" BEL "CntTest/count_17" BEL "CntTest/count_18" BEL
-        "CntTest/count_19" BEL "CntTest/count_20" BEL "CntTest/count_21" BEL
-        "CntTest/count_22" BEL "CntTest/count_23" BEL "CntTest/count_24" BEL
         "ResetCnt/count_0" BEL "ResetCnt/count_1" BEL "ResetCnt/count_2" BEL
         "ResetCnt/count_3" BEL "ResetCnt/count_4" BEL "ResetCnt/count_5" BEL
         "ResetCnt/count_6" BEL "ResetCnt/count_7" BEL "ResetCnt/count_8" BEL
-        "ResetCnt/count_9" BEL "ResetCnt/count_10" BEL "ResetCnt/count_11" BEL
-        "Global_clk80" BEL "DLL/CLK2X_BUFG_INST" BEL "Led_B/DurTrig_SRFF/Trig"
-        BEL "Reset_Trig/Trig" BEL "Reset_Trig/Trig_1" BEL
-        "Mshreg_DelayReset_2/SRL16E" BEL "DelayReset_2" BEL "ADC_CLK";
+        "ResetCnt/count_9" BEL "ResetCnt/count_10" BEL "Global_clk80" BEL
+        "DLL/CLK2X_BUFG_INST" BEL "Reset_Trig/Trig" BEL
+        "Led_B/DurTrig_SRFF/Trig" BEL "Led_B/Prescaler/count_9" BEL
+        "Led_B/Prescaler/count_8" BEL "Led_B/Prescaler/count_7" BEL
+        "Led_B/Prescaler/count_6" BEL "Led_B/Prescaler/count_5" BEL
+        "Led_B/Prescaler/count_4" BEL "Led_B/Prescaler/count_3" BEL
+        "Led_B/Prescaler/count_2" BEL "Led_B/Prescaler/count_1" BEL
+        "Led_B/Prescaler/count_0" BEL "Led_B/Timer/count_13" BEL
+        "Led_B/Timer/count_12" BEL "Led_B/Timer/count_11" BEL
+        "Led_B/Timer/count_10" BEL "Led_B/Timer/count_9" BEL
+        "Led_B/Timer/count_8" BEL "Led_B/Timer/count_7" BEL
+        "Led_B/Timer/count_6" BEL "Led_B/Timer/count_5" BEL
+        "Led_B/Timer/count_4" BEL "Led_B/Timer/count_3" BEL
+        "Led_B/Timer/count_2" BEL "Led_B/Timer/count_1" BEL
+        "Led_B/Timer/count_0" BEL "Led_B/ES1/Trig0" BEL "Led_B/ES1/Trig1" BEL
+        "Led_B/Flah_Freq" BEL "Reset_Trig/Trig_1" BEL
+        "Mshreg_DelayReset_5/SRL16E" BEL "DelayReset_5" BEL "ADC_CLK";
 TIMEGRP ADC_DCO_LVDS0 = BEL "DataN_1" BEL "DataP_1" BEL "DataN_2" BEL
         "DataP_2" BEL "DataN_del_3" BEL "DataP_del_3" BEL "IDDR_inst/FF0" BEL
         "IDDR_inst/FF1" BEL "IDDR_inst/FF2" BEL "IDDR_inst/FF3" BEL
@@ -214,30 +219,43 @@ TIMEGRP DLL_CLK0_BUF = BEL "TriggerData_2" BEL "TriggerData_3" BEL
         "TriggerData_4" BEL "TriggerData_5" BEL "TriggerData_6" BEL
         "TriggerData_7" BEL "TriggerData_8" BEL "TriggerData_9" BEL
         "TriggerData_12" BEL "TriggerData_15" BEL "DLL/CLK0_BUFG_INST";
+TIMEGRP Qclock = BEL "CntTest/count_0" BEL "CntTest/count_1" BEL
+        "CntTest/count_2" BEL "CntTest/count_3" BEL "CntTest/count_4" BEL
+        "CntTest/count_5" BEL "CntTest/count_6" BEL "CntTest/count_7" BEL
+        "CntTest/count_8" BEL "CntTest/count_9" BEL "CntTest/count_10" BEL
+        "CntTest/count_11" BEL "CntTest/count_12" BEL "CntTest/count_13" BEL
+        "CntTest/count_14" BEL "CntTest/count_15" BEL "CntTest/count_16" BEL
+        "CntTest/count_17" BEL "CntTest/count_18" BEL "CntTest/count_19" BEL
+        "CntTest/count_20" BEL "CntTest/count_21" BEL "CntTest/count_22" BEL
+        "CntTest/count_23" BEL "CntTest/count_24" BEL
+        "PhaseSwitch/TrigEnd/Trig" BEL "PhaseSwitch/RefTimeCnt/count_15" BEL
+        "PhaseSwitch/RefTimeCnt/count_14" BEL
+        "PhaseSwitch/RefTimeCnt/count_13" BEL
+        "PhaseSwitch/RefTimeCnt/count_12" BEL
+        "PhaseSwitch/RefTimeCnt/count_11" BEL
+        "PhaseSwitch/RefTimeCnt/count_10" BEL "PhaseSwitch/RefTimeCnt/count_9"
+        BEL "PhaseSwitch/RefTimeCnt/count_8" BEL
+        "PhaseSwitch/RefTimeCnt/count_7" BEL "PhaseSwitch/RefTimeCnt/count_6"
+        BEL "PhaseSwitch/RefTimeCnt/count_5" BEL
+        "PhaseSwitch/RefTimeCnt/count_4" BEL "PhaseSwitch/RefTimeCnt/count_3"
+        BEL "PhaseSwitch/RefTimeCnt/count_2" BEL
+        "PhaseSwitch/RefTimeCnt/count_1" BEL "PhaseSwitch/RefTimeCnt/count_0"
+        BEL "PhaseSwitch/EndTrig_4" BEL "PhaseSwitch/RefTimeZero" BEL
+        "PhaseSwitch/CycleEnd" BEL "Quarts_BUFG" BEL
+        "PhaseSwitch/Mshreg_EndTrig_3/SRL16E" BEL "PhaseSwitch/EndTrig_3";
 PIN DLL/DCM_ADV_INST_pins<4> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
 TIMEGRP MuxClock_in = PIN "DLL/DCM_ADV_INST_pins<4>";
-TIMEGRP FCT_40 = BEL "PhaseSwitch/SysClkCnt/count_15" BEL
-        "PhaseSwitch/SysClkCnt/count_14" BEL "PhaseSwitch/SysClkCnt/count_13"
-        BEL "PhaseSwitch/SysClkCnt/count_12" BEL
-        "PhaseSwitch/SysClkCnt/count_11" BEL "PhaseSwitch/SysClkCnt/count_10"
-        BEL "PhaseSwitch/SysClkCnt/count_9" BEL
-        "PhaseSwitch/SysClkCnt/count_8" BEL "PhaseSwitch/SysClkCnt/count_7"
-        BEL "PhaseSwitch/SysClkCnt/count_6" BEL
-        "PhaseSwitch/SysClkCnt/count_5" BEL "PhaseSwitch/SysClkCnt/count_4"
-        BEL "PhaseSwitch/SysClkCnt/count_3" BEL
-        "PhaseSwitch/SysClkCnt/count_2" BEL "PhaseSwitch/SysClkCnt/count_1"
-        BEL "PhaseSwitch/SysClkCnt/count_0";
-TIMEGRP Qclock = BEL "PhaseSwitch/TimingCnt/count_15" BEL
-        "PhaseSwitch/TimingCnt/count_14" BEL "PhaseSwitch/TimingCnt/count_13"
-        BEL "PhaseSwitch/TimingCnt/count_12" BEL
-        "PhaseSwitch/TimingCnt/count_11" BEL "PhaseSwitch/TimingCnt/count_10"
-        BEL "PhaseSwitch/TimingCnt/count_9" BEL
-        "PhaseSwitch/TimingCnt/count_8" BEL "PhaseSwitch/TimingCnt/count_7"
-        BEL "PhaseSwitch/TimingCnt/count_6" BEL
-        "PhaseSwitch/TimingCnt/count_5" BEL "PhaseSwitch/TimingCnt/count_4"
-        BEL "PhaseSwitch/TimingCnt/count_3" BEL
-        "PhaseSwitch/TimingCnt/count_2" BEL "PhaseSwitch/TimingCnt/count_1"
-        BEL "PhaseSwitch/TimingCnt/count_0" BEL "PhaseSwitch/Sync_TRG1";
+TIMEGRP FCT_40 = BEL "PhaseSwitch/SysClkCt/count_15" BEL
+        "PhaseSwitch/SysClkCt/count_14" BEL "PhaseSwitch/SysClkCt/count_13"
+        BEL "PhaseSwitch/SysClkCt/count_12" BEL
+        "PhaseSwitch/SysClkCt/count_11" BEL "PhaseSwitch/SysClkCt/count_10"
+        BEL "PhaseSwitch/SysClkCt/count_9" BEL "PhaseSwitch/SysClkCt/count_8"
+        BEL "PhaseSwitch/SysClkCt/count_7" BEL "PhaseSwitch/SysClkCt/count_6"
+        BEL "PhaseSwitch/SysClkCt/count_5" BEL "PhaseSwitch/SysClkCt/count_4"
+        BEL "PhaseSwitch/SysClkCt/count_3" BEL "PhaseSwitch/SysClkCt/count_2"
+        BEL "PhaseSwitch/SysClkCt/count_1" BEL "PhaseSwitch/SysClkCt/count_0"
+        BEL "PhaseSwitch/FnormTrig" BEL "PhaseSwitch/Fnorm" BEL
+        "PhaseSwitch/SysClkZero";
 TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 TS_FCT_40 = PERIOD TIMEGRP "FCT_40" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 TS_MuxClock_in = PERIOD TIMEGRP "MuxClock_in" 25 ns HIGH 50% INPUT_JITTER
