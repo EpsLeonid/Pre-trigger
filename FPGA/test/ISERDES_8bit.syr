@@ -4,13 +4,13 @@ Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.06 secs
  
 --> WARNING:Xst:1583 - You are using an internal switch '-use_new_parser'.
 WARNING:Xst:3152 - You have chosen to run a version of XST which is not the default solution
@@ -183,11 +183,11 @@ Elaborating entity <V_Counter> (architecture <Utility>) with generics from libra
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
 
 Elaborating entity <Edge_Sensing> (architecture <Utility>) from library <work>.
-WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 601: Assignment to indata ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 615: Assignment to indata ignored, since the identifier is never used
 
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
-WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 772: Assignment to s_fadc_test ignored, since the identifier is never used
-WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 773: Assignment to s_fadc_reset ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 786: Assignment to s_fadc_test ignored, since the identifier is never used
+WARNING:HDLCompiler:1127 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 787: Assignment to s_fadc_reset ignored, since the identifier is never used
 
 Elaborating entity <V_Counter> (architecture <Utility>) with generics from library <work>.
 
@@ -199,9 +199,9 @@ Elaborating entity <V_Counter> (architecture <Utility>) with generics from libra
 WARNING:HDLCompiler:634 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" Line 164: Net <Sub_Ped[9]> does not have a driver.
 WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 253. All outputs of instance <PowerUp1> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
 WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 261. All outputs of instance <PowerUp2> of block <SRFF> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 777. All outputs of instance <ADC_Cnt> of block <V_Counter> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 788. All outputs of instance <ShiftReg_test> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
-WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 795. All outputs of instance <ShiftReg_reset> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 791. All outputs of instance <ADC_Cnt> of block <V_Counter> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 802. All outputs of instance <ShiftReg_test> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
+WARNING:Xst:2972 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 809. All outputs of instance <ShiftReg_reset> of block <ShiftReg> are unconnected in block <ISERDES_8bit>. Underlying logic will be removed.
 
 =========================================================================
 *                           HDL Synthesis                               *
@@ -222,6 +222,7 @@ WARNING:Xst:647 - Input <ADC_FCO_LVDS_n<1:1>> is never used. This port will be p
 WARNING:Xst:647 - Input <ADC_DCO_LVDSPrev> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ADC_DCO_LVDSPrev_n> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <RxD> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
+WARNING:Xst:647 - Input <MuxClock_in> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ADC_test> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <ADC_res> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 WARNING:Xst:647 - Input <TrigInLVDS> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
@@ -233,11 +234,10 @@ WARNING:Xst:647 - Input <TxClk> is never used. This port will be preserved and l
 WARNING:Xst:647 - Input <Col> is never used. This port will be preserved and left unconnected if it belongs to a top-level block or it belongs to a sub-block and the hierarchy of this sub-block is preserved.
 INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 304: Output port <Test> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
 INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 304: Output port <Phase> of the instance <PhaseSwitch> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 341: Output port <CLKIN_IBUFG_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 341: Output port <CLK90_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 777: Output port <q> of the instance <ADC_Cnt> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 788: Output port <q> of the instance <ShiftReg_test> is unconnected or connected to loadless signal.
-INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 795: Output port <q> of the instance <ShiftReg_reset> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 355: Output port <CLK90_OUT> of the instance <DLL> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 791: Output port <q> of the instance <ADC_Cnt> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 802: Output port <q> of the instance <ShiftReg_test> is unconnected or connected to loadless signal.
+INFO:Xst:3210 - "C:\Work\COMET project\trunk\FPGA\test\ISERDES_8bit.vhd" line 809: Output port <q> of the instance <ShiftReg_reset> is unconnected or connected to loadless signal.
 WARNING:Xst:2935 - Signal 'TxD', unconnected in block 'ISERDES_8bit', is tied to its initial value (0000).
 WARNING:Xst:2935 - Signal 'Sub_Ped<9:8>', unconnected in block 'ISERDES_8bit', is tied to its initial value (00).
 WARNING:Xst:2935 - Signal 'ADC_CSB', unconnected in block 'ISERDES_8bit', is tied to its initial value (1).
@@ -287,9 +287,9 @@ WARNING:Xst:2935 - Signal 'ADC_SCLK', unconnected in block 'ISERDES_8bit', is ti
     Found 1-bit register for signal <DelayReset<1>>.
     Found 1-bit register for signal <DelayReset<0>>.
     Found 1-bit register for signal <StopReset>.
-    Found 10-bit adder for signal <Sub_ped_delay[9]_Sub_Ped[9]_add_6_OUT> created at line 616.
-    Found 10-bit comparator lessequal for signal <n0044> created at line 618
-    Found 10-bit comparator greater for signal <GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o> created at line 645
+    Found 10-bit adder for signal <Sub_ped_delay[9]_Sub_Ped[9]_add_6_OUT> created at line 630.
+    Found 10-bit comparator lessequal for signal <n0049> created at line 632
+    Found 10-bit comparator greater for signal <GroupSum[9]_DelayGroupAmp_mid[9]_LessThan_18_o> created at line 659
     Summary:
 	inferred   1 Adder/Subtractor(s).
 	inferred 169 D-type flip-flop(s).
@@ -611,7 +611,6 @@ WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_1> has 
 WARNING:Xst:1896 - Due to other FF/Latch trimming, FF/Latch <TriggerData_0> has a constant value of 0 in block <ISERDES_8bit>. This FF/Latch will be trimmed during the optimization process.
 INFO:Xst:2261 - The FF/Latch <TriggerData_12> in Unit <ISERDES_8bit> is equivalent to the following 3 FFs/Latches, which will be removed : <TriggerData_14> <TriggerData_17> <TriggerData_19> 
 WARNING:Xst:2677 - Node <CntTest/count_25> of sequential type is unconnected in block <ISERDES_8bit>.
-INFO:Xst:1901 - Instance ClockSwitch in unit ISERDES_8bit of type BUFGMUX_VIRTEX4 has been replaced by BUFGCTRL
 
 Optimizing unit <ISERDES_8bit> ...
 
@@ -623,15 +622,10 @@ Mapping all equations...
 Building and optimizing final netlist ...
 Found area constraint ratio of 100 (+ 5) on block ISERDES_8bit, actual ratio is 0.
 FlipFlop Reset_Trig/Trig has been replicated 1 time(s)
-FlipFlop DataOut_7 has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop DataOut_6 has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop DataOut_5 has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop DataOut_4 has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop DataOut_3 has been replicated 1 time(s) to handle iob=true attribute.
+FlipFlop PhaseSwitch/MUX_Control has been replicated 2 time(s) to handle iob=true attribute.
 FlipFlop DataOut_2 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_1 has been replicated 1 time(s) to handle iob=true attribute.
 FlipFlop DataOut_0 has been replicated 1 time(s) to handle iob=true attribute.
-FlipFlop PhaseSwitch/MUX_Control has been replicated 1 time(s) to handle iob=true attribute.
 
 Final Macro Processing ...
 
@@ -646,8 +640,8 @@ Unit <ISERDES_8bit> processed.
 Final Register Report
 
 Macro Statistics
-# Registers                                            : 211
- Flip-Flops                                            : 211
+# Registers                                            : 207
+ Flip-Flops                                            : 207
 # Shift Registers                                      : 4
  2-bit shift register                                  : 3
  5-bit shift register                                  : 1
@@ -685,8 +679,8 @@ Primitive and Black Box Usage:
 #      MUXCY                       : 118
 #      VCC                         : 1
 #      XORCY                       : 99
-# FlipFlops/Latches                : 216
-#      FD                          : 62
+# FlipFlops/Latches                : 212
+#      FD                          : 58
 #      FDCE                        : 6
 #      FDE                         : 20
 #      FDR                         : 73
@@ -694,12 +688,11 @@ Primitive and Black Box Usage:
 #      IDDR                        : 1
 # Shift Registers                  : 4
 #      SRL16                       : 4
-# Clock Buffers                    : 9
-#      BUFG                        : 8
-#      BUFGCTRL                    : 1
-# IO Buffers                       : 98
+# Clock Buffers                    : 6
+#      BUFG                        : 6
+# IO Buffers                       : 97
 #      IBUFDS                      : 1
-#      IBUFG                       : 3
+#      IBUFG                       : 2
 #      IBUFGDS                     : 3
 #      OBUF                        : 91
 # DCM_ADVs                         : 1
@@ -716,9 +709,9 @@ Selected Device : 4vlx60ff1148-10
     Number used as logic:               175
     Number used as Shift registers:       4
  Number of IOs:                         423
- Number of bonded IOBs:                 102  out of    640    15%  
-    IOB Flip Flops:                       9
- Number of GCLKs:                         9  out of     32    28%  
+ Number of bonded IOBs:                 101  out of    640    15%  
+    IOB Flip Flops:                       5
+ Number of GCLKs:                         6  out of     32    18%  
  Number of DCM_ADVs:                      1  out of      8    12%  
 
 ---------------------------
@@ -742,14 +735,13 @@ Clock Information:
 -----------------------------------+------------------------------+-------+
 Clock Signal                       | Clock buffer(FF name)        | Load  |
 -----------------------------------+------------------------------+-------+
-MuxClock_in                        | DCM_ADV:CLKFX+BUFG           | 70    |
-MuxClock_in                        | DCM_ADV:CLK2X+BUFG           | 45    |
+FCT_40                             | DCM_ADV:CLK2X                | 45    |
 ADC_DCO_LVDS<0>                    | IBUFGDS                      | 11    |
-ADC_FCO_LVDS<0>                    | IBUFGDS                      | 16    |
-MuxClock_in                        | DCM_ADV:CLK0                 | 10    |
-Qclock                             | IBUFG+BUFG                   | 47    |
-FCT_40                             | IBUFG                        | 19    |
-PhaseSwitch/EndTrig_3              | NONE(PhaseSwitch/MUX_Control)| 2     |
+ADC_FCO_LVDS<0>                    | IBUFGDS                      | 11    |
+FCT_40                             | DCM_ADV:CLKFX                | 70    |
+FCT_40                             | DCM_ADV:CLK0                 | 54    |
+Qclock                             | IBUFG+BUFG                   | 22    |
+PhaseSwitch/EndTrig_3              | NONE(PhaseSwitch/MUX_Control)| 3     |
 -----------------------------------+------------------------------+-------+
 INFO:Xst:2169 - HDL ADVISOR - Some clock signals were not automatically buffered by XST with BUFG/BUFR resources. Please use the buffer_type constraint in order to insert these buffers to the clock signals to help prevent skew problems.
 
@@ -758,7 +750,7 @@ Asynchronous Control Signals Information:
 -----------------------------------+------------------------+-------+
 Control Signal                     | Buffer(FF name)        | Load  |
 -----------------------------------+------------------------+-------+
-Amp_Trig/CLRN_inv(XST_GND:G)       | NONE(Amp_Trig/Trig)    | 6     |
+Amp_Trig/CLRN_inv(XST_GND:G)       | NONE(Reset_Trig/Trig_1)| 6     |
 -----------------------------------+------------------------+-------+
 
 Timing Summary:
@@ -768,22 +760,22 @@ Speed Grade: -10
    Minimum period: 11.599ns (Maximum Frequency: 86.217MHz)
    Minimum input arrival time before clock: 6.702ns
    Maximum output required time after clock: 5.641ns
-   Maximum combinational path delay: No path found
+   Maximum combinational path delay: 5.630ns
 
 Timing Details:
 ---------------
 All values displayed in nanoseconds (ns)
 
 =========================================================================
-Timing constraint: Default period analysis for Clock 'MuxClock_in'
+Timing constraint: Default period analysis for Clock 'FCT_40'
   Clock period: 11.599ns (frequency: 86.217MHz)
-  Total number of paths / destination ports: 676 / 256
+  Total number of paths / destination ports: 1182 / 301
 -------------------------------------------------------------------------
 Delay:               2.900ns (Levels of Logic = 10)
   Source:            GroupSum_2 (FF)
   Destination:       GroupValue_Amp_Done (FF)
-  Source Clock:      MuxClock_in rising 4.0X
-  Destination Clock: MuxClock_in rising 4.0X
+  Source Clock:      FCT_40 rising 4.0X
+  Destination Clock: FCT_40 rising 4.0X
 
   Data Path: GroupSum_2 to GroupValue_Amp_Done
                                 Gate     Net
@@ -828,80 +820,41 @@ Delay:               2.225ns (Levels of Logic = 0)
 
 =========================================================================
 Timing constraint: Default period analysis for Clock 'Qclock'
-  Clock period: 2.849ns (frequency: 350.945MHz)
-  Total number of paths / destination ports: 517 / 64
+  Clock period: 2.464ns (frequency: 405.861MHz)
+  Total number of paths / destination ports: 192 / 39
 -------------------------------------------------------------------------
-Delay:               2.849ns (Levels of Logic = 26)
-  Source:            CntTest/count_0 (FF)
-  Destination:       CntTest/count_24 (FF)
+Delay:               2.464ns (Levels of Logic = 17)
+  Source:            PhaseSwitch/RefTimeCnt/count_0 (FF)
+  Destination:       PhaseSwitch/RefTimeCnt/count_15 (FF)
   Source Clock:      Qclock rising
   Destination Clock: Qclock rising
 
-  Data Path: CntTest/count_0 to CntTest/count_24
+  Data Path: PhaseSwitch/RefTimeCnt/count_0 to PhaseSwitch/RefTimeCnt/count_15
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               1   0.360   0.360  CntTest/count_0 (CntTest/count_0)
-     INV:I->O              1   0.358   0.000  CntTest/Mcount_count_lut<0>_INV_0 (CntTest/Mcount_count_lut<0>)
-     MUXCY:S->O            1   0.366   0.000  CntTest/Mcount_count_cy<0> (CntTest/Mcount_count_cy<0>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<1> (CntTest/Mcount_count_cy<1>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<2> (CntTest/Mcount_count_cy<2>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<3> (CntTest/Mcount_count_cy<3>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<4> (CntTest/Mcount_count_cy<4>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<5> (CntTest/Mcount_count_cy<5>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<6> (CntTest/Mcount_count_cy<6>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<7> (CntTest/Mcount_count_cy<7>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<8> (CntTest/Mcount_count_cy<8>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<9> (CntTest/Mcount_count_cy<9>)
-     MUXCY:CI->O           1   0.045   0.000  CntTest/Mcount_count_cy<10> (CntTest/Mcount_count_cy<10>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<11> (CntTest/Mcount_count_cy<11>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<12> (CntTest/Mcount_count_cy<12>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<13> (CntTest/Mcount_count_cy<13>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<14> (CntTest/Mcount_count_cy<14>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<15> (CntTest/Mcount_count_cy<15>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<16> (CntTest/Mcount_count_cy<16>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<17> (CntTest/Mcount_count_cy<17>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<18> (CntTest/Mcount_count_cy<18>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<19> (CntTest/Mcount_count_cy<19>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<20> (CntTest/Mcount_count_cy<20>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<21> (CntTest/Mcount_count_cy<21>)
-     MUXCY:CI->O           1   0.044   0.000  CntTest/Mcount_count_cy<22> (CntTest/Mcount_count_cy<22>)
-     MUXCY:CI->O           0   0.044   0.000  CntTest/Mcount_count_cy<23> (CntTest/Mcount_count_cy<23>)
-     XORCY:CI->O           1   0.360   0.000  CntTest/Mcount_count_xor<24> (Result<24>)
-     FD:D                      0.022          CntTest/count_24
+     FDRE:C->Q             3   0.360   0.375  PhaseSwitch/RefTimeCnt/count_0 (PhaseSwitch/RefTimeCnt/count_0)
+     INV:I->O              1   0.358   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_lut<0>_INV_0 (PhaseSwitch/RefTimeCnt/Mcount_count_lut<0>)
+     MUXCY:S->O            1   0.366   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<0> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<0>)
+     MUXCY:CI->O           1   0.045   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<1> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<1>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<2> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<2>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<3> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<3>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<4> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<4>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<5> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<5>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<6> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<6>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<7> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<7>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<8> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<8>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<9> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<9>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<10> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<10>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<11> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<11>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<12> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<12>)
+     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<13> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<13>)
+     MUXCY:CI->O           0   0.044   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_cy<14> (PhaseSwitch/RefTimeCnt/Mcount_count_cy<14>)
+     XORCY:CI->O           1   0.360   0.000  PhaseSwitch/RefTimeCnt/Mcount_count_xor<15> (PhaseSwitch/Result<15>1)
+     FDRE:D                    0.022          PhaseSwitch/RefTimeCnt/count_15
     ----------------------------------------
-    Total                      2.849ns (2.490ns logic, 0.360ns route)
-                                       (87.4% logic, 12.6% route)
-
-=========================================================================
-Timing constraint: Default period analysis for Clock 'FCT_40'
-  Clock period: 3.629ns (frequency: 275.531MHz)
-  Total number of paths / destination ports: 181 / 20
--------------------------------------------------------------------------
-Delay:               3.629ns (Levels of Logic = 9)
-  Source:            PhaseSwitch/SysClkCt/count_0 (FF)
-  Destination:       PhaseSwitch/Fnorm (FF)
-  Source Clock:      FCT_40 rising
-  Destination Clock: FCT_40 rising
-
-  Data Path: PhaseSwitch/SysClkCt/count_0 to PhaseSwitch/Fnorm
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FDRE:C->Q             3   0.360   0.756  PhaseSwitch/SysClkCt/count_0 (PhaseSwitch/SysClkCt/count_0)
-     LUT4:I0->O            1   0.195   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_lut<0> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_lut<0>)
-     MUXCY:S->O            1   0.366   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<0> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<0>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<1> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<1>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<2> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<2>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<3> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<3>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<4> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<4>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<5> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<5>)
-     MUXCY:CI->O           1   0.044   0.000  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<6> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<6>)
-     MUXCY:CI->O           1   0.263   0.360  PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<7> (PhaseSwitch/Mcompar_PWR_13_o_SysClkCnt_o[15]_LessThan_2_o_cy<7>)
-     FDR:R                     1.062          PhaseSwitch/Fnorm
-    ----------------------------------------
-    Total                      3.629ns (2.513ns logic, 1.116ns route)
-                                       (69.3% logic, 30.7% route)
+    Total                      2.464ns (2.089ns logic, 0.375ns route)
+                                       (84.8% logic, 15.2% route)
 
 =========================================================================
 Timing constraint: Default OFFSET IN BEFORE for Clock 'ADC_DCO_LVDS<0>'
@@ -923,13 +876,13 @@ Offset:              6.702ns (Levels of Logic = 1)
                                        (94.6% logic, 5.4% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'MuxClock_in'
-  Total number of paths / destination ports: 18 / 18
+Timing constraint: Default OFFSET OUT AFTER for Clock 'FCT_40'
+  Total number of paths / destination ports: 20 / 20
 -------------------------------------------------------------------------
 Offset:              5.641ns (Levels of Logic = 2)
   Source:            Led_B/DurTrig_SRFF/Trig (FF)
   Destination:       Led2 (PAD)
-  Source Clock:      MuxClock_in rising 2.0X
+  Source Clock:      FCT_40 rising 2.0X
 
   Data Path: Led_B/DurTrig_SRFF/Trig to Led2
                                 Gate     Net
@@ -943,29 +896,10 @@ Offset:              5.641ns (Levels of Logic = 2)
                                        (82.9% logic, 17.1% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'ADC_FCO_LVDS<0>'
-  Total number of paths / destination ports: 8 / 8
--------------------------------------------------------------------------
-Offset:              4.677ns (Levels of Logic = 1)
-  Source:            DataOut_7_1 (FF)
-  Destination:       Test<7> (PAD)
-  Source Clock:      ADC_FCO_LVDS<0> rising
-
-  Data Path: DataOut_7_1 to Test<7>
-                                Gate     Net
-    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
-    ----------------------------------------  ------------
-     FD:C->Q               1   0.360   0.360  DataOut_7_1 (DataOut_7_1)
-     OBUF:I->O                 3.957          Test_7_OBUF (Test<7>)
-    ----------------------------------------
-    Total                      4.677ns (4.317ns logic, 0.360ns route)
-                                       (92.3% logic, 7.7% route)
-
-=========================================================================
 Timing constraint: Default OFFSET OUT AFTER for Clock 'PhaseSwitch/EndTrig_3'
-  Total number of paths / destination ports: 4 / 4
+  Total number of paths / destination ports: 5 / 5
 -------------------------------------------------------------------------
-Offset:              5.574ns (Levels of Logic = 2)
+Offset:              5.575ns (Levels of Logic = 2)
   Source:            PhaseSwitch/MUX_Control (FF)
   Destination:       Led1 (PAD)
   Source Clock:      PhaseSwitch/EndTrig_3 rising
@@ -974,32 +908,49 @@ Offset:              5.574ns (Levels of Logic = 2)
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               4   0.360   0.702  PhaseSwitch/MUX_Control (PhaseSwitch/MUX_Control)
+     FD:C->Q               3   0.360   0.703  PhaseSwitch/MUX_Control (PhaseSwitch/MUX_Control)
      LUT3:I0->O            1   0.195   0.360  o_green_led1 (Led1_OBUF)
      OBUF:I->O                 3.957          Led1_OBUF (Led1)
     ----------------------------------------
-    Total                      5.574ns (4.512ns logic, 1.062ns route)
-                                       (81.0% logic, 19.0% route)
+    Total                      5.575ns (4.512ns logic, 1.063ns route)
+                                       (80.9% logic, 19.1% route)
 
 =========================================================================
-Timing constraint: Default OFFSET OUT AFTER for Clock 'Qclock'
-  Total number of paths / destination ports: 4 / 4
+Timing constraint: Default OFFSET OUT AFTER for Clock 'ADC_FCO_LVDS<0>'
+  Total number of paths / destination ports: 3 / 3
 -------------------------------------------------------------------------
-Offset:              5.471ns (Levels of Logic = 2)
-  Source:            CntTest/count_24 (FF)
-  Destination:       Led1 (PAD)
-  Source Clock:      Qclock rising
+Offset:              4.677ns (Levels of Logic = 1)
+  Source:            DataOut_2_1 (FF)
+  Destination:       Test<2> (PAD)
+  Source Clock:      ADC_FCO_LVDS<0> rising
 
-  Data Path: CntTest/count_24 to Led1
+  Data Path: DataOut_2_1 to Test<2>
                                 Gate     Net
     Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
     ----------------------------------------  ------------
-     FD:C->Q               4   0.360   0.599  CntTest/count_24 (CntTest/count_24)
-     LUT3:I1->O            1   0.195   0.360  o_green_led1 (Led1_OBUF)
-     OBUF:I->O                 3.957          Led1_OBUF (Led1)
+     FD:C->Q               1   0.360   0.360  DataOut_2_1 (DataOut_2_1)
+     OBUF:I->O                 3.957          Test_2_OBUF (Test<2>)
     ----------------------------------------
-    Total                      5.471ns (4.512ns logic, 0.959ns route)
-                                       (82.5% logic, 17.5% route)
+    Total                      4.677ns (4.317ns logic, 0.360ns route)
+                                       (92.3% logic, 7.7% route)
+
+=========================================================================
+Timing constraint: Default path analysis
+  Total number of paths / destination ports: 3 / 3
+-------------------------------------------------------------------------
+Delay:               5.630ns (Levels of Logic = 2)
+  Source:            FCT_40 (PAD)
+  Destination:       Test<6> (PAD)
+
+  Data Path: FCT_40 to Test<6>
+                                Gate     Net
+    Cell:in->out      fanout   Delay   Delay  Logical Name (Net Name)
+    ----------------------------------------  ------------
+     IBUFG:I->O           21   0.965   0.708  LVDS_Clk40 (Test_3_OBUF)
+     OBUF:I->O                 3.957          Test_6_OBUF (Test<6>)
+    ----------------------------------------
+    Total                      5.630ns (4.922ns logic, 0.708ns route)
+                                       (87.4% logic, 12.6% route)
 
 =========================================================================
 
@@ -1027,17 +978,9 @@ Clock to Setup on destination clock FCT_40
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
+ADC_FCO_LVDS<0>|    0.742|         |         |         |
 FCT_40         |    3.629|         |         |         |
 Qclock         |    2.350|         |         |         |
----------------+---------+---------+---------+---------+
-
-Clock to Setup on destination clock MuxClock_in
----------------+---------+---------+---------+---------+
-               | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
-Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
----------------+---------+---------+---------+---------+
-ADC_FCO_LVDS<0>|    0.742|         |         |         |
-MuxClock_in    |    3.507|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock PhaseSwitch/EndTrig_3
@@ -1045,7 +988,7 @@ Clock to Setup on destination clock PhaseSwitch/EndTrig_3
                | Src:Rise| Src:Fall| Src:Rise| Src:Fall|
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
-FCT_40         |    0.759|         |         |         |
+FCT_40         |    0.757|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 Clock to Setup on destination clock Qclock
@@ -1054,14 +997,14 @@ Clock to Setup on destination clock Qclock
 Source Clock   |Dest:Rise|Dest:Rise|Dest:Fall|Dest:Fall|
 ---------------+---------+---------+---------+---------+
 FCT_40         |    2.057|         |         |         |
-Qclock         |    2.849|         |         |         |
+Qclock         |    2.464|         |         |         |
 ---------------+---------+---------+---------+---------+
 
 =========================================================================
 
 
-Total REAL time to Xst completion: 6.00 secs
-Total CPU time to Xst completion: 6.08 secs
+Total REAL time to Xst completion: 5.00 secs
+Total CPU time to Xst completion: 5.65 secs
  
 WARNING:Xst:3152 - You have chosen to run a version of XST which is not the default solution
    for the specified device family. You are free to use it in order to take
@@ -1073,9 +1016,9 @@ WARNING:Xst:3152 - You have chosen to run a version of XST which is not the defa
    on the XST command line or in the XST process properties panel.
 --> 
 
-Total memory usage is 270104 kilobytes
+Total memory usage is 269848 kilobytes
 
 Number of errors   :    0 (   0 filtered)
-Number of warnings :  185 (   0 filtered)
-Number of infos    :   10 (   0 filtered)
+Number of warnings :  186 (   0 filtered)
+Number of infos    :    8 (   0 filtered)
 

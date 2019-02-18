@@ -7,7 +7,7 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : xaw2vhdl
 --  /   /         Filename : DLL_test.vhd
--- /___/   /\     Timestamp : 02/11/2019 12:09:09
+-- /___/   /\     Timestamp : 02/16/2019 13:55:50
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
@@ -28,33 +28,30 @@ library UNISIM;
 use UNISIM.Vcomponents.ALL;
 
 entity DLL_test is
-   port ( CLKIN_IN        : in    std_logic; 
-          RST_IN          : in    std_logic; 
-          CLKDV_OUT       : out   std_logic; 
-          CLKFX_OUT       : out   std_logic; 
-          CLKIN_IBUFG_OUT : out   std_logic; 
-          CLK0_OUT        : out   std_logic; 
-          CLK2X_OUT       : out   std_logic; 
-          CLK90_OUT       : out   std_logic; 
-          LOCKED_OUT      : out   std_logic);
+   port ( CLKIN_IN   : in    std_logic; 
+          RST_IN     : in    std_logic; 
+          CLKDV_OUT  : out   std_logic; 
+          CLKFX_OUT  : out   std_logic; 
+          CLK0_OUT   : out   std_logic; 
+          CLK2X_OUT  : out   std_logic; 
+          CLK90_OUT  : out   std_logic; 
+          LOCKED_OUT : out   std_logic);
 end DLL_test;
 
 architecture BEHAVIORAL of DLL_test is
-   signal CLKDV_BUF       : std_logic;
-   signal CLKFB_IN        : std_logic;
-   signal CLKFX_BUF       : std_logic;
-   signal CLKIN_IBUFG     : std_logic;
-   signal CLK0_BUF        : std_logic;
-   signal CLK2X_BUF       : std_logic;
-   signal CLK90_BUF       : std_logic;
-   signal GND_BIT         : std_logic;
-   signal GND_BUS_7       : std_logic_vector (6 downto 0);
-   signal GND_BUS_16      : std_logic_vector (15 downto 0);
+   signal CLKDV_BUF  : std_logic;
+   signal CLKFB_IN   : std_logic;
+   signal CLKFX_BUF  : std_logic;
+   signal CLK0_BUF   : std_logic;
+   signal CLK2X_BUF  : std_logic;
+   signal CLK90_BUF  : std_logic;
+   signal GND_BIT    : std_logic;
+   signal GND_BUS_7  : std_logic_vector (6 downto 0);
+   signal GND_BUS_16 : std_logic_vector (15 downto 0);
 begin
    GND_BIT <= '0';
    GND_BUS_7(6 downto 0) <= "0000000";
    GND_BUS_16(15 downto 0) <= "0000000000000000";
-   CLKIN_IBUFG_OUT <= CLKIN_IBUFG;
    CLK0_OUT <= CLKFB_IN;
    CLKDV_BUFG_INST : BUFG
       port map (I=>CLKDV_BUF,
@@ -63,10 +60,6 @@ begin
    CLKFX_BUFG_INST : BUFG
       port map (I=>CLKFX_BUF,
                 O=>CLKFX_OUT);
-   
-   CLKIN_IBUFG_INST : IBUFG
-      port map (I=>CLKIN_IN,
-                O=>CLKIN_IBUFG);
    
    CLK0_BUFG_INST : BUFG
       port map (I=>CLK0_BUF,
@@ -98,7 +91,7 @@ begin
             PHASE_SHIFT => 0,
             STARTUP_WAIT => FALSE)
       port map (CLKFB=>CLKFB_IN,
-                CLKIN=>CLKIN_IBUFG,
+                CLKIN=>CLKIN_IN,
                 DADDR(6 downto 0)=>GND_BUS_7(6 downto 0),
                 DCLK=>GND_BIT,
                 DEN=>GND_BIT,

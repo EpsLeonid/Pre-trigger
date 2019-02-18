@@ -36,9 +36,9 @@ port (
 
 -- 1. Clocks
 	Qclock		: in std_logic; -- system clock
-	FCT_40		: in std_logic := '0'; -- system clock
-	FCT_160		: in std_logic := '0'; -- clock
-	FCT_160_n	: in std_logic := '0'; -- clock
+	FCT_40		: in std_logic ;--:= '0'; -- system clock
+	FCT_160		: in std_logic ;--:= '0'; -- clock
+	FCT_160_n	: in std_logic ;--:= '0'; -- clock
 -- In Trigger module Link's Clock is checked inside Altera but switched outside 
 	Sw_Quartz	: out std_logic := '1';	-- connects Quartz to PLL ref.Input			-> Pin 
 	Sw_FCTClk	: out std_logic := '0';	-- connects Link's Clock to PLL ref.Input	-> Pin 
@@ -108,8 +108,8 @@ architecture Behavioral of ISERDES_8bit is
 	--- clocking
 	signal Quarts				: std_logic;
 	signal FCT40				: std_logic;
-	signal ResultClock			: std_logic;	-- Ref.clock for PLL (dedicated)
-	signal resultclock1 : std_logic;
+	signal ResultClock		: std_logic;	-- Ref.clock for PLL (dedicated)
+	signal Resultclock1		: std_logic;
 	signal Clock_in			: std_logic;
 	signal Clk40				: std_logic;
 	signal CLK40_90d			: std_logic;
@@ -307,12 +307,14 @@ PhaseSwitch: entity work.PhaseSW
 				Fmin				=> 38000, -- Lower limit in kHz
 				RefClock			=> 40000  -- Local Quartz Freq(kHz) used as the reference
 				)
-	port map ( Clock				=> Quarts,
-				  SysClk				=> FCT40,
+	port map ( Clock				=> Quarts,--Qclock,--
+				  SysClk				=> FCT40,--FCT_40,
 				  Reset				=> Reset,
 				  Phase				=> Phase,
 				  SysClk_Selected	=> Clk_Selected--Test(9)
 				);
+
+--	ResultClock <= ((FCT_40 and Clk_Selected) OR (Qclock and not Clk_Selected));
 
 --Clk_Selected <= '0';
 
@@ -328,39 +330,51 @@ Sw_Quartz <= not Clk_Selected;
 --	end if;
 --end process;
 
-ClockSwitch : BUFGMUX_VIRTEX4
-port map (
-	O => ResultClock,    -- Clock MUX output
-	I0 => Quarts,  -- Clock0 input
-	I1 => FCT40,  -- Clock1 input
-	S => Clk_Selected			-- Clock select input
-);
+--ClockSwitch : BUFGCTRL
+--	generic map (
+--		INIT_OUT => 0,         -- Inital value of 0 or 1 after configuration
+--		PRESELECT_I0 => TRUE, -- TRUE/FALSE set the I0 input after configuration
+--		PRESELECT_I1 => FALSE) -- TRUE/FALSE set the I1 input after configuration
+--	port map (
+--		O => ResultClock,              -- Clock MUX output
+--		CE0 => '1',          -- Clock enable0 input
+--		CE1 => '1',          -- Clock enable1 input
+--		I0 => Quarts,            -- Clock0 input
+--		I1 => FCT40,            -- Clock1 input
+--		IGNORE0 => '1',  -- Ignore clock select0 input
+--		IGNORE1 => '1',  -- Ignore clock select1 input
+--		S0 => not ResultClock1,            -- Clock select0 input
+--		S1 => ResultClock1             -- Clock select1 input
+--	);
 
---bufgggg : BUFG port map ( i=> ResultClock1, o=>resultClock);
+ResultClock1 <= '1';
+--
+	ResultClock <= ((FCT40 and ResultClock1) OR (Quarts and not ResultClock1));
+--	ResultClock <= ((FCT_40 and ResultClock1) OR (Qclock and not ResultClock1));
 
 DLL: entity work.DLL_test
 	port map (
 		CLK0_OUT => Clk40,					-- 0 degree DCM CLK output
 		CLKDV_OUT => Clk20,					-- 0 degree DCM CLK output
-		CLK2X_OUT => Clk80_o,				-- 2X DCM CLK output
+		CLK2X_OUT => Clk80,				-- 2X DCM CLK output
 		CLK90_OUT => Clk40_90d,			-- 90 degree DCM CLK output
-		CLKFX_OUT => Clk160_o,				-- DCM CLK synthesis out (M/D)
+		CLKFX_OUT => Clk160,				-- DCM CLK synthesis out (M/D)
 		LOCKED_OUT => s_clock_locked,	-- DCM LOCK status output
-		CLKIN_IN => MuxClock_in,			-- Clock input (from IBUFG, BUFG or DCM)
+		CLKIN_IN => ResultClock,			-- Clock input (from IBUFG, BUFG or DCM)
 		RST_IN => Reset					-- DCM asynchronous reset input
 	);
 
-	Global_clk80: BUFG
-	port map (
-		O => Clk80,     -- Clock buffer output
-		I => Clk80_o      -- Clock buffer input
-	);
-
-	Global_clk160: BUFG
-	port map (
-		O => Clk160,     -- Clock buffer output
-		I => Clk160_o      -- Clock buffer input
-	);
+--	Global_clk80: BUFG
+--	port map (
+--		O => Clk80,     -- Clock buffer output
+--		I => Clk80_o      -- Clock buffer input
+--	);
+--
+--	Global_clk160: BUFG
+--	port map (
+--		O => Clk160,     -- Clock buffer output
+--		I => Clk160_o      -- Clock buffer input
+--	);
 
 --******** LED ********--
 --	process(Clk80)
@@ -863,7 +877,7 @@ DLL: entity work.DLL_test
 				WIDTH => 26
 			)
 	port map (
-				clock 	=> Quarts,--clk80,--CLK40,
+				clock 	=> clk40,--clk80,--CLK40,
 				clk_en	=>	'1',
 				q			=> TestCnt
 				);
@@ -882,23 +896,12 @@ DLL: entity work.DLL_test
 	Test(0) <= DataOut(0);
 	Test(1) <= DataOut(1);
 	Test(2) <= DataOut(2);
-	Test(3) <= DataOut(3);
-	Test(4) <= DataOut(4);
-	Test(5) <= DataOut(5);
-	Test(6) <= DataOut(6);
-	Test(7) <= DataOut(7);
-	Test(8) <= GroupLT_Trig;
-	Test(9) <= GroupAmp_Trig;
-
---	Test(0) <= DataP(0);
---	Test(1) <= DataP(1);
---	Test(2) <= DataP(2);
---	Test(3) <= DataP(3);
---	Test(4) <= DataP_del(0);
---	Test(5) <= DataP_del(1);
---	Test(6) <= DataP_del(2);
---	Test(7) <= DataP_del(3);
---	Test(8) <= clkdiv_es;
---	Test(9) <= FCO;
+	Test(3) <= FCT40;--DataOut(3);
+	Test(4) <= Quarts;--DataOut(4);
+	Test(5) <= Clk_Selected;--DataOut(5);
+	Test(6) <= ResultClock;--DataOut(6);
+	Test(7) <= ResultClock1;--DataOut(7);
+	Test(8) <= s_clock_locked;
+	Test(9) <= Clk40;
 
 end Behavioral;
