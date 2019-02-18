@@ -4,7 +4,7 @@ JedecChain;
 	DefaultMfr(6E);
 
 	P ActionCode(Cfg)
-		Device PartName(EP3C16E144) Path("D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/FastTrig_board/") File("FastTrig_board.sof") MfrSpec(OpMask(1));
+		Device PartName(EP3C16E144) Path("D:/Leon/Japan/Electronics/trunk/FPGA/FastTrig_board/") File("FastTrig_board.sof") MfrSpec(OpMask(1));
 
 ChainEnd;
 

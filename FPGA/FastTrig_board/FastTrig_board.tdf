@@ -78,17 +78,22 @@ R_Flash			: LightPulser with (Duration = 20, RefClock = 100000); -- Red
 --******** 3. Trigger ******************************************************
 FastTrig[4..1],
 FastTrigDelay[4..1]	: DFF;
-DelayLine[5..1]	: DFF;
+DelayLine[10..1]	: DFF;
 Trig			: node;
 TrigDes			: SRFF;
-EventCout		: lpm_counter WITH (lpm_width=32, lpm_direction="up");
-TrigTransf_load	: EdgeSensing;
-TrigTransf_en	: SRFF;
-TrigTransf		: lpm_shiftreg with (lpm_width=44, lpm_direction="left");
-DataTransfCout	: lpm_counter WITH (lpm_width=10, lpm_direction="up");
-EndTransf		: node;
-EndTransfDelay	: DFF;
-AllReset		: DFF;
+--AllReset		: DFF;
+
+--****Section "a"
+--EventCout		: lpm_counter WITH (lpm_width=32, lpm_direction="up");
+--TrigTransf_load	: EdgeSensing;
+--TrigTransf_en	: SRFF;
+--TrigTransf		: lpm_shiftreg with (lpm_width=44, lpm_direction="left");
+--DataTransfCout	: lpm_counter WITH (lpm_width=10, lpm_direction="up");
+--EndTransf		: node;
+--EndTransfDelay	: DFF;
+
+--****Section "b"
+TrigTimeCnt		: lpm_counter WITH (lpm_width=10, lpm_direction="up");
 
 --============================================================================
 --******** 5. System ******************************************************
@@ -109,7 +114,7 @@ BEGIN
 DEFAULTS
 
 Trig = GND;
-EndTransf = VCC;
+--EndTransf = VCC;
 
 END DEFAULTS;
 
@@ -184,54 +189,71 @@ Error = PhaseSw.Error;
 --============================================================================
 --******** 3. Trigger section *********************************************
 
-FastTrig[1].(d, clk) = (FastTrig_in[1], Clk160);
-FastTrig[2].(d, clk) = (FastTrig_in[2], Clk160);
-FastTrig[3].(d, clk) = (FastTrig_in[3], Clk160);
-FastTrig[4].(d, clk) = (FastTrig_in[4], Clk160);
+FastTrig[1].(d, clk) = (FastTrig_in[1], Clk40);
+FastTrig[2].(d, clk) = (FastTrig_in[2], Clk40);
+FastTrig[3].(d, clk) = (FastTrig_in[3], Clk40);
+FastTrig[4].(d, clk) = (FastTrig_in[4], Clk40);
 
-FastTrigDelay[1].(d, clk) = (FastTrig[1], Clk160);
-FastTrigDelay[2].(d, clk) = (FastTrig[2], Clk160);
-FastTrigDelay[3].(d, clk) = (FastTrig[3], Clk160);
-FastTrigDelay[4].(d, clk) = (FastTrig[4], Clk160);
+FastTrigDelay[1].(d, clk) = (FastTrig[1], Clk40);
+FastTrigDelay[2].(d, clk) = (FastTrig[2], Clk40);
+FastTrigDelay[3].(d, clk) = (FastTrig[3], Clk40);
+FastTrigDelay[4].(d, clk) = (FastTrig[4], Clk40);
 
-DelayLine[1].(d, clk) = ((FastTrig[1].q and !FastTrigDelay[1].q), clk160);
-DelayLine[2].(d, clk) = (DelayLine[1].q, clk160);
-DelayLine[3].(d, clk) = (DelayLine[2].q, clk160);
-DelayLine[4].(d, clk) = (DelayLine[3].q, clk160);
-DelayLine[5].(d, clk) = (DelayLine[4].q, clk160);
+DelayLine[1].(d, clk) = (FastTrig[1].q, Clk40);
+DelayLine[2].(d, clk) = (DelayLine[1].q, Clk40);
+DelayLine[3].(d, clk) = (DelayLine[2].q, Clk40);
+DelayLine[4].(d, clk) = (DelayLine[3].q, Clk40);
+DelayLine[5].(d, clk) = (DelayLine[4].q, Clk40);
+DelayLine[6].(d, clk) = (DelayLine[5].q, Clk40);
+DelayLine[7].(d, clk) = (DelayLine[6].q, Clk40);
+DelayLine[8].(d, clk) = (DelayLine[7].q, Clk40);
+DelayLine[9].(d, clk) = (DelayLine[8].q, Clk40);
+DelayLine[10].(d, clk) = (DelayLine[9].q, Clk40);
 
-IF ((DelayLine[1].q %OR 
-	 (FastTrig[2].q and !FastTrigDelay[2].q) OR 
-	 (FastTrig[3].q and !FastTrigDelay[3].q) OR 
-	 (FastTrig[4].q and !FastTrigDelay[4].q)%) == VCC) Then Trig = VCC;
-													   Else Trig = GND;
-END IF;
+--******** 3a. Transfer trigger packege *********************************************
+--IF ((DelayLine[1].q %OR 
+--	 (FastTrig[2].q and !FastTrigDelay[2].q) OR 
+--	 (FastTrig[3].q and !FastTrigDelay[3].q) OR 
+--	 (FastTrig[4].q and !FastTrigDelay[4].q)%) == VCC) Then Trig = VCC;
+--													   Else Trig = GND;
+--END IF;
 
-EventCout.(clock, clk_en, cnt_en, aclr) = (Clk160, VCC, DelayLine[1].q, Reset);
-
-TrigTransf_load.(d, clk) = (DelayLine[1].q, Clk160);
-
-TrigTransf_en.(S, Clk, R, clrn) = (Trig, Clk160, Reset, !AllReset.q);
---TrigTransf.(data[], clock, enable, load) = ((Hedder,EventCout.q[],CRC), Clk80, VCC, TrigTransf_load.q);--TrigDes.q);
-TrigTransf.(data[], clock, enable, load, sclr) = (b"10110001110000111100000111110000111100011100", Clk80, TrigTransf_en.q, TrigTransf_load.q, AllReset.q);--TrigDes.q);
-
-TrigDes.(S, Clk, R, clrn) = (TrigTransf_load.q, Clk80, Reset, !AllReset.q);
-
-DataTransfCout.(clock, clk_en, cnt_en, sclr) = (Clk80, VCC, TrigDes.q and !DelayLine[2].q and !DelayLine[3].q, EndTransfDelay.q);-- AllReset.q);
-
-IF (DataTransfCout.q[] == b"0000101011") then EndTransf = VCC;
-										 else EndTransf = GND;
-END IF;
-
-IF (TrigDes.q == VCC) then Trigger = TrigTransf.shiftout;
-					  else Trigger = GND;
-END IF;
-
-EndTransfDelay.(d, clk) = (EndTransf, clk80);
-
-AllReset.(d, clk) = (EndTransf and !EndTransfDelay.q, clk80);
+--EventCout.(clock, clk_en, cnt_en, aclr) = (Clk160, VCC, DelayLine[1].q, Reset);
+--
+--TrigTransf_load.(d, clk) = (DelayLine[1].q, Clk160);
+--
+--TrigTransf_en.(S, Clk, R, clrn) = (Trig, Clk160, Reset, !AllReset.q);
+----TrigTransf.(data[], clock, enable, load) = ((Hedder,EventCout.q[],CRC), Clk80, VCC, TrigTransf_load.q);--TrigDes.q);
+--TrigTransf.(data[], clock, enable, load, sclr) = (b"10110001110000111100000111110000111100011100", Clk80, TrigTransf_en.q, TrigTransf_load.q, AllReset.q);--TrigDes.q);
+--
+--TrigDes.(S, Clk, R, clrn) = (TrigTransf_load.q, Clk80, Reset, !AllReset.q);
+--
+--DataTransfCout.(clock, clk_en, cnt_en, sclr) = (Clk80, VCC, TrigDes.q and !DelayLine[2].q and !DelayLine[3].q, EndTransfDelay.q);-- AllReset.q);
+--
+--IF (DataTransfCout.q[] == b"0000101011") then EndTransf = VCC;
+--										 else EndTransf = GND;
+--END IF;
+--
+--IF (TrigDes.q == VCC) then Trigger = TrigTransf.shiftout;
+--					  else Trigger = GND;
+--END IF;
+--
+--EndTransfDelay.(d, clk) = (EndTransf, clk80);
+--
+--AllReset.(d, clk) = (EndTransf and !EndTransfDelay.q, clk80);
 --AllReset.(d, clk) = (TrigDes.q, Clk160);
 
+--******** 3b. Transfer trigger  *********************************************
+IF (FastTrig[1].q and !FastTrigDelay[1].q) Then Trig = VCC;
+										   Else Trig = GND;
+END IF;
+
+TrigDes.(S, Clk, R) = (DelayLine[5].q, Clk40, !TrigTimeCnt.cout);
+TrigTimeCnt.(clock, clk_en, cnt_en) = (Clk40, VCC, TrigDes.q);--, AllReset.q);
+
+Trigger = DelayLine[10].q;
+
+--AllReset.(d, clk) = (TrigTimeCnt.cout, Clk40);
 
 --============================================================================
 -- 10. Testing circuitry ******************************************************
@@ -248,13 +270,13 @@ TestCt.aclr				= !PowerUp0;    -- even if NO clock - Reset does occur
 
 Test0	= VCC;
 Test1	= FQuartz;
-Test2	= Clk160;
+Test2	= Clk40;
 Test3	= FastTrig[1].q;
 Test4	= Trig;
 Test5	= TrigDes.q;-- and !FastTrigDelay[1].q;
-Test6	= EventCout.q[0];
-Test7	= TrigDes.q and !DelayLine[2].q and !DelayLine[3].q;
-Test8	= TrigTransf_en.q;--TestCt.q[1];
+Test6	= DelayLine[5].q;--EventCout.q[0];
+Test7	= GND;--AllReset.q;--TrigDes.q and !DelayLine[2].q and !DelayLine[3].q;
+Test8	= TrigTimeCnt.cout;--TrigTransf_en.q;--TestCt.q[1];
 Test9	= TestCt.q[3];
 
 END;
