@@ -347,7 +347,7 @@ Sw_Quartz <= not Clk_Selected;
 --		S1 => ResultClock1             -- Clock select1 input
 --	);
 
-ResultClock1 <= '1';
+ResultClock1 <= '0';
 --
 	ResultClock <= ((FCT40 and ResultClock1) OR (Quarts and not ResultClock1));
 --	ResultClock <= ((FCT_40 and ResultClock1) OR (Qclock and not ResultClock1));

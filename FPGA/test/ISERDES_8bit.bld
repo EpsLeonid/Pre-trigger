@@ -5,21 +5,15 @@ Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
 -intstyle ise -dd _ngo -nt timestamp -uc Pre.ucf -p xc4vlx60-ff1148-10
 ISERDES_8bit.ngc ISERDES_8bit.ngd
 
-Reading NGO file "C:/Work/COMET project/trunk/FPGA/test/ISERDES_8bit.ngc" ...
+Reading NGO file
+"D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/test/ISERDES_8bit.ngc"
+...
 Gathering constraint information from source properties...
 Done.
 
 Annotating constraints to design from ucf file "Pre.ucf" ...
 Resolving constraint associations...
 Checking Constraint Associations...
-WARNING:ConstraintSystem:137 - Constraint <NET "Qclock" TNM_NET = "Qclock";>
-   [Pre.ucf(2)]: No appropriate instances for the TNM constraint are driven by
-   "Qclock".
-
-WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_Qclock = PERIOD "Qclock"
-   25 ns HIGH 50 % INPUT_JITTER 375 ps;> [Pre.ucf(3)]: Unable to find an active
-   'TNM' or 'TimeGrp' constraint named 'Qclock'.
-
 WARNING:ConstraintSystem:137 - Constraint <NET "MuxClock_in" TNM_NET =
    "MuxClock_in";> [Pre.ucf(9)]: No appropriate instances for the TNM constraint
    are driven by "MuxClock_in".
@@ -42,40 +36,25 @@ WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_DCO1 = PERIOD
    "ADC_DCO_LVDS1" 3125 ps HIGH 50 %;> [Pre.ucf(33)]: Unable to find an active
    'TNM' or 'TimeGrp' constraint named 'ADC_DCO_LVDS1'.
 
-WARNING:ConstraintSystem:191 - The TNM 'Qclock', does not directly or indirectly
-   drive any flip-flops, latches and/or RAMS and cannot be actively used by the
-   referencing Period constraint 'TS_Qclock'. If clock manager blocks are
-   directly or indirectly driven, a new TNM constraint will not be derived even
-   though the referencing constraint is a PERIOD constraint unless an output of
-   the clock manager drives flip-flops, latches or RAMs. This TNM is used in the
-   following user PERIOD specification:
-   <TIMESPEC TS_Qclock = PERIOD "Qclock" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
-   [Pre.ucf(3)]
-
-WARNING:ConstraintSystem:197 - The following specification is invalid because
-   the referenced TNM constraint was removed:
-   <TIMESPEC TS_Qclock = PERIOD "Qclock" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
-   [Pre.ucf(3)]
-
-INFO:ConstraintSystem:178 - TNM 'FCT_40', used in period specification
-   'TS_FCT_40', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The following
+INFO:ConstraintSystem:178 - TNM 'Qclock', used in period specification
+   'TS_Qclock', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The following
    new TNM groups and period specifications were generated at the DCM_ADV
    output(s): 
-   CLK0: <TIMESPEC TS_DLL_CLK0_BUF = PERIOD "DLL_CLK0_BUF" TS_FCT_40 HIGH 50%
+   CLK0: <TIMESPEC TS_DLL_CLK0_BUF = PERIOD "DLL_CLK0_BUF" TS_Qclock HIGH 50%
    INPUT_JITTER 375 ps>
 
-INFO:ConstraintSystem:178 - TNM 'FCT_40', used in period specification
-   'TS_FCT_40', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The following
+INFO:ConstraintSystem:178 - TNM 'Qclock', used in period specification
+   'TS_Qclock', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The following
    new TNM groups and period specifications were generated at the DCM_ADV
    output(s): 
-   CLK2X: <TIMESPEC TS_DLL_CLK2X_BUF = PERIOD "DLL_CLK2X_BUF" TS_FCT_40 / 2 HIGH
+   CLK2X: <TIMESPEC TS_DLL_CLK2X_BUF = PERIOD "DLL_CLK2X_BUF" TS_Qclock / 2 HIGH
    50% INPUT_JITTER 375 ps>
 
-INFO:ConstraintSystem:178 - TNM 'FCT_40', used in period specification
-   'TS_FCT_40', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The following
+INFO:ConstraintSystem:178 - TNM 'Qclock', used in period specification
+   'TS_Qclock', was traced into DCM_ADV instance DLL/DCM_ADV_INST. The following
    new TNM groups and period specifications were generated at the DCM_ADV
    output(s): 
-   CLKFX: <TIMESPEC TS_DLL_CLKFX_BUF = PERIOD "DLL_CLKFX_BUF" TS_FCT_40 / 4 HIGH
+   CLKFX: <TIMESPEC TS_DLL_CLKFX_BUF = PERIOD "DLL_CLKFX_BUF" TS_Qclock / 4 HIGH
    50% INPUT_JITTER 375 ps>
 
 WARNING:ConstraintSystem:191 - The TNM 'MuxClock_in', does not directly or
@@ -125,12 +104,12 @@ Partition Implementation Status
 
 NGDBUILD Design Results Summary:
   Number of errors:     0
-  Number of warnings:  15
+  Number of warnings:  11
 
-Total memory usage is 190208 kilobytes
+Total memory usage is 205612 kilobytes
 
 Writing NGD file "ISERDES_8bit.ngd" ...
-Total REAL time to NGDBUILD completion:  3 sec
+Total REAL time to NGDBUILD completion:  5 sec
 Total CPU time to NGDBUILD completion:   3 sec
 
 Writing NGDBUILD log file "ISERDES_8bit.bld"...

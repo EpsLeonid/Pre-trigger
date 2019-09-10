@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Sat Feb 16 15:49:40 2019
+// Written by: Map P.20131013 on Wed Aug 07 17:16:59 2019
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -230,20 +230,8 @@ TIMEGRP DLL_CLK0_BUF = BEL "TriggerData_2" BEL "TriggerData_3" BEL
         "CntTest/count_22" BEL "CntTest/count_23" BEL "CntTest/count_24" BEL
         "DLL/CLK0_BUFG_INST" BEL "Test<9>";
 PIN DLL/DCM_ADV_INST_pins<4> = BEL "DLL/DCM_ADV_INST" PINNAME CLKIN;
-TIMEGRP FCT_40 = PIN "DLL/DCM_ADV_INST_pins<4>" BEL
-        "PhaseSwitch/SysClkCt/count_15" BEL "PhaseSwitch/SysClkCt/count_14"
-        BEL "PhaseSwitch/SysClkCt/count_13" BEL
-        "PhaseSwitch/SysClkCt/count_12" BEL "PhaseSwitch/SysClkCt/count_11"
-        BEL "PhaseSwitch/SysClkCt/count_10" BEL "PhaseSwitch/SysClkCt/count_9"
-        BEL "PhaseSwitch/SysClkCt/count_8" BEL "PhaseSwitch/SysClkCt/count_7"
-        BEL "PhaseSwitch/SysClkCt/count_6" BEL "PhaseSwitch/SysClkCt/count_5"
-        BEL "PhaseSwitch/SysClkCt/count_4" BEL "PhaseSwitch/SysClkCt/count_3"
-        BEL "PhaseSwitch/SysClkCt/count_2" BEL "PhaseSwitch/SysClkCt/count_1"
-        BEL "PhaseSwitch/SysClkCt/count_0" BEL "PhaseSwitch/FnormTrig" BEL
-        "PhaseSwitch/Fnorm" BEL "PhaseSwitch/SysClkZero" BEL "Test<6>" BEL
-        "Test<3>";
-TIMEGRP Qclock = BEL "PhaseSwitch/TrigEnd/Trig" BEL
-        "PhaseSwitch/RefTimeCnt/count_15" BEL
+TIMEGRP Qclock = PIN "DLL/DCM_ADV_INST_pins<4>" BEL "PhaseSwitch/TrigEnd/Trig"
+        BEL "PhaseSwitch/RefTimeCnt/count_15" BEL
         "PhaseSwitch/RefTimeCnt/count_14" BEL
         "PhaseSwitch/RefTimeCnt/count_13" BEL
         "PhaseSwitch/RefTimeCnt/count_12" BEL
@@ -258,15 +246,26 @@ TIMEGRP Qclock = BEL "PhaseSwitch/TrigEnd/Trig" BEL
         BEL "PhaseSwitch/EndTrig_4" BEL "PhaseSwitch/RefTimeZero" BEL
         "PhaseSwitch/CycleEnd" BEL "Test_4_OBUF_BUFG" BEL
         "PhaseSwitch/Mshreg_EndTrig_3/SRL16E" BEL "PhaseSwitch/EndTrig_3" BEL
-        "Test<4>";
+        "Test<6>" BEL "Test<4>";
+TIMEGRP FCT_40 = BEL "PhaseSwitch/SysClkCt/count_15" BEL
+        "PhaseSwitch/SysClkCt/count_14" BEL "PhaseSwitch/SysClkCt/count_13"
+        BEL "PhaseSwitch/SysClkCt/count_12" BEL
+        "PhaseSwitch/SysClkCt/count_11" BEL "PhaseSwitch/SysClkCt/count_10"
+        BEL "PhaseSwitch/SysClkCt/count_9" BEL "PhaseSwitch/SysClkCt/count_8"
+        BEL "PhaseSwitch/SysClkCt/count_7" BEL "PhaseSwitch/SysClkCt/count_6"
+        BEL "PhaseSwitch/SysClkCt/count_5" BEL "PhaseSwitch/SysClkCt/count_4"
+        BEL "PhaseSwitch/SysClkCt/count_3" BEL "PhaseSwitch/SysClkCt/count_2"
+        BEL "PhaseSwitch/SysClkCt/count_1" BEL "PhaseSwitch/SysClkCt/count_0"
+        BEL "PhaseSwitch/FnormTrig" BEL "PhaseSwitch/Fnorm" BEL
+        "PhaseSwitch/SysClkZero" BEL "Test<3>";
 TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 TS_FCT_40 = PERIOD TIMEGRP "FCT_40" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 3.125 ns HIGH 50%;
-TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_FCT_40 HIGH 50%
+TS_DLL_CLK0_BUF = PERIOD TIMEGRP "DLL_CLK0_BUF" TS_Qclock HIGH 50%
         INPUT_JITTER 0.375 ns;
-TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_FCT_40 / 2 HIGH 50%
+TS_DLL_CLK2X_BUF = PERIOD TIMEGRP "DLL_CLK2X_BUF" TS_Qclock / 2 HIGH 50%
         INPUT_JITTER 0.375 ns;
-TS_DLL_CLKFX_BUF = PERIOD TIMEGRP "DLL_CLKFX_BUF" TS_FCT_40 / 4 HIGH 50%
+TS_DLL_CLKFX_BUF = PERIOD TIMEGRP "DLL_CLKFX_BUF" TS_Qclock / 4 HIGH 50%
         INPUT_JITTER 0.375 ns;
 SCHEMATIC END;
 
