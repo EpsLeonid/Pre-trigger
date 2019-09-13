@@ -4,6 +4,7 @@ TIMESPEC TS_Qclock = PERIOD "Qclock" 25 ns HIGH 50 % INPUT_JITTER 375 ps;
 
 NET "FCT_40" TNM_NET = "FCT_40";
 TIMESPEC TS_FCT_40 = PERIOD "FCT_40" 25 ns HIGH 50 % INPUT_JITTER 375 ps;
+NET "FCT_40" CLOCK_DEDICATED_ROUTE = FALSE;
 
 NET "MuxClock_in" TNM_NET = "MuxClock_in";
 TIMESPEC TS_MuxClock_in = PERIOD "MuxClock_in" 25 ns HIGH 50 % INPUT_JITTER 375 ps;
@@ -547,6 +548,7 @@ NET "ADCInDataLVDS[15]" DIFF_TERM = "TRUE";
 NET "ADCInDataLVDS[16]" DIFF_TERM = "TRUE";
 NET "ADCInDataLVDS[17]" DIFF_TERM = "TRUE";
 
+#-----------------------------------
 # ADC signals from Prev. Pre-trigger board
 
 NET "ADC_DCO_LVDSPrev[0]" LOC = AJ22;
@@ -600,6 +602,7 @@ NET "ADCInDataLVDSPrev[11]" LOC = AP5;
 NET "ADCInDataLVDSPrev_n[11]" LOC = AN5;
 
 #-----------------------------------
+# Trigger pins
 
 NET "FastTrigDes" LOC = B13;
 NET "TrigDes" LOC = A13;
@@ -672,6 +675,7 @@ NET "TriggerData[62]" LOC = AM2;
 NET "TriggerData[63]" LOC = AG3;
 
 #-----------------------------------
+# Ethernet
 
 NET "Col" LOC = B11;
 NET "Crs" LOC = A11;
@@ -689,13 +693,14 @@ NET "TxD[2]" LOC = B10;
 NET "TxD[3]" LOC = A10;
 
 #-----------------------------------
+# Test pins
 
-NET "Led1" LOC = C19; # Clk_light
-NET "Led2" LOC = C17; # Trig_light
-NET "Led3" LOC = C18; # Err_light
-NET "Led4" LOC = E18; # 
-NET "Led5" LOC = E17; # 
-NET "ExtReset" LOC = AP4;
+NET "Led1" LOC = C19 | IOSTANDARD= LVCMOS25; # Clk_light
+NET "Led2" LOC = C17 | IOSTANDARD= LVCMOS25; # Trig_light
+NET "Led3" LOC = C18 | IOSTANDARD= LVCMOS25; # Err_light
+NET "Led4" LOC = E18 | IOSTANDARD= LVCMOS25; # 
+NET "Led5" LOC = E17 | IOSTANDARD= LVCMOS25; # 
+NET "ExtReset" LOC = AP4 | IOSTANDARD= LVCMOS25;
 
 NET "Test[0]" LOC = B2 | IOSTANDARD= LVCMOS25;
 NET "Test[1]" LOC = B3 | IOSTANDARD= LVCMOS25;
