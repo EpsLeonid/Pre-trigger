@@ -63,6 +63,8 @@ port(
 	ADCInDataLVDS_n	: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
 	ADCInDataLVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 	ADCInDataLVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
+	ADCOutDataLVDSNext: in std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
+	ADCOutDataLVDSNext_n: in std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
 
 	ADC_test				: in std_logic;
 	ADC_res				: in std_logic;
@@ -74,6 +76,10 @@ port(
 	ADC_DCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_FCO				: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_FCO_LVDSPrev	: in std_logic;	-- 
+	ADC_FCO_LVDSPrev_n: in std_logic;	-- 
+	ADC_FCO_LVDSNext	: in std_logic;	-- 
+	ADC_FCO_LVDSNext_n: in std_logic;	-- 
 --	ADC_FCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 --	ADC_FCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 --	ADC_DCO_LVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 

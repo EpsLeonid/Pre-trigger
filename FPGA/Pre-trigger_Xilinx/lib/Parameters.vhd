@@ -14,6 +14,7 @@ package parameters is
 	constant NUM_ADCboard		: integer := 16;	-- Number of ADC boards in the trigger -- For tests!!!
 	constant NUM_TrigCell		: integer := 128;	-- Number of channels in the trigger -- For tests!!!
 	constant NUM_TrigCellPrev	: integer := 12;	-- Number of channels in the trigger from prev.board
+	constant NUM_TrigCellNext	: integer := 12;	-- Number of channels in the trigger to next board
 	constant TrigBits				: integer := 64;		-- Number of triggerg bits to FCT
 	
 	type array_adc is array (0 to NUM_TrigCell) of std_logic_vector (ADC_Bits-1 downto 0);
