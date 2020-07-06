@@ -1,12 +1,12 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company: BINP
+-- Engineer: Leonid Epshteyn
 -- 
--- Create Date:    18:06:04 08/15/2018 
+-- Create Date:		18:06:04 08/15/2018 
 -- Design Name: 
--- Module Name:    ISERDES_8bit - Behavioral 
--- Project Name: 
--- Target Devices: 
+-- Module Name:		ISERDES_8bit - Behavioral 
+-- Project Name:		COMET ECAL Trigger
+-- Target Devices:	Pre-trigger
 -- Tool versions: 
 -- Description: 
 --
@@ -350,7 +350,6 @@ Sw_Quartz <= not Clk_Selected;
 ResultClock1 <= '0';
 --
 	ResultClock <= ((FCT40 and ResultClock1) OR (Quarts and not ResultClock1));
---	ResultClock <= ((FCT_40 and ResultClock1) OR (Qclock and not ResultClock1));
 
 DLL: entity work.DLL_test
 	port map (
