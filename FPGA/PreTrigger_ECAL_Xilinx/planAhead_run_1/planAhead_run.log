@@ -5834,3 +5834,31 @@ startgroup
 set_property package_pin C4 [get_ports {TriggerData[32]}]
 endgroup
 save_constraints
+refresh_design
+INFO: [Timing 38-77] Reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+INFO: [Timing 38-34] Done reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+Parsing UCF File [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf]
+CRITICAL WARNING: [Constraints 18-5] Cannot loc terminal 'ADC_FCO[12]' at site AK17, Terminal ADC_FCO[12] cannot be placed on AK17 (IOB_X1Y56) because the pad is already occupied by terminal ADC_FCO[0] [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf:308]
+Finished Parsing UCF File [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+startgroup
+set_property package_pin AP20 [get_ports {ADC_FCO[0]}]
+endgroup
+startgroup
+set_property package_pin AK17 [get_ports {ADC_FCO[12]}]
+endgroup
+save_constraints
+refresh_design
+INFO: [Timing 38-77] Reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+INFO: [Timing 38-34] Done reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+Parsing UCF File [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf]
+CRITICAL WARNING: [Constraints 18-5] Cannot loc terminal 'ADC_FCO[12]' at site AK17, Terminal ADC_FCO[12] cannot be placed on AK17 (IOB_X1Y56) because the pad is already occupied by terminal ADC_FCO[0] [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf:314]
+Finished Parsing UCF File [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file
+refresh_design
+INFO: [Timing 38-77] Reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+INFO: [Timing 38-34] Done reading timing library C:/Xilinx/14.7/ISE_DS/PlanAhead/data\parts/xilinx/virtex4/virtex4lx/virtex4lx-10.lib.
+Parsing UCF File [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf]
+CRITICAL WARNING: [Constraints 18-5] Cannot loc terminal 'ADC_FCO[12]' at site AJ19, Terminal ADC_FCO[12] cannot be placed on AJ19 (IOB_X1Y51) because the pad is already occupied by terminal ADC_FCO[5] [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf:314]
+Finished Parsing UCF File [C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Pre.ucf]
+INFO: [Designutils 20-20] Invalid constraints found, use command 'write_ucf -constraints invalid <file>' to save all the invalid constraints to a file

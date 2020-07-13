@@ -78,3 +78,13 @@ startgroup
 set_property package_pin C4 [get_ports {TriggerData[32]}]
 endgroup
 save_constraints
+refresh_design
+startgroup
+set_property package_pin AP20 [get_ports {ADC_FCO[0]}]
+endgroup
+startgroup
+set_property package_pin AK17 [get_ports {ADC_FCO[12]}]
+endgroup
+save_constraints
+refresh_design
+refresh_design
