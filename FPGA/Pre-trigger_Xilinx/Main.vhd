@@ -66,16 +66,12 @@ port(
 	ADCOutDataLVDSNext: in std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
 	ADCOutDataLVDSNext_n: in std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
 
-	ADC_test				: in std_logic;
-	ADC_res				: in std_logic;
-	ADC_CSB				: out std_logic := '1';	-- Pin 
-	ADC_SDIO				: out std_logic := '0';	-- Pin 
-	ADC_SCLK				: out std_logic := '0';	-- Pin 
-
 	ADC_CLK				: out std_logic;	-- Pin 
 	ADC_DCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_FCO				: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+--	ADC_FCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+--	ADC_FCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_FCO_LVDSPrev	: in std_logic;	-- 
 	ADC_FCO_LVDSPrev_n: in std_logic;	-- 
 	ADC_FCO_LVDSNext	: in std_logic;	-- 
@@ -84,6 +80,12 @@ port(
 --	ADC_FCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 --	ADC_DCO_LVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 --	ADC_DCO_LVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+
+	ADC_test				: in std_logic;
+	ADC_res				: in std_logic;
+	ADC_CSB				: out std_logic := '1';	-- Pin 
+	ADC_SDIO				: out std_logic := '0';	-- Pin 
+	ADC_SCLK				: out std_logic := '0';	-- Pin 
 
 -- 3. Trig_in-out_FCT
 
@@ -120,16 +122,21 @@ architecture Behavioral of Main is
 	--- clocking
 	signal Quarts				: std_logic;
 	signal FCT40				: std_logic;
+	signal ResultClock		: std_logic;	-- Ref.clock for PLL (dedicated)
+	signal Resultclock1		: std_logic;
 	signal Clock_in			: std_logic;
 	signal Clk40				: std_logic;
 	signal CLK40_90d			: std_logic;
 	signal Clk20				: std_logic;
 	signal Clk80				: std_logic;
+	signal Clk80_o				: std_logic;
 	signal Clk160				: std_logic;
+	signal Clk160_o			: std_logic;
+	signal Clk320				: std_logic;
 	signal FCT160				: std_logic;
 	signal Phase				: std_logic;
-	signal Clk_Selected		: std_logic := '0';
-	signal s_clock_locked	: std_logic := '0';
+	signal Clk_Selected		: std_logic := '1';
+	signal s_clock_locked	: std_logic;
 	---
 
 	--- system
@@ -141,10 +148,16 @@ architecture Behavioral of Main is
 	signal PwrUpReset			: std_logic;
 	signal Reset				: std_logic;
 	---
+	
+	--- led
+	signal o_green_led		: std_logic := '1';
+	signal o_blue_led			: std_logic := '1';
+	signal o_red_led			: std_logic := '1';
+	---
 
 	--- ADC SPI interface signals
 	signal s_fadc_test		: std_logic := '0'; 
-	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000101000000000001111111100000001";
+	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
 											--									  "set	addr		 data			 set	addr		  data "
 											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 	signal shift_sdio_test	: std_logic;
@@ -153,24 +166,26 @@ architecture Behavioral of Main is
 	signal s_fadc_sdio_reset: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000000000000000001111111100000001";
 	signal shift_sdio_reset	: std_logic;
 	
-	signal ADCtest_Bit_write: std_logic := '0'; 
-	signal ADCtest_reg_sset	: std_logic := '1'; 
-	signal ADCtest_SDIO_trig: std_logic; 
-	signal ADCtest_CSB_trig	: std_logic; 
-	
-	signal ADCtest_bit_count: STD_LOGIC_VECTOR(5 downto 0);
-	
 	signal s_fadc_csb			: std_logic := '1';
 	signal s_fadc_sdio		: std_logic := '0'; 
 	signal s_fadc_sclk		: std_logic := '0';
+	
+	signal ADC_Bit_write: std_logic := '0'; 
+	signal ADC_bit_count: STD_LOGIC_VECTOR(5 downto 0);
+	
+	signal ADCtest_reg_sset	: std_logic := '1'; 
+	signal ADCtest_SDIO_trig: std_logic; 
+	signal ADCreset_reg_sset	: std_logic := '1'; 
+	signal ADCreset_SDIO_trig: std_logic; 
+	signal ADC_CSB_trig	: std_logic := '1'; 
 	---
 	
 	--- Input ADC data
-	signal ADCInData			: std_logic_vector(NUM_TrigCell-1 downto 0);
-	signal ADCInDataPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal ADC_DCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal ADC_FCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
-	signal ADC_DCOPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal ADCInData			: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal ADC_FCOPrev		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal ADCInDataPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 
 	signal InDataReg_p		: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal InDataReg_n		: std_logic_vector(NUM_TrigCell-1 downto 0);
@@ -178,6 +193,10 @@ architecture Behavioral of Main is
 	signal InDataPrevReg_p	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal InDataPrevReg		: array_prev_adc;
+
+	--- Output ADC data
+	signal ADCInDataNext		: std_logic_vector(NUM_TrigCellNext-1 downto 0);
+	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 
 	--- TriggerDes
 	signal TrigIn	: std_logic;

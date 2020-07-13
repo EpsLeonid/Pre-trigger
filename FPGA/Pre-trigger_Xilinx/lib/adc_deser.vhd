@@ -47,25 +47,25 @@ entity adc_deser is
 	DCON			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	FCOP			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	FCON			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
-	DCOPrevP		: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
-	DCOPrevN		: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+	DCOPrevP		: in std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+	DCOPrevN		: in std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	
 	o_adc_data	: out array_adc;
 	o_dco			: out std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	o_adc_data_prev	: out array_prev_adc;
-	o_dco_prev			: out std_logic_vector(NUM_TrigCellPrev-1 downto 0)	-- 
+	o_dco_prev			: out std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0)	-- 
 	);
 end adc_deser;
 
 architecture Behavioral of adc_deser is
 
-	signal SDATA	: std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	
-	signal SDATAPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of ADC data from Prev board 
 	signal DCO			: std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 --	signal DCODiv		: std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	signal FCO			: std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
-	signal DCOPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
---	signal DCODivPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+	signal SDATA		: std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	
+
+	signal DCOPrev		: std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+	signal SDATAPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of ADC data from Prev board 
 
 begin
 
