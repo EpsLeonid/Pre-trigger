@@ -55,7 +55,8 @@ entity FindMaxAmp is
 			 ResetAll			: out STD_LOGIC;
 			 Error 				: out	STD_LOGIC;
 
-			 test 				: out	STD_LOGIC_VECTOR (15 downto 0));
+			 test 				: out	STD_LOGIC_VECTOR (15 downto 0)
+	);
 end FindMaxAmp;
 
 architecture Behavioral of FindMaxAmp is

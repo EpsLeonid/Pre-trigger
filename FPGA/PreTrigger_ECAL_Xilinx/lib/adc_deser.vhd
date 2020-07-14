@@ -54,6 +54,8 @@ entity adc_deser is
 		o_dco			: out std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 		o_adc_data_prev	: out array_prev_adc;
 		o_dco_prev			: out std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0)	-- 
+		
+		test 				: out	std_logic_vector (15 downto 0)
 	);
 end adc_deser;
 

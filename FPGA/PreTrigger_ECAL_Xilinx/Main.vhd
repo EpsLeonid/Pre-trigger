@@ -180,7 +180,16 @@ architecture Behavioral of Main is
 	signal ADCInData			: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal ADC_FCOPrev		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal ADCInDataPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-
+	
+	signal Test_ADCdeser		: std_logic_vector (15 downto 0);
+	---
+	
+	--- Output ADC data
+	signal ADCInDataNext		: std_logic_vector(NUM_TrigCellNext-1 downto 0);
+	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	---
+	
+	--- Processing data
 	signal InDataReg_p		: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal InDataReg_n		: std_logic_vector(NUM_TrigCell-1 downto 0);
 	signal InDataReg			: array_adc;
@@ -188,10 +197,17 @@ architecture Behavioral of Main is
 	signal InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	signal InDataPrevReg		: array_prev_adc;
 
-	--- Output ADC data
-	signal ADCInDataNext		: std_logic_vector(NUM_TrigCellNext-1 downto 0);
-	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-
+	signal MaxAmp_o			: std_logic_vector (Sum_Bits-1 downto 0);
+	signal MaxCellNumber_o  : std_logic_vector (BitNumGroup downto 0);
+	signal ThrNum1_o			: std_logic_vector (3 downto 0);
+	signal ThrNum2_o			: std_logic_vector (3 downto 0);
+	signal ThrNum3_o			: std_logic_vector (3 downto 0);
+	signal ThrNum4_o			: std_logic_vector (3 downto 0);
+	signal ThrNum5_o			: std_logic_vector (3 downto 0);
+	
+	signal Test_FindMaxAmp	: std_logic_vector (15 downto 0);
+	---
+	
 	--- TriggerDes
 	signal TrigIn	: std_logic;
 	signal TrigDes_o	: std_logic;
@@ -402,11 +418,11 @@ DLL: entity work.DLL
 		In_Data			=> InDataReg,
 		In_DataPrev		=> InDataPrevReg,
 		RegInit			=> '0',
-		MaxAmp			=> TriggerData(9 downto 0),
-		MaxCellNumber	=> TriggerData(13 downto 10),
-		ThrNum1			=> TriggerData(23 downto 20),
-		ThrNum2			=> TriggerData(27 downto 24),
-		ThrNum3			=> TriggerData(31 downto 28),
+		MaxAmp			=> MaxAmp_o,
+		MaxCellNumber	=> MaxCellNumber_o,
+		ThrNum1			=> ThrNum1_o,
+		ThrNum2			=> ThrNum2_o,
+		ThrNum3			=> ThrNum3_o,
 		FastTrig			=> FastTrigDes_o,
 		Trig				=> TrigDes_o,
 	--	SaveTrigData	=> '0',
@@ -422,15 +438,19 @@ DLL: entity work.DLL
 	);
 
 	ADC_CLK <= CLK80;
-	TriggerData(32) <= FastTrigDes_o;
-	TriggerData(33) <= TrigDes_o;
-
+	TriggerData(9 downto 0)	  <= MaxAmp_o;
+	TriggerData(13 downto 10) <= MaxCellNumber_o;
+	TriggerData(19 downto 14) <= (others => '0');
+	TriggerData(23 downto 20) <= ThrNum1_o;
+	TriggerData(27 downto 24) <= ThrNum2_o;
+	TriggerData(31 downto 28) <= ThrNum3_o;
+	TriggerData(32)			  <= FastTrigDes_o;
+	TriggerData(33)			  <= TrigDes_o;
+	TriggerData(63 downto 34) <= (others => '1');
+	
 	FastTrigDes <= FastTrigDes_o;
 	TrigDes <= TrigDes_o;
 
-	TriggerData(19 downto 14) <= (others => '0');
-	TriggerData(63 downto 34) <= (others => '1');
-	
 --******** TriggerIn part ********--
 
 	LVDS_signal : IBUFDS

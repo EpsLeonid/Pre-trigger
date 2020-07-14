@@ -1,16 +1,16 @@
-Release 14.7 - xst P.20131013 (nt)
+Release 14.7 - xst P.20131013 (nt64)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.14 secs
+Total CPU time to Xst completion: 0.08 secs
  
 --> Reading design: Main.prj
 
@@ -68,7 +68,7 @@ Automatic Register Balancing       : No
 
 ---- Target Options
 Add IO Buffers                     : YES
-Global Maximum Fanout              : 500
+Global Maximum Fanout              : 100000
 Add Generic Clock Buffer(BUFG)     : 32
 Number of Regional Clock Buffers   : 32
 Register Duplication               : YES
@@ -107,27 +107,48 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd" in Library work.
+WARNING:HDLParsers:3607 - Unit work/Main is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd".
+WARNING:HDLParsers:3607 - Unit work/Main/Behavioral is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd".
+WARNING:HDLParsers:3607 - Unit work/Light_Pulser is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/Light_Pulser.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Light_Pulser.vhd".
+WARNING:HDLParsers:3607 - Unit work/Light_Pulser/Utility is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/Light_Pulser.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Light_Pulser.vhd".
+WARNING:HDLParsers:3607 - Unit work/PhaseSW is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/PhaseSW.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd".
+WARNING:HDLParsers:3607 - Unit work/PhaseSW/Behavioral is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/PhaseSW.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd".
+WARNING:HDLParsers:3607 - Unit work/DLL is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd".
+WARNING:HDLParsers:3607 - Unit work/DLL/BEHAVIORAL is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd".
+WARNING:HDLParsers:3607 - Unit work/adc_deser is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd".
+WARNING:HDLParsers:3607 - Unit work/adc_deser/Behavioral is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd".
+WARNING:HDLParsers:3607 - Unit work/FindMaxAmp is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd".
+WARNING:HDLParsers:3607 - Unit work/FindMaxAmp/Behavioral is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd".
+WARNING:HDLParsers:3607 - Unit work/ShiftReg is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd".
+WARNING:HDLParsers:3607 - Unit work/ShiftReg/Behavioral is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd".
+WARNING:HDLParsers:3607 - Unit work/Edge_Sensing is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/Edge_Sensing.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd".
+WARNING:HDLParsers:3607 - Unit work/Edge_Sensing/Utility is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/Edge_Sensing.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd".
+WARNING:HDLParsers:3607 - Unit work/SRFF is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/SRFF.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd".
+WARNING:HDLParsers:3607 - Unit work/SRFF/Utility is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/SRFF.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd".
+WARNING:HDLParsers:3607 - Unit work/V_Counter is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/V_Counter.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd".
+WARNING:HDLParsers:3607 - Unit work/V_Counter/Utility is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/LIB/V_Counter.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd".
+WARNING:HDLParsers:3607 - Unit work/parameters is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd".
+WARNING:HDLParsers:3607 - Unit work/parameters is now defined in a different file.  It was defined in "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd", and is now defined in "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd".
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd" in Library work.
 Architecture parameters of Entity parameters is up to date.
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/SRFF.vhd" in Library work.
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd" in Library work.
 Architecture utility of Entity srff is up to date.
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/V_Counter.vhd" in Library work.
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd" in Library work.
 Architecture utility of Entity v_counter is up to date.
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/Edge_Sensing.vhd" in Library work.
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd" in Library work.
 Architecture utility of Entity edge_sensing is up to date.
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/PhaseSW.vhd" in Library work.
-Architecture behavioral of Entity phasesw is up to date.
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd" in Library work.
-Architecture behavioral of Entity dll is up to date.
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/Light_Pulser.vhd" in Library work.
-Architecture utility of Entity light_pulser is up to date.
-Compiling vhdl file "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd" in Library work.
-ERROR:HDLParsers:164 - "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd" Line 57. parse error, unexpected CLOSEPAR, expecting IDENTIFIER
+Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" in Library work.
+ERROR:HDLParsers:864 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" Line 135. Actual, result of operator, associated with Formal Signal, Signal 'sclr', is not a Signal. (LRM 2.1.1)
+ERROR:HDLParsers:3298 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" line 137. Expression is not a static name.
+ERROR:HDLParsers:864 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" Line 152. Actual, ParameterAssocOp, associated with Formal Signal, Signal 'R', is not a Signal. (LRM 2.1.1)
+ERROR:HDLParsers:3298 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" line 155. Expression is not a static name.
+ERROR:HDLParsers:864 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" Line 198. Actual, result of operator, associated with Formal Signal, Signal 'sclr', is not a Signal. (LRM 2.1.1)
+ERROR:HDLParsers:3298 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd" line 200. Expression is not a static name.
 --> 
 
-Total memory usage is 212284 kilobytes
+Total memory usage is 290404 kilobytes
 
-Number of errors   :    1 (   0 filtered)
-Number of warnings :    0 (   0 filtered)
+Number of errors   :    6 (   0 filtered)
+Number of warnings :   22 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 
