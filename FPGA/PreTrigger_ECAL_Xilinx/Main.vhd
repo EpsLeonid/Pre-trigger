@@ -43,7 +43,7 @@ port(
 	FCT_40		: in std_logic; -- system clock
 	FCT_160		: in std_logic; -- clock
 	FCT_160_n	: in std_logic; -- clock
--- In Trigger module Link's Clock is checked inside Altera but switched outside 
+-- In Trigger module FCT's Clock is checked inside Altera but switched outside 
 	Sw_Quartz	: out std_logic;	-- connects Quartz to PLL ref.Input			-> Pin 
 	Sw_FCTClk	: out std_logic;	-- connects Link's Clock to PLL ref.Input	-> Pin 
 
@@ -70,16 +70,10 @@ port(
 	ADC_DCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_FCO				: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
---	ADC_FCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
---	ADC_FCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_FCO_LVDSPrev	: in std_logic;	-- 
 	ADC_FCO_LVDSPrev_n: in std_logic;	-- 
-	ADC_FCO_LVDSNext	: in std_logic;	-- 
-	ADC_FCO_LVDSNext_n: in std_logic;	-- 
---	ADC_FCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
---	ADC_FCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
---	ADC_DCO_LVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
---	ADC_DCO_LVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+	ADC_FCO_LVDSNext	: out std_logic;	-- 
+	ADC_FCO_LVDSNext_n: out std_logic;	-- 
 
 --	ADC_test				: in std_logic;
 --	ADC_res				: in std_logic;
