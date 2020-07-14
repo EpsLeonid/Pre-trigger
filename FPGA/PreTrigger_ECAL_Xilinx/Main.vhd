@@ -286,18 +286,18 @@ LVDS_FCT_160 : IBUFGDS
 
 --**************** Automatic Clock Switch for PLL reference ******************
 
-PhaseSwitch: entity work.PhaseSW 
-	generic map(
-				Fmax				=> 42000, -- Upper limit in kHz
-				Fmin				=> 38000, -- Lower limit in kHz
-				RefClock			=> 40000  -- Local Quartz Freq(kHz) used as the reference
-				)
-	port map ( Clock				=> Quarts,--Qclock,--
-				  SysClk				=> FCT40,--FCT_40,
-				  Reset				=> Reset,
-				  Phase				=> Phase,
-				  SysClk_Selected	=> Clk_Selected--Test(9)
-				);
+--PhaseSwitch: entity work.PhaseSW 
+--	generic map(
+--				Fmax				=> 42000, -- Upper limit in kHz
+--				Fmin				=> 38000, -- Lower limit in kHz
+--				RefClock			=> 40000  -- Local Quartz Freq(kHz) used as the reference
+--				)
+--	port map ( Clock				=> Quarts,--Qclock,--
+--				  SysClk				=> FCT40,--FCT_40,
+--				  Reset				=> Reset,
+--				  Phase				=> Phase,
+--				  SysClk_Selected	=> Clk_Selected--Test(9)
+--				);
 
 --	ResultClock <= ((FCT_40 and Clk_Selected) OR (Qclock and not Clk_Selected));
 
@@ -360,14 +360,14 @@ DLL: entity work.DLL
 --	end process;
 	o_green_led <= '0' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
 						'1';
-	Led_B : entity work.Light_Pulser 
-		generic map ( DIV	=> 1000,
-						  DUR	=> 10000)
-		port map( 
-					 clock => CLK80,
-					 i_event => FastTrigDes_o,
-					 o_flash => o_blue_led
-					);
+--	Led_B : entity work.Light_Pulser 
+--		generic map ( DIV	=> 1000,
+--						  DUR	=> 10000)
+--		port map( 
+--					 clock => CLK80,
+--					 i_event => FastTrigDes_o,
+--					 o_flash => o_blue_led
+--					);
 
 --	Led_R : entity work.Light_Pulser 
 --		generic map ( DIV	=> 1000,
@@ -505,9 +505,9 @@ DLL: entity work.DLL
 																												  ADC_SDIO <= '0';
 			END IF;
 			IF (((ADCtest_bit_count >= "000010") AND (ADCtest_bit_count < "11010")) OR ((ADCtest_bit_count >= "11100") AND (ADCtest_bit_count < "110100")))Then 
-				ADCtest_CSB_trig <= '0';
+				ADC_CSB_trig <= '0';
 			ELSE 
-				ADCtest_CSB_trig <= '1';
+				ADC_CSB_trig <= '1';
 			END IF;
 		end if;
 	end process;
@@ -516,7 +516,7 @@ DLL: entity work.DLL
 --											--									  "set	addr		 data			 set	addr		  data "
 --											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 
-	ADC_CSB <= ADCtest_CSB_trig;
+	ADC_CSB <= ADC_CSB_trig;
 	ADC_SCLK <= Clk20;
 
 	ShiftReg_test : entity work.ShiftReg 

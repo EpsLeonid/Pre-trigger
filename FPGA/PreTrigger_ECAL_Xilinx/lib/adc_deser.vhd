@@ -101,19 +101,17 @@ LVDS_ADC_FCO: for i in 0 to NUM_TrigCell/4-1 generate
 end generate LVDS_ADC_FCO;
 
 -- Input LVDS ADC DCO buffer from prev.board
-LVDS_ADC_DCOPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
-	LVDS_signal : IBUFGDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			DIFF_TERM => TRUE, -- Differential Termination 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => DCOPrev(i),  -- Buffer output
-			I => DCOPrevP(i),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => DCOPrevN(i) -- Diff_n buffer input (connect directly to top-level port)
-		);
-	o_dco_prev(i) <= DCOPrev(i);
-end generate LVDS_ADC_DCOPrev;
+LVDS_ADC_DCOPrev: IBUFGDS
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+		DIFF_TERM => TRUE, -- Differential Termination 
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => DCOPrev,  -- Buffer output
+		I => DCOPrevP,  -- Diff_p buffer input (connect directly to top-level port)
+		IB => DCOPrevN -- Diff_n buffer input (connect directly to top-level port)
+	);
+o_dco_prev <= DCOPrev;
 
 -- Input LVDS ADC buffer
 
@@ -156,7 +154,7 @@ LVDS_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate
 	SERDES : entity work.ISERDES_8bit 
 	port map  (
 		DataIn 	=> SDATAPrev(i),	-- input of data from ADC by bits
-		Clock		=> DCOPrev(i),--Clock_i,
+		Clock		=> DCOPrev,--Clock_i,
 --		ClkDiv	=> DCODivPrev(i/4),
 		DataOut	=> o_adc_data_prev(i)
 				 );

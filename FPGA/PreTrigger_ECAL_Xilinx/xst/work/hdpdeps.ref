@@ -1,4 +1,4 @@
-V3 61
+V3 63
 FL C:/Work/COMET/trunk/FPGA/LIB/Edge_Sensing.vhd 2019/09/04.20:53:10 P.20131013
 FL C:/Work/COMET/trunk/FPGA/LIB/Light_Pulser.vhd 2020/07/13.14:29:22 P.20131013
 FL C:/Work/COMET/trunk/FPGA/LIB/PhaseSW.vhd 2020/07/13.14:33:57 P.20131013
@@ -12,21 +12,32 @@ FL C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd 2020/07/06
 FL C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd 2019/09/04.20:53:10 P.20131013
 FL C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd 2020/07/13.11:52:18 P.20131013
 FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd 2018/08/21.11:08:35 P.20131013
-EN work/Edge_Sensing 1594710245 \
+EN work/Edge_Sensing 1594712164 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd \
-      PB ieee/std_logic_1164 1381692176 PB work/parameters 1594710240
-AR work/Edge_Sensing/Utility 1594710246 \
+      PB ieee/std_logic_1164 1381692176 PB work/parameters 1594713789
+AR work/Edge_Sensing/Utility 1594712165 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Edge_Sensing.vhd \
-      EN work/Edge_Sensing 1594710245
+      EN work/Edge_Sensing 1594712164
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/ISERDES_8bit.vhd 2018/11/02.14:15:02 P.20131013
+EN work/ISERDES_8bit 1594713794 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/ISERDES_8bit.vhd \
+      PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
+      PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
+      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1594713789
+AR work/ISERDES_8bit/Behavioral 1594713795 \
+      FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/ISERDES_8bit.vhd \
+      EN work/ISERDES_8bit 1594713794 CP IDDR
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Light_Pulser.vhd 2019/02/25.17:39:43 P.20131013
 EN work/Light_Pulser 1594650597 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Light_Pulser.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177 PB ieee/MATH_REAL 1381692182 \
-      PB work/parameters 1594710240
+      PB work/parameters 1594713789
 AR work/Light_Pulser/Utility 1594650598 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/Light_Pulser.vhd \
       EN work/Light_Pulser 1594650597 CP work/V_Counter CP work/Edge_Sensing \
       CP work/SRFF
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd 2019/02/25.17:39:43 P.20131013
 EN work/PhaseSW 1594650593 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
@@ -35,65 +46,69 @@ AR work/PhaseSW/Behavioral 1594650594 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/PhaseSW.vhd \
       EN work/PhaseSW 1594650593 CP work/V_Counter CP work/SRFF
 FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd 2018/08/21.14:42:43 P.20131013
-EN work/SRFF 1594710241 \
+EN work/SRFF 1594713790 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/SRFF/Utility 1594710242 \
+AR work/SRFF/Utility 1594713791 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd \
-      EN work/SRFF 1594710241
+      EN work/SRFF 1594713790
 FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd 2018/08/21.11:08:35 P.20131013
-EN work/V_Counter 1594710243 \
+EN work/V_Counter 1594713792 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
-      PB work/parameters 1594710240
-AR work/V_Counter/Utility 1594710244 \
+      PB work/parameters 1594713789
+AR work/V_Counter/Utility 1594713793 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd \
-      EN work/V_Counter 1594710243
-EN work/DLL 1594650595 \
+      EN work/V_Counter 1594713792
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd 2020/07/14.12:36:16 P.20131013
+EN work/DLL 1594713796 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 LB UNISIM \
       PH unisim/VCOMPONENTS 1381692182
-AR work/DLL/BEHAVIORAL 1594650596 \
+AR work/DLL/BEHAVIORAL 1594713797 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd \
-      EN work/DLL 1594650595 CP BUFG CP IBUFG CP DCM_ADV
-EN work/adc_deser 0 \
+      EN work/DLL 1594713796 CP BUFG CP IBUFG CP DCM_ADV
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd 2020/07/14.14:40:58 P.20131013
+EN work/adc_deser 1594713798 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
-      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1594710240
-AR work/adc_deser/Behavioral 0 \
+      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1594713789
+AR work/adc_deser/Behavioral 1594713799 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd \
-      EN work/adc_deser 0 CP IBUFGDS CP IBUFDS CP work/ISERDES_8bit
-EN work/FindMaxAmp 0 \
+      EN work/adc_deser 1594713798 CP IBUFGDS CP IBUFDS CP work/ISERDES_8bit
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd 2020/07/14.14:03:40 P.20131013
+EN work/FindMaxAmp 1594713800 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/NUMERIC_STD 1381692181 \
       PB ieee/std_logic_arith 1381692177 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
-      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1594710240
-AR work/FindMaxAmp/Behavioral 0 \
+      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1594713789
+AR work/FindMaxAmp/Behavioral 1594713801 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd \
-      EN work/FindMaxAmp 0 CP work/SRFF CP work/V_Counter
+      EN work/FindMaxAmp 1594713800 CP work/SRFF CP work/V_Counter
 FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd 2020/07/14.12:36:16 P.20131013
-PH work/parameters 1594710239 \
+PH work/parameters 1594713788 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/STD_LOGIC_UNSIGNED 1381692179 \
       PB ieee/std_logic_arith 1381692177 PB ieee/NUMERIC_STD 1381692181 \
       PB ieee/MATH_REAL 1381692182
-PB work/parameters 1594710240 \
+PB work/parameters 1594713789 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd \
-      PH work/parameters 1594710239
-EN work/ShiftReg 0 \
+      PH work/parameters 1594713788
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd 2020/07/14.12:36:16 P.20131013
+EN work/ShiftReg 1594713802 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd \
       PB ieee/std_logic_1164 1381692176
-AR work/ShiftReg/Behavioral 0 \
+AR work/ShiftReg/Behavioral 1594713803 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd \
-      EN work/ShiftReg 0
+      EN work/ShiftReg 1594713802
+FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd 2020/07/14.14:16:34 P.20131013
 EN work/Main 0 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd \
       PB ieee/std_logic_1164 1381692176 PB ieee/std_logic_arith 1381692177 \
       PB ieee/STD_LOGIC_UNSIGNED 1381692179 PB ieee/NUMERIC_STD 1381692181 \
-      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1594710240
+      LB UNISIM PH unisim/VCOMPONENTS 1381692182 PB work/parameters 1594713789
 AR work/Main/Behavioral 0 \
       FL D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd \
-      EN work/Main 0 CP work/SRFF CP IBUFG CP IBUFGDS CP work/PhaseSW CP work/DLL \
-      CP work/Light_Pulser CP work/adc_deser CP work/FindMaxAmp CP IBUFDS \
-      CP work/V_Counter CP work/ShiftReg
+      EN work/Main 0 CP work/SRFF CP IBUFG CP IBUFGDS CP work/DLL CP work/adc_deser \
+      CP work/FindMaxAmp CP IBUFDS CP work/V_Counter CP work/ShiftReg
