@@ -60,6 +60,10 @@ architecture Behavioral of PhaseSW is
 	
 --*************************************
 
+	signal RefTimeCnt_sclr	: STD_LOGIC;
+	signal TrigEnd_R			: STD_LOGIC;
+	signal SysClkCt_sclr		: STD_LOGIC;
+
 	signal RefTimeCnt_o		: STD_LOGIC_VECTOR (15 downto 0);
 	signal RefTimeZero		: STD_LOGIC := '0';
 	signal SysClkCnt_o		: STD_LOGIC_VECTOR (15 downto 0);
@@ -127,12 +131,13 @@ begin
 
 --*****************************************
 
+	RefTimeCnt_sclr <= (EndTrig(4) OR Reset);
 	RefTimeCnt : entity work.V_Counter 
 	GENERIC map ( WIDTH  => 16 ) 
 	port map (
 				 clock 	=> clock,
 				 clk_en	=>	'1',
-				 sclr		=>	(EndTrig(4) OR Reset),
+				 sclr		=>	RefTimeCnt_sclr,
 				 q			=> RefTimeCnt_o
 				);
 
@@ -145,11 +150,12 @@ begin
 		end if;
 	end process;
 
+	TrigEnd_R <= (not (RefTimeZero AND SysClkZero));
 	TrigEnd : entity work.SRFF 
 	port map (
 				 CLK 	=> clock,
 				 S		=> CycleEnd,
-				 R		=> (not (RefTimeZero AND SysClkZero)),
+				 R		=> TrigEnd_R,
 				 CLRN	=> not Reset,
 				 Q 	=> EndTrig(1)
 				);
@@ -190,12 +196,13 @@ begin
 	end process;
 
 -- Count the external clock frequency, in Base time interval :
+	SysClkCt_sclr <= (EndTrig(4) OR Reset);
 	SysClkCt : entity work.V_Counter 
 	GENERIC map ( WIDTH  => 16 ) 
 	port map (
 				 clock 	=> SysClk,
 				 clk_en	=>	'1',
-				 sclr		=>	(EndTrig(4) OR Reset),
+				 sclr		=>	SysClkCt_sclr,
 				 q			=> SysClkCnt_o
 				);
 
