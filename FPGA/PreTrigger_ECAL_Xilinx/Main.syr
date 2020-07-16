@@ -1,16 +1,16 @@
-Release 14.7 - xst P.20131013 (nt64)
+Release 14.7 - xst P.20131013 (nt)
 Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
 --> Parameter TMPDIR set to xst/projnav.tmp
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Parameter xsthdpdir set to xst
 
 
 Total REAL time to Xst completion: 0.00 secs
-Total CPU time to Xst completion: 0.08 secs
+Total CPU time to Xst completion: 0.13 secs
  
 --> Reading design: Main.prj
 
@@ -107,50 +107,30 @@ Slice Utilization Ratio Delta      : 5
 =========================================================================
 *                          HDL Compilation                              *
 =========================================================================
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd" in Library work.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/Parameters.vhd" in Library work.
 Architecture parameters of Entity parameters is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/SRFF.vhd" in Library work.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/SRFF.vhd" in Library work.
 Architecture utility of Entity srff is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/V_Counter.vhd" in Library work.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/V_Counter.vhd" in Library work.
 Architecture utility of Entity v_counter is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/LIB/ISERDES_8bit.vhd" in Library work.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/ISERDES_8bit.vhd" in Library work.
 Architecture behavioral of Entity iserdes_8bit is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd" in Library work.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/Edge_Sensing.vhd" in Library work.
+Architecture utility of Entity edge_sensing is up to date.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/PhaseSW.vhd" in Library work.
+Architecture behavioral of Entity phasesw is up to date.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/DLL.vhd" in Library work.
 Architecture behavioral of Entity dll is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd" in Library work.
-Architecture behavioral of Entity adc_deser is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/FindMaxAmp.vhd" in Library work.
-Architecture behavioral of Entity findmaxamp is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/ShiftReg.vhd" in Library work.
-Architecture behavioral of Entity shiftreg is up to date.
-Compiling vhdl file "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" in Library work.
-Entity <main> compiled.
-ERROR:HDLParsers:1202 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 179. Redeclaration of symbol ADC_FCO.
-ERROR:HDLParsers:3313 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 406. Undefined symbol 'ADC_FCO_LVDS'.  Should it be: ADC_dCO_LVDS?
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 406. ADC_FCO_LVDS: Undefined symbol (last report in this block)
-ERROR:HDLParsers:3313 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 407. Undefined symbol 'ADC_FCO_LVDS_n'.  Should it be: ADC_dCO_LVDS_n?
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 407. ADC_FCO_LVDS_n: Undefined symbol (last report in this block)
-ERROR:HDLParsers:3313 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 408. Undefined symbol 'ADC_DCO_LVDSPrev'.  Should it be: ADC_fCO_LVDSPrev?
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 408. ADC_DCO_LVDSPrev: Undefined symbol (last report in this block)
-ERROR:HDLParsers:3313 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 409. Undefined symbol 'ADC_DCO_LVDSPrev_n'.  Should it be: ADC_fCO_LVDSPrev_n?
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 409. ADC_DCO_LVDSPrev_n: Undefined symbol (last report in this block)
-ERROR:HDLParsers:851 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 396. Formal FCOP of entity with no default value must be associated with an actual value.
-ERROR:HDLParsers:3312 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 491. Undefined symbol 'ADCtest_Bit_write'.
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 491. ADCtest_Bit_write: Undefined symbol (last report in this block)
-ERROR:HDLParsers:3312 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 494. Undefined symbol 'ADCtest_bit_count'.
-ERROR:HDLParsers:1209 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 494. ADCtest_bit_count: Undefined symbol (last report in this block)
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 499. < can not have such operands in this context.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 502. >= can not have such operands in this context.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 502. < can not have such operands in this context.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 507. >= can not have such operands in this context.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 507. < can not have such operands in this context.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 507. >= can not have such operands in this context.
-ERROR:HDLParsers:808 - "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.vhd" Line 507. < can not have such operands in this context.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/LIB/Light_Pulser.vhd" in Library work.
+Architecture utility of Entity light_pulser is up to date.
+Compiling vhdl file "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd" in Library work.
+Entity <adc_deser> compiled.
+ERROR:HDLParsers:1202 - "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/lib/adc_deser.vhd" Line 66. Redeclaration of symbol FCO.
 --> 
 
-Total memory usage is 292772 kilobytes
+Total memory usage is 212924 kilobytes
 
-Number of errors   :   21 (   0 filtered)
+Number of errors   :    1 (   0 filtered)
 Number of warnings :    0 (   0 filtered)
 Number of infos    :    0 (   0 filtered)
 

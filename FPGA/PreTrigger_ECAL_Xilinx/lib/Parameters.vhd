@@ -19,15 +19,16 @@ package parameters is
 	
 	type array_adc is array (0 to NUM_TrigCell) of std_logic_vector (ADC_Bits-1 downto 0);
 	type array_prev_adc is array (0 to NUM_TrigCellPrev) of std_logic_vector (ADC_Bits-1 downto 0);
+	type array_next_adc is array (0 to NUM_TrigCellNext) of std_logic_vector (ADC_Bits-1 downto 0);
 	
 --FindAmp
 
 	constant Sum_Bits 			: integer := 10; 
 	constant NumTrigCh 			: integer := 16;
 	constant NumInReg 			: integer := 4; 
-	constant NumGroup 			: integer := 9;
+	constant NumGroup 			: integer := 9; -- NumGroup depends from crystal scheme
 	constant BitNumGroup 		: integer := integer(floor(log2(real(NumGroup))));
-	constant NumAmpGroup 		: integer := 9;	-- Number of reg for find MaxAmp
+	constant NumAmpGroup 		: integer := 9;	-- Number of reg for find MaxAmp; -- NumGroup depends from crystal scheme
 --	constant NumAmpGroup 		: integer := integer(NumGroup/2+NumGroup/4+NumGroup/8+(NumGroup rem 2)); -- Number of reg for find MaxAmp
 	constant Piedistal_def 		: integer := 100; 
 	constant Piedistal_def_2 	: integer := 125;

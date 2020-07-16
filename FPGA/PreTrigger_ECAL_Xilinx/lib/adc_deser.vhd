@@ -45,8 +45,8 @@ entity adc_deser is
 
 		DCOP			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 		DCON			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
-		FCOP			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
-		FCON			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+		FCO_i			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+--		FCON			: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 		DCOPrevP		: in std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 		DCOPrevN		: in std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 		
@@ -86,19 +86,19 @@ LVDS_ADC_DCO: for i in 0 to NUM_TrigCell/4-1 generate
 	o_dco(i) <= DCO(i);
 end generate LVDS_ADC_DCO;
 
--- Input LVDS ADC FCO buffer
-LVDS_ADC_FCO: for i in 0 to NUM_TrigCell/4-1 generate 
-	LVDS_signal : IBUFGDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			DIFF_TERM => TRUE, -- Differential Termination 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => FCO(i),  -- Buffer output
-			I => FCOP(i),  -- Diff_p buffer input (connect directly to top-level port)
-			IB => FCON(i) -- Diff_n buffer input (connect directly to top-level port)
-		);
-end generate LVDS_ADC_FCO;
+---- Input LVDS ADC FCO buffer
+--LVDS_ADC_FCO: for i in 0 to NUM_TrigCell/4-1 generate 
+--	LVDS_signal : IBUFGDS
+--		generic map (
+--			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+--			DIFF_TERM => TRUE, -- Differential Termination 
+--			IOSTANDARD => "DEFAULT")
+--		port map (
+--			O => FCO(i),  -- Buffer output
+--			I => FCOP(i),  -- Diff_p buffer input (connect directly to top-level port)
+--			IB => FCON(i) -- Diff_n buffer input (connect directly to top-level port)
+--		);
+--end generate LVDS_ADC_FCO;
 
 -- Input LVDS ADC DCO buffer from prev.board
 LVDS_ADC_DCOPrev: IBUFGDS

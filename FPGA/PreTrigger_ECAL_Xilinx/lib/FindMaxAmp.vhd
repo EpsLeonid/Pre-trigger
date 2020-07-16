@@ -132,7 +132,9 @@ begin
 	GroupSum(6) <= (Aver2(2)+Aver2(3)+Aver2(6)+Aver2(7));
 	GroupSum(7) <= (Aver2(6)+Aver2(7)+Aver2(10)+Aver2(11));
 	GroupSum(8) <= (Aver2(10)+Aver2(11)+Aver2(14)+Aver2(15));
-
+	
+	--GroupSum(i) <= (Aver2(i)+Aver2(i+1)+Aver2(i+y)+Aver2(i+1+y));
+	
 	Thresh_i: for iGroup in 0 to NumGroup-1 generate
 		GroupValue_Up_LT(iGroup) <= '1' when (GroupSum(iGroup) >= ThresholdData_0) else
 			'0';

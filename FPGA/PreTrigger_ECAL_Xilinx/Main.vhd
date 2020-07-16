@@ -63,8 +63,8 @@ port(
 	ADCInDataLVDS_n	: in std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	<- Pin 
 	ADCInDataLVDSPrev	: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
 	ADCInDataLVDSPrev_n: in std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of data from ADC	<- Pin 
-	ADCOutDataLVDSNext: in std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
-	ADCOutDataLVDSNext_n: in std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
+	ADCOutDataLVDSNext: out std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
+	ADCOutDataLVDSNext_n: out std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of data from ADC	<- Pin 
 
 	ADC_CLK				: out std_logic;	-- Pin 
 	ADC_DCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
@@ -178,14 +178,14 @@ architecture Behavioral of Main is
 	signal ADC_DCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal ADC_FCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
 	signal ADCInData			: std_logic_vector(NUM_TrigCell-1 downto 0);
-	signal ADC_FCOPrev		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal ADC_FCOPrev		: std_logic; 
 	signal ADCInDataPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	
 	signal Test_ADCdeser		: std_logic_vector (15 downto 0);
 	---
 	
 	--- Output ADC data
-	signal ADCInDataNext		: std_logic_vector(NUM_TrigCellNext-1 downto 0);
+	signal ADCOutDataNext	: std_logic_vector(NUM_TrigCellNext-1 downto 0);
 	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	---
 	
@@ -286,18 +286,18 @@ LVDS_FCT_160 : IBUFGDS
 
 --**************** Automatic Clock Switch for PLL reference ******************
 
---PhaseSwitch: entity work.PhaseSW 
---	generic map(
---				Fmax				=> 42000, -- Upper limit in kHz
---				Fmin				=> 38000, -- Lower limit in kHz
---				RefClock			=> 40000  -- Local Quartz Freq(kHz) used as the reference
---				)
---	port map ( Clock				=> Quarts,--Qclock,--
---				  SysClk				=> FCT40,--FCT_40,
---				  Reset				=> Reset,
---				  Phase				=> Phase,
---				  SysClk_Selected	=> Clk_Selected--Test(9)
---				);
+PhaseSwitch: entity work.PhaseSW 
+	generic map(
+				Fmax				=> 42000, -- Upper limit in kHz
+				Fmin				=> 38000, -- Lower limit in kHz
+				RefClock			=> 40000  -- Local Quartz Freq(kHz) used as the reference
+				)
+	port map ( Clock				=> Quarts,--Qclock,--
+				  SysClk				=> FCT40,--FCT_40,
+				  Reset				=> Reset,
+				  Phase				=> Phase,
+				  SysClk_Selected	=> Clk_Selected--Test(9)
+				);
 
 --	ResultClock <= ((FCT_40 and Clk_Selected) OR (Qclock and not Clk_Selected));
 
@@ -360,14 +360,14 @@ DLL: entity work.DLL
 --	end process;
 	o_green_led <= '0' when ((TestCnt(24)='1' and s_clock_locked = '1' and Clk_Selected = '0') or (s_clock_locked = '1' and Clk_Selected = '1'))else
 						'1';
---	Led_B : entity work.Light_Pulser 
---		generic map ( DIV	=> 1000,
---						  DUR	=> 10000)
---		port map( 
---					 clock => CLK80,
---					 i_event => FastTrigDes_o,
---					 o_flash => o_blue_led
---					);
+	Led_B : entity work.Light_Pulser 
+		generic map ( DIV	=> 1000,
+						  DUR	=> 10000)
+		port map( 
+					 clock => CLK80,
+					 i_event => FastTrigDes_o,
+					 o_flash => o_blue_led
+					);
 
 --	Led_R : entity work.Light_Pulser 
 --		generic map ( DIV	=> 1000,
@@ -403,8 +403,7 @@ DLL: entity work.DLL
 
 		DCOP			=> ADC_DCO_LVDS,
 		DCON			=> ADC_DCO_LVDS_n,
-		FCOP			=> ADC_FCO_LVDS,
-		FCON			=> ADC_FCO_LVDS_n,
+		FCO			=> ADC_FCO,
 		DCOPrevP		=> ADC_DCO_LVDSPrev,
 		DCOPrevN		=> ADC_DCO_LVDSPrev_n,
 		
@@ -412,6 +411,20 @@ DLL: entity work.DLL
 		o_dco			=> test_out,
 		o_adc_data_prev	=> InDataPrevReg
 	);
+	
+	ADC_FCONext <= Clk80;
+	ADCOutDataNext(0) <= InDataReg(0);
+	ADCOutDataNext(1) <= InDataReg(1);
+	ADCOutDataNext(2) <= InDataReg(2);
+	ADCOutDataNext(3) <= InDataReg(3);
+	ADCOutDataNext(4) <= InDataReg(4);
+	ADCOutDataNext(5) <= InDataReg(5);
+	ADCOutDataNext(6) <= InDataReg(6);
+	ADCOutDataNext(7) <= InDataReg(7);
+	ADCOutDataNext(8) <= InDataReg(8);
+	ADCOutDataNext(9) <= InDataReg(9);
+	ADCOutDataNext(10) <= InDataReg(10);
+	ADCOutDataNext(11) <= InDataReg(11);
 
 	FindMaxAmp_i: entity work.FindMaxAmp
 	port map(
@@ -430,11 +443,11 @@ DLL: entity work.DLL
 		Clock				=> CLK40,
 		Clock160			=> CLK160,
 
-		Reset				=> Reset
+		Reset				=> Reset,
 	--	ResetAll			=> '0',
 	--	Error				=> '0',
 
---		test				=> test_out
+		test				=> Test_FindMaxAmp
 	);
 
 	ADC_CLK <= CLK80;
