@@ -175,17 +175,17 @@ architecture Behavioral of Main is
 	---
 	
 	--- Input ADC data
-	signal ADC_DCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
-	signal ADC_FCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
-	signal ADCInData			: std_logic_vector(NUM_TrigCell-1 downto 0);
-	signal ADC_FCOPrev		: std_logic; 
-	signal ADCInDataPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+--	signal ADC_DCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
+--	signal ADC_FCO				: std_logic_vector(NUM_TrigCell/4-1 downto 0);
+--	signal ADCInData			: std_logic_vector(NUM_TrigCell-1 downto 0);
+--	signal ADC_FCOPrev		: std_logic; 
+--	signal ADCInDataPrev		: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	
 	signal Test_ADCdeser		: std_logic_vector (15 downto 0);
 	---
 	
 	--- Output ADC data
-	signal ADCOutDataNext	: std_logic_vector(NUM_TrigCellNext-1 downto 0);
+	signal ADCOutDataNext	: array_next_adc;
 	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	---
 	
@@ -254,7 +254,7 @@ begin
 	PwrUpReset <= PowerUp1_o AND not PowerUp2_o;   -- ONE pulse ~1sec after powering up
 
 --******** 1. Reference clock's & Frequency Control ********--
-BUFG_inst : IBUFG
+Quarts_Clk40 : IBUFG
 	generic map (
 		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE"   
 		IOSTANDARD => "DEFAULT")
@@ -263,7 +263,7 @@ BUFG_inst : IBUFG
 		I => Qclock      -- Clock buffer input
 	);
 
-LVDS_Clk40 : IBUFG
+FCT_Clk40 : IBUFG
 	generic map (
 		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
 		IOSTANDARD => "DEFAULT")
@@ -403,9 +403,9 @@ DLL: entity work.DLL
 
 		DCOP			=> ADC_DCO_LVDS,
 		DCON			=> ADC_DCO_LVDS_n,
-		FCO			=> ADC_FCO,
-		DCOPrevP		=> ADC_DCO_LVDSPrev,
-		DCOPrevN		=> ADC_DCO_LVDSPrev_n,
+		FCO_i			=> ADC_FCO,
+		DCOPrevP		=> ADC_FCO_LVDSPrev,
+		DCOPrevN		=> ADC_FCO_LVDSPrev_n,
 		
 		o_adc_data	=> InDataReg,
 		o_dco			=> test_out,
@@ -501,23 +501,23 @@ DLL: entity work.DLL
 			)
 	port map (
 				clock 	=> Clk20,
-				clk_en	=> ADCtest_Bit_write,
+				clk_en	=> ADC_Bit_write,
 				sclr		=> PwrUpReset,
-				q			=> ADCtest_bit_count
+				q			=> ADC_bit_count
 				);
 
 	process (Clk20)
 	begin
 		if rising_edge(Clk20) then
-			if (ADCtest_bit_count < "110100") Then ADCtest_Bit_write <= '1';
-															Else ADCtest_Bit_write <= '0';
+			if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
+													Else ADC_Bit_write <= '0';
 			end if;
-			IF ((ADCtest_bit_count >= "000001") AND (ADCtest_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
-																												  ADC_SDIO <= ADCtest_SDIO_trig;
-																											Else ADCtest_reg_sset <= '1';
-																												  ADC_SDIO <= '0';
+			IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+																										ADC_SDIO <= ADCtest_SDIO_trig;
+																								 Else ADCtest_reg_sset <= '1';
+																										ADC_SDIO <= '0';
 			END IF;
-			IF (((ADCtest_bit_count >= "000010") AND (ADCtest_bit_count < "11010")) OR ((ADCtest_bit_count >= "11100") AND (ADCtest_bit_count < "110100")))Then 
+			IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
 				ADC_CSB_trig <= '0';
 			ELSE 
 				ADC_CSB_trig <= '1';
