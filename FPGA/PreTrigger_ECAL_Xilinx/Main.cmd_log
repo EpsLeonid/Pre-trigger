@@ -32,3 +32,10 @@ xst -intstyle ise -ifn "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.xst
 ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Pre.ucf -p xc4vlx60-ff1148-10 Main.ngc Main.ngd  
 xst -intstyle ise -ifn "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.xst" -ofn "C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.syr" 
 ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Pre.ucf -p xc4vlx60-ff1148-10 Main.ngc Main.ngd  
+xst -intstyle ise -ifn "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.xst" -ofn "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Pre.ucf -p xc4vlx60-ff1148-10 Main.ngc Main.ngd  
+xst -intstyle ise -ifn "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.xst" -ofn "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Pre.ucf -p xc4vlx60-ff1148-10 Main.ngc Main.ngd  
+xst -intstyle ise -ifn "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.xst" -ofn "D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Main.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -uc Pre.ucf -p xc4vlx60-ff1148-10 Main.ngc Main.ngd  
+map -intstyle ise -p xc4vlx60-ff1148-10 -global_opt off -cm area -ir off -pr off -c 100 -o Main_map.ncd Main.ngd Main.pcf 

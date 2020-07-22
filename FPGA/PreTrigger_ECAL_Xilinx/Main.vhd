@@ -254,14 +254,14 @@ begin
 	PwrUpReset <= PowerUp1_o AND not PowerUp2_o;   -- ONE pulse ~1sec after powering up
 
 --******** 1. Reference clock's & Frequency Control ********--
-Quarts_Clk40 : IBUFG
-	generic map (
-		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE"   
-		IOSTANDARD => "DEFAULT")
-	port map (
-		O => Quarts,     -- Clock buffer output
-		I => Qclock      -- Clock buffer input
-	);
+--Quarts_Clk40 : IBUFG
+--	generic map (
+--		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE"   
+--		IOSTANDARD => "DEFAULT")
+--	port map (
+--		O => Quarts,     -- Clock buffer output
+--		I => Qclock      -- Clock buffer input
+--	);
 
 FCT_Clk40 : IBUFG
 	generic map (
@@ -333,8 +333,9 @@ Sw_Quartz <= not Clk_Selected;
 --	);
 
 ResultClock1 <= '0';
---
-	ResultClock <= ((FCT40 and ResultClock1) OR (Quarts and not ResultClock1));
+
+--	ResultClock <= ((FCT40 and ResultClock1) OR (Quarts and not ResultClock1));
+	ResultClock <= ((FCT40 and ResultClock1) OR (Qclock and not ResultClock1));
 
 DLL: entity work.DLL
 	port map (
