@@ -185,7 +185,11 @@ architecture Behavioral of Main is
 	---
 	
 	--- Output ADC data
-	signal ADCOutDataNext	: array_next_adc;
+	signal ADCDataNext		: array_next_adc;
+	signal DataShiftNext1	: std_logic;
+	signal DataShiftNext2	: std_logic;
+	signal ADCOutDataNext	: std_logic_vector (ADC_Bits-1 downto 0);
+	signal ADCOutDataNext_o	: std_logic_vector (ADC_Bits-1 downto 0);
 	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	---
 	
@@ -414,19 +418,122 @@ DLL: entity work.DLL
 	);
 	
 	ADC_FCONext <= Clk80;
-	ADCOutDataNext(0) <= InDataReg(0);
-	ADCOutDataNext(1) <= InDataReg(1);
-	ADCOutDataNext(2) <= InDataReg(2);
-	ADCOutDataNext(3) <= InDataReg(3);
-	ADCOutDataNext(4) <= InDataReg(4);
-	ADCOutDataNext(5) <= InDataReg(5);
-	ADCOutDataNext(6) <= InDataReg(6);
-	ADCOutDataNext(7) <= InDataReg(7);
-	ADCOutDataNext(8) <= InDataReg(8);
-	ADCOutDataNext(9) <= InDataReg(9);
-	ADCOutDataNext(10) <= InDataReg(10);
-	ADCOutDataNext(11) <= InDataReg(11);
-
+	ADCDataNext(0) <= InDataReg(0);
+	ADCDataNext(1) <= InDataReg(1);
+	ADCDataNext(2) <= InDataReg(2);
+	ADCDataNext(3) <= InDataReg(3);
+	ADCDataNext(4) <= InDataReg(4);
+	ADCDataNext(5) <= InDataReg(5);
+	ADCDataNext(6) <= InDataReg(6);
+	ADCDataNext(7) <= InDataReg(7);
+	ADCDataNext(8) <= InDataReg(8);
+	ADCDataNext(9) <= InDataReg(9);
+	ADCDataNext(10) <= InDataReg(10);
+	ADCDataNext(11) <= InDataReg(11);
+	
+	LVDS_buf_ADCNext: for i in 0 to NUM_TrigCellNext-1 generate 
+		
+		ADCOutDataNext <= ADCDataNext(i);
+		
+		OSERDES_inst : OSERDES
+		generic map (
+			DATA_RATE_OQ => "DDR", -- Specify data rate to "DDR" or "SDR" 
+			DATA_RATE_TQ => "DDR", -- Specify data rate to "DDR", "SDR", or "BUF" 
+			DATA_WIDTH => 8, -- Specify data width - For DDR: 4,6,8, or 10 
+								  -- For SDR or BUF: 2,3,4,5,6,7, or 8 
+			INIT_OQ => '0',  -- INIT for Q1 register - '1' or '0' 
+			INIT_TQ => '0',  -- INIT for Q2 register - '1' or '0' 
+			SERDES_MODE => "MASTER", --Set SERDES mode to "MASTER" or "SLAVE" 
+			SRVAL_OQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
+			SRVAL_TQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
+			TRISTATE_WIDTH => 4) -- Specify parallel to serial converter width 
+										-- When DATA_RATE_TQ = DDR: 2 or 4 
+										-- When DATA_RATE_TQ = SDR or BUF: 1 " 
+		port map (
+			OQ => OQ,    -- 1-bit output
+			SHIFTOUT1 => '0', -- 1-bit data expansion output
+			SHIFTOUT2 => '0', -- 1-bit data expansion output
+			TQ => TQ,    -- 1-bit 3-state control output
+			CLK => Clk320,  -- 1-bit clock input
+			CLKDIV => Clk80,  -- 1-bit divided clock input
+			D1 => ADCOutDataNext(2),    -- 1-bit parallel data input
+			D2 => ADCOutDataNext(3),    -- 1-bit parallel data input
+			D3 => ADCOutDataNext(4),    -- 1-bit parallel data input
+			D4 => ADCOutDataNext(5),    -- 1-bit parallel data input
+			D5 => ADCOutDataNext(6),    -- 1-bit parallel data input
+			D6 => ADCOutDataNext(7),    -- 1-bit parallel data input
+			OCE => '1',  -- 1-bit clcok enable input
+			REV => '0',  -- Must be tied to logic zero
+			SHIFTIN1 => DataShiftNext1, -- 1-bit data expansion input
+			SHIFTIN2 => DataShiftNext2, -- 1-bit data expansion input
+			SR => SR,   -- 1-bit set/reset input
+			T1 => T1,   -- 1-bit parallel 3-state input
+			T2 => T2,   -- 1-bit parallel 3-state input
+			T3 => T3,   -- 1-bit parallel 3-state input
+			T4 => T4,   -- 1-bit parallel 3-state input
+			TCE => TCE  -- 1-bit 3-state signal clock enable input
+		);
+		
+		OSERDES_inst : OSERDES
+		generic map (
+			DATA_RATE_OQ => "DDR", -- Specify data rate to "DDR" or "SDR" 
+			DATA_RATE_TQ => "DDR", -- Specify data rate to "DDR", "SDR", or "BUF" 
+			DATA_WIDTH => 2, -- Specify data width - For DDR: 4,6,8, or 10 
+								  -- For SDR or BUF: 2,3,4,5,6,7, or 8 
+			INIT_OQ => '0',  -- INIT for Q1 register - '1' or '0' 
+			INIT_TQ => '0',  -- INIT for Q2 register - '1' or '0' 
+			SERDES_MODE => "SLAVE", --Set SERDES mode to "MASTER" or "SLAVE" 
+			SRVAL_OQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
+			SRVAL_TQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
+			TRISTATE_WIDTH => 4) -- Specify parallel to serial converter width 
+										-- When DATA_RATE_TQ = DDR: 2 or 4 
+										-- When DATA_RATE_TQ = SDR or BUF: 1 " 
+		port map (
+			OQ => OQ,    -- 1-bit output
+			SHIFTOUT1 => DataShiftNext1, -- 1-bit data expansion output
+			SHIFTOUT2 => DataShiftNext2, -- 1-bit data expansion output
+			TQ => TQ,    -- 1-bit 3-state control output
+			CLK => Clk320,  -- 1-bit clock input
+			CLKDIV => Clk80,  -- 1-bit divided clock input
+			D1 => D1,    -- 1-bit parallel data input
+			D2 => D2,    -- 1-bit parallel data input
+			D3 => D3,    -- 1-bit parallel data input
+			D4 => D4,    -- 1-bit parallel data input
+			D5 => ADCOutDataNext(1),    -- 1-bit parallel data input
+			D6 => ADCOutDataNext(0),    -- 1-bit parallel data input
+			OCE => '1',  -- 1-bit clcok enable input
+			REV => '0',  -- Must be tied to logic zero
+			SHIFTIN1 => '0', -- 1-bit data expansion input
+			SHIFTIN2 => '0', -- 1-bit data expansion input
+			SR => SR,   -- 1-bit set/reset input
+			T1 => T1,   -- 1-bit parallel 3-state input
+			T2 => T2,   -- 1-bit parallel 3-state input
+			T3 => T3,   -- 1-bit parallel 3-state input
+			T4 => T4,   -- 1-bit parallel 3-state input
+			TCE => TCE  -- 1-bit 3-state signal clock enable input
+		);
+		
+		OBUFDS_inst : OBUFDS
+		generic map (
+			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+			IOSTANDARD => "DEFAULT")
+		port map (
+			O => ADCOutDataLVDSNext(i),		-- Diff_p output (connect directly to top-level port)
+			OB => ADCOutDataLVDSNext_n(i),	-- Diff_n output (connect directly to top-level port)
+			I => ADCOutDataNext_o(i)				-- Buffer input 
+		);
+	end generate LVDS_buf_ADCNext;
+	
+	OBUFDS_inst : OBUFDS
+	generic map (
+		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
+		IOSTANDARD => "DEFAULT")
+	port map (
+		O => ADC_FCO_LVDSNext,		-- Diff_p output (connect directly to top-level port)
+		OB => ADC_FCO_LVDSNext_n,	-- Diff_n output (connect directly to top-level port)
+		I => ADC_FCONext				-- Buffer input 
+	);
+	
 	FindMaxAmp_i: entity work.FindMaxAmp
 	port map(
 		In_Data			=> InDataReg,
