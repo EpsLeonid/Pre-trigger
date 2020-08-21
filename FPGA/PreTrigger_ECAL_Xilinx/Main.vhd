@@ -189,16 +189,16 @@ architecture Behavioral of Main is
 	signal DataShiftNext1	: std_logic;
 	signal DataShiftNext2	: std_logic;
 	signal ADCOutDataNext	: std_logic_vector (ADC_Bits-1 downto 0);
-	signal ADCOutDataNext_o	: std_logic_vector (ADC_Bits-1 downto 0);
+	signal ADCOutDataNext_o	: std_logic_vector(NUM_TrigCellNext-1 downto 0);
 	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	---
 	
 	--- Processing data
-	signal InDataReg_p		: std_logic_vector(NUM_TrigCell-1 downto 0);
-	signal InDataReg_n		: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal InDataReg_p		: array_adc;
+	signal InDataReg_n		: array_adc;
 	signal InDataReg			: array_adc;
-	signal InDataPrevReg_p	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
-	signal InDataPrevReg_n	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);
+	signal InDataPrevReg_p	: array_prev_adc;
+	signal InDataPrevReg_n	: array_prev_adc;
 	signal InDataPrevReg		: array_prev_adc;
 
 	signal MaxAmp_o			: std_logic_vector (Sum_Bits-1 downto 0);
@@ -208,8 +208,6 @@ architecture Behavioral of Main is
 	signal ThrNum3_o			: std_logic_vector (3 downto 0);
 	signal ThrNum4_o			: std_logic_vector (3 downto 0);
 	signal ThrNum5_o			: std_logic_vector (3 downto 0);
-	
-	signal Test_FindMaxAmp	: std_logic_vector (15 downto 0);
 	---
 	
 	--- TriggerDes
@@ -221,8 +219,10 @@ architecture Behavioral of Main is
 	signal RW				: std_logic := '0';
 
 	--- Test
-	signal TestCnt	: std_logic_vector(25 downto 0);
-	signal test_out: std_logic_vector(31 downto 0);
+	signal TestCnt				: std_logic_vector(25 downto 0);
+	signal test_adc_deser	: std_logic_vector(15 downto 0);
+	signal test_FindMaxAmp	: std_logic_vector(15 downto 0);
+--	signal test_adc_deser	: std_logic_vector(15 downto 0);
 
 begin
 
@@ -413,29 +413,33 @@ DLL: entity work.DLL
 		DCOPrevN		=> ADC_FCO_LVDSPrev_n,
 		
 		o_adc_data	=> InDataReg,
-		o_dco			=> test_out,
-		o_adc_data_prev	=> InDataPrevReg
+--		o_dco			=> test_adc_deser,
+		o_adc_data_prev	=> InDataPrevReg,
+		test			=> test_adc_deser
 	);
 	
-	ADC_FCONext <= Clk80;
-	ADCDataNext(0) <= InDataReg(0);
-	ADCDataNext(1) <= InDataReg(1);
-	ADCDataNext(2) <= InDataReg(2);
-	ADCDataNext(3) <= InDataReg(3);
-	ADCDataNext(4) <= InDataReg(4);
-	ADCDataNext(5) <= InDataReg(5);
-	ADCDataNext(6) <= InDataReg(6);
-	ADCDataNext(7) <= InDataReg(7);
-	ADCDataNext(8) <= InDataReg(8);
-	ADCDataNext(9) <= InDataReg(9);
-	ADCDataNext(10) <= InDataReg(10);
-	ADCDataNext(11) <= InDataReg(11);
+	process (Clk80)
+	begin
+		ADC_FCONext <= Clk80;
+		ADCDataNext(0) <= InDataReg(100);
+		ADCDataNext(1) <= InDataReg(101);
+		ADCDataNext(2) <= InDataReg(102);
+		ADCDataNext(3) <= InDataReg(103);
+		ADCDataNext(4) <= InDataReg(104);
+		ADCDataNext(5) <= InDataReg(105);
+		ADCDataNext(6) <= InDataReg(106);
+		ADCDataNext(7) <= InDataReg(107);
+		ADCDataNext(8) <= InDataReg(108);
+		ADCDataNext(9) <= InDataReg(109);
+		ADCDataNext(10) <= InDataReg(110);
+		ADCDataNext(11) <= InDataReg(111);
+	end process;
 	
 	LVDS_buf_ADCNext: for i in 0 to NUM_TrigCellNext-1 generate 
 		
 		ADCOutDataNext <= ADCDataNext(i);
 		
-		OSERDES_inst : OSERDES
+		OSERDES_ADCData_1 : OSERDES
 		generic map (
 			DATA_RATE_OQ => "DDR", -- Specify data rate to "DDR" or "SDR" 
 			DATA_RATE_TQ => "DDR", -- Specify data rate to "DDR", "SDR", or "BUF" 
@@ -450,35 +454,35 @@ DLL: entity work.DLL
 										-- When DATA_RATE_TQ = DDR: 2 or 4 
 										-- When DATA_RATE_TQ = SDR or BUF: 1 " 
 		port map (
-			OQ => OQ,    -- 1-bit output
-			SHIFTOUT1 => '0', -- 1-bit data expansion output
-			SHIFTOUT2 => '0', -- 1-bit data expansion output
-			TQ => TQ,    -- 1-bit 3-state control output
+			OQ => ADCOutDataNext_o(i),    -- 1-bit output
+--			SHIFTOUT1 => '0', -- 1-bit data expansion output
+--			SHIFTOUT2 => '0', -- 1-bit data expansion output
+--			TQ => '0',    -- 1-bit 3-state control output
 			CLK => Clk320,  -- 1-bit clock input
 			CLKDIV => Clk80,  -- 1-bit divided clock input
-			D1 => ADCOutDataNext(2),    -- 1-bit parallel data input
-			D2 => ADCOutDataNext(3),    -- 1-bit parallel data input
-			D3 => ADCOutDataNext(4),    -- 1-bit parallel data input
-			D4 => ADCOutDataNext(5),    -- 1-bit parallel data input
-			D5 => ADCOutDataNext(6),    -- 1-bit parallel data input
-			D6 => ADCOutDataNext(7),    -- 1-bit parallel data input
+			D1 => ADCOutDataNext(0),    -- 1-bit parallel data input
+			D2 => ADCOutDataNext(1),    -- 1-bit parallel data input
+			D3 => ADCOutDataNext(2),    -- 1-bit parallel data input
+			D4 => ADCOutDataNext(3),    -- 1-bit parallel data input
+			D5 => ADCOutDataNext(4),    -- 1-bit parallel data input
+			D6 => ADCOutDataNext(5),    -- 1-bit parallel data input
 			OCE => '1',  -- 1-bit clcok enable input
 			REV => '0',  -- Must be tied to logic zero
 			SHIFTIN1 => DataShiftNext1, -- 1-bit data expansion input
 			SHIFTIN2 => DataShiftNext2, -- 1-bit data expansion input
-			SR => SR,   -- 1-bit set/reset input
-			T1 => T1,   -- 1-bit parallel 3-state input
-			T2 => T2,   -- 1-bit parallel 3-state input
-			T3 => T3,   -- 1-bit parallel 3-state input
-			T4 => T4,   -- 1-bit parallel 3-state input
-			TCE => TCE  -- 1-bit 3-state signal clock enable input
+			SR => '1',   -- 1-bit set/reset input
+			T1 => '1',   -- 1-bit parallel 3-state input
+			T2 => '1',   -- 1-bit parallel 3-state input
+			T3 => '1',   -- 1-bit parallel 3-state input
+			T4 => '1',   -- 1-bit parallel 3-state input
+			TCE => '1'  -- 1-bit 3-state signal clock enable input
 		);
 		
-		OSERDES_inst : OSERDES
+		OSERDES_ADCData_2 : OSERDES
 		generic map (
 			DATA_RATE_OQ => "DDR", -- Specify data rate to "DDR" or "SDR" 
 			DATA_RATE_TQ => "DDR", -- Specify data rate to "DDR", "SDR", or "BUF" 
-			DATA_WIDTH => 2, -- Specify data width - For DDR: 4,6,8, or 10 
+			DATA_WIDTH => 6, -- Specify data width - For DDR: 4,6,8, or 10 
 								  -- For SDR or BUF: 2,3,4,5,6,7, or 8 
 			INIT_OQ => '0',  -- INIT for Q1 register - '1' or '0' 
 			INIT_TQ => '0',  -- INIT for Q2 register - '1' or '0' 
@@ -489,28 +493,28 @@ DLL: entity work.DLL
 										-- When DATA_RATE_TQ = DDR: 2 or 4 
 										-- When DATA_RATE_TQ = SDR or BUF: 1 " 
 		port map (
-			OQ => OQ,    -- 1-bit output
+--			OQ => '0',    -- 1-bit output
 			SHIFTOUT1 => DataShiftNext1, -- 1-bit data expansion output
 			SHIFTOUT2 => DataShiftNext2, -- 1-bit data expansion output
-			TQ => TQ,    -- 1-bit 3-state control output
+--			TQ => '1',    -- 1-bit 3-state control output
 			CLK => Clk320,  -- 1-bit clock input
 			CLKDIV => Clk80,  -- 1-bit divided clock input
-			D1 => D1,    -- 1-bit parallel data input
-			D2 => D2,    -- 1-bit parallel data input
-			D3 => D3,    -- 1-bit parallel data input
-			D4 => D4,    -- 1-bit parallel data input
-			D5 => ADCOutDataNext(1),    -- 1-bit parallel data input
-			D6 => ADCOutDataNext(0),    -- 1-bit parallel data input
+			D1 => '0',    -- 1-bit parallel data input
+			D2 => '0',    -- 1-bit parallel data input
+			D3 => ADCOutDataNext(6),    -- 1-bit parallel data input
+			D4 => ADCOutDataNext(7),    -- 1-bit parallel data input
+			D5 => '0',    -- 1-bit parallel data input
+			D6 => '0',    -- 1-bit parallel data input
 			OCE => '1',  -- 1-bit clcok enable input
 			REV => '0',  -- Must be tied to logic zero
 			SHIFTIN1 => '0', -- 1-bit data expansion input
 			SHIFTIN2 => '0', -- 1-bit data expansion input
-			SR => SR,   -- 1-bit set/reset input
-			T1 => T1,   -- 1-bit parallel 3-state input
-			T2 => T2,   -- 1-bit parallel 3-state input
-			T3 => T3,   -- 1-bit parallel 3-state input
-			T4 => T4,   -- 1-bit parallel 3-state input
-			TCE => TCE  -- 1-bit 3-state signal clock enable input
+			SR => '1',   -- 1-bit set/reset input
+			T1 => '1',   -- 1-bit parallel 3-state input
+			T2 => '1',   -- 1-bit parallel 3-state input
+			T3 => '1',   -- 1-bit parallel 3-state input
+			T4 => '1',   -- 1-bit parallel 3-state input
+			TCE => '1'  -- 1-bit 3-state signal clock enable input
 		);
 		
 		OBUFDS_inst : OBUFDS
@@ -555,7 +559,7 @@ DLL: entity work.DLL
 	--	ResetAll			=> '0',
 	--	Error				=> '0',
 
-		test				=> Test_FindMaxAmp
+		test				=> test_FindMaxAmp
 	);
 
 	ADC_CLK <= CLK80;
@@ -660,15 +664,15 @@ DLL: entity work.DLL
 				q			=> TestCnt
 				);
 
-	Test(0) <= InDataReg(0)(0);
-	Test(1) <= InDataReg(0)(1);
-	Test(2) <= InDataReg(0)(2);
-	Test(3) <= InDataReg(0)(3);
-	Test(4) <= InDataReg(0)(4);
-	Test(5) <= InDataReg(0)(5);
-	Test(6) <= InDataReg(0)(6);
-	Test(7) <= InDataReg(0)(7);
-	Test(8) <= test_out(0);
+	Test(0) <= InDataReg(20)(0);
+	Test(1) <= InDataReg(20)(1);
+	Test(2) <= InDataReg(20)(2);
+	Test(3) <= InDataReg(20)(3);
+	Test(4) <= InDataReg(20)(4);
+	Test(5) <= InDataReg(20)(5);
+	Test(6) <= InDataReg(20)(6);
+	Test(7) <= InDataReg(20)(7);
+	Test(8) <= test_adc_deser(0);
 	Test(9) <= Clk80;
 
 end Behavioral;
