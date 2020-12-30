@@ -7,11 +7,11 @@
 -- \   \   \/     Version : 14.7
 --  \   \         Application : xaw2vhdl
 --  /   /         Filename : DLL.vhd
--- /___/   /\     Timestamp : 08/21/2018 14:05:05
+-- /___/   /\     Timestamp : 12/11/2020 16:19:39
 -- \   \  /  \ 
 --  \___\/\___\ 
 --
---Command: xaw2vhdl-st D:\Users\Leon\Work\Japan\COMET\Electronics\trunk\FPGA\Pre-trigger_Xilinx\ipcore_dir\.\DLL.xaw D:\Users\Leon\Work\Japan\COMET\Electronics\trunk\FPGA\Pre-trigger_Xilinx\ipcore_dir\.\DLL
+--Command: xaw2vhdl-intstyle D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/ipcore_dir/DLL.xaw -st DLL.vhd
 --Design Name: DLL
 --Device: xc4vlx60-10ff1148
 --
@@ -30,6 +30,7 @@ use UNISIM.Vcomponents.ALL;
 entity DLL is
    port ( CLKIN_IN        : in    std_logic; 
           RST_IN          : in    std_logic; 
+          CLKDV_OUT       : out   std_logic; 
           CLKFX_OUT       : out   std_logic; 
           CLKIN_IBUFG_OUT : out   std_logic; 
           CLK0_OUT        : out   std_logic; 
@@ -39,6 +40,7 @@ entity DLL is
 end DLL;
 
 architecture BEHAVIORAL of DLL is
+   signal CLKDV_BUF       : std_logic;
    signal CLKFB_IN        : std_logic;
    signal CLKFX_BUF       : std_logic;
    signal CLKIN_IBUFG     : std_logic;
@@ -54,6 +56,10 @@ begin
    GND_BUS_16(15 downto 0) <= "0000000000000000";
    CLKIN_IBUFG_OUT <= CLKIN_IBUFG;
    CLK0_OUT <= CLKFB_IN;
+   CLKDV_BUFG_INST : BUFG
+      port map (I=>CLKDV_BUF,
+                O=>CLKDV_OUT);
+   
    CLKFX_BUFG_INST : BUFG
       port map (I=>CLKFX_BUF,
                 O=>CLKFX_OUT);
@@ -102,7 +108,7 @@ begin
                 PSEN=>GND_BIT,
                 PSINCDEC=>GND_BIT,
                 RST=>RST_IN,
-                CLKDV=>open,
+                CLKDV=>CLKDV_BUF,
                 CLKFX=>CLKFX_BUF,
                 CLKFX180=>open,
                 CLK0=>CLK0_BUF,

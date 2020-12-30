@@ -1,0 +1,172 @@
+Release 14.7 ngdbuild P.20131013 (nt64)
+Copyright (c) 1995-2013 Xilinx, Inc.  All rights reserved.
+
+Command Line: C:\Xilinx\14.7\ISE_DS\ISE\bin\nt64\unwrapped\ngdbuild.exe
+-intstyle ise -dd _ngo -nt timestamp -uc planAhead.ucf -uc PreTrigger.ucf -uc
+Pre.ucf -p xc4vlx60-ff1148-10 Main.ngc Main.ngd
+
+Reading NGO file
+"D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/Ma
+in.ngc" ...
+Gathering constraint information from source properties...
+Done.
+
+Annotating constraints to design from ucf file "planAhead.ucf" ...
+Annotating constraints to design from ucf file "PreTrigger.ucf" ...
+Annotating constraints to design from ucf file "Pre.ucf" ...
+Resolving constraint associations...
+Checking Constraint Associations...
+WARNING:ConstraintSystem:137 - Constraint <NET "FCT_40" TNM_NET = "FCT_40";>
+   [Pre.ucf(8)]: No appropriate instances for the TNM constraint are driven by
+   "FCT_40".
+
+WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_FCT_40 = PERIOD "FCT_40"
+   25 ns HIGH 50 % INPUT_JITTER 375 ps;> [Pre.ucf(9)]: Unable to find an active
+   'TNM' or 'TimeGrp' constraint named 'FCT_40'.
+
+WARNING:ConstraintSystem:137 - Constraint <NET "MuxClock_in" TNM_NET =
+   "MuxClock_in";> [Pre.ucf(12)]: No appropriate instances for the TNM
+   constraint are driven by "MuxClock_in".
+
+WARNING:ConstraintSystem:56 - Constraint <TIMESPEC TS_MuxClock_in = PERIOD
+   "MuxClock_in" 25 ns HIGH 50 % INPUT_JITTER 375 ps;> [Pre.ucf(13)]: Unable to
+   find an active 'TNM' or 'TimeGrp' constraint named 'MuxClock_in'.
+
+INFO:ConstraintSystem:178 - TNM 'Qclock', used in period specification
+   'TS_Qclock', was traced into DCM_ADV instance Sys_clk/DCM_ADV_INST1. The
+   following new TNM groups and period specifications were generated at the
+   DCM_ADV output(s): 
+   CLK0: <TIMESPEC TS_Sys_clk_U1_CLK0_BUF = PERIOD "Sys_clk_U1_CLK0_BUF"
+   TS_Qclock HIGH 50% INPUT_JITTER 375 ps>
+
+INFO:ConstraintSystem:178 - TNM 'Qclock', used in period specification
+   'TS_Qclock', was traced into DCM_ADV instance Sys_clk/DCM_ADV_INST1. The
+   following new TNM groups and period specifications were generated at the
+   DCM_ADV output(s): 
+   CLKDV: <TIMESPEC TS_Sys_clk_U1_CLKDV_BUF = PERIOD "Sys_clk_U1_CLKDV_BUF"
+   TS_Qclock * 2 HIGH 50% INPUT_JITTER 375 ps>
+
+INFO:ConstraintSystem:178 - TNM 'Qclock', used in period specification
+   'TS_Qclock', was traced into DCM_ADV instance Sys_clk/DCM_ADV_INST1. The
+   following new TNM groups and period specifications were generated at the
+   DCM_ADV output(s): 
+   CLKFX: <TIMESPEC TS_Sys_clk_U1_CLKFX_BUF = PERIOD "Sys_clk_U1_CLKFX_BUF"
+   TS_Qclock / 4 HIGH 50% INPUT_JITTER 375 ps>
+
+WARNING:ConstraintSystem:191 - The TNM 'FCT_40', does not directly or indirectly
+   drive any flip-flops, latches and/or RAMS and cannot be actively used by the
+   referencing Period constraint 'TS_FCT_40'. If clock manager blocks are
+   directly or indirectly driven, a new TNM constraint will not be derived even
+   though the referencing constraint is a PERIOD constraint unless an output of
+   the clock manager drives flip-flops, latches or RAMs. This TNM is used in the
+   following user PERIOD specification:
+   <TIMESPEC TS_FCT_40 = PERIOD "FCT_40" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
+   [Pre.ucf(9)]
+
+WARNING:ConstraintSystem:197 - The following specification is invalid because
+   the referenced TNM constraint was removed:
+   <TIMESPEC TS_FCT_40 = PERIOD "FCT_40" 25 ns HIGH 50 % INPUT_JITTER 375 ps;>
+   [Pre.ucf(9)]
+
+WARNING:ConstraintSystem:191 - The TNM 'MuxClock_in', does not directly or
+   indirectly drive any flip-flops, latches and/or RAMS and cannot be actively
+   used by the referencing Period constraint 'TS_MuxClock_in'. If clock manager
+   blocks are directly or indirectly driven, a new TNM constraint will not be
+   derived even though the referencing constraint is a PERIOD constraint unless
+   an output of the clock manager drives flip-flops, latches or RAMs. This TNM
+   is used in the following user PERIOD specification:
+   <TIMESPEC TS_MuxClock_in = PERIOD "MuxClock_in" 25 ns HIGH 50 % INPUT_JITTER
+   375 ps;> [Pre.ucf(13)]
+
+WARNING:ConstraintSystem:197 - The following specification is invalid because
+   the referenced TNM constraint was removed:
+   <TIMESPEC TS_MuxClock_in = PERIOD "MuxClock_in" 25 ns HIGH 50 % INPUT_JITTER
+   375 ps;> [Pre.ucf(13)]
+
+INFO:ConstraintSystem:178 - TNM 'Sys_clk_U1_CLK0_BUF', used in period
+   specification 'TS_Sys_clk_U1_CLK0_BUF', was traced into DCM_ADV instance
+   Sys_clk/DCM_ADV_INST2. The following new TNM groups and period specifications
+   were generated at the DCM_ADV output(s): 
+   CLK2X: <TIMESPEC TS_Sys_clk_U2_CLK2X_BUF = PERIOD "Sys_clk_U2_CLK2X_BUF"
+   TS_Sys_clk_U1_CLK0_BUF / 2 HIGH 50% INPUT_JITTER 375 ps>
+
+INFO:ConstraintSystem:178 - TNM 'Sys_clk_U1_CLK0_BUF', used in period
+   specification 'TS_Sys_clk_U1_CLK0_BUF', was traced into DCM_ADV instance
+   Sys_clk/DCM_ADV_INST2. The following new TNM groups and period specifications
+   were generated at the DCM_ADV output(s): 
+   CLKFX: <TIMESPEC TS_Sys_clk_U2_CLKFX_BUF = PERIOD "Sys_clk_U2_CLKFX_BUF"
+   TS_Sys_clk_U1_CLK0_BUF / 5 HIGH 50% INPUT_JITTER 375 ps>
+
+WARNING:NgdBuild:1012 - The constraint <NET "Led1" PULLUP;>
+   [planAhead.ucf(1879)] is overridden on the design object Led1 by the
+   constraint <NET "Led1" PULLUP;> [Pre.ucf(906)].
+WARNING:NgdBuild:1012 - The constraint <NET "Led2" PULLUP;>
+   [planAhead.ucf(1883)] is overridden on the design object Led2 by the
+   constraint <NET "Led2" PULLUP;> [Pre.ucf(910)].
+WARNING:NgdBuild:1012 - The constraint <NET "Led3" PULLUP;>
+   [planAhead.ucf(1887)] is overridden on the design object Led3 by the
+   constraint <NET "Led3" PULLUP;> [Pre.ucf(914)].
+Done...
+
+Checking expanded design ...
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<10>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<11>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<2>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<4>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<5>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<6>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<7>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<8>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext<9>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<10>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<11>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<2>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<4>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<5>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<6>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<7>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<8>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADCOutDataLVDSNext_n<9>" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADC_DCO_LVDSNext" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADC_DCO_LVDSNext_n" of type "OPAD".  This attribute will be ignored.
+WARNING:NgdBuild:486 - Attribute "DIFF_TERM" is not allowed on symbol
+   "ADC_FCO_LVDSNext" of type "OPAD".  This attribute will be ignored.
+
+Partition Implementation Status
+-------------------------------
+
+  No Partitions were found in this design.
+
+-------------------------------
+
+NGDBUILD Design Results Summary:
+  Number of errors:     0
+  Number of warnings:  32
+
+Total memory usage is 220752 kilobytes
+
+Writing NGD file "Main.ngd" ...
+Total REAL time to NGDBUILD completion:  10 sec
+Total CPU time to NGDBUILD completion:   6 sec
+
+Writing NGDBUILD log file "Main.bld"...

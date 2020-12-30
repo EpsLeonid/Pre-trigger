@@ -1,0 +1,831 @@
+//! **************************************************************************
+// Written by: Map P.20131013 on Fri Dec 25 18:09:28 2020
+//! **************************************************************************
+
+SCHEMATIC START;
+COMP "ADCInDataLVDS<20>" LOCATE = SITE "AG30" LEVEL 1;
+COMP "ADCInDataLVDS<21>" LOCATE = SITE "AG32" LEVEL 1;
+COMP "ADCInDataLVDS<22>" LOCATE = SITE "AH32" LEVEL 1;
+COMP "ADCInDataLVDS<23>" LOCATE = SITE "AJ30" LEVEL 1;
+COMP "ADCInDataLVDS<24>" LOCATE = SITE "AJ31" LEVEL 1;
+COMP "ADCInDataLVDS<16>" LOCATE = SITE "AF26" LEVEL 1;
+COMP "ADCInDataLVDS<17>" LOCATE = SITE "AF28" LEVEL 1;
+COMP "ADCInDataLVDS<18>" LOCATE = SITE "AF31" LEVEL 1;
+COMP "ADCInDataLVDS<19>" LOCATE = SITE "AF33" LEVEL 1;
+COMP "Col" LOCATE = SITE "B11" LEVEL 1;
+COMP "Crs" LOCATE = SITE "A11" LEVEL 1;
+COMP "ADC_SDIO" LOCATE = SITE "F14" LEVEL 1;
+COMP "Led1" LOCATE = SITE "C13" LEVEL 1;
+COMP "Led2" LOCATE = SITE "C14" LEVEL 1;
+COMP "Led3" LOCATE = SITE "A14" LEVEL 1;
+COMP "Led4" LOCATE = SITE "C9" LEVEL 1;
+COMP "Led5" LOCATE = SITE "D9" LEVEL 1;
+COMP "RxDv" LOCATE = SITE "C8" LEVEL 1;
+COMP "TxEn" LOCATE = SITE "A9" LEVEL 1;
+COMP "MuxClock_in" LOCATE = SITE "D16" LEVEL 1;
+COMP "ADC_DCO_LVDSNext" LOCATE = SITE "AP4" LEVEL 1;
+COMP "Test<0>" LOCATE = SITE "B2" LEVEL 1;
+COMP "Test<1>" LOCATE = SITE "B3" LEVEL 1;
+COMP "Test<2>" LOCATE = SITE "A3" LEVEL 1;
+COMP "Test<3>" LOCATE = SITE "A4" LEVEL 1;
+COMP "Test<4>" LOCATE = SITE "D5" LEVEL 1;
+COMP "Test<5>" LOCATE = SITE "C5" LEVEL 1;
+COMP "Test<6>" LOCATE = SITE "B5" LEVEL 1;
+COMP "Test<7>" LOCATE = SITE "A5" LEVEL 1;
+COMP "Test<8>" LOCATE = SITE "B6" LEVEL 1;
+COMP "Test<9>" LOCATE = SITE "A6" LEVEL 1;
+COMP "ADCInDataLVDS_n<0>" LOCATE = SITE "Y24" LEVEL 1;
+COMP "ADCInDataLVDS_n<1>" LOCATE = SITE "Y26" LEVEL 1;
+COMP "ADCInDataLVDS_n<2>" LOCATE = SITE "AA24" LEVEL 1;
+COMP "ADCInDataLVDS_n<3>" LOCATE = SITE "AB23" LEVEL 1;
+COMP "ADCInDataLVDS_n<4>" LOCATE = SITE "AB26" LEVEL 1;
+COMP "ADCInDataLVDS_n<5>" LOCATE = SITE "AA29" LEVEL 1;
+COMP "ADCInDataLVDS_n<6>" LOCATE = SITE "AA30" LEVEL 1;
+COMP "ADCInDataLVDS_n<7>" LOCATE = SITE "AB28" LEVEL 1;
+COMP "ADCInDataLVDS_n<8>" LOCATE = SITE "AC30" LEVEL 1;
+COMP "ADCInDataLVDS_n<9>" LOCATE = SITE "AC33" LEVEL 1;
+COMP "TrigDes" LOCATE = SITE "A13" LEVEL 1;
+COMP "RxClk" LOCATE = SITE "B8" LEVEL 1;
+COMP "TxClk" LOCATE = SITE "A8" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<2>" LOCATE = SITE "AK12" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<4>" LOCATE = SITE "AK11" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<5>" LOCATE = SITE "AM10" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<6>" LOCATE = SITE "AK9" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<7>" LOCATE = SITE "AK8" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<8>" LOCATE = SITE "AJ7" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<9>" LOCATE = SITE "AK6" LEVEL 1;
+COMP "ExtReset" LOCATE = SITE "AL5" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<0>" LOCATE = SITE "AA26" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<1>" LOCATE = SITE "AC34" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<2>" LOCATE = SITE "AF30" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<4>" LOCATE = SITE "AK32" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<5>" LOCATE = SITE "AM28" LEVEL 1;
+COMP "ADC_DCO_LVDS_n<6>" LOCATE = SITE "AM22" LEVEL 1;
+COMP "ADCInDataLVDS_n<20>" LOCATE = SITE "AG31" LEVEL 1;
+COMP "ADCInDataLVDS_n<21>" LOCATE = SITE "AG33" LEVEL 1;
+COMP "ADCInDataLVDS_n<22>" LOCATE = SITE "AH33" LEVEL 1;
+COMP "ADCInDataLVDS_n<23>" LOCATE = SITE "AH30" LEVEL 1;
+COMP "ADCInDataLVDS_n<24>" LOCATE = SITE "AJ32" LEVEL 1;
+COMP "ADCInDataLVDS_n<16>" LOCATE = SITE "AE26" LEVEL 1;
+COMP "ADCInDataLVDS_n<17>" LOCATE = SITE "AE27" LEVEL 1;
+COMP "ADCInDataLVDS_n<18>" LOCATE = SITE "AE31" LEVEL 1;
+COMP "ADCInDataLVDS_n<19>" LOCATE = SITE "AF34" LEVEL 1;
+COMP "ADCInDataLVDS<0>" LOCATE = SITE "W24" LEVEL 1;
+COMP "ADCInDataLVDS<1>" LOCATE = SITE "W25" LEVEL 1;
+COMP "ADCInDataLVDS<2>" LOCATE = SITE "AA23" LEVEL 1;
+COMP "ADCInDataLVDS<3>" LOCATE = SITE "AB22" LEVEL 1;
+COMP "ADCInDataLVDS<4>" LOCATE = SITE "AB25" LEVEL 1;
+COMP "ADCInDataLVDS<5>" LOCATE = SITE "AA28" LEVEL 1;
+COMP "ADCInDataLVDS<6>" LOCATE = SITE "AB30" LEVEL 1;
+COMP "ADCInDataLVDS<7>" LOCATE = SITE "AC28" LEVEL 1;
+COMP "ADCInDataLVDS<8>" LOCATE = SITE "AC29" LEVEL 1;
+COMP "ADCInDataLVDS<9>" LOCATE = SITE "AC32" LEVEL 1;
+COMP "RxD<0>" LOCATE = SITE "B7" LEVEL 1;
+COMP "RxD<1>" LOCATE = SITE "C7" LEVEL 1;
+COMP "RxD<2>" LOCATE = SITE "D7" LEVEL 1;
+COMP "RxD<3>" LOCATE = SITE "D6" LEVEL 1;
+COMP "ADC_DCO_LVDS<0>" LOCATE = SITE "AA25" LEVEL 1;
+PIN ADC_DCO_LVDS<0>_pin<0> = BEL "ADC_DCO_LVDS<0>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<0>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "ADC_DCO_LVDS<1>" LOCATE = SITE "AD34" LEVEL 1;
+PIN ADC_DCO_LVDS<1>_pin<0> = BEL "ADC_DCO_LVDS<1>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<1>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "ADC_DCO_LVDS<2>" LOCATE = SITE "AF29" LEVEL 1;
+PIN ADC_DCO_LVDS<2>_pin<0> = BEL "ADC_DCO_LVDS<2>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<2>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "ADC_DCO_LVDS<4>" LOCATE = SITE "AK31" LEVEL 1;
+PIN ADC_DCO_LVDS<4>_pin<0> = BEL "ADC_DCO_LVDS<4>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<4>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "ADC_DCO_LVDS<5>" LOCATE = SITE "AN28" LEVEL 1;
+PIN ADC_DCO_LVDS<5>_pin<0> = BEL "ADC_DCO_LVDS<5>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<5>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "ADC_DCO_LVDS<6>" LOCATE = SITE "AM21" LEVEL 1;
+PIN ADC_DCO_LVDS<6>_pin<0> = BEL "ADC_DCO_LVDS<6>" PINNAME PAD;
+PIN "ADC_DCO_LVDS<6>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "TxD<0>" LOCATE = SITE "D10" LEVEL 1;
+COMP "TxD<1>" LOCATE = SITE "C10" LEVEL 1;
+COMP "TxD<2>" LOCATE = SITE "B10" LEVEL 1;
+COMP "TxD<3>" LOCATE = SITE "A10" LEVEL 1;
+COMP "ADC_FCO_LVDSNext" LOCATE = SITE "AL14" LEVEL 1;
+COMP "Qclock" LOCATE = SITE "D14" LEVEL 1;
+PIN Qclock_pin<0> = BEL "Qclock" PINNAME PAD;
+PIN "Qclock_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
+COMP "ADCOutDataLVDSNext<10>" LOCATE = SITE "AJ6" LEVEL 1;
+COMP "ADCOutDataLVDSNext<11>" LOCATE = SITE "AM6" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<10>" LOCATE = SITE "AJ5" LEVEL 1;
+COMP "ADCOutDataLVDSNext_n<11>" LOCATE = SITE "AM5" LEVEL 1;
+COMP "TriggerData<10>" LOCATE = SITE "F4" LEVEL 1;
+COMP "TriggerData<11>" LOCATE = SITE "E1" LEVEL 1;
+COMP "TriggerData<20>" LOCATE = SITE "H2" LEVEL 1;
+COMP "TriggerData<12>" LOCATE = SITE "J2" LEVEL 1;
+COMP "TriggerData<21>" LOCATE = SITE "G1" LEVEL 1;
+COMP "TriggerData<13>" LOCATE = SITE "J1" LEVEL 1;
+COMP "TriggerData<30>" LOCATE = SITE "G2" LEVEL 1;
+COMP "TriggerData<22>" LOCATE = SITE "M2" LEVEL 1;
+COMP "TriggerData<14>" LOCATE = SITE "L3" LEVEL 1;
+COMP "TriggerData<31>" LOCATE = SITE "J4" LEVEL 1;
+COMP "TriggerData<23>" LOCATE = SITE "AE3" LEVEL 1;
+COMP "TriggerData<15>" LOCATE = SITE "K2" LEVEL 1;
+COMP "TriggerData<40>" LOCATE = SITE "AK2" LEVEL 1;
+COMP "TriggerData<32>" LOCATE = SITE "C4" LEVEL 1;
+COMP "TriggerData<24>" LOCATE = SITE "K1" LEVEL 1;
+COMP "TriggerData<16>" LOCATE = SITE "G3" LEVEL 1;
+COMP "TriggerData<41>" LOCATE = SITE "AK3" LEVEL 1;
+COMP "TriggerData<33>" LOCATE = SITE "D1" LEVEL 1;
+COMP "TriggerData<25>" LOCATE = SITE "AD1" LEVEL 1;
+COMP "TriggerData<17>" LOCATE = SITE "E4" LEVEL 1;
+COMP "TriggerData<50>" LOCATE = SITE "AE4" LEVEL 1;
+COMP "TriggerData<42>" LOCATE = SITE "AH2" LEVEL 1;
+COMP "TriggerData<34>" LOCATE = SITE "D2" LEVEL 1;
+COMP "TriggerData<26>" LOCATE = SITE "F3" LEVEL 1;
+COMP "TriggerData<18>" LOCATE = SITE "F1" LEVEL 1;
+COMP "TriggerData<51>" LOCATE = SITE "AF3" LEVEL 1;
+COMP "TriggerData<43>" LOCATE = SITE "AF1" LEVEL 1;
+COMP "TriggerData<35>" LOCATE = SITE "D4" LEVEL 1;
+COMP "TriggerData<27>" LOCATE = SITE "E3" LEVEL 1;
+COMP "TriggerData<19>" LOCATE = SITE "E2" LEVEL 1;
+COMP "TriggerData<60>" LOCATE = SITE "AJ2" LEVEL 1;
+COMP "TriggerData<52>" LOCATE = SITE "AL3" LEVEL 1;
+COMP "TriggerData<44>" LOCATE = SITE "AC2" LEVEL 1;
+COMP "TriggerData<36>" LOCATE = SITE "AJ4" LEVEL 1;
+COMP "TriggerData<28>" LOCATE = SITE "H3" LEVEL 1;
+COMP "TriggerData<61>" LOCATE = SITE "AF4" LEVEL 1;
+COMP "TriggerData<53>" LOCATE = SITE "AM1" LEVEL 1;
+COMP "TriggerData<45>" LOCATE = SITE "AJ1" LEVEL 1;
+COMP "TriggerData<37>" LOCATE = SITE "AG2" LEVEL 1;
+COMP "TriggerData<29>" LOCATE = SITE "H4" LEVEL 1;
+COMP "TriggerData<62>" LOCATE = SITE "AM2" LEVEL 1;
+COMP "TriggerData<54>" LOCATE = SITE "AH3" LEVEL 1;
+COMP "TriggerData<46>" LOCATE = SITE "M1" LEVEL 1;
+COMP "TriggerData<38>" LOCATE = SITE "AG1" LEVEL 1;
+COMP "TriggerData<63>" LOCATE = SITE "AG3" LEVEL 1;
+COMP "TriggerData<55>" LOCATE = SITE "AL4" LEVEL 1;
+COMP "TriggerData<47>" LOCATE = SITE "AK1" LEVEL 1;
+COMP "TriggerData<39>" LOCATE = SITE "AE1" LEVEL 1;
+COMP "TriggerData<56>" LOCATE = SITE "AH4" LEVEL 1;
+COMP "TriggerData<48>" LOCATE = SITE "AM3" LEVEL 1;
+COMP "TriggerData<57>" LOCATE = SITE "AL1" LEVEL 1;
+COMP "TriggerData<49>" LOCATE = SITE "AD2" LEVEL 1;
+COMP "TriggerData<58>" LOCATE = SITE "AK4" LEVEL 1;
+COMP "TriggerData<59>" LOCATE = SITE "AE2" LEVEL 1;
+COMP "ADC_DCO_LVDSNext_n" LOCATE = SITE "AN4" LEVEL 1;
+COMP "Sw_FCTClk" LOCATE = SITE "F11" LEVEL 1;
+COMP "ADC_SCLK" LOCATE = SITE "G13" LEVEL 1;
+COMP "FastTrigDes" LOCATE = SITE "B13" LEVEL 1;
+COMP "ADCOutDataLVDSNext<2>" LOCATE = SITE "AJ12" LEVEL 1;
+COMP "ADCOutDataLVDSNext<4>" LOCATE = SITE "AJ11" LEVEL 1;
+COMP "ADCOutDataLVDSNext<5>" LOCATE = SITE "AN10" LEVEL 1;
+COMP "ADCOutDataLVDSNext<6>" LOCATE = SITE "AL9" LEVEL 1;
+COMP "ADCOutDataLVDSNext<7>" LOCATE = SITE "AL8" LEVEL 1;
+COMP "ADCOutDataLVDSNext<8>" LOCATE = SITE "AK7" LEVEL 1;
+COMP "ADCOutDataLVDSNext<9>" LOCATE = SITE "AL6" LEVEL 1;
+COMP "TriggerData<0>" LOCATE = SITE "L1" LEVEL 1;
+COMP "TriggerData<1>" LOCATE = SITE "AD4" LEVEL 1;
+COMP "TriggerData<2>" LOCATE = SITE "K3" LEVEL 1;
+COMP "TriggerData<3>" LOCATE = SITE "K4" LEVEL 1;
+COMP "TriggerData<4>" LOCATE = SITE "L4" LEVEL 1;
+COMP "TriggerData<5>" LOCATE = SITE "M3" LEVEL 1;
+COMP "TriggerData<6>" LOCATE = SITE "AC3" LEVEL 1;
+COMP "TriggerData<7>" LOCATE = SITE "AC4" LEVEL 1;
+COMP "TriggerData<8>" LOCATE = SITE "C2" LEVEL 1;
+COMP "TriggerData<9>" LOCATE = SITE "C3" LEVEL 1;
+COMP "Sw_Quartz" LOCATE = SITE "F10" LEVEL 1;
+COMP "ADC_CLK" LOCATE = SITE "G15" LEVEL 1;
+COMP "ADC_CSB" LOCATE = SITE "E14" LEVEL 1;
+COMP "ADC_FCO<0>" LOCATE = SITE "AK17" LEVEL 1;
+COMP "ADC_FCO<1>" LOCATE = SITE "AM16" LEVEL 1;
+COMP "ADC_FCO<2>" LOCATE = SITE "AH17" LEVEL 1;
+COMP "ADC_FCO<4>" LOCATE = SITE "AL18" LEVEL 1;
+COMP "ADC_FCO<5>" LOCATE = SITE "AK18" LEVEL 1;
+COMP "ADC_FCO<6>" LOCATE = SITE "AL19" LEVEL 1;
+TIMEGRP Sys_clk_U1_CLKDV_BUF = BEL "ADC_CSB_trig" BEL "ADC_Bit_write" BEL
+        "ADCtest_reg_sset" BEL "ADC_SDIO" BEL "ADCTest/count_0" BEL
+        "ADCTest/count_1" BEL "ADCTest/count_2" BEL "ADCTest/count_3" BEL
+        "ADCTest/count_4" BEL "ADCTest/count_5" BEL "ShiftReg_test/tmp_49" BEL
+        "ShiftReg_test/tmp_48" BEL "ShiftReg_test/tmp_47" BEL
+        "ShiftReg_test/tmp_46" BEL "ShiftReg_test/tmp_45" BEL
+        "ShiftReg_test/tmp_44" BEL "ShiftReg_test/tmp_43" BEL
+        "ShiftReg_test/tmp_42" BEL "ShiftReg_test/tmp_41" BEL
+        "ShiftReg_test/tmp_40" BEL "ShiftReg_test/tmp_39" BEL
+        "ShiftReg_test/tmp_38" BEL "ShiftReg_test/tmp_37" BEL
+        "ShiftReg_test/tmp_36" BEL "ShiftReg_test/tmp_35" BEL
+        "ShiftReg_test/tmp_34" BEL "ShiftReg_test/tmp_33" BEL
+        "ShiftReg_test/tmp_32" BEL "ShiftReg_test/tmp_31" BEL
+        "ShiftReg_test/tmp_30" BEL "ShiftReg_test/tmp_29" BEL
+        "ShiftReg_test/tmp_28" BEL "ShiftReg_test/tmp_27" BEL
+        "ShiftReg_test/tmp_26" BEL "ShiftReg_test/tmp_25" BEL
+        "ShiftReg_test/tmp_24" BEL "ShiftReg_test/tmp_23" BEL
+        "ShiftReg_test/tmp_22" BEL "ShiftReg_test/tmp_21" BEL
+        "ShiftReg_test/tmp_20" BEL "ShiftReg_test/tmp_19" BEL
+        "ShiftReg_test/tmp_18" BEL "ShiftReg_test/tmp_17" BEL
+        "ShiftReg_test/tmp_16" BEL "ShiftReg_test/tmp_15" BEL
+        "ShiftReg_test/tmp_14" BEL "ShiftReg_test/tmp_13" BEL
+        "ShiftReg_test/tmp_12" BEL "ShiftReg_test/tmp_11" BEL
+        "ShiftReg_test/tmp_10" BEL "ShiftReg_test/tmp_9" BEL
+        "ShiftReg_test/tmp_8" BEL "ShiftReg_test/tmp_7" BEL
+        "ShiftReg_test/tmp_6" BEL "ShiftReg_test/tmp_5" BEL
+        "ShiftReg_test/tmp_4" BEL "ShiftReg_test/tmp_3" BEL
+        "ShiftReg_test/tmp_2" BEL "ShiftReg_test/tmp_1" BEL
+        "ShiftReg_test/tmp_0" BEL "Sys_clk/U1_CLKDV_BUFG_INST" BEL "ADC_SCLK";
+TIMEGRP Sys_clk_U2_CLK2X_BUF = BEL "ADCDataTest_Ok" BEL
+        "Sys_clk/U2_CLK2X_BUFG_INST" BEL "ADCDataTest_Ok_1" BEL "ADC_CLK";
+PIN Sys_clk/DCM_ADV_INST2_pins<4> = BEL "Sys_clk/DCM_ADV_INST2" PINNAME CLKIN;
+PIN adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[11].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[10].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[10].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[9].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[9].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[8].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[8].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[7].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[7].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[6].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[6].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[5].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[5].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[4].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[4].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_master" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[2].OSERDES_slave_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_slave" PINNAME CLK;
+PIN adc_deser_o/OSERDES_ADCNext[2].OSERDES_master_pins<0> = BEL
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_master" PINNAME CLK;
+TIMEGRP Sys_clk_U1_CLK0_BUF = BEL "PowerUp0" BEL "CntTest/count_0" BEL
+        "CntTest/count_1" BEL "CntTest/count_2" BEL "CntTest/count_3" BEL
+        "CntTest/count_4" BEL "CntTest/count_5" BEL "CntTest/count_6" BEL
+        "CntTest/count_7" BEL "CntTest/count_8" BEL "CntTest/count_9" BEL
+        "CntTest/count_10" BEL "CntTest/count_11" BEL "CntTest/count_12" BEL
+        "CntTest/count_13" BEL "CntTest/count_14" BEL "CntTest/count_15" BEL
+        "CntTest/count_16" BEL "CntTest/count_17" BEL "CntTest/count_18" BEL
+        "CntTest/count_19" BEL "CntTest/count_20" BEL "CntTest/count_21" BEL
+        "CntTest/count_22" BEL "CntTest/count_23" BEL "CntTest/count_24" BEL
+        "CntTest/count_25" BEL "PowerUp2/Trig" BEL "PowerUp1/Trig" BEL
+        "Sys_clk/U1_CLK0_BUFG_INST" PIN "Sys_clk/DCM_ADV_INST2_pins<4>" BEL
+        "Sys_clk/U2_FD3_INST" BEL "Sys_clk/U2_FD2_INST" BEL
+        "Sys_clk/U2_FD1_INST" BEL "Sys_clk/U2_FDS_INST" PIN
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_master_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_slave_pins<0>" PIN
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_master_pins<0>" BEL
+        "ADC_DCO_LVDSNext" BEL "ADC_DCO_LVDSNext_n" BEL "Test<9>";
+TIMEGRP Sys_clk_U2_CLKFX_BUF = BEL "Sys_clk/U2_CLKFX_BUFG_INST" BEL
+        "adc_deser_i/Set_ctrl/Trig" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate20" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate19" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate18" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate17" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate16" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate15" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate14" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate13" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate12" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate11" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate10" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate9" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate8" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate7" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate6" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate5" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate4" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate3" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate2" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate1" BEL
+        "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate0" BEL
+        "adc_deser_i/IDELAYCTRL_ADC";
+PIN adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[11].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[10].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[10].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[9].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[9].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[8].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[8].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[7].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[7].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[6].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[6].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[5].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[5].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[4].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[4].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_master" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[2].OSERDES_slave_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_o/OSERDES_ADCNext[2].OSERDES_master_pins<1> = BEL
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_master" PINNAME CLKDIV;
+TIMEGRP Sys_clk_U1_CLKFX_BUF = BEL "Sys_clk/U1_CLKFX_BUFG_INST" PIN
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[11].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[10].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[9].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[8].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[7].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[6].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[5].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[4].OSERDES_master_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_slave_pins<1>" PIN
+        "adc_deser_o/OSERDES_ADCNext[2].OSERDES_master_pins<1>" BEL
+        "FindMaxAmp_i/Thresh_i[0].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[1].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[2].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[3].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[4].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[5].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[6].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[7].Threshold/Trig" BEL
+        "FindMaxAmp_i/Thresh_i[8].Threshold/Trig" BEL
+        "FindMaxAmp_i/Amp_i[0].Amp/Trig" BEL "FindMaxAmp_i/Inhibit_srff/Trig"
+        BEL "FindMaxAmp_i/AllReset_SRFF/Trig" BEL
+        "FindMaxAmp_i/MaxCellNumber_3" BEL "FindMaxAmp_i/GroupSum_8_7" BEL
+        "FindMaxAmp_i/GroupSum_8_6" BEL "FindMaxAmp_i/GroupSum_8_5" BEL
+        "FindMaxAmp_i/GroupSum_8_4" BEL "FindMaxAmp_i/GroupSum_7_7" BEL
+        "FindMaxAmp_i/GroupSum_7_6" BEL "FindMaxAmp_i/GroupSum_7_5" BEL
+        "FindMaxAmp_i/GroupSum_7_4" BEL "FindMaxAmp_i/GroupSum_6_7" BEL
+        "FindMaxAmp_i/GroupSum_6_6" BEL "FindMaxAmp_i/GroupSum_6_5" BEL
+        "FindMaxAmp_i/GroupSum_6_4" BEL "FindMaxAmp_i/GroupSum_4_7" BEL
+        "FindMaxAmp_i/GroupSum_4_6" BEL "FindMaxAmp_i/GroupSum_4_5" BEL
+        "FindMaxAmp_i/GroupSum_4_4" BEL "FindMaxAmp_i/GroupSum_5_7" BEL
+        "FindMaxAmp_i/GroupSum_5_6" BEL "FindMaxAmp_i/GroupSum_5_5" BEL
+        "FindMaxAmp_i/GroupSum_5_4" BEL "FindMaxAmp_i/GroupSum_3_7" BEL
+        "FindMaxAmp_i/GroupSum_3_6" BEL "FindMaxAmp_i/GroupSum_3_5" BEL
+        "FindMaxAmp_i/GroupSum_3_4" BEL "FindMaxAmp_i/GroupSum_1_7" BEL
+        "FindMaxAmp_i/GroupSum_1_6" BEL "FindMaxAmp_i/GroupSum_1_5" BEL
+        "FindMaxAmp_i/GroupSum_1_4" BEL "FindMaxAmp_i/GroupSum_2_7" BEL
+        "FindMaxAmp_i/GroupSum_2_6" BEL "FindMaxAmp_i/GroupSum_2_5" BEL
+        "FindMaxAmp_i/GroupSum_2_4" BEL "FindMaxAmp_i/GroupSum_0_7" BEL
+        "FindMaxAmp_i/GroupSum_0_6" BEL "FindMaxAmp_i/GroupSum_0_5" BEL
+        "FindMaxAmp_i/GroupSum_0_4" BEL "FindMaxAmp_i/Aver2_9_7" BEL
+        "FindMaxAmp_i/Aver2_9_6" BEL "FindMaxAmp_i/Aver2_9_5" BEL
+        "FindMaxAmp_i/Aver2_9_4" BEL "FindMaxAmp_i/Aver2_9_3" BEL
+        "FindMaxAmp_i/Aver2_9_2" BEL "FindMaxAmp_i/Aver2_9_1" BEL
+        "FindMaxAmp_i/Aver2_9_0" BEL "FindMaxAmp_i/Aver2_7_7" BEL
+        "FindMaxAmp_i/Aver2_7_6" BEL "FindMaxAmp_i/Aver2_7_5" BEL
+        "FindMaxAmp_i/Aver2_7_4" BEL "FindMaxAmp_i/Aver2_7_3" BEL
+        "FindMaxAmp_i/Aver2_7_2" BEL "FindMaxAmp_i/Aver2_7_1" BEL
+        "FindMaxAmp_i/Aver2_7_0" BEL "FindMaxAmp_i/Aver2_6_7" BEL
+        "FindMaxAmp_i/Aver2_6_6" BEL "FindMaxAmp_i/Aver2_6_5" BEL
+        "FindMaxAmp_i/Aver2_6_4" BEL "FindMaxAmp_i/Aver2_6_3" BEL
+        "FindMaxAmp_i/Aver2_6_2" BEL "FindMaxAmp_i/Aver2_6_1" BEL
+        "FindMaxAmp_i/Aver2_6_0" BEL "FindMaxAmp_i/Aver2_8_7" BEL
+        "FindMaxAmp_i/Aver2_8_6" BEL "FindMaxAmp_i/Aver2_8_5" BEL
+        "FindMaxAmp_i/Aver2_8_4" BEL "FindMaxAmp_i/Aver2_8_3" BEL
+        "FindMaxAmp_i/Aver2_8_2" BEL "FindMaxAmp_i/Aver2_8_1" BEL
+        "FindMaxAmp_i/Aver2_8_0" BEL "FindMaxAmp_i/Aver2_4_7" BEL
+        "FindMaxAmp_i/Aver2_4_6" BEL "FindMaxAmp_i/Aver2_4_5" BEL
+        "FindMaxAmp_i/Aver2_4_4" BEL "FindMaxAmp_i/Aver2_4_3" BEL
+        "FindMaxAmp_i/Aver2_4_2" BEL "FindMaxAmp_i/Aver2_4_1" BEL
+        "FindMaxAmp_i/Aver2_4_0" BEL "FindMaxAmp_i/Aver2_3_7" BEL
+        "FindMaxAmp_i/Aver2_3_6" BEL "FindMaxAmp_i/Aver2_3_5" BEL
+        "FindMaxAmp_i/Aver2_3_4" BEL "FindMaxAmp_i/Aver2_3_3" BEL
+        "FindMaxAmp_i/Aver2_3_2" BEL "FindMaxAmp_i/Aver2_3_1" BEL
+        "FindMaxAmp_i/Aver2_3_0" BEL "FindMaxAmp_i/Aver2_5_7" BEL
+        "FindMaxAmp_i/Aver2_5_6" BEL "FindMaxAmp_i/Aver2_5_5" BEL
+        "FindMaxAmp_i/Aver2_5_4" BEL "FindMaxAmp_i/Aver2_5_3" BEL
+        "FindMaxAmp_i/Aver2_5_2" BEL "FindMaxAmp_i/Aver2_5_1" BEL
+        "FindMaxAmp_i/Aver2_5_0" BEL "FindMaxAmp_i/Aver2_1_7" BEL
+        "FindMaxAmp_i/Aver2_1_6" BEL "FindMaxAmp_i/Aver2_1_5" BEL
+        "FindMaxAmp_i/Aver2_1_4" BEL "FindMaxAmp_i/Aver2_1_3" BEL
+        "FindMaxAmp_i/Aver2_1_2" BEL "FindMaxAmp_i/Aver2_1_1" BEL
+        "FindMaxAmp_i/Aver2_1_0" BEL "FindMaxAmp_i/Aver2_0_7" BEL
+        "FindMaxAmp_i/Aver2_0_6" BEL "FindMaxAmp_i/Aver2_0_5" BEL
+        "FindMaxAmp_i/Aver2_0_4" BEL "FindMaxAmp_i/Aver2_0_3" BEL
+        "FindMaxAmp_i/Aver2_0_2" BEL "FindMaxAmp_i/Aver2_0_1" BEL
+        "FindMaxAmp_i/Aver2_0_0" BEL "FindMaxAmp_i/Aver2_2_7" BEL
+        "FindMaxAmp_i/Aver2_2_6" BEL "FindMaxAmp_i/Aver2_2_5" BEL
+        "FindMaxAmp_i/Aver2_2_4" BEL "FindMaxAmp_i/Aver2_2_3" BEL
+        "FindMaxAmp_i/Aver2_2_2" BEL "FindMaxAmp_i/Aver2_2_1" BEL
+        "FindMaxAmp_i/Aver2_2_0" BEL "FindMaxAmp_i/Aver2_19_7" BEL
+        "FindMaxAmp_i/Aver2_19_6" BEL "FindMaxAmp_i/Aver2_19_5" BEL
+        "FindMaxAmp_i/Aver2_19_4" BEL "FindMaxAmp_i/Aver2_19_3" BEL
+        "FindMaxAmp_i/Aver2_19_2" BEL "FindMaxAmp_i/Aver2_19_1" BEL
+        "FindMaxAmp_i/Aver2_19_0" BEL "FindMaxAmp_i/Aver2_23_7" BEL
+        "FindMaxAmp_i/Aver2_23_6" BEL "FindMaxAmp_i/Aver2_23_5" BEL
+        "FindMaxAmp_i/Aver2_23_4" BEL "FindMaxAmp_i/Aver2_23_3" BEL
+        "FindMaxAmp_i/Aver2_23_2" BEL "FindMaxAmp_i/Aver2_23_1" BEL
+        "FindMaxAmp_i/Aver2_23_0" BEL "FindMaxAmp_i/Aver2_24_7" BEL
+        "FindMaxAmp_i/Aver2_24_6" BEL "FindMaxAmp_i/Aver2_24_5" BEL
+        "FindMaxAmp_i/Aver2_24_4" BEL "FindMaxAmp_i/Aver2_24_3" BEL
+        "FindMaxAmp_i/Aver2_24_2" BEL "FindMaxAmp_i/Aver2_24_1" BEL
+        "FindMaxAmp_i/Aver2_24_0" BEL "FindMaxAmp_i/Aver2_22_7" BEL
+        "FindMaxAmp_i/Aver2_22_6" BEL "FindMaxAmp_i/Aver2_22_5" BEL
+        "FindMaxAmp_i/Aver2_22_4" BEL "FindMaxAmp_i/Aver2_22_3" BEL
+        "FindMaxAmp_i/Aver2_22_2" BEL "FindMaxAmp_i/Aver2_22_1" BEL
+        "FindMaxAmp_i/Aver2_22_0" BEL "FindMaxAmp_i/Aver2_17_7" BEL
+        "FindMaxAmp_i/Aver2_17_6" BEL "FindMaxAmp_i/Aver2_17_5" BEL
+        "FindMaxAmp_i/Aver2_17_4" BEL "FindMaxAmp_i/Aver2_17_3" BEL
+        "FindMaxAmp_i/Aver2_17_2" BEL "FindMaxAmp_i/Aver2_17_1" BEL
+        "FindMaxAmp_i/Aver2_17_0" BEL "FindMaxAmp_i/Aver2_18_7" BEL
+        "FindMaxAmp_i/Aver2_18_6" BEL "FindMaxAmp_i/Aver2_18_5" BEL
+        "FindMaxAmp_i/Aver2_18_4" BEL "FindMaxAmp_i/Aver2_18_3" BEL
+        "FindMaxAmp_i/Aver2_18_2" BEL "FindMaxAmp_i/Aver2_18_1" BEL
+        "FindMaxAmp_i/Aver2_18_0" BEL "FindMaxAmp_i/Aver2_16_7" BEL
+        "FindMaxAmp_i/Aver2_16_6" BEL "FindMaxAmp_i/Aver2_16_5" BEL
+        "FindMaxAmp_i/Aver2_16_4" BEL "FindMaxAmp_i/Aver2_16_3" BEL
+        "FindMaxAmp_i/Aver2_16_2" BEL "FindMaxAmp_i/Aver2_16_1" BEL
+        "FindMaxAmp_i/Aver2_16_0" BEL "FindMaxAmp_i/Aver2_20_7" BEL
+        "FindMaxAmp_i/Aver2_20_6" BEL "FindMaxAmp_i/Aver2_20_5" BEL
+        "FindMaxAmp_i/Aver2_20_4" BEL "FindMaxAmp_i/Aver2_20_3" BEL
+        "FindMaxAmp_i/Aver2_20_2" BEL "FindMaxAmp_i/Aver2_20_1" BEL
+        "FindMaxAmp_i/Aver2_20_0" BEL "FindMaxAmp_i/Aver2_21_7" BEL
+        "FindMaxAmp_i/Aver2_21_6" BEL "FindMaxAmp_i/Aver2_21_5" BEL
+        "FindMaxAmp_i/Aver2_21_4" BEL "FindMaxAmp_i/Aver2_21_3" BEL
+        "FindMaxAmp_i/Aver2_21_2" BEL "FindMaxAmp_i/Aver2_21_1" BEL
+        "FindMaxAmp_i/Aver2_21_0" BEL "FindMaxAmp_i/Sub_ped_delay_9_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_9_6" BEL "FindMaxAmp_i/Sub_ped_delay_9_5"
+        BEL "FindMaxAmp_i/Sub_ped_delay_9_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_9_3" BEL "FindMaxAmp_i/Sub_ped_delay_9_2"
+        BEL "FindMaxAmp_i/Sub_ped_delay_9_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_9_0" BEL "FindMaxAmp_i/Sub_ped_delay_8_7"
+        BEL "FindMaxAmp_i/Sub_ped_delay_8_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_8_5" BEL "FindMaxAmp_i/Sub_ped_delay_8_4"
+        BEL "FindMaxAmp_i/Sub_ped_delay_8_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_8_2" BEL "FindMaxAmp_i/Sub_ped_delay_8_1"
+        BEL "FindMaxAmp_i/Sub_ped_delay_8_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_6_7" BEL "FindMaxAmp_i/Sub_ped_delay_6_6"
+        BEL "FindMaxAmp_i/Sub_ped_delay_6_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_6_4" BEL "FindMaxAmp_i/Sub_ped_delay_6_3"
+        BEL "FindMaxAmp_i/Sub_ped_delay_6_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_6_1" BEL "FindMaxAmp_i/Sub_ped_delay_6_0"
+        BEL "FindMaxAmp_i/Sub_ped_delay_5_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_5_6" BEL "FindMaxAmp_i/Sub_ped_delay_5_5"
+        BEL "FindMaxAmp_i/Sub_ped_delay_5_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_5_3" BEL "FindMaxAmp_i/Sub_ped_delay_5_2"
+        BEL "FindMaxAmp_i/Sub_ped_delay_5_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_5_0" BEL "FindMaxAmp_i/Sub_ped_delay_7_7"
+        BEL "FindMaxAmp_i/Sub_ped_delay_7_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_7_5" BEL "FindMaxAmp_i/Sub_ped_delay_7_4"
+        BEL "FindMaxAmp_i/Sub_ped_delay_7_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_7_2" BEL "FindMaxAmp_i/Sub_ped_delay_7_1"
+        BEL "FindMaxAmp_i/Sub_ped_delay_7_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_4_7" BEL "FindMaxAmp_i/Sub_ped_delay_4_6"
+        BEL "FindMaxAmp_i/Sub_ped_delay_4_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_4_4" BEL "FindMaxAmp_i/Sub_ped_delay_4_3"
+        BEL "FindMaxAmp_i/Sub_ped_delay_4_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_4_1" BEL "FindMaxAmp_i/Sub_ped_delay_4_0"
+        BEL "FindMaxAmp_i/Sub_ped_delay_3_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_3_6" BEL "FindMaxAmp_i/Sub_ped_delay_3_5"
+        BEL "FindMaxAmp_i/Sub_ped_delay_3_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_3_3" BEL "FindMaxAmp_i/Sub_ped_delay_3_2"
+        BEL "FindMaxAmp_i/Sub_ped_delay_3_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_3_0" BEL "FindMaxAmp_i/Sub_ped_delay_2_7"
+        BEL "FindMaxAmp_i/Sub_ped_delay_2_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_2_5" BEL "FindMaxAmp_i/Sub_ped_delay_2_4"
+        BEL "FindMaxAmp_i/Sub_ped_delay_2_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_2_2" BEL "FindMaxAmp_i/Sub_ped_delay_2_1"
+        BEL "FindMaxAmp_i/Sub_ped_delay_2_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_1_7" BEL "FindMaxAmp_i/Sub_ped_delay_1_6"
+        BEL "FindMaxAmp_i/Sub_ped_delay_1_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_1_4" BEL "FindMaxAmp_i/Sub_ped_delay_1_3"
+        BEL "FindMaxAmp_i/Sub_ped_delay_1_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_1_1" BEL "FindMaxAmp_i/Sub_ped_delay_1_0"
+        BEL "FindMaxAmp_i/Sub_ped_delay_0_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_0_6" BEL "FindMaxAmp_i/Sub_ped_delay_0_5"
+        BEL "FindMaxAmp_i/Sub_ped_delay_0_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_0_3" BEL "FindMaxAmp_i/Sub_ped_delay_0_2"
+        BEL "FindMaxAmp_i/Sub_ped_delay_0_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_0_0" BEL "FindMaxAmp_i/Sub_ped_delay_19_7"
+        BEL "FindMaxAmp_i/Sub_ped_delay_19_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_19_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_19_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_19_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_19_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_19_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_19_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_24_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_23_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_17_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_18_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_16_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_21_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_22_0" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_7" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_6" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_5" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_4" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_3" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_2" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_1" BEL
+        "FindMaxAmp_i/Sub_ped_delay_20_0" BEL "FindMaxAmp_i/Sub_ped_19_7" BEL
+        "FindMaxAmp_i/Sub_ped_19_6" BEL "FindMaxAmp_i/Sub_ped_19_5" BEL
+        "FindMaxAmp_i/Sub_ped_19_4" BEL "FindMaxAmp_i/Sub_ped_19_3" BEL
+        "FindMaxAmp_i/Sub_ped_19_2" BEL "FindMaxAmp_i/Sub_ped_19_1" BEL
+        "FindMaxAmp_i/Sub_ped_19_0" BEL "FindMaxAmp_i/Sub_ped_24_7" BEL
+        "FindMaxAmp_i/Sub_ped_24_6" BEL "FindMaxAmp_i/Sub_ped_24_5" BEL
+        "FindMaxAmp_i/Sub_ped_24_4" BEL "FindMaxAmp_i/Sub_ped_24_3" BEL
+        "FindMaxAmp_i/Sub_ped_24_2" BEL "FindMaxAmp_i/Sub_ped_24_1" BEL
+        "FindMaxAmp_i/Sub_ped_24_0" BEL "FindMaxAmp_i/Sub_ped_18_7" BEL
+        "FindMaxAmp_i/Sub_ped_18_6" BEL "FindMaxAmp_i/Sub_ped_18_5" BEL
+        "FindMaxAmp_i/Sub_ped_18_4" BEL "FindMaxAmp_i/Sub_ped_18_3" BEL
+        "FindMaxAmp_i/Sub_ped_18_2" BEL "FindMaxAmp_i/Sub_ped_18_1" BEL
+        "FindMaxAmp_i/Sub_ped_18_0" BEL "FindMaxAmp_i/Sub_ped_23_7" BEL
+        "FindMaxAmp_i/Sub_ped_23_6" BEL "FindMaxAmp_i/Sub_ped_23_5" BEL
+        "FindMaxAmp_i/Sub_ped_23_4" BEL "FindMaxAmp_i/Sub_ped_23_3" BEL
+        "FindMaxAmp_i/Sub_ped_23_2" BEL "FindMaxAmp_i/Sub_ped_23_1" BEL
+        "FindMaxAmp_i/Sub_ped_23_0" BEL "FindMaxAmp_i/Sub_ped_17_7" BEL
+        "FindMaxAmp_i/Sub_ped_17_6" BEL "FindMaxAmp_i/Sub_ped_17_5" BEL
+        "FindMaxAmp_i/Sub_ped_17_4" BEL "FindMaxAmp_i/Sub_ped_17_3" BEL
+        "FindMaxAmp_i/Sub_ped_17_2" BEL "FindMaxAmp_i/Sub_ped_17_1" BEL
+        "FindMaxAmp_i/Sub_ped_17_0" BEL "FindMaxAmp_i/Sub_ped_22_7" BEL
+        "FindMaxAmp_i/Sub_ped_22_6" BEL "FindMaxAmp_i/Sub_ped_22_5" BEL
+        "FindMaxAmp_i/Sub_ped_22_4" BEL "FindMaxAmp_i/Sub_ped_22_3" BEL
+        "FindMaxAmp_i/Sub_ped_22_2" BEL "FindMaxAmp_i/Sub_ped_22_1" BEL
+        "FindMaxAmp_i/Sub_ped_22_0" BEL "FindMaxAmp_i/Sub_ped_16_7" BEL
+        "FindMaxAmp_i/Sub_ped_16_6" BEL "FindMaxAmp_i/Sub_ped_16_5" BEL
+        "FindMaxAmp_i/Sub_ped_16_4" BEL "FindMaxAmp_i/Sub_ped_16_3" BEL
+        "FindMaxAmp_i/Sub_ped_16_2" BEL "FindMaxAmp_i/Sub_ped_16_1" BEL
+        "FindMaxAmp_i/Sub_ped_16_0" BEL "FindMaxAmp_i/Sub_ped_21_7" BEL
+        "FindMaxAmp_i/Sub_ped_21_6" BEL "FindMaxAmp_i/Sub_ped_21_5" BEL
+        "FindMaxAmp_i/Sub_ped_21_4" BEL "FindMaxAmp_i/Sub_ped_21_3" BEL
+        "FindMaxAmp_i/Sub_ped_21_2" BEL "FindMaxAmp_i/Sub_ped_21_1" BEL
+        "FindMaxAmp_i/Sub_ped_21_0" BEL "FindMaxAmp_i/Sub_ped_20_7" BEL
+        "FindMaxAmp_i/Sub_ped_20_6" BEL "FindMaxAmp_i/Sub_ped_20_5" BEL
+        "FindMaxAmp_i/Sub_ped_20_4" BEL "FindMaxAmp_i/Sub_ped_20_3" BEL
+        "FindMaxAmp_i/Sub_ped_20_2" BEL "FindMaxAmp_i/Sub_ped_20_1" BEL
+        "FindMaxAmp_i/Sub_ped_20_0" BEL "FindMaxAmp_i/Sub_ped_9_7" BEL
+        "FindMaxAmp_i/Sub_ped_9_6" BEL "FindMaxAmp_i/Sub_ped_9_5" BEL
+        "FindMaxAmp_i/Sub_ped_9_4" BEL "FindMaxAmp_i/Sub_ped_9_3" BEL
+        "FindMaxAmp_i/Sub_ped_9_2" BEL "FindMaxAmp_i/Sub_ped_9_1" BEL
+        "FindMaxAmp_i/Sub_ped_9_0" BEL "FindMaxAmp_i/Sub_ped_7_7" BEL
+        "FindMaxAmp_i/Sub_ped_7_6" BEL "FindMaxAmp_i/Sub_ped_7_5" BEL
+        "FindMaxAmp_i/Sub_ped_7_4" BEL "FindMaxAmp_i/Sub_ped_7_3" BEL
+        "FindMaxAmp_i/Sub_ped_7_2" BEL "FindMaxAmp_i/Sub_ped_7_1" BEL
+        "FindMaxAmp_i/Sub_ped_7_0" BEL "FindMaxAmp_i/Sub_ped_8_7" BEL
+        "FindMaxAmp_i/Sub_ped_8_6" BEL "FindMaxAmp_i/Sub_ped_8_5" BEL
+        "FindMaxAmp_i/Sub_ped_8_4" BEL "FindMaxAmp_i/Sub_ped_8_3" BEL
+        "FindMaxAmp_i/Sub_ped_8_2" BEL "FindMaxAmp_i/Sub_ped_8_1" BEL
+        "FindMaxAmp_i/Sub_ped_8_0" BEL "FindMaxAmp_i/Sub_ped_6_7" BEL
+        "FindMaxAmp_i/Sub_ped_6_6" BEL "FindMaxAmp_i/Sub_ped_6_5" BEL
+        "FindMaxAmp_i/Sub_ped_6_4" BEL "FindMaxAmp_i/Sub_ped_6_3" BEL
+        "FindMaxAmp_i/Sub_ped_6_2" BEL "FindMaxAmp_i/Sub_ped_6_1" BEL
+        "FindMaxAmp_i/Sub_ped_6_0" BEL "FindMaxAmp_i/Sub_ped_4_7" BEL
+        "FindMaxAmp_i/Sub_ped_4_6" BEL "FindMaxAmp_i/Sub_ped_4_5" BEL
+        "FindMaxAmp_i/Sub_ped_4_4" BEL "FindMaxAmp_i/Sub_ped_4_3" BEL
+        "FindMaxAmp_i/Sub_ped_4_2" BEL "FindMaxAmp_i/Sub_ped_4_1" BEL
+        "FindMaxAmp_i/Sub_ped_4_0" BEL "FindMaxAmp_i/Sub_ped_5_7" BEL
+        "FindMaxAmp_i/Sub_ped_5_6" BEL "FindMaxAmp_i/Sub_ped_5_5" BEL
+        "FindMaxAmp_i/Sub_ped_5_4" BEL "FindMaxAmp_i/Sub_ped_5_3" BEL
+        "FindMaxAmp_i/Sub_ped_5_2" BEL "FindMaxAmp_i/Sub_ped_5_1" BEL
+        "FindMaxAmp_i/Sub_ped_5_0" BEL "FindMaxAmp_i/Sub_ped_3_7" BEL
+        "FindMaxAmp_i/Sub_ped_3_6" BEL "FindMaxAmp_i/Sub_ped_3_5" BEL
+        "FindMaxAmp_i/Sub_ped_3_4" BEL "FindMaxAmp_i/Sub_ped_3_3" BEL
+        "FindMaxAmp_i/Sub_ped_3_2" BEL "FindMaxAmp_i/Sub_ped_3_1" BEL
+        "FindMaxAmp_i/Sub_ped_3_0" BEL "FindMaxAmp_i/Sub_ped_1_7" BEL
+        "FindMaxAmp_i/Sub_ped_1_6" BEL "FindMaxAmp_i/Sub_ped_1_5" BEL
+        "FindMaxAmp_i/Sub_ped_1_4" BEL "FindMaxAmp_i/Sub_ped_1_3" BEL
+        "FindMaxAmp_i/Sub_ped_1_2" BEL "FindMaxAmp_i/Sub_ped_1_1" BEL
+        "FindMaxAmp_i/Sub_ped_1_0" BEL "FindMaxAmp_i/Sub_ped_0_7" BEL
+        "FindMaxAmp_i/Sub_ped_0_6" BEL "FindMaxAmp_i/Sub_ped_0_5" BEL
+        "FindMaxAmp_i/Sub_ped_0_4" BEL "FindMaxAmp_i/Sub_ped_0_3" BEL
+        "FindMaxAmp_i/Sub_ped_0_2" BEL "FindMaxAmp_i/Sub_ped_0_1" BEL
+        "FindMaxAmp_i/Sub_ped_0_0" BEL "FindMaxAmp_i/Sub_ped_2_7" BEL
+        "FindMaxAmp_i/Sub_ped_2_6" BEL "FindMaxAmp_i/Sub_ped_2_5" BEL
+        "FindMaxAmp_i/Sub_ped_2_4" BEL "FindMaxAmp_i/Sub_ped_2_3" BEL
+        "FindMaxAmp_i/Sub_ped_2_2" BEL "FindMaxAmp_i/Sub_ped_2_1" BEL
+        "FindMaxAmp_i/Sub_ped_2_0" BEL "FindMaxAmp_i/Trig_o" BEL
+        "FindMaxAmp_i/FastTrig_o" BEL
+        "FindMaxAmp_i/Mshreg_DelayENDCycle_9/SRL16E" BEL
+        "FindMaxAmp_i/DelayENDCycle_9" BEL
+        "FindMaxAmp_i/Mshreg_DelayReset_5/SRL16E" BEL
+        "FindMaxAmp_i/DelayReset_5" BEL "ADC_FCO_LVDSNext";
+PIN Sys_clk/DCM_ADV_INST1_pins<4> = BEL "Sys_clk/DCM_ADV_INST1" PINNAME CLKIN;
+TIMEGRP Qclock = PIN "Sys_clk/DCM_ADV_INST1_pins<4>";
+PIN adc_deser_i/LVDS_buf_ADC[24].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[24].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[24].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[24].ISERDES_master" PINNAME CLK;
+TIMEGRP ADC_DCO_LVDS6 = PIN
+        "adc_deser_i/LVDS_buf_ADC[24].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[24].ISERDES_master_pins<3>";
+PIN adc_deser_i/LVDS_buf_ADC[23].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[23].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[23].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[23].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[22].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[22].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[22].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[22].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[21].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[21].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[21].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[21].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[20].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[20].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[20].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[20].ISERDES_master" PINNAME CLK;
+TIMEGRP ADC_DCO_LVDS5 = PIN
+        "adc_deser_i/LVDS_buf_ADC[23].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[23].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[22].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[22].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[21].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[21].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[20].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[20].ISERDES_master_pins<3>";
+PIN adc_deser_i/LVDS_buf_ADC[19].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[19].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[19].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[19].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[18].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[18].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[18].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[18].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[17].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[17].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[17].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[17].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[16].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[16].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[16].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[16].ISERDES_master" PINNAME CLK;
+TIMEGRP ADC_DCO_LVDS4 = PIN
+        "adc_deser_i/LVDS_buf_ADC[19].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[19].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[18].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[18].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[17].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[17].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[16].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[16].ISERDES_master_pins<3>";
+PIN adc_deser_i/LVDS_buf_ADC[9].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[9].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[9].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[9].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[8].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[8].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[8].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[8].ISERDES_master" PINNAME CLK;
+TIMEGRP ADC_DCO_LVDS2 = PIN
+        "adc_deser_i/LVDS_buf_ADC[9].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[9].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[8].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[8].ISERDES_master_pins<3>";
+PIN adc_deser_i/LVDS_buf_ADC[7].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[7].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[7].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[7].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[6].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[6].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[6].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[6].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[5].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[5].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[5].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[5].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[4].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[4].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[4].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[4].ISERDES_master" PINNAME CLK;
+TIMEGRP ADC_DCO_LVDS1 = PIN
+        "adc_deser_i/LVDS_buf_ADC[7].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[7].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[6].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[6].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[5].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[5].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[4].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[4].ISERDES_master_pins<3>";
+PIN adc_deser_i/LVDS_buf_ADC[3].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[3].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[3].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[3].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[2].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[2].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[1].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[1].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_master" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[0].ISERDES_slave_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_slave" PINNAME CLK;
+PIN adc_deser_i/LVDS_buf_ADC[0].ISERDES_master_pins<3> = BEL
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_master" PINNAME CLK;
+TIMEGRP ADC_DCO_LVDS0 = PIN
+        "adc_deser_i/LVDS_buf_ADC[3].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[3].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_master_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_slave_pins<3>" PIN
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_master_pins<3>";
+TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
+TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 3.125 ns HIGH 50%;
+TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1" 3.125 ns HIGH 50%;
+TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2" 3.125 ns HIGH 50%;
+TS_DCO4 = PERIOD TIMEGRP "ADC_DCO_LVDS4" 3.125 ns HIGH 50%;
+TS_DCO5 = PERIOD TIMEGRP "ADC_DCO_LVDS5" 3.125 ns HIGH 50%;
+TS_DCO6 = PERIOD TIMEGRP "ADC_DCO_LVDS6" 3.125 ns HIGH 50%;
+TS_Sys_clk_U1_CLK0_BUF = PERIOD TIMEGRP "Sys_clk_U1_CLK0_BUF" TS_Qclock HIGH
+        50% INPUT_JITTER 0.375 ns;
+TS_Sys_clk_U1_CLKDV_BUF = PERIOD TIMEGRP "Sys_clk_U1_CLKDV_BUF" TS_Qclock * 2
+        HIGH 50% INPUT_JITTER 0.375 ns;
+TS_Sys_clk_U1_CLKFX_BUF = PERIOD TIMEGRP "Sys_clk_U1_CLKFX_BUF" TS_Qclock / 4
+        HIGH 50% INPUT_JITTER 0.375 ns;
+TS_Sys_clk_U2_CLK2X_BUF = PERIOD TIMEGRP "Sys_clk_U2_CLK2X_BUF"
+        TS_Sys_clk_U1_CLK0_BUF / 2 HIGH 50% INPUT_JITTER 0.375 ns;
+TS_Sys_clk_U2_CLKFX_BUF = PERIOD TIMEGRP "Sys_clk_U2_CLKFX_BUF"
+        TS_Sys_clk_U1_CLK0_BUF / 5 HIGH 50% INPUT_JITTER 0.375 ns;
+SCHEMATIC END;
+

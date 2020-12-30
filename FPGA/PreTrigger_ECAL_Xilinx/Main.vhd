@@ -44,8 +44,8 @@ port(
 	FCT_160		: in std_logic; -- clock
 	FCT_160_n	: in std_logic; -- clock
 -- In Trigger module FCT's Clock is checked inside Altera but switched outside 
-	Sw_Quartz	: out std_logic;	-- connects Quartz to PLL ref.Input			-> Pin 
-	Sw_FCTClk	: out std_logic;	-- connects Link's Clock to PLL ref.Input	-> Pin 
+	Sw_Quartz	: out std_logic := '1';	-- connects Quartz to PLL ref.Input			-> Pin 
+	Sw_FCTClk	: out std_logic := '0';	-- connects Link's Clock to PLL ref.Input	-> Pin 
 
 	MuxClock_in		: in std_logic;	-- Ref.clock for PLL (dedicated)			<- Pin 
 
@@ -70,10 +70,12 @@ port(
 	ADC_DCO_LVDS		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_DCO_LVDS_n		: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
 	ADC_FCO				: in std_logic_vector(NUM_TrigCell/4-1 downto 0);	-- 
+	ADC_DCO_LVDSPrev	: in std_logic;	-- 
+	ADC_DCO_LVDSPrev_n: in std_logic;	-- 
 	ADC_FCO_LVDSPrev	: in std_logic;	-- 
-	ADC_FCO_LVDSPrev_n: in std_logic;	-- 
+	ADC_DCO_LVDSNext	: out std_logic;	-- 
+	ADC_DCO_LVDSNext_n: out std_logic;	-- 
 	ADC_FCO_LVDSNext	: out std_logic;	-- 
-	ADC_FCO_LVDSNext_n: out std_logic;	-- 
 
 --	ADC_test				: in std_logic;
 --	ADC_res				: in std_logic;
@@ -117,6 +119,7 @@ architecture Behavioral of Main is
 	signal Quarts				: std_logic;
 	signal FCT40				: std_logic;
 	signal ResultClock		: std_logic;	-- Ref.clock for PLL (dedicated)
+	signal ResultClock_sys	: std_logic;
 	signal Resultclock1		: std_logic;
 	signal Clock_in			: std_logic;
 	signal Clk40				: std_logic;
@@ -126,11 +129,13 @@ architecture Behavioral of Main is
 	signal Clk80_o				: std_logic;
 	signal Clk160				: std_logic;
 	signal Clk160_o			: std_logic;
+	signal Clk200				: std_logic;
 	signal Clk320				: std_logic;
 	signal FCT160				: std_logic;
 	signal Phase				: std_logic;
 	signal Clk_Selected		: std_logic := '1';
 	signal s_clock_locked	: std_logic;
+	signal sys_clock_locked	: std_logic;
 	---
 
 	--- system
@@ -172,6 +177,9 @@ architecture Behavioral of Main is
 	signal ADCreset_reg_sset	: std_logic := '1'; 
 	signal ADCreset_SDIO_trig: std_logic; 
 	signal ADC_CSB_trig	: std_logic := '1'; 
+
+	signal ADCDataTest		: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal ADCDataTest_Ok	: std_logic;
 	---
 	
 	--- Input ADC data
@@ -186,11 +194,6 @@ architecture Behavioral of Main is
 	
 	--- Output ADC data
 	signal ADCDataNext		: array_next_adc;
-	signal DataShiftNext1	: std_logic;
-	signal DataShiftNext2	: std_logic;
-	signal ADCOutDataNext	: std_logic_vector (ADC_Bits-1 downto 0);
-	signal ADCOutDataNext_o	: std_logic_vector(NUM_TrigCellNext-1 downto 0);
-	signal ADC_FCONext		: std_logic; --std_logic_vector(NUM_TrigCellPrev-1 downto 0);
 	---
 	
 	--- Processing data
@@ -221,8 +224,9 @@ architecture Behavioral of Main is
 	--- Test
 	signal TestCnt				: std_logic_vector(25 downto 0);
 	signal test_adc_deser	: std_logic_vector(15 downto 0);
+	signal test_adc_deser_o	: std_logic_vector(15 downto 0);
 	signal test_FindMaxAmp	: std_logic_vector(15 downto 0);
---	signal test_adc_deser	: std_logic_vector(15 downto 0);
+	signal TestNext			: std_logic_vector(7 downto 0);
 
 begin
 
@@ -341,17 +345,36 @@ ResultClock1 <= '0';
 --	ResultClock <= ((FCT40 and ResultClock1) OR (Quarts and not ResultClock1));
 	ResultClock <= ((FCT40 and ResultClock1) OR (Qclock and not ResultClock1));
 
-DLL: entity work.DLL
+--DLL: entity work.DLL
+--	port map (
+--		CLK0_OUT => Clk40,					-- 0 degree DCM CLK output
+--		CLKDV_OUT => Clk20,					-- 0 degree DCM CLK output
+--		CLK2X_OUT => Clk80,				-- 2X DCM CLK output
+--		CLK90_OUT => Clk40_90d,			-- 90 degree DCM CLK output
+--		CLKFX_OUT => Clk160,				-- DCM CLK synthesis out (M/D)
+--		LOCKED_OUT => s_clock_locked,	-- DCM LOCK status output
+--		CLKIN_IN => ResultClock,			-- Clock input (from IBUFG, BUFG or DCM)
+----		CLKIN_IN => MuxClock_in,			-- Clock input (from IBUFG, BUFG or DCM)
+--		RST_IN => Reset					-- DCM asynchronous reset input
+--	);
+
+Sys_clk: entity work.Sys_dll
 	port map (
-		CLK0_OUT => Clk40,					-- 0 degree DCM CLK output
-		CLKDV_OUT => Clk20,					-- 0 degree DCM CLK output
-		CLK2X_OUT => Clk80,				-- 2X DCM CLK output
-		CLK90_OUT => Clk40_90d,			-- 90 degree DCM CLK output
-		CLKFX_OUT => Clk160,				-- DCM CLK synthesis out (M/D)
-		LOCKED_OUT => s_clock_locked,	-- DCM LOCK status output
-		CLKIN_IN => ResultClock,			-- Clock input (from IBUFG, BUFG or DCM)
---		CLKIN_IN => MuxClock_in,			-- Clock input (from IBUFG, BUFG or DCM)
-		RST_IN => Reset					-- DCM asynchronous reset input
+		U1_CLKIN_IN				=> ResultClock,
+		U1_RST_IN				=> Reset,
+
+		CLK90_OUT				=> Clk40_90d,
+		U1_CLKDV_OUT			=> Clk20,
+		U1_CLKFX_OUT			=> Clk160,
+		U1_CLKIN_IBUFG_OUT	=> open,
+		U1_CLK0_OUT				=> Clk40,
+
+		U2_CLK2X_OUT			=> Clk80,
+		U2_CLK2X180_OUT		=> open, 
+		U2_CLKFX_OUT			=> Clk200,
+		U2_CLK0_OUT				=> open,
+
+		U2_LOCKED_OUT			=> s_clock_locked
 	);
 
 --******** LED ********--
@@ -383,12 +406,12 @@ DLL: entity work.DLL
 --					 o_flash => o_red_led
 --					);
 
-	o_red_led <= '0' when ((s_clock_locked = '0') OR (TestCnt(24)='1' and Clk_Selected = '0')) else
+	o_red_led <= '0' when (PwrUpReset = '1') else--((s_clock_locked = '1') OR (TestCnt(24)='1' and Clk_Selected = '0')) else
 					 '1';
 
-	LED1 <= o_green_led;
-	LED2 <= not o_blue_led;
-	LED3 <= o_red_led;
+	LED3 <= o_green_led;
+	LED2 <= ADCDataTest_Ok;--not o_blue_led;
+	LED1 <= o_red_led;
 
 	LED4 <= '1' when TestCnt(21)='1' else
 				'0' when TestCnt(21)='0' else
@@ -396,148 +419,69 @@ DLL: entity work.DLL
 	LED5 <= '1' when TestCnt(23)='1' else
 				'0' when TestCnt(23)='0' else
 				'0';
---********
+
+--******** In/Out LVDS ADC Data ********--
 
 	adc_deser_i: entity work.adc_deser
 	port map(
 		Clock_i		=> Clk80,
+		Clock_ctrl	=> Clk200,
 		SDATAP		=> ADCInDataLVDS,
 		SDATAN		=> ADCInDataLVDS_n,
+
 		SDATAPrevP	=> ADCInDataLVDSPrev,
 		SDATAPrevN	=> ADCInDataLVDSPrev_n,
 
 		DCOP			=> ADC_DCO_LVDS,
 		DCON			=> ADC_DCO_LVDS_n,
-		FCO_i			=> ADC_FCO,
-		DCOPrevP		=> ADC_FCO_LVDSPrev,
-		DCOPrevN		=> ADC_FCO_LVDSPrev_n,
+		FCO			=> ADC_FCO,
+		DCOPrevP		=> ADC_DCO_LVDSPrev,
+		DCOPrevN		=> ADC_DCO_LVDSPrev_n,
+		FCOPrev		=> ADC_FCO_LVDSPrev,
 		
 		o_adc_data	=> InDataReg,
 --		o_dco			=> test_adc_deser,
 		o_adc_data_prev	=> InDataPrevReg,
+		
+		SetReset		=> PwrUpReset,
+		
 		test			=> test_adc_deser
 	);
 	
 	process (Clk80)
 	begin
-		ADC_FCONext <= Clk80;
-		ADCDataNext(0) <= InDataReg(100);
-		ADCDataNext(1) <= InDataReg(101);
-		ADCDataNext(2) <= InDataReg(102);
-		ADCDataNext(3) <= InDataReg(103);
-		ADCDataNext(4) <= InDataReg(104);
-		ADCDataNext(5) <= InDataReg(105);
-		ADCDataNext(6) <= InDataReg(106);
-		ADCDataNext(7) <= InDataReg(107);
-		ADCDataNext(8) <= InDataReg(108);
-		ADCDataNext(9) <= InDataReg(109);
-		ADCDataNext(10) <= InDataReg(110);
-		ADCDataNext(11) <= InDataReg(111);
+		if rising_edge(TestCnt(16)) then
+			ADCDataNext(0) <= InDataReg(56);
+			ADCDataNext(1) <= InDataReg(57);
+			ADCDataNext(2) <= InDataReg(58);
+			ADCDataNext(3) <= InDataReg(59);
+			ADCDataNext(4) <= InDataReg(60);
+			ADCDataNext(5) <= InDataReg(61);
+			ADCDataNext(6) <= InDataReg(62);
+			ADCDataNext(7) <= InDataReg(63);
+			ADCDataNext(8) <= "00001000";--InDataReg(108);
+			ADCDataNext(9) <= "00001001";--InDataReg(109);
+			ADCDataNext(10) <= "00001010";--InDataReg(110);
+			ADCDataNext(11) <= "00001011";--InDataReg(111);
+		end if;
 	end process;
 	
-	LVDS_buf_ADCNext: for i in 0 to NUM_TrigCellNext-1 generate 
+	adc_deser_o: entity work.adc_deser_o
+	port map(
+		Clock_i		=> Clk40,
+		Clock_div	=> Clk160,
+		DATA_i		=> ADCDataNext,
 		
-		ADCOutDataNext <= ADCDataNext(i);
-		
-		OSERDES_ADCData_1 : OSERDES
-		generic map (
-			DATA_RATE_OQ => "DDR", -- Specify data rate to "DDR" or "SDR" 
-			DATA_RATE_TQ => "DDR", -- Specify data rate to "DDR", "SDR", or "BUF" 
-			DATA_WIDTH => 8, -- Specify data width - For DDR: 4,6,8, or 10 
-								  -- For SDR or BUF: 2,3,4,5,6,7, or 8 
-			INIT_OQ => '0',  -- INIT for Q1 register - '1' or '0' 
-			INIT_TQ => '0',  -- INIT for Q2 register - '1' or '0' 
-			SERDES_MODE => "MASTER", --Set SERDES mode to "MASTER" or "SLAVE" 
-			SRVAL_OQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
-			SRVAL_TQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
-			TRISTATE_WIDTH => 4) -- Specify parallel to serial converter width 
-										-- When DATA_RATE_TQ = DDR: 2 or 4 
-										-- When DATA_RATE_TQ = SDR or BUF: 1 " 
-		port map (
-			OQ => ADCOutDataNext_o(i),    -- 1-bit output
---			SHIFTOUT1 => '0', -- 1-bit data expansion output
---			SHIFTOUT2 => '0', -- 1-bit data expansion output
---			TQ => '0',    -- 1-bit 3-state control output
-			CLK => Clk320,  -- 1-bit clock input
-			CLKDIV => Clk80,  -- 1-bit divided clock input
-			D1 => ADCOutDataNext(0),    -- 1-bit parallel data input
-			D2 => ADCOutDataNext(1),    -- 1-bit parallel data input
-			D3 => ADCOutDataNext(2),    -- 1-bit parallel data input
-			D4 => ADCOutDataNext(3),    -- 1-bit parallel data input
-			D5 => ADCOutDataNext(4),    -- 1-bit parallel data input
-			D6 => ADCOutDataNext(5),    -- 1-bit parallel data input
-			OCE => '1',  -- 1-bit clcok enable input
-			REV => '0',  -- Must be tied to logic zero
-			SHIFTIN1 => DataShiftNext1, -- 1-bit data expansion input
-			SHIFTIN2 => DataShiftNext2, -- 1-bit data expansion input
-			SR => '1',   -- 1-bit set/reset input
-			T1 => '1',   -- 1-bit parallel 3-state input
-			T2 => '1',   -- 1-bit parallel 3-state input
-			T3 => '1',   -- 1-bit parallel 3-state input
-			T4 => '1',   -- 1-bit parallel 3-state input
-			TCE => '1'  -- 1-bit 3-state signal clock enable input
-		);
-		
-		OSERDES_ADCData_2 : OSERDES
-		generic map (
-			DATA_RATE_OQ => "DDR", -- Specify data rate to "DDR" or "SDR" 
-			DATA_RATE_TQ => "DDR", -- Specify data rate to "DDR", "SDR", or "BUF" 
-			DATA_WIDTH => 6, -- Specify data width - For DDR: 4,6,8, or 10 
-								  -- For SDR or BUF: 2,3,4,5,6,7, or 8 
-			INIT_OQ => '0',  -- INIT for Q1 register - '1' or '0' 
-			INIT_TQ => '0',  -- INIT for Q2 register - '1' or '0' 
-			SERDES_MODE => "SLAVE", --Set SERDES mode to "MASTER" or "SLAVE" 
-			SRVAL_OQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
-			SRVAL_TQ => '0', -- Define Q1 output value upon SR assertion - '1' or '0' 
-			TRISTATE_WIDTH => 4) -- Specify parallel to serial converter width 
-										-- When DATA_RATE_TQ = DDR: 2 or 4 
-										-- When DATA_RATE_TQ = SDR or BUF: 1 " 
-		port map (
---			OQ => '0',    -- 1-bit output
-			SHIFTOUT1 => DataShiftNext1, -- 1-bit data expansion output
-			SHIFTOUT2 => DataShiftNext2, -- 1-bit data expansion output
---			TQ => '1',    -- 1-bit 3-state control output
-			CLK => Clk320,  -- 1-bit clock input
-			CLKDIV => Clk80,  -- 1-bit divided clock input
-			D1 => '0',    -- 1-bit parallel data input
-			D2 => '0',    -- 1-bit parallel data input
-			D3 => ADCOutDataNext(6),    -- 1-bit parallel data input
-			D4 => ADCOutDataNext(7),    -- 1-bit parallel data input
-			D5 => '0',    -- 1-bit parallel data input
-			D6 => '0',    -- 1-bit parallel data input
-			OCE => '1',  -- 1-bit clcok enable input
-			REV => '0',  -- Must be tied to logic zero
-			SHIFTIN1 => '0', -- 1-bit data expansion input
-			SHIFTIN2 => '0', -- 1-bit data expansion input
-			SR => '1',   -- 1-bit set/reset input
-			T1 => '1',   -- 1-bit parallel 3-state input
-			T2 => '1',   -- 1-bit parallel 3-state input
-			T3 => '1',   -- 1-bit parallel 3-state input
-			T4 => '1',   -- 1-bit parallel 3-state input
-			TCE => '1'  -- 1-bit 3-state signal clock enable input
-		);
-		
-		OBUFDS_inst : OBUFDS
-		generic map (
-			CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-			IOSTANDARD => "DEFAULT")
-		port map (
-			O => ADCOutDataLVDSNext(i),		-- Diff_p output (connect directly to top-level port)
-			OB => ADCOutDataLVDSNext_n(i),	-- Diff_n output (connect directly to top-level port)
-			I => ADCOutDataNext_o(i)				-- Buffer input 
-		);
-	end generate LVDS_buf_ADCNext;
-	
-	OBUFDS_inst : OBUFDS
-	generic map (
-		CAPACITANCE => "DONT_CARE", -- "LOW", "NORMAL", "DONT_CARE" 
-		IOSTANDARD => "DEFAULT")
-	port map (
-		O => ADC_FCO_LVDSNext,		-- Diff_p output (connect directly to top-level port)
-		OB => ADC_FCO_LVDSNext_n,	-- Diff_n output (connect directly to top-level port)
-		I => ADC_FCONext				-- Buffer input 
+		SDATANextP	=> ADCOutDataLVDSNext,
+		SDATANextN	=> ADCOutDataLVDSNext_n,
+		DCOP			=> ADC_DCO_LVDSNext,
+		DCON			=> ADC_DCO_LVDSNext_n,
+		FCO			=> ADC_FCO_LVDSNext,
+		test			=> test_adc_deser_o
 	);
 	
+--******** Processing data ********--
+
 	FindMaxAmp_i: entity work.FindMaxAmp
 	port map(
 		In_Data			=> InDataReg,
@@ -561,6 +505,8 @@ DLL: entity work.DLL
 
 		test				=> test_FindMaxAmp
 	);
+
+--******** TriggerData Out ********--
 
 	ADC_CLK <= CLK80;
 	TriggerData(9 downto 0)	  <= MaxAmp_o;
@@ -651,6 +597,39 @@ DLL: entity work.DLL
 				sset	=> ADCtest_reg_sset,
 				q		=> ADCtest_SDIO_trig
 		);
+		
+	ADC_Data_test: for i in 0 to 7 generate 
+		process (Clk80)
+		begin
+			if rising_edge(Clk80) then
+				if ((InDataReg(i)(0) = '1') and (InDataReg(i)(1) = '1') and (InDataReg(i)(2) = '0') and (InDataReg(i)(3) = '0') and 
+				    (InDataReg(i)(4) = '0') and (InDataReg(i)(5) = '1') and (InDataReg(i)(6) = '0') and (InDataReg(i)(7) = '1')) then ADCDataTest(i) <= '1';
+					else ADCDataTest(i) <= '0';
+				end if;
+			end if;
+		end process;
+	end generate ADC_Data_test;
+
+--	process(Clk80)
+--	begin
+--		if rising_edge(Clk80) then
+--			if ((ADCDataTest(0) = '1') or (ADCDataTest(1) = '1') or (ADCDataTest(2) = '1') or 
+--				 (ADCDataTest(3) = '1') or (ADCDataTest(4) = '1') or (ADCDataTest(5) = '1') or 
+--				 (ADCDataTest(6) = '1') or (ADCDataTest(7) = '1')) then ADCDataTest_Ok <= '0';
+--																				   else ADCDataTest_Ok <= '1';
+--			end if;
+--		end if;
+--	end process;
+
+	process(Clk80)
+	begin
+		if rising_edge(Clk80) then
+			if ((InDataReg(0) = "10100011") or (InDataReg(1) = "10100011") or (InDataReg(2) = "10100011") or (InDataReg(3) = "10100011") or 
+				 (InDataReg(4) = "10100011") or (InDataReg(5) = "10100011") or (InDataReg(6) = "10100011") or (InDataReg(7) = "10100011")) then ADCDataTest_Ok <= '1';
+																																													else ADCDataTest_Ok <= '0';
+			end if;
+		end if;
+	end process;
 
 --******** Test part ********--
 
@@ -659,20 +638,20 @@ DLL: entity work.DLL
 				WIDTH => 26
 			)
 	port map (
-				clock 	=> Quarts,--CLK40,
+				clock 	=> CLK40,--Quarts,--
 				clk_en	=>	'1',
 				q			=> TestCnt
 				);
 
-	Test(0) <= InDataReg(20)(0);
-	Test(1) <= InDataReg(20)(1);
-	Test(2) <= InDataReg(20)(2);
-	Test(3) <= InDataReg(20)(3);
-	Test(4) <= InDataReg(20)(4);
-	Test(5) <= InDataReg(20)(5);
-	Test(6) <= InDataReg(20)(6);
-	Test(7) <= InDataReg(20)(7);
-	Test(8) <= test_adc_deser(0);
-	Test(9) <= Clk80;
+	Test(0) <= InDataReg(1)(0);
+	Test(1) <= InDataReg(1)(1);
+	Test(2) <= InDataReg(1)(2);
+	Test(3) <= InDataReg(1)(3);
+	Test(4) <= InDataReg(1)(4);
+	Test(5) <= InDataReg(1)(5);
+	Test(6) <= InDataReg(1)(6);
+	Test(7) <= InDataReg(1)(7);
+	Test(8) <= ADCDataTest_Ok;--test_adc_deser(0);
+	Test(9) <= Clk40;
 
 end Behavioral;

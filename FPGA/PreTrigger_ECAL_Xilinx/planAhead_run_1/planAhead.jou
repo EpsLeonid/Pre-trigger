@@ -1,114 +1,28 @@
 #-----------------------------------------------------------
-# PlanAhead v14.7
-# Build 321239 by xbuild on Fri Sep 27 19:31:35 MDT 2013
-# Start of session at: Mon Jul 13 14:53:23 2020
-# Process ID: 1476
-# Log file: C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/planAhead_run_1/planAhead.log
-# Journal file: C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/planAhead_run_1/planAhead.jou
+# PlanAhead v14.7 (64-bit)
+# Build 321239 by xbuild on Fri Sep 27 19:29:51 MDT 2013
+# Start of session at: Mon Nov 09 15:38:49 2020
+# Process ID: 7400
+# Log file: D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/planAhead_run_1/planAhead.log
+# Journal file: D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/planAhead_run_1/planAhead.jou
 #-----------------------------------------------------------
 start_gui
-source C:/Work/COMET/trunk/FPGA/PreTrigger_ECAL_Xilinx/pa.fromHdl.tcl
-update_compile_order -fileset sim_1
-set_property iostandard LVCMOS25 [get_ports [list {ADC_DCO_LVDS[27]}]]
-set_property IOSTANDARD {LVDS} [get_ports {ADC_DCO_LVDS[0]}]
-refresh_design
-set_property is_loc_fixed false [get_ports [list  ADC_CLK]]
+source D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/pa.fromNetlist.tcl
 startgroup
 set_property package_pin G15 [get_ports ADC_CLK]
 endgroup
 startgroup
-set_property package_pin A6 [get_ports {Test[9]}]
-endgroup
-set_property package_pin "" [get_ports [list  {TriggerData[63]}]]
-startgroup
 set_property package_pin D10 [get_ports {TxD[0]}]
 endgroup
 startgroup
-set_property package_pin AG3 [get_ports {TriggerData[63]}]
-endgroup
-save_constraints
-startgroup
-set_property package_pin A13 [get_ports TrigDes]
-endgroup
-startgroup
-set_property package_pin D1 [get_ports {TriggerData[32]}]
-endgroup
-startgroup
-set_property package_pin D1 [get_ports {TriggerData[32]}]
-endgroup
-startgroup
-set_property package_pin D1 [get_ports {TriggerData[32]}]
-endgroup
-startgroup
-set_property package_pin D2 [get_ports {TriggerData[34]}]
-endgroup
-set_property package_pin "" [get_ports [list  {TriggerData[33]}]]
-set_property package_pin "" [get_ports [list  {TriggerData[32]}]]
-startgroup
 set_property package_pin D1 [get_ports {TriggerData[33]}]
-endgroup
-startgroup
-set_property package_pin B13 [get_ports FastTrigDes]
 endgroup
 startgroup
 set_property package_pin C4 [get_ports {TriggerData[32]}]
 endgroup
-save_constraints
 startgroup
 set_property package_pin L3 [get_ports {TriggerData[14]}]
 endgroup
 save_constraints
+write_ucf D:/Users/Leon/Work/Japan/COMET/Electronics/trunk/FPGA/PreTrigger_ECAL_Xilinx/planAhead.ucf -mode port
 refresh_design
-refresh_design
-startgroup
-set_property package_pin L3 [get_ports {TriggerData[14]}]
-endgroup
-save_constraints
-startgroup
-set_property package_pin A13 [get_ports TrigDes]
-endgroup
-startgroup
-set_property package_pin D1 [get_ports {TriggerData[33]}]
-endgroup
-save_constraints
-startgroup
-set_property package_pin B13 [get_ports FastTrigDes]
-endgroup
-startgroup
-set_property package_pin C4 [get_ports {TriggerData[32]}]
-endgroup
-save_constraints
-refresh_design
-startgroup
-set_property package_pin AP20 [get_ports {ADC_FCO[0]}]
-endgroup
-startgroup
-set_property package_pin AK17 [get_ports {ADC_FCO[12]}]
-endgroup
-save_constraints
-refresh_design
-refresh_design
-refresh_design
-set_property iostandard LVCMOS25 [get_ports [list {ADC_DCO_LVDS[3]}]]
-startgroup
-set_property package_pin AA25 [get_ports {ADC_DCO_LVDS[0]}]
-endgroup
-set_property DIFF_TERM {1} [get_ports {ADC_DCO_LVDS[0]}]
-refresh_design
-refresh_design
-refresh_design
-refresh_design
-refresh_design
-set_property iostandard LVCMOS25 [get_ports [list {ADC_DCO_LVDS[0]}]]
-refresh_design
-refresh_design
-refresh_design
-refresh_design
-startgroup
-set_property package_pin C33 [get_ports {ADC_DCO_LVDS[19]}]
-endgroup
-startgroup
-set_property package_pin D34 [get_ports {ADC_DCO_LVDS[19]}]
-endgroup
-undo
-undo

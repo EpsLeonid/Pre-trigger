@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="ConstraintSystem" num="137" delta="old" >Constraint <arg fmt="%s" index="1">&lt;NET &quot;FCT_40&quot; TNM_NET = &quot;FCT_40&quot;;&gt; [Pre.ucf(8)]</arg>: No appropriate instances for the TNM constraint are driven by &quot;<arg fmt="%s" index="2">FCT_40</arg>&quot;.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="56" delta="old" >Constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_FCT_40 = PERIOD &quot;FCT_40&quot; 25 ns HIGH 50 % INPUT_JITTER 375 ps;&gt; [Pre.ucf(9)]</arg>: Unable to find an active <arg fmt="%s" index="2">&apos;TNM&apos; or &apos;TimeGrp&apos;</arg> constraint named &apos;<arg fmt="%s" index="3">FCT_40</arg>&apos;.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="137" delta="old" >Constraint <arg fmt="%s" index="1">&lt;NET &quot;MuxClock_in&quot; TNM_NET = &quot;MuxClock_in&quot;;&gt; [Pre.ucf(12)]</arg>: No appropriate instances for the TNM constraint are driven by &quot;<arg fmt="%s" index="2">MuxClock_in</arg>&quot;.
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="56" delta="old" >Constraint <arg fmt="%s" index="1">&lt;TIMESPEC TS_MuxClock_in = PERIOD &quot;MuxClock_in&quot; 25 ns HIGH 50 % INPUT_JITTER 375 ps;&gt; [Pre.ucf(13)]</arg>: Unable to find an active <arg fmt="%s" index="2">&apos;TNM&apos; or &apos;TimeGrp&apos;</arg> constraint named &apos;<arg fmt="%s" index="3">MuxClock_in</arg>&apos;.
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">Qclock</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_Qclock</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_ADV</arg> instance <arg fmt="%s" index="5">Sys_clk/DCM_ADV_INST1</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLK0</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_Sys_clk_U1_CLK0_BUF = PERIOD &quot;Sys_clk_U1_CLK0_BUF&quot; TS_Qclock HIGH 50% INPUT_JITTER 375 ps&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">Qclock</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_Qclock</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_ADV</arg> instance <arg fmt="%s" index="5">Sys_clk/DCM_ADV_INST1</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKDV</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_Sys_clk_U1_CLKDV_BUF = PERIOD &quot;Sys_clk_U1_CLKDV_BUF&quot; TS_Qclock * 2 HIGH 50% INPUT_JITTER 375 ps&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">Qclock</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_Qclock</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_ADV</arg> instance <arg fmt="%s" index="5">Sys_clk/DCM_ADV_INST1</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKFX</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_Sys_clk_U1_CLKFX_BUF = PERIOD &quot;Sys_clk_U1_CLKFX_BUF&quot; TS_Qclock / 4 HIGH 50% INPUT_JITTER 375 ps&gt;</arg>
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="191" delta="old" >The <arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">FCT_40</arg>&apos;, does not directly or indirectly drive any flip-flops, latches and/or RAMS and cannot be actively used by the referencing <arg fmt="%s" index="3">Period</arg> constraint &apos;<arg fmt="%s" index="4">TS_FCT_40</arg>&apos;. If clock manager blocks are directly or indirectly driven, a new TNM constraint will not be derived even though the referencing constraint is a PERIOD constraint unless an output of the clock manager drives flip-flops, latches or RAMs. This TNM is used in the following user PERIOD specification:
+<arg fmt="%s" index="5">&lt;TIMESPEC TS_FCT_40 = PERIOD &quot;FCT_40&quot; 25 ns HIGH 50 % INPUT_JITTER 375 ps;&gt; [Pre.ucf(9)]
+</arg></msg>
+
+<msg type="warning" file="ConstraintSystem" num="197" delta="old" >The following specification is invalid because the referenced TNM constraint was removed:
+<arg fmt="%s" index="1">&lt;TIMESPEC TS_FCT_40 = PERIOD &quot;FCT_40&quot; 25 ns HIGH 50 % INPUT_JITTER 375 ps;&gt; [Pre.ucf(9)]</arg>
+</msg>
+
+<msg type="warning" file="ConstraintSystem" num="191" delta="old" >The <arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">MuxClock_in</arg>&apos;, does not directly or indirectly drive any flip-flops, latches and/or RAMS and cannot be actively used by the referencing <arg fmt="%s" index="3">Period</arg> constraint &apos;<arg fmt="%s" index="4">TS_MuxClock_in</arg>&apos;. If clock manager blocks are directly or indirectly driven, a new TNM constraint will not be derived even though the referencing constraint is a PERIOD constraint unless an output of the clock manager drives flip-flops, latches or RAMs. This TNM is used in the following user PERIOD specification:
+<arg fmt="%s" index="5">&lt;TIMESPEC TS_MuxClock_in = PERIOD &quot;MuxClock_in&quot; 25 ns HIGH 50 % INPUT_JITTER 375 ps;&gt; [Pre.ucf(13)]
+</arg></msg>
+
+<msg type="warning" file="ConstraintSystem" num="197" delta="old" >The following specification is invalid because the referenced TNM constraint was removed:
+<arg fmt="%s" index="1">&lt;TIMESPEC TS_MuxClock_in = PERIOD &quot;MuxClock_in&quot; 25 ns HIGH 50 % INPUT_JITTER 375 ps;&gt; [Pre.ucf(13)]</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">Sys_clk_U1_CLK0_BUF</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_Sys_clk_U1_CLK0_BUF</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_ADV</arg> instance <arg fmt="%s" index="5">Sys_clk/DCM_ADV_INST2</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLK2X</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_Sys_clk_U2_CLK2X_BUF = PERIOD &quot;Sys_clk_U2_CLK2X_BUF&quot; TS_Sys_clk_U1_CLK0_BUF / 2 HIGH 50% INPUT_JITTER 375 ps&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">Sys_clk_U1_CLK0_BUF</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_Sys_clk_U1_CLK0_BUF</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_ADV</arg> instance <arg fmt="%s" index="5">Sys_clk/DCM_ADV_INST2</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKFX</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_Sys_clk_U2_CLKFX_BUF = PERIOD &quot;Sys_clk_U2_CLKFX_BUF&quot; TS_Sys_clk_U1_CLK0_BUF / 5 HIGH 50% INPUT_JITTER 375 ps&gt;</arg>
+</msg>
+
+<msg type="warning" file="NgdBuild" num="1012" delta="old" >The constraint <arg fmt="%s" index="1">&lt;NET &quot;Led1&quot; PULLUP;&gt; [planAhead.ucf(1879)]</arg> is overridden on the design object <arg fmt="%s" index="2">Led1</arg> by the constraint <arg fmt="%s" index="3">&lt;NET &quot;Led1&quot; PULLUP;&gt; [Pre.ucf(906)]</arg>.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="1012" delta="old" >The constraint <arg fmt="%s" index="1">&lt;NET &quot;Led2&quot; PULLUP;&gt; [planAhead.ucf(1883)]</arg> is overridden on the design object <arg fmt="%s" index="2">Led2</arg> by the constraint <arg fmt="%s" index="3">&lt;NET &quot;Led2&quot; PULLUP;&gt; [Pre.ucf(910)]</arg>.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="1012" delta="old" >The constraint <arg fmt="%s" index="1">&lt;NET &quot;Led3&quot; PULLUP;&gt; [planAhead.ucf(1887)]</arg> is overridden on the design object <arg fmt="%s" index="2">Led3</arg> by the constraint <arg fmt="%s" index="3">&lt;NET &quot;Led3&quot; PULLUP;&gt; [Pre.ucf(914)]</arg>.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;10&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;11&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;2&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;4&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;5&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;6&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;7&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;8&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext&lt;9&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;10&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;11&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;2&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;4&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;5&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;6&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;7&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;8&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADCOutDataLVDSNext_n&lt;9&gt;</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADC_DCO_LVDSNext</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADC_DCO_LVDSNext_n</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="486" delta="old" >Attribute &quot;<arg fmt="%s" index="1">DIFF_TERM</arg>&quot; is not allowed on symbol &quot;<arg fmt="%s" index="2">ADC_FCO_LVDSNext</arg>&quot; of type &quot;<arg fmt="%s" index="3">OPAD</arg>&quot;.  This attribute will be ignored.
+</msg>
+
+</messages>
+

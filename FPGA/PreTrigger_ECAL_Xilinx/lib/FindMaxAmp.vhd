@@ -61,11 +61,17 @@ end FindMaxAmp;
 
 architecture Behavioral of FindMaxAmp is
 
-	signal Ped_ch			: array_adc;
-	signal Sub_ped			: array_adc;
-	signal Sub_ped_delay	: array_adc;
-	signal Aver2			: array_adc;
-	signal GroupSum		: array_group_sum;
+	signal Ped_ch				: array_adc;
+	signal Sub_ped				: array_adc;
+	signal Sub_ped_delay		: array_adc;
+	signal Aver2				: array_adc;
+
+	signal Prev_Ped_ch			: array_prev_adc;
+	signal Prev_Sub_ped			: array_prev_adc;
+	signal Prev_Sub_ped_delay	: array_prev_adc;
+	signal Aver2Prev				: array_prev_adc;
+
+	signal GroupSum			: array_group_sum;
 
 	signal GroupValue_Up_LT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- flag exceeding (overpass) the lower threshold
 	signal GroupValue_Up_MT		: STD_LOGIC_VECTOR (NumGroup-1 downto 0):= (others => '0'); -- flag exceeding (overpass) the middle threshold
@@ -121,20 +127,83 @@ begin
 		end process;
 	end generate Aver_i;
 	
+-- subtraction of the pedestal and running average from Prev.channel
+	Sub_ped_Prev_i: for iChanPrev in 0 to NUM_TrigCellPrev-1 generate
+		process(Clock160)
+		begin
+			if rising_edge(Clock160) then
+				Prev_Sub_ped(iChanPrev) <= In_DataPrev(iChanPrev) - Prev_Ped_ch(iChanPrev);
+				Prev_Sub_ped_delay(iChanPrev) <= Prev_Sub_ped(iChanPrev);
+			end if;
+		end process;
+	end generate Sub_ped_Prev_i;
+	
+	Aver_Prev_i: for iChanPrev in 0 to NUM_TrigCellPrev-1 generate
+		process(Clock160)
+		begin
+			if rising_edge(Clock160) then
+				Aver2Prev(iChanPrev) <= Prev_Sub_ped_delay(iChanPrev) + Prev_Sub_ped(iChanPrev);
+			end if;
+		end process;
+	end generate Aver_Prev_i;
+	
 -- Group sum
-	
-	GroupSum(0) <= (Aver2(0)+Aver2(1)+Aver2(4)+Aver2(5));
-	GroupSum(1) <= (Aver2(4)+Aver2(5)+Aver2(8)+Aver2(9));
-	GroupSum(2) <= (Aver2(8)+Aver2(9)+Aver2(12)+Aver2(13));
-	GroupSum(3) <= (Aver2(1)+Aver2(2)+Aver2(5)+Aver2(6));
-	GroupSum(4) <= (Aver2(5)+Aver2(6)+Aver2(9)+Aver2(10));
-	GroupSum(5) <= (Aver2(9)+Aver2(10)+Aver2(13)+Aver2(14));
-	GroupSum(6) <= (Aver2(2)+Aver2(3)+Aver2(6)+Aver2(7));
-	GroupSum(7) <= (Aver2(6)+Aver2(7)+Aver2(10)+Aver2(11));
-	GroupSum(8) <= (Aver2(10)+Aver2(11)+Aver2(14)+Aver2(15));
-	
-	--GroupSum(i) <= (Aver2(i)+Aver2(i+1)+Aver2(i+y)+Aver2(i+1+y));
-	
+--		 Colomn(i)
+--Row	   N(i,j)
+--(j)	|  0(0,0) |  1(1,0) %  2(2,0) |  3(3,0) |  4(4,0) |
+--		|  5(0,1) |  5(1,1) %  7(2,1) |  8(3,1) |  9(4,1) |
+		---------------------
+--		| 10(0,2) | 11(1,2) | 12(2,2) | 13(3,2) | 14(4,2) |
+--		| 15(0,3) | 16(1,3) | 17(2,0) | 18(3,3) | 19(4,3) |
+--		| 20(0,4) | 21(1,4) | 22(2,0) | 23(3,4) | 24(4,4) |
+--		| 25(0,5) | 26(1,5) | 27(2,0) | 28(3,5) | 29(4,5) |
+--	
+	GroupSum_j: for jCHAN in 0 to CellsRow-2 generate -- (8)
+		GroupSum_i: for iCHAN in 0 to CellsColumn-1 generate -- (16)
+			process(Clock160)
+			begin
+				if rising_edge(Clock160) then
+					if ((iCHAN+1) /= CellsColumn)
+						then GroupSum(iCHAN+jCHAN*(NUM_TrigCell/CellsRow)) <= (Aver2(iCHAN+jCHAN*(NUM_TrigCell/CellsRow))		+ Aver2(iCHAN+1+jCHAN*(NUM_TrigCell/CellsRow))+ 
+																								 Aver2(iCHAN+(jCHAN+1)*(NUM_TrigCell/CellsRow)) + Aver2(iCHAN+(jCHAN+1)*(NUM_TrigCell/CellsRow)));
+						else GroupSum(iCHAN+jCHAN*(NUM_TrigCell/CellsRow)) <= (Aver2(iCHAN+jCHAN*(NUM_TrigCell/CellsRow))		+ Aver2Prev(jCHAN)+ 
+																								 Aver2(iCHAN+(jCHAN+1)*(NUM_TrigCell/CellsRow)) + Aver2Prev(jCHAN+1));
+					end if;
+				end if;
+			end process;
+		end generate GroupSum_i;
+	end generate GroupSum_j;
+
+--			GroupSum(0) <= (Aver2(0)+Aver2(1)+Aver2(4)+Aver2(5));
+--			GroupSum(1) <= (Aver2(4)+Aver2(5)+Aver2(8)+Aver2(9));
+--			GroupSum(2) <= (Aver2(8)+Aver2(9)+Aver2(12)+Aver2(13));
+--			GroupSum(3) <= (Aver2(1)+Aver2(2)+Aver2(5)+Aver2(6));
+--			GroupSum(4) <= (Aver2(5)+Aver2(6)+Aver2(9)+Aver2(10));
+--			GroupSum(5) <= (Aver2(9)+Aver2(10)+Aver2(13)+Aver2(14));
+--			GroupSum(6) <= (Aver2(2)+Aver2(3)+Aver2(6)+Aver2(7));
+--			GroupSum(7) <= (Aver2(6)+Aver2(7)+Aver2(10)+Aver2(11));
+--			GroupSum(8) <= (Aver2(10)+Aver2(11)+Aver2(14)+Aver2(15));
+
+--			GroupSum(0) <= (Aver2(0)+Aver2(1)+Aver2(5)+Aver2(6));
+--			GroupSum(1) <= (Aver2(1)+Aver2(2)+Aver2(6)+Aver2(7));
+--			GroupSum(2) <= (Aver2(2)+Aver2(3)+Aver2(7)+Aver2(8));
+--			GroupSum(3) <= (Aver2(3)+Aver2(4)+Aver2(8)+Aver2(9));
+--			
+--			GroupSum(4) <= (Aver2(5)+Aver2(6)+Aver2(10)+Aver2(11));
+--			GroupSum(5) <= (Aver2(6)+Aver2(7)+Aver2(11)+Aver2(12));
+--			GroupSum(6) <= (Aver2(7)+Aver2(8)+Aver2(12)+Aver2(13));
+--			GroupSum(7) <= (Aver2(8)+Aver2(9)+Aver2(13)+Aver2(14));
+--			
+--			GroupSum(8) <= (Aver2(10)+Aver2(11)+Aver2(15)+Aver2(16));
+--			GroupSum(9) <= (Aver2(11)+Aver2(12)+Aver2(16)+Aver2(17));
+--			GroupSum(10) <= (Aver2(12)+Aver2(13)+Aver2(17)+Aver2(18));
+--			GroupSum(11) <= (Aver2(13)+Aver2(14)+Aver2(18)+Aver2(19));
+--			
+--			GroupSum(12) <= (Aver2(15)+Aver2(16)+Aver2(20)+Aver2(21));
+--			GroupSum(13) <= (Aver2(16)+Aver2(17)+Aver2(21)+Aver2(22));
+--			GroupSum(14) <= (Aver2(17)+Aver2(18)+Aver2(22)+Aver2(23));
+--			GroupSum(15) <= (Aver2(18)+Aver2(19)+Aver2(23)+Aver2(24));
+
 	Thresh_i: for iGroup in 0 to NumGroup-1 generate
 		GroupValue_Up_LT(iGroup) <= '1' when (GroupSum(iGroup) >= ThresholdData_0) else
 			'0';
@@ -194,6 +263,7 @@ begin
 
 -- *************** Max Amp Search ********************
 
+--	MaxAmp_i: for iGroup in 0 to ((NumGroup/2)-1) generate
 	process(Clock160)
 	begin
 		if rising_edge(Clock160) then
