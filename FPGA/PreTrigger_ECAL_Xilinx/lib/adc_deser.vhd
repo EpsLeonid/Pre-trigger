@@ -145,12 +145,17 @@ begin
 	-- Input LVDS ADC buffer
 
 	process(Clock_i)
+		variable j : integer range 0 to 64;
 	begin
 		if rising_edge(Clock_i) then
-			while (i/=64) loop
-				i := 0;
-				DlyCE <= "1";
-				i := i+1;
+			for i in 0 to NUM_TrigCell-1 loop 
+			j := 0;
+				while (j<64) loop
+					if (o_adc_data(i) /= "10100011") then DlyCE(i) <= '1';
+																else DlyCE(i) <= '0';
+					end if;
+					j := j+1;
+				end loop;
 			end loop;
 		end if;
 	end process;
