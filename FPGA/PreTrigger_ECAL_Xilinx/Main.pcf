@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Fri Dec 25 18:09:28 2020
+// Written by: Map P.20131013 on Tue Jan 12 16:05:22 2021
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -228,7 +228,17 @@ TIMEGRP Sys_clk_U1_CLKDV_BUF = BEL "ADC_CSB_trig" BEL "ADC_Bit_write" BEL
         "ShiftReg_test/tmp_2" BEL "ShiftReg_test/tmp_1" BEL
         "ShiftReg_test/tmp_0" BEL "Sys_clk/U1_CLKDV_BUFG_INST" BEL "ADC_SCLK";
 TIMEGRP Sys_clk_U2_CLK2X_BUF = BEL "ADCDataTest_Ok" BEL
-        "Sys_clk/U2_CLK2X_BUFG_INST" BEL "ADCDataTest_Ok_1" BEL "ADC_CLK";
+        "Sys_clk/U2_CLK2X_BUFG_INST" BEL "adc_deser_i/DlyCE_9" BEL
+        "adc_deser_i/DlyCE_8" BEL "adc_deser_i/DlyCE_7" BEL
+        "adc_deser_i/DlyCE_6" BEL "adc_deser_i/DlyCE_5" BEL
+        "adc_deser_i/DlyCE_4" BEL "adc_deser_i/DlyCE_3" BEL
+        "adc_deser_i/DlyCE_2" BEL "adc_deser_i/DlyCE_1" BEL
+        "adc_deser_i/DlyCE_0" BEL "adc_deser_i/DlyCE_24" BEL
+        "adc_deser_i/DlyCE_23" BEL "adc_deser_i/DlyCE_18" BEL
+        "adc_deser_i/DlyCE_19" BEL "adc_deser_i/DlyCE_22" BEL
+        "adc_deser_i/DlyCE_17" BEL "adc_deser_i/DlyCE_21" BEL
+        "adc_deser_i/DlyCE_16" BEL "adc_deser_i/DlyCE_20" BEL
+        "ADCDataTest_Ok_1" BEL "ADC_CLK";
 PIN Sys_clk/DCM_ADV_INST2_pins<4> = BEL "Sys_clk/DCM_ADV_INST2" PINNAME CLKIN;
 PIN adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave_pins<0> = BEL
         "adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave" PINNAME CLK;

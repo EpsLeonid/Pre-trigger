@@ -75,8 +75,10 @@ architecture Behavioral of adc_deser is
 	signal SDATA		: std_logic_vector(NUM_TrigCell-1 downto 0);	-- input of data from ADC	
 	signal ShiftSData1: std_logic_vector(NUM_TrigCell-1 downto 0);--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	signal ShiftSData2: std_logic_vector(NUM_TrigCell-1 downto 0);--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
+	signal adc_data	: array_adc;
+	signal adc_data_sh : array_adc;
 	
-	signal DlyCE		: std_logic_vector(NUM_TrigCell-1 downto 0);
+	signal DlyCE		: std_logic_vector(NUM_TrigCell-1 downto 0) := (others => '0');
 
 	signal DCOPrev		: std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 --	signal FCOPrev		: std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
@@ -145,16 +147,16 @@ begin
 	-- Input LVDS ADC buffer
 
 	process(Clock_i)
-		variable j : integer range 0 to 64;
+--		variable j : integer range 0 to 10;
 	begin
 		if rising_edge(Clock_i) then
 			for i in 0 to NUM_TrigCell-1 loop 
-			j := 0;
-				while (j<64) loop
-					if (o_adc_data(i) /= "10100011") then DlyCE(i) <= '1';
-																else DlyCE(i) <= '0';
+--			j := 0;
+				for j in 0 to 64 loop
+					if (adc_data_sh(i) /= "10100011") then DlyCE(i) <= '1';
+																 else DlyCE(i) <= '0';
 					end if;
-					j := j+1;
+--					j := j+1;
 				end loop;
 			end loop;
 		end if;
@@ -189,12 +191,12 @@ begin
 				NUM_CE => 1, -- Define number or clock enables to an integer of 1 or 2
 				SERDES_MODE => "MASTER") --Set SERDES mode to "MASTER" or "SLAVE" 
 			port map (
-				Q1 => o_adc_data(i)(7),  -- 1-bit output
-				Q2 => o_adc_data(i)(6),  -- 1-bit output
-				Q3 => o_adc_data(i)(5),  -- 1-bit output
-				Q4 => o_adc_data(i)(4),  -- 1-bit output
-				Q5 => o_adc_data(i)(3),  -- 1-bit output
-				Q6 => o_adc_data(i)(2),  -- 1-bit output
+				Q1 => adc_data(i)(7),  -- 1-bit output
+				Q2 => adc_data(i)(6),  -- 1-bit output
+				Q3 => adc_data(i)(5),  -- 1-bit output
+				Q4 => adc_data(i)(4),  -- 1-bit output
+				Q5 => adc_data(i)(3),  -- 1-bit output
+				Q6 => adc_data(i)(2),  -- 1-bit output
 				SHIFTOUT1 => ShiftSData1(i), -- 1-bit output
 				SHIFTOUT2 => ShiftSData2(i), -- 1-bit output
 				BITSLIP => '0',     -- 1-bit input
@@ -229,8 +231,8 @@ begin
 			port map (
 				Q1 => open,  -- 1-bit output
 				Q2 => open,  -- 1-bit output
-				Q3 => o_adc_data(i)(1),  -- 1-bit output
-				Q4 => o_adc_data(i)(0),  -- 1-bit output
+				Q3 => adc_data(i)(1),  -- 1-bit output
+				Q4 => adc_data(i)(0),  -- 1-bit output
 				Q5 => open,  -- 1-bit output
 				Q6 => open,  -- 1-bit output
 				SHIFTOUT1 => open, -- 1-bit output
@@ -266,6 +268,8 @@ begin
 --					);
 	end generate LVDS_buf_ADC;
 	
+	adc_data_sh <= adc_data;
+	o_adc_data <= adc_data;
 -- Input LVDS ADC buffer from prev.board
 	LVDS_buf_ADCPrev: for i in 0 to NUM_TrigCellPrev-1 generate 
 		LVDS_signal : IBUFDS

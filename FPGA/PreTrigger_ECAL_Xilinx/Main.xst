@@ -2,6 +2,7 @@ set -tmpdir "xst/projnav.tmp"
 set -xsthdpdir "xst"
 run
 -ifn Main.prj
+-loop_iteration_limit 10000
 -ifmt mixed
 -ofn Main
 -ofmt NGC
