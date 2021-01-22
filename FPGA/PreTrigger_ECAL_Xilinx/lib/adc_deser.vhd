@@ -79,16 +79,21 @@ architecture Behavioral of adc_deser is
 	signal adc_data_sh : array_adc;
 	
 	signal DlyCE		: std_logic_vector(NUM_TrigCell-1 downto 0) := (others => '0');
+--	signal DELAY_VALUE: std_logic_vector(NUM_TrigCell/4-1 downto 0) := (others => '0');
+
+--	subtype tValue is integer (5 downto 0);
+--	type tValue_matrix is array (0 to NUM_TrigCell/4) of tValue;
+	type tValue_matrix is array (0 to NUM_TrigCell/4-1) of integer range 0 to 63;
+	constant DELAY_VALUE : tValue_matrix := (50, 46, 50, 50, 50, 50, 50, 50,
+														  50, 46, 50, 50, 50, 50, 50, 50,
+														  50, 46, 50, 50, 50, 50, 50, 50,
+														  50, 46, 50, 50, 50, 50, 50, 50);
 
 	signal DCOPrev		: std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 --	signal FCOPrev		: std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	signal SDATAPrev	: std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- input of ADC data from Prev board 
 	signal ShiftSDATAPrev1		: std_logic_vector(NUM_TrigCell-1 downto 0);--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 	signal ShiftSDATAPrev2		: std_logic_vector(NUM_TrigCell-1 downto 0);--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
-	
---	attribute IODELAY_GROUP : string;
---	attribute IODELAY_GROUP of IDELAYCTRL_ADC : label is "IDELAYCTRL_ADC_i";
-	
 
 begin
 
@@ -146,21 +151,21 @@ begin
 
 	-- Input LVDS ADC buffer
 
-	process(Clock_i)
---		variable j : integer range 0 to 10;
-	begin
-		if rising_edge(Clock_i) then
-			for i in 0 to NUM_TrigCell-1 loop 
---			j := 0;
-				for j in 0 to 64 loop
-					if (adc_data_sh(i) /= "10100011") then DlyCE(i) <= '1';
-																 else DlyCE(i) <= '0';
-					end if;
---					j := j+1;
-				end loop;
-			end loop;
-		end if;
-	end process;
+--	process(FCO(0))
+----		variable j : integer range 0 to 10;
+--	begin
+--		if rising_edge(FCO(0)) then
+----			for i in 0 to NUM_TrigCell-1 loop 
+----			j := 0;
+--				for j in 0 to 64 loop
+--					if (adc_data_sh(1) /= "10100011") then DlyCE(1) <= '1';
+--																 else DlyCE(1) <= '0';
+--					end if;
+----					j := j+1;
+--				end loop;
+----			end loop;
+--		end if;
+--	end process;
 
 	LVDS_buf_ADC: for i in 0 to NUM_TrigCell-1 generate 
 		LVDS_signal : IBUFDS
@@ -186,17 +191,17 @@ begin
 				INTERFACE_TYPE => "NETWORKING", -- Use model - "MEMORY" or "NETWORKING" 
 				IOBDELAY => "BOTH", -- Specify outputs where delay chain will be applied
 										  -- "NONE", "IBUF", "IFD", or "BOTH" 
-				IOBDELAY_TYPE => "VARIABLE", -- Set tap delay "DEFAULT", "FIXED", or "VARIABLE" 
-				IOBDELAY_VALUE => 0, -- Set initial tap delay to an integer from 0 to 63
+				IOBDELAY_TYPE => "FIXED", -- Set tap delay "DEFAULT", "FIXED", or "VARIABLE" 
+				IOBDELAY_VALUE => DELAY_VALUE(i/4), -- Set initial tap delay to an integer from 0 to 63
 				NUM_CE => 1, -- Define number or clock enables to an integer of 1 or 2
 				SERDES_MODE => "MASTER") --Set SERDES mode to "MASTER" or "SLAVE" 
 			port map (
-				Q1 => adc_data(i)(7),  -- 1-bit output
-				Q2 => adc_data(i)(6),  -- 1-bit output
-				Q3 => adc_data(i)(5),  -- 1-bit output
-				Q4 => adc_data(i)(4),  -- 1-bit output
-				Q5 => adc_data(i)(3),  -- 1-bit output
-				Q6 => adc_data(i)(2),  -- 1-bit output
+				Q1 => adc_data(i)(0),  -- 1-bit output
+				Q2 => adc_data(i)(1),  -- 1-bit output
+				Q3 => adc_data(i)(2),  -- 1-bit output
+				Q4 => adc_data(i)(3),  -- 1-bit output
+				Q5 => adc_data(i)(4),  -- 1-bit output
+				Q6 => adc_data(i)(5),  -- 1-bit output
 				SHIFTOUT1 => ShiftSData1(i), -- 1-bit output
 				SHIFTOUT2 => ShiftSData2(i), -- 1-bit output
 				BITSLIP => '0',     -- 1-bit input
@@ -205,7 +210,7 @@ begin
 				CLK => DCO(i/4),        -- 1-bit input
 				CLKDIV => FCO(i/4),  -- 1-bit input
 				D => SDATA(i),            -- 1-bit input
-				DLYCE => DlyCE(i),    -- 1-bit input
+				DLYCE => '1',    -- 1-bit input
 				DLYINC => '1',  -- 1-bit input
 				DLYRST => '0',  -- 1-bit input
 				OCLK => '0',      -- 1-bit input
@@ -225,14 +230,14 @@ begin
 				IOBDELAY => "BOTH", -- Specify outputs where delay chain will be applied
 										  -- "NONE", "IBUF", "IFD", or "BOTH" 
 				IOBDELAY_TYPE => "FIXED", -- Set tap delay "DEFAULT", "FIXED", or "VARIABLE" 
-				IOBDELAY_VALUE => 0, -- Set initial tap delay to an integer from 0 to 63
+				IOBDELAY_VALUE => DELAY_VALUE(i/4), -- Set initial tap delay to an integer from 0 to 63
 				NUM_CE => 1, -- Define number or clock enables to an integer of 1 or 2
 				SERDES_MODE => "SLAVE") --Set SERDES mode to "MASTER" or "SLAVE" 
 			port map (
 				Q1 => open,  -- 1-bit output
 				Q2 => open,  -- 1-bit output
-				Q3 => adc_data(i)(1),  -- 1-bit output
-				Q4 => adc_data(i)(0),  -- 1-bit output
+				Q3 => adc_data(i)(6),  -- 1-bit output
+				Q4 => adc_data(i)(7),  -- 1-bit output
 				Q5 => open,  -- 1-bit output
 				Q6 => open,  -- 1-bit output
 				SHIFTOUT1 => open, -- 1-bit output
@@ -253,10 +258,6 @@ begin
 				SR => '0'           -- 1-bit input
 			);
 			
---			case o_adc_data(i) is 
---				when "10100011" => ADCDataDelay(i) <= j;
---				when others 	 => ADCDataDelay(i) <= "000000";
---			end case;
 --		end generate ShiftADCData;
 		
 --		SERDES : entity work.ISERDES_8bit 
@@ -369,5 +370,7 @@ begin
 	--				 );
 
 	end generate LVDS_buf_ADCPrev;
+	
+	test(0) <= DlyCE(1);
 
 end Behavioral;

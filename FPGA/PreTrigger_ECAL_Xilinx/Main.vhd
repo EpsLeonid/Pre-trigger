@@ -165,9 +165,9 @@ architecture Behavioral of Main is
 	signal s_fadc_sdio_reset: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000000000000000001111111100000001";
 	signal shift_sdio_reset	: std_logic;
 	
-	signal s_fadc_csb			: std_logic := '1';
-	signal s_fadc_sdio		: std_logic := '0'; 
-	signal s_fadc_sclk		: std_logic := '0';
+	signal s_fadc_def_csb	: std_logic := '1';
+	signal s_fadc_def_sdio	: std_logic := '0'; 
+	signal s_fadc_def_sclk	: std_logic := '0';
 	
 	signal ADC_Bit_write: std_logic := '0'; 
 	signal ADC_bit_count: STD_LOGIC_VECTOR(5 downto 0);
@@ -410,7 +410,7 @@ Sys_clk: entity work.Sys_dll
 					 '1';
 
 	LED3 <= o_green_led;
-	LED2 <= ADCDataTest_Ok;--not o_blue_led;
+	LED2 <= not ADCDataTest_Ok;--not o_blue_led;
 	LED1 <= o_red_led;
 
 	LED4 <= '1' when TestCnt(21)='1' else
@@ -564,39 +564,47 @@ Sys_clk: entity work.Sys_dll
 				q			=> ADC_bit_count
 				);
 
+	s_fadc_test <= '1';
+
 	process (Clk20)
 	begin
 		if rising_edge(Clk20) then
-			if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
-													Else ADC_Bit_write <= '0';
+			if s_fadc_test ='1' then 
+				if (ADC_bit_count < "110100") Then ADC_Bit_write <= '1';
+														Else ADC_Bit_write <= '0';
+				end if;
+				IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
+																											ADC_SDIO <= ADCtest_SDIO_trig;
+																									 Else ADCtest_reg_sset <= '1';
+																											ADC_SDIO <= '0';
+				end if;
+				if (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
+					ADC_CSB_trig <= '0';
+				else 
+					ADC_CSB_trig <= '1';
+				end if;
+				ADC_CSB <= ADC_CSB_trig;
+				ADC_SCLK <= Clk20;
+			else 
+				ADC_CSB	<= '1';	-- Pin 
+				ADC_SDIO	<= '0';	-- Pin 
+				ADC_SCLK	<= '0';	-- Pin 
 			end if;
-			IF ((ADC_bit_count >= "000001") AND (ADC_bit_count < "110100")) Then ADCtest_reg_sset <= '0';
-																										ADC_SDIO <= ADCtest_SDIO_trig;
-																								 Else ADCtest_reg_sset <= '1';
-																										ADC_SDIO <= '0';
-			END IF;
-			IF (((ADC_bit_count >= "000010") AND (ADC_bit_count < "11010")) OR ((ADC_bit_count >= "11100") AND (ADC_bit_count < "110100")))Then 
-				ADC_CSB_trig <= '0';
-			ELSE 
-				ADC_CSB_trig <= '1';
-			END IF;
 		end if;
 	end process;
 	
---	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "000000000000110100001100 00 000000001111111100000001";
---											--									  "set	addr		 data			 set	addr		  data "
---											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
-
-	ADC_CSB <= ADC_CSB_trig;
-	ADC_SCLK <= Clk20;
+--	ADC_CSB	<= '1';	-- Pin 
+--	ADC_SDIO	<= '0';	-- Pin 
+--	ADC_SCLK	<= '0';	-- Pin 
 
 	ShiftReg_test : entity work.ShiftReg 
 		generic map (WIDTH => 50) 
 		port map(clock	=> clk20,
-				d		=> s_fadc_sdio_test,
+				d		=> s_fadc_sdio_reset,--s_fadc_sdio_test,
 				sset	=> ADCtest_reg_sset,
 				q		=> ADCtest_SDIO_trig
 		);
+--**************************
 		
 	ADC_Data_test: for i in 0 to 7 generate 
 		process (Clk80)
@@ -624,8 +632,10 @@ Sys_clk: entity work.Sys_dll
 	process(Clk80)
 	begin
 		if rising_edge(Clk80) then
-			if ((InDataReg(0) = "10100011") or (InDataReg(1) = "10100011") or (InDataReg(2) = "10100011") or (InDataReg(3) = "10100011") or 
-				 (InDataReg(4) = "10100011") or (InDataReg(5) = "10100011") or (InDataReg(6) = "10100011") or (InDataReg(7) = "10100011")) then ADCDataTest_Ok <= '1';
+			if ((InDataReg(6) = "10100011") 
+			--or (InDataReg(1) = "10100011") or (InDataReg(2) = "10100011") or (InDataReg(3) = "10100011") or 
+--				 (InDataReg(4) = "10100011") or (InDataReg(5) = "10100011") or (InDataReg(6) = "10100011") or (InDataReg(7) = "10100011")
+					) then ADCDataTest_Ok <= '1';
 																																													else ADCDataTest_Ok <= '0';
 			end if;
 		end if;
@@ -643,15 +653,15 @@ Sys_clk: entity work.Sys_dll
 				q			=> TestCnt
 				);
 
-	Test(0) <= InDataReg(1)(0);
-	Test(1) <= InDataReg(1)(1);
-	Test(2) <= InDataReg(1)(2);
-	Test(3) <= InDataReg(1)(3);
-	Test(4) <= InDataReg(1)(4);
-	Test(5) <= InDataReg(1)(5);
-	Test(6) <= InDataReg(1)(6);
-	Test(7) <= InDataReg(1)(7);
+	Test(0) <= InDataReg(0)(0);
+	Test(1) <= InDataReg(0)(1);
+	Test(2) <= InDataReg(0)(2);
+	Test(3) <= InDataReg(0)(3);
+	Test(4) <= InDataReg(0)(4);
+	Test(5) <= InDataReg(0)(5);
+	Test(6) <= InDataReg(0)(6);
+	Test(7) <= InDataReg(0)(7);
 	Test(8) <= ADCDataTest_Ok;--test_adc_deser(0);
-	Test(9) <= Clk40;
+	Test(9) <= test_adc_deser(0);
 
 end Behavioral;

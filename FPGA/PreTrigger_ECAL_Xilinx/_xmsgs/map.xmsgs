@@ -1166,6 +1166,10 @@ To see the details of these <arg fmt="%s" index="4">info</arg> messages, please 
 <msg type="info" file="LIT" num="244" delta="old" >All of the single ended outputs in this design are using slew rate limited output drivers. The delay on speed critical single ended outputs can be dramatically reduced by designating them as fast outputs.
 </msg>
 
+<msg type="warning" file="LIT" num="176" delta="new" >Clock buffer is designated to drive clock loads. <arg fmt="%s" index="1">BUFG symbol &quot;Sys_clk/U1_CLKDV_BUFG_INST&quot; (output signal=Clk20)</arg> has a mix of clock and non-clock loads. The non-clock loads are:
+<arg fmt="%s" index="2">Pin D of ADC_SCLK</arg>
+</msg>
+
 <msg type="warning" file="PhysDesignRules" num="781" delta="old" ><arg fmt="%s" index="1">PULLUP</arg> on an active net. <arg fmt="%s" index="2">PULLUP</arg> of comp <arg fmt="%s" index="3">Led1</arg> is set but the tri state is not configured. 
 </msg>
 

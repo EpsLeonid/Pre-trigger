@@ -1,5 +1,5 @@
 //! **************************************************************************
-// Written by: Map P.20131013 on Tue Jan 12 16:05:22 2021
+// Written by: Map P.20131013 on Fri Jan 22 15:10:45 2021
 //! **************************************************************************
 
 SCHEMATIC START;
@@ -13,6 +13,7 @@ COMP "ADCInDataLVDS<17>" LOCATE = SITE "AF28" LEVEL 1;
 COMP "ADCInDataLVDS<18>" LOCATE = SITE "AF31" LEVEL 1;
 COMP "ADCInDataLVDS<19>" LOCATE = SITE "AF33" LEVEL 1;
 COMP "Col" LOCATE = SITE "B11" LEVEL 1;
+COMP "ADC_SCLK" LOCATE = SITE "G13" LEVEL 1;
 COMP "Crs" LOCATE = SITE "A11" LEVEL 1;
 COMP "ADC_SDIO" LOCATE = SITE "F14" LEVEL 1;
 COMP "Led1" LOCATE = SITE "C13" LEVEL 1;
@@ -170,7 +171,6 @@ COMP "TriggerData<58>" LOCATE = SITE "AK4" LEVEL 1;
 COMP "TriggerData<59>" LOCATE = SITE "AE2" LEVEL 1;
 COMP "ADC_DCO_LVDSNext_n" LOCATE = SITE "AN4" LEVEL 1;
 COMP "Sw_FCTClk" LOCATE = SITE "F11" LEVEL 1;
-COMP "ADC_SCLK" LOCATE = SITE "G13" LEVEL 1;
 COMP "FastTrigDes" LOCATE = SITE "B13" LEVEL 1;
 COMP "ADCOutDataLVDSNext<2>" LOCATE = SITE "AJ12" LEVEL 1;
 COMP "ADCOutDataLVDSNext<4>" LOCATE = SITE "AJ11" LEVEL 1;
@@ -193,52 +193,45 @@ COMP "Sw_Quartz" LOCATE = SITE "F10" LEVEL 1;
 COMP "ADC_CLK" LOCATE = SITE "G15" LEVEL 1;
 COMP "ADC_CSB" LOCATE = SITE "E14" LEVEL 1;
 COMP "ADC_FCO<0>" LOCATE = SITE "AK17" LEVEL 1;
+PIN ADC_FCO<0>_pin<0> = BEL "ADC_FCO<0>" PINNAME PAD;
+PIN "ADC_FCO<0>_pin<0>" CLOCK_DEDICATED_ROUTE = FALSE;
 COMP "ADC_FCO<1>" LOCATE = SITE "AM16" LEVEL 1;
 COMP "ADC_FCO<2>" LOCATE = SITE "AH17" LEVEL 1;
 COMP "ADC_FCO<4>" LOCATE = SITE "AL18" LEVEL 1;
 COMP "ADC_FCO<5>" LOCATE = SITE "AK18" LEVEL 1;
 COMP "ADC_FCO<6>" LOCATE = SITE "AL19" LEVEL 1;
 TIMEGRP Sys_clk_U1_CLKDV_BUF = BEL "ADC_CSB_trig" BEL "ADC_Bit_write" BEL
-        "ADCtest_reg_sset" BEL "ADC_SDIO" BEL "ADCTest/count_0" BEL
-        "ADCTest/count_1" BEL "ADCTest/count_2" BEL "ADCTest/count_3" BEL
-        "ADCTest/count_4" BEL "ADCTest/count_5" BEL "ShiftReg_test/tmp_49" BEL
-        "ShiftReg_test/tmp_48" BEL "ShiftReg_test/tmp_47" BEL
-        "ShiftReg_test/tmp_46" BEL "ShiftReg_test/tmp_45" BEL
-        "ShiftReg_test/tmp_44" BEL "ShiftReg_test/tmp_43" BEL
-        "ShiftReg_test/tmp_42" BEL "ShiftReg_test/tmp_41" BEL
-        "ShiftReg_test/tmp_40" BEL "ShiftReg_test/tmp_39" BEL
-        "ShiftReg_test/tmp_38" BEL "ShiftReg_test/tmp_37" BEL
-        "ShiftReg_test/tmp_36" BEL "ShiftReg_test/tmp_35" BEL
-        "ShiftReg_test/tmp_34" BEL "ShiftReg_test/tmp_33" BEL
-        "ShiftReg_test/tmp_32" BEL "ShiftReg_test/tmp_31" BEL
-        "ShiftReg_test/tmp_30" BEL "ShiftReg_test/tmp_29" BEL
-        "ShiftReg_test/tmp_28" BEL "ShiftReg_test/tmp_27" BEL
-        "ShiftReg_test/tmp_26" BEL "ShiftReg_test/tmp_25" BEL
-        "ShiftReg_test/tmp_24" BEL "ShiftReg_test/tmp_23" BEL
-        "ShiftReg_test/tmp_22" BEL "ShiftReg_test/tmp_21" BEL
-        "ShiftReg_test/tmp_20" BEL "ShiftReg_test/tmp_19" BEL
-        "ShiftReg_test/tmp_18" BEL "ShiftReg_test/tmp_17" BEL
-        "ShiftReg_test/tmp_16" BEL "ShiftReg_test/tmp_15" BEL
-        "ShiftReg_test/tmp_14" BEL "ShiftReg_test/tmp_13" BEL
-        "ShiftReg_test/tmp_12" BEL "ShiftReg_test/tmp_11" BEL
-        "ShiftReg_test/tmp_10" BEL "ShiftReg_test/tmp_9" BEL
-        "ShiftReg_test/tmp_8" BEL "ShiftReg_test/tmp_7" BEL
-        "ShiftReg_test/tmp_6" BEL "ShiftReg_test/tmp_5" BEL
-        "ShiftReg_test/tmp_4" BEL "ShiftReg_test/tmp_3" BEL
-        "ShiftReg_test/tmp_2" BEL "ShiftReg_test/tmp_1" BEL
-        "ShiftReg_test/tmp_0" BEL "Sys_clk/U1_CLKDV_BUFG_INST" BEL "ADC_SCLK";
+        "ADCtest_reg_sset" BEL "ADC_SCLK" BEL "ADC_CSB" BEL "ADC_SDIO" BEL
+        "ADCTest/count_0" BEL "ADCTest/count_1" BEL "ADCTest/count_2" BEL
+        "ADCTest/count_3" BEL "ADCTest/count_4" BEL "ADCTest/count_5" BEL
+        "ShiftReg_test/tmp_49" BEL "ShiftReg_test/tmp_48" BEL
+        "ShiftReg_test/tmp_47" BEL "ShiftReg_test/tmp_46" BEL
+        "ShiftReg_test/tmp_45" BEL "ShiftReg_test/tmp_44" BEL
+        "ShiftReg_test/tmp_43" BEL "ShiftReg_test/tmp_42" BEL
+        "ShiftReg_test/tmp_41" BEL "ShiftReg_test/tmp_40" BEL
+        "ShiftReg_test/tmp_39" BEL "ShiftReg_test/tmp_38" BEL
+        "ShiftReg_test/tmp_37" BEL "ShiftReg_test/tmp_36" BEL
+        "ShiftReg_test/tmp_35" BEL "ShiftReg_test/tmp_34" BEL
+        "ShiftReg_test/tmp_33" BEL "ShiftReg_test/tmp_32" BEL
+        "ShiftReg_test/tmp_31" BEL "ShiftReg_test/tmp_30" BEL
+        "ShiftReg_test/tmp_29" BEL "ShiftReg_test/tmp_28" BEL
+        "ShiftReg_test/tmp_27" BEL "ShiftReg_test/tmp_26" BEL
+        "ShiftReg_test/tmp_25" BEL "ShiftReg_test/tmp_24" BEL
+        "ShiftReg_test/tmp_23" BEL "ShiftReg_test/tmp_22" BEL
+        "ShiftReg_test/tmp_21" BEL "ShiftReg_test/tmp_20" BEL
+        "ShiftReg_test/tmp_19" BEL "ShiftReg_test/tmp_18" BEL
+        "ShiftReg_test/tmp_17" BEL "ShiftReg_test/tmp_16" BEL
+        "ShiftReg_test/tmp_15" BEL "ShiftReg_test/tmp_14" BEL
+        "ShiftReg_test/tmp_13" BEL "ShiftReg_test/tmp_12" BEL
+        "ShiftReg_test/tmp_11" BEL "ShiftReg_test/tmp_10" BEL
+        "ShiftReg_test/tmp_9" BEL "ShiftReg_test/tmp_8" BEL
+        "ShiftReg_test/tmp_7" BEL "ShiftReg_test/tmp_6" BEL
+        "ShiftReg_test/tmp_5" BEL "ShiftReg_test/tmp_4" BEL
+        "ShiftReg_test/tmp_3" BEL "ShiftReg_test/tmp_2" BEL
+        "ShiftReg_test/tmp_1" BEL "ShiftReg_test/tmp_0" BEL
+        "Sys_clk/U1_CLKDV_BUFG_INST";
 TIMEGRP Sys_clk_U2_CLK2X_BUF = BEL "ADCDataTest_Ok" BEL
-        "Sys_clk/U2_CLK2X_BUFG_INST" BEL "adc_deser_i/DlyCE_9" BEL
-        "adc_deser_i/DlyCE_8" BEL "adc_deser_i/DlyCE_7" BEL
-        "adc_deser_i/DlyCE_6" BEL "adc_deser_i/DlyCE_5" BEL
-        "adc_deser_i/DlyCE_4" BEL "adc_deser_i/DlyCE_3" BEL
-        "adc_deser_i/DlyCE_2" BEL "adc_deser_i/DlyCE_1" BEL
-        "adc_deser_i/DlyCE_0" BEL "adc_deser_i/DlyCE_24" BEL
-        "adc_deser_i/DlyCE_23" BEL "adc_deser_i/DlyCE_18" BEL
-        "adc_deser_i/DlyCE_19" BEL "adc_deser_i/DlyCE_22" BEL
-        "adc_deser_i/DlyCE_17" BEL "adc_deser_i/DlyCE_21" BEL
-        "adc_deser_i/DlyCE_16" BEL "adc_deser_i/DlyCE_20" BEL
-        "ADCDataTest_Ok_1" BEL "ADC_CLK";
+        "Sys_clk/U2_CLK2X_BUFG_INST" BEL "ADCDataTest_Ok_1" BEL "ADC_CLK";
 PIN Sys_clk/DCM_ADV_INST2_pins<4> = BEL "Sys_clk/DCM_ADV_INST2" PINNAME CLKIN;
 PIN adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave_pins<0> = BEL
         "adc_deser_o/OSERDES_ADCNext[11].OSERDES_slave" PINNAME CLK;
@@ -307,7 +300,7 @@ TIMEGRP Sys_clk_U1_CLK0_BUF = BEL "PowerUp0" BEL "CntTest/count_0" BEL
         "adc_deser_o/OSERDES_ADCNext[4].OSERDES_master_pins<0>" PIN
         "adc_deser_o/OSERDES_ADCNext[2].OSERDES_slave_pins<0>" PIN
         "adc_deser_o/OSERDES_ADCNext[2].OSERDES_master_pins<0>" BEL
-        "ADC_DCO_LVDSNext" BEL "ADC_DCO_LVDSNext_n" BEL "Test<9>";
+        "ADC_DCO_LVDSNext" BEL "ADC_DCO_LVDSNext_n";
 TIMEGRP Sys_clk_U2_CLKFX_BUF = BEL "Sys_clk/U2_CLKFX_BUFG_INST" BEL
         "adc_deser_i/Set_ctrl/Trig" BEL
         "adc_deser_i/IDELAYCTRL_ADC_MapLib_replicate20" BEL
@@ -820,8 +813,33 @@ TIMEGRP ADC_DCO_LVDS0 = PIN
         "adc_deser_i/LVDS_buf_ADC[1].ISERDES_master_pins<3>" PIN
         "adc_deser_i/LVDS_buf_ADC[0].ISERDES_slave_pins<3>" PIN
         "adc_deser_i/LVDS_buf_ADC[0].ISERDES_master_pins<3>";
+PIN adc_deser_i/LVDS_buf_ADC[3].ISERDES_slave_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[3].ISERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_i/LVDS_buf_ADC[3].ISERDES_master_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[3].ISERDES_master" PINNAME CLKDIV;
+PIN adc_deser_i/LVDS_buf_ADC[2].ISERDES_slave_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_i/LVDS_buf_ADC[2].ISERDES_master_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_master" PINNAME CLKDIV;
+PIN adc_deser_i/LVDS_buf_ADC[1].ISERDES_slave_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_i/LVDS_buf_ADC[1].ISERDES_master_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_master" PINNAME CLKDIV;
+PIN adc_deser_i/LVDS_buf_ADC[0].ISERDES_slave_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_slave" PINNAME CLKDIV;
+PIN adc_deser_i/LVDS_buf_ADC[0].ISERDES_master_pins<4> = BEL
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_master" PINNAME CLKDIV;
+TIMEGRP ADC_FCO0 = PIN "adc_deser_i/LVDS_buf_ADC[3].ISERDES_slave_pins<4>" PIN
+        "adc_deser_i/LVDS_buf_ADC[3].ISERDES_master_pins<4>" PIN
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_slave_pins<4>" PIN
+        "adc_deser_i/LVDS_buf_ADC[2].ISERDES_master_pins<4>" PIN
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_slave_pins<4>" PIN
+        "adc_deser_i/LVDS_buf_ADC[1].ISERDES_master_pins<4>" PIN
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_slave_pins<4>" PIN
+        "adc_deser_i/LVDS_buf_ADC[0].ISERDES_master_pins<4>";
 TS_Qclock = PERIOD TIMEGRP "Qclock" 25 ns HIGH 50% INPUT_JITTER 0.375 ns;
 TS_DCO0 = PERIOD TIMEGRP "ADC_DCO_LVDS0" 3.125 ns HIGH 50%;
+TS_FCO0 = PERIOD TIMEGRP "ADC_FCO0" 3.125 ns HIGH 50%;
 TS_DCO1 = PERIOD TIMEGRP "ADC_DCO_LVDS1" 3.125 ns HIGH 50%;
 TS_DCO2 = PERIOD TIMEGRP "ADC_DCO_LVDS2" 3.125 ns HIGH 50%;
 TS_DCO4 = PERIOD TIMEGRP "ADC_DCO_LVDS4" 3.125 ns HIGH 50%;
