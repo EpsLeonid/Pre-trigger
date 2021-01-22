@@ -63,7 +63,7 @@ ARCHITECTURE behavior OF PhaseSW_TB IS
 
 	-- Clock period definitions
 	constant Clock_period : time := 25 ns;
-	constant SysClk_period : time := 25 ns;
+	constant SysClk_period : time := 25.1 ns;
 	constant DUTY_CYCLE : real := 0.5;
 	-- Test 
 	signal ClkDelay : std_logic;
