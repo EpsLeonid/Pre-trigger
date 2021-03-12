@@ -9,42 +9,42 @@ Target Device  : xc4vlx60
 Target Package : ff1148
 Target Speed   : -10
 Mapper Version : virtex4 -- $Revision: 1.55 $
-Mapped Date    : Fri Jan 22 15:10:16 2021
+Mapped Date    : Thu Mar 11 16:23:22 2021
 
 Design Summary
 --------------
 Number of errors:      0
-Number of warnings:  384
+Number of warnings:  383
 Logic Utilization:
-  Number of Slice Flip Flops:           605 out of  53,248    1%
-  Number of 4 input LUTs:               421 out of  53,248    1%
+  Number of Slice Flip Flops:           544 out of  53,248    1%
+  Number of 4 input LUTs:               408 out of  53,248    1%
 Logic Distribution:
-  Number of occupied Slices:            430 out of  26,624    1%
-    Number of Slices containing only related logic:     430 out of     430 100%
-    Number of Slices containing unrelated logic:          0 out of     430   0%
+  Number of occupied Slices:            392 out of  26,624    1%
+    Number of Slices containing only related logic:     392 out of     392 100%
+    Number of Slices containing unrelated logic:          0 out of     392   0%
       *See NOTES below for an explanation of the effects of unrelated logic.
-  Total Number of 4 input LUTs:         446 out of  53,248    1%
-    Number used as logic:               419
+  Total Number of 4 input LUTs:         433 out of  53,248    1%
+    Number used as logic:               406
     Number used as a route-thru:         25
     Number used as Shift registers:       2
 
   The Slice Logic Distribution report is not meaningful if the design is
   over-mapped for a non-slice resource or if Placement fails.
   Number of bonded IOBs:                187 out of     640   29%
-    IOB Flip Flops:                       2
+    IOB Flip Flops:                       1
     IOB Master Pads:                     10
     IOB Slave Pads:                      10
-  Number of BUFG/BUFGCTRLs:               6 out of      32   18%
-    Number used as BUFGs:                 6
+  Number of BUFG/BUFGCTRLs:               5 out of      32   15%
+    Number used as BUFGs:                 5
   Number of DCM_ADVs:                     2 out of       8   25%
   Number of ISERDESs:                    38 out of     640    5%
   Number of OSERDESs:                    18 out of     640    2%
   Number of IDELAYCTRLs:                 22 out of      22  100%
 
-Average Fanout of Non-Clock Nets:                1.57
+Average Fanout of Non-Clock Nets:                1.52
 
-Peak Memory Usage:  460 MB
-Total REAL time to MAP completion:  30 secs 
+Peak Memory Usage:  450 MB
+Total REAL time to MAP completion:  6 secs 
 Total CPU time to MAP completion:   4 secs 
 
 NOTES:
@@ -846,10 +846,6 @@ WARNING:MapLib:50 - The period specification "TS_DCO30" has been discarded
    because the group "ADC_DCO_LVDS30" has been optimized away.
 WARNING:MapLib:50 - The period specification "TS_DCO31" has been discarded
    because the group "ADC_DCO_LVDS31" has been optimized away.
-WARNING:LIT:176 - Clock buffer is designated to drive clock loads. BUFG symbol
-   "Sys_clk/U1_CLKDV_BUFG_INST" (output signal=Clk20) has a mix of clock and
-   non-clock loads. The non-clock loads are:
-   Pin D of ADC_SCLK
 WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp Led1 is
    set but the tri state is not configured. 
 WARNING:PhysDesignRules:781 - PULLUP on an active net. PULLUP of comp Led2 is
@@ -886,9 +882,9 @@ INFO:PhysDesignRules:1437 - To achieve optimal frequency synthesis performance
 
 Section 4 - Removed Logic Summary
 ---------------------------------
- 764 block(s) removed
+ 765 block(s) removed
    4 block(s) optimized away
- 761 signal(s) removed
+ 762 signal(s) removed
 
 Section 5 - Removed Logic
 -------------------------
@@ -918,6 +914,8 @@ Loadless block "LVDS_signal" (IBUFDS) removed.
   Loadless block "TrigInLVDS_n" (PAD) removed.
 Loadless block "Sys_clk/U1_CLK90_BUFG_INST" (CKBUF) removed.
  The signal "Sys_clk/U1_CLK90_BUF" is loadless and has been removed.
+Loadless block "Sys_clk/U1_CLKDV_BUFG_INST" (CKBUF) removed.
+ The signal "Sys_clk/U1_CLKDV_BUF" is loadless and has been removed.
 Loadless block "Sys_clk/U2_CLK2X180_BUFG_INST" (CKBUF) removed.
  The signal "Sys_clk/U2_CLK2X180_BUF" is loadless and has been removed.
 Loadless block "adc_deser_i/LVDS_buf_ADCPrev[0].ISERDES_slave" (ISERDES)
@@ -2552,7 +2550,7 @@ Section 6 - IOB Properties
 | ADC_FCO<5>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADC_FCO<6>                         | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | ADC_FCO_LVDSNext                   | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
-| ADC_SCLK                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW | OFF1         |          |          |
+| ADC_SCLK                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | ADC_SDIO                           | IOB              | OUTPUT    | LVCMOS25             |       | 12       | SLOW |              |          |          |
 | Col                                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |
 | Crs                                | IOB              | INPUT     | LVCMOS25             |       |          |      |              |          |          |

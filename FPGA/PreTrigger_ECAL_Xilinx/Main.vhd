@@ -156,9 +156,12 @@ architecture Behavioral of Main is
 
 	--- ADC SPI interface signals
 	signal s_fadc_test		: std_logic := '0'; 
-	signal s_fadc_sdio_test	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
-											--									  "set	addr		 data			 set	addr		  data "
-											--									   3bit	 13bit	 8bit			 3bit	13bit		  8bit
+	signal s_fadc_sdio_test_on		: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000110000000000001111111100000001";
+											--											  "set	addr		 data			 set	addr		  data "
+											--											   3bit	 13bit	 8bit			 3bit	13bit		  8bit
+	signal s_fadc_sdio_test_off	: STD_LOGIC_VECTOR(49 downto 0) := "00000000000011010000000000000000001111111100000001";
+											--											  "set	addr		 data			 set	addr		  data "
+											--											   3bit	 13bit	 8bit			 3bit	13bit		  8bit
 	signal shift_sdio_test	: std_logic;
 	
 	signal s_fadc_reset		: std_logic := '0'; 
@@ -451,15 +454,15 @@ Sys_clk: entity work.Sys_dll
 	process (Clk80)
 	begin
 		if rising_edge(TestCnt(16)) then
-			ADCDataNext(0) <= InDataReg(56);
-			ADCDataNext(1) <= InDataReg(57);
-			ADCDataNext(2) <= InDataReg(58);
-			ADCDataNext(3) <= InDataReg(59);
-			ADCDataNext(4) <= InDataReg(60);
-			ADCDataNext(5) <= InDataReg(61);
-			ADCDataNext(6) <= InDataReg(62);
-			ADCDataNext(7) <= InDataReg(63);
-			ADCDataNext(8) <= "00001000";--InDataReg(108);
+			ADCDataNext(0) <= InDataReg(0);
+			ADCDataNext(1) <= InDataReg(1);
+			ADCDataNext(2) <= InDataReg(2);
+			ADCDataNext(3) <= InDataReg(3);
+			ADCDataNext(4) <= InDataReg(4);
+			ADCDataNext(5) <= InDataReg(5);
+			ADCDataNext(6) <= InDataReg(6);
+			ADCDataNext(7) <= InDataReg(7);
+			ADCDataNext(8) <= InDataReg(8);
 			ADCDataNext(9) <= "00001001";--InDataReg(109);
 			ADCDataNext(10) <= "00001010";--InDataReg(110);
 			ADCDataNext(11) <= "00001011";--InDataReg(111);
@@ -553,6 +556,8 @@ Sys_clk: entity work.Sys_dll
 --			ADC_SCLK		=> s_fadc_sclk
 --				);
 
+	s_fadc_test <= '0';
+
 	ADCTest : entity work.V_Counter 
 	generic map(
 				WIDTH => 6
@@ -564,7 +569,13 @@ Sys_clk: entity work.Sys_dll
 				q			=> ADC_bit_count
 				);
 
-	s_fadc_test <= '1';
+	ShiftReg_test : entity work.ShiftReg 
+		generic map (WIDTH => 50) 
+		port map(clock	=> clk20,
+				d		=> s_fadc_sdio_test_on,--s_fadc_sdio_reset,--
+				sset	=> ADCtest_reg_sset,
+				q		=> ADCtest_SDIO_trig
+		);
 
 	process (Clk20)
 	begin
@@ -597,13 +608,6 @@ Sys_clk: entity work.Sys_dll
 --	ADC_SDIO	<= '0';	-- Pin 
 --	ADC_SCLK	<= '0';	-- Pin 
 
-	ShiftReg_test : entity work.ShiftReg 
-		generic map (WIDTH => 50) 
-		port map(clock	=> clk20,
-				d		=> s_fadc_sdio_reset,--s_fadc_sdio_test,
-				sset	=> ADCtest_reg_sset,
-				q		=> ADCtest_SDIO_trig
-		);
 --**************************
 		
 	ADC_Data_test: for i in 0 to 7 generate 
@@ -653,14 +657,14 @@ Sys_clk: entity work.Sys_dll
 				q			=> TestCnt
 				);
 
-	Test(0) <= InDataReg(0)(0);
-	Test(1) <= InDataReg(0)(1);
-	Test(2) <= InDataReg(0)(2);
-	Test(3) <= InDataReg(0)(3);
-	Test(4) <= InDataReg(0)(4);
-	Test(5) <= InDataReg(0)(5);
-	Test(6) <= InDataReg(0)(6);
-	Test(7) <= InDataReg(0)(7);
+	Test(0) <= InDataReg(1)(0);
+	Test(1) <= InDataReg(1)(1);
+	Test(2) <= InDataReg(1)(2);
+	Test(3) <= InDataReg(1)(3);
+	Test(4) <= InDataReg(1)(4);
+	Test(5) <= InDataReg(1)(5);
+	Test(6) <= InDataReg(1)(6);
+	Test(7) <= InDataReg(1)(7);
 	Test(8) <= ADCDataTest_Ok;--test_adc_deser(0);
 	Test(9) <= test_adc_deser(0);
 

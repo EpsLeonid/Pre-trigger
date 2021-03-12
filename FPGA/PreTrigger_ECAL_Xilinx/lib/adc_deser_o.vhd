@@ -41,8 +41,8 @@ entity adc_deser_o is
 		
 		DATA_i		: array_next_adc;--in std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- input of ADC data from Prev board
 		
-		SDATANextP	: out std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- input of ADC data from Prev board
-		SDATANextN	: out std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- input of ADC data from Prev board
+		SDATANextP	: out std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of ADC data to Next board
+		SDATANextN	: out std_logic_vector(NUM_TrigCellNext-1 downto 0);	-- output of ADC data to Next board
 		DCOP			: out std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 		DCON			: out std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
 		FCO			: out std_logic;--std_logic_vector(NUM_TrigCellPrev-1 downto 0);	-- 
